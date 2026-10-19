@@ -38,5 +38,5 @@ payload = {
 }
 
 res = requests.post(tg_url, json=payload)
-print("Telegram 响应状态:", res.status_code)
+print("Telegram 响应状态码:", res.status_code)
 print("新闻已成功发送至 Telegram！")
