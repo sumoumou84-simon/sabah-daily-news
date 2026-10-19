@@ -1,15 +1,14 @@
 import os
 import requests
-import google.generativeai as genai
+from google import genai
 
 # 获取环境变量
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-# 配置 Gemini
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# 初始化 Gemini 客户端
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 prompt = """
 请帮我整理过去24小时来自 Facebook 官方粉专及各大日报（如《星洲日报沙巴》、《自由日报》、《诗华日报》、《Daily Express》等）的沙巴（特别是山打根）本地与全马头条新闻及商业活动资讯。
@@ -25,8 +24,11 @@ prompt = """
 3. 格式要求：适合 Telegram 阅读的 Markdown 格式，结构清晰。
 """
 
-# 调用 Gemini 模型生成内容
-response = model.generate_content(prompt)
+# 调用最新的 gemini-2.5-flash 模型
+response = client.models.generate_content(
+    model='gemini-2.5-flash',
+    contents=prompt
+)
 text_content = response.text
 
 # 发送到 Telegram
