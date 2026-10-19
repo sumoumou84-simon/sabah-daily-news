@@ -26,7 +26,7 @@ prompt = """
 
 # 调用最新的 gemini-2.5-flash 模型
 response = client.models.generate_content(
-    model='gemini-2.5-flash',
+    model='gemini-3.8-flash',
     contents=prompt
 )
 text_content = response.text
