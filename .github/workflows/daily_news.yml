@@ -20,7 +20,7 @@ jobs:
 
       - name: 安装依赖包
         run: |
-          pip install google-generativeai requests
+          pip install google-genai requests
 
       - name: 执行抓取并推送新闻
         env:
