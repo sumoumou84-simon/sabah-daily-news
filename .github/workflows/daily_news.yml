@@ -1,0 +1,30 @@
+name: Daily Sabah News Telegram Push
+
+on:
+  schedule:
+    # UTC 时间每天 00:00（相当于沙巴/吉隆坡时间早上 08:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动在网页点击触发测试
+
+jobs:
+  run-news-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 安装依赖包
+        run: |
+          pip install google-genai requests
+
+      - name: 执行抓取并推送新闻
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
