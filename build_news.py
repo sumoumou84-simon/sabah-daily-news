@@ -1,23 +1,21 @@
 import os
 import datetime
-import google.generativeai as genai
+from google import genai
 
 # 获取环境变量中的 API KEY
 api_key = os.environ.get("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("未找到 GEMINI_API_KEY 密钥！")
 
-genai.configure(api_key=api_key)
+client = genai.Client(api_key=api_key)
 
-# 获取马来西亚当前日期
+# 获取马来西亚当前时间
 my_tz = datetime.timezone(datetime.timedelta(hours=8))
 now = datetime.datetime.now(my_tz)
 date_str = now.strftime("%Y年%m月%d日")
-date_bm = now.strftime("%d %B %Y")
 weekday_map = {0:"星期一", 1:"星期二", 2:"星期三", 3:"星期四", 4:"星期五", 5:"星期六", 6:"星期日"}
 weekday_str = weekday_map[now.weekday()]
 
-# 提示词：要求包含沙巴官方核心源、赞助商固定置底、展开折叠全文、零裂图矢量插画与中文/BM双语
 prompt = f"""
 你是一名沙巴与全马权威新闻主编。请为《西门日报 / Berita Harian Simon》生成一份完整、高质量、可直接在浏览器运行的单文件 index.html 代码。
 今日日期：{date_str} · {weekday_str}。
@@ -41,11 +39,15 @@ prompt = f"""
 只输出完整的 <!DOCTYPE html> 开头到 </html> 结尾代码，不要包含任何 markdown 解释或多余文字。
 """
 
-model = genai.GenerativeModel("gemini-1.5-flash")
-response = model.generate_content(prompt)
+# 使用标准 gemini-2.5-flash 模型
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt
+)
+
 html_code = response.text.strip()
 
-# 清理可能包裹的 markdown 代码块标签
+# 清理 markdown 标签
 if html_code.startswith("```html"):
     html_code = html_code[7:]
 if html_code.startswith("```"):
@@ -55,7 +57,6 @@ if html_code.endswith("```"):
 
 html_code = html_code.strip()
 
-# 写入 index.html
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_code)
 
