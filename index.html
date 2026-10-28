@@ -5,256 +5,187 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>西门日报 | Berita Harian Simon</title>
   
-  <!-- PWA 支持配置 -->
-  <meta name="theme-color" content="#b91c1c">
+  <meta name="theme-color" content="#dc2626">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="西门日报">
-  <link rel="apple-touch-icon" href="https://api.iconify.design/solar:newspaper-bold-duotone.svg?color=%23b91c1c">
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              red: '#b91c1c',
-              lightred: '#fef2f2',
-              dark: '#111827'
-            }
-          }
-        }
-      }
-    }
-  </script>
   <style>
     body {
-      background-color: #f3f4f6;
+      background-color: #f8fafc;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
-    .red-headline {
+    .red-title {
       color: #dc2626 !important;
       font-weight: 800;
+      line-height: 1.35;
     }
-    .art-frame {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+    .news-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
     }
   </style>
 </head>
-<body class="text-gray-900 pb-16">
+<body class="text-slate-800 pb-16">
 
-  <!-- 顶部悬浮导航栏 -->
+  <!-- 顶部导航栏 -->
   <header class="sticky top-0 z-50 bg-red-700 text-white shadow-md">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-2">
-        <span class="text-2xl font-black tracking-wider">西门日报</span>
-        <span class="text-xs bg-red-900 px-2 py-0.5 rounded font-mono" id="tagline">沙巴与全马晨报</span>
+        <h1 class="text-2xl font-black tracking-wide">西门日报</h1>
+        <span class="text-xs bg-red-950/70 text-red-100 px-2 py-0.5 rounded font-medium" id="headerTag">沙巴与全马晨报</span>
       </div>
-      <!-- 中文 / BM 一键切换按钮 -->
-      <button onclick="toggleLang()" id="langBtn" class="bg-white text-red-700 text-xs md:text-sm font-bold px-3 py-1.5 rounded-full shadow hover:bg-red-50 transition active:scale-95 flex items-center space-x-1">
-        <span>中文 / BM 一键切换</span>
+      <button onclick="toggleLang()" class="bg-white text-red-700 text-xs md:text-sm font-bold px-3 py-1.5 rounded-full shadow hover:bg-red-50 transition active:scale-95">
+        中文 / BM 一键切换
       </button>
     </div>
   </header>
 
-  <!-- 主体内容容器 -->
-  <main class="max-w-3xl mx-auto px-4 pt-4 space-x-0 space-y-5">
+  <!-- 主体容器 -->
+  <main class="max-w-2xl mx-auto px-4 pt-4 space-y-6">
 
-    <!-- 日期与天气栏 -->
-    <div class="bg-white rounded-xl p-3 shadow-sm flex items-center justify-between text-xs text-gray-500">
+    <!-- 日期状态条 -->
+    <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 flex items-center justify-between text-xs text-slate-500">
       <span id="dateText">📅 2026年10月28日 · 星期三</span>
       <span id="locText">📍 沙巴 · 亚庇 / 山打根 / 斗湖</span>
     </div>
 
-    <!-- 1. 下南南水灾频发 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-amber-700 via-amber-600 to-yellow-600 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 19.5c3-1.5 6 1.5 9 0s6-1.5 9 0" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">水利工程 · 防灾安全</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-red-100 text-red-700 font-semibold px-2 py-0.5 rounded" data-zh="沙巴焦点" data-bm="Fokus Sabah">沙巴焦点</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="艾德娜：下南南水灾频发 促水利局速修堤疏浚" data-bm="Inanam Kerap Banjir: Edna Gesa JPS Segera Baiki Benteng & Tebat Sungai">
-          艾德娜：下南南水灾频发 促水利局速修堤疏浚
-        </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="鉴于水灾频仍威胁居民生命财产安全，下南南区州议员艾德娜马贞文强烈敦促沙巴水利灌溉局（JPS）展开紧急抢修，重点加固高风险地带河堤，并全面疏浚受阻河道。今年甘榜建山、丹拜等地已发生多达3次水灾。" data-bm="Adun Inanam Edna Majimbun mendesak JPS Sabah mengambil tindakan segera membaiki dan meninggikan benteng sungai berisiko tinggi serta mendalamkan sungai bagi mengatasi masalah banjir kerap di Kg Kionsom, Kg Bambangan dan sekitarnya.">
-          鉴于水灾频仍威胁居民生命财产安全，下南南区州议员艾德娜马贞文强烈敦促沙巴水利灌溉局（JPS）展开紧急抢修，重点加固高风险地带河堤，并全面疏浚受阻河道。今年甘榜建山、丹拜等地已发生多达3次水灾。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
-          <span>来源：沙巴星洲日报</span>
-          <span>下南南 Inanam</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- 2. 羽球法国赛大马男双夺冠 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.504-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.003 0V4.875A2.625 2.625 0 0011.875 2.25h-.75A2.625 2.625 0 008.5 4.875v7.5" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">大马体坛 · 历史突破</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded" data-zh="体坛捷报" data-bm="Sukan">体坛捷报</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="重联手两周即登顶！万纬聪与郑凯文夺法国羽球公开赛冠军 破大马22年荒" data-bm="Gandingan Man Wei Chong-Tee Kai Wun Juara Terbuka Perancis, Tamatkan Kemarau 22 Tahun">
-          重联手两周即登顶！万纬聪与郑凯文夺法国羽球公开赛冠军 破大马22年荒
-        </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="在巴黎举行的法国羽球超级750赛男双决赛中，马来西亚国羽男双“聪文组合”万纬聪与郑凯文发挥神勇夺得冠军。这也是大马男双时隔22年后再度在此顶级赛会登顶，赛后两人直言这一冠意义非凡。" data-bm="Pasangan beregu lelaki negara, Man Wei Chong dan Tee Kai Wun melakar kejayaan bersejarah merangkul kejuaraan Terbuka Perancis 2026, sekali gus menamatkan penantian 22 tahun kemarau gelaran negara bagi kategori beregu lelaki di kejohanan tersebut.">
-          在巴黎举行的法国羽球超级750赛男双决赛中，马来西亚国羽男双“聪文组合”万纬聪与郑凯文发挥神勇夺得冠军。这也是大马男双时隔22年后再度在此顶级赛会登顶，赛后两人直言这一冠意义非凡。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
-          <span>来源：星洲体育</span>
-          <span>法国巴黎现场</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- 3. MyGOV App 手机换 IC -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 7.5h6m-6 3h6m-6 3h3" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">数码便民 · 官方指南</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-blue-100 text-blue-700 font-semibold px-2 py-0.5 rounded" data-zh="数码民生" data-bm="Digital / Rakyat">数码民生</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="告别清晨柜台排队！MyGOV App 开放手机端线上申请更换身份证" data-bm="Kini Boleh Tukar Kad Pengenalan Secara Online Melalui Aplikasi MyGOV Malaysia">
-          告别清晨柜台排队！MyGOV App 开放手机端线上申请更换身份证
-        </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="国民登记局（JPN）通过全新升级的 MyGOV Malaysia 应用程序推出便民功能。普通换卡、芯片损坏或遗失者，只需通过手机 5 步即可完成身份核验与缴费递交。注意：若需更换照片或更改地址，依然需前往 JPN 柜台亲办。" data-bm="Jabatan Pendaftaran Negara (JPN) kini membolehkan permohonan penggantian MyKad (cip rosak/hilang/gantian biasa) dilakukan terus di telefon pintar melalui aplikasi MyGOV Malaysia tanpa perlu beratur panjang di kaunter.">
-          国民登记局（JPN）通过全新升级的 MyGOV Malaysia 应用程序推出便民功能。普通换卡、芯片损坏或遗失者，只需通过手机 5 步即可完成身份核验与缴费递交。注意：若需更换照片或更改地址，依然需前往 JPN 柜台亲办。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
-          <span>来源：Rojaklah / JPN</span>
-          <span>全国通用</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- 4. 哥隆邦大型太阳能电厂投入运作 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-emerald-700 via-green-600 to-teal-700 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">绿色电网 · 经济建设</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-green-100 text-green-800 font-semibold px-2 py-0.5 rounded" data-zh="能源进展" data-bm="Tenaga Hijau">能源进展</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="亚庇哥隆邦大型太阳能电厂投运 比原定日期提早40天！" data-bm="Loji Solar Berskala Besar Kolombong Beroperasi 40 Hari Lebih Awal">
+    <!-- 1. 哥隆邦太阳能电厂 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="哥隆邦太阳能电厂" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold px-2.5 py-0.5 rounded-full" data-zh="沙巴绿能焦点" data-bm="Tenaga Hijau Sabah">沙巴绿能焦点</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="亚庇哥隆邦大型太阳能电厂投运 比原定日期提早40天！" data-bm="Loji Solar Berskala Besar Kolombong Beroperasi 40 Hari Lebih Awal">
           亚庇哥隆邦大型太阳能电厂投运 比原定日期提早40天！
         </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="坐落于亚庇哥隆邦（Kolombong）的大型太阳能发电厂已于10月17日正式投入商业运作！工程由德源集团旗下TG太阳能开发，较原定计划大幅提早40天完工，可为当地超过9000户家庭稳定输送清洁绿电。" data-bm="Loji Janakuasa Solar Berskala Besar di Kolombong, Kota Kinabalu mula beroperasi secara komersial pada 17 Okt lalu, 40 hari lebih awal daripada jadual asal. Projek ini membekalkan tenaga elektrik hijau kepada lebih 9,000 isi rumah di kawasan sekitar.">
-          坐落于亚庇哥隆邦（Kolombong）的大型太阳能发电厂已于10月17日正式投入商业运作！工程由德源集团旗下TG太阳能开发，较原定计划大幅提早40天完工，可为当地超过9000户家庭稳定输送清洁绿电。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【亚庇讯】坐落于亚庇哥隆邦（Kolombong）工业区腹地的大型太阳能发电厂（LSS）已正式投入商业运营！根据沙巴能源委员会最新确认，该工程整体建设进度超前，比原定投产日期整整提早了40天。" data-bm="KOTA KINABALU: Loji Janakuasa Solar Berskala Besar (LSS) yang terletak di Kolombong kini telah memulakan operasi komersialnya secara rasmi, 40 hari lebih awal daripada jadual asal yang ditetapkan Suruhanjaya Tenaga Sabah.">
+            【亚庇讯】坐落于亚庇哥隆邦（Kolombong）工业区腹地的大型太阳能发电厂（LSS）已正式投入商业运营！根据沙巴能源委员会最新确认，该工程整体建设进度超前，比原定投产日期整整提早了40天。
+          </p>
+          <p data-zh="该项目由德源集团旗下TG太阳能公司倾力开发，装机容量达到15兆瓦（MWac）。全厂配备了高转化率光伏板及智能逆变系统，预计每年可提供数千万度清洁绿电，能够稳定满足周边逾9000户家庭及工商业区的日常用电需求，为缓解西海岸电网负荷注入强心针。" data-bm="Projek berkapasiti 15MWac ini dibangunkan oleh TG Solar (Teck Guan Group) dan berupaya menyalurkan bekalan elektrik bersih kepada lebih 9,000 isi rumah serta sektor perindustrian di sekitar pantai barat Sabah.">
+            该项目由德源集团旗下TG太阳能公司倾力开发，装机容量达到15兆瓦（MWac）。全厂配备了高转化率光伏板及智能逆变系统，预计每年可提供数千万度清洁绿电，能够稳定满足周边逾9000户家庭及工商业区的日常用电需求，为缓解西海岸电网负荷注入强心针。
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
           <span>来源：沙巴知多D / 能源委员会</span>
           <span>亚庇哥隆邦 Kolombong</span>
         </div>
       </div>
     </article>
 
-    <!-- 5. 2027年老车置换补贴计划 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-900 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25V3.75m0 3.75a2.25 2.25 0 012.25 2.25v2.25" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">车主福利 · 国家政策</span>
+    <!-- 2. 下南南防洪修堤 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=1200&q=80" alt="下南南防洪" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-amber-50 text-amber-700 border border-amber-200 font-semibold px-2.5 py-0.5 rounded-full" data-zh="民生基建" data-bm="Infrastruktur Awam">民生基建</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="艾德娜：下南南水灾频发 促水利局速修堤疏浚解决民困" data-bm="Edna Majimbun Gesa JPS Sabah Baiki Benteng Sungai di Inanam">
+          艾德娜：下南南水灾频发 促水利局速修堤疏浚解决民困
+        </h2>
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【下南南讯】鉴于近期连场暴雨导致下南南多个村落频遭水患，下南南区州议员艾德娜马贞文今日公开要求沙巴水利灌溉局（JPS）采取紧急应对措施，必须赶在年尾东北季候风雨季来临前，全面加固高危河堤。" data-bm="INANAM: Ekoran hujan lebat yang kerap mencetuskan banjir kilat, Adun Inanam Edna Majimbun menggesa Jabatan Pengairan dan Saliran (JPS) Sabah mempercepatkan kerja-kerja penyelenggaraan dan menaik taraf benteng sungai.">
+            【下南南讯】鉴于近期连场暴雨导致下南南多个村落频遭水患，下南南区州议员艾德娜马贞文今日公开要求沙巴水利灌溉局（JPS）采取紧急应对措施，必须赶在年尾东北季候风雨季来临前，全面加固高危河堤。
+          </p>
+          <p data-zh="艾德娜指出，甘榜建山（Kg Kionsom）、甘榜丹拜（Kg Tampasak）一带地势低洼，今年内已有村民承受了多达3次水淹家园之苦，家具财物损失惨重。除加固坍塌护堤外，水利局亦应同步调派重机械疏浚堆积在河床底部的淤泥与倒塌枯木，保障排洪畅通。" data-bm="Beliau menegaskan penduduk di beberapa buah kampung kini hidup dalam kebimbangan setiap kali hujan lebat. Kerja-kerja mendalamkan dasar sungai yang dipenuhi mendapan kelodak dan sampah sarap perlu dilaksanakan segera.">
+            艾德娜指出，甘榜建山（Kg Kionsom）、甘榜丹拜（Kg Tampasak）一带地势低洼，今年内已有村民承受了多达3次水淹家园之苦，家具财物损失惨重。除加固坍塌护堤外，水利局亦应同步调派重机械疏浚堆积在河床底部的淤泥与倒塌枯木，保障排洪畅通。
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
+          <span>来源：沙巴星洲日报</span>
+          <span>下南南 Inanam</span>
+        </div>
       </div>
-      <div class="p-4">
-        <span class="text-xs bg-purple-100 text-purple-800 font-semibold px-2 py-0.5 rounded" data-zh="汽车民生" data-bm="Automotif">汽车民生</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="家里有20年以上老车注意！2027年旧车换新车补贴达RM4,000" data-bm="Pemilik Kenderaan Melebihi 20 Tahun Layak Terima Subsidi Sehingga RM4,000">
+    </article>
+
+    <!-- 3. 老车换新车补贴 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80" alt="老车换新补贴" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-blue-50 text-blue-700 border border-blue-200 font-semibold px-2.5 py-0.5 rounded-full" data-zh="车主福利" data-bm="Bantuan Rakyat">车主福利</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="家里有20年以上老车注意！2027年旧车换新车补贴达RM4,000" data-bm="Subsidi Kereta Usang 20 Tahun Dilanjutkan: Bantuan Sehingga RM4,000">
           家里有20年以上老车注意！2027年旧车换新车补贴达RM4,000
         </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="政府宣布2027年旧车换新车补贴计划继续推行，符合条件的老爷车主不仅可获RM2,000基本报废置换金，达到指定绿能或本地车换购门槛还可额外获得RM2,000补贴，总计最高RM4,000。" data-bm="Program subsidi pelupusan dan penggantian kereta usang melebihi 20 tahun diteruskan bagi tahun 2027 dengan ganjaran tunai sehingga RM4,000 sekiranya memenuhi 3 syarat yang ditetapkan kerajaan.">
-          政府宣布2027年旧车换新车补贴计划继续推行，符合条件的老爷车主不仅可获RM2,000基本报废置换金，达到指定绿能或本地车换购门槛还可额外获得RM2,000补贴，总计最高RM4,000。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【吉隆坡讯】家有高龄老车的车主请留意！交通部与财政部联合敲定，将在2027年继续推行针对车龄超过20年的老爷车报废换新补贴机制，以鼓励民众更换更符合现代碰撞安全及节能标准的车辆。" data-bm="KUALA LUMPUR: Pemilik kenderaan yang berusia lebih 20 tahun boleh menarik nafas lega apabila skim subsidi pelupusan kenderaan usang disahkan akan diteruskan dengan insentif tunai menarik pada tahun 2027.">
+            【吉隆坡讯】家有高龄老车的车主请留意！交通部与财政部联合敲定，将在2027年继续推行针对车龄超过20年的老爷车报废换新补贴机制，以鼓励民众更换更符合现代碰撞安全及节能标准的车辆。
+          </p>
+          <p data-zh="根据政策方案，车主只要将合资格的老爷车移交官方认证报废中心即可领取基础 RM2,000 置换现金；若在换购新车时选购国产品牌或低碳节能新车，符合相关三项核心审核条件还可叠领额外 RM2,000 补贴，总补贴金额最高可达 RM4,000！" data-bm="Di bawah program ini, pemilik layak menerima subsidi asas RM2,000 dan rebat tambahan RM2,000 sekiranya menepati tiga syarat utama termasuk pembelian kenderaan baharu yang lebih cekap tenaga.">
+            根据政策方案，车主只要将合资格的老爷车移交官方认证报废中心即可领取基础 RM2,000 置换现金；若在换购新车时选购国产品牌或低碳节能新车，符合相关三项核心审核条件还可叠领额外 RM2,000 补贴，总补贴金额最高可达 RM4,000！
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
           <span>来源：Rojaklah / 交通部</span>
-          <span>全国关注</span>
+          <span>全国通用</span>
         </div>
       </div>
     </article>
 
-    <!-- 6. 兵南邦通往京那律深夜严重车祸 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-zinc-800 via-stone-800 to-red-950 p-4">
-        <svg class="w-20 h-20 text-red-500/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">道路安全 · 突发交通</span>
+    <!-- 4. 法国羽球公开赛夺冠 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80" alt="羽球夺冠" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-rose-50 text-rose-700 border border-rose-200 font-semibold px-2.5 py-0.5 rounded-full" data-zh="大马体坛荣耀" data-bm="Sukan Kebangsaan">大马体坛荣耀</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="重新携手两周即登顶！万纬聪与郑凯文法国羽赛夺冠 破大马22年荒" data-bm="Man Wei Chong - Tee Kai Wun Rangkul Juara Terbuka Perancis 2026">
+          重新携手两周即登顶！万纬聪与郑凯文法国羽赛夺冠 破大马22年荒
+        </h2>
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【巴黎讯】大马国羽传来激动人心的好消息！在刚刚落幕的世界羽联超级750系列法国公开赛男双巅峰决战中，我国年轻组合“聪文”万纬聪与郑凯文以默契的攻防转换力克强敌，勇夺男双桂冠！" data-bm="PARIS: Pasangan beregu lelaki negara, Man Wei Chong dan Tee Kai Wun mencipta sensasi di arena badminton antarabangsa apabila berjaya merangkul gelaran juara Terbuka Perancis Super 750.">
+            【巴黎讯】大马国羽传来激动人心的好消息！在刚刚落幕的世界羽联超级750系列法国公开赛男双巅峰决战中，我国年轻组合“聪文”万纬聪与郑凯文以默契的攻防转换力克强敌，勇夺男双桂冠！
+          </p>
+          <p data-zh="这是马来西亚队时隔22年之后，再度在法国羽球顶级赛事的男双项目中斩获金牌。两人在赛后受访时坦言，此前受换搭与伤势影响经历低潮，此番再度合拍仅两周便重回巅峰，胜利让他们对未来大赛重拾极大信心。" data-bm="Kemenangan ini menamatkan penantian selama 22 tahun kontinjen negara dalam kategori beregu lelaki pada kejohanan berprestij berkenaan, sekali gus membuktikan kemampuan gandingan tersebut.">
+            这是马来西亚队时隔22年之后，再度在法国羽球顶级赛事的男双项目中斩获金牌。两人在赛后受访时坦言，此前受换搭与伤势影响经历低潮，此番再度合拍仅两周便重回巅峰，胜利让他们对未来大赛重拾极大信心。
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
+          <span>来源：星洲体育</span>
+          <span>法国巴黎现场</span>
+        </div>
       </div>
-      <div class="p-4">
-        <span class="text-xs bg-red-100 text-red-700 font-semibold px-2 py-0.5 rounded" data-zh="突发车祸" data-bm="Kemalangan">突发车祸</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="兵南邦通往京那律路段深夜相撞 两车失控翻覆致男女受伤送院" data-bm="Kemalangan Jalan Penampang-Kinarut: Dua Kereta Bertembung, Dua Individu Cedera">
+    </article>
+
+    <!-- 5. 兵南邦至京那律相撞事故 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80" alt="交通意外" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-red-50 text-red-700 border border-red-200 font-semibold px-2.5 py-0.5 rounded-full" data-zh="突发车祸" data-bm="Kemalangan Jalan Raya">突发车祸</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="兵南邦通往京那律路段深夜相撞 两车失控翻覆致男女受伤送院" data-bm="Nahas Laluan Penampang-Kinarut: Dua Kereta Bertembung, Dua Mangsa Cedera">
           兵南邦通往京那律路段深夜相撞 两车失控翻覆致男女受伤送院
         </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="兵南邦通往京那律路段昨晚发生严重交通事故。一辆白色私家轿车与四驱皮卡相撞后失控四轮朝天翻覆，导致车内一男一女受伤，消拯员及拖车队伍迅速赶到现场清理路障并协助伤者送医。" data-bm="Nahas jalan raya melibatkan sebuah kenderaan pacuan empat roda dan sebuah kereta sedan di laluan Penampang menghala ke Kinarut lewat malam semalam mengakibatkan dua mangsa cedera dan sebuah kereta terbalik di atas jalan raya.">
-          兵南邦通往京那律路段昨晚发生严重交通事故。一辆白色私家轿车与四驱皮卡相撞后失控四轮朝天翻覆，导致车内一男一女受伤，消拯员及拖车队伍迅速赶到现场清理路障并协助伤者送医。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【兵南邦讯】兵南邦通往京那律（Penampang - Kinarut）主干道昨晚发生一起触目惊心的两车相撞事故。一辆白色私家轿车与一辆四驱皮卡行经该弯道路段时发生猛烈碰撞，白色轿车失控发生侧翻并四轮朝天倒卧路中。" data-bm="PENAMPANG: Kemalangan jalan raya membabitkan sebuah kenderaan pacuan empat roda dan sebuah kereta sedan di Jalan Penampang-Kinarut lewat malam tadi menyebabkan dua orang mengalami kecederaan.">
+            【兵南邦讯】兵南邦通往京那律（Penampang - Kinarut）主干道昨晚发生一起触目惊心的两车相撞事故。一辆白色私家轿车与一辆四驱皮卡行经该弯道路段时发生猛烈碰撞，白色轿车失控发生侧翻并四轮朝天倒卧路中。
+          </p>
+          <p data-zh="事故共造成车内一男一女身体多处挫伤。兵南邦消拯局与交警接报后紧急赶往现场封锁车道救出伤员送往伊丽莎白女皇医院救治。警方目前正在调阅沿途行车记录仪，深入调查事故是否涉及夜间路面昏暗或雨后湿滑打滑。" data-bm="Kereta sedan terbabit didapati terbalik di tengah jalan raya manakala pacuan empat roda mengalami kerosakan teruk di bahagian hadapan. Mangsa telah dihantar ke hospital bagi rawatan lanjut.">
+            事故共造成车内一男一女身体多处挫伤。兵南邦消拯局与交警接报后紧急赶往现场封锁车道救出伤员送往伊丽莎白女皇医院救治。警方目前正在调阅沿途行车记录仪，深入调查事故是否涉及夜间路面昏暗或雨后湿滑打滑。
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
           <span>来源：沙巴星洲日报</span>
-          <span>Penampang - Kinarut</span>
+          <span>兵南邦 Penampang</span>
         </div>
       </div>
     </article>
 
-    <!-- 7. 意大利环球骑士抵达沙巴拿笃 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-teal-800 via-cyan-800 to-sky-900 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m0 0l2.699 2.7z" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">人物故事 · 沙巴风情</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-cyan-100 text-cyan-800 font-semibold px-2 py-0.5 rounded" data-zh="在地趣闻" data-bm="Gaya Hidup">在地趣闻</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="曾遭绑架20个月仍不言弃！意大利环球骑士抵沙巴拿笃 分享风土人情" data-bm="Pengembara Basikal Itali Nicola Chiacchio Tiba di Lahad Datu Sabah">
-          曾遭绑架20个月仍不言弃！意大利环球骑士抵沙巴拿笃 分享风土人情
+    <!-- 6. 斗湖推事庭提控印尼籍网赌人员 -->
+    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80">
+      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="法庭提控" class="news-img">
+      <div class="p-5">
+        <span class="text-xs bg-slate-100 text-slate-700 border border-slate-300 font-semibold px-2.5 py-0.5 rounded-full" data-zh="法治前线" data-bm="Mahkamah & Undang-Undang">法治前线</span>
+        <h2 class="text-lg md:text-xl red-title mt-2 mb-3" data-zh="涉参与线上非法网络赌博 8名印尼籍男子在斗湖推事庭被提控" data-bm="8 Warga Indonesia Didakwa Terlibat Judi Dalam Talian di Tawau">
+          涉参与线上非法网络赌博 8名印尼籍男子在斗湖推事庭被提控
         </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="意大利环球骑行旅行者 Nicola Chiacchio 曾在非洲遭绑架囚禁近20个月，获释后依旧坚持环球骑行梦想。如今他携特制三轮太阳能骑行车来到沙巴拿笃，沿途与野生巨蜥互动，盛赞沙巴人的热情与纯朴。" data-bm="Pengembara basikal warga Itali, Nicola Chiacchio yang pernah berdepan detik cemas ditahan tebusan di Afrika selama 20 bulan, kini meneruskan misi jelajah dunia beliau dan selamat tiba di Lahad Datu, Sabah.">
-          意大利环球骑行旅行者 Nicola Chiacchio 曾在非洲遭绑架囚禁近20个月，获释后依旧坚持环球骑行梦想。如今他携特制三轮太阳能骑行车来到沙巴拿笃，沿途与野生巨蜥互动，盛赞沙巴人的热情与纯朴。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
-          <span>来源：沙巴新视野</span>
-          <span>拿笃 Lahad Datu</span>
+        <div class="text-sm text-slate-700 leading-relaxed space-y-2.5">
+          <p data-zh="【斗湖讯】斗湖警方持续重拳严打跨国网络赌博犯罪！8名年龄介于20至38岁的印度尼西亚籍男子，因涉嫌在斗湖市区租赁住宅设立线上网络赌博窝点，今早被全数押往斗湖推事庭（Mahkamah Majistret Tawau）正式面控。" data-bm="TAWAU: Seramai 8 lelaki warga Indonesia dihadapkan ke Mahkamah Majistret Tawau atas pertuduhan terlibat dan menguruskan aktiviti perjudian dalam talian haram.">
+            【斗湖讯】斗湖警方持续重拳严打跨国网络赌博犯罪！8名年龄介于20至38岁的印度尼西亚籍男子，因涉嫌在斗湖市区租赁住宅设立线上网络赌博窝点，今早被全数押往斗湖推事庭（Mahkamah Majistret Tawau）正式面控。
+          </p>
+          <p data-zh="根据检方控状，警方在联合突击行动中扣押了12部涉案高配置笔记本电脑、数十部智能手机以及宽带路由器等证据。推事法官听取控辩双方陈词后，定于下月中旬再次过堂，所有被告在完成身份查验前暂不获准保释。" data-bm="Pihak polis menyita belasan komputer riba dan telefon pintar yang dipercayai digunakan untuk mengendalikan operasi pertaruhan tanpa lesen. Mahkamah menetapkan sebutan semula kes pada bulan depan.">
+            根据检方控状，警方在联合突击行动中扣押了12部涉案高配置笔记本电脑、数十部智能手机以及宽带路由器等证据。推事法官听取控辩双方陈词后，定于下月中旬再次过堂，所有被告在完成身份查验前暂不获准保释。
+          </p>
         </div>
-      </div>
-    </article>
-
-    <!-- 8. 斗湖法院提控8名印尼籍网赌分子 -->
-    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-      <div class="art-frame h-44 bg-gradient-to-r from-slate-800 via-gray-800 to-zinc-900 p-4">
-        <svg class="w-20 h-20 text-white/90" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
-        </svg>
-        <span class="absolute bottom-2 right-3 text-[11px] text-white/80 bg-black/30 px-2 py-0.5 rounded">法庭审理 · 严打犯罪</span>
-      </div>
-      <div class="p-4">
-        <span class="text-xs bg-slate-200 text-slate-800 font-semibold px-2 py-0.5 rounded" data-zh="法律前线" data-bm="Mahkamah">法律前线</span>
-        <h2 class="text-lg md:text-xl red-headline mt-2 mb-2" data-zh="涉参与线上非法赌博 8名印尼籍男子在斗湖推事庭被提控" data-bm="8 Warga Indonesia Didakwa Terlibat Judi Dalam Talian di Tawau">
-          涉参与线上非法赌博 8名印尼籍男子在斗湖推事庭被提控
-        </h2>
-        <p class="text-sm text-gray-700 leading-relaxed" data-zh="8名印度尼西亚籍男子因涉嫌在斗湖地区从事及协助线上非法网络赌博营运，今早在斗湖推事庭被正式提控。警方在行动中扣押了大量笔电及通讯器材作为案件呈堂证物。" data-bm="Seramai 8 lelaki warga Indonesia dihadapkan ke Mahkamah Majistret Tawau atas pertuduhan terlibat dalam aktiviti perjudian dalam talian (judi online). Pelbagai barang kes termasuk komputer riba disita oleh pihak berkuasa.">
-          8名印度尼西亚籍男子因涉嫌在斗湖地区从事及协助线上非法网络赌博营运，今早在斗湖推事庭被正式提控。警方在行动中扣押了大量笔电及通讯器材作为案件呈堂证物。
-        </p>
-        <div class="mt-3 pt-2 border-t text-[11px] text-gray-400 flex justify-between">
+        <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400 flex justify-between">
           <span>来源：Lahad Datu Update</span>
           <span>斗湖 Tawau</span>
         </div>
@@ -264,7 +195,7 @@
     <!-- ============================================== -->
     <!-- 精选在地商讯与赞助商广告海报（固定放在最下方） -->
     <!-- ============================================== -->
-    <section class="mt-8 border-t-2 border-dashed border-red-300 pt-6">
+    <section class="mt-10 border-t-2 border-dashed border-red-300 pt-6">
       <div class="flex items-center justify-between mb-3">
         <div class="flex items-center space-x-2">
           <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
@@ -275,8 +206,6 @@
 
       <!-- 租车海报卡片 -->
       <div class="bg-gradient-to-br from-amber-50 via-white to-orange-50 border border-amber-200 rounded-3xl p-5 shadow-sm">
-        
-        <!-- 广告海报视觉横幅 -->
         <div class="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 rounded-2xl p-4 text-white text-center relative overflow-hidden mb-4 shadow">
           <div class="text-xs uppercase tracking-widest text-amber-200 font-bold mb-1">Sandakan Car Rental Service</div>
           <h3 class="text-2xl font-black">MY CAR ENTERPRISE</h3>
@@ -286,13 +215,12 @@
           </div>
         </div>
 
-        <!-- 详细车型与服务内容 -->
-        <div class="space-y-3 text-sm text-gray-700">
-          <p class="leading-relaxed" data-zh="提供山打根自驾租车及专职司机搭配服务。全车系车况崭新干净、定期保养，让您无论出差公干、周末度假或全家出游都安心舒适！" data-bm="Perkhidmatan sewa kereta pandu sendiri dan pemandu berpengalaman di Sandakan. Keadaan kenderaan bersih, selesa dan diselenggara rapi untuk urusan kerja mahupun percutian keluarga.">
-            提供山打根自驾租车及专职司机搭配服务。全车系车况崭新干净、定期保养，让您无论出差公干、周末度假或全家出游都安心舒适！
+        <div class="space-y-3 text-sm text-slate-700">
+          <p class="leading-relaxed" data-zh="提供山打根自驾租车及专职司机搭配服务。全车系车况崭新干净、定期保养，让您无论商务公干、周末度假或全家出游都安心舒适！" data-bm="Perkhidmatan sewa kereta pandu sendiri dan pemandu berpengalaman di Sandakan. Keadaan kenderaan bersih, selesa dan diselenggara rapi untuk urusan kerja mahupun percutian keluarga.">
+            提供山打根自驾租车及专职司机搭配服务。全车系车况崭新干净、定期保养，让您无论商务公干、周末度假或全家出游都安心舒适！
           </p>
 
-          <div class="bg-white p-3 rounded-xl border border-amber-100 text-xs space-y-1.5 text-gray-600">
+          <div class="bg-white p-3 rounded-xl border border-amber-100 text-xs space-y-1.5 text-slate-600">
             <div>🚗 <strong>K-CAR：</strong>Myvi, Axia, Viva</div>
             <div>🚙 <strong>SEDAN 房车：</strong>Vios, Saga, Bezza</div>
             <div>🚐 <strong>MPV 豪华休旅：</strong>Vellfire, Alphard, Estima, Innova, Alza, Aruz</div>
@@ -300,30 +228,27 @@
           </div>
         </div>
 
-        <!-- 联系方式与一键按钮 -->
         <div class="mt-5 pt-4 border-t border-amber-200 flex flex-col sm:flex-row gap-3">
           <a href="https://www.wasap.my/60109301117" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-center flex items-center justify-center space-x-2 shadow transition active:scale-95">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
             <span>WhatsApp 快速联络 (Marco)</span>
           </a>
-          <div class="flex items-center justify-around sm:justify-end gap-3 text-xs text-gray-600 px-2 py-1">
+          <div class="flex items-center justify-around sm:justify-end gap-3 text-xs text-slate-600 px-2 py-1">
             <span>📞 <strong>010-930 1117</strong></span>
             <span>💬 微信: <strong>Thien1117</strong></span>
           </div>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- 底部版权声明 -->
-  <footer class="mt-12 text-center text-xs text-gray-400 px-4">
+  <footer class="mt-12 text-center text-xs text-slate-400 px-4">
     <p>© 2026 西门日报 · Berita Harian Simon. 版权所有</p>
     <p class="mt-1">每日晨间 8:00 准时推送 · 专注沙巴与全马民生商业情报</p>
   </footer>
 
-  <!-- 中文 / BM 语言切换脚本 -->
+  <!-- 中文 / BM 切换脚本 -->
   <script>
     let currentLang = 'zh';
 
@@ -335,8 +260,7 @@
         el.textContent = currentLang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-bm');
       });
 
-      // 更新页面标签和按钮提示
-      document.getElementById('tagline').textContent = currentLang === 'zh' ? '沙巴与全马晨报' : 'Berita Harian Sabah & Malaysia';
+      document.getElementById('headerTag').textContent = currentLang === 'zh' ? '沙巴与全马晨报' : 'Berita Harian Sabah & Malaysia';
       document.getElementById('dateText').textContent = currentLang === 'zh' ? '📅 2026年10月28日 · 星期三' : '📅 28 Oktober 2026 · Rabu';
       document.getElementById('locText').textContent = currentLang === 'zh' ? '📍 沙巴 · 亚庇 / 山打根 / 斗湖' : '📍 Sabah · KK / Sandakan / Tawau';
     }
