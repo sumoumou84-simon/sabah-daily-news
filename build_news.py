@@ -39,9 +39,9 @@ prompt = f"""
 只输出完整的 <!DOCTYPE html> 开头到 </html> 结尾代码，不要包含任何 markdown 解释或多余文字。
 """
 
-# 使用标准 gemini-2.5-flash 模型
+# 采用当前环境指定的最新模型
 response = client.models.generate_content(
-    model="gemini-2.5-flash",
+    model="gemini-3.8-flash",
     contents=prompt
 )
 
