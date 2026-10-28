@@ -21,27 +21,29 @@ prompt = f"""
 你是一名沙巴与全马权威新闻主编。请为《西门日报 / Berita Harian Simon》生成一份完整、高质量、可直接在浏览器运行的单文件 index.html 代码。
 今日日期：{date_str} · {weekday_str}。
 
-【硬性要求】：
-1. 核心新闻源覆盖：沙巴星洲日报、自由日报、诗华日报、Daily Express，整合过去24小时沙巴在地民生重大基建、突发交通/事故、政府新政策与全国热点。
-2. 视觉规范：
-   - 绝不使用外部网络容易被墙的图片外链！
-   - 每条新闻顶部必须内嵌自适应且色彩饱满、一眼看懂的【SVG 场景矢量插画】（包含地貌、挖掘机、工程、汽车、法庭或建筑等具象元素）。
-   - 标题文字本身必须为深红色 (#dc2626)，醒目大方。
-3. 交互结构：
-   - 每张新闻卡片提供 2-3 行导读，配有「展开阅读全文 ↓ / 收起全文 ↑」折叠功能。
-   - 展开内容必须充实详尽（包含现场实况、官方数据、背景来由与后续影响）。
-4. 语言支持：
-   - 右上角常驻【中文 / BM 一键切换】按键，点击后秒切整份报纸（包括标题、正文、折叠内容与广告）。
-5. 商业赞助（必须固定在全网页最下方）：
+【版面四大核心板块规范】：
+1. 顶部通栏与即时资讯走马灯：
+   - 包含报头、日期、[中文 / BM 一键切换] 按钮，以及滚动要闻走马灯。
+2. 今日头条与沙巴要闻：
+   - 整合沙巴星洲日报、自由日报、诗华日报、Daily Express过去24小时沙巴重大基建、民生政策、突发交通/事故。
+   - 标题必须为深红色 (#dc2626)。
+   - 绝不使用外部网络容易被墙的图片外链，每篇新闻顶部内嵌高质感具象场景【SVG 矢量插画】。
+   - 采用折叠结构：卡片表面2-3行导读，点击「展开阅读全文 ↓ / 收起全文 ↑」展开深度长文。
+3. 【核心刚性板块】未来两周至一个月 · 沙巴商业、展销与慈善活动预告 (Upcoming Events Forecast)：
+   - 严禁回顾过去！必须专门预告未来 2 周至 1 个月即将在沙巴举行的重要商业展销、商会论坛、慈善公益或大型体育活动。
+   - 涵盖亚庇 SICC（如 BIGSABAH Sale 大型展销会、创业展会等）与山打根在地（如依罗普拉慈善马拉松 Elopura Marathon、商展等）及全州性公益慈善行动。
+   - 每项活动标明日历日期徽章、具体地点（亚庇 SICC / 山打根体育场等）、活动亮点与报名/参与信息，并配有日历/展会微缩场景矢量插图。
+4. 商业赞助（必须固定在全网页最下方）：
    - 商户：MY CAR ENTERPRISE（山打根租车与接送服务 / Sandakan Car Rental Service）
    - 内容：自驾与专职司机接送，涵盖车型（K-Car: Myvi/Axia, Sedan: Vios/Saga/Bezza, MPV: Vellfire/Alphard/Innova/Alza, 货车客运: Van 11-12座, 4x4 Hilux）。
    - 联络方式：Marco（电话 010-9301117，微信号 Thien1117，带 WhatsApp 快速联络链接 https://www.wasap.my/60109301117）。
 
+所有文字（要闻、活动预告、广告）必须均有 data-zh 与 data-bm 属性，支持右上角一键秒切马来文。
 只输出完整的 <!DOCTYPE html> 开头到 </html> 结尾代码，不要包含任何 markdown 解释或多余文字。
 """
 
 # 模型候选列表与自动重试策略
-models_to_try = ["gemini-2.5-flash", "gemini-3.8-flash"]
+models_to_try = ["gemini-3.8-flash", "gemini-2.5-flash"]
 response = None
 
 for model_name in models_to_try:
@@ -65,7 +67,6 @@ if not response or not response.text:
 
 html_code = response.text.strip()
 
-# 清理 markdown 标签
 if html_code.startswith("```html"):
     html_code = html_code[7:]
 if html_code.startswith("```"):
