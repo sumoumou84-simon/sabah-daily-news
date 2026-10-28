@@ -1,30 +1,37 @@
-name: Daily Sabah News Telegram Push
+name: 每日西门日报自动编译推送
 
 on:
   schedule:
-    # UTC 时间每天 00:00（相当于沙巴/吉隆坡时间早上 08:00）
-    - cron: '0 0 * * *'
-  workflow_dispatch: # 允许手动在网页点击触发测试
+    # 国际标准时间 23:50 UTC 对应 马来西亚时间 (GMT+8) 每天早晨 07:50
+    - cron: '50 23 * * *'
+  workflow_dispatch: # 同时也支持您随时在网页上手动点一下立刻生成
 
 jobs:
-  run-news-agent:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v3
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
 
-      - name: 设置 Python 环境
-        uses: actions/setup-python@v4
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: 安装依赖包
+      - name: 安装必要依赖
         run: |
-          pip install google-genai requests
+          pip install google-generativeai
 
-      - name: 执行抓取并推送新闻
+      - name: 运行新闻抓取与编译脚本
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python main.py
+        run: |
+          python build_news.py
+
+      - name: 自动提交更新至主分支
+        run: |
+          git config --global user.name "Simon-Daily-Bot"
+          git config --global user.email "bot@simondaily.com"
+          git add index.html
+          git commit -m "chore: 自动推送今日最新西门日报 [skip ci]" || echo "今日无变动"
+          git push
