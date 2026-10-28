@@ -1,4 +1,5 @@
 import os
+import time
 import datetime
 from google import genai
 
@@ -39,11 +40,28 @@ prompt = f"""
 只输出完整的 <!DOCTYPE html> 开头到 </html> 结尾代码，不要包含任何 markdown 解释或多余文字。
 """
 
-# 采用当前环境指定的最新模型
-response = client.models.generate_content(
-    model="gemini-3.8-flash",
-    contents=prompt
-)
+# 模型候选列表与自动重试策略
+models_to_try = ["gemini-2.5-flash", "gemini-3.8-flash"]
+response = None
+
+for model_name in models_to_try:
+    for attempt in range(3):
+        try:
+            print(f"尝试使用模型 {model_name} (第 {attempt+1} 次)...")
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt
+            )
+            if response and response.text:
+                break
+        except Exception as e:
+            print(f"请求波动: {e}")
+            time.sleep(3)
+    if response and response.text:
+        break
+
+if not response or not response.text:
+    raise RuntimeError("所有模型重试后仍繁忙，请稍后再试。")
 
 html_code = response.text.strip()
 
