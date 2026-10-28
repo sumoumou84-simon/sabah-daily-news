@@ -33,5 +33,5 @@ jobs:
           git config --global user.name "Simon-Daily-Bot"
           git config --global user.email "bot@simondaily.com"
           git add index.html
-          git commit -m "chore: 自动推送今日最新西门日报 [skip ci]" || echo "今日无变动"
+          git commit -m "chore: 自动推送今日最新西门日报" || echo "今日无变动"
           git push
