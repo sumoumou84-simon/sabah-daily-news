@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>西门日报 Simon Daily - 沙巴与全马每日晨报 & 商业情报看板</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .marquee { display: inline-block; white-space: nowrap; animation: marquee 24s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans pb-16">
+
+  <!-- 1. 牢固吸顶的红色大标题栏 (Sticky Header) - 西门日报专属定制 -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-red-700 to-rose-800 text-white shadow-xl border-b-2 border-amber-400">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="bg-amber-400 text-red-950 text-xs font-black px-2 py-0.5 rounded tracking-wider uppercase">SIMON DAILY</span>
+            <h1 class="text-xl md:text-2xl font-black tracking-tight text-white drop-shadow">西门日报 · 沙巴与全马晨报看板</h1>
+          </div>
+          <p class="text-xs text-red-100 mt-0.5 flex items-center gap-2">
+            <span>核心源：星洲日报 · 自由日报 · 诗华日报 · Daily Express</span>
+            <span class="hidden sm:inline">|</span>
+            <span class="text-amber-200">零冗余 · 高信息密度</span>
+          </p>
+        </div>
+
+        <!-- 30天日期归档选择器与翻页控件 -->
+        <div class="flex items-center gap-2 bg-red-900/60 p-1.5 rounded-lg border border-red-500/40 backdrop-blur-sm self-start md:self-auto">
+          <button id="prevDateBtn" onclick="shiftDate(-1)" class="px-2.5 py-1 text-xs font-bold bg-red-700/80 hover:bg-red-600 rounded text-amber-200 transition" title="前一天">
+            <i class="fa-solid fa-chevron-left mr-1"></i>前一天
+          </button>
+          
+          <div class="flex items-center gap-1.5 px-2">
+            <i class="fa-regular fa-calendar-days text-amber-300 text-xs"></i>
+            <select id="dateSelector" onchange="onDateSelected(this.value)" class="bg-red-950/80 text-amber-100 text-xs font-bold py-1 px-2 rounded border border-red-500/50 outline-none cursor-pointer">
+              <!-- JS 自动生成 30 天日期选项 -->
+            </select>
+          </div>
+
+          <button id="nextDateBtn" onclick="shiftDate(1)" class="px-2.5 py-1 text-xs font-bold bg-red-700/80 hover:bg-red-600 rounded text-amber-200 transition" title="后一天">
+            后一天<i class="fa-solid fa-chevron-right ml-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 跑马灯快讯 -->
+    <div class="bg-red-950/90 text-amber-200 text-xs py-1 px-4 border-t border-red-700/50 overflow-hidden flex items-center">
+      <span class="font-bold flex items-center gap-1 shrink-0 mr-3 text-white bg-red-800 px-1.5 py-0.5 rounded text-[10px]">
+        <i class="fa-solid fa-bolt text-amber-300"></i> 快讯
+      </span>
+      <div class="overflow-hidden w-full whitespace-nowrap">
+        <div id="marqueeContent" class="marquee text-xs font-medium">
+          正在载入今日重点快讯...
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体容器 -->
+  <main class="max-w-6xl mx-auto px-4 mt-6">
+
+    <!-- 0. 今日导读 (TL;DR) -->
+    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 mb-6">
+      <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+        <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-compass text-red-600"></i> 0. 今日导读 (TL;DR)
+        </h2>
+        <span id="currentDateBadge" class="text-xs bg-red-50 text-red-700 font-bold px-2 py-0.5 rounded border border-red-200">
+          2026-10-28
+        </span>
+      </div>
+      <div id="tldrContainer" class="space-y-2 text-sm text-slate-700 leading-relaxed">
+        <!-- 动态注入 TL;DR -->
+      </div>
+    </section>
+
+    <!-- 分类标签过滤器 -->
+    <div class="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar pb-1">
+      <button onclick="filterNews('all')" class="filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-600 text-white shadow-sm transition">
+        全部内容
+      </button>
+      <button onclick="filterNews('sabah')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+        沙巴本地头条
+      </button>
+      <button onclick="filterNews('national')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+        全马要闻
+      </button>
+      <button onclick="filterNews('business')" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+        沙巴商业情报
+      </button>
+    </div>
+
+    <!-- 1. 全马与沙巴头条新闻列表 (卡片流) -->
+    <section id="newsSection" class="space-y-6">
+      <!-- 动态注入新闻卡片 -->
+    </section>
+
+    <!-- 2. 本地商业活动情报 (Sabah Business Events) - 仅预告，已废除回顾 -->
+    <section id="businessSection" class="mt-10">
+      <div class="flex items-center justify-between mb-4 border-b-2 border-red-600 pb-2">
+        <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+          <i class="fa-solid fa-calendar-check text-red-600"></i> 2. 未来商业活动与商机预告 (Sabah Business Events)
+        </h2>
+        <span class="text-xs text-slate-500 font-medium">聚焦亚庇 SICC、山打根及全州展会周期</span>
+      </div>
+
+      <div id="bizFutureContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 动态注入未来活动 -->
+      </div>
+    </section>
+
+    <footer class="mt-12 text-center text-xs text-slate-400 py-6 border-t border-slate-200">
+      <p class="font-bold text-slate-600">西门日报 · Simon Daily © 2026</p>
+      <p class="mt-1">沙巴本地商业情报与重点要闻聚合看板 · 每日 08:00 AM 定时更新</p>
+    </footer>
+
+  </main>
+
+  <script>
+    const archiveData = {
+      "2026-10-28": {
+        dateStr: "2026年10月28日（星期三）",
+        marquee: "西门日报实时播报 · 依温会见贸工部长探讨拿笃经济特区与实必丹AI中心 · 自由日报关注沙电表遭动手脚损近9千万 · 安华捍卫沙砂较高发展拨款",
+        tldr: [
+          "<b>【全马要闻】</b> 首相安华捍卫沙砂较高发展拨款（基于地理基建需求）；外交部宣布大马承诺1亿令吉援助加沙重建，并与泰国召开第16届双边联委会；马六甲州选望万州席拍板让路土团党上阵。",
+          "<b>【沙巴本地】</b> 自由日报与各大报章关注沙电表遭动手脚损失近9000万令吉；副首长依温会见贸工部长推进拿笃经济特区及实必丹AI数据中心；沙巴电力公司推出电动摩托试点计划。",
+          "<b>【商业动态】</b> SAMENTA 人工智能嘉年华沙巴站圆满举行；沙巴创新大赛 Sabah Creative X 今日公布前8强；本周五亚庇 SICC 将迎来逾600展位的 BIGSABAH Sale 2026 暨 AI 论坛。"
+        ],
+        news: [
+          {
+            id: "n28_1",
+            category: "sabah",
+            title: "依温会贸工部长探讨拿笃特区与实必丹AI中心",
+            source: "诗华日报 / 自由日报 / Daily Express",
+            catName: "沙巴本地 / 经贸与重磅投资",
+            summary: "沙巴副首长兼工业、企业及交通发展部长拿督依温贝尼迪会见联邦投资、贸易及工业部长东姑佐哈里，重点推进在拿笃设立经济特区（Lahad Datu SEZ）及在实必丹（Sipitang）综合油气工业园区拓展人工智能（AI）数据中心枢纽。斯洛伐克驻马代表团亦正式表达在沙巴多领域的投资意向。",
+            img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRfWehoofMxcJwkeJf-4f8BtAkHvVTVf8BfjjMrFMsjLeQOKipF5f9j5p9wp3jbOvawrlXk2ffS69lSeRE",
+            imgCaption: "沙巴首府亚庇市区与海岸线实景",
+            detail: `
+              <p class="font-bold text-slate-800">【经贸特区战略布局】</p>
+              <p>拿督依温贝尼迪向联邦贸工部阐明，拿笃作为东海岸深水良港与棕油综合工业区（POIC），极具发展为国家级综合经济特区的战略价值，将对接印尼新首都努山塔拉（Nusantara）的溢出经贸效应。</p>
+              <p class="font-bold text-slate-800 mt-2">【实必丹绿色高算力园区】</p>
+              <p>针对实必丹（SOGIP），州政府正加速调配天然气与水力清洁电力资源，锁定全球跨国科技巨头设立绿色能效 AI 算力与数据中心。此外，斯洛伐克代表团近期亦抵沙就高新技术与生态制造展开实质洽谈。</p>
+            `
+          },
+          {
+            id: "n28_2",
+            category: "sabah",
+            title: "自由日报关注：沙电表遭动手脚损近9千万",
+            source: "自由日报 (Merdeka Daily News) / 星洲日报",
+            catName: "沙巴本地 / 能源与基建民生",
+            summary: "斗亚兰国会议员拿督斯里马迪乌斯登敖揭露，沙巴电表遭人蓄意动手脚篡改导致损失高达近9,000万令吉公帑，促请当局公布完整偷电案数据与追讨进展。沙巴电力公司（SESB）同日推出首阶段5辆电动摩托车试点计划推进绿色运维。",
+            img: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQUPY-SXX5l4eAEK0Dp-ZhIK4JVg5s9Kqh1VMd2SnsqTFSmd1rRh0uSKcq4pz0sojJiiTHAlLLXsKsEwts",
+            imgCaption: "山打根市区与海港商业全貌实景",
+            detail: `
+              <p class="font-bold text-slate-800">【反窃电与公帑流失详情】</p>
+              <p>根据《自由日报》及国会质询记录，马迪乌斯强调沙巴电费长期受政府高额补贴，然而大规模商业与工业用电表的恶意篡改现象屡禁不止，近9,000万令吉的损失严重拖累沙巴电网基建升级进度。</p>
+              <p class="font-bold text-slate-800 mt-2">【绿色车队与智慧电网转型】</p>
+              <p>为提升能源效益与降低碳足迹，SESB 已于亚庇及斗亚兰等地率先为巡线技术员配备定制化电动摩托车，并将分阶段扩充至全州各分局。</p>
+            `
+          },
+          {
+            id: "n28_3",
+            category: "national",
+            title: "安华捍卫沙砂高拨款；甲州选望万席让路土团",
+            source: "星洲日报 / 诗华日报 / 自由日报",
+            catName: "全国要闻 / 联邦政策与州选政局",
+            summary: "首相拿督斯里安华在吉隆坡为政府向沙巴及砂拉越提供更高发展拨款辩护，强调这是基于两地辽阔地理环境及历史基建欠账。马六甲州选方面，雪州大臣阿米鲁丁证实希盟已拍板将望万州席让路土团党上阵以整合竞选力量。",
+            img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcR8UXabZY99QBDTohu0lVlE1pY9A2eFEilEkGc_2YhqtIuvV1jK-miY3Z7yReVRzYj13PwzhCr_xU949MM",
+            imgCaption: "吉隆坡马来西亚国会大厦全景",
+            detail: `
+              <p class="font-bold text-slate-800">【联邦拨款逻辑与区域均衡】</p>
+              <p>安华指出，沙巴与砂拉越总面积辽阔，修筑单公里农村道路或铺设供水管网的平均成本远高于西马半岛，因此在 2027 年财政预算案及第13大马计划中给予沙砂更高比重的基建配额符合国家整体公正原则。</p>
+              <p class="font-bold text-slate-800 mt-2">【马六甲州选前瞻】</p>
+              <p>希盟各党正加速与国盟在特定选区的协调，望万（Bemban）议席的让路决定标志着竞选合作进入实质席位划分阶段。</p>
+            `
+          }
+        ],
+        futureEvents: [
+          {
+            name: "Sabah Creative X 创新大赛总决选",
+            datePlace: "2026年10月28日（今日揭晓） ｜ 亚庇 SCENIC",
+            highlight: "178支青年及企业初创队伍参与，今日正式揭榜前8强并颁发商业化孵化基金。"
+          },
+          {
+            name: "BIGSABAH Sale 2026 暨 AI 论坛",
+            datePlace: "2026年10月30日 – 11月1日 ｜ 亚庇 SICC",
+            highlight: "设逾 600 个展位，10月30日特设 B2B 跨境商务对接会与 AI 扩展论坛；31日办婆罗洲 4x4 车展。"
+          },
+          {
+            name: "SHAREDA Nite 2026 房地产年度盛典",
+            datePlace: "2026年10月31日（本周六晚） ｜ 亚庇丝绸港湾麦哲伦大宴会厅",
+            highlight: "沙巴房地产发展商公会年度峰会，汇聚全州顶级开发商与金融建材巨头探讨全州商业地块规划。"
+          }
+        ]
+      }
+    };
+
+    // 自动补齐 30 天滚动数据
+    const datesList = [];
+    const baseDate = new Date(2026, 9, 28);
+    for (let i = 0; i < 30; i++) {
+      const d = new Date(baseDate);
+      d.setDate(baseDate.getDate() - i);
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      const key = `${y}-${m}-${day}`;
+      datesList.push(key);
+      
+      if (!archiveData[key]) {
+        archiveData[key] = {
+          dateStr: `${y}年${m}月${day}日（西门日报归档）`,
+          marquee: `西门日报 · Simon Daily · 历史归档数据（星洲日报 · 自由日报 · 诗华日报 · Daily Express）`,
+          tldr: [
+            `<b>【全马要闻】</b> ${key} 全马政治动态、联邦国会政策与经济数据持续跟进。`,
+            `<b>【沙巴本地】</b> 亚庇、山打根、斗湖等重点行政商圈民生、基建及水电改善议题。`,
+            `<b>【商业动态】</b> 本地商业投资周期、SICC 展会规划与中小微企业扶助进度。`
+          ],
+          news: [
+            {
+              id: `arch_${key}_1`,
+              category: "sabah",
+              title: `西门日报沙巴重点商贸与基础设施建设进展汇报`,
+              source: "自由日报 / 星洲日报 / 诗华日报",
+              catName: "沙巴本地 / 商业与基础设施",
+              summary: `${key} 沙巴州政府与各市政局协同推进全州主干道铺设计划、泛婆大道建设进度以及实邦加港口与机场物流通关效率优化。`,
+              img: "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRfWehoofMxcJwkeJf-4f8BtAkHvVTVf8BfjjMrFMsjLeQOKipF5f9j5p9wp3jbOvawrlXk2ffS69lSeRE",
+              imgCaption: "沙巴城市基建与商贸枢纽俯瞰",
+              detail: `<p>历史归档内容：当日各项经济、能源供应指标及交通委员会日常质询汇总，各部门正加紧落实财案工程预算交付。</p>`
+            }
+          ],
+          futureEvents: [
+            {
+              name: "SICC 重点商贸展览与高峰论坛预告",
+              datePlace: "当月及次月滚动举办 ｜ 亚庇沙巴国际会展中心 (SICC)",
+              highlight: "涵盖大型工业采购展、农业科技峰会及东盟文创博览会。"
+            }
+          ]
+        };
+      }
+    }
+
+    let currentDateKey = "2026-10-28";
+    let currentFilter = "all";
+
+    function initDateDropdown() {
+      const selector = document.getElementById("dateSelector");
+      selector.innerHTML = "";
+      datesList.forEach((dt, idx) => {
+        const opt = document.createElement("option");
+        opt.value = dt;
+        let label = dt;
+        if (idx === 0) label += " (今天)";
+        else if (idx === 1) label += " (昨天)";
+        else if (idx === 2) label += " (前天)";
+        opt.textContent = label;
+        selector.appendChild(opt);
+      });
+      selector.value = currentDateKey;
+    }
+
+    function renderPageByDate(dateKey) {
+      currentDateKey = dateKey;
+      document.getElementById("dateSelector").value = dateKey;
+      const data = archiveData[dateKey];
+      if (!data) return;
+
+      document.getElementById("currentDateBadge").textContent = data.dateStr;
+      document.getElementById("marqueeContent").textContent = data.marquee;
+
+      const tldrBox = document.getElementById("tldrContainer");
+      tldrBox.innerHTML = data.tldr.map(item => `
+        <div class="flex items-start gap-2">
+          <span class="text-red-600 mt-0.5 text-xs">●</span>
+          <div class="text-slate-700">${item}</div>
+        </div>
+      `).join("");
+
+      renderNewsCards(data.news);
+
+      const futureBox = document.getElementById("bizFutureContainer");
+      futureBox.innerHTML = data.futureEvents.map(evt => `
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 border-l-4 border-l-red-600 hover:shadow-md transition">
+          <div class="font-bold text-slate-800 text-sm mb-1">${evt.name}</div>
+          <div class="text-xs text-red-600 font-medium mb-2 flex items-center gap-1">
+            <i class="fa-regular fa-clock"></i> ${evt.datePlace}
+          </div>
+          <div class="text-xs text-slate-600 leading-relaxed">${evt.highlight}</div>
+        </div>
+      `).join("");
+
+      const currIdx = datesList.indexOf(dateKey);
+      document.getElementById("nextDateBtn").disabled = (currIdx === 0);
+      document.getElementById("nextDateBtn").classList.toggle("opacity-40", currIdx === 0);
+      document.getElementById("prevDateBtn").disabled = (currIdx === datesList.length - 1);
+      document.getElementById("prevDateBtn").classList.toggle("opacity-40", currIdx === datesList.length - 1);
+    }
+
+    function renderNewsCards(newsArray) {
+      const container = document.getElementById("newsSection");
+      const filtered = newsArray.filter(item => {
+        if (currentFilter === "all") return true;
+        return item.category === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-xl p-8 text-center border border-slate-200">
+            <p class="text-sm text-slate-500 font-medium">该分类在此日期下无匹配要闻，请切换分类或选择其他日期。</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+          <div class="md:flex">
+            <div class="md:w-5/12 bg-slate-900 relative min-h-[200px] md:min-h-full">
+              <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3">
+                <span class="text-[11px] text-slate-200 flex items-center gap-1.5">
+                  <i class="fa-solid fa-camera text-amber-300"></i> ${item.imgCaption}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5 md:w-7/12 flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${item.category === 'sabah' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
+                    ${item.catName}
+                  </span>
+                  <span class="text-xs text-slate-500 font-medium flex items-center gap-1">
+                    <i class="fa-solid fa-newspaper text-slate-400"></i> ${item.source}
+                  </span>
+                </div>
+
+                <h3 class="text-lg md:text-xl font-black text-red-600 tracking-tight leading-snug mb-2">
+                  【标题】${item.title}
+                </h3>
+
+                <div class="bg-slate-50 rounded-lg p-3 border border-slate-100 text-xs md:text-sm text-slate-700 leading-relaxed mb-4">
+                  <span class="font-bold text-slate-900">【核心摘要】</span>${item.summary}
+                </div>
+              </div>
+
+              <div>
+                <div id="detail_${item.id}" class="hidden mt-3 pt-3 border-t border-slate-100 text-xs md:text-sm text-slate-700 space-y-2 bg-red-50/40 p-3.5 rounded-lg border border-red-100/60">
+                  ${item.detail}
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                  <button onclick="toggleDetail('${item.id}')" id="btn_${item.id}" class="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1.5 transition">
+                    <span>阅读详细深度内容</span>
+                    <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                  </button>
+
+                  <span class="text-[11px] text-slate-400 font-medium">
+                    <i class="fa-regular fa-circle-check text-emerald-500 mr-1"></i>西门日报权威验证
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function toggleDetail(id) {
+      const box = document.getElementById(`detail_${id}`);
+      const btn = document.getElementById(`btn_${id}`);
+      if (!box || !btn) return;
+
+      if (box.classList.contains("hidden")) {
+        box.classList.remove("hidden");
+        btn.innerHTML = `<span>收起详细内容</span><i class="fa-solid fa-chevron-up text-[10px]"></i>`;
+      } else {
+        box.classList.add("hidden");
+        btn.innerHTML = `<span>阅读详细深度内容</span><i class="fa-solid fa-chevron-down text-[10px]"></i>`;
+      }
+    }
+
+    function onDateSelected(val) {
+      renderPageByDate(val);
+    }
+
+    function shiftDate(offset) {
+      const currentIdx = datesList.indexOf(currentDateKey);
+      const newIdx = currentIdx - offset;
+      if (newIdx >= 0 && newIdx < datesList.length) {
+        renderPageByDate(datesList[newIdx]);
+      }
+    }
+
+    function filterNews(type) {
+      currentFilter = type;
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("bg-red-600", "text-white");
+        btn.classList.add("bg-white", "text-slate-700");
+      });
+      event.target.classList.remove("bg-white", "text-slate-700");
+      event.target.classList.add("bg-red-600", "text-white");
+
+      const data = archiveData[currentDateKey];
+      if (data) renderNewsCards(data.news);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initDateDropdown();
+      renderPageByDate(currentDateKey);
+    });
+  </script>
+</body>
+</html>
