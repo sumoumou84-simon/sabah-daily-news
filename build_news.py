@@ -30,8 +30,8 @@ prompt = f"""
    - CSS 网格：.news-grid {{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }}
    - 【顶层特大头条 (grid-column: 1 / -1)】：哈芝芝证实联邦开销达 71.78%，291项工程竣工交付。
    - 【双列多宫格新闻卡片（不强制每篇都有图，动静结合）】：
-     * 【精选配图卡片】：针对现场震撼或有具象素材的新闻（如古纳 ESSCOM 海陆大突击、软银 2040 亿算力中心、马银行 MAE 扫码通五地、假 Bomba 司机落网），卡片顶部内嵌色彩饱满的精简 SVG 场景图，并在图片底部叠加一层半透明黑底来源角标（例如：📷 来源：ESSCOM 官方通报 / 诗华日报 / 星洲日报），同时右上角带有微型「📤 分享」按钮。
-     * 【纯文本紧凑卡片】：针对政策通告类（LHDN 防骗、STR 援助金、学校假期、天气长命雨、MyLapor 卫生部检举），不强行配图，直接以大红标题呈现，极致节省版面高度。
+     * 【精选配图卡片】：针对有震撼画面或重要素材的新闻（如古纳 ESSCOM 海陆大突击、软银 2040 亿算力中心、马银行 MAE 扫码通五地、假 Bomba 司机落网），卡片顶部内嵌简洁色彩明快的 SVG 场景图，并在图片底部叠加一层半透明黑底来源角标（例如：📷 来源：ESSCOM 官方通报 / 诗华日报 / 星洲日报），带「📤 分享」小按钮。
+     * 【纯文本紧凑卡片】：针对政策通告类（LHDN 防骗、STR 援助金、学校假期、天气长命雨、MyLapor 卫生部检举），不强行配图，直接以深红标题呈现，极致节省版面高度。
    - 【手机端极简浏览体验】：卡片表面默认只显示深红标题（color: #dc2626）和分类小标签，完整正文收在隐藏容器中，每张卡片下方带有「展开阅读全文 ↓ / 收起全文 ↑」按钮，按需展开。
    - 必须涵盖昨日全量资讯（古纳突击、软银投资、马银行、明讯合并、LHDN防骗、STR、假期、天气、茶室、抽烟检举、假消防车、Sazarice探店等）。
 
@@ -46,19 +46,20 @@ prompt = f"""
 
 4. 商业赞助（固定置于全网页最下方）：
    - MY CAR ENTERPRISE · 山打根专业租车与专车接送（Sandakan Car Rental Service）
-   - 车型：K-Car (Myvi/Axia), Sedan (Vios/Saga/Bezza), MPV (Vellfire/Alphard/Innova/Alza), 4x4 Hilux / Van 11-12座。
    - 负责人：Marco（热线 010-9301117 / 微信 Thien1117 / WhatsApp: https://www.wasap.my/60109301117）。
 
 所有文字配备 data-zh 与 data-bm 属性，支持一键切换马来文。
 只输出完整 <!DOCTYPE html> 开头到 </html> 结尾代码，不带任何 markdown 代码块标记。
 """
 
-models_to_try = ["gemini-3.8-flash", "gemini-3.8-flash-lite"]
+# 使用现行可用的官方模型并加入防 503 的指数退避重试
+models_to_try = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
 response = None
 
 for model_name in models_to_try:
-    for attempt in range(2):
+    for attempt in range(3):
         try:
+            wait_time = (attempt + 1) * 5
             print(f"尝试使用模型 {model_name} (第 {attempt+1} 次)...")
             response = client.models.generate_content(
                 model=model_name,
@@ -67,13 +68,13 @@ for model_name in models_to_try:
             if response and response.text:
                 break
         except Exception as e:
-            print(f"请求波动: {e}")
-            time.sleep(3)
+            print(f"遇到波动或高负载 ({e})，等待 {wait_time} 秒后重试...")
+            time.sleep(wait_time)
     if response and response.text:
         break
 
 if not response or not response.text:
-    raise RuntimeError("模型调用失败，请稍后重试。")
+    raise RuntimeError("所有模型重试后仍未成功，请稍后再试。")
 
 html_code = response.text.strip()
 if html_code.startswith("```html"):
@@ -88,4 +89,4 @@ html_code = html_code.strip()
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_code)
 
-print("西门日报全新紧凑双列与分享版已成功写入 index.html！")
+print("西门日报已顺利编译完成并写入 index.html！")
