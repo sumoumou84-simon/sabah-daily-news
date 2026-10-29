@@ -9,6 +9,50 @@ date_str = now.strftime("%Y年%m月%d日")
 weekday_map = {0:"星期一", 1:"星期二", 2:"星期三", 3:"星期四", 4:"星期五", 5:"星期六", 6:"星期日"}
 weekday_str = weekday_map[now.weekday()]
 
+# 方案 3 专属高清应用图标 SVG
+app_icon_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#bg3)"/>
+  <rect x="100" y="90" width="312" height="332" rx="18" fill="#ffffff"/>
+  <path d="M100 108 C100 98, 108 90, 118 90 L394 90 C404 90, 412 98, 412 108 L412 160 L100 160 Z" fill="#dc2626"/>
+  <rect x="135" y="195" width="242" height="18" rx="6" fill="#cbd5e1"/>
+  <rect x="135" y="235" width="160" height="14" rx="5" fill="#e2e8f0"/>
+  <rect x="135" y="265" width="242" height="14" rx="5" fill="#e2e8f0"/>
+  <rect x="135" y="295" width="210" height="14" rx="5" fill="#e2e8f0"/>
+  <circle cx="340" cy="355" r="48" fill="#dc2626"/>
+  <text x="340" y="375" font-family="-apple-system, sans-serif" font-weight="900" font-size="54" fill="#ffffff" text-anchor="middle">S</text>
+  <text x="135" y="370" font-family="'PingFang SC', sans-serif" font-weight="900" font-size="28" fill="#0f172a">西門早報</text>
+</svg>"""
+
+with open("icon.svg", "w", encoding="utf-8") as f:
+    f.write(app_icon_svg)
+
+# 生成 PWA Manifest 配置文件，确保手机支持独立 App 模式运行
+manifest_content = {
+    "name": "西门日报 | Berita Harian Simon",
+    "short_name": "西门日报",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#dc2626",
+    "icons": [
+        {
+            "src": "icon.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
+
+with open("manifest.json", "w", encoding="utf-8") as f:
+    json.dump(manifest_content, f, ensure_ascii=False, indent=2)
+
 # 真实新闻数据库：带高可靠真实摄影图、来源水印与深度长文
 news_items = [
     {
@@ -176,7 +220,7 @@ news_items = [
     }
 ]
 
-# 组装卡片 HTML
+# 组装卡片 HTML，加入自动容错机制：onerror="this.parentElement.style.display='none';"
 cards_html = ""
 for idx, item in enumerate(news_items):
     card_id = f"card_{idx}"
@@ -218,6 +262,16 @@ full_html = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>西门日报 | Berita Harian Simon</title>
+  
+  <!-- PWA 与桌面应用图标配置 (方案3专属) -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="theme-color" content="#dc2626">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="西门日报">
+
   <style>
     :root {{
       --primary-red: #dc2626;
@@ -258,7 +312,7 @@ full_html = f"""<!DOCTYPE html>
       color: var(--primary-red);
       letter-spacing: -0.5px;
     }}
-    .actions {{ display: flex; align-items: center; gap: 8px; }}
+    .actions {{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }}
     .archive-select {{
       padding: 5px 8px;
       font-size: 12px;
@@ -266,6 +320,19 @@ full_html = f"""<!DOCTYPE html>
       border: 1px solid #cbd5e1;
       background: #f1f5f9;
       font-weight: 600;
+    }}
+    .install-btn {{
+      background: #0f172a;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }}
     .lang-btn {{
       background: var(--primary-red);
@@ -538,6 +605,9 @@ full_html = f"""<!DOCTYPE html>
           <option value="yesterday">📅 昨天</option>
           <option value="prev">📅 前天</option>
         </select>
+        <button class="install-btn" id="installBtn" onclick="installPWA()">
+          <span>📲 安装APP</span>
+        </button>
         <button class="lang-btn" onclick="toggleLanguage()">
           <span id="lang-text">Bahasa Melayu</span>
         </button>
@@ -631,6 +701,10 @@ full_html = f"""<!DOCTYPE html>
     function toggleLanguage() {{
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
       document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
+      const installText = document.querySelector('#installBtn span');
+      if (installText) {{
+        installText.innerText = currentLang === 'zh' ? '📲 安装APP' : '📲 Pasang App';
+      }}
       document.querySelectorAll('[data-zh]').forEach(el => {{
         const txt = el.getAttribute(`data-${{currentLang}}`);
         if (txt) el.innerText = txt;
@@ -649,6 +723,34 @@ full_html = f"""<!DOCTYPE html>
         alert('新闻标题与链接已复制！可直接粘贴至 WhatsApp 或朋友圈分享。');
       }}
     }}
+
+    // PWA 安装引导机制
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {{
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById('installBtn');
+      if (btn) btn.style.display = 'flex';
+    }});
+
+    function installPWA() {{
+      if (deferredPrompt) {{
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {{
+          if (choiceResult.outcome === 'accepted') {{
+            console.log('用户已安装西门日报 App');
+          }}
+          deferredPrompt = null;
+        }});
+      }} else {{
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {{
+          alert('【iPhone / iPad 安装方法】：\\n点击浏览器底部中间的“分享”按钮（方框加向上箭头），在弹出菜单中向下滑动选择【添加到主屏幕】即可！');
+        }} else {{
+          alert('【Android 手机安装方法】：\\n点击浏览器右上角的三个圆点菜单（⋮），选择【添加到主屏幕】或【安装应用】即可生成专属桌面 App！');
+        }}
+      }}
+    }}
   </script>
 </body>
 </html>
@@ -657,4 +759,4 @@ full_html = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西门日报》防碎图+高可靠真实照片完整版已编译写入 index.html！")
+print("《西门日报》PWA 专属图标与全平台安装支持已成功编译写入！")
