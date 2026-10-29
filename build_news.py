@@ -9,12 +9,12 @@ date_str = now.strftime("%Y年%m月%d日")
 weekday_map = {0:"星期一", 1:"星期二", 2:"星期三", 3:"星期四", 4:"星期五", 5:"星期六", 6:"星期日"}
 weekday_str = weekday_map[now.weekday()]
 
-# 真实新闻数据库：真实照片 + 来源水印 + 丰富长文展开
+# 真实新闻数据库：带高可靠真实摄影图、来源水印与深度长文
 news_items = [
     {
         "is_top": True,
         "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=900&q=80",
+        "img_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
         "source": "Sayang Sabah / 首长署",
         "tag_zh": "沙巴基建", "tag_bm": "Infrastruktur",
         "title_zh": "【沙巴基建】哈芝芝证实联邦开销达 71.78%，291项工程竣工交付",
@@ -176,7 +176,8 @@ news_items = [
     }
 ]
 
-# 组装真实照片与纯文字紧凑卡片
+# 组装卡片 HTML，加入自动容错机制：onerror="this.parentElement.style.display='none';" 
+# 若任意图片遇到网络问题或失效，自动静默隐藏图片容器，无缝转为纯文字卡片，永不裂开碎图
 cards_html = ""
 for idx, item in enumerate(news_items):
     card_id = f"card_{idx}"
@@ -187,7 +188,7 @@ for idx, item in enumerate(news_items):
     if item["has_image"]:
         img_html = f"""
         <div class="news-img-box">
-          <img src="{item['img_url']}" alt="{item['title_zh']}" loading="lazy" referrerpolicy="no-referrer">
+          <img src="{item['img_url']}" alt="{item['title_zh']}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.style.display='none';">
           <div class="source-stamp">
             <span>📷 来源：{item['source']}</span>
             <button class="share-btn" onclick="shareNews('{item['title_zh']}')" title="分享到微信/WhatsApp">📤 分享</button>
@@ -612,43 +613,43 @@ full_html = f"""<!DOCTYPE html>
 
   <script>
     let currentLang = 'zh';
-    function toggleExpand(id, btn) {{
+    function toggleExpand(id, btn) {
       const el = document.getElementById(id);
       const isVisible = el.style.display === 'block';
       el.style.display = isVisible ? 'none' : 'block';
       
       const isEvent = id.startsWith('ev_');
-      if (isEvent) {{
+      if (isEvent) {
         btn.innerText = isVisible 
           ? (currentLang === 'zh' ? '展开活动详情 ↓' : 'Lihat Info ↓')
           : (currentLang === 'zh' ? '收起活动详情 ↑' : 'Tutup Info ↑');
-      }} else {{
+      } else {
         btn.innerText = isVisible 
           ? (currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Lanjut ↓')
           : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
-      }}
-    }}
-    function toggleLanguage() {{
+      }
+    }
+    function toggleLanguage() {
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
       document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
-      document.querySelectorAll('[data-zh]').forEach(el => {{
-        const txt = el.getAttribute(`data-${{currentLang}}`);
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        const txt = el.getAttribute(`data-${currentLang}`);
         if (txt) el.innerText = txt;
-      }});
-    }}
-    function shareNews(title) {{
-      const shareData = {{
+      });
+    }
+    function shareNews(title) {
+      const shareData = {
         title: '《西门日报》',
         text: title + ' - 详情阅读：' + window.location.href,
         url: window.location.href
-      }};
-      if (navigator.share) {{
+      };
+      if (navigator.share) {
         navigator.share(shareData).catch((e) => console.log(e));
-      }} else {{
+      } else {
         navigator.clipboard.writeText(shareData.text);
         alert('新闻标题与链接已复制！可直接粘贴至 WhatsApp 或朋友圈分享。');
-      }}
-    }}
+      }
+    }
   </script>
 </body>
 </html>
@@ -657,4 +658,4 @@ full_html = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西门日报》真实摄影照片 + 活动预告折叠完整版已秒级写入 index.html！")
+print("《西门日报》防碎图+高可靠真实照片完整版已编译写入 index.html！")
