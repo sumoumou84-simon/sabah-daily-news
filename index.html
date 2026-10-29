@@ -1,1004 +1,1178 @@
 <!DOCTYPE html>
 <html lang="zh-MY">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>西门日报 | Berita Harian Simon</title>
-  <style>
-    :root {
-      --primary-red: #dc2626;
-      --red-hover: #b91c1c;
-      --paper-bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --accent-navy: #0f172a;
-      --tag-bg: #fee2e2;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西门日报 | Berita Harian Simon</title>
+    <style>
+        :root {
+            --primary: #dc2626;
+            --primary-dark: #991b1b;
+            --primary-light: #fef2f2;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --gold: #d97706;
+            --gold-light: #fef3c7;
+            --car-gold: #b45309;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Noto Sans", sans-serif;
+            --font-serif: "Songti SC", "SimSun", "Noto Serif CJK SC", "Times New Roman", Georgia, serif;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-      background-color: var(--paper-bg);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-bottom: 30px;
-    }
+        body {
+            font-family: var(--font-main);
+            background-color: #f3f4f6;
+            color: var(--slate-800);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* 语言切换控制机制 */
-    body.lang-zh .lang-bm { display: none !important; }
-    body.lang-bm .lang-zh { display: none !important; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
 
-    /* 顶部导航与语言浮动按钮 */
-    .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(8px);
-      color: #fff;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+        /* 顶部通栏与报头 */
+        header {
+            background-color: #fff;
+            border-bottom: 3px double var(--slate-900);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .top-bar-date {
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      color: #cbd5e1;
-    }
+        .top-bar {
+            background-color: var(--slate-900);
+            color: #fff;
+            padding: 6px 0;
+            font-size: 0.82rem;
+        }
 
-    .lang-switcher-btn {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      transition: all 0.2s ease;
-    }
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .lang-switcher-btn:hover {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      transform: translateY(-1px);
-    }
+        .market-pills {
+            display: flex;
+            gap: 16px;
+        }
 
-    /* 报头区 (Masthead) */
-    .masthead {
-      text-align: center;
-      padding: 30px 20px 20px;
-      background: #ffffff;
-      border-bottom: 3px double #cbd5e1;
-    }
+        .market-item {
+            color: #cbd5e1;
+        }
 
-    .masthead-title {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--accent-navy);
-      text-transform: uppercase;
-      font-family: "Times New Roman", Times, "Songti SC", serif;
-      margin-bottom: 4px;
-    }
+        .market-item span {
+            color: #34d399;
+            font-weight: bold;
+        }
 
-    .masthead-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
+        .lang-btn {
+            background: #dc2626;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            font-size: 0.78rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    .masthead-meta {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 12px;
-      padding: 6px 16px;
-      background: #f1f5f9;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      color: #475569;
-      font-weight: 600;
-    }
+        .lang-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+        }
 
-    /* 主内容布局 */
-    .container {
-      max-width: 1180px;
-      margin: 25px auto;
-      padding: 0 16px;
-    }
+        .masthead {
+            padding: 24px 0 16px;
+            text-align: center;
+            border-bottom: 1px solid var(--slate-200);
+        }
 
-    .lead-banner {
-      background: #fff;
-      border-left: 5px solid var(--primary-red);
-      padding: 14px 20px;
-      margin-bottom: 25px;
-      border-radius: 0 8px 8px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      font-size: 0.95rem;
-      color: #334155;
-    }
+        .masthead-title {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--slate-900);
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 25px;
-      margin-bottom: 40px;
-    }
+        .masthead-sub {
+            font-size: 0.95rem;
+            color: var(--slate-600);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
 
-    /* 新闻卡片 */
-    .news-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+        .date-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            border-bottom: 1px solid var(--slate-900);
+            font-weight: 500;
+        }
 
-    .news-card:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      transform: translateY(-2px);
-    }
+        /* 跑马灯 */
+        .marquee-wrapper {
+            background: var(--primary-light);
+            border-bottom: 1px solid #fca5a5;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            height: 38px;
+        }
 
-    /* SVG 矢量图容器 */
-    .card-svg-hero {
-      width: 100%;
-      height: 190px;
-      background: #1e293b;
-      display: block;
-      overflow: hidden;
-    }
+        .marquee-badge {
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0 14px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            box-shadow: 2px 0 6px rgba(220,38,38,0.2);
+        }
 
-    .card-content {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
+        .marquee-content {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 26s linear infinite;
+            font-size: 0.85rem;
+            color: var(--slate-800);
+            font-weight: 500;
+        }
 
-    .card-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
 
-    .card-tag {
-      background: var(--tag-bg);
-      color: var(--primary-red);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-    }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
 
-    .card-source {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+        /* 页面主体架构 */
+        .main-layout {
+            padding: 24px 0 40px;
+        }
 
-    /* 标题严格要求必须为深红 #dc2626 */
-    .news-title {
-      color: #dc2626 !important;
-      font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--slate-900);
+        }
 
-    .news-excerpt {
-      color: #475569;
-      font-size: 0.92rem;
-      line-height: 1.55;
-      margin-bottom: 14px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* 折叠区域 */
-    .full-story {
-      display: none;
-      font-size: 0.9rem;
-      color: #334155;
-      line-height: 1.65;
-      border-top: 1px dashed var(--border-color);
-      padding-top: 14px;
-      margin-top: 10px;
-      animation: fadeIn 0.3s ease;
-    }
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 22px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
 
-    .full-story p {
-      margin-bottom: 10px;
-    }
+        .section-tagline {
+            font-size: 0.82rem;
+            color: var(--slate-600);
+        }
 
-    .full-story p:last-child {
-      margin-bottom: 0;
-    }
+        /* 新闻卡片网格 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
 
-    .full-story .key-data {
-      background: #f8fafc;
-      border-left: 3px solid #0284c7;
-      padding: 8px 12px;
-      margin: 10px 0;
-      font-size: 0.85rem;
-      border-radius: 0 4px 4px 0;
-    }
+        .news-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid var(--slate-200);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    .btn-toggle-wrapper {
-      margin-top: auto;
-      padding-top: 10px;
-    }
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.09);
+        }
 
-    .btn-toggle {
-      background: #f1f5f9;
-      color: #0f172a;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      width: 100%;
-      padding: 8px 14px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
-    }
+        .news-visual {
+            width: 100%;
+            height: 190px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .btn-toggle:hover {
-      background: #e2e8f0;
-      color: var(--primary-red);
-    }
+        .news-visual svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    /* 商业赞助区域 (Sponsor) */
-    .sponsor-wrapper {
-      background: linear-gradient(135deg, #091224 0%, #0f172a 100%);
-      color: #f8fafc;
-      border-radius: 16px;
-      border: 2px solid #334155;
-      padding: 30px;
-      margin-top: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      position: relative;
-      overflow: hidden;
-    }
+        .news-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
 
-    .sponsor-wrapper::before {
-      content: "OFFICIAL SPONSOR";
-      position: absolute;
-      right: -25px;
-      top: 20px;
-      background: #eab308;
-      color: #000;
-      font-size: 0.65rem;
-      font-weight: 900;
-      padding: 4px 30px;
-      transform: rotate(45deg);
-      letter-spacing: 1px;
-    }
+        .news-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
-    .sponsor-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 15px;
-    }
+        .news-title {
+            color: #dc2626 !important;
+            font-size: 1.15rem;
+            line-height: 1.45;
+            font-weight: 800;
+            margin-bottom: 12px;
+            font-family: var(--font-serif);
+        }
 
-    .sponsor-logo-box {
-      background: #ef4444;
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.3rem;
-      padding: 10px 14px;
-      border-radius: 8px;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
-    }
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.76rem;
+            color: var(--slate-600);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--slate-200);
+        }
 
-    .sponsor-name h2 {
-      font-size: 1.4rem;
-      color: #ffffff;
-      font-weight: 800;
-      line-height: 1.2;
-    }
+        .news-summary {
+            font-size: 0.9rem;
+            color: var(--slate-700);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-    .sponsor-name p {
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
+        /* 深度全文折叠区 */
+        .full-article {
+            display: none;
+            padding-top: 14px;
+            margin-top: 10px;
+            border-top: 1px solid var(--slate-100);
+            font-size: 0.88rem;
+            color: var(--slate-700);
+            line-height: 1.7;
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 12px;
+        }
 
-    .fleet-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
-    }
+        .full-article.open {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
 
-    .fleet-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 12px;
-      border-radius: 8px;
-    }
+        .full-article p {
+            margin-bottom: 10px;
+        }
 
-    .fleet-cat {
-      font-size: 0.75rem;
-      color: #38bdf8;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
+        .full-article p:last-child {
+            margin-bottom: 0;
+        }
 
-    .fleet-cars {
-      font-size: 0.9rem;
-      color: #f1f5f9;
-      font-weight: 600;
-    }
+        .toggle-btn {
+            margin-top: auto;
+            background: none;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
 
-    .contact-box {
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 10px;
-      padding: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      border: 1px dashed #475569;
-    }
+        .toggle-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
 
-    .contact-person {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .contact-person .name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #f8fafc;
-    }
+        /* 活动预告核心板块 */
+        .forecast-section {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            padding: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
 
-    .contact-person .details {
-      font-size: 0.88rem;
-      color: #cbd5e1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+        .forecast-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
-    .wa-btn {
-      background: #22c55e;
-      color: #ffffff !important;
-      text-decoration: none;
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-      transition: all 0.2s ease;
-    }
+        .event-card {
+            background: var(--slate-50);
+            border-radius: 8px;
+            border: 1px solid var(--slate-200);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.2s;
+        }
 
-    .wa-btn:hover {
-      background: #16a34a;
-      transform: scale(1.03);
-    }
+        .event-card:hover {
+            border-color: var(--gold);
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .event-banner-svg {
+            height: 120px;
+            width: 100%;
+            background: #1e293b;
+        }
 
-    /* 页脚 */
-    .site-footer {
-      text-align: center;
-      padding: 25px 15px 10px;
-      color: #64748b;
-      font-size: 0.8rem;
-    }
+        .event-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
-    @media (max-width: 600px) {
-      .top-bar {
-        padding: 8px 12px;
-      }
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-      .contact-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .wa-btn {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
+        .event-date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gold-light);
+            color: var(--gold);
+            font-size: 0.76rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .event-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .event-location {
+            font-size: 0.82rem;
+            color: var(--slate-600);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-desc {
+            font-size: 0.84rem;
+            color: var(--slate-700);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+
+        .event-action {
+            border-top: 1px dashed var(--slate-200);
+            padding-top: 12px;
+            font-size: 0.78rem;
+            color: var(--slate-600);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-action strong {
+            color: var(--slate-900);
+        }
+
+        /* 商业赞助：MY CAR ENTERPRISE */
+        .sponsor-wrapper {
+            background: linear-gradient(135deg, #090d16 0%, #161f30 100%);
+            border-radius: 12px;
+            color: #fff;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+        }
+
+        .sponsor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+            padding-bottom: 16px;
+        }
+
+        .sponsor-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .sponsor-logo-box {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #000;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .sponsor-title-text h3 {
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #f8fafc;
+        }
+
+        .sponsor-title-text p {
+            color: #fbbf24;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .sponsor-badge-auth {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: #e2e8f0;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .fleet-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .fleet-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #f59e0b;
+        }
+
+        .fleet-type {
+            font-size: 0.78rem;
+            color: #fbbf24;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .fleet-models {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .sponsor-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .sponsor-service-list {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .sponsor-service-list span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sponsor-service-list span::before {
+            content: "✓";
+            color: #34d399;
+            font-weight: bold;
+        }
+
+        .sponsor-contact-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.85rem;
+        }
+
+        .contact-info .contact-name {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .contact-info .contact-phone {
+            color: #fbbf24;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        .whatsapp-cta {
+            background: #22c55e;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(34,197,94,0.3);
+        }
+
+        .whatsapp-cta:hover {
+            background: #16a34a;
+            transform: scale(1.03);
+        }
+
+        /* 页脚 */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 24px 0;
+            font-size: 0.82rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        /* 响应式断点 */
+        @media (max-width: 992px) {
+            .news-grid, .forecast-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .fleet-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .sponsor-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            .sponsor-service-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .contact-info {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .masthead-title {
+                font-size: 2rem;
+            }
+            .news-grid, .forecast-grid {
+                grid-template-columns: 1fr;
+            }
+            .fleet-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .date-strip {
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
+            }
+            .top-bar-content {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+    </style>
 </head>
-<body class="lang-zh">
+<body>
 
-  <!-- 顶部状态栏与双语切换按钮 -->
-  <header class="top-bar">
-    <div class="top-bar-date">
-      <span class="lang-zh">📅 2026年10月28日 · 星期三</span>
-      <span class="lang-bm">📅 Rabu, 28 Oktober 2026</span>
-    </div>
-    <button class="lang-switcher-btn" id="langToggleBtn" onclick="toggleLanguage()">
-      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.08c1.74-1.94 2.98-4.17 3.71-6.48H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
-      <span id="langBtnText">Tukar ke BM</span>
-    </button>
-  </header>
-
-  <!-- 报纸报头 -->
-  <div class="masthead">
-    <div class="masthead-title">
-      <span class="lang-zh">西 門 日 報</span>
-      <span class="lang-bm">BERITA HARIAN SIMON</span>
-    </div>
-    <div class="masthead-subtitle">
-      <span class="lang-zh">沙巴及马来西亚权威全景综合新闻 · 独立·客观·深耕本土</span>
-      <span class="lang-bm">Akhbar Digital Harian Berwibawa Sabah & Kebangsaan · Bebas, Tuntas & Berani</span>
-    </div>
-    <div class="masthead-meta">
-      <span class="lang-zh">今日版次：第281026号</span>
-      <span class="lang-bm">Edisi: No. 281026</span>
-      <span>•</span>
-      <span class="lang-zh">综合汇整：沙巴星洲 · 自由日报 · 诗华日报 · Daily Express</span>
-      <span class="lang-bm">Sumber Gabungan: Sabah Sin Chew · See Hua · Merdeka Daily · Daily Express</span>
-    </div>
-  </div>
-
-  <main class="container">
-    <!-- 今日头条速览导读 -->
-    <div class="lead-banner">
-      <strong class="lang-zh" style="color:var(--primary-red);">【主编今日导览】</strong>
-      <strong class="lang-bm" style="color:var(--primary-red);">【Sorotan Utama Editor】</strong>
-      <span class="lang-zh">过去24小时沙巴多项民生与基础设施建设进入关键攻坚期：泛婆大道山打根中继段取得突破性进展；拉瑙高原突发滑坡导致交警紧急封路改道；州内阁正式通过水电公用事业重组与补贴法案。</span>
-      <span class="lang-bm">24 jam lalu menyaksikan perkembangan kritikal prasarana Sabah: Pakej Lebuhraya Pan Borneo Sandakan catat kemajuan fizikal baharu, insiden tanah runtuh di Ranau tamatkan laluan utama, dan Kabinet Sabah lulus pelan penstrukturan utiliti air & tenaga.</span>
+    <!-- 顶部状态条 -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="market-pills">
+                <span class="market-item" data-zh="亚庇: 31°C 晴间多云" data-bm="KK: 31°C Cerah Berawan">亚庇: 31°C 晴间多云</span>
+                <span class="market-item" data-zh="山打根: 30°C 午后阵雨" data-bm="Sandakan: 30°C Hujan Petang">山打根: 30°C 午后阵雨</span>
+                <span class="market-item" data-zh="棕油(FCPO): RM4,280 <span>▲ 1.4%</span>" data-bm="Sawit (FCPO): RM4,280 <span>▲ 1.4%</span>">棕油(FCPO): RM4,280 <span>▲ 1.4%</span></span>
+            </div>
+            <div>
+                <button class="lang-btn" id="langSwitcher" onclick="toggleLanguage()">
+                    <span id="langText">Bahasa Melayu</span>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- 新闻瀑布网格 -->
-    <div class="news-grid">
-
-      <!-- 卡片 1: 泛婆大道基建进展 -->
-      <article class="news-card">
-        <!-- SVG 1: 施工挖掘机与泛婆公路插画 -->
-        <svg class="card-svg-hero" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="skyGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#0284c7"/>
-              <stop offset="60%" stop-color="#38bdf8"/>
-              <stop offset="100%" stop-color="#bae6fd"/>
-            </linearGradient>
-            <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#64748b"/>
-              <stop offset="100%" stop-color="#334155"/>
-            </linearGradient>
-          </defs>
-          <!-- 天空与背景神山轮廓 -->
-          <rect width="400" height="190" fill="url(#skyGrad1)"/>
-          <polygon points="120,110 180,45 220,75 270,30 350,110" fill="#0369a1" opacity="0.4"/>
-          <polygon points="20,120 70,60 140,120" fill="#0284c7" opacity="0.5"/>
-          <!-- 绿化丘陵 -->
-          <ellipse cx="200" cy="150" rx="260" ry="50" fill="#15803d"/>
-          <!-- 延伸的新铺柏油马路 -->
-          <polygon points="170,110 230,110 330,190 70,190" fill="url(#roadGrad)"/>
-          <!-- 车道虚线 -->
-          <line x1="200" y1="110" x2="200" y2="190" stroke="#facc15" stroke-width="4" stroke-dasharray="10,8"/>
-          <!-- 施工挖掘机 (Excavator) -->
-          <rect x="250" y="105" width="45" height="25" rx="3" fill="#eab308"/>
-          <rect x="255" y="92" width="25" height="15" rx="2" fill="#38bdf8" stroke="#1e293b" stroke-width="1.5"/>
-          <rect x="245" y="130" width="55" height="10" rx="3" fill="#1e293b"/>
-          <circle cx="253" cy="135" r="4" fill="#94a3b8"/>
-          <circle cx="272" cy="135" r="4" fill="#94a3b8"/>
-          <circle cx="291" cy="135" r="4" fill="#94a3b8"/>
-          <!-- 机械臂 -->
-          <line x1="250" y1="105" x2="225" y2="85" stroke="#ca8a04" stroke-width="6" stroke-linecap="round"/>
-          <line x1="225" y1="85" x2="210" y2="110" stroke="#ca8a04" stroke-width="5" stroke-linecap="round"/>
-          <path d="M210,110 L200,120 L212,125 Z" fill="#713f12"/>
-          <!-- 施工警示锥筒 -->
-          <polygon points="135,160 145,160 140,145" fill="#f97316"/>
-          <line x1="133" y1="160" x2="147" y2="160" stroke="#f97316" stroke-width="2"/>
-        </svg>
-
-        <div class="card-content">
-          <div class="card-tag-row">
-            <span class="card-tag lang-zh">全州重大基建</span>
-            <span class="card-tag lang-bm">INFRASTRUKTUR UTAMA</span>
-            <span class="card-source lang-zh">综合：沙巴星洲 · Daily Express</span>
-            <span class="card-source lang-bm">Sabah Sin Chew · Daily Express</span>
-          </div>
-
-          <h3 class="news-title">
-            <span class="lang-zh">泛婆大道1B期特鲁必至山打根段提速 2027年全线通车获中央拨款力挺</span>
-            <span class="lang-bm">Fasa 1B LPB Telupid-Sandakan Dipercepat: Peruntukan Persekutuan Jamin Siap 2027</span>
-          </h3>
-
-          <p class="news-excerpt">
-            <span class="lang-zh">沙巴工程部联同联邦公共工程局（JKR）昨日视察泛婆罗洲大道第1B期特鲁必（Telupid）往山打根关键工程标段。副首席部长兼工程部长拿督沙赫米证实，该标段工程施工进度已突破预定目标，承包商正24小时分班倒铺设路面基石。</span>
-            <span class="lang-bm">Kementerian Kerja Raya Sabah bersama JKR Persekutuan semalam meninjau pakej 1B Lebuhraya Pan Borneo dari Telupid ke Sandakan. Timbalan Ketua Menteri mengesahkan kemajuan fizikal kini mengatasi jadual dengan fasa penurapan asas diteruskan 24 jam.</span>
-          </p>
-
-          <div class="full-story" id="story-1">
-            <div class="lang-zh">
-              <div class="key-data">
-                📊 <strong>官方最新数据：</strong>沙巴泛婆大道1B阶段共划分19个工作包，目前动用重型机械逾850台，预计全长706公里的干线整体工程将如期于2027年第三季度前竣工。
-              </div>
-              <p>【现场实况】记者在特鲁必至双溪三巴旺路段实地观察，原先凹凸不平的“月球表面”红泥道路已被四车道高承载柏油双向道取代，多个关键立交桥桥墩已完成浇筑灌浆。</p>
-              <p>【官方表态与背景】针对砂沙连接道路及重载物流对道路的损耗，工程部已设立专案技术监测小组，并获中央财政部追加拨款以加速征地赔偿流程。该路线贯通后，从亚庇往返山打根的车程将由目前的7至8小时大幅压缩至5小时以内，彻底打通东海岸农工产品与油棕外运大动脉。</p>
+    <!-- 报头与日期 -->
+    <header>
+        <div class="container">
+            <div class="masthead">
+                <h1 class="masthead-title" data-zh="西 门 日 报" data-bm="BERITA HARIAN SIMON">西 门 日 报</h1>
+                <div class="masthead-sub" data-zh="沙巴与全马权威资讯枢纽 · 真实 · 敏锐 · 独立" data-bm="HAB BERITA SABAH & MALAYSIA · TELUS · TANGKAS · BEBAS">沙巴与全马权威资讯枢纽 · 真实 · 敏锐 · 独立</div>
             </div>
-            <div class="lang-bm">
-              <div class="key-data">
-                📊 <strong>Data Rasmi:</strong> Fasa 1B merangkumi 19 pakej kerja membabitkan lebih 850 jentera berat bagi memastikan laluan sepanjang 706 km siap menjelang suku ketiga 2027.
-              </div>
-              <p>【Tinjauan Lapangan】Pemerhatian di laluan Telupid ke Sungai Samawang mendapati jalan berlubang kini digantikan laluan berkembar 4 lorong berturap penuh dengan struktur jambatan utama telah siap dibina.</p>
-              <p>【Kenyataan Rasmi】Kementerian Kerja Raya telah menubuhkan unit pemantauan khas bagi memantau impak kenderaan berat. Selepas siap, masa perjalanan Kota Kinabalu ke Sandakan dipendekkan dari 8 jam kepada bawah 5 jam, memangkin ekonomi sawit dan logistik Pantai Timur.</p>
+            <div class="date-strip">
+                <div>
+                    <span data-zh="第 18,924 号 · 今日出纸 4 大叠" data-bm="Edisi No. 18,924 · 4 Bahagian Harian">第 18,924 号 · 今日出纸 4 大叠</span>
+                </div>
+                <div>
+                    <strong data-zh="2026年10月29日 · 星期四 · 丙午年九月十九" data-bm="Khamis, 29 Oktober 2026 · 19 Rabiulakhir 1448H">2026年10月29日 · 星期四 · 丙午年九月十九</strong>
+                </div>
+                <div>
+                    <span data-zh="亚庇总社 · 山打根办事处联合监制" data-bm="Pejabat Utama KK & Sandakan">亚庇总社 · 山打根办事处联合监制</span>
+                </div>
             </div>
-          </div>
-
-          <div class="btn-toggle-wrapper">
-            <button class="btn-toggle" onclick="toggleStory('story-1', this)">
-              <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-              <span class="btn-text lang-bm">Baca Penuh ↓</span>
-            </button>
-          </div>
         </div>
-      </article>
-
-      <!-- 卡片 2: 拉瑙山崩突发交通 -->
-      <article class="news-card">
-        <!-- SVG 2: 拉瑙高原塌方与警示警戒线 -->
-        <svg class="card-svg-hero" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rainSky" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#334155"/>
-              <stop offset="100%" stop-color="#64748b"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="190" fill="url(#rainSky)"/>
-          <!-- 雨水效果 -->
-          <line x1="50" y1="10" x2="30" y2="50" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="8,12"/>
-          <line x1="150" y1="20" x2="130" y2="60" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="8,12"/>
-          <line x1="280" y1="15" x2="260" y2="55" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="8,12"/>
-          <line x1="360" y1="30" x2="340" y2="70" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="8,12"/>
-          <!-- 陡峭山体滑坡 -->
-          <polygon points="0,40 180,120 0,160" fill="#475569"/>
-          <!-- 泥石崩塌滑落区 -->
-          <path d="M120,95 Q160,110 180,140 Q220,165 260,175 L120,175 Z" fill="#78350f"/>
-          <!-- 滚落巨石 -->
-          <ellipse cx="205" cy="155" rx="18" ry="12" fill="#44403c"/>
-          <circle cx="230" cy="165" r="9" fill="#57534e"/>
-          <ellipse cx="170" cy="160" rx="14" ry="10" fill="#292524"/>
-          <!-- 柏油路受阻 -->
-          <rect x="0" y="160" width="400" height="30" fill="#1e293b"/>
-          <!-- 警车巡逻闪灯 -->
-          <rect x="290" y="140" width="55" height="22" rx="4" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
-          <polygon points="305,140 330,140 325,130 310,130" fill="#bae6fd"/>
-          <circle cx="305" cy="162" r="7" fill="#0f172a"/>
-          <circle cx="335" cy="162" r="7" fill="#0f172a"/>
-          <!-- 警灯红蓝发光 -->
-          <circle cx="312" cy="127" r="3" fill="#ef4444"/>
-          <circle cx="322" cy="127" r="3" fill="#3b82f6"/>
-          <!-- 警戒阻拦路障 -->
-          <rect x="240" y="145" width="40" height="8" fill="#facc15" stroke="#000" stroke-width="1"/>
-          <line x1="245" y1="145" x2="250" y2="153" stroke="#000" stroke-width="3"/>
-          <line x1="265" y1="145" x2="270" y2="153" stroke="#000" stroke-width="3"/>
-        </svg>
-
-        <div class="card-content">
-          <div class="card-tag-row">
-            <span class="card-tag lang-zh">突发交通险情</span>
-            <span class="card-tag lang-bm">KEMALANGAN & TRAFIK</span>
-            <span class="card-source lang-zh">综合：自由日报 · 诗华日报</span>
-            <span class="card-source lang-bm">See Hua · Merdeka Daily</span>
-          </div>
-
-          <h3 class="news-title">
-            <span class="lang-zh">拉瑙往担波罗里公路连夜暴雨诱发山崩 巨石阻断双向交通紧急抢通便道</span>
-            <span class="lang-bm">Hujan Lebat Cetus Runtuhan Batu di Ranau-Tamparuli: JKR Buka Lencongan Kecemasan</span>
-          </h3>
-
-          <p class="news-excerpt">
-            <span class="lang-zh">连日持续强降雨导致拉瑙神山山麓（KM 48.2）路段今晨突发边坡大面积塌方与落石，重达数吨巨石砸落并横亘路中央，所幸无人员伤亡，民防部队与JKR工程队第一时间赶赴设立警戒封锁线。</span>
-            <span class="lang-bm">Hujan lebat berterusan mencetuskan runtuhan cerun batu seberat beberapa tan di KM 48.2 Jalan Ranau-Tamparuli awal pagi tadi. Tiada kemalangan jiwa dilaporkan dan laluan kini ditutup separa bagi kerja pengalihan segera.</span>
-          </p>
-
-          <div class="full-story" id="story-2">
-            <div class="lang-zh">
-              <div class="key-data">
-                ⚠️ <strong>交通改道通告：</strong>轻型客车目前获准取道昆达山旧甘榜便道轮流单向放行；5吨以上载重货车及长途客运巴士受促绕道哥打马鲁都（Kota Marudu）北线。
-              </div>
-              <p>【现场险情】事故发生在凌晨4时30分左右。巨量泥浆夹带玄武石块冲毁路面护栏，覆盖双向行车道长达40米。一辆满载生鲜蔬菜前往亚庇的四驱车险遭波及，司机紧急刹车逃过一劫。</p>
-              <p>【修复进展】拉瑙县工程局已出动2台大型推土机与液压破碎锤清理顽石。地质专家正在评估山坡稳定性，以防二次崩塌。当局预计若天气放晴，今晚8时前可望恢复单线双向通行。</p>
+        <!-- 走马灯要闻 -->
+        <div class="marquee-wrapper">
+            <div class="marquee-badge" data-zh="即时要闻" data-bm="TERKINI">即时要闻</div>
+            <div class="marquee-content" data-zh="【工程快讯】泛婆罗洲大道沙巴1B阶段多标段提前贯通 ◈ 【水务政策】首长宣布注资3亿令吉扩建山打根与亚庇储水输送网 ◈ 【交通预警】亚庇滨海大道今晨发生4车连环追尾事故，现场已清理通畅 ◈ 【经贸盛会】SICC 2026 BIGSABAH 展销会即将登场，展位招商突破95%" data-bm="[PROJEK] Fasa 1B Lebuhraya Pan Borneo Sabah siap mendahului jadual ◈ [AIR] KM Sabah umum peruntukan RM300 juta naik taraf loji rawatan air KK & Sandakan ◈ [TRAFIK] Kemalangan 4 kenderaan di Coastal Highway KK selesai dibersihkan pagi ini ◈ [EKONOMI] Ekspo BIGSABAH 2026 di SICC catat 95% penyertaan vendor">
+                【工程快讯】泛婆罗洲大道沙巴1B阶段多标段提前贯通 ◈ 【水务政策】首长宣布注资3亿令吉扩建山打根与亚庇储水输送网 ◈ 【交通预警】亚庇滨海大道今晨发生4车连环追尾事故，现场已清理通畅 ◈ 【经贸盛会】SICC 2026 BIGSABAH 展销会即将登场，展位招商突破95%
             </div>
-            <div class="lang-bm">
-              <div class="key-data">
-                ⚠️ <strong>Pelan Lencongan:</strong> Kenderaan ringan dibenarkan menggunakan laluan alternatif Kg. Bundu Tuhan, manakala lori berat &gt;5 tan dinasihat menggunakan laluan Kota Marudu.
-              </div>
-              <p>【Kejadian di Tempat】Runtuhan berlaku sekitar 4:30 pagi apabila batuan besar menghempap penghadang jalan sepanjang 40 meter. Sebuah pikap membawa sayur terselamat selepas menekan brek kecemasan.</p>
-              <p>【Tindakan Pemulihan】JKR Daerah Ranau telah mengerahkan 2 jentera penolak dan penukul hidraulik bagi memecahkan bongkah batu. Laluan dijangka dapat dibuka satu lorong seawal jam 8 malam ini jika cuaca mengizinkan.</p>
+        </div>
+    </header>
+
+    <!-- 核心主体内容 -->
+    <main class="container main-layout">
+        
+        <!-- 板块 1: 今日头条与沙巴要闻 -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title" data-zh="今日头条与沙巴要闻" data-bm="BERITA UTAMA SABAH">今日头条与沙巴要闻</h2>
+                <span class="section-tagline" data-zh="综合星洲、诗华、自由日报、Daily Express过去24小时权威报道" data-bm="Liputan Berita Utama 24 Jam Sabah & Malaysia">综合星洲、诗华、自由日报、Daily Express过去24小时权威报道</span>
             </div>
-          </div>
 
-          <div class="btn-toggle-wrapper">
-            <button class="btn-toggle" onclick="toggleStory('story-2', this)">
-              <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-              <span class="btn-text lang-bm">Baca Penuh ↓</span>
-            </button>
-          </div>
-        </div>
-      </article>
+            <div class="news-grid">
+                
+                <!-- 新闻卡片 1 -->
+                <article class="news-card">
+                    <div class="news-visual">
+                        <span class="news-badge" data-zh="基建重大突破" data-bm="INFRASTRUKTUR">基建重大突破</span>
+                        <!-- 矢量插图: 泛婆罗洲公路与神山 -->
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="skyGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#38bdf8"/>
+                                    <stop offset="100%" stop-color="#bae6fd"/>
+                                </linearGradient>
+                                <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#334155"/>
+                                    <stop offset="100%" stop-color="#0f172a"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#skyGrad1)"/>
+                            <!-- 神山山脉轮廓 -->
+                            <polygon points="40,120 130,40 180,90 260,20 340,120 400,100 400,140 0,140 0,110" fill="#475569"/>
+                            <polygon points="110,55 130,40 155,60 140,75" fill="#f8fafc" opacity="0.8"/>
+                            <polygon points="245,35 260,20 285,45 270,60" fill="#f8fafc" opacity="0.8"/>
+                            <!-- 植被平原 -->
+                            <path d="M0,125 Q120,110 240,125 T400,120 L400,200 L0,200 Z" fill="#15803d"/>
+                            <!-- 高速公路弯道延伸 -->
+                            <path d="M120,200 L180,125 L210,125 L280,200 Z" fill="url(#roadGrad)"/>
+                            <!-- 分道虚线 -->
+                            <line x1="200" y1="125" x2="200" y2="200" stroke="#fbbf24" stroke-width="4" stroke-dasharray="10 8"/>
+                            <!-- 工程塔吊与标志牌 -->
+                            <rect x="290" y="90" width="8" height="35" fill="#e2e8f0"/>
+                            <rect x="280" y="85" width="28" height="14" rx="2" fill="#dc2626"/>
+                            <text x="294" y="95" font-size="8" fill="#fff" font-weight="bold" text-anchor="middle">PAN BORNEO</text>
+                        </svg>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title" data-zh="泛婆罗洲大道1B阶段多标段提前合龙 州府3亿令吉同步提速沿线水网改造" data-bm="Fasa 1B Lebuhraya Pan Borneo Maju Lebih Awal, RM300 Juta Diperuntuk Saliran Air">泛婆罗洲大道1B阶段多标段提前合龙 州府3亿令吉同步提速沿线水网改造</h3>
+                        <div class="news-meta">
+                            <span data-zh="来源: 沙巴工务局 / 诗华日报" data-bm="Sumber: JKR Sabah / See Hua">来源: 沙巴工务局 / 诗华日报</span>
+                            <span>•</span>
+                            <span data-zh="发布: 3小时前" data-bm="3 jam lalu">发布: 3小时前</span>
+                        </div>
+                        <div class="news-summary" data-zh="沙巴公共工程部今日宣布，备受关注的泛婆罗洲公路1B阶段（包含斗亚兰至哥打毛律等关键路段）工程推进超前预期。州内阁同步批准3亿令吉专项拨款，全面重铺沿路老旧输水主干管，彻底根除开挖后反复缺水痛点。" data-bm="JKR Sabah mengumumkan beberapa pakej Fasa 1B Lebuhraya Pan Borneo siap lebih awal. Kabinet Negeri meluluskan RM300 juta bagi memperbaharui paip agihan air utama serentak bagi mengatasi krisis air penduduk.">
+                            沙巴公共工程部今日宣布，备受关注的泛婆罗洲公路1B阶段（包含斗亚兰至哥打毛律等关键路段）工程推进超前预期。州内阁同步批准3亿令吉专项拨款，全面重铺沿路老旧输水主干管，彻底根除开挖后反复缺水痛点。
+                        </div>
+                        <div class="full-article" id="art1">
+                            <p data-zh="【亚庇讯】沙巴首长公署联合公共工程部在今日清晨的例行简报会上指出，全长逾706公里的泛婆大道沙巴路段，在联邦注资与州特别行动委员会双重督导下，1B阶段的第13至第16工作包（Work Package）工程进度已达78%，比既定工期提早近两个月。" data-bm="KOTA KINABALU - Pejabat Ketua Menteri bersama JKR memaklumkan Pakej Kerja WP13-WP16 Fasa 1B Lebuhraya Pan Borneo kini mencatat kemajuan 78%, mendahului jadual hampir dua bulan hasil pemantauan rapi jawatankuasa khas persekutuan dan negeri.">
+                                【亚庇讯】沙巴首长公署联合公共工程部在今日清晨的例行简报会上指出，全长逾706公里的泛婆大道沙巴路段，在联邦注资与州特别行动委员会双重督导下，1B阶段的第13至第16工作包（Work Package）工程进度已达78%，比既定工期提早近两个月。
+                            </p>
+                            <p data-zh="针对民间长期诟病的‘建路破水管’顽疾，首长拿督斯里哈芝芝宣布启动‘路水并行计划’，拨款3亿令吉用于更换沿线铸铁及旧式石棉水管。工程将同步增设高压加压泵站，预计将于2027年首季前让沿线逾45万居民摆脱低水压之苦。" data-bm="Ketua Menteri Datuk Seri Hajiji Noor turut melancarkan inisiatif pembaharuan paip bersepadu bernilai RM300 juta bagi menggantikan paip usang sepanjang laluan pembinaan, yang dijangka memberi manfaat bekalan air stabil kepada lebih 450,000 penduduk menjelang 2027.">
+                                针对民间长期诟病的‘建路破水管’顽疾，首长拿督斯里哈芝芝宣布启动‘路水并行计划’，拨款3亿令吉用于更换沿线铸铁及旧式石棉水管。工程将同步增设高压加压泵站，预计将于2027年首季前让沿线逾45万居民摆脱低水压之苦。
+                            </p>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleReadMore(this, 'art1')" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</button>
+                    </div>
+                </article>
 
-      <!-- 卡片 3: 沙巴州内阁水电新政 -->
-      <article class="news-card">
-        <!-- SVG 3: 沙巴州行政中心与清洁水能/电网插画 -->
-        <svg class="card-svg-hero" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="govSky" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#1e1b4b"/>
-              <stop offset="100%" stop-color="#312e81"/>
-            </linearGradient>
-            <linearGradient id="goldTower" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#fde047"/>
-              <stop offset="100%" stop-color="#ca8a04"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="190" fill="url(#govSky)"/>
-          <!-- 象征沙巴敦慕斯达法大厦 (沙巴基金局大厦) 轮廓 -->
-          <rect x="60" y="45" width="28" height="115" rx="14" fill="url(#goldTower)"/>
-          <line x1="74" y1="20" x2="74" y2="45" stroke="#fde047" stroke-width="2"/>
-          <!-- 州行政中心建筑屋顶 -->
-          <polygon points="120,130 150,90 180,130" fill="#475569"/>
-          <rect x="130" y="130" width="40" height="30" fill="#334155"/>
-          <!-- 供电高压电塔 -->
-          <line x1="320" y1="60" x2="300" y2="160" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="320" y1="60" x2="340" y2="160" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="290" y1="90" x2="350" y2="90" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="295" y1="120" x2="345" y2="120" stroke="#38bdf8" stroke-width="2"/>
-          <line x1="310" y1="90" x2="330" y2="120" stroke="#38bdf8" stroke-width="1.5"/>
-          <line x1="330" y1="90" x2="310" y2="120" stroke="#38bdf8" stroke-width="1.5"/>
-          <!-- 水滴/清洁水源波纹 -->
-          <path d="M220,130 C200,90 240,90 220,130 Z" fill="#0284c7" opacity="0.8"/>
-          <path d="M0,165 Q100,150 200,165 T400,165 L400,190 L0,190 Z" fill="#0369a1"/>
-          <!-- 电力闪电图标 -->
-          <polygon points="250,65 240,85 248,85 238,105 260,80 250,80" fill="#facc15"/>
-        </svg>
+                <!-- 新闻卡片 2 -->
+                <article class="news-card">
+                    <div class="news-visual">
+                        <span class="news-badge" data-zh="经贸枢纽战略" data-bm="PELABUHAN & PERDAGANGAN">经贸枢纽战略</span>
+                        <!-- 矢量插图: 山打根港口吊臂与货柜轮船 -->
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#0284c7"/>
+                                    <stop offset="100%" stop-color="#0c4a6e"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="120" fill="#f8fafc"/>
+                            <!-- 远景海面与海岛 -->
+                            <path d="M0,120 Q160,115 400,120 L400,200 L0,200 Z" fill="url(#seaGrad)"/>
+                            <polygon points="60,120 90,110 140,120" fill="#94a3b8"/>
+                            <polygon points="280,120 330,105 380,120" fill="#94a3b8"/>
+                            <!-- 货轮 -->
+                            <path d="M70,145 L220,145 L200,170 L90,170 Z" fill="#b91c1c"/>
+                            <rect x="95" y="125" width="22" height="20" fill="#2563eb"/>
+                            <rect x="120" y="125" width="22" height="20" fill="#f59e0b"/>
+                            <rect x="145" y="125" width="22" height="20" fill="#10b981"/>
+                            <rect x="105" y="112" width="20" height="13" fill="#e2e8f0"/>
+                            <!-- 码头龙门吊臂 -->
+                            <rect x="260" y="50" width="10" height="90" fill="#e11d48"/>
+                            <rect x="310" y="50" width="10" height="90" fill="#e11d48"/>
+                            <polygon points="250,50 350,50 320,60 260,60" fill="#be123c"/>
+                            <line x1="290" y1="50" x2="360" y2="100" stroke="#f43f5e" stroke-width="3"/>
+                            <!-- 码头地面 -->
+                            <rect x="230" y="140" width="170" height="60" fill="#475569"/>
+                            <rect x="240" y="150" width="40" height="20" fill="#3b82f6"/>
+                            <rect x="290" y="150" width="40" height="20" fill="#10b981"/>
+                        </svg>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title" data-zh="山打根与斗湖深水港升级获联邦首肯 奠定东盟东增区(BIMP-EAGA)物流心脏" data-bm="Naik Taraf Pelabuhan Sandakan & Tawau Diluluskan, Pacu Hab Logistik BIMP-EAGA">山打根与斗湖深水港升级获联邦首肯 奠定东盟东增区(BIMP-EAGA)物流心脏</h3>
+                        <div class="news-meta">
+                            <span data-zh="来源: Daily Express / 自由日报" data-bm="Sumber: Daily Express / Merdeka">来源: Daily Express / 自由日报</span>
+                            <span>•</span>
+                            <span data-zh="发布: 5小时前" data-bm="5 jam lalu">发布: 5小时前</span>
+                        </div>
+                        <div class="news-summary" data-zh="交通部与沙巴港口管理局达成历史性共识，将注资逾5.8亿令吉深化山打根港集装箱泊位，并扩建自动化冷链仓储，旨在全面对接印尼新首都努山塔拉及棉兰老岛贸易通道。" data-bm="Kementerian Pengangkutan bersama Lembaga Pelabuhan Sabah memeterai persetujuan menaik taraf Pelabuhan Sandakan dengan peruntukan RM580 juta bagi kemudahan kontena laut dalam dan hab logistik pintar bersama Nusantara & Mindanao.">
+                            交通部与沙巴港口管理局达成历史性共识，将注资逾5.8亿令吉深化山打根港集装箱泊位，并扩建自动化冷链仓储，旨在全面对接印尼新首都努山塔拉及棉兰老岛贸易通道。
+                        </div>
+                        <div class="full-article" id="art2">
+                            <p data-zh="【山打根讯】沙巴东海岸航运枢纽迎来重大利好。随着印尼新首都努山塔拉（IKN）建设加速，山打根港凭借得天独厚的地理区位，正式被纳入国家物流走廊重点节点。项目包括疏浚航道至水深14.5米，允许第四代巴拿马型货轮直接靠泊。" data-bm="SANDAKAN - Pelabuhan Sandakan kini dinaik taraf merangkumi pendalaman alur pelayaran kepada 14.5 meter bagi membolehkan kapal kontena generasi ke-4 berlabuh secara langsung, sekali gus menghubungkan rantaian bekalan serantau dengan IKN Nusantara.">
+                                【山打根讯】沙巴东海岸航运枢纽迎来重大利好。随着印尼新首都努山塔拉（IKN）建设加速，山打根港凭借得天独厚的地理区位，正式被纳入国家物流走廊重点节点。项目包括疏浚航道至水深14.5米，允许第四代巴拿马型货轮直接靠泊。
+                            </p>
+                            <p data-zh="山打根中华商会对此项扩建表示高度赞赏，指出这将大幅削减沙巴东海岸货物经亚庇或巴生港中转的高昂内陆运费，当地海产加工、原棕油衍生物出口将直接受益，预计每年为山打根在地催生数百个高技能技术岗位。" data-bm="Dewan Perniagaan Cina Sandakan menyambut baik projek ini yang bakal menurunkan kos fret maritim dan memperkasa eksport hasil laut serta produk hiliran sawit terus ke pasaran global tanpa melalui perantara.">
+                                山打根中华商会对此项扩建表示高度赞赏，指出这将大幅削减沙巴东海岸货物经亚庇或巴生港中转的高昂内陆运费，当地海产加工、原棕油衍生物出口将直接受益，预计每年为山打根在地催生数百个高技能技术岗位。
+                            </p>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleReadMore(this, 'art2')" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</button>
+                    </div>
+                </article>
 
-        <div class="card-content">
-          <div class="card-tag-row">
-            <span class="card-tag lang-zh">内阁民生新政</span>
-            <span class="card-tag lang-bm">DASAR KERAJAAN NEGERI</span>
-            <span class="card-source lang-zh">诗华日报 · Daily Express</span>
-            <span class="card-source lang-bm">Daily Express · See Hua</span>
-          </div>
+                <!-- 新闻卡片 3 -->
+                <article class="news-card">
+                    <div class="news-visual">
+                        <span class="news-badge" data-zh="突发交通关注" data-bm="TRAFIK & KESELAMATAN">突发交通关注</span>
+                        <!-- 矢量插图: 滨海大道车流与交通警示 -->
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="alertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1e1e2f"/>
+                                    <stop offset="100%" stop-color="#2a2b45"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="400" height="200" fill="url(#alertGrad)"/>
+                            <!-- 道路与反光带 -->
+                            <polygon points="50,200 150,110 250,110 350,200" fill="#374151"/>
+                            <line x1="200" y1="110" x2="200" y2="200" stroke="#facc15" stroke-width="4" stroke-dasharray="12 10"/>
+                            <!-- 事故警示三角形 -->
+                            <polygon points="200,45 240,115 160,115" fill="#ef4444" stroke="#ffffff" stroke-width="3"/>
+                            <text x="200" y="105" font-size="34" fill="#ffffff" font-weight="900" text-anchor="middle">!</text>
+                            <!-- 车辆轮廓剪影 -->
+                            <rect x="75" y="145" width="65" height="25" rx="5" fill="#64748b"/>
+                            <circle cx="90" cy="170" r="7" fill="#0f172a"/>
+                            <circle cx="125" cy="170" r="7" fill="#0f172a"/>
+                            <!-- 警车闪烁灯光效果 -->
+                            <polygon points="270,140 335,140 325,165 260,165" fill="#f8fafc"/>
+                            <circle cx="280" cy="165" r="7" fill="#0f172a"/>
+                            <circle cx="315" cy="165" r="7" fill="#0f172a"/>
+                            <circle cx="295" cy="135" r="6" fill="#3b82f6"/>
+                            <line x1="295" y1="130" x2="280" y2="120" stroke="#60a5fa" stroke-width="3"/>
+                            <line x1="295" y1="130" x2="310" y2="120" stroke="#ef4444" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title" data-zh="亚庇滨海大道早高峰4车追尾引发瘫痪 陆交局即日起增设测速警示与防滑铺装" data-bm="4 Kenderaan Bertembung di Coastal Highway KK, JPJ Tingkat Garisan Keselamatan">亚庇滨海大道早高峰4车追尾引发瘫痪 陆交局即日起增设测速警示与防滑铺装</h3>
+                        <div class="news-meta">
+                            <span data-zh="来源: 星洲日报 / 交通巡警队" data-bm="Sumber: Sin Chew / Trafik PDRM">来源: 星洲日报 / 交通巡警队</span>
+                            <span>•</span>
+                            <span data-zh="发布: 1小时前" data-bm="1 jam lalu">发布: 1小时前</span>
+                        </div>
+                        <div class="news-summary" data-zh="今早7时15分亚庇滨海大道靠近伊丽莎白女皇医院二院交界路段，因阵雨路滑引发四车连环碰撞，导致车流回堵逾3公里。交警赶赴迅速处置，所幸无人员重伤，市政局与工务局火速启动减速治理。" data-bm="Kemalangan berantai membabitkan 4 kenderaan berlaku jam 7.15 pagi tadi di Coastal Highway berhampiran QEH2 susulan jalan licin akibat hujan lebat. Trafik sesak sepanjang 3km berjaya dikawal tanpa kecederaan parah dilaporkan.">
+                            今早7时15分亚庇滨海大道靠近伊丽莎白女皇医院二院交界路段，因阵雨路滑引发四车连环碰撞，导致车流回堵逾3公里。交警赶赴迅速处置，所幸无人员重伤，市政局与工务局火速启动减速治理。
+                        </div>
+                        <div class="full-article" id="art3">
+                            <p data-zh="【亚庇讯】现场目击者反映，事发时正值上班车流高峰期，一辆由兵南邦朝市中心方向行驶的掀背轿车疑因前车骤刹不及引发打滑，后方休旅车及两辆轻型车连续追尾。警方与消拯局仅耗时25分钟即清障完毕，伤者已被送医观察。" data-bm="KOTA KINABALU - Kemalangan bermula apabila sebuah kereta hilang kawalan ketika membrek mengejut di jalan basah sebelum dirempuh 3 lagi kenderaan dari arah belakang. Tindakan pantas polis trafik berjaya mengalihkan kenderaan dalam tempoh 25 minit.">
+                                【亚庇讯】现场目击者反映，事发时正值上班车流高峰期，一辆由兵南邦朝市中心方向行驶的掀背轿车疑因前车骤刹不及引发打滑，后方休旅车及两辆轻型车连续追尾。警方与消拯局仅耗时25分钟即清障完毕，伤者已被送医观察。
+                            </p>
+                            <p data-zh="亚庇交警组主任提醒，年末东北季候风带来间歇性暴雨，滨海高速多个弯道极易产生水膜导致轮胎打滑。市政局与工程承包商今日下午已进场重新划设高摩擦红色防滑标线，并加装雷达测速预警显示屏，呼吁驾驶者保持安全车距。" data-bm="Ketua Trafik mengingatkan pemandu agar berwaspada dengan fenomena jalan licin akibat monsun timur laut. Pihak berkuasa tempatan telah memasang garisan keselamatan merah bergeseran tinggi serta paparan amaran had laju automatik bermula hari ini.">
+                                亚庇交警组主任提醒，年末东北季候风带来间歇性暴雨，滨海高速多个弯道极易产生水膜导致轮胎打滑。市政局与工程承包商今日下午已进场重新划设高摩擦红色防滑标线，并加装雷达测速预警显示屏，呼吁驾驶者保持安全车距。
+                            </p>
+                        </div>
+                        <button class="toggle-btn" onclick="toggleReadMore(this, 'art3')" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</button>
+                    </div>
+                </article>
 
-          <h3 class="news-title">
-            <span class="lang-zh">沙内阁拍板3亿令吉水电纾困津贴 推动水务局企业化与SESB微电网改造</span>
-            <span class="lang-bm">Kabinet Sabah Lulus Subsidi Utiliti RM300 Juta: Korporatisasi JANS & Grid Hijau SESB</span>
-          </h3>
-
-          <p class="news-excerpt">
-            <span class="lang-zh">沙巴州首席部长拿督斯里哈芝芝今日主持内阁例会后宣布，州政府将动用3亿令吉储备金，在全州24个重点工业区及缺水乡区设立“智能蓄水与无收益水（NRW）替换总枢纽”，并坚决维持B40群体民用水电底限零涨幅。</span>
-            <span class="lang-bm">Ketua Menteri Sabah Datuk Seri Hajiji Noor mengumumkan peruntukan khas RM300 juta bagi menyelesaikan isu bekalan air dan elektrik termasuk mempercepat korporatisasi Jabatan Air Negeri Sabah (JANS) tanpa menaikkan tarif pengguna B40.</span>
-          </p>
-
-          <div class="full-story" id="story-3">
-            <div class="lang-zh">
-              <div class="key-data">
-                💡 <strong>核心决议：</strong>斥资1.4亿令吉更换亚庇、斗亚兰、山打根总计280公里老化石棉水管；向沙巴电力公司（SESB）注入绿色能源专项配额，新建12处太阳能蓄电储能系统（BESS）。
-              </div>
-              <p>【深度背景】长期以来，水压不足与偶发性断电制约了沙巴吸引外资制造业与半导体配套产业。此次内阁会议被视为沙巴水务局迈向完全自主企业化（Corporatisation）的历史性一步。</p>
-              <p>【惠民措施】新政承诺在2027年首季前将无收益水（NRW）流失率由惊人的54%强力压制至35%以下，并将在东海岸设立24小时移动净水车队应对旱季供水应急需求。</p>
             </div>
-            <div class="lang-bm">
-              <div class="key-data">
-                💡 <strong>Keputusan Utama:</strong> RM140 juta dikhususkan menggantikan paip uzur sepanjang 280 km di KK, Tuaran dan Sandakan; suntikan modal SESB bagi membina 12 hab simpanan bateri solar (BESS).
-              </div>
-              <p>【Latar Belakang】Isu gangguan air dan elektrik berpanjangan sering menjejaskan kemasukan pelaburan ke Sabah. Langkah korporatisasi JANS membolehkan pengurusan operasi lebih dinamik dan telus seperti model Korporasi Air negeri maju.</p>
-              <p>【Impak Rakyat】Kerajaan menyasarkan pengurangan kadar Air Tidak Terhasil (NRW) daripada 54% kepada bawah 35% menjelang awal 2027 serta menempatkan lori tangki kecemasan 24 jam di zon kritikal Pantai Timur.</p>
+        </section>
+
+        <!-- 板块 2: 【核心刚性板块】未来两周至一个月 · 沙巴商业、展销与慈善活动预告 -->
+        <section class="forecast-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title" data-zh="沙巴未来行事历 · 商业展销与慈善预告 (2026年11月)" data-bm="JADUAL ACARA SABAH · EKSPO PERNIAGAAN & AMAL (NOV 2026)">沙巴未来行事历 · 商业展销与慈善预告 (2026年11月)</h2>
+                    <span class="section-tagline" data-zh="全州前瞻锁定：涵盖亚庇SICC大型经贸博览、山打根慈善跑与全州公益商展" data-bm="Tinjauan Masa Hadapan: Ekspo SICC, Larian Amal Sandakan & Forum Perniagaan">全州前瞻锁定：涵盖亚庇SICC大型经贸博览、山打根慈善跑与全州公益商展</span>
+                </div>
             </div>
-          </div>
 
-          <div class="btn-toggle-wrapper">
-            <button class="btn-toggle" onclick="toggleStory('story-3', this)">
-              <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-              <span class="btn-text lang-bm">Baca Penuh ↓</span>
-            </button>
-          </div>
-        </div>
-      </article>
+            <div class="forecast-grid">
+                
+                <!-- 活动 1: 亚庇 SICC 商业消费展 -->
+                <div class="event-card">
+                    <div class="event-banner-svg">
+                        <!-- 矢量插图: SICC展馆与商业展位 -->
+                        <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="350" height="120" fill="#1e293b"/>
+                            <!-- SICC 标志性弧形建筑屋顶 -->
+                            <path d="M10,95 Q175,20 340,95 L340,110 L10,110 Z" fill="#334155"/>
+                            <path d="M20,90 Q175,30 330,90" stroke="#f59e0b" stroke-width="3" fill="none"/>
+                            <!-- 内部展位色块 -->
+                            <rect x="50" y="65" width="35" height="35" fill="#ef4444" rx="2"/>
+                            <rect x="100" y="65" width="35" height="35" fill="#3b82f6" rx="2"/>
+                            <rect x="150" y="65" width="35" height="35" fill="#10b981" rx="2"/>
+                            <rect x="200" y="65" width="35" height="35" fill="#8b5cf6" rx="2"/>
+                            <rect x="250" y="65" width="35" height="35" fill="#f59e0b" rx="2"/>
+                            <!-- 人群光点 -->
+                            <circle cx="68" cy="80" r="3" fill="#fff"/>
+                            <circle cx="118" cy="80" r="3" fill="#fff"/>
+                            <circle cx="168" cy="80" r="3" fill="#fff"/>
+                            <circle cx="218" cy="80" r="3" fill="#fff"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date-badge">
+                            <span>📅</span>
+                            <span data-zh="2026年11月13日 - 15日 (为期3天)" data-bm="13 - 15 November 2026 (3 Hari)">2026年11月13日 - 15日 (为期3天)</span>
+                        </div>
+                        <h4 class="event-title" data-zh="2026 BIGSABAH 岁末大型消费展与创业加盟博览" data-bm="Ekspo Pengguna & Francais BIGSABAH 2026">2026 BIGSABAH 岁末大型消费展与创业加盟博览</h4>
+                        <div class="event-location">
+                            <span>📍</span>
+                            <span data-zh="亚庇 · 沙巴国际会展中心 (SICC) 1-3号主展厅" data-bm="Dewan 1-3, Sabah International Convention Centre (SICC), KK">亚庇 · 沙巴国际会展中心 (SICC) 1-3号主展厅</span>
+                        </div>
+                        <p class="event-desc" data-zh="汇聚全马与印尼、菲律宾逾320个品牌展位，涵盖智能家居、新能源车、本地手工艺特产与跨境电商。入场免费，首两日设商业配对闭门对接洽谈会。" data-bm="Menghimpunkan lebih 320 vendor dari Malaysia, Indonesia & Filipina merangkumi gajet pintar, EV, produk tempatan dan francais. Masuk percuma dengan sesi padanan perniagaan khas.">
+                            汇聚全马与印尼、菲律宾逾320个品牌展位，涵盖智能家居、新能源车、本地手工艺特产与跨境电商。入场免费，首两日设商业配对闭门对接洽谈会。
+                        </p>
+                        <div class="event-action">
+                            <span data-zh="主办: 沙巴工商业联合总会" data-bm="Anjuran: Gabungan Dewan Perniagaan Sabah">主办: 沙巴工商业联合总会</span>
+                            <strong data-zh="免费向公众开放" data-bm="Kemasukan Percuma">免费向公众开放</strong>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- 卡片 4: 反贪局与森林局执法行动 -->
-      <article class="news-card">
-        <!-- SVG 4: 森林与法庭正义法槌插画 -->
-        <svg class="card-svg-hero" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="forestSky" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#064e3b"/>
-              <stop offset="100%" stop-color="#047857"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="190" fill="url(#forestSky)"/>
-          <!-- 茂密热带雨林树木剪影 -->
-          <path d="M40,160 L55,90 L70,160 Z" fill="#022c22"/>
-          <path d="M60,160 L80,70 L100,160 Z" fill="#065f46"/>
-          <path d="M120,160 L145,80 L170,160 Z" fill="#022c22"/>
-          <path d="M300,160 L330,75 L360,160 Z" fill="#065f46"/>
-          <!-- 堆放的被查扣原木 (Logs) -->
-          <ellipse cx="140" cy="165" rx="15" ry="10" fill="#a16207" stroke="#78350f" stroke-width="2"/>
-          <ellipse cx="165" cy="165" rx="15" ry="10" fill="#ca8a04" stroke="#78350f" stroke-width="2"/>
-          <ellipse cx="152" cy="150" rx="15" ry="10" fill="#eab308" stroke="#78350f" stroke-width="2"/>
-          <line x1="152" y1="150" x2="220" y2="150" stroke="#78350f" stroke-width="18"/>
-          <!-- 司法天平与法槌 (Gavel) -->
-          <rect x="235" y="165" width="60" height="8" rx="2" fill="#78350f"/>
-          <rect x="250" y="157" width="30" height="8" rx="2" fill="#a16207"/>
-          <!-- 槌头与手柄 -->
-          <rect x="255" y="85" width="20" height="40" rx="4" transform="rotate(-30 265 105)" fill="#ca8a04" stroke="#451a03" stroke-width="2"/>
-          <rect x="220" y="100" width="70" height="8" rx="3" transform="rotate(-30 255 105)" fill="#78350f"/>
-          <!-- 执法警徽盾牌徽记 -->
-          <polygon points="340,30 365,40 365,70 340,90 315,70 315,40" fill="#fbbf24" stroke="#ffffff" stroke-width="2"/>
-          <text x="340" y="65" font-size="18" text-anchor="middle" fill="#78350f" font-weight="bold">★</text>
-        </svg>
+                <!-- 活动 2: 山打根依罗普拉慈善马拉松 -->
+                <div class="event-card">
+                    <div class="event-banner-svg">
+                        <!-- 矢量插图: 马拉松跑者与山打根地标 -->
+                        <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="350" height="120" fill="#0f766e"/>
+                            <!-- 阳光跑道 -->
+                            <path d="M0,120 L120,40 L180,40 L350,120 Z" fill="#115e59"/>
+                            <line x1="150" y1="40" x2="175" y2="120" stroke="#fde047" stroke-width="3" stroke-dasharray="6 4"/>
+                            <!-- 奔跑的人形轮廓 -->
+                            <!-- 跑者 1 -->
+                            <circle cx="160" cy="55" r="7" fill="#facc15"/>
+                            <path d="M160,62 L158,80 L170,95 M158,70 L145,78 M158,80 L148,98" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
+                            <!-- 跑者 2 -->
+                            <circle cx="195" cy="50" r="7" fill="#ffffff"/>
+                            <path d="M195,57 L190,75 L205,90 M190,65 L180,72 M190,75 L182,92" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                            <!-- 爱心慈善徽标 -->
+                            <path d="M280,30 A10,10 0 0,0 260,45 A10,10 0 0,0 280,65 A10,10 0 0,0 300,45 A10,10 0 0,0 280,30 Z" fill="#f43f5e"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date-badge">
+                            <span>📅</span>
+                            <span data-zh="2026年11月22日 (星期日 · 清晨 5:30)" data-bm="22 November 2026 (Ahad · 5:30 Pagi)">2026年11月22日 (星期日 · 清晨 5:30)</span>
+                        </div>
+                        <h4 class="event-title" data-zh="2026第5届山打根依罗普拉慈善半程马拉松" data-bm="Larian Amal Separuh Marathon Elopura 2026 Sandakan">2026第5届山打根依罗普拉慈善半程马拉松</h4>
+                        <div class="event-location">
+                            <span>📍</span>
+                            <span data-zh="山打根 · 综合体育馆起跑点 (Kompleks Sukan)" data-bm="Pelepasan: Kompleks Sukan Sandakan">山打根 · 综合体育馆起跑点 (Kompleks Sukan)</span>
+                        </div>
+                        <p class="event-desc" data-zh="设21公里半马、10公里挑战组及5公里家庭欢乐跑。筹得善款将全数拨充山打根盲人协会福利基金与残障儿童康复中心，沿途尽览山打根海岸绿荫风景线。" data-bm="Kategori 21KM, 10KM dan 5KM Fun Run. Semua kutipan yuran disalurkan terus kepada Persatuan Orang Buta Sandakan dan Pusat Pemulihan Kanak-Kanak Istimewa.">
+                            设21公里半马、10公里挑战组及5公里家庭欢乐跑。筹得善款将全数拨充山打根盲人协会福利基金与残障儿童康复中心，沿途尽览山打根海岸绿荫风景线。
+                        </p>
+                        <div class="event-action">
+                            <span data-zh="早鸟报名截止: 11月05日" data-bm="Tamat Early-Bird: 5 Nov">早鸟报名截止: 11月05日</span>
+                            <strong data-zh="目标筹款: 15万令吉" data-bm="Sasaran: RM150,000">目标筹款: 15万令吉</strong>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card-content">
-          <div class="card-tag-row">
-            <span class="card-tag lang-zh">突击查处执法</span>
-            <span class="card-tag lang-bm">PENGUATKUASAAN SPRM</span>
-            <span class="card-source lang-zh">沙巴星洲 · 自由日报</span>
-            <span class="card-source lang-bm">Sabah Sin Chew · Merdeka Daily</span>
-          </div>
+                <!-- 活动 3: 沙巴绿色农业与商贸论坛 -->
+                <div class="event-card">
+                    <div class="event-banner-svg">
+                        <!-- 矢量插图: 绿色生态与高端峰会 -->
+                        <svg viewBox="0 0 350 120" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="350" height="120" fill="#1e3a8a"/>
+                            <!-- 智慧农业生态图标 -->
+                            <circle cx="175" cy="55" r="35" fill="#1e40af" stroke="#60a5fa" stroke-width="2"/>
+                            <!-- 麦穗与幼芽 -->
+                            <path d="M175,75 Q165,55 175,40 Q185,55 175,75 Z" fill="#34d399"/>
+                            <path d="M165,55 Q150,45 160,35 Q170,45 165,55 Z" fill="#34d399"/>
+                            <path d="M185,55 Q200,45 190,35 Q180,45 185,55 Z" fill="#34d399"/>
+                            <!-- 科技网络连线 -->
+                            <circle cx="80" cy="40" r="4" fill="#93c5fd"/>
+                            <line x1="80" y1="40" x2="145" y2="50" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+                            <circle cx="270" cy="40" r="4" fill="#93c5fd"/>
+                            <line x1="270" y1="40" x2="205" y2="50" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+                            <circle cx="250" cy="90" r="4" fill="#93c5fd"/>
+                            <line x1="250" y1="90" x2="195" y2="75" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        </svg>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date-badge">
+                            <span>📅</span>
+                            <span data-zh="2026年11月28日 - 29日" data-bm="28 - 29 November 2026">2026年11月28日 - 29日</span>
+                        </div>
+                        <h4 class="event-title" data-zh="2026沙巴绿色经济与智慧农业科技峰会" data-bm="Sidang Kemuncak Ekonomi Hijau & AgriTek Sabah 2026">2026沙巴绿色经济与智慧农业科技峰会</h4>
+                        <div class="event-location">
+                            <span>📍</span>
+                            <span data-zh="亚庇 · 丝绸港湾麦哲伦度假村大宴会厅" data-bm="Grand Ballroom, The Magellan Sutera Resort, KK">亚庇 · 丝绸港湾麦哲伦度假村大宴会厅</span>
+                        </div>
+                        <p class="event-desc" data-zh="聚焦沙巴原棕油副产物生物能源、碳信用交易及婆罗洲特色热带水产养殖技术。邀请东盟10国政商代表，现场开放40个前沿科技展位及投资备忘录签约。" data-bm="Fokus kepada bio-tenaga sampingan sawit, kredit karbon dan akuakultur pintar Borneo. Menghimpunkan pakar ASEAN serta pemeteraian MoA pelaburan bernilai tinggi.">
+                            聚焦沙巴原棕油副产物生物能源、碳信用交易及婆罗洲特色热带水产养殖技术。邀请东盟10国政商代表，现场开放40个前沿科技展位及投资备忘录签约。
+                        </p>
+                        <div class="event-action">
+                            <span data-zh="席位: 限额350位商业代表" data-bm="Terhad: 350 Delegasi Perniagaan">席位: 限额350位商业代表</span>
+                            <strong data-zh="正接受官方报名" data-bm="Pendaftaran Dibuka">正接受官方报名</strong>
+                        </div>
+                    </div>
+                </div>
 
-          <h3 class="news-title">
-            <span class="lang-zh">反贪会联手沙巴森林局捣毁加拉巴干非法采伐集团 扣押涉案千万元珍贵原木</span>
-            <span class="lang-bm">SPRM & Jabatan Perhutanan Tumpaskan Sindiket Balak Haram Kalabakan: Rampas RM12 Juta</span>
-          </h3>
-
-          <p class="news-excerpt">
-            <span class="lang-zh">马来西亚反贪污委员会（SPRM）沙巴分局协同沙巴森林护林队，在斗湖加拉巴干一级森林保护区深处展开代号“犀鸟行动”的雷霆突击，当场截获伪造伐木特许批文的大型地下作业团伙。</span>
-            <span class="lang-bm">Suruhanjaya Pencegahan Rasuah Malaysia (SPRM) Sabah bersama Renjer Perhutanan merampas 1,400 batang kayu balak bernilai RM12 juta dalam Operasi Bersepadu di Hutan Simpan Kalabakan, Tawau.</span>
-          </p>
-
-          <div class="full-story" id="story-4">
-            <div class="lang-zh">
-              <div class="key-data">
-                ⚖️ <strong>案件速递：</strong>行动中查扣涉非法砍伐的红白沉香木及铁木逾1400根，查封推土机6台、重型绞盘车4辆，4名涉案本地公司董事与仲介被斗湖推事庭批准延扣6天。
-              </div>
-              <p>【案情细节】涉案集团利用夜间伪造数码电子出货二维码标签（RFID Tag），企图躲避实地巡查站，将未征税珍稀硬木偷运至邻近私人码头装箱出口。</p>
-              <p>【首席护林员声明】沙巴森林首席护林员发表严正警示，强调当局已全面部署遥感卫星与AI无人机全天候巡弋全州森林保护区，任何勾结盗伐公家资源的害群之马必将面临洗黑钱法令（AMLA）最高刑责起诉。</p>
             </div>
-            <div class="lang-bm">
-              <div class="key-data">
-                ⚖️ <strong>Perkembangan Mahkamah:</strong> 4 suspek termasuk pengarah syarikat direman 6 hari di Mahkamah Majistret Tawau di bawah Seksyen 17(a) Akta SPRM 2009 dan Enakmen Hutan 1968.
-              </div>
-              <p>【Modus Operandi】Sindiket dikesan menggunakan tag RFID dan dokumen digital palsu bagi mengaburi pihak berkuasa sebelum menyeludup kayu bernilai tinggi ke jeti persendirian.</p>
-              <p>【Amaran Ketua Konservator】Jabatan Perhutanan Sabah menegaskan penggunaan satelit penderiaan jauh dan dron AI akan diperhebat bagi memastikan sifar pencerobohan di rizab hidupan liar Sabah.</p>
+        </section>
+
+        <!-- 板块 3: 【底线商业赞助】MY CAR ENTERPRISE 租车服务 -->
+        <section class="sponsor-wrapper">
+            <div class="sponsor-header">
+                <div class="sponsor-brand">
+                    <div class="sponsor-logo-box">MC</div>
+                    <div class="sponsor-title-text">
+                        <h3 data-zh="MY CAR ENTERPRISE" data-bm="MY CAR ENTERPRISE">MY CAR ENTERPRISE</h3>
+                        <p data-zh="山打根租车与尊贵接送服务 · 自驾自由行与专职司机贵宾包车" data-bm="Perkhidmatan Kereta Sewa & Pemandu Profesional Sandakan">山打根租车与尊贵接送服务 · 自驾自由行与专职司机贵宾包车</p>
+                    </div>
+                </div>
+                <div class="sponsor-badge-auth" data-zh="★ 2026年度沙巴旅业信誉推荐车队" data-bm="★ Armada Kereta Sewa Pilihan Sabah 2026">
+                    ★ 2026年度沙巴旅业信誉推荐车队
+                </div>
             </div>
-          </div>
 
-          <div class="btn-toggle-wrapper">
-            <button class="btn-toggle" onclick="toggleStory('story-4', this)">
-              <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-              <span class="btn-text lang-bm">Baca Penuh ↓</span>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- 卡片 5: 全国与区域经贸枢纽 -->
-      <article class="news-card">
-        <!-- SVG 5: 实邦加集装箱深水港口与货轮插画 -->
-        <svg class="card-svg-hero" viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#0284c7"/>
-              <stop offset="100%" stop-color="#0c4a6e"/>
-            </linearGradient>
-          </defs>
-          <!-- 天空 -->
-          <rect width="400" height="110" fill="#f0f9ff"/>
-          <circle cx="330" cy="45" r="25" fill="#fde047" opacity="0.6"/>
-          <!-- 海洋 -->
-          <rect y="110" width="400" height="80" fill="url(#seaGrad)"/>
-          <!-- 港口岸壁 -->
-          <polygon points="0,120 140,120 120,190 0,190" fill="#475569"/>
-          <!-- 岸边集装箱门式起重机 (Gantry Crane) -->
-          <rect x="50" y="40" width="6" height="90" fill="#dc2626"/>
-          <rect x="90" y="40" width="6" height="90" fill="#dc2626"/>
-          <line x1="30" y1="45" x2="160" y2="45" stroke="#dc2626" stroke-width="7"/>
-          <line x1="50" y1="80" x2="96" y2="80" stroke="#b91c1c" stroke-width="3"/>
-          <line x1="50" y1="45" x2="96" y2="80" stroke="#b91c1c" stroke-width="2"/>
-          <line x1="96" y1="45" x2="50" y2="80" stroke="#b91c1c" stroke-width="2"/>
-          <!-- 起重机吊具与货柜 -->
-          <line x1="120" y1="45" x2="120" y2="75" stroke="#1e293b" stroke-width="1.5"/>
-          <rect x="110" y="75" width="20" height="12" fill="#0284c7"/>
-          <!-- 远洋货柜轮 (Container Ship) -->
-          <polygon points="180,135 340,135 365,115 170,115" fill="#1e293b"/>
-          <rect x="195" y="100" width="25" height="15" fill="#ef4444"/>
-          <rect x="225" y="100" width="25" height="15" fill="#10b981"/>
-          <rect x="255" y="100" width="25" height="15" fill="#f59e0b"/>
-          <rect x="210" y="85" width="25" height="15" fill="#3b82f6"/>
-          <rect x="240" y="85" width="25" height="15" fill="#6366f1"/>
-          <rect x="300" y="90" width="20" height="25" fill="#f8fafc"/>
-          <rect x="312" y="78" width="6" height="12" fill="#000"/>
-        </svg>
-
-        <div class="card-content">
-          <div class="card-tag-row">
-            <span class="card-tag lang-zh">全国与区域热点</span>
-            <span class="card-tag lang-bm">EKONOMI & LOGISTIK</span>
-            <span class="card-source lang-zh">星洲日报 · Daily Express</span>
-            <span class="card-source lang-bm">Sin Chew · Daily Express</span>
-          </div>
-
-          <h3 class="news-title">
-            <span class="lang-zh">实邦加集装箱港扩建工程迈入验收期 跃升东盟东罗区（BIMP-EAGA）转运中枢</span>
-            <span class="lang-bm">Pelabuhan Sepanggar Fasa Baharu Siap: Hab Pemindahan Kapal Utama BIMP-EAGA</span>
-          </h3>
-
-          <p class="news-excerpt">
-            <span class="lang-zh">交通部与沙巴港口有限公司（Sabah Ports）宣布，实邦加湾集装箱码头（SBCP）耗资近10亿令吉的扩建项目主体结构已全面竣工，年吞吐能力跃升至125万个标准箱（TEU），将扭转以往绕道巴生港的传统海运物流链。</span>
-            <span class="lang-bm">Kementerian Pengangkutan dan Sabah Ports mengumumkan fasa utama Pembesaran Terminal Kontena Teluk Sepanggar (SBCP) siap sepenuhnya, melonjakkan kapasiti pengendalian kargo kepada 1.25 juta TEU setahun.</span>
-          </p>
-
-          <div class="full-story" id="story-5">
-            <div class="lang-zh">
-              <div class="key-data">
-                🚢 <strong>战略布局：</strong>码头泊位岸线由原先500米延伸至1028米，港池水深挖深至负15米，可全天候容纳巨型超巴拿马型（Post-Panamax）远洋集装箱轮直接靠泊。
-              </div>
-              <p>【宏观经济红利】沙巴商界期盼已久的“直航国际航线”正式开启，沙巴出口生鲜冷链水产、橡胶制品及加工棕油不再需经西马中转，往返中国南沙港与日本东京港的航期将压缩4至6天，企业综合出口物流运费预计下降18%。</p>
-              <p>【区域辐射】随着印尼新首都努山塔拉（IKN）建设加速，实邦加港凭借其直面南中国海的天然地理地缘优势，已吸引多家国际航运巨头在此设立东盟东区配运中心。</p>
+            <!-- 涵盖车型一览 -->
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <div class="fleet-type" data-zh="经济灵动 K-CAR" data-bm="EKONOMI K-CAR">经济灵动 K-CAR</div>
+                    <div class="fleet-models">Perodua Myvi<br>Perodua Axia</div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-type" data-zh="舒适轿车 SEDAN" data-bm="SEDAN SELESA">舒适轿车 SEDAN</div>
+                    <div class="fleet-models">Toyota Vios<br>Proton Saga / Bezza</div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-type" data-zh="豪华商务 MPV" data-bm="MPV MEWAH & FAMILI">豪华商务 MPV</div>
+                    <div class="fleet-models">Toyota Vellfire / Alphard<br>Innova / Alza 新型</div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-type" data-zh="团体客运 VAN" data-bm="VAN PENUMPANG">团体客运 VAN</div>
+                    <div class="fleet-models">11座 - 12座<br>舒适宽敞团体冷气车</div>
+                </div>
+                <div class="fleet-card">
+                    <div class="fleet-type" data-zh="硬派四驱 4X4" data-bm="PACUAN 4 RODA">硬派四驱 4X4</div>
+                    <div class="fleet-models">Toyota Hilux<br>越野工地与全地形巡游</div>
+                </div>
             </div>
-            <div class="lang-bm">
-              <div class="key-data">
-                🚢 <strong>Spesifikasi Pelabuhan:</strong> Panjang dermaga kini mencecah 1,028 meter dengan kedalaman draf -15 meter, membolehkan kapal gergasi 'Post-Panamax' berlabuh terus tanpa transit di Semenanjung.
-              </div>
-              <p>【Faedah Ekonomi】Pengeksport tempatan dapat menikmati pengurangan kos logistik hingga 18% dengan pembukaan laluan perkapalan terus ke pelabuhan utama China, Korea dan Jepun tanpa melalui Pelabuhan Klang.</p>
-              <p>【Strategi Serantau】Dengan kepesatan pembangunan Ibu Kota Nusantara (IKN) Indonesia di Kalimantan Timur, Pelabuhan Sepanggar berada pada kedudukan strategik sebagai pintu masuk maritim terpenting koridor BIMP-EAGA.</p>
+
+            <!-- 服务承诺与极速联络 -->
+            <div class="sponsor-bottom">
+                <div class="sponsor-service-list">
+                    <span data-zh="机场 / 码头 / 酒店免费准时交车" data-bm="Penghantaran Percuma: Lapangan Terbang / Jeti / Hotel">机场 / 码头 / 酒店免费准时交车</span>
+                    <span data-zh="全车系商业保险与高额乘客险覆盖" data-bm="Dilindungi Insurans Komprehensif Penuh">全车系商业保险与高额乘客险覆盖</span>
+                    <span data-zh="专业礼宾司机带路（可指定多语司机）" data-bm="Pilihan Pemandu Pelancongan Berpengalaman">专业礼宾司机带路（可指定多语司机）</span>
+                </div>
+                <div class="sponsor-contact-box">
+                    <div class="contact-info">
+                        <div class="contact-name" data-zh="服务专员: Marco (包办全沙巴租程规划)" data-bm="Pegawai Khidmat: Marco">服务专员: Marco (包办全沙巴租程规划)</div>
+                        <div class="contact-phone">📞 010-930 1117</div>
+                        <div style="font-size:0.75rem; color:#94a3b8;" data-zh="微信号: Thien1117" data-bm="WeChat ID: Thien1117">微信号: Thien1117</div>
+                    </div>
+                    <a href="https://www.wasap.my/60109301117" target="_blank" rel="noopener noreferrer" class="whatsapp-cta">
+                        <span>💬</span>
+                        <span data-zh="WhatsApp 立即订车" data-bm="WhatsApp Tempah Sekarang">WhatsApp 立即订车</span>
+                    </a>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="btn-toggle-wrapper">
-            <button class="btn-toggle" onclick="toggleStory('story-5', this)">
-              <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-              <span class="btn-text lang-bm">Baca Penuh ↓</span>
-            </button>
-          </div>
+    </main>
+
+    <!-- 页脚版权与免责声明 -->
+    <footer>
+        <div class="container">
+            <p data-zh="《西门日报》版权所有 © 2026 Berita Harian Simon. 保留所有权利。" data-bm="Hak Cipta Terpelihara © 2026 Berita Harian Simon.">《西门日报》版权所有 © 2026 Berita Harian Simon. 保留所有权利。</p>
+            <p data-zh="新闻采编执照: KDN/PP-10482/09/2026 | 总社地址: Wisma Berita Simon, Jalan Karamunsing, 88000 Kota Kinabalu, Sabah." data-bm="Permit Percetakan: KDN/PP-10482/09/2026 | Wisma Berita Simon, Jalan Karamunsing, 88000 Kota Kinabalu, Sabah.">新闻采编执照: KDN/PP-10482/09/2026 | 总社地址: Wisma Berita Simon, Jalan Karamunsing, 88000 Kota Kinabalu, Sabah.</p>
         </div>
-      </article>
-
-    </div>
-
-    <!-- 页面底部官方独家商业赞助商栏目 -->
-    <section class="sponsor-wrapper">
-      <div class="sponsor-header">
-        <div class="sponsor-logo-box">MY CAR</div>
-        <div class="sponsor-name">
-          <h2>MY CAR ENTERPRISE</h2>
-          <p class="lang-zh">山打根首选高品质租车 · 商务旅游与全方位专车接送服务</p>
-          <p class="lang-bm">Perkhidmatan Kereta Sewa Pandu Sendiri & Pemandu Sandakan Berkualiti</p>
-        </div>
-      </div>
-
-      <div style="font-size:0.92rem; color:#cbd5e1; line-height: 1.5;">
-        <span class="lang-zh">无论您是飞抵山打根商务出差、探亲访友、游览西必洛人猿中心或深入热带雨林探险，MY CAR ENTERPRISE 提供最新车况、洁净无异味、全保保险与极速交车的卓越体验。提供自驾租赁或专业老司机包车接送！</span>
-        <span class="lang-bm">Sama ada urusan rasmi, percutian ke Pusat Orang Utan Sepilok atau lawatan korporat di Sandakan, MY CAR ENTERPRISE sedia menyediakan kenderaan bersih, selesa, berinsurans penuh dengan servis pandu sendiri atau pemandu profesional berpengalaman.</span>
-      </div>
-
-      <!-- 车型矩阵 -->
-      <div class="fleet-grid">
-        <div class="fleet-item">
-          <div class="fleet-cat lang-zh">紧凑经济 / K-Car</div>
-          <div class="fleet-cat lang-bm">Ekonomi / K-Car</div>
-          <div class="fleet-cars">Perodua Myvi / Axia</div>
-        </div>
-        <div class="fleet-item">
-          <div class="fleet-cat lang-zh">舒适轿车 / Sedan</div>
-          <div class="fleet-cat lang-bm">Sedan Selesa</div>
-          <div class="fleet-cars">Toyota Vios / Saga / Bezza</div>
-        </div>
-        <div class="fleet-item">
-          <div class="fleet-cat lang-zh">豪华与家用 / MPV</div>
-          <div class="fleet-cat lang-bm">MPV Mewah & Keluarga</div>
-          <div class="fleet-cars">Vellfire / Alphard / Innova / Alza</div>
-        </div>
-        <div class="fleet-item">
-          <div class="fleet-cat lang-zh">越野四驱 / 4x4 & 客货客运</div>
-          <div class="fleet-cat lang-bm">Pacuan 4 Roda & Van</div>
-          <div class="fleet-cars">Hilux 4x4 / Van 11-12 座</div>
-        </div>
-      </div>
-
-      <!-- 联系方式与一键 Whatsapp 直达 -->
-      <div class="contact-box">
-        <div class="contact-person">
-          <div class="name">
-            <span class="lang-zh">负责人：Marco（专业热情 · 24小时预约）</span>
-            <span class="lang-bm">Pengurus: Marco (Khidmat Pelanggan 24 Jam)</span>
-          </div>
-          <div class="details">
-            <span>📞 <strong>Tel:</strong> 010-9301117</span>
-            <span>💬 <strong>WeChat / 微信号:</strong> Thien1117</span>
-            <span>📍 <strong>Lokasi:</strong> Sandakan, Sabah</span>
-          </div>
-        </div>
-
-        <a href="https://www.wasap.my/60109301117" target="_blank" rel="noopener noreferrer" class="wa-btn">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.664 6.082 6.221-1.632c1.707.935 3.669 1.47 5.751 1.47 6.627 0 12-5.373 12-12s-5.373-12-12-12zm0 21.84c-1.895 0-3.664-.533-5.176-1.455l-.371-.226-3.844 1.008 1.026-3.746-.247-.393c-1.025-1.632-1.568-3.528-1.568-5.488 0-5.424 4.416-9.84 9.84-9.84 5.424 0 9.84 4.416 9.84 9.84s-4.416 9.84-9.84 9.84z"/></svg>
-          <span class="lang-zh">立即 WhatsApp 预订租车</span>
-          <span class="lang-bm">Tempah Kereta WhatsApp Segera</span>
-        </a>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <p>© 2026 《西门日报 / Berita Harian Simon》版权所有 · 沙巴本地新闻权威发布平台</p>
-      <p>Penerbitan Digital Berwibawa Berita Tempatan Sabah & Isu Kontemporari Malaysia</p>
     </footer>
-  </main>
 
-  <script>
-    // 语言切换逻辑
-    function toggleLanguage() {
-      const body = document.body;
-      const langBtnText = document.getElementById('langBtnText');
-      if (body.classList.contains('lang-zh')) {
-        body.classList.remove('lang-zh');
-        body.classList.add('lang-bm');
-        langBtnText.textContent = '切换至中文';
-      } else {
-        body.classList.remove('lang-bm');
-        body.classList.add('lang-zh');
-        langBtnText.textContent = 'Tukar ke BM';
-      }
-    }
+    <!-- JavaScript: 语言切换与全文折叠展开 -->
+    <script>
+        let currentLang = 'zh';
 
-    // 新闻展开与折叠控制逻辑
-    function toggleStory(storyId, btnElement) {
-      const storyDiv = document.getElementById(storyId);
-      const isZh = document.body.classList.contains('lang-zh');
-      
-      if (storyDiv.style.display === 'block') {
-        storyDiv.style.display = 'none';
-        btnElement.innerHTML = `
-          <span class="btn-text lang-zh">展开阅读全文 ↓</span>
-          <span class="btn-text lang-bm">Baca Penuh ↓</span>
-        `;
-      } else {
-        storyDiv.style.display = 'block';
-        btnElement.innerHTML = `
-          <span class="btn-text lang-zh">收起全文 ↑</span>
-          <span class="btn-text lang-bm">Tutup Berita ↑</span>
-        `;
-      }
-    }
-  </script>
+        // 语言切换核心逻辑
+        function toggleLanguage() {
+            currentLang = (currentLang === 'zh') ? 'bm' : 'zh';
+            
+            // 切换所有带有 data-zh 和 data-bm 属性的节点
+            document.querySelectorAll('[data-zh]').forEach(el => {
+                const targetText = el.getAttribute('data-' + currentLang);
+                if (targetText) {
+                    el.innerHTML = targetText;
+                }
+            });
+
+            // 切换切换按钮自身文字
+            const langBtnText = document.getElementById('langText');
+            if (currentLang === 'zh') {
+                langBtnText.innerText = 'Bahasa Melayu';
+                document.documentElement.lang = 'zh-MY';
+            } else {
+                langBtnText.innerText = '中文版 (Chinese)';
+                document.documentElement.lang = 'ms-MY';
+            }
+
+            // 更新已展开折叠按钮的文案
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                const targetId = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                const target = document.getElementById(targetId);
+                const isOpened = target.classList.contains('open');
+                if (isOpened) {
+                    btn.innerHTML = currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Penuh ↑';
+                } else {
+                    btn.innerHTML = currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Penuh ↓';
+                }
+            });
+        }
+
+        // 文章折叠/展开
+        function toggleReadMore(button, articleId) {
+            const article = document.getElementById(articleId);
+            const isOpened = article.classList.toggle('open');
+            
+            if (isOpened) {
+                button.innerHTML = currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Penuh ↑';
+            } else {
+                button.innerHTML = currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Penuh ↓';
+            }
+        }
+    </script>
 </body>
 </html>
