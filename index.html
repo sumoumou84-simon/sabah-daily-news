@@ -2,1024 +2,474 @@
 <html lang="zh-MY">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>西门日报 | Berita Harian Simon</title>
   <style>
     :root {
-      --primary: #991b1b;
-      --primary-dark: #7f1d1d;
-      --accent: #dc2626;
-      --navy: #0f172a;
-      --slate: #334155;
-      --light-bg: #f8fafc;
+      --primary-red: #dc2626;
+      --bg-body: #f8fafc;
       --card-bg: #ffffff;
       --border: #e2e8f0;
-      --badge-bg: #fef2f2;
-      --badge-text: #b91c1c;
+      --text: #0f172a;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--navy);
-      line-height: 1.45;
-      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+      background: var(--bg-body);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 30px;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* 顶部通栏 固定吸顶 */
-    header.sticky-header {
+    header {
+      background: #ffffff;
+      border-bottom: 3px solid var(--primary-red);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: #ffffff;
-      border-bottom: 2px solid var(--primary);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    .header-inner {
-      max-width: 1040px;
+    .top-bar {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 8px 12px;
+      padding: 10px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       gap: 8px;
     }
-    .brand-title {
-      display: flex;
-      flex-direction: column;
-    }
-    .brand-title h1 {
-      font-size: 1.25rem;
+    .logo-group h1 {
+      font-size: 22px;
       font-weight: 900;
-      color: var(--primary);
+      color: var(--primary-red);
       letter-spacing: -0.5px;
-      line-height: 1.1;
     }
-    .brand-title .sub-brand {
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: #64748b;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-    .header-controls {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .date-select, .lang-btn {
-      font-size: 0.75rem;
-      padding: 4px 8px;
-      border-radius: 4px;
+    .actions { display: flex; align-items: center; gap: 8px; }
+    .archive-select {
+      padding: 5px 8px;
+      font-size: 12px;
+      border-radius: 6px;
       border: 1px solid #cbd5e1;
-      background: #fff;
-      color: var(--slate);
+      background: #f1f5f9;
       font-weight: 600;
-      cursor: pointer;
-      outline: none;
     }
     .lang-btn {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      white-space: nowrap;
-      transition: background 0.2s;
+      background: var(--primary-red);
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
     }
-    .lang-btn:hover {
-      background: var(--primary-dark);
+    .container {
+      max-width: 1100px;
+      margin: 12px auto;
+      padding: 0 10px;
     }
-
-    /* 主版容器 */
-    main.container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 12px;
-    }
-
-    /* 双列新闻网格 */
+    /* 核心：无论手机还是电脑，强制双列多宫格紧凑排版 */
     .news-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
       margin-bottom: 24px;
     }
-
-    /* 特大头条通栏 */
-    .lead-headline {
-      grid-column: 1 / -1;
-      background: #fff;
-      border: 1px solid #fecaca;
-      border-left: 5px solid var(--accent);
-      border-radius: 6px;
-      padding: 14px;
-      box-shadow: 0 2px 5px rgba(220, 38, 38, 0.05);
+    /* 第一条全宽大头条 */
+    .top-headline {
+      grid-column: 1 / -1 !important;
+      background: #fffdfd !important;
+      border: 1.5px solid #f87171 !important;
     }
-    .lead-tag {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 3px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .lead-title {
-      color: var(--accent);
-      font-size: 1.22rem;
-      font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-
-    /* 新闻通用卡片 */
     .news-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
+      border-radius: 8px;
+      padding: 10px 8px;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-      position: relative;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-    .news-card-content {
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .news-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-    .tag {
-      font-size: 0.65rem;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      font-weight: 700;
-      padding: 2px 5px;
-      border-radius: 3px;
-      text-transform: uppercase;
-    }
-    .news-time {
-      font-size: 0.65rem;
-      color: #94a3b8;
-    }
-    .news-card h2, .news-card h3 {
-      font-size: 0.92rem;
+    .card-meta { margin-bottom: 4px; }
+    .news-tag {
+      display: inline-block;
+      font-size: 10px;
       font-weight: 800;
-      color: var(--accent);
+      color: #9a3412;
+      background: #ffedd5;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    .news-title {
+      color: var(--primary-red) !important;
+      font-size: 13px;
       line-height: 1.35;
-      margin: 4px 0 6px 0;
+      font-weight: 800;
+      margin-bottom: 6px;
     }
-
-    /* SVG 配图与角标 */
-    .media-box {
-      position: relative;
-      width: 100%;
-      height: 120px;
-      background: #e2e8f0;
-      overflow: hidden;
+    .top-headline .news-title {
+      font-size: 15px;
     }
-    .media-box svg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .media-badge {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(15, 23, 42, 0.78);
-      backdrop-filter: blur(2px);
-      color: #f8fafc;
-      padding: 3px 8px;
-      font-size: 0.62rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .share-icon-btn {
-      background: rgba(255,255,255,0.2);
-      border: none;
-      color: #fff;
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    .share-icon-btn:hover {
-      background: rgba(255,255,255,0.4);
-    }
-
-    /* 折叠正文区域 */
-    .article-body {
+    .full-content {
       display: none;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed #e2e8f0;
-      font-size: 0.8rem;
+      font-size: 12px;
       color: #334155;
-      line-height: 1.5;
+      line-height: 1.6;
+      background: #f8fafc;
+      padding: 8px;
+      border-radius: 6px;
+      border-top: 1px dashed #cbd5e1;
+      margin-bottom: 6px;
     }
-    .article-body.expanded {
-      display: block;
-    }
-    .expand-toggle {
+    .expand-btn {
       margin-top: auto;
-      padding-top: 6px;
+      align-self: flex-start;
       background: none;
-      border: none;
-      color: #475569;
-      font-size: 0.72rem;
+      border: 1px solid var(--primary-red);
+      color: var(--primary-red);
+      padding: 2px 6px;
+      font-size: 11px;
       font-weight: 700;
-      text-align: right;
+      border-radius: 4px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 3px;
     }
-    .expand-toggle:hover {
-      color: var(--accent);
-    }
-
-    /* 专区标题 */
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-left: 4px solid var(--primary);
+    /* 活动专区 */
+    .section-title {
+      margin: 18px 0 10px 0;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 4px solid var(--primary-red);
       padding-left: 8px;
-      margin: 28px 0 12px 0;
     }
-    .section-header h2 {
-      font-size: 1.05rem;
-      font-weight: 900;
-      color: var(--navy);
-    }
-    .section-header span {
-      font-size: 0.72rem;
-      color: #64748b;
-      font-weight: 600;
-    }
-
-    /* 活动预告卡片 */
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 8px;
+      margin-bottom: 24px;
     }
     .event-card {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid #cbd5e1;
-      border-top: 3px solid #0284c7;
-      border-radius: 6px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      border-top: 3px solid #d97706;
+      border-radius: 8px;
+      padding: 10px;
     }
-    .event-date-badge {
-      display: inline-block;
-      font-size: 0.68rem;
+    .event-date {
+      font-size: 10px;
       font-weight: 800;
-      background: #e0f2fe;
-      color: #0369a1;
+      color: #b45309;
+      background: #fef3c7;
       padding: 2px 6px;
-      border-radius: 3px;
+      border-radius: 4px;
+      display: inline-block;
       margin-bottom: 6px;
     }
     .event-title {
-      font-size: 0.88rem;
+      font-size: 13px;
       font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 6px;
-      line-height: 1.35;
+      color: #1e293b;
+      margin-bottom: 4px;
     }
     .event-desc {
-      font-size: 0.75rem;
-      color: #475569;
-      margin-bottom: 10px;
-      flex-grow: 1;
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 8px;
     }
-    .event-actions {
+    .event-links {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: auto;
     }
-    .btn-action {
-      flex: 1 1 calc(50% - 3px);
-      text-align: center;
-      padding: 5px 6px;
-      border-radius: 4px;
-      font-size: 0.7rem;
+    .event-link-btn {
+      font-size: 10px;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: opacity 0.2s;
+      padding: 3px 6px;
+      border-radius: 4px;
+      text-decoration: none;
+      background: #f1f5f9;
+      color: #0284c7;
+      border: 1px solid #cbd5e1;
     }
-    .btn-action:hover {
-      opacity: 0.9;
-    }
-    .btn-tel {
-      background: #0284c7;
-      color: #fff;
-    }
-    .btn-wa {
-      background: #16a34a;
-      color: #fff;
-    }
-
-    /* 商业赞助区域 (固定底部) */
-    .sponsor-wrapper {
+    /* 置底商业广告 */
+    .sponsor-card {
       background: #0f172a;
-      color: #f8fafc;
+      color: #ffffff;
       border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 30px;
-      border: 1px solid #334155;
-    }
-    .sponsor-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      padding: 14px;
+      margin-top: 10px;
     }
     .sponsor-title {
-      font-size: 1rem;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 900;
       color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sponsor-tag {
-      font-size: 0.65rem;
-      background: #ea580c;
-      color: #fff;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-    .sponsor-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 14px;
-      align-items: center;
+      margin-bottom: 4px;
     }
     .sponsor-desc {
-      font-size: 0.78rem;
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .fleet-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      font-size: 11px;
       color: #cbd5e1;
-      line-height: 1.5;
+      margin-bottom: 10px;
     }
-    .sponsor-cta {
+    .contact-row {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 6px;
+      align-items: center;
+      font-size: 11px;
     }
-    .sponsor-btn {
-      padding: 7px 10px;
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-align: center;
-      display: block;
-      color: #fff;
-    }
-    .btn-wa-sponsor {
+    .wa-btn {
+      margin-left: auto;
       background: #22c55e;
-    }
-    .btn-tel-sponsor {
-      background: #3b82f6;
-    }
-
-    /* 页脚 */
-    footer.page-footer {
-      text-align: center;
-      padding: 18px 12px;
-      border-top: 1px solid #e2e8f0;
-      font-size: 0.7rem;
-      color: #64748b;
-    }
-
-    /* 移动端与自适应优化 */
-    @media (max-width: 768px) {
-      .events-grid {
-        grid-template-columns: 1fr;
-      }
-      .sponsor-content {
-        grid-template-columns: 1fr;
-      }
-      .news-grid {
-        gap: 8px;
-      }
-      .media-box {
-        height: 100px;
-      }
-      .lead-title {
-        font-size: 1.05rem;
-      }
-      .news-card h2, .news-card h3 {
-        font-size: 0.85rem;
-      }
+      color: #ffffff;
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 11px;
     }
   </style>
 </head>
 <body>
-
-  <!-- 1. 顶部通栏（固定吸顶） -->
-  <header class="sticky-header">
-    <div class="header-inner">
-      <div class="brand-title">
-        <h1 class="trans" data-zh="西门日报" data-bm="BERITA HARIAN SIMON">西门日报</h1>
-        <div class="sub-brand">BERITA HARIAN SIMON · SABAH</div>
+  <header>
+    <div class="top-bar">
+      <div class="logo-group">
+        <h1 data-zh="西门日报" data-bm="Berita Harian Simon">西门日报</h1>
       </div>
-      <div class="header-controls">
-        <select class="date-select" id="datePicker" onchange="switchDate(this.value)">
-          <option value="today" selected class="trans" data-zh="📅 今日：2026年10月29日" data-bm="📅 Hari Ini: 29 Okt 2026">📅 今日：2026年10月29日</option>
-          <option value="yesterday" class="trans" data-zh="📅 昨天 (10月28日)" data-bm="📅 Semalam (28 Okt)">📅 昨天 (10月28日)</option>
-          <option value="before" class="trans" data-zh="📅 前天 (10月27日)" data-bm="📅 Kelmarin (27 Okt)">📅 前天 (10月27日)</option>
+      <div class="actions">
+        <select class="archive-select" id="archive-date">
+          <option value="today">📅 今日：2026年10月29日</option>
+          <option value="yesterday">📅 昨天</option>
+          <option value="prev">📅 前天</option>
         </select>
-        <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">Bahasa Melayu</button>
+        <button class="lang-btn" onclick="toggleLanguage()">
+          <span id="lang-text">Bahasa Melayu</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 主体内容 -->
   <main class="container">
-
-    <!-- 2. 今日头条与沙巴要闻 (双列多宫格) -->
-    <section class="news-grid" id="newsGrid">
-
-      <!-- 顶层特大头条 (通栏) -->
-      <article class="lead-headline">
-        <span class="lead-tag trans" data-zh="特别关注 · 州议会权威速递" data-bm="FOKUS UTAMA · DEWAN UNDANGAN NEGERI">特别关注 · 州议会权威速递</span>
-        <h2 class="lead-title trans" 
-            data-zh="哈芝芝证实联邦开销达 71.78%，291项发展工程竣工交付沙巴人民" 
-            data-bm="Hajiji Sahkan Perbelanjaan Persekutuan Capai 71.78%, 291 Projek Siap & Diserah Kepada Rakyat Sabah">
-          哈芝芝证实联邦开销达 71.78%，291项发展工程竣工交付沙巴人民
-        </h2>
-        <div class="news-time trans" data-zh="发布时间：2026年10月29日 07:45 · 亚庇讯" data-bm="Diterbitkan: 29 Okt 2026, 07:45 · KOTA KINABALU">发布时间：2026年10月29日 07:45 · 亚庇讯</div>
-        <div class="article-body" id="body-lead">
-          <p class="trans"
-             data-zh="【亚庇讯】沙巴首席部长拿督斯里哈芝芝诺昨日在州议会问答环节正式公布，截至2026年第3季度，联邦政府拨予沙巴的发展总开销执行率已显著突破 71.78%。全州范围内累计共有 291 项重点基建、水利电力升级及校舍诊所翻新工程顺利全面验收并移交有关部门运营。首长强调，州政府跨部门监督委员会将持续督导剩余项目，确保每一分联邦拨款精准转化为沙巴乡村与城镇的民生福祉。"
-             data-bm="[KOTA KINABALU] Ketua Menteri Sabah Datuk Seri Panglima Hajiji Noor mengesahkan pelaksanaan peruntukan pembangunan Persekutuan bagi Sabah telah melepasi paras 71.78% setakat suku ketiga 2026. Sebanyak 291 projek infrastruktur asas, air, elektrik serta penaiktarafan sekolah daif telah berjaya disiapkan sepenuhnya dan diserahkan untuk manfaat rakyat. Kerajaan negeri komited memantau baki projek bagi memastikan setiap peruntukan dimanfaatkan sepenuhnya demi kemakmuran Sabah.">
-            【亚庇讯】沙巴首席部长拿督斯里哈芝芝诺昨日在州议会问答环节正式公布，截至2026年第3季度，联邦政府拨予沙巴的发展总开销执行率已显著突破 71.78%。全州范围内累计共有 291 项重点基建、水利电力升级及校舍诊所翻新工程顺利全面验收并移交有关部门运营。首长强调，州政府跨部门监督委员会将持续督导剩余项目，确保每一分联邦拨款精准转化为沙巴乡村与城镇的民生福祉。
-          </p>
-        </div>
-        <button class="expand-toggle" onclick="toggleRead('body-lead', this)">
-          <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-        </button>
-      </article>
-
-      <!-- 卡片 1 (配图): ESSCOM 古纳突击 -->
-      <article class="news-card">
-        <div class="media-box">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="120" fill="#0f172a"/>
-            <!-- 海水与夜色突击 -->
-            <path d="M0,80 Q80,70 160,82 T320,78 L320,120 L0,120 Z" fill="#0369a1"/>
-            <path d="M0,95 Q90,90 180,98 T320,92 L320,120 L0,120 Z" fill="#0284c7"/>
-            <!-- 巡逻艇轮廓 -->
-            <polygon points="120,75 190,75 175,60 135,60" fill="#334155"/>
-            <rect x="145" y="52" width="16" height="8" fill="#64748b"/>
-            <!-- 探照灯光束 -->
-            <polygon points="155,50 20,110 90,115" fill="#fef08a" opacity="0.35"/>
-            <!-- 警灯红蓝光晕 -->
-            <circle cx="152" cy="50" r="4" fill="#ef4444"/>
-            <circle cx="158" cy="50" r="4" fill="#3b82f6"/>
-            <text x="12" y="32" fill="#38bdf8" font-size="12" font-weight="900">ESSCOM MARITIME TACTICAL</text>
-          </svg>
-          <div class="media-badge">
-            <span class="trans" data-zh="📷 来源：ESSCOM 官方通报" data-bm="📷 Sumber: Hebahan ESSCOM">📷 来源：ESSCOM 官方通报</span>
-            <button class="share-icon-btn" onclick="shareArticle('古纳 ESSCOM 海陆联合突击')">📤 <span class="trans" data-zh="分享" data-bm="Kongsi">分享</span></button>
-          </div>
-        </div>
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="东安局行动" data-bm="OPERASI ESSCOM">东安局行动</span>
-            <span class="news-time">08:10</span>
-          </div>
-          <h3 class="trans"
-              data-zh="ESSCOM 海陆包围古纳水上村，扣多名无证客查获走私燃油"
-              data-bm="ESSCOM Gempur Kg Air Kunak: Tahan PATI & Rampas Tong Minyak Seludup">
-            ESSCOM 海陆包围古纳水上村，扣多名无证客查获走私燃油
-          </h3>
-          <div class="article-body" id="body-esscom">
-            <p class="trans"
-               data-zh="沙巴东部特别保安指挥区（ESSCOM）昨日联合水警与特警部队展开代号行动，全面封锁古纳多处水上木屋区，成功拦截数艘可疑改装快艇，当场扣留18名无合法身份证件的外籍人士，并起获大批企图暗中走私出海的受统制品汽油。"
-               data-bm="Kawasan Keselamatan Khas Pantai Timur Sabah (ESSCOM) bersama Pasukan Polis Marin melancarkan serbuan bersepadu di perkampungan air Kunak. Operasi berjaya menahan 18 pendatang asing tanpa izin (PATI) serta menyita beberapa bot gentian kaca berisi minyak bersubsidi.">
-              沙巴东部特别保安指挥区（ESSCOM）昨日联合水警与特警部队展开代号行动，全面封锁古纳多处水上木屋区，成功拦截数艘可疑改装快艇，当场扣留18名无合法身份证件的外籍人士，并起获大批企图暗中走私出海的受统制品汽油。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-esscom', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 2 (配图): 软银注资 -->
-      <article class="news-card">
-        <div class="media-box">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="120" fill="#030712"/>
-            <!-- 算力数据流 -->
-            <line x1="20" y1="20" x2="160" y2="80" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,4"/>
-            <line x1="300" y1="20" x2="160" y2="80" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,4"/>
-            <!-- 芯片与机柜 -->
-            <rect x="130" y="55" width="60" height="50" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-            <circle cx="160" cy="80" r="10" fill="#0284c7"/>
-            <text x="145" y="84" fill="#ffffff" font-size="10" font-weight="bold">AI</text>
-            <text x="12" y="30" fill="#38bdf8" font-size="12" font-weight="900">SOFTBANK RM204B AI HUB</text>
-          </svg>
-          <div class="media-badge">
-            <span class="trans" data-zh="📷 来源：星洲日报 / 财经专线" data-bm="📷 Sumber: Sin Chew / Kewangan">📷 来源：星洲日报 / 财经专线</span>
-            <button class="share-icon-btn" onclick="shareArticle('软银 2040 亿算力中心落户大马')">📤 <span class="trans" data-zh="分享" data-bm="Kongsi">分享</span></button>
-          </div>
-        </div>
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="全球重磅投资" data-bm="PELABURAN GLOBAL">全球重磅投资</span>
-            <span class="news-time">07:30</span>
-          </div>
-          <h3 class="trans"
-              data-zh="软银斥 2040 亿打造东南亚最大 AI 算力中心，大马成算力枢纽"
-              data-bm="SoftBank Labur RM204 Bilion Bangun Pusat Super-Pengkomputeran AI Malaysia">
-            软银斥 2040 亿打造东南亚最大 AI 算力中心，大马成算力枢纽
-          </h3>
-          <div class="article-body" id="body-softbank">
-            <p class="trans"
-               data-zh="日本软银集团（SoftBank）敲定规模高达 2040 亿令吉的超大规模生成式 AI 与超级算力数据中心投资方案。该项目将携手大马国家能源与绿色基建网，沙巴亦有望凭借充足清洁能源与光缆节点吸引周边高科技算力链落户。"
-               data-bm="Kumpulan SoftBank memuktamadkan pelan pelaburan bernilai RM204 bilion bagi membina hab pusat data AI terbesar di rantau Asia Tenggara, meletakkan Malaysia sebagai nod pengkomputeran termaju dan memacu ekosistem digital nasional termasuk Sabah.">
-              日本软银集团（SoftBank）敲定规模高达 2040 亿令吉的超大规模生成式 AI 与超级算力数据中心投资方案。该项目将携手大马国家能源与绿色基建网，沙巴亦有望凭借充足清洁能源与光缆节点吸引周边高科技算力链落户。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-softbank', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 3 (纯文本紧凑): LHDN 防骗 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="官方辟谣防诈" data-bm="AMARAN SCAM">官方辟谣防诈</span>
-            <span class="news-time">08:45</span>
-          </div>
-          <h3 class="trans"
-              data-zh="税局 LHDN 紧急防骗：切勿轻信高额退税 SMS 与下载 APK 陷阱"
-              data-bm="LHDN Keluar Amaran Keras: Waspada Pautan Palsu Pulangan Cukai & Fail APK">
-            税局 LHDN 紧急防骗：切勿轻信高额退税 SMS 与下载 APK 陷阱
-          </h3>
-          <div class="article-body" id="body-lhdn">
-            <p class="trans"
-               data-zh="内陆税收局（LHDN）发文提醒大众，该局绝不会通过个人手机号码或非官方 WhatsApp 发送退税转账链接，更不会要求纳税人下载所谓专属 APK 安装包。公众务必登录官方 MyTax 门户网站办理所有税务事宜。"
-               data-bm="Lembaga Hasil Dalam Negeri (LHDN) mengingatkan orang ramai bahawa pihaknya tidak pernah menghantar pautan pemulangan lebihan cukai menerusi SMS atau mengarahkan pembayar cukai memasang fail APK. Segala transaksi hanya sah di portal rasmi MyTax.">
-              内陆税收局（LHDN）发文提醒大众，该局绝不会通过个人手机号码或非官方 WhatsApp 发送退税转账链接，更不会要求纳税人下载所谓专属 APK 安装包。公众务必登录官方 MyTax 门户网站办理所有税务事宜。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-lhdn', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 4 (配图): 马银行 MAE 扫码通五地 -->
-      <article class="news-card">
-        <div class="media-box">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="120" fill="#fef08a"/>
-            <!-- 手机轮廓 -->
-            <rect x="135" y="15" width="50" height="90" rx="6" fill="#1e293b"/>
-            <rect x="140" y="22" width="40" height="76" rx="3" fill="#ffffff"/>
-            <!-- QR 码示意 -->
-            <rect x="146" y="32" width="28" height="28" fill="#eab308"/>
-            <rect x="150" y="36" width="20" height="20" fill="#000"/>
-            <circle cx="160" cy="78" r="8" fill="#15803d"/>
-            <text x="12" y="30" fill="#a16207" font-size="12" font-weight="900">MAYBANK MAE ASEAN QR</text>
-          </svg>
-          <div class="media-badge">
-            <span class="trans" data-zh="📷 来源：诗华日报 · 金融讯" data-bm="📷 Sumber: See Hua / Perbankan">📷 来源：诗华日报 · 金融讯</span>
-            <button class="share-icon-btn" onclick="shareArticle('马银行 MAE 跨境扫码支付')">📤 <span class="trans" data-zh="分享" data-bm="Kongsi">分享</span></button>
-          </div>
-        </div>
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="金融创新" data-bm="FINTECH">金融创新</span>
-            <span class="news-time">08:20</span>
-          </div>
-          <h3 class="trans"
-              data-zh="马银行 MAE 扫码直通新泰印中日五地，即时兑汇无手续费"
-              data-bm="Maybank MAE Bayar Kod QR Lancar di 5 Destinasi Serantau Termasuk China">
-            马银行 MAE 扫码直通新泰印中日五地，即时兑汇无手续费
-          </h3>
-          <div class="article-body" id="body-maybank">
-            <p class="trans"
-               data-zh="马来亚银行（Maybank）全面扩展 MAE 跨境 QR 扫码支付体系。如今沙巴及全马用户前往泰国、新加坡、印尼、中国内地及日本时，直接打开 MAE 即可扫码商户二维码完成扣款，汇率实时折算，省去兑换大量现钞的繁琐环节。"
-               data-bm="Pengguna Maybank kini boleh menggunakan aplikasi MAE untuk mengimbas kod QR di Singapura, Thailand, Indonesia, China dan Jepun dengan kadar pertukaran mata wang langsung tanpa caj tersembunyi, memudahkan pelancongan dan urusan perniagaan serantau.">
-              马来亚银行（Maybank）全面扩展 MAE 跨境 QR 扫码支付体系。如今沙巴及全马用户前往泰国、新加坡、印尼、中国内地及日本时，直接打开 MAE 即可扫码商户二维码完成扣款，汇率实时折算，省去兑换大量现钞的繁琐环节。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-maybank', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 5 (配图): 假 Bomba 越野车落网 -->
-      <article class="news-card">
-        <div class="media-box">
-          <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="320" height="120" fill="#18181b"/>
-            <!-- 假冒皮卡 -->
-            <polygon points="70,85 240,85 220,60 120,60" fill="#dc2626"/>
-            <!-- 车顶违规警示灯 -->
-            <rect x="155" y="52" width="25" height="8" rx="2" fill="#ef4444"/>
-            <circle cx="160" cy="56" r="3" fill="#ffffff"/>
-            <!-- 车轮 -->
-            <circle cx="105" cy="88" r="16" fill="#3f3f46"/>
-            <circle cx="195" cy="88" r="16" fill="#3f3f46"/>
-            <!-- 查封警线示意 -->
-            <line x1="0" y1="105" x2="320" y2="105" stroke="#facc15" stroke-width="4" stroke-dasharray="10,10"/>
-            <text x="12" y="30" fill="#f87171" font-size="12" font-weight="900">POLIS TRAFIK SITA KENDERAAN</text>
-          </svg>
-          <div class="media-badge">
-            <span class="trans" data-zh="📷 来源：警方通报 / 星洲日报" data-bm="📷 Sumber: Trafik PDRM / Sin Chew">📷 来源：警方通报 / 星洲日报</span>
-            <button class="share-icon-btn" onclick="shareArticle('假冒消防车司机落网扣查')">📤 <span class="trans" data-zh="分享" data-bm="Kongsi">分享</span></button>
-          </div>
-        </div>
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="警讯执法" data-bm="KESELAMATAN">警讯执法</span>
-            <span class="news-time">08:00</span>
-          </div>
-          <h3 class="trans"
-              data-zh="皮卡私贴Bomba徽章装警报灯滥权开路，涉案司机遭交警拦截扣查"
-              data-bm="Ford Ranger Palsukan Pelekat Bomba & Pasang Strob Ditahan Polis Trafik">
-            皮卡私贴Bomba徽章装警报灯滥权开路，涉案司机遭交警拦截扣查
-          </h3>
-          <div class="article-body" id="body-bomba">
-            <p class="trans"
-               data-zh="交警执法组在公路巡逻时拦截一辆改装 Ford Ranger 越野车。该车不仅违规张贴消防局标志，更私装高分贝警报器与红蓝爆闪灯非法逼让前方车道。司机已被扣押，并在陆路交通法令及冒充公职人员条文下接受调查。"
-               data-bm="Polis Trafik menahan seorang lelaki tempatan yang memandu pacuan empat roda diubah suai menyerupai kenderaan Jabatan Bomba dan Penyelamat. Suspek dikesan memasang lampu strob serta membunyikan siren kecemasan haram bagi memotong barisan trafik.">
-              交警执法组在公路巡逻时拦截一辆改装 Ford Ranger 越野车。该车不仅违规张贴消防局标志，更私装高分贝警报器与红蓝爆闪灯非法逼让前方车道。司机已被扣押，并在陆路交通法令及冒充公职人员条文下接受调查。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-bomba', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 6 (纯文本紧凑): STR 援助金 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="民生福利" data-bm="BANTUAN TUNAI">民生福利</span>
-            <span class="news-time">07:50</span>
-          </div>
-          <h3 class="trans"
-              data-zh="2026年第4阶段 STR 慈悯援助金今起分批入账，受惠者可查阅银行"
-              data-bm="STR Fasa 4 2026 Mula Dikreditkan Hari Ini, Semakan BSN & Bank Dibuka">
-            2026年第4阶段 STR 慈悯援助金今起分批入账，受惠者可查阅银行
-          </h3>
-          <div class="article-body" id="body-str">
-            <p class="trans"
-               data-zh="财政部宣布，第四阶段慈悯援助金（Sumbangan Tunai Rahmah）自今日起通过各商业银行户头陆续发放。未持有银行户口的民众可于本周末凭身份证亲赴国民储蓄银行（BSN）分行柜台直接申领现金。"
-               data-bm="Kementerian Kewangan mengumumkan pembayaran Sumbangan Tunai Rahmah (STR) Fasa 4 mula dikreditkan berperingkat ke akaun bank penerima yang layak hari ini. Penerima tanpa akaun boleh membuat penunaian di cawangan Bank Simpanan Nasional (BSN).">
-              财政部宣布，第四阶段慈悯援助金（Sumbangan Tunai Rahmah）自今日起通过各商业银行户头陆续发放。未持有银行户口的民众可于本周末凭身份证亲赴国民储蓄银行（BSN）分行柜台直接申领现金。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-str', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 7 (纯文本紧凑): 气象长命雨 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="气象灾害预警" data-bm="AMARAN MET">气象灾害预警</span>
-            <span class="news-time">07:15</span>
-          </div>
-          <h3 class="trans"
-              data-zh="气象局向沙巴东西海岸发持续强降雨警报，低洼地带提防山洪积水"
-              data-bm="MetMalaysia Amaran Hujan Berterusan di Sandakan, Tawau & Pantai Barat">
-            气象局向沙巴东西海岸发持续强降雨警报，低洼地带提防山洪积水
-          </h3>
-          <div class="article-body" id="body-met">
-            <p class="trans"
-               data-zh="大马气象局今早对山打根、斗湖、古达及西海岸沿海多县发出恶劣天气黄橙色警报。预料长命雨天气将维持48小时，沿海居民与常年水患黑点住户应随时备齐紧急避难包并遵从民防部队指示。"
-               data-bm="Jabatan Meteorologi Malaysia (MetMalaysia) mengeluarkan amaran hujan berterusan tahap waspada membabitkan bahagian Pantai Barat, Sandakan, Tawau dan Kudat sehingga akhir minggu. Penduduk di kawasan berisiko banjir dinasihatkan sentiasa peka.">
-              大马气象局今早对山打根、斗湖、古达及西海岸沿海多县发出恶劣天气黄橙色警报。预料长命雨天气将维持48小时，沿海居民与常年水患黑点住户应随时备齐紧急避难包并遵从民防部队指示。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-met', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 8 (纯文本紧凑): MyLapor 茶室吸烟检举 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="卫生法治" data-bm="KESIHATAN AWAM">卫生法治</span>
-            <span class="news-time">08:35</span>
-          </div>
-          <h3 class="trans"
-              data-zh="卫生局依据 MyLapor 密报突击茶室，山打根与亚庇多名违规烟客接罚单"
-              data-bm="KKM Gempur Kedai Kopi Susulan Aduan MyLapor: Beberapa Perokok Dikompaun">
-            卫生局依据 MyLapor 密报突击茶室，山打根与亚庇多名违规烟客接罚单
-          </h3>
-          <div class="article-body" id="body-smoke">
-            <p class="trans"
-               data-zh="沙巴卫生局依据公众在 MyLapor 平台的精准检举，派出便衣执法官走访市区及住宅区多间华人茶室与嘛嘛档，当场向在禁烟区公然吸烟及使用电子烟的违例者各开出 250 令吉罚单，店主亦被勒令加强张贴警示标志。"
-               data-bm="Jabatan Kesihatan Negeri Sabah mengambil tindakan pantas terhadap aduan orang awam melalui sistem MyLapor dengan menyerbu beberapa premis kedai kopi di Sandakan dan Kota Kinabalu. Kompaun serta-merta dikeluarkan kepada individu yang ingkar larangan merokok.">
-              沙巴卫生局依据公众在 MyLapor 平台的精准检举，派出便衣执法官走访市区及住宅区多间华人茶室与嘛嘛档，当场向在禁烟区公然吸烟及使用电子烟的违例者各开出 250 令吉罚单，店主亦被勒令加强张贴警示标志。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-smoke', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 9 (纯文本紧凑): 学校假期公布 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="教育动态" data-bm="PENDIDIKAN">教育动态</span>
-            <span class="news-time">07:20</span>
-          </div>
-          <h3 class="trans"
-              data-zh="教育部正式颁布第三学期年终假期间表，沙巴各校12月中起放假4周"
-              data-bm="KPM Rilis Takwim Cuti Penggal 3: Sekolah Sabah Mula Bercuti Pertengahan Disember">
-            教育部正式颁布第三学期年终假期间表，沙巴各校12月中起放假4周
-          </h3>
-          <div class="article-body" id="body-school">
-            <p class="trans"
-               data-zh="教育部发布全国学年终结统一校历，沙巴所属的B组学校本学期将于12月18日正式结业并开启长达四周的年终长假，新学年预计将于2027年1月中旬全面启航，家长已着手规划返乡与家庭旅游。"
-               data-bm="Kementerian Pendidikan Malaysia (KPM) mengesahkan cuti akhir persekolahan Penggal 3 bagi sesi 2026 untuk sekolah Kumpulan B (termasuk Sabah) akan bermula pada 18 Disember sehingga pertengahan Januari 2027 bagi persiapan tahun akademik baharu.">
-              教育部发布全国学年终结统一校历，沙巴所属的B组学校本学期将于12月18日正式结业并开启长达四周的年终长假，新学年预计将于2027年1月中旬全面启航，家长已着手规划返乡与家庭旅游。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-school', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 10 (纯文本紧凑): 明讯电讯基建合并推进 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="数码通讯" data-bm="TELEKOMUNIKASI">数码通讯</span>
-            <span class="news-time">08:05</span>
-          </div>
-          <h3 class="trans"
-              data-zh="明讯加速整合共享电讯基建，沙巴偏远内陆 5G 网络覆盖率稳迈90%"
-              data-bm="Maxis Integrasi Infrastruktur Menara, Liputan 5G Pedalaman Sabah Capai 90%">
-            明讯加速整合共享电讯基建，沙巴偏远内陆 5G 网络覆盖率稳迈90%
-          </h3>
-          <div class="article-body" id="body-maxis">
-            <p class="trans"
-               data-zh="随着大马第二 5G 网络架构稳步落地，明讯与多家基建伙伴深化塔架共享合作，大幅降低重复建设成本。沙巴内陆根地咬、丹南及拿笃周边种植园区的移动网络传输稳定性提升逾 40%。"
-               data-bm="Maxis terus memperluas rangkaian perkongsian infrastruktur telekomunikasi bagi mempercepat capaian 5G di kawasan luar bandar Sabah seperti Keningau, Tenom dan Lahad Datu, sekali gus merapatkan jurang digital antara bandar dan desa.">
-              随着大马第二 5G 网络架构稳步落地，明讯与多家基建伙伴深化塔架共享合作，大幅降低重复建设成本。沙巴内陆根地咬、丹南及拿笃周边种植园区的移动网络传输稳定性提升逾 40%。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-maxis', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-      <!-- 卡片 11 (纯文本紧凑): Sazarice 米粮市况 -->
-      <article class="news-card">
-        <div class="news-card-content">
-          <div class="news-tag-row">
-            <span class="tag trans" data-zh="米粮民生" data-bm="BEKALAN MAKANAN">米粮民生</span>
-            <span class="news-time">07:40</span>
-          </div>
-          <h3 class="trans"
-              data-zh="Sazarice 全力稳定全州白米储备充裕，批发零售价格维持受控平衡"
-              data-bm="Sazarice Sahkan Stok Beras Putih Sabah Stabil & Cukup Menampung Permintaan">
-            Sazarice 全力稳定全州白米储备充裕，批发零售价格维持受控平衡
-          </h3>
-          <div class="article-body" id="body-saza">
-            <p class="trans"
-               data-zh="沙巴主要米粮分销商 Sazarice 深入各大超商走访排查后表示，目前州内进口白米与本地统制米库存量充足，物流分销链畅通无阻，呼吁市民切勿轻信短缺谣言进行恐慌性抢购囤积。"
-               data-bm="Sazarice Sdn Bhd memberi jaminan bekalan beras putih di seluruh Sabah kekal mencukupi bagi menampung keperluan pasaran dan rantaian pengedaran berjalan lancar tanpa kenaikan harga mendadak. Pengguna dinasihatkan tidak panik.">
-              沙巴主要米粮分销商 Sazarice 深入各大超商走访排查后表示，目前州内进口白米与本地统制米库存量充足，物流分销链畅通无阻，呼吁市民切勿轻信短缺谣言进行恐慌性抢购囤积。
-            </p>
-          </div>
-          <button class="expand-toggle" onclick="toggleRead('body-saza', this)">
-            <span class="btn-text trans" data-zh="展开阅读全文 ↓" data-bm="Baca Penuh ↓">展开阅读全文 ↓</span>
-          </button>
-        </div>
-      </article>
-
-    </section>
-
-    <!-- 3. 未来两周至一个月 · 沙巴商业、展销与慈善活动预告 -->
-    <div class="section-header">
-      <h2 class="trans" data-zh="未来两周至一个月 · 沙巴商展与盛事预告" data-bm="Kalendar Acara Sabah (2 Minggu - 1 Bulan)">未来两周至一个月 · 沙巴商展与盛事预告</h2>
-      <span class="trans" data-zh="一键互动 · 官方直线直达" data-bm="Saluran Hubungan Rasmi">一键互动 · 官方直线直达</span>
+    <div class="section-title" data-zh="今日头条与沙巴要闻" data-bm="Berita Utama & Sabah Hari Ini">今日头条与沙巴要闻</div>
+    
+    <div class="news-grid">
+      
+    <article class="news-card top-headline">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="沙巴基建" data-bm="Infrastruktur">沙巴基建</span>
+      </div>
+      <h3 class="news-title" data-zh="【沙巴基建】哈芝芝证实联邦开销达 71.78%，291项工程竣工交付" data-bm="KM: Prestasi Perbelanjaan Sabah Melonjak 71.78%, 291 Projek Siap">【沙巴基建】哈芝芝证实联邦开销达 71.78%，291项工程竣工交付</h3>
+      <div class="full-content" id="card_0">
+        <p data-zh="沙巴首长哈芝芝证实，截至10月26日沙巴联邦发展开销提速冲上71.78%，较8月大幅跃升。全州291项重大发展工程顺利竣工，涵盖亚庇科学中学与兵南邦多项校舍及民生基建。" data-bm="Ketua Menteri Datuk Seri Hajiji Noor mengesahkan perbelanjaan persekutuan di Sabah melonjak ke 71.78%, dengan 291 projek siap dibina termasuk SM Sains Sabah.">沙巴首长哈芝芝证实，截至10月26日沙巴联邦发展开销提速冲上71.78%，较8月大幅跃升。全州291项重大发展工程顺利竣工，涵盖亚庇科学中学与兵南邦多项校舍及民生基建。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_0', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="沙巴治安" data-bm="Keselamatan">沙巴治安</span>
+      </div>
+      <h3 class="news-title" data-zh="【沙巴治安】ESSCOM 古纳海陆大突击扣10人，开罚及充公逾 26.9 万令吉" data-bm="Operasi Bersepadu ESSCOM di Kunak Tahan 10 Individu, Kompaun RM269k">【沙巴治安】ESSCOM 古纳海陆大突击扣10人，开罚及充公逾 26.9 万令吉</h3>
+      <div class="full-content" id="card_1">
+        <p data-zh="东安局（ESSCOM）联合19部门202名执法人员在古纳展开海陆突击，扣留10名涉案人士，累计开出罚单及充公物资逾26万9439令吉。" data-bm="ESSCOM bersama 19 agensi menggerakkan 202 anggota dalam operasi bersepadu di Kunak, menahan 10 individu dan merampas barangan.">东安局（ESSCOM）联合19部门202名执法人员在古纳展开海陆突击，扣留10名涉案人士，累计开出罚单及充公物资逾26万9439令吉。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_1', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="科技算力" data-bm="Teknologi">科技算力</span>
+      </div>
+      <h3 class="news-title" data-zh="【科技算力】软银投资 2040 亿令吉，选中古晋与西马发展 AI 与绿色数据中心" data-bm="SoftBank Labur RM204b Bangun Pusat Data AI di Kuching & Semenanjung">【科技算力】软银投资 2040 亿令吉，选中古晋与西马发展 AI 与绿色数据中心</h3>
+      <div class="full-content" id="card_2">
+        <p data-zh="软银创办人孙正义与首相安华完成对接，敲定2040亿超大型投资案，选中古晋及西马黄金区位建设高能效AI与绿色算力中心。" data-bm="Masayoshi Son memuktamadkan pelaburan RM204 bilion bagi membina pusat data AI berkuasa hijau di Kuching dan Semenanjung.">软银创办人孙正义与首相安华完成对接，敲定2040亿超大型投资案，选中古晋及西马黄金区位建设高能效AI与绿色算力中心。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_2', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="跨境金融" data-bm="Kewangan">跨境金融</span>
+      </div>
+      <h3 class="news-title" data-zh="【跨境金融】马银行 MAE 接入 Alipay+，免换汇扫码通中港韩菲老" data-bm="Maybank MAE Integrasi Alipay+, Imbas Kod QR di 5 Wilayah Serantau">【跨境金融】马银行 MAE 接入 Alipay+，免换汇扫码通中港韩菲老</h3>
+      <div class="full-content" id="card_3">
+        <p data-zh="PayNet宣布DuitNow QR与Alipay+连通，大马用户赴中港韩菲老无需换汇，开手机银行App直接扫码扣款消费。" data-bm="Pengguna Maybank kini boleh imbas kod QR di China, HK, Korea, Filipina dan Laos tanpa tukar mata wang asing.">PayNet宣布DuitNow QR与Alipay+连通，大马用户赴中港韩菲老无需换汇，开手机银行App直接扫码扣款消费。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_3', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="商业电信" data-bm="Telekomunikasi">商业电信</span>
+      </div>
+      <h3 class="news-title" data-zh="【商业电信】明讯与 U Mobile 重启合并洽谈，拟打造全马最大电信集团" data-bm="Maxis & U Mobile Sambung Semula Rundingan Penggabungan Terbesar">【商业电信】明讯与 U Mobile 重启合并洽谈，拟打造全马最大电信集团</h3>
+      <div class="full-content" id="card_4">
+        <p data-zh="本地电信业传出重磅整合，明讯（Maxis）与U Mobile深入探讨换股与架构整合，若成形将诞生拥有逾2400万用户的超级电信巨头。" data-bm="Maxis dan U Mobile dilaporkan memulakan kembali rundingan penggabungan untuk mengukuhkan pegangan pasaran 5G.">本地电信业传出重磅整合，明讯（Maxis）与U Mobile深入探讨换股与架构整合，若成形将诞生拥有逾2400万用户的超级电信巨头。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_4', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="政府防骗" data-bm="Amaran">政府防骗</span>
+      </div>
+      <h3 class="news-title" data-zh="【政府防骗】LHDN 发紧急警示：警惕冒名伪造邮件骗取个人文件" data-bm="LHDN Keluar Amaran: Waspada Emel Palsu Tuntut Dokumen Peribadi">【政府防骗】LHDN 发紧急警示：警惕冒名伪造邮件骗取个人文件</h3>
+      <div class="full-content" id="card_5">
+        <p data-zh="内陆税收局（LHDN）发出紧急通告，近期有不法集团假冒税收局名义群发带恶意附件的退税邮件，企图盗取纳税人机密，切勿点击。" data-bm="Lembaga Hasil Dalam Negeri mengingatkan orang ramai agar tidak terpedaya dengan e-mel palsu yang meminta pengesahan dokumen.">内陆税收局（LHDN）发出紧急通告，近期有不法集团假冒税收局名义群发带恶意附件的退税邮件，企图盗取纳税人机密，切勿点击。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_5', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="民生福利" data-bm="Bantuan">民生福利</span>
+      </div>
+      <h3 class="news-title" data-zh="【民生福利】2027 STR 援助金审核收紧，有车有房等 8 种情况恐遭拒批" data-bm="Semakan STR 2027 Diperketat: 8 Kriteria Pemilikan Boleh Ditolak">【民生福利】2027 STR 援助金审核收紧，有车有房等 8 种情况恐遭拒批</h3>
+      <div class="full-content" id="card_6">
+        <p data-zh="财政部公布下一阶段爱心援助金（STR）跨部门大数据核验新机制，包括名下拥大排量豪车、注册商业公司盈利等8项指标将被剔除资格。" data-bm="Kementerian Kewangan mengetatkan syarat kelayakan STR melalui integrasi data pelbagai agensi.">财政部公布下一阶段爱心援助金（STR）跨部门大数据核验新机制，包括名下拥大排量豪车、注册商业公司盈利等8项指标将被剔除资格。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_6', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="学校假期" data-bm="Pendidikan">学校假期</span>
+      </div>
+      <h3 class="news-title" data-zh="【学校假期】教育部官宣屠妖节假期：除砂拉越外全马中小学师生连休 4 天" data-bm="KPM Sahkan Cuti Berganti Deepavali: Sekolah Bercuti 4 Hari Kecuali Sarawak">【学校假期】教育部官宣屠妖节假期：除砂拉越外全马中小学师生连休 4 天</h3>
+      <div class="full-content" id="card_7">
+        <p data-zh="教育部确认屠妖节节庆安排，除砂拉越州属之外，全马各州各源流学校统一享有长达4天的周末连休假期，机票预订率攀升。" data-bm="Kementerian Pendidikan mengesahkan cuti empat hari sempena perayaan Deepavali untuk semua negeri kecuali Sarawak.">教育部确认屠妖节节庆安排，除砂拉越州属之外，全马各州各源流学校统一享有长达4天的周末连休假期，机票预订率攀升。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_7', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="天气警报" data-bm="Cuaca">天气警报</span>
+      </div>
+      <h3 class="news-title" data-zh="【天气警报】东北季候风来袭，气象局预测 5 次长命雨恐致多州水灾" data-bm="Monsun Timur Laut Bermula: MetMalaysia Ramal 5 Episod Hujan Berterusan">【天气警报】东北季候风来袭，气象局预测 5 次长命雨恐致多州水灾</h3>
+      <div class="full-content" id="card_8">
+        <p data-zh="气象局示警东北季候风正式展开，期间将出现5次持续性强降雨阶段，沙巴沿海与半岛多州低洼区域须做好抗灾防汛准备。" data-bm="Jabatan Meteorologi Malaysia meramalkan episod hujan lebat berterusan yang berisiko mengakibatkan banjir kilat.">气象局示警东北季候风正式展开，期间将出现5次持续性强降雨阶段，沙巴沿海与半岛多州低洼区域须做好抗灾防汛准备。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_8', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="商业焦点" data-bm="Perniagaan">商业焦点</span>
+      </div>
+      <h3 class="news-title" data-zh="【商业焦点】华阳茶室吉打新店推三语菜单迎客现场大排长龙" data-bm="Oriental Kopi Buka Cawangan Kedah: Menu Tiga Bahasa Tarik Tumpuan">【商业焦点】华阳茶室吉打新店推三语菜单迎客现场大排长龙</h3>
+      <div class="full-content" id="card_9">
+        <p data-zh="华阳茶室经历菜单语言争议后进军吉打首开门市，全面启用国文、中文及英文三语菜单化解顾虑，开业首日迎来庞大客流。" data-bm="Oriental Kopi memperkenalkan menu tiga bahasa di cawangan terbaharunya di Kedah dan mendapat sambutan hangat.">华阳茶室经历菜单语言争议后进军吉打首开门市，全面启用国文、中文及英文三语菜单化解顾虑，开业首日迎来庞大客流。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_9', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="公共卫生" data-bm="Kesihatan">公共卫生</span>
+      </div>
+      <h3 class="news-title" data-zh="【公共卫生】卫生部推 MyLapor 官方功能，通过 MySejahtera 检举违规抽烟" data-bm="KKM Lancar MyLapor: Aduan Merokok Dilarang Melalui MySejahtera">【公共卫生】卫生部推 MyLapor 官方功能，通过 MySejahtera 检举违规抽烟</h3>
+      <div class="full-content" id="card_10">
+        <p data-zh="卫生部正式推介 MyLapor 模块，民众可直接利用 MySejahtera 上传照片与时间地点，检举在禁烟区吸烟行为，执法队迅速跟进。" data-bm="Kementerian Kesihatan memudahkan orang awam menyalurkan aduan premis merokok secara digital.">卫生部正式推介 MyLapor 模块，民众可直接利用 MySejahtera 上传照片与时间地点，检举在禁烟区吸烟行为，执法队迅速跟进。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_10', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="法治严打" data-bm="Jenayah">法治严打</span>
+      </div>
+      <h3 class="news-title" data-zh="【法治严打】槟警拘捕擅自驾驶贴山寨“Bomba”消拯车标的私家车司机" data-bm="Polis Tahan Pemandu Kereta Pasang Pelekat & Siren Bomba Palsu">【法治严打】槟警拘捕擅自驾驶贴山寨“Bomba”消拯车标的私家车司机</h3>
+      <div class="full-content" id="card_11">
+        <p data-zh="槟城警方正式拘捕涉案男司机，其红色私家车擅自贴上消拯局官方徽章并加装警报灯，全案援引冒充公务员罪严加侦办。" data-bm="Polis Pulau Pinang menahan seorang lelaki yang menyamar menggunakan kenderaan berperekat Jabatan Bomba.">槟城警方正式拘捕涉案男司机，其红色私家车擅自贴上消拯局官方徽章并加装警报灯，全案援引冒充公务员罪严加侦办。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_11', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
+    <article class="news-card ">
+      <div class="card-meta">
+        <span class="news-tag" data-zh="沙巴生活" data-bm="Gaya Hidup">沙巴生活</span>
+      </div>
+      <h3 class="news-title" data-zh="【沙巴生活】Sazarice 联手 Kupikupifm 展开《Jom Cari Momom》探寻亚庇美食" data-bm="Sazarice Bersama Kupikupifm Cari Momom Terpaling Mantap di KK">【沙巴生活】Sazarice 联手 Kupikupifm 展开《Jom Cari Momom》探寻亚庇美食</h3>
+      <div class="full-content" id="card_12">
+        <p data-zh="Sazarice 与本地电台主持人 Felix 及 Ojoe 推出探店短剧，深入亚庇及哥隆邦大街小巷搜罗道地平价美食，引爆网络互动。" data-bm="Program Jom Cari Momom bersama Kupikupifm menjelajah gerai makan menarik di sekitar Kota Kinabalu.">Sazarice 与本地电台主持人 Felix 及 Ojoe 推出探店短剧，深入亚庇及哥隆邦大街小巷搜罗道地平价美食，引爆网络互动。</p>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('card_12', this)" data-zh="展开全文 ↓" data-bm="Baca Lanjut ↓">展开全文 ↓</button>
+    </article>
+    
     </div>
 
-    <section class="events-grid">
-      <!-- 活动 1 -->
+    <div class="section-title" data-zh="未来两周至一个月 · 活动预告" data-bm="Acara & Ekspo Sabah (Akan Datang)">未来两周至一个月 · 活动预告</div>
+    <div class="events-grid">
       <div class="event-card">
-        <span class="event-date-badge trans" data-zh="📅 11月13日 - 15日 · SICC" data-bm="📅 13 - 15 Nov · SICC">📅 11月13日 - 15日 · SICC</span>
-        <h3 class="event-title trans"
-            data-zh="亚庇 SICC：BIGSABAH Sale 2026 年度大型综合品牌展销盛会"
-            data-bm="BIGSABAH Sale 2026 Ekspo Jualan & Perniagaan Terbesar di SICC">
-          亚庇 SICC：BIGSABAH Sale 2026 年度大型综合品牌展销盛会
-        </h3>
-        <p class="event-desc trans"
-           data-zh="沙巴年度规模最大消费品博览会！汇聚全州知名家电、家具、汽车周边及清真美食，设逾 300 个互动展位，入场免费并有幸运抽奖。"
-           data-bm="Ekspo jualan pengguna mega tahunan di Sabah International Convention Centre menghimpunkan lebih 300 reruai perabot, automotif, makanan dan barangan gaya hidup.">
-          沙巴年度规模最大消费品博览会！汇聚全州知名家电、家具、汽车周边及清真美食，设逾 300 个互动展位，入场免费并有幸运抽奖。
-        </p>
-        <div class="event-actions">
-          <a href="tel:088206000" class="btn-action btn-tel">📞 088-206000</a>
-          <a href="https://wa.me/60168332118?text=Hello%20BIGSABAH%20Sale" target="_blank" rel="noopener" class="btn-action btn-wa">💬 WhatsApp 咨询</a>
+        <span class="event-date">11月13日 – 15日 · 亚庇 SICC</span>
+        <div class="event-title" data-zh="BIGSABAH Sale 2026 大型商贸展销盛会" data-bm="Ekspo Jualan Mega BIGSABAH 2026">BIGSABAH Sale 2026 大型商贸展销盛会</div>
+        <p class="event-desc" data-zh="全州规模最大商业展销，汇集家电、餐饮加盟与零售展位。" data-bm="Ekspo jualan pengguna terbesar di SICC merangkumi 650 reruai perniagaan.">全州规模最大商业展销，汇集家电、餐饮加盟与零售展位。</p>
+        <div class="event-links">
+          <a class="event-link-btn" href="tel:088206000">📞 088-206000</a>
+          <a class="event-link-btn" href="https://wa.me/60168332118" target="_blank">💬 WhatsApp 咨询</a>
         </div>
       </div>
-
-      <!-- 活动 2 -->
       <div class="event-card">
-        <span class="event-date-badge trans" data-zh="📅 11月20日 - 22日 · SICC" data-bm="📅 20 - 22 Nov · SICC">📅 11月20日 - 22日 · SICC</span>
-        <h3 class="event-title trans"
-            data-zh="亚庇 SICC：Borneo 4by4 婆罗洲户外越野与汽车文化节"
-            data-bm="Borneo 4by4 Festival Automotif & Ekspedisi Luar Bandar di SICC">
-          亚庇 SICC：Borneo 4by4 婆罗洲户外越野与汽车文化节
-        </h3>
-        <p class="event-desc trans"
-           data-zh="全马硬派越野爱好者年度聚会！现场展示顶级 4x4 改装机械、露营探险装备展销、极限攀爬技巧示范及自驾旅游路线指南。"
-           data-bm="Pameran jentera 4x4 lasak, perkhemahan dan ekspedisi kembara terunggul Borneo. Dapatkan pakej pengembaraan dan peralatan terkini pada harga promosi.">
-          全马硬派越野爱好者年度聚会！现场展示顶级 4x4 改装机械、露营探险装备展销、极限攀爬技巧示范及自驾旅游路线指南。
-        </p>
-        <div class="event-actions">
-          <a href="tel:0198812399" class="btn-action btn-tel">📞 019-8812399</a>
-          <a href="https://wa.me/60198812399?text=Borneo%204by4%20Inquiry" target="_blank" rel="noopener" class="btn-action btn-wa">💬 组委会热线</a>
+        <span class="event-date">11月20日 – 22日 · 亚庇 SICC 户外展区</span>
+        <div class="event-title" data-zh="Borneo 4by4 越野与汽车文化节 (CULT)" data-bm="Festival Budaya Kereta & 4x4 Borneo">Borneo 4by4 越野与汽车文化节 (CULT)</div>
+        <p class="event-desc" data-zh="婆罗洲四驱改装零件展销与自驾露营装备交流对接平台。" data-bm="Pameran aksesori 4x4 dan perkhemahan ekstrem serantau Borneo.">婆罗洲四驱改装零件展销与自驾露营装备交流对接平台。</p>
+        <div class="event-links">
+          <a class="event-link-btn" href="tel:0198812399">📞 019-8812399</a>
         </div>
       </div>
-
-      <!-- 活动 3 -->
       <div class="event-card">
-        <span class="event-date-badge trans" data-zh="📅 11月29日 · 山打根市议会广场" data-bm="📅 29 Nov · Dataran MPS Sandakan">📅 11月29日 · 山打根市议会广场</span>
-        <h3 class="event-title trans"
-            data-zh="山打根：2026年依罗普拉慈善长跑与全民健康博览会"
-            data-bm="Larian Amal Elopura 2026 & Ekspo Kesihatan Komuniti Sandakan">
-          山打根：2026年依罗普拉慈善长跑与全民健康博览会
-        </h3>
-        <p class="event-desc trans"
-           data-zh="5公里欢乐跑与10公里竞速挑战，现场特设免费血压血糖筛查、红新月会急救科普、健康素食义卖，收益全数资助清寒病患。"
-           data-bm="Larian amal 5km dan 10km anjuran komuniti Sandakan bertempat di Dataran Majlis Perbandaran Sandakan berserta pemeriksaan kesihatan percuma.">
-          5公里欢乐跑与10公里竞速挑战，现场特设免费血压血糖筛查、红新月会急救科普、健康素食义卖，收益全数资助清寒病患。
-        </p>
-        <div class="event-actions">
-          <a href="tel:089221144" class="btn-action btn-tel">📞 089-221144</a>
-          <a href="https://wa.me/60109301117?text=报名依罗普拉慈善跑" target="_blank" rel="noopener" class="btn-action btn-wa">💬 WA: 010-9301117</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. 商业赞助 (固定置于全网最下方) -->
-    <div class="sponsor-wrapper">
-      <div class="sponsor-header">
-        <div class="sponsor-title">
-          <span>🚗</span>
-          <span class="trans" data-zh="MY CAR ENTERPRISE · 山打根专业租车与专车接送" data-bm="MY CAR ENTERPRISE · Perkhidmatan Kereta Sewa Sandakan">MY CAR ENTERPRISE · 山打根专业租车与专车接送</span>
-        </div>
-        <span class="sponsor-tag trans" data-zh="荣誉商家推荐" data-bm="PENUSARA RASMI">荣誉商家推荐</span>
-      </div>
-      <div class="sponsor-content">
-        <div class="sponsor-desc trans"
-             data-zh="【山打根首选自驾与商务出行服务商】MY CAR ENTERPRISE 提供轿车、豪华 SUV、7/10座 MPV 及硬派皮卡全车系租赁。车辆均享全额商业保险与专业消杀整洁。承接山打根机场接送、京那巴当岸生态观光包车、公务差旅长短期租约。服务周到，随叫随到，诚信至上！"
-             data-bm="[Perkhidmatan Kereta Sewa Sandakan Terkemuka] MY CAR ENTERPRISE menyediakan sewaan sedan, SUV, MPV 7/10 tempat duduk dan pikap 4x4. Insurans komprehensif, bersih dan diselenggara sempurna. Menyediakan perkhidmatan pandu sendiri, sewaan syarikat, dan jemputan Lapangan Terbang Sandakan. Hubungi Marco hari ini!">
-          【山打根首选自驾与商务出行服务商】MY CAR ENTERPRISE 提供轿车、豪华 SUV、7/10座 MPV 及硬派皮卡全车系租赁。车辆均享全额商业保险与专业消杀整洁。承接山打根机场接送、京那巴当岸生态观光包车、公务差旅长短期租约。服务周到，随叫随到，诚信至上！
-        </div>
-        <div class="sponsor-cta">
-          <a href="https://www.wasap.my/60109301117?text=Hello%20Marco,%20I%20want%20to%20rent%20a%20car%20in%20Sandakan" target="_blank" rel="noopener" class="sponsor-btn btn-wa-sponsor trans"
-             data-zh="💬 WhatsApp: Marco (010-9301117)"
-             data-bm="💬 WhatsApp: Marco (010-9301117)">
-            💬 WhatsApp: Marco (010-9301117)
-          </a>
-          <a href="tel:0109301117" class="sponsor-btn btn-tel-sponsor trans"
-             data-zh="📞 租车热线: 010-9301117"
-             data-bm="📞 Talian Pantas: 010-9301117">
-            📞 租车热线: 010-9301117
-          </a>
-          <div style="font-size:0.68rem; color:#94a3b8; text-align:center;" class="trans"
-               data-zh="微信号：Thien1117 · 支持微信与支付宝付款"
-               data-bm="WeChat: Thien1117 · Sandakan Car Rental Service">
-            微信号：Thien1117 · 支持微信与支付宝付款
-          </div>
+        <span class="event-date">11月29日 · 山打根市议会广场</span>
+        <div class="event-title" data-zh="2026 依罗普拉慈善长跑与健康博览会" data-bm="Larian Amal Elopura Sandakan 2026">2026 依罗普拉慈善长跑与健康博览会</div>
+        <p class="event-desc" data-zh="为山打根特殊儿童康复中心筹款，设5KM及10KM组别。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan.">为山打根特殊儿童康复中心筹款，设5KM及10KM组别。</p>
+        <div class="event-links">
+          <a class="event-link-btn" href="tel:089221144">📞 089-221144</a>
+          <a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 报名咨询</a>
         </div>
       </div>
     </div>
 
+    <footer class="sponsor-card">
+      <div class="sponsor-title" data-zh="MY CAR ENTERPRISE · 山打根租车与接送服务" data-bm="MY CAR ENTERPRISE · Sewa Kereta Sandakan">MY CAR ENTERPRISE · 山打根租车与接送服务</div>
+      <div class="sponsor-desc" data-zh="全车系齐全 · 自驾自游 · 商务长租 · 机场专车接送" data-bm="Pandu Sendiri / Sewaan Korporat / Bersama Pemandu">全车系齐全 · 自驾自游 · 商务长租 · 机场专车接送</div>
+      <div class="fleet-box">
+        <div>• 掀背车：Myvi / Axia</div>
+        <div>• 舒适房车：Vios / Saga / Bezza</div>
+        <div>• 豪华商务：Vellfire / Alphard / Innova</div>
+        <div>• 客运越野：Van 11-12座 / Hilux 4x4</div>
+      </div>
+      <div class="contact-row">
+        <span>负责人：<strong>Marco (010-9301117)</strong></span>
+        <span>微信：<strong>Thien1117</strong></span>
+        <a class="wa-btn" href="https://www.wasap.my/60109301117" target="_blank">WhatsApp 立即预约</a>
+      </div>
+    </footer>
   </main>
 
-  <!-- 网页底栏 -->
-  <footer class="page-footer">
-    <p>© 2026 《西门日报 / BERITA HARIAN SIMON》· 权威监督 · 扎根沙巴 · 迈向全球</p>
-    <p style="margin-top:4px;">今日出版：2026年10月29日 · 星期四 | 亚庇 · 山打根 · 斗湖 同步发行</p>
-  </footer>
-
   <script>
-    // 语种切换逻辑 (中文 <-> 马来文)
     let currentLang = 'zh';
-
+    function toggleExpand(id, btn) {
+      const el = document.getElementById(id);
+      const isVisible = el.style.display === 'block';
+      el.style.display = isVisible ? 'none' : 'block';
+      btn.innerText = isVisible 
+        ? (currentLang === 'zh' ? '展开全文 ↓' : 'Baca Lanjut ↓')
+        : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
+    }
     function toggleLanguage() {
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
-      const langBtn = document.getElementById('langBtn');
-      langBtn.innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
-
-      const transElements = document.querySelectorAll('.trans');
-      transElements.forEach(el => {
-        const text = el.getAttribute('data-' + currentLang);
-        if (text) {
-          el.innerText = text;
-        }
+      document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        const txt = el.getAttribute(`data-${currentLang}`);
+        if (txt) el.innerText = txt;
       });
-    }
-
-    // 正文折叠 / 展开
-    function toggleRead(bodyId, btn) {
-      const body = document.getElementById(bodyId);
-      const btnText = btn.querySelector('.btn-text');
-      const isExpanded = body.classList.contains('expanded');
-
-      if (isExpanded) {
-        body.classList.remove('expanded');
-        btnText.innerText = currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Penuh ↓';
-        btnText.setAttribute('data-zh', '展开阅读全文 ↓');
-        btnText.setAttribute('data-bm', 'Baca Penuh ↓');
-      } else {
-        body.classList.add('expanded');
-        btnText.innerText = currentLang === 'zh' ? '收起全文 ↑' : 'Tutup ↑';
-        btnText.setAttribute('data-zh', '收起全文 ↑');
-        btnText.setAttribute('data-bm', 'Tutup ↑');
-      }
-    }
-
-    // 日期下拉联动模拟
-    function switchDate(val) {
-      if (val === 'yesterday') {
-        alert(currentLang === 'zh' ? '正在调阅【2026年10月28日】历史归档资料库...' : 'Membuka arkib Berita Harian Simon: 28 Oktober 2026...');
-      } else if (val === 'before') {
-        alert(currentLang === 'zh' ? '正在调阅【2026年10月27日】历史归档资料库...' : 'Membuka arkib Berita Harian Simon: 27 Oktober 2026...');
-      } else {
-        alert(currentLang === 'zh' ? '已刷新至【今日要闻】2026年10月29日' : 'Dipaparkan: Edisi Hari Ini 29 Oktober 2026');
-      }
-    }
-
-    // 分享功能
-    function shareArticle(title) {
-      if (navigator.share) {
-        navigator.share({
-          title: '《西门日报》要闻：' + title,
-          text: '来自《西门日报 / Berita Harian Simon》的独家报道：' + title,
-          url: window.location.href,
-        }).catch(() => {});
-      } else {
-        const text = '《西门日报》：' + title + ' (' + window.location.href + ')';
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(text).then(() => {
-            alert(currentLang === 'zh' ? '新闻标题与链接已复制到剪贴板，可前往微信或 WhatsApp 粘贴！' : 'Pautan berita disalin ke papan klip!');
-          });
-        } else {
-          prompt(currentLang === 'zh' ? '请复制以下分享内容：' : 'Salin teks berikut:', text);
-        }
-      }
     }
   </script>
 </body>
