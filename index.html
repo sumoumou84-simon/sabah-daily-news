@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>西门日报 | Berita Harian Simon</title>
+  
+  <!-- PWA 与桌面应用图标配置 (方案3专属) -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="theme-color" content="#dc2626">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="西门日报">
+
   <style>
     :root {
       --primary-red: #dc2626;
@@ -44,7 +54,7 @@
       color: var(--primary-red);
       letter-spacing: -0.5px;
     }
-    .actions { display: flex; align-items: center; gap: 8px; }
+    .actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .archive-select {
       padding: 5px 8px;
       font-size: 12px;
@@ -52,6 +62,19 @@
       border: 1px solid #cbd5e1;
       background: #f1f5f9;
       font-weight: 600;
+    }
+    .install-btn {
+      background: #0f172a;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
     .lang-btn {
       background: var(--primary-red);
@@ -324,6 +347,9 @@
           <option value="yesterday">📅 昨天</option>
           <option value="prev">📅 前天</option>
         </select>
+        <button class="install-btn" id="installBtn" onclick="installPWA()">
+          <span>📲 安装APP</span>
+        </button>
         <button class="lang-btn" onclick="toggleLanguage()">
           <span id="lang-text">Bahasa Melayu</span>
         </button>
@@ -668,6 +694,10 @@
     function toggleLanguage() {
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
       document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
+      const installText = document.querySelector('#installBtn span');
+      if (installText) {
+        installText.innerText = currentLang === 'zh' ? '📲 安装APP' : '📲 Pasang App';
+      }
       document.querySelectorAll('[data-zh]').forEach(el => {
         const txt = el.getAttribute(`data-${currentLang}`);
         if (txt) el.innerText = txt;
@@ -684,6 +714,34 @@
       } else {
         navigator.clipboard.writeText(shareData.text);
         alert('新闻标题与链接已复制！可直接粘贴至 WhatsApp 或朋友圈分享。');
+      }
+    }
+
+    // PWA 安装引导机制
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById('installBtn');
+      if (btn) btn.style.display = 'flex';
+    });
+
+    function installPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('用户已安装西门日报 App');
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          alert('【iPhone / iPad 安装方法】：\n点击浏览器底部中间的“分享”按钮（方框加向上箭头），在弹出菜单中向下滑动选择【添加到主屏幕】即可！');
+        } else {
+          alert('【Android 手机安装方法】：\n点击浏览器右上角的三个圆点菜单（⋮），选择【添加到主屏幕】或【安装应用】即可生成专属桌面 App！');
+        }
       }
     }
   </script>
