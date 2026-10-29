@@ -52,29 +52,26 @@ prompt = f"""
 只输出完整 <!DOCTYPE html> 开头到 </html> 结尾代码，不带任何 markdown 代码块标记。
 """
 
-# 使用现行可用的官方模型并加入防 503 的指数退避重试
-models_to_try = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
+# 严格使用官方当前唯一主力模型 gemini-3.8-flash，增加 4 次指数避让重试应对 503 高峰
+target_model = "gemini-3.8-flash"
 response = None
 
-for model_name in models_to_try:
-    for attempt in range(3):
-        try:
-            wait_time = (attempt + 1) * 5
-            print(f"尝试使用模型 {model_name} (第 {attempt+1} 次)...")
-            response = client.models.generate_content(
-                model=model_name,
-                contents=prompt
-            )
-            if response and response.text:
-                break
-        except Exception as e:
-            print(f"遇到波动或高负载 ({e})，等待 {wait_time} 秒后重试...")
-            time.sleep(wait_time)
-    if response and response.text:
-        break
+for attempt in range(4):
+    try:
+        print(f"尝试使用官方模型 {target_model} (第 {attempt+1} 次)...")
+        response = client.models.generate_content(
+            model=target_model,
+            contents=prompt
+        )
+        if response and response.text:
+            break
+    except Exception as e:
+        wait_seconds = (attempt + 1) * 8
+        print(f"服务器高峰波动 ({e})，正在等待 {wait_seconds} 秒后重试...")
+        time.sleep(wait_seconds)
 
 if not response or not response.text:
-    raise RuntimeError("所有模型重试后仍未成功，请稍后再试。")
+    raise RuntimeError("模型在多次重试后仍然繁忙，请稍后再试。")
 
 html_code = response.text.strip()
 if html_code.startswith("```html"):
@@ -89,4 +86,4 @@ html_code = html_code.strip()
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_code)
 
-print("西门日报已顺利编译完成并写入 index.html！")
+print("西门日报已顺利完成编译并成功写入 index.html！")
