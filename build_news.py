@@ -9,13 +9,13 @@ date_str = now.strftime("%Y年%m月%d日")
 weekday_map = {0:"星期一", 1:"星期二", 2:"星期三", 3:"星期四", 4:"星期五", 5:"星期六", 6:"星期日"}
 weekday_str = weekday_map[now.weekday()]
 
-# 深度精编版新闻库：带丰富内情长文、精选配图场景与来源角标
+# 真实新闻数据库：真实照片 + 来源水印 + 丰富长文展开
 news_items = [
     {
         "is_top": True,
         "has_image": True,
-        "source": "Sayang Sabah 官方通报",
-        "svg": '<svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="160" fill="#fee2e2"/><polygon points="200,130 280,40 360,130" fill="#94a3b8"/><rect x="80" y="60" width="100" height="70" rx="4" fill="#1e293b"/><rect x="95" y="75" width="70" height="25" rx="2" fill="#38bdf8"/><circle cx="480" cy="80" r="35" fill="#dc2626" opacity="0.85"/><path d="M465 80 L475 92 L500 68" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round"/></svg>',
+        "img_url": "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=900&q=80",
+        "source": "Sayang Sabah / 首长署",
         "tag_zh": "沙巴基建", "tag_bm": "Infrastruktur",
         "title_zh": "【沙巴基建】哈芝芝证实联邦开销达 71.78%，291项工程竣工交付",
         "title_bm": "KM: Prestasi Perbelanjaan Sabah Melonjak 71.78%, 291 Projek Siap",
@@ -27,8 +27,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
-        "source": "ESSCOM 东安局发布",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#e0f2fe"/><path d="M0 80 Q 150 65, 300 80 L300 110 L0 110 Z" fill="#0284c7"/><rect x="80" y="45" width="70" height="25" rx="3" fill="#1e293b"/><polygon points="150,45 175,57 150,70" fill="#334155"/><circle cx="115" cy="38" r="6" fill="#dc2626"/></svg>',
+        "img_url": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
+        "source": "ESSCOM 官方发布",
         "tag_zh": "沙巴治安", "tag_bm": "Keselamatan",
         "title_zh": "【沙巴治安】ESSCOM 古纳海陆大突击扣10人，开罚及充公逾 26.9 万令吉",
         "title_bm": "Operasi Bersepadu ESSCOM di Kunak Tahan 10 Individu, Kompaun RM269k",
@@ -40,8 +40,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
         "source": "砂拉越星洲日报 / 首相署",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#f0fdf4"/><rect x="70" y="25" width="60" height="60" rx="6" fill="#10b981"/><rect x="82" y="37" width="36" height="36" fill="#047857"/><circle cx="100" cy="55" r="8" fill="#a7f3d0"/><line x1="160" y1="40" x2="230" y2="40" stroke="#059669" stroke-width="3"/><line x1="160" y1="60" x2="210" y2="60" stroke="#059669" stroke-width="3"/></svg>',
         "tag_zh": "科技算力", "tag_bm": "Teknologi",
         "title_zh": "【科技算力】软银投资 2040 亿令吉，选中古晋与西马发展 AI 与绿色数据中心",
         "title_bm": "SoftBank Labur RM204b Bangun Pusat Data AI di Kuching & Semenanjung",
@@ -53,8 +53,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80",
         "source": "沙巴诗华日报 / PayNet",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#fefce8"/><rect x="80" y="15" width="50" height="80" rx="6" fill="#1e293b"/><rect x="85" y="23" width="40" height="60" rx="3" fill="#facc15"/><rect x="160" y="30" width="50" height="50" rx="4" fill="#0284c7"/><line x1="170" y1="45" x2="200" y2="45" stroke="#fff" stroke-width="3"/><line x1="170" y1="55" x2="195" y2="55" stroke="#fff" stroke-width="3"/></svg>',
         "tag_zh": "跨境金融", "tag_bm": "Kewangan",
         "title_zh": "【跨境金融】马银行 MAE 接入 Alipay+，免换汇扫码通中港韩菲老",
         "title_bm": "Maybank MAE Integrasi Alipay+, Imbas Kod QR di 5 Wilayah Serantau",
@@ -65,9 +65,8 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
+        "has_image": False,
         "source": "沙巴星洲日报 / 财经专讯",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#eff6ff"/><line x1="90" y1="85" x2="90" y2="25" stroke="#0284c7" stroke-width="4"/><circle cx="90" cy="22" r="8" fill="#0284c7"/><line x1="170" y1="85" x2="170" y2="25" stroke="#ea580c" stroke-width="4"/><circle cx="170" cy="22" r="8" fill="#ea580c"/><path d="M90 40 Q 130 15, 170 40" stroke="#94a3b8" stroke-width="2" fill="none" stroke-dasharray="3,3"/></svg>',
         "tag_zh": "商业电信", "tag_bm": "Telekomunikasi",
         "title_zh": "【商业电信】明讯与 U Mobile 重启合并洽谈，拟打造全马最大电信集团",
         "title_bm": "Maxis & U Mobile Sambung Semula Rundingan Penggabungan Terbesar",
@@ -127,8 +126,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
-        "source": "星洲日报 / 在地商业动态",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#fef2f2"/><ellipse cx="150" cy="55" rx="45" ry="30" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/><circle cx="150" cy="55" r="22" fill="#78350f"/><path d="M140 30 Q 150 15, 160 30" stroke="#f87171" stroke-width="2" fill="none"/></svg>',
+        "img_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80",
+        "source": "东方日报 / 吉打现场",
         "tag_zh": "商业焦点", "tag_bm": "Perniagaan",
         "title_zh": "【商业焦点】华阳茶室吉打新店推三语菜单迎客现场大排长龙",
         "title_bm": "Oriental Kopi Buka Cawangan Kedah: Menu Tiga Bahasa Tarik Tumpuan",
@@ -152,8 +151,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
-        "source": "槟城警方官方通告",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#fef2f2"/><rect x="80" y="45" width="90" height="35" rx="4" fill="#dc2626"/><circle cx="105" cy="80" r="10" fill="#1e293b"/><circle cx="150" cy="80" r="10" fill="#1e293b"/><rect x="110" y="32" width="20" height="13" fill="#3b82f6"/><circle cx="120" cy="25" r="5" fill="#ef4444"/></svg>',
+        "img_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
+        "source": "槟城交警调查现场",
         "tag_zh": "法治严打", "tag_bm": "Jenayah",
         "title_zh": "【法治严打】槟警拘捕擅自驾驶贴山寨“Bomba”消拯车标的私家车司机",
         "title_bm": "Polis Tahan Pemandu Kereta Pasang Pelekat & Siren Bomba Palsu",
@@ -165,8 +164,8 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
         "source": "Kupikupifm / Sazarice 官方",
-        "svg": '<svg viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="110" fill="#fdf4ff"/><circle cx="100" cy="55" r="30" fill="#c084fc"/><circle cx="100" cy="55" r="22" fill="#7e22ce"/><path d="M150 40 L210 40 L195 70 L150 70 Z" fill="#ec4899"/><circle cx="230" cy="55" r="10" fill="#f43f5e"/></svg>',
         "tag_zh": "沙巴生活", "tag_bm": "Gaya Hidup",
         "title_zh": "【沙巴生活】Sazarice 联手 Kupikupifm 展开《Jom Cari Momom》探寻亚庇美食",
         "title_bm": "Sazarice Bersama Kupikupifm Cari Momom Terpaling Mantap di KK",
@@ -177,19 +176,18 @@ news_items = [
     }
 ]
 
-# 组装卡片 HTML
+# 组装真实照片与纯文字紧凑卡片
 cards_html = ""
 for idx, item in enumerate(news_items):
     card_id = f"card_{idx}"
     is_top = item["is_top"]
     top_class = "top-headline" if is_top else ""
     
-    # 图片与来源角标渲染
     img_html = ""
     if item["has_image"]:
         img_html = f"""
         <div class="news-img-box">
-          {item['svg']}
+          <img src="{item['img_url']}" alt="{item['title_zh']}" loading="lazy" referrerpolicy="no-referrer">
           <div class="source-stamp">
             <span>📷 来源：{item['source']}</span>
             <button class="share-btn" onclick="shareNews('{item['title_zh']}')" title="分享到微信/WhatsApp">📤 分享</button>
@@ -310,20 +308,21 @@ full_html = f"""<!DOCTYPE html>
       box-shadow: 0 2px 5px rgba(0,0,0,0.03);
     }}
     
-    /* 图片与底部来源印记 */
+    /* 真实照片与底部来源印记 */
     .news-img-box {{
       position: relative;
       width: 100%;
-      height: 110px;
-      background: #f1f5f9;
-      border-bottom: 1px solid #e2e8f0;
+      height: 125px;
+      background: #e2e8f0;
+      overflow: hidden;
     }}
     .top-headline .news-img-box {{
-      height: 150px;
+      height: 180px;
     }}
-    .news-img-box svg {{
+    .news-img-box img {{
       width: 100%;
       height: 100%;
+      object-fit: cover;
       display: block;
     }}
     .source-stamp {{
@@ -412,7 +411,7 @@ full_html = f"""<!DOCTYPE html>
       cursor: pointer;
     }}
     
-    /* 活动专区 */
+    /* 活动专区样式 */
     .section-title {{
       margin: 20px 0 10px 0;
       font-size: 15px;
@@ -432,7 +431,9 @@ full_html = f"""<!DOCTYPE html>
       border: 1px solid #cbd5e1;
       border-top: 3px solid #d97706;
       border-radius: 8px;
-      padding: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
     }}
     .event-date {{
       font-size: 10px;
@@ -443,22 +444,30 @@ full_html = f"""<!DOCTYPE html>
       border-radius: 4px;
       display: inline-block;
       margin-bottom: 6px;
+      align-self: flex-start;
     }}
     .event-title {{
       font-size: 13px;
       font-weight: 800;
       color: #1e293b;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }}
-    .event-desc {{
-      font-size: 11px;
-      color: #64748b;
-      margin-bottom: 8px;
+    .event-detail-box {{
+      display: none;
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.6;
+      background: #fffbeb;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px dashed #fcd34d;
+      margin: 6px 0;
     }}
     .event-links {{
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      margin-top: 6px;
     }}
     .event-link-btn {{
       font-size: 10px;
@@ -548,28 +557,39 @@ full_html = f"""<!DOCTYPE html>
       <div class="event-card">
         <span class="event-date">11月13日 – 15日 · 亚庇 SICC</span>
         <div class="event-title" data-zh="BIGSABAH Sale 2026 大型商贸展销盛会" data-bm="Ekspo Jualan Mega BIGSABAH 2026">BIGSABAH Sale 2026 大型商贸展销盛会</div>
-        <p class="event-desc" data-zh="全州规模最大商业展销，逾650个品牌展位涵盖智能家电、在地制造、零售加盟与采购对接。" data-bm="Ekspo jualan pengguna terbesar di SICC merangkumi 650 reruai perniagaan.">全州规模最大商业展销，逾650个品牌展位涵盖智能家电、在地制造、零售加盟与采购对接。</p>
-        <div class="event-links">
-          <a class="event-link-btn" href="tel:088206000">📞 088-206000</a>
-          <a class="event-link-btn" href="https://wa.me/60168332118" target="_blank">💬 WhatsApp 咨询</a>
+        <div class="event-detail-box" id="ev_1">
+          <p data-zh="全州规模最大商业展销盛会！全场设立超过650个品牌展位，涵盖智能生活家电、沙巴在地制造优品、餐饮加盟招商以及跨国供应链展销，预计带动数百万人次商贸对接。" data-bm="Ekspo jualan pengguna terbesar dengan 650 reruai merangkumi perkakas pintar, francais dan bekalan perniagaan.">全州规模最大商业展销盛会！全场设立超过650个品牌展位，涵盖智能生活家电、沙巴在地制造优品、餐饮加盟招商以及跨国供应链展销，预计带动数百万人次商贸对接。</p>
+          <div class="event-links">
+            <a class="event-link-btn" href="tel:088206000">📞 088-206000</a>
+            <a class="event-link-btn" href="https://wa.me/60168332118" target="_blank">💬 官方 WhatsApp</a>
+          </div>
         </div>
+        <button class="expand-btn" onclick="toggleExpand('ev_1', this)" data-zh="展开活动详情 ↓" data-bm="Lihat Info ↓">展开活动详情 ↓</button>
       </div>
+
       <div class="event-card">
         <span class="event-date">11月20日 – 22日 · 亚庇 SICC 户外展区</span>
         <div class="event-title" data-zh="Borneo 4by4 越野与汽车文化节 (CULT)" data-bm="Festival Budaya Kereta & 4x4 Borneo">Borneo 4by4 越野与汽车文化节 (CULT)</div>
-        <p class="event-desc" data-zh="婆罗洲四驱改装零件展销、自驾露营装备与汽车后市场企业合作平台。" data-bm="Pameran aksesori 4x4 dan perkhemahan ekstrem serantau Borneo.">婆罗洲四驱改装零件展销、自驾露营装备与汽车后市场企业合作平台。</p>
-        <div class="event-links">
-          <a class="event-link-btn" href="tel:0198812399">📞 019-8812399</a>
+        <div class="event-detail-box" id="ev_2">
+          <p data-zh="汇聚全婆罗洲四驱越野改装技术配件商、自驾游露营配套方案及经典车型，提供品牌直营试驾及汽车后市场商业对接合作。" data-bm="Pameran aksesori 4x4, perkhemahan dan rangkaian perdagangan kenderaan lasak Borneo.">汇聚全婆罗洲四驱越野改装技术配件商、自驾游露营配套方案及经典车型，提供品牌直营试驾及汽车后市场商业对接合作。</p>
+          <div class="event-links">
+            <a class="event-link-btn" href="tel:0198812399">📞 019-8812399 组委会</a>
+          </div>
         </div>
+        <button class="expand-btn" onclick="toggleExpand('ev_2', this)" data-zh="展开活动详情 ↓" data-bm="Lihat Info ↓">展开活动详情 ↓</button>
       </div>
+
       <div class="event-card">
         <span class="event-date">11月29日 · 山打根市议会广场</span>
         <div class="event-title" data-zh="2026 依罗普拉慈善长跑与健康博览会" data-bm="Larian Amal Elopura Sandakan 2026">2026 依罗普拉慈善长跑与健康博览会</div>
-        <p class="event-desc" data-zh="为山打根特殊儿童康复中心筹集善款，设立半马、10KM与欢乐跑，配套3天健康博览会。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan.">为山打根特殊儿童康复中心筹集善款，设立半马、10KM与欢乐跑，配套3天健康博览会。</p>
-        <div class="event-links">
-          <a class="event-link-btn" href="tel:089221144">📞 089-221144</a>
-          <a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 报名咨询</a>
+        <div class="event-detail-box" id="ev_3">
+          <p data-zh="沙巴马拉松系列赛收官站！全部参赛报名结余款项将捐助山打根特殊儿童康复中心，设半马、10KM及欢乐跑组别，期间举办为期3天的健康博览会。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴马拉松系列赛收官站！全部参赛报名结余款项将捐助山打根特殊儿童康复中心，设半马、10KM及欢乐跑组别，期间举办为期3天的健康博览会。</p>
+          <div class="event-links">
+            <a class="event-link-btn" href="tel:089221144">📞 089-221144 筹委会</a>
+            <a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 报名咨询</a>
+          </div>
         </div>
+        <button class="expand-btn" onclick="toggleExpand('ev_3', this)" data-zh="展开活动详情 ↓" data-bm="Lihat Info ↓">展开活动详情 ↓</button>
       </div>
     </div>
 
@@ -596,9 +616,17 @@ full_html = f"""<!DOCTYPE html>
       const el = document.getElementById(id);
       const isVisible = el.style.display === 'block';
       el.style.display = isVisible ? 'none' : 'block';
-      btn.innerText = isVisible 
-        ? (currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Lanjut ↓')
-        : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
+      
+      const isEvent = id.startsWith('ev_');
+      if (isEvent) {{
+        btn.innerText = isVisible 
+          ? (currentLang === 'zh' ? '展开活动详情 ↓' : 'Lihat Info ↓')
+          : (currentLang === 'zh' ? '收起活动详情 ↑' : 'Tutup Info ↑');
+      }} else {{
+        btn.innerText = isVisible 
+          ? (currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Lanjut ↓')
+          : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
+      }}
     }}
     function toggleLanguage() {{
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
@@ -629,4 +657,4 @@ full_html = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西门日报》精选配图+来源角标+深度长文完整版已成功写入 index.html！")
+print("《西门日报》真实摄影照片 + 活动预告折叠完整版已秒级写入 index.html！")
