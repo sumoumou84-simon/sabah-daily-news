@@ -176,8 +176,7 @@ news_items = [
     }
 ]
 
-# 组装卡片 HTML，加入自动容错机制：onerror="this.parentElement.style.display='none';" 
-# 若任意图片遇到网络问题或失效，自动静默隐藏图片容器，无缝转为纯文字卡片，永不裂开碎图
+# 组装卡片 HTML
 cards_html = ""
 for idx, item in enumerate(news_items):
     card_id = f"card_{idx}"
@@ -613,43 +612,43 @@ full_html = f"""<!DOCTYPE html>
 
   <script>
     let currentLang = 'zh';
-    function toggleExpand(id, btn) {
+    function toggleExpand(id, btn) {{
       const el = document.getElementById(id);
       const isVisible = el.style.display === 'block';
       el.style.display = isVisible ? 'none' : 'block';
       
       const isEvent = id.startsWith('ev_');
-      if (isEvent) {
+      if (isEvent) {{
         btn.innerText = isVisible 
           ? (currentLang === 'zh' ? '展开活动详情 ↓' : 'Lihat Info ↓')
           : (currentLang === 'zh' ? '收起活动详情 ↑' : 'Tutup Info ↑');
-      } else {
+      }} else {{
         btn.innerText = isVisible 
           ? (currentLang === 'zh' ? '展开阅读全文 ↓' : 'Baca Lanjut ↓')
           : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
-      }
-    }
-    function toggleLanguage() {
+      }}
+    }}
+    function toggleLanguage() {{
       currentLang = currentLang === 'zh' ? 'bm' : 'zh';
       document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
-      document.querySelectorAll('[data-zh]').forEach(el => {
-        const txt = el.getAttribute(`data-${currentLang}`);
+      document.querySelectorAll('[data-zh]').forEach(el => {{
+        const txt = el.getAttribute(`data-${{currentLang}}`);
         if (txt) el.innerText = txt;
-      });
-    }
-    function shareNews(title) {
-      const shareData = {
+      }});
+    }}
+    function shareNews(title) {{
+      const shareData = {{
         title: '《西门日报》',
         text: title + ' - 详情阅读：' + window.location.href,
         url: window.location.href
-      };
-      if (navigator.share) {
+      }};
+      if (navigator.share) {{
         navigator.share(shareData).catch((e) => console.log(e));
-      } else {
+      }} else {{
         navigator.clipboard.writeText(shareData.text);
         alert('新闻标题与链接已复制！可直接粘贴至 WhatsApp 或朋友圈分享。');
-      }
-    }
+      }}
+    }}
   </script>
 </body>
 </html>
