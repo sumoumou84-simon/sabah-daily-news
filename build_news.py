@@ -8,7 +8,7 @@ my_tz = datetime.timezone(datetime.timedelta(hours=8))
 now = datetime.datetime.now(my_tz)
 date_str = now.strftime("%Y年%m月%d日")
 
-# 1. 寫入 PWA 圖標
+# 1. 寫入 PWA 圖標 (方案3)
 icon_content = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">'
     '<rect width="512" height="512" rx="110" fill="#0f172a"/>'
@@ -54,7 +54,7 @@ manifest_content = {
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 4. 10月30日 全量新聞資料庫（共 21 條）
+# 4. 10月30日 全量新聞資料庫（嚴格執行方案A：寧缺毋濫，圖文完全相符，無適配圖一律純文字）
 news_items = [
     {
         "is_top": True,
@@ -68,32 +68,6 @@ news_items = [
         "excerpt_bm": "Seramai 801 Pendatang Asing Tanpa Izin (PATI) dihantar pulang melalui Pelabuhan Sandakan.",
         "content_zh": "【山打根訊】沙巴移民局聯手海事執法機構與警方，昨日在山打根客運碼頭港口執行今年度最大規模的遣返非法移民（PATI）專案行動。本次被遣返的801名無證外籍人士分別來自山打根、斗湖以及吧巴臨時扣留營，均已依法服刑完畢並完成原籍國使館身份核實手續。執法人員在嚴密押解下安排專船分批離港直航遣返。沙巴移民局重申將堅定貫徹邊境零容忍政策，持續肅清非法滯留者，維護東海岸公共秩序與社會穩定。",
         "content_bm": "Jabatan Imigresen Sabah menghantar pulang seramai 801 PATI dari tiga depoh tahanan (Sandakan, Tawau dan Papar) melalui Pelabuhan Sandakan ke negara asal selepas selesai proses perundangan."
-    },
-    {
-        "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80",
-        "source": "自由日報 / 消防通報",
-        "tag_zh": "沙巴意外", "tag_bm": "Kemalangan",
-        "title_zh": "【沙巴意外】古達樂育華小校門維修照明燈，56歲工人不慎觸電身亡",
-        "title_bm": "Pekerja Maut Renjatan Elektrik Semasa Pasang Lampu di SJK(C) Lok Yuk Kudat",
-        "excerpt_zh": "古達樂育華小校門發生致命工傷，一名56歲承包商外籍工人在維修校門照明燈時鐵梯碰觸高壓電纜觸電墜地不治。",
-        "excerpt_bm": "Lelaki warga asing maut terkena renjatan elektrik semasa kerja penyelenggaraan lampu di pintu pagar sekolah.",
-        "content_zh": "【古達訊】古達樂育華小校門昨日上午發生一起奪命工傷觸電事故。一名56歲菲律賓籍承包商工人在大門籬笆高處進行照明燈安裝與維修作業時，所使用的長梯疑不慎碰觸上方高壓電纜，瞬間遭受強烈電擊後從高處摔落地面。消拯局行動指揮中心接獲投報後於4分鐘內趕抵現場，並緊急通知沙電（SESB）切斷周邊電源展開救援。經在場醫護人員實時搶救核實，該名工人已無生命體徵，當場傷重身亡。古達警方目前已將案件列為猝死案處理。",
-        "content_bm": "Seorang pekerja kontraktor warga asing berusia 56 tahun maut akibat renjatan elektrik selepas tangga yang digunakannya tersentuh kabel elektrik semasa membaiki lampu di SJK(C) Lok Yuk Kudat."
-    },
-    {
-        "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-        "source": "中國報 / 關稅局",
-        "tag_zh": "關稅大案", "tag_bm": "Kastam",
-        "title_zh": "【關稅大案】大馬查獲4950萬走私案！起獲30台軍用AI芯片伺服器",
-        "title_bm": "Kastam Rampas 30 Pelayan Cip AI Gred Ketenteraan Bernilai RM49.5 Juta",
-        "excerpt_zh": "不法集團將大馬充當中轉站，把30台裝置軍用級AI芯片的伺服器假申報為電子零件企圖轉運第三國，遭關稅局一舉破獲。",
-        "excerpt_bm": "Sindiket guna Malaysia sebagai hab transit untuk seludup pelayan cip AI bernilai RM49.5 juta ke negara ketiga.",
-        "content_zh": "【吉隆坡訊】馬來西亞皇家關稅局成功偵破一宗國際高科技走私大案。一個跨國犯罪集團企圖將大馬打造成中轉避風港，將30台裝載軍用級以及尖端人工智能（AI）高端芯片的高性能運算伺服器，從亞洲國家暗中運抵我國後，試圖以「一般電子零件」名義虛假申報並轉運至受管制的第三國。關稅局情報組接獲線報後在貨運碼頭果斷開櫃攔截，起獲該批含稅總市值高達4950萬令吉的尖端禁運設備，目前正全方位追查在本地接應的空殼物流代理。",
-        "content_bm": "Jabatan Kastam Diraja Malaysia berjaya mematahkan cubaan menyeludup 30 unit pelayan yang dilengkapi cip AI gred tentera bernilai RM49.5 juta yang diisytiharkan secara palsu sebagai komponen elektronik."
     },
     {
         "is_top": False,
@@ -150,7 +124,31 @@ news_items = [
     {
         "is_top": False,
         "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80",
+        "img_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+        "source": "中國報 / 關稅局",
+        "tag_zh": "關稅大案", "tag_bm": "Kastam",
+        "title_zh": "【關稅大案】大馬查獲4950萬走私案！起獲30台軍用AI芯片伺服器",
+        "title_bm": "Kastam Rampas 30 Pelayan Cip AI Gred Ketenteraan Bernilai RM49.5 Juta",
+        "excerpt_zh": "不法集團將大馬充當中轉站，把30台裝置軍用級AI芯片的伺服器假申報為電子零件企圖轉運第三國，遭關稅局一舉破獲。",
+        "excerpt_bm": "Sindiket guna Malaysia sebagai hab transit untuk seludup pelayan cip AI bernilai RM49.5 juta ke negara ketiga.",
+        "content_zh": "【吉隆坡訊】馬來西亞皇家關稅局成功偵破一宗國際高科技走私大案。一個跨國犯罪集團企圖將大馬打造成中轉避風港，將30台裝載軍用級以及尖端人工智能（AI）高端芯片的高性能運算伺服器，從亞洲國家暗中運抵我國後，試圖以「一般電子零件」名義虛假申報並轉運至受管制的第三國。關稅局情報組接獲線報後在貨運碼頭果斷開櫃攔截，起獲該批含稅總市值高達4950萬令吉的尖端禁運設備，目前正全方位追查在本地接應的空殼物流代理。",
+        "content_bm": "Jabatan Kastam Diraja Malaysia berjaya mematahkan cubaan menyeludup 30 unit pelayan yang dilengkapi cip AI gred tentera bernilai RM49.5 juta yang diisytiharkan secara palsu sebagai komponen elektronik."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "自由日報 / 消防通報",
+        "tag_zh": "沙巴意外", "tag_bm": "Kemalangan",
+        "title_zh": "【沙巴意外】古達樂育華小校門維修照明燈，56歲工人不慎觸電身亡",
+        "title_bm": "Pekerja Maut Renjatan Elektrik Semasa Pasang Lampu di SJK(C) Lok Yuk Kudat",
+        "excerpt_zh": "古達樂育華小校門發生致命工傷，一名56歲承包商外籍工人在維修校門照明燈時鐵梯碰觸高壓電纜觸電墜地不治。",
+        "excerpt_bm": "Lelaki warga asing maut terkena renjatan elektrik semasa kerja penyelenggaraan lampu di pintu pagar sekolah.",
+        "content_zh": "【古達訊】古達樂育華小校門昨日上午發生一起奪命工傷觸電事故。一名56歲菲律賓籍承包商工人在大門籬笆高處進行照明燈安裝與維修作業時，所使用的長梯疑不慎碰觸上方高壓電纜，瞬間遭受強烈電擊後從高處摔落地面。消拯局行動指揮中心接獲投報後於4分鐘內趕抵現場，並緊急通知沙電（SESB）切斷周邊電源展開救援。經在場醫護人員實時搶救核實，該名工人已無生命體徵，當場傷重身亡。古達警方目前已將案件列為猝死案處理。",
+        "content_bm": "Seorang pekerja kontraktor warga asing berusia 56 tahun maut akibat renjatan elektrik selepas tangga yang digunakannya tersentuh kabel elektrik semasa membaiki lampu di SJK(C) Lok Yuk Kudat."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
         "source": "沙巴星洲日報 / 法庭",
         "tag_zh": "反貪司法", "tag_bm": "Mahkamah",
         "title_zh": "【反貪司法】未按時將6746萬存入託管戶頭，珠寶商獲准向羅斯瑪追討",
@@ -162,8 +160,7 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80",
+        "has_image": False,
         "source": "納米果 / 電競體壇",
         "tag_zh": "大馬之光", "tag_bm": "Sukan",
         "title_zh": "【大馬之光】把打機練成世界級！26歲大馬青年代表福斯出戰東京總決賽",
@@ -175,8 +172,7 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&w=600&q=80",
+        "has_image": False,
         "source": "8視界新聞 / 新明日報",
         "tag_zh": "區域環境", "tag_bm": "Alam Sekitar",
         "title_zh": "【區域環境】印尼示威抗議林火不力，新加坡召見10家涉案企業擬修法嚴懲",
@@ -188,8 +184,7 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+        "has_image": False,
         "source": "Winrayland / 內政部",
         "tag_zh": "出境改革", "tag_bm": "Imigresen",
         "title_zh": "【出境改革】政府計劃2027年1月推廣 MyNIISe，全馬關卡可用二維碼通關",
@@ -201,8 +196,7 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
+        "has_image": False,
         "source": "Moretify / 陸路交通法令",
         "tag_zh": "民生警示", "tag_bm": "Undang-undang",
         "title_zh": "【民生警示】拿椅子路錐霸佔公共停車位違法，最高可罰4000或坐牢1年",
@@ -214,8 +208,7 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
+        "has_image": False,
         "source": "星洲日報大北馬",
         "tag_zh": "文化傳媒", "tag_bm": "Media",
         "title_zh": "【文化傳媒】全國最後一份晚報退場！《光明日報》晚報10月31日出最後一期",
@@ -441,7 +434,7 @@ lines = [
     '      <div class="event-card">',
     '        <span class="event-date">11月29日 · 山打根市議會廣場</span>',
     '        <div class="event-title" data-zh="2026 依羅普拉慈善長跑與健康博覽會" data-bm="Larian Amal Elopura Sandakan 2026">2026 依羅普拉慈善長跑與健康博覽會</div>',
-    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
+    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半派、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
     '        <button class="expand-btn" onclick="toggleExpand(\'ev_3\', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>',
     '      </div>',
     '    </div>',
@@ -494,4 +487,4 @@ full_html = "\n".join(lines)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西門日報》全量 21 條新聞庫已成功寫入 index.html！")
+print("《西門日報》方案A精簡配圖版（21條要聞）已成功寫入 index.html！")
