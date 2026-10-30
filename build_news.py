@@ -54,7 +54,7 @@ manifest_content = {
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 4. 10月30日 全量新聞資料庫（共 21 條，完全覆蓋您給的全部截圖資訊）
+# 4. 10月30日 全量新聞資料庫（共 21 條）
 news_items = [
     {
         "is_top": True,
@@ -441,8 +441,8 @@ lines = [
     '      <div class="event-card">',
     '        <span class="event-date">11月29日 · 山打根市議會廣場</span>',
     '        <div class="event-title" data-zh="2026 依羅普拉慈善長跑與健康博覽會" data-bm="Larian Amal Elopura Sandakan 2026">2026 依羅普拉慈善長跑與健康博覽會</div>',
-    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半派、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
-    '        <button class="expand-btn" onclick="toggleExpand(\'ev_3', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>',
+    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
+    '        <button class="expand-btn" onclick="toggleExpand(\'ev_3\', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>',
     '      </div>',
     '    </div>',
     '    <footer class="sponsor-card">',
@@ -494,4 +494,4 @@ full_html = "\n".join(lines)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西門日報》10月30日全量 21 條新聞庫已成功寫入 index.html！")
+print("《西門日報》全量 21 條新聞庫已成功寫入 index.html！")
