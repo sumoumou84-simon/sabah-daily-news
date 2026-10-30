@@ -64,7 +64,7 @@ manifest_content = {
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 10月30日 最新新聞資料庫（嚴格排重 + 真實照片 + 詳實長文）
+# 10月30日 最新新聞資料庫
 news_items = [
     {
         "is_top": True,
@@ -256,7 +256,7 @@ for idx, item in enumerate(news_items):
     </article>
     """
 
-full_html = f"""<!DOCTYPE html>
+html_template = """<!DOCTYPE html>
 <html lang="zh-MY">
 <head>
   <meta charset="UTF-8">
@@ -273,30 +273,30 @@ full_html = f"""<!DOCTYPE html>
   <meta name="apple-mobile-web-app-title" content="西門日報">
 
   <style>
-    :root {{
+    :root {
       --primary-red: #dc2626;
       --bg-body: #f8fafc;
       --card-bg: #ffffff;
       --border: #e2e8f0;
       --text: #0f172a;
-    }}
-    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
       background: var(--bg-body);
       color: var(--text);
       line-height: 1.5;
       padding-bottom: 30px;
-    }}
-    header {{
+    }
+    header {
       background: #ffffff;
       border-bottom: 3px solid var(--primary-red);
       position: sticky;
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }}
-    .top-bar {{
+    }
+    .top-bar {
       max-width: 1100px;
       margin: 0 auto;
       padding: 10px 14px;
@@ -305,23 +305,23 @@ full_html = f"""<!DOCTYPE html>
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-    }}
-    .logo-group h1 {{
+    }
+    .logo-group h1 {
       font-size: 22px;
       font-weight: 900;
       color: var(--primary-red);
       letter-spacing: -0.5px;
-    }}
-    .actions {{ display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }}
-    .archive-select {{
+    }
+    .actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .archive-select {
       padding: 5px 8px;
       font-size: 12px;
       border-radius: 6px;
       border: 1px solid #cbd5e1;
       background: #f1f5f9;
       font-weight: 600;
-    }}
-    .install-btn {{
+    }
+    .install-btn {
       background: #0f172a;
       color: #38bdf8;
       border: 1px solid #38bdf8;
@@ -333,8 +333,8 @@ full_html = f"""<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 3px;
-    }}
-    .lang-btn {{
+    }
+    .lang-btn {
       background: var(--primary-red);
       color: white;
       border: none;
@@ -343,27 +343,27 @@ full_html = f"""<!DOCTYPE html>
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
-    }}
-    .container {{
+    }
+    .container {
       max-width: 1100px;
       margin: 12px auto;
       padding: 0 10px;
-    }}
+    }
     
-    .news-grid {{
+    .news-grid {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr) !important;
       gap: 10px !important;
       margin-bottom: 24px;
-    }}
+    }
     
-    .top-headline {{
+    .top-headline {
       grid-column: 1 / -1 !important;
       background: #fffdfd !important;
       border: 1.5px solid #f87171 !important;
-    }}
+    }
     
-    .news-card {{
+    .news-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -371,25 +371,25 @@ full_html = f"""<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    }}
+    }
     
-    .news-img-box {{
+    .news-img-box {
       position: relative;
       width: 100%;
       height: 125px;
       background: #e2e8f0;
       overflow: hidden;
-    }}
-    .top-headline .news-img-box {{
+    }
+    .top-headline .news-img-box {
       height: 180px;
-    }}
-    .news-img-box img {{
+    }
+    .news-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }}
-    .source-stamp {{
+    }
+    .source-stamp {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -403,11 +403,14 @@ full_html = f"""<!DOCTYPE html>
       justify-content: space-between;
       align-items: center;
       backdrop-filter: blur(2px);
-    }}
-    .share-btn {{
+    }
+    .share-btn {
       background: #dc2626;
       color: #ffffff;
       border: none;
       padding: 2px 6px;
       border-radius: 3px;
-      font-size: 10p
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    
