@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>西門日報 | Berita Harian Simon</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
   <link rel="icon" type="image/svg+xml" href="icon.svg">
-  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon-192.png">
   <meta name="theme-color" content="#0f172a">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -99,7 +100,15 @@
     </footer>
   </main>
   <script>
-    if ("serviceWorker" in navigator) { window.addEventListener("load", function() { navigator.serviceWorker.register("sw.js").catch(function(err) { console.log(err); }); }); }
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("sw.js", { scope: "/sabah-daily-news/" }).then(function(reg) {
+          console.log("SW registered successfully:", reg);
+        }).catch(function(err) {
+          console.log("SW registration error:", err);
+        });
+      });
+    }
     var currentLang = "zh";
     function toggleExpand(id, btn) {
       var el = document.getElementById(id);
@@ -122,10 +131,15 @@
       else { navigator.clipboard.writeText(shareData.text); alert("新聞標題與鏈接已複製！可直接粘貼至 WhatsApp 或朋友圈分享。"); }
     }
     var deferredPrompt;
-    window.addEventListener("beforeinstallprompt", function(e) { e.preventDefault(); deferredPrompt = e; });
+    window.addEventListener("beforeinstallprompt", function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
     function installPWA() {
-      if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function(choiceResult) { deferredPrompt = null; }); }
-      else {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choiceResult) { deferredPrompt = null; });
+      } else {
         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) { alert("請點擊瀏覽器下方分享按鈕，滑動選擇【加入主畫面】安裝！"); }
         else { alert("請點擊瀏覽器右上角選單（三個點），選擇【加到主畫面】或【安裝應用程式】！"); }
