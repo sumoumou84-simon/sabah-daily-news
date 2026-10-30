@@ -54,7 +54,7 @@ manifest_content = {
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 4. 10月30日 最新新聞數據
+# 4. 10月30日 全量新聞資料庫（共 21 條，完全覆蓋您給的全部截圖資訊）
 news_items = [
     {
         "is_top": True,
@@ -136,6 +136,157 @@ news_items = [
     },
     {
         "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=600&q=80",
+        "source": "熱點 Hotspot / 每日新聞",
+        "tag_zh": "經濟民生", "tag_bm": "Ekonomi",
+        "title_zh": "【經濟民生】金價暴跌至每克 RM503，全馬各地金店掀湧入搶購潮",
+        "title_bm": "Harga Emas Jatuh ke RM503 Se-Gram, Cetus Serbuan Pelanggan di Kedai Emas",
+        "excerpt_zh": "黃金價格出現顯著回調，吉蘭丹哥打峇魯金店顧客絡繹不絕，大批民眾趁低價添購黃金首飾抗通脹。",
+        "excerpt_bm": "Penurunan harga emas sehingga RM503 segram menarik minat orang ramai untuk membeli barang kemas.",
+        "content_zh": "【哥打峇魯訊】受國際貴金屬市場大幅波動影響，國內黃金門市零售價自昨日起顯著下滑至每克503令吉，吸引大批精明消費者趁低湧入金店搶購。在吉蘭丹哥打峇魯西蒂卡迪加巴剎一帶的金飾專門店，連日來門庭若市。受訪顧客指出，此前金價一度逼近每克600令吉高位，如今每克下挫近百令吉，正是分批買入金鏈、金鐲與金條保值與投資的絕佳時機。",
+        "content_bm": "Harga emas yang merosot ke RM503 segram berbanding paras tertinggi hampir RM600 sebelum ini menyebabkan kedai emas diserbu pelanggan yang mengambil peluang menambah simpanan pelaburan."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80",
+        "source": "沙巴星洲日報 / 法庭",
+        "tag_zh": "反貪司法", "tag_bm": "Mahkamah",
+        "title_zh": "【反貪司法】未按時將6746萬存入託管戶頭，珠寶商獲准向羅斯瑪追討",
+        "title_bm": "Syarikat Barang Kemas Dibenar Tuntut RM67.5 Juta Daripada Rosmah Mansor",
+        "excerpt_zh": "因前首相夫人羅斯瑪拒絕遵從法庭判令將款項存入第三方託管戶頭，高庭批准黎巴嫩珠寶商追討訴訟繼續推進。",
+        "excerpt_bm": "Mahkamah Tinggi membenarkan syarikat Global Royalty meneruskan tuntutan RM67.5 juta terhadap Rosmah Mansor.",
+        "content_zh": "【吉隆坡訊】高庭在審理黎巴嫩知名珠寶供應商 Global Royalty Trading SAL 起訴前首相夫人拿汀斯里羅斯瑪案時裁定，由於答辯人羅斯瑪未能遵照法庭早前發出的指示，在規定期限內將逾6746萬令吉款項全數存入指定的第三方託管戶頭，法庭正式批准原告珠寶商繼續展開司法追討程序。該案涉及數十件在2018年警方搜查行動中被扣押的超豪華珠寶首飾的歸屬與賠償責任。",
+        "content_bm": "Mahkamah Tinggi membenarkan syarikat barang kemas Lubnan meneruskan tuntutan saman RM67.5 juta terhadap Datin Seri Rosmah Mansor selepas beliau gagal mematuhi perintah memindahkan wang ke akaun eskrow."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80",
+        "source": "納米果 / 電競體壇",
+        "tag_zh": "大馬之光", "tag_bm": "Sukan",
+        "title_zh": "【大馬之光】把打機練成世界級！26歲大馬青年代表福斯出戰東京總決賽",
+        "title_bm": "Anak Muda Malaysia Dhanesh Mara ke Pusingan Akhir Dunia Gran Turismo di Tokyo",
+        "excerpt_zh": "大馬26歲青年 Dhanesh 憑日復一日專業電競賽車訓練，成為全東南亞唯一晉級東京世界總決賽的選手。",
+        "excerpt_bm": "Dhanesh Wigneswaran menjadi satu-satunya wakil Asia Tenggara ke Siri Dunia Gran Turismo 2026 di Tokyo.",
+        "content_zh": "【體育電競訊】誰說玩遊戲沒有前途？來自馬來西亞的26歲青年 Dhanesh Wigneswaran 憑藉多年刻苦專研模擬賽車技術，成功在國際頂尖賽事中脫穎而出。他將在今年12月正式代表德國福斯車隊（Volkswagen），出戰在日本東京舉行的「Gran Turismo World Series 2026」世界總決賽。Dhanesh 不僅是本屆賽事中全東南亞唯一獲得晉級資格的頂級車手，更向國際體壇展現了大馬電競新青年的專業實力。",
+        "content_bm": "Dhanesh Wigneswaran membuktikan bakat luar biasa apabila menjadi wakil tunggal Asia Tenggara layak ke pusingan akhir dunia Gran Turismo 2026 di Tokyo mewakili pasukan Volkswagen."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&w=600&q=80",
+        "source": "8視界新聞 / 新明日報",
+        "tag_zh": "區域環境", "tag_bm": "Alam Sekitar",
+        "title_zh": "【區域環境】印尼示威抗議林火不力，新加坡召見10家涉案企業擬修法嚴懲",
+        "title_bm": "Protes Kebakaran Hutan di Indonesia: Singapura Panggil 10 Firma dan Pinda Undang-Undang",
+        "excerpt_zh": "跨境煙霾引發區域高度緊張，印尼多座城市學生示威抗議，新加坡政府召見金光等10家企業並提交跨境治霾法修正案。",
+        "excerpt_bm": "Singapura memanggil eksekutif 10 syarikat perladangan susulan kemerosotan jerebu rentas sempadan.",
+        "content_zh": "【綜合東南亞訊】針對近期跨境煙霾再度惡化，印尼首都雅加達等多個主要城市爆發大規模大學生與民間團體街頭示威，強烈譴責政府森林防火管控與執法不力。與此同時，新加坡副總理顏金勇與內政兼律政部長尚穆根正式召見豐益國際、金光農業資源等10家或涉及林火的跨國企業最高執行長，要求企業自費聘請專家徹查旗下泥炭地火情。新加坡永續部亦宣布下週向國會提呈《跨境煙霾污染法令》修正案，將不配合調查的企業負責人列為刑事違法。",
+        "content_bm": "Krisis jerebu serantau mencetuskan bantahan di Indonesia manakala kerajaan Singapura memanggil 10 eksekutif syarikat bagi siasatan terperinci mengikut Akta Pencemaran Jerebu Rentas Sempadan."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+        "source": "Winrayland / 內政部",
+        "tag_zh": "出境改革", "tag_bm": "Imigresen",
+        "title_zh": "【出境改革】政府計劃2027年1月推廣 MyNIISe，全馬關卡可用二維碼通關",
+        "title_bm": "Sistem MyNIISe Diperluas Januari 2027: Imbas Kod QR di Semua Pintu Masuk",
+        "excerpt_zh": "內政部與移民局加速通關數碼化升級，預計2027年全面啟用新一代移民系統，所有陸路與航空關卡全面推行二維碼通關。",
+        "excerpt_bm": "Kementerian Dalam Negeri merancang penggunaan kod QR sepenuhnya di semua pintu masuk negara menjelang 2027.",
+        "content_zh": "【布城訊】內政部與大馬移民局公布新一代國家綜合移民系統（MyNIISe）的最新推廣藍圖。政府計劃在2027年1月起，於新柔長堤、馬新第二通道以及吉隆坡第一、第二國際機場等主要出入境關卡，全面普及二維碼（QR Code）快速通關驗證。民眾與國際旅客未來無需再頻繁出示實體護照蓋章，只需在手機端預先生成過關二維碼並完成人臉識別，幾秒鐘內即可自主完成通關，大幅緩解節假日通關擁堵。",
+        "content_bm": "Kerajaan menyasarkan pelaksanaan penuh sistem MyNIISe pada Januari 2027 yang membolehkan pelepasan imigresen menggunakan imbasan kod QR pantas di seluruh negara."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
+        "source": "Moretify / 陸路交通法令",
+        "tag_zh": "民生警示", "tag_bm": "Undang-undang",
+        "title_zh": "【民生警示】拿椅子路錐霸佔公共停車位違法，最高可罰4000或坐牢1年",
+        "title_bm": "Tindakan 'Cop Parking' Guna Kerusi Boleh Didenda Sehingga RM4,000",
+        "excerpt_zh": "交警與市政廳重申嚴厲執法，任何人擅自使用塑膠椅、障礙物人肉霸位均觸犯法令，違者面臨重罰。",
+        "excerpt_bm": "Perbuatan meletakkan halangan bagi menempah petak parkir awam merupakan kesalahan jenayah.",
+        "content_zh": "【吉隆坡訊】針對商業區街道頻繁出現的「拿椅子霸車位（Cop Parking）」惡習，執法當局再次發布嚴正法律科普。根據《1987年陸路交通法令》第50(3)條文，任何人非法阻礙公共道路或公共停車位以保留停車權利均屬刑事罪行。違例者一旦罪成，初犯即可面臨最高4000令吉的罰款或長達12個月的監禁處罰。市政廳呼籲公眾遇此情況可即時拍照定位舉報，由執法人員到場移走障礙物並開出傳票。",
+        "content_bm": "Pihak berkuasa menegaskan bahawa tindakan meletakkan kerusi, kon atau halangan untuk 'cop parking' adalah kesalahan di bawah Seksyen 50(3) Akta Pengangkutan Jalan 1987 yang membawa denda hingga RM4,000."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
+        "source": "星洲日報大北馬",
+        "tag_zh": "文化傳媒", "tag_bm": "Media",
+        "title_zh": "【文化傳媒】全國最後一份晚報退場！《光明日報》晚報10月31日出最後一期",
+        "title_bm": "Edisi Petang Guang Ming Daily Tamat 31 Oktober, Catat Sejarah Akhbar Cetak",
+        "excerpt_zh": "為紙本晚報寫下歷史句點！《光明日報》晚報宣布將於本月31日發行告別版，11月1日起全面停刊。",
+        "excerpt_bm": "Akhbar petang terakhir di Malaysia, Guang Ming Daily menamatkan penerbitan fizikalnya pada 31 Oktober ini.",
+        "content_zh": "【檳城訊】伴隨幾代北馬讀者夜間閱讀記憶的全國最後一份中文紙本晚報——《光明日報》晚報，正式發布讀者告別啟事。報社宣布將於2026年10月31日出版最後一期實體晚報，並自11月1日起全面終止在檳城、吉打及玻璃市等地的晚報發行業務。管理層指出，此舉是因應全媒體數碼化轉型的必然戰略調整，晨報與電子報將繼續正常運營，為傳統紙媒的「夜報時代」正式劃下圓滿句號。",
+        "content_bm": "Guang Ming Daily mengumumkan edisi petang terakhir akan diterbitkan pada 31 Oktober 2026 berikutan transformasi digital pembaca, menamatkan legasi akhbar petang di utara tanah air."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "Sayang Sabah / 斗湖警區",
+        "tag_zh": "沙巴法治", "tag_bm": "Mahkamah",
+        "title_zh": "【沙巴法治】擔心工廠失竊被開除！斗湖45歲保安報假案稱遭打劫面控認罪",
+        "title_bm": "Pengawal Keselamatan Mengaku Buat Laporan Palsu Takut Dibuang Kerja di Tawau",
+        "excerpt_zh": "斗湖45歲男保安因害怕工作場所失竊遭解僱，竟謊報自己遭劫匪搶劫，在推事庭面控後當庭俯首認罪。",
+        "excerpt_bm": "Seorang pengawal keselamatan di Tawau mengaku bersalah memberi maklumat palsu kepada polis.",
+        "content_zh": "【斗湖訊】斗湖一名45歲的本地保安人員 Liman Ismail，因涉嫌向警方報假案，昨日在斗湖推事庭正式被提控並當庭俯首認罪。案情顯示，被告工作的場所於本月初發生盜竊案，他因極度害怕被管理層革職追責，竟向調查官謊稱自己在值班時遭到不明歹徒持械打劫搶奪財物。警方在深入調閱周邊監控後戳破其謊言，依法援引《刑事法典》第182條文（提供虛假資訊蓄意誤導公務員）將其提控，案定近期下達判決。",
+        "content_bm": "Liman Ismail, 45, mengaku membuat laporan palsu kepada polis mendakwa dirinya disamun kerana takut dipecat selepas tempat kerjanya dimasuki pencuri di Tawau."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "Sayang Sabah / 國內貿易部",
+        "tag_zh": "反壟斷", "tag_bm": "Perniagaan",
+        "title_zh": "【反壟斷】涉1.08億學校食品採購招標！MyCC擬對18家圍標串通企業開罰",
+        "title_bm": "MyCC Keluarkan Keputusan Cadangan Terhadap 18 Syarikat Tipuan Bida RM108.3 Juta",
+        "excerpt_zh": "涉及30項公立學校與大專食品採購及清潔合約，大馬競爭委員會正式對涉嫌串通圍標的18家企業採取法律行動。",
+        "excerpt_bm": "Suruhanjaya Persaingan Malaysia menyiasat kartel tipuan bida tender makanan dan pembersihan IPTA.",
+        "content_zh": "【吉隆坡訊】國內貿易及生活成本部長拿督阿米占宣布，大馬競爭委員會（MyCC）已完成對一系列政府合約圍標案件的調查，並正式對涉案的18家商業企業發出「擬議決定通知書」。調查發現，這些企業涉嫌在全國30項針對公立中學及公立高等學府（IPTA）的膳食供應與清潔服務公開招標中，結成卡特爾非法操縱競標價格，涉及招標總預算高達1億0830萬令吉。MyCC 將依據《2010年競爭法令》向涉案企業追繳巨額行政罰款。",
+        "content_bm": "Menteri KPDN Datuk Armizan Mohd Ali mengesahkan MyCC mengambil tindakan terhadap 18 syarikat yang terbabit dalam aktiviti kartel tipuan bida tender kerajaan bernilai RM108.3 juta."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "中國報 / PERNAMA",
+        "tag_zh": "大馬政經", "tag_bm": "Nasional",
+        "title_zh": "【大馬政經】賣了整整60年！武裝部隊 PERNAMA 門市全面停售免稅啤酒",
+        "title_bm": "Kedai PERNAMA Henti Penjualan Bir Bebas Cukai Selepas 60 Tahun Beroperasi",
+        "excerpt_zh": "馬來西亞武裝部隊官兵福利合作社旗下的 PERNAMA 連鎖門市，宣布全面停售免稅啤酒，未公開具體停售動因。",
+        "excerpt_bm": "Rangkaian kedai serbaneka PERNAMA mengumumkan pemberhentian penjualan bir bebas cukai di cawangannya.",
+        "content_zh": "【吉隆坡訊】為我國現役及退役軍人提供平價商品的馬來西亞武裝部隊合作社旗下連鎖超市——PERNAMA（Perwira Niaga Malaysia），昨日正式通知其在全馬軍營與各地的門市全面停止銷售免稅啤酒產品。這項售賣免稅酒類長達60年的歷史傳統宣告終結。儘管官方通告並未詳述停售背後的政策調整原因，但在退伍軍人與民間消費群體中引發了高度關注與廣泛討論。",
+        "content_bm": "PERNAMA yang beroperasi membekalkan barangan kepada anggota tentera sejak 60 tahun lalu mengesahkan pemberhentian penjualan minuman bir bebas cukai di semua premisnya."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "沙巴星洲日報 / 社會",
+        "tag_zh": "社會人口", "tag_bm": "Sosial",
+        "title_zh": "【社會人口】大馬人口替代水平告急！華裔總生育率降至 0.9 歷史新低",
+        "title_bm": "Kadar Kesuburan Kaum Cina di Malaysia Jatuh ke Paras Terendah 0.9",
+        "excerpt_zh": "養育成本高昂與職場托育支援不足，大馬華裔總生育率跌破 1.0 心理防線，家庭規劃二胎、三胎趨向極度謹慎。",
+        "excerpt_bm": "Kadar penggantian populasi merosot dengan kadar kesuburan kaum Cina mencatatkan paras terendah 0.9.",
+        "content_zh": "【吉隆坡訊】馬來西亞統計局發布的最新人口分析報告示警，全國人口自然更替率正面臨嚴峻挑戰。其中，大馬華裔族群的總和生育率（TFR）已進一步下滑至 0.9 的歷史超低水平，遠低於維持人口穩定的 2.1 世代更替紅線。社會學學者分析指出，生活與住房成本飆升、私人幼托費用高昂以及雙薪職場對育兒支援的缺失，是年輕華裔夫妻推遲婚育或堅決選擇不生育的核心主因。",
+        "content_bm": "Laporan demografi menunjukkan kadar kesuburan kaum Cina di Malaysia menurun ke paras kritikal 0.9 akibat kekangan kos sara hidup, perbelanjaan pendidikan anak dan persekitaran tempat kerja."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "8guava / 網絡安全",
+        "tag_zh": "網絡防騙", "tag_bm": "Jenayah Siber",
+        "title_zh": "【網絡防騙】WhatsApp 新騙局曝光！收到帶有「ZIP」壓縮文件千萬別打開",
+        "title_bm": "Taktik Baharu Scam WhatsApp: Jangan Buka Lampiran Fail ZIP Meragukan",
+        "excerpt_zh": "不法黑客冒充熟人或官方公函在 WhatsApp 群發含有惡意木馬的 ZIP 壓縮包，一點擊便會被遠程盜取銀行資料。",
+        "excerpt_bm": "Pengguna WhatsApp dinasihati berwaspada dengan fail lampiran format ZIP yang mengandungi perisian hasad.",
+        "content_zh": "【網絡安全訊】網絡安全機構發布緊急公眾防範提醒，揭露近期在 WhatsApp 平台上大規模蔓延的新型惡意軟件攻擊手段。騙徒利用被盜取的賬號或偽裝成官方機構，向通訊錄好友發送名為「CONFIDENTIAL」或「重要文件」的 ZIP 壓縮文件。用戶一旦在手機端點擊解壓，內嵌的木馬病毒便會自動獲取後台權限，全面截取用戶的短信驗證碼（OTP）與網銀登錄憑證，公眾受促提高警惕切勿下載來源不明的附件。",
+        "content_bm": "Pakar keselamatan siber memberi amaran tentang penyebaran fail ZIP berniat jahat melalui WhatsApp yang boleh mencuri maklumat perbankan mangsa secara automatik apabila dibuka."
+    },
+    {
+        "is_top": False,
         "has_image": False,
         "source": "Winrayland / 財政部",
         "tag_zh": "民生福利", "tag_bm": "Bantuan",
@@ -160,19 +311,6 @@ news_items = [
     },
     {
         "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
-        "source": "Moretify / 陸路交通法令",
-        "tag_zh": "民生警示", "tag_bm": "Undang-undang",
-        "title_zh": "【民生警示】拿椅子路錐霸佔公共停車位違法，最高可罰4000或坐牢1年",
-        "title_bm": "Tindakan 'Cop Parking' Guna Kerusi Boleh Didenda Sehingga RM4,000",
-        "excerpt_zh": "交警與市政廳重申嚴厲執法，任何人擅自使用塑膠椅、障礙物人肉霸位均觸犯法令，違者面臨重罰。",
-        "excerpt_bm": "Perbuatan meletakkan halangan bagi menempah petak parkir awam merupakan kesalahan jenayah.",
-        "content_zh": "【吉隆坡訊】針對商業區街道頻繁出現的「拿椅子霸車位（Cop Parking）」惡習，執法當局再次發布嚴正法律科普。根據《1987年陸路交通法令》第50(3)條文，任何人非法阻礙公共道路或公共停車位以保留停車權利均屬刑事罪行。違例者一旦罪成，初犯即可面臨最高4000令吉的罰款或長達12個月的監禁處罰。市政廳呼籲公眾遇此情況可即時拍照定位舉報，由執法人員到場移走障礙物並開出傳票。",
-        "content_bm": "Pihak berkuasa menegaskan bahawa tindakan meletakkan kerusi, kon atau halangan untuk 'cop parking' adalah kesalahan di bawah Seksyen 50(3) Akta Pengangkutan Jalan 1987 yang membawa denda hingga RM4,000."
-    },
-    {
-        "is_top": False,
         "has_image": False,
         "source": "風采 / 衛生部",
         "tag_zh": "公共醫療", "tag_bm": "Kesihatan",
@@ -182,31 +320,6 @@ news_items = [
         "excerpt_bm": "Kementerian Kesihatan berjaya memendekkan tempoh menunggu pembedahan melalui penyumberan luar ke hospital swasta.",
         "content_zh": "【布城醫療訊】衛生部長拿督斯里祖基菲里阿末在國會答詢時透露，衛生部自去年推動的「公共醫療服務外包私立醫院」試點專案取得突破性進展。針對以往公立大醫院動輒排隊等上一兩年的心臟搭橋與複雜心導管手術，在政府資助病患轉診至合約私立專科醫院後，病患整體平均等候時間已大幅縮短2至10週以上，切實化解了公立專科病房長期飽和的醫療痛點。",
         "content_bm": "Menteri Kesihatan Datuk Seri Dr Dzulkefly Ahmad mengesahkan inisiatif penyumberan luar rawatan ke hospital swasta berjaya memendekkan tempoh menunggu pembedahan kritikal seperti jantung."
-    },
-    {
-        "is_top": False,
-        "has_image": False,
-        "source": "自由日報 / 砂議會",
-        "tag_zh": "東馬政局", "tag_bm": "Politik",
-        "title_zh": "【東馬政局】砂拉越州議會正式解散，法定60天內將舉行全州大選",
-        "title_bm": "Dewan Undangan Negeri Sarawak Bubar, Pilihan Raya Negeri Dalam 60 Hari",
-        "excerpt_zh": "砂拉越總理公署宣布州議會正式解散，大馬選委會將在兩週內召開特別會議敲定第13屆砂州選舉提名與投票日。",
-        "excerpt_bm": "DUN Sarawak dibubarkan secara rasmi membuka laluan kepada Pilihan Raya Negeri ke-13.",
-        "content_zh": "【古晉訊】砂拉越州議會昨日依憲正式宣告解散，標誌著第13屆砂拉越州選舉正式拉開戰幕。根據砂拉越州憲法規定，州選舉必須在議會解散之日起的60天內完成舉行。馬來西亞選舉委員會（SPR）預料將在近期接獲議長正式解散公函後召開特別工作會議，全面敲定全州82個州選區的候選人提名日、競選期以及選民投票日日程表。",
-        "content_bm": "Dewan Undangan Negeri (DUN) Sarawak telah dibubarkan secara rasmi bagi membolehkan Pilihan Raya Negeri (PRN) Ke-13 diadakan dalam tempoh 60 hari mengikut perlembagaan."
-    },
-    {
-        "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
-        "source": "星洲日報大北馬",
-        "tag_zh": "文化傳媒", "tag_bm": "Media",
-        "title_zh": "【文化傳媒】全國最後一份晚報退場！《光明日報》晚報10月31日出最後一期",
-        "title_bm": "Edisi Petang Guang Ming Daily Tamat 31 Oktober, Catat Sejarah Akhbar Cetak",
-        "excerpt_zh": "為紙本晚報寫下歷史句點！《光明日報》晚報宣布將於本月31日發行告別版，11月1日起全面停刊。",
-        "excerpt_bm": "Akhbar petang terakhir di Malaysia, Guang Ming Daily menamatkan penerbitan fizikalnya pada 31 Oktober ini.",
-        "content_zh": "【檳城訊】伴隨幾代北馬讀者夜間閱讀記憶的全國最後一份中文紙本晚報——《光明日報》晚報，正式發布讀者告別啟事。報社宣布將於2026年10月31日出版最後一期實體晚報，並自11月1日起全面終止在檳城、吉打及玻璃市等地的晚報發行業務。管理層指出，此舉是因應全媒體數碼化轉型的必然戰略調整，晨報與電子報將繼續正常運營，為傳統紙媒的「夜報時代」正式劃下圓滿句號。",
-        "content_bm": "Guang Ming Daily mengumumkan edisi petang terakhir akan diterbitkan pada 31 Oktober 2026 berikutan transformasi digital pembaca, menamatkan legasi akhbar petang di utara tanah air."
     }
 ]
 
@@ -237,7 +350,7 @@ for idx, item in enumerate(news_items):
         '</div></article>'
     )
 
-# 6. 使用逐行拼接組裝 HTML，100% 免疫 Python 多行字串截斷
+# 6. 使用逐行拼接組裝 HTML
 lines = [
     '<!DOCTYPE html>',
     '<html lang="zh-MY">',
@@ -328,8 +441,8 @@ lines = [
     '      <div class="event-card">',
     '        <span class="event-date">11月29日 · 山打根市議會廣場</span>',
     '        <div class="event-title" data-zh="2026 依羅普拉慈善長跑與健康博覽會" data-bm="Larian Amal Elopura Sandakan 2026">2026 依羅普拉慈善長跑與健康博覽會</div>',
-    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
-    '        <button class="expand-btn" onclick="toggleExpand(\'ev_3\', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>',
+    '        <div class="event-detail-box" id="ev_3"><p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半派、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p><div class="event-links"><a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a><a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a></div></div>',
+    '        <button class="expand-btn" onclick="toggleExpand(\'ev_3', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>',
     '      </div>',
     '    </div>',
     '    <footer class="sponsor-card">',
@@ -381,4 +494,4 @@ full_html = "\n".join(lines)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西門日報》最新新聞庫已成功寫入 index.html！")
+print("《西門日報》10月30日全量 21 條新聞庫已成功寫入 index.html！")
