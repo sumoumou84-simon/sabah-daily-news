@@ -10,7 +10,7 @@ date_str = now.strftime("%Y年%m月%d日")
 weekday_map = {0:"星期一", 1:"星期二", 2:"星期三", 3:"星期四", 4:"星期五", 5:"星期六", 6:"星期日"}
 weekday_str = weekday_map[now.weekday()]
 
-# 方案 3 向量圖標
+# 方案 3 矢量图标
 app_icon_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
     <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -33,22 +33,14 @@ app_icon_svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" 
 with open("icon.svg", "w", encoding="utf-8") as f:
     f.write(app_icon_svg)
 
-# 寫入 Service Worker (sw.js)，PWA 安裝的核心憑證
 sw_js = """
-self.addEventListener('install', (e) => {
-  self.skipWaiting();
-});
-self.addEventListener('activate', (e) => {
-  e.waitUntil(clients.claim());
-});
-self.addEventListener('fetch', (e) => {
-  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-});
+self.addEventListener('install', (e) => { self.skipWaiting(); });
+self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });
+self.addEventListener('fetch', (e) => { e.respondWith(fetch(e.request).catch(() => caches.match(e.request))); });
 """
 with open("sw.js", "w", encoding="utf-8") as f:
     f.write(sw_js.strip())
 
-# 標準 manifest.json 配置
 manifest_content = {
     "name": "西門日報 | Berita Harian Simon",
     "short_name": "西門日報",
@@ -72,170 +64,159 @@ manifest_content = {
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 新聞數據庫
+# 10月30日 最新新聞資料庫（嚴格排重 + 真實照片 + 詳實長文）
 news_items = [
     {
         "is_top": True,
         "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
-        "source": "Sayang Sabah / 首長署",
-        "tag_zh": "沙巴基建", "tag_bm": "Infrastruktur",
-        "title_zh": "【沙巴基建】哈芝芝證實聯邦開銷達 71.78%，291項工程竣工交付",
-        "title_bm": "KM: Prestasi Perbelanjaan Sabah Melonjak 71.78%, 291 Projek Siap",
-        "excerpt_zh": "沙巴首長哈芝芝證實，沙巴聯邦發展撥款支出已大幅提速至71.78%，全州291項重大民生基建竣工交付。",
-        "excerpt_bm": "Ketua Menteri Sabah mengesahkan perbelanjaan persekutuan capai 71.78% dengan 291 projek siap sepenuhnya.",
-        "content_zh": "【亞庇訊】沙巴首席部長拿督斯里哈芝芝諾昨日主持州發展行動委員會會議時透露，截至10月26日，沙巴在第12大馬計劃下的聯邦發展開銷表現大幅飆升至71.78%，較今年8月份的52.5%取得突破性進展。今年全州已順利落成交付291項重大發展工程，重點項目涵蓋亞庇科學中學遷建、兵南邦區多所國民型中小學校舍升級、內陸水利灌溉管網以及東海岸跨區支線公路。首長特別表揚州級監督專案組與聯邦公共工程局（JKR）建立的每週現場巡檢機制，成功挽救多項瀕臨擱置的「病態工程」，強調第四季將全力衝刺破八成支出大關，確保聯邦資源全數轉化為造福沙巴民生的實效資產。",
-        "content_bm": "KM Datuk Seri Hajiji Noor mengesahkan pelaksanaan projek persekutuan di Sabah melonjak ke 71.78%. Sebanyak 291 projek telah disiapkan termasuk SM Sains Sabah dan menaik taraf sekolah di Penampang melalui pemantauan berkala JKR."
+        "img_url": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+        "source": "SANDAKANfm / RTM Sandakan",
+        "tag_zh": "沙巴治安", "tag_bm": "Keselamatan",
+        "title_zh": "【沙巴治安】山打根港口執行大規模遣返 801名非法移民出境",
+        "title_bm": "801 PATI Dihantar Pulang ke Negara Asal Melalui Pelabuhan Sandakan",
+        "excerpt_zh": "沙巴移民局在山打根港口展開大規模集中遣返行動，將山打根、斗湖及吧巴三地共801名無證偷渡客送返原籍國。",
+        "excerpt_bm": "Seramai 801 Pendatang Asing Tanpa Izin (PATI) dihantar pulang melalui Pelabuhan Sandakan.",
+        "content_zh": "【山打根訊】沙巴移民局聯手海事執法機構與警方，昨日在山打根客運碼頭港口執行今年度最大規模的遣返非法移民（PATI）專案行動。本次被遣返的801名無證外籍人士分別來自山打根、斗湖以及吧巴臨時扣留營，均已依法服刑完畢並完成原籍國使館身份核實手續。執法人員在嚴密押解下安排專船分批離港直航遣返。沙巴移民局重申將堅定貫徹邊境零容忍政策，持續肅清非法滯留者，維護東海岸公共秩序與社會穩定。",
+        "content_bm": "Jabatan Imigresen Sabah menghantar pulang seramai 801 PATI dari tiga depoh tahanan (Sandakan, Tawau dan Papar) melalui Pelabuhan Sandakan ke negara asal selepas selesai proses perundangan."
     },
     {
         "is_top": False,
         "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80",
-        "source": "ESSCOM 官方發布",
-        "tag_zh": "沙巴治安", "tag_bm": "Keselamatan",
-        "title_zh": "【沙巴治安】ESSCOM 古納海陸大突擊扣10人，開罰及充公逾 26.9 萬令吉",
-        "title_bm": "Operasi Bersepadu ESSCOM di Kunak Tahan 10 Individu, Kompaun RM269k",
-        "excerpt_zh": "東安局出動202名跨部門精銳在古納展開海陸大圍剿，截查走私黑點並嚴懲違規活動。",
-        "excerpt_bm": "ESSCOM bersama 19 agensi menggerakkan 202 anggota dalam operasi bersepadu laut dan darat di Kunak.",
-        "content_zh": "【古納訊】沙巴東部特別保安指揮區（ESSCOM）統籌警方、海事執法機構、關稅局及移民局等19個執法部門，於10月26日至27日連續48小時在古納海域及沿海高風險紅區展開「海上圍剿」聯合突擊大行動。行動共動員202名執法官兵，全面封鎖主要水上木屋區與私運航道。行動中依法拘留10名無法出示有效證件的涉案外籍人士及違法分子，起獲多艘違規非法改裝大馬力快艇、違禁走私雜貨以及非法漁具，累計開出複合罰單與查扣沒收財物總估值高達26萬9439令吉。指揮官強調，東安局將維持高壓巡邏態勢，嚴密阻截跨境滲透犯罪。",
-        "content_bm": "Operasi bersepadu ESSZONE di Kunak melibatkan 202 anggota berjaya menahan 10 individu, merampas bot enjin kuasa tinggi serta pelbagai barangan penyeludupan bernilai RM269,439."
+        "img_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80",
+        "source": "自由日報 / 消防通報",
+        "tag_zh": "沙巴意外", "tag_bm": "Kemalangan",
+        "title_zh": "【沙巴意外】古達樂育華小校門維修照明燈，56歲工人不慎觸電身亡",
+        "title_bm": "Pekerja Maut Renjatan Elektrik Semasa Pasang Lampu di SJK(C) Lok Yuk Kudat",
+        "excerpt_zh": "古達樂育華小校門發生致命工傷，一名56歲承包商外籍工人在維修校門照明燈時鐵梯碰觸高壓電纜觸電墜地不治。",
+        "excerpt_bm": "Lelaki warga asing maut terkena renjatan elektrik semasa kerja penyelenggaraan lampu di pintu pagar sekolah.",
+        "content_zh": "【古達訊】古達樂育華小校門昨日上午發生一起奪命工傷觸電事故。一名56歲菲律賓籍承包商工人在大門籬笆高處進行照明燈安裝與維修作業時，所使用的長梯疑不慎碰觸上方高壓電纜，瞬間遭受強烈電擊後從高處摔落地面。消拯局行動指揮中心接獲投報後於4分鐘內趕抵現場，並緊急通知沙電（SESB）切斷周邊電源展開救援。經在場醫護人員實時搶救核實，該名工人已無生命體徵，當場傷重身亡。古達警方目前已將案件列為猝死案處理。",
+        "content_bm": "Seorang pekerja kontraktor warga asing berusia 56 tahun maut akibat renjatan elektrik selepas tangga yang digunakannya tersentuh kabel elektrik semasa membaiki lampu di SJK(C) Lok Yuk Kudat."
     },
     {
         "is_top": False,
         "has_image": True,
         "img_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-        "source": "砂拉越星洲日報 / 首相署",
-        "tag_zh": "科技算力", "tag_bm": "Teknologi",
-        "title_zh": "【科技算力】軟銀投資 2040 億令吉，選中古晉與西馬發展 AI 與綠色數據中心",
-        "title_bm": "SoftBank Labur RM204b Bangun Pusat Data AI di Kuching & Semenanjung",
-        "excerpt_zh": "孫正義對接安華敲定2040億超大型外資，東馬古晉依託豐富綠色水電躍升區域AI算力樞紐。",
-        "excerpt_bm": "Masayoshi Son memuktamadkan pelaburan mega RM204 bilion bagi membina infrastruktur AI di Kuching.",
-        "content_zh": "【吉隆坡訊】日本軟銀集團（SoftBank）創辦人兼董事長孫正義日前與馬來西亞首相拿督斯里安華舉行線上高層閉門戰略峰會，正式拍板高達2040億令吉（約460億美元）的鉅額投資藍圖。軟銀集團將與大馬本土主權基金攜手，在東馬砂拉越古晉以及西馬南部黃金廊道，分別建設多座高能效綠色人工智能超級計算數據中心集群。古晉獲選的主因在於婆羅洲具備充沛的水力與綠色清潔可再生能源，完全契合算力中心嚴苛的雙碳環保標準。此舉將推動東馬加速轉型為全東南亞算力基建核心，並在未來五年催生上萬個前沿高科技數字崗位。",
-        "content_bm": "Pelaburan gergasi RM204 bilion oleh SoftBank memilih Kuching berikutan bekalan tenaga hidro boleh diperbaharui yang stabil, sekali gus meletakkan Borneo sebagai hab pengkomputeran AI serantau."
+        "source": "中國報 / 關稅局",
+        "tag_zh": "關稅大案", "tag_bm": "Kastam",
+        "title_zh": "【關稅大案】大馬查獲4950萬走私案！起獲30台軍用AI芯片伺服器",
+        "title_bm": "Kastam Rampas 30 Pelayan Cip AI Gred Ketenteraan Bernilai RM49.5 Juta",
+        "excerpt_zh": "不法集團將大馬充當中轉站，把30台裝置軍用級AI芯片的伺服器假申報為電子零件企圖轉運第三國，遭關稅局一舉破獲。",
+        "excerpt_bm": "Sindiket guna Malaysia sebagai hab transit untuk seludup pelayan cip AI bernilai RM49.5 juta ke negara ketiga.",
+        "content_zh": "【吉隆坡訊】馬來西亞皇家關稅局成功偵破一宗國際高科技走私大案。一個跨國犯罪集團企圖將大馬打造成中轉避風港，將30台裝載軍用級以及尖端人工智能（AI）高端芯片的高性能運算伺服器，從亞洲國家暗中運抵我國後，試圖以「一般電子零件」名義虛假申報並轉運至受管制的第三國。關稅局情報組接獲線報後在貨運碼頭果斷開櫃攔截，起獲該批含稅總市值高達4950萬令吉的尖端禁運設備，目前正全方位追查在本地接應的空殼物流代理。",
+        "content_bm": "Jabatan Kastam Diraja Malaysia berjaya mematahkan cubaan menyeludup 30 unit pelayan yang dilengkapi cip AI gred tentera bernilai RM49.5 juta yang diisytiharkan secara palsu sebagai komponen elektronik."
     },
     {
         "is_top": False,
         "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80",
-        "source": "沙巴詩華日報 / PayNet",
-        "tag_zh": "跨境金融", "tag_bm": "Kewangan",
-        "title_zh": "【跨境金融】馬銀行 MAE 接入 Alipay+，免換匯掃碼通中港韓菲老",
-        "title_bm": "Maybank MAE Integrasi Alipay+, Imbas Kod QR di 5 Wilayah Serantau",
-        "excerpt_zh": "大馬人出國旅遊免換外幣，打開手機 MAE 應用直接掃碼結算，暢行中港韓菲老五大目的地。",
-        "excerpt_bm": "Pengguna Maybank kini boleh imbas kod QR di China, HK, Korea, Filipina dan Laos tanpa pertukaran wang.",
-        "content_zh": "【金融專訊】馬來西亞國家數字支付網絡（PayNet）宣布與螞蟻國際旗下的跨境支付解決方案 Alipay+ 達成跨國技術對接。馬來亞銀行（Maybank）作為首發陣營，已正式在其主力電子錢包 MAE 中全面開通雙向跨境掃碼服務。沙巴及全馬用戶即日起出境前往中國大陸、中國香港、韓國、菲律賓以及老撾等熱門旅遊及商貿目的地時，無需提前兌換外幣紙鈔或下載境外 App，只需打開 MAE 掃描帶有 Alipay+ 標識的商家二維碼，即可自動按實時最優惠匯率由馬幣戶頭即時扣款完成結算，消費體驗全面看齊本地 DuitNow QR。",
-        "content_bm": "Integrasi MAE dan Alipay+ membolehkan rakyat Malaysia membuat pembayaran kod QR di luar negara secara langsung dari akaun bank tempatan dengan kadar pertukaran mata wang yang telus dan kompetitif."
+        "img_url": "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=600&q=80",
+        "source": "InfoTawau / 工程部",
+        "tag_zh": "沙巴交通", "tag_bm": "Infrastruktur",
+        "title_zh": "【沙巴交通】泛婆公路1A工期落後僅達89.5%，工程部限期發整改令",
+        "title_bm": "Kemajuan Fizikal Lebuhraya Pan Borneo Fasa 1A Lewat, KKR Arah Pelan Pemulihan",
+        "excerpt_zh": "沙巴泛婆公路1A標段物理進度僅達89.54%，落後於既定目標，工程部已向延誤承包商下達最後通牒限期提速。",
+        "excerpt_bm": "Kementerian Kerja Raya mengarahkan kontraktor Pan Borneo Sabah Fasa 1A mengemukakan pelan pemulihan segera.",
+        "content_zh": "【斗湖訊】工程部（KKR）對沙巴泛婆羅洲公路（LPB）工程進展展開全面稽核，最新評估數據顯示，目前正施工中的沙巴第1A階段整體物理施工進度僅達89.54%，明顯落後於合約排期的96.32%。工程部長已正式向下轄所有進度延誤的工程承包商發出整改指令，要求其在限期內提交具備實操性的追趕追工方案，包括增加夜間施工班次與設備人員投放，以確保這條貫穿沙巴全境的經濟命脈幹線按期交付通車。",
+        "content_bm": "KKR mengeluarkan arahan tegas kepada kontraktor projek Lebuhraya Pan Borneo Sabah Fasa 1A yang lewat mencapai kemajuan fizikal 89.54% berbanding 96.32% yang dijadualkan."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
+        "source": "Says / Sarikeians",
+        "tag_zh": "東馬商業", "tag_bm": "Perniagaan",
+        "title_zh": "【東馬商業】全砂首間宜家！IKEA Kuching 官宣11月27日正式開業",
+        "title_bm": "IKEA Kuching Cawangan Pertama di Sarawak Dibuka 27 November Ini",
+        "excerpt_zh": "宜家官方敲定進駐東馬進程，砂拉越首間實體商場將於11月27日在古晉石角Pine Square商圈隆重開幕。",
+        "excerpt_bm": "IKEA mengumumkan pembukaan gedung fizikal pertamanya di Sarawak bertempat di Pine Square Batu Kawa.",
+        "content_zh": "【古晉商業訊】國際知名連鎖家居巨頭宜家（IKEA）今日正式向東馬市場發布重磅官宣，砂拉越首家也是全婆羅洲旗艦實體門市——IKEA Kuching，落實於2026年11月27日盛大開門迎客。新商場坐落於古晉石角黃金商圈 Pine Square（Pines Mall），不僅引進了全套北歐風情家具樣板間與家居訂購配送中心，更設有深受民眾喜愛的宜家經典餐廳，將大幅填補東馬地區國際大型一站式現代家居零售的空白。",
+        "content_bm": "IKEA Kuching mengesahkan tarikh pembukaan rasmi pada 27 November 2026 di Pine Square, Batu Kawa, menjadi gedung IKEA fizikal pertama di wilayah Sarawak."
+    },
+    {
+        "is_top": False,
+        "has_image": True,
+        "img_url": "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80",
+        "source": "沙巴星洲日報 / 財經",
+        "tag_zh": "外匯金融", "tag_bm": "Kewangan",
+        "title_zh": "【外匯金融】美聯儲按兵不動符預期，馬幣兌美元匯率升至7周新高",
+        "title_bm": "Ringgit Mengukuh ke Paras Tertinggi 7 Minggu Berbanding Dolar AS",
+        "excerpt_zh": "美聯儲最新議息會議維持利率不變釋放溫和信號，令吉走勢強勁，兌美元升至7周高位，兌新元創8周新高。",
+        "excerpt_bm": "Mata wang Ringgit Malaysia terus mencatatkan pengukuhan berbanding dolar AS dan dolar Singapura.",
+        "content_zh": "【吉隆坡財經訊】美聯儲在結束最新的貨幣政策會議後宣布基準利率按兵不動，聲明釋放溫和貨幣路徑預期，帶動新興市場外匯資產普遍走強。馬來西亞令吉在本地及海外匯市買盤湧現，令吉兌美元即期匯率強勢突破關鍵心理阻力位，創下近7個星期以來的新高點；與此同時，馬幣兌新加坡元匯率亦同步攀升至8週以來的最高水位，有效減輕輸入型通脹壓力，提振進口商信心。",
+        "content_bm": "Keputusan Rizab Persekutuan AS mengekalkan kadar faedah memberi sokongan padu kepada mata wang tempatan, melonjakkan Ringgit ke paras tertinggi 7 minggu berbanding USD."
     },
     {
         "is_top": False,
         "has_image": False,
-        "source": "沙巴星洲日報 / 財經專訊",
-        "tag_zh": "商業電信", "tag_bm": "Telekomunikasi",
-        "title_zh": "【商業電信】明訊與 U Mobile 重啟合併洽談，擬打造全馬最大電信集團",
-        "title_bm": "Maxis & U Mobile Sambung Semula Rundingan Penggabungan Terbesar",
-        "excerpt_zh": "大馬電訊業再掀併購風雲，明訊與U Mobile展開股權架構重組磋商，若合攏將統領超2400萬用戶。",
-        "excerpt_bm": "Maxis dan U Mobile dilaporkan memulakan kembali rundingan penggabungan untuk menguasai pasaran 5G.",
-        "content_zh": "【吉隆坡財經訊】來自馬來西亞投行圈權威信源透露，國內兩大移動網絡運營商——明訊（Maxis Bhd）與 U Mobile Sdn Bhd 大股東已正式重返談判桌，針對兩家公司的戰略性業務整合與換股合併方案展開深入盡職調查。若該超級併購案最終成形，新合併體將坐擁超過 2400 萬名活躍移動通信及寬帶用戶，一舉超越合併後的天地通數碼網絡（CelcomDigi），躍居全馬市場份額第一的電信巨無霸。分析師指出，合併的核心動力在於整合雙方龐大的頻譜資源與基站站址，分攤沙巴、砂拉越內陸第二 5G 網絡的鉅額資本開銷，提升網絡覆蓋質量。",
-        "content_bm": "Penggabungan gergasi Maxis dan U Mobile dijangka menghasilkan syarikat telekomunikasi terbesar di Malaysia dengan lebih 24 juta pengguna, sekali gus mempercepat liputan rangkaian 5G di Sabah dan Sarawak."
-    },
-    {
-        "is_top": False,
-        "has_image": False,
-        "source": "LHDN 內陸稅收局公函",
-        "tag_zh": "政府防騙", "tag_bm": "Amaran",
-        "title_zh": "【政府防騙】LHDN 發緊急警示：警惕冒名偽造郵件騙取個人文件",
-        "title_bm": "LHDN Keluar Amaran: Waspada Emel Palsu Tuntut Dokumen Peribadi",
-        "excerpt_zh": "稅收局警告出現釣魚郵件偽稱「退稅稽核」，誘導納稅人點擊惡意附件，官方重申絕不通過個人電郵索資。",
-        "excerpt_bm": "LHDN menasihati orang ramai agar tidak membuka e-mel palsu yang meminta pengesahan maklumat cukai.",
-        "content_zh": "【布城訊】內陸稅收局（LHDN）今日發布最高級別防詐騙通告，警示近期有跨國網絡釣魚犯罪團伙大肆偽造該局官方抬頭與公函印章，向納稅公眾發送以「2026退稅核實通知」或「最後補稅稽核」為主題的詐騙電子郵件。郵件內誘導納稅人點擊惡意下載鏈接或填報帶有木馬的壓縮包附件，企圖截獲納稅人的銀行個人網銀賬號、身份證信息及商業財務報表。稅收局鄭重澄清，所有官方稅務審核或退款通知均嚴格通過 MyTax 官方安全加密門戶下發，絕不會使用未經認證的個人郵箱直接索取機密，民眾接獲可疑郵件應即刻向當局熱線檢舉核實。",
-        "content_bm": "LHDN menegaskan semua urusan cukai rasmi hanya disalurkan melalui portal selamat MyTax dan orang ramai diminta tidak menekan pautan atau memuat turun lampiran daripada emel yang meragukan."
-    },
-    {
-        "is_top": False,
-        "has_image": False,
-        "source": "財政部 / 關愛基本金專網",
+        "source": "Winrayland / 財政部",
         "tag_zh": "民生福利", "tag_bm": "Bantuan",
-        "title_zh": "【民生福利】2027 STR 援助金審核收緊，有車有房等 8 種情況恐遭拒批",
-        "title_bm": "Semakan STR 2027 Diperketat: 8 Kriteria Pemilikan Boleh Ditolak",
-        "excerpt_zh": "財政部全面打通20個部門大數據交叉比對，擁有大排量豪車、公司盈利或海外資產者將喪失領款資格。",
-        "excerpt_bm": "Kementerian Kewangan mengetatkan syarat kelayakan STR melalui integrasi data pelbagai agensi.",
-        "content_zh": "【財政要聞】財政部常務副部長在國會明確指出，為杜絕「富人騙領窮人福利」的不公現象，針對2027年度愛心援助金（STR）的資格審查體系將迎來史上最嚴的大數據跨機構交叉驗證。稅收局將無縫聯動陸路交通局（JPJ）、國民登記局、公司委員會（SSM）以及土地局等20個核心數據庫。凡申請者或其配偶名下存在以下情況將被系統自動駁回：包括名下擁有排氣量高於2000cc的非商業豪華私家車、名下註冊有正常盈利分紅的合夥企業、擁有兩處以上商業地產估值超標、月度頻繁大額跨境結匯等八類資產紅線，確保國家有限的公帑100%精準投向真正的赤貧與低收入家庭。",
-        "content_bm": "Kriteria kelayakan STR akan disaring ketat menggunakan pangkalan data JPJ dan SSM. Pemilikan kenderaan mewah atau syarikat berdaftar aktif akan menyebabkan permohonan bantuan ditolak secara automatik."
+        "title_zh": "【民生福利】2027 STR 援助金申請截止日敲定，務必於11月15日前提交",
+        "title_bm": "Permohonan Fasa 1 STR 2027 Ditutup 11 November Ini, Segera Kemas Kini",
+        "excerpt_zh": "財政部發出重要日程提醒，2027年度第一階段愛心援助金（STR）新申請與資料更新截至11月15日止。",
+        "excerpt_bm": "Kementerian Kewangan mengingatkan orang ramai tarikh tutup pendaftaran STR 2027 adalah pada 15 November.",
+        "content_zh": "【布城政訊】財政部關愛基本金專案辦公室發出全國通告，提醒廣大低收入群體，2027年度第一階段愛心援助金（STR）的線上新申請及個人家庭資料更新，將於今年11月15日正式截止。政府重申本輪審核將全面收緊，實施跨部門大數據核驗。符合資格但尚未提報或婚姻/收入狀況有變動的民眾，務必登錄官方門戶在截止日前完成送件，以免耽誤明年初首筆援助金的發放。",
+        "content_bm": "Tarikh tutup permohonan baharu dan kemas kini maklumat Sumbangan Tunai Rahmah (STR) 2027 Fasa 1 telah ditetapkan pada 15 November 2026 melalui portal rasmi MySTR."
     },
     {
         "is_top": False,
         "has_image": False,
-        "source": "教育部 KPM 官方通告",
-        "tag_zh": "學校假期", "tag_bm": "Pendidikan",
-        "title_zh": "【學校假期】教育部官宣屠妖節假期：除砂拉越外全馬中小學師生連休 4 天",
-        "title_bm": "KPM Sahkan Cuti Berganti Deepavali: Sekolah Bercuti 4 Hari Kecuali Sarawak",
-        "excerpt_zh": "教育部下發官方節慶校歷公函，全馬除砂州外均享有4天連假，東馬飛往西馬返鄉機票全面緊俏。",
-        "excerpt_bm": "KPM mengesahkan cuti empat hari sempena perayaan Deepavali untuk semua negeri kecuali Sarawak.",
-        "content_zh": "【吉隆坡教育訊】教育部（KPM）正式向全馬各州教育局發布節慶特別調休備忘錄。根據全國校歷統一安排，除砂拉越州未將屠妖節列為主流法定連休日之外，沙巴、吉隆坡以及西馬各州的所有源流中小學師生，將在屠妖節正日期間享有為期4天（週五至週一）的連貫長假期。該項公函不僅為廣大印度裔教職員和家庭提供了充足的祈福與探親時間，也帶動了跨州文旅出行熱潮。沙巴亞庇及山打根往返吉隆坡、檳城的國內骨幹航線連日來機票訂座率突破92%，大馬民航局與各州交警已全面啟動節慶道路保暢疏導方案。",
-        "content_bm": "Kementerian Pendidikan mengumumkan cuti berganti empat hari sempena Deepavali bagi sekolah di Sabah dan Semenanjung, membolehkan warga pendidik dan pelajar menikmati percutian panjang."
-    },
-    {
-        "is_top": False,
-        "has_image": False,
-        "source": "大馬氣象局 MetMalaysia",
-        "tag_zh": "天氣警報", "tag_bm": "Cuaca",
-        "title_zh": "【天氣警報】東北季候風來襲，氣象局預測 5 次長命雨恐致多州水災",
-        "title_bm": "Monsun Timur Laut Bermula: MetMalaysia Ramal 5 Episod Hujan Berterusan",
-        "excerpt_zh": "氣象局示警季候風正式吹襲，沙巴沿海與東海岸內陸面臨密集持續降雨，低窪村民須防範突發泥石流。",
-        "excerpt_bm": "Jabatan Meteorologi Malaysia meramalkan episod hujan lebat berterusan yang berisiko mengakibatkan banjir kilat.",
-        "content_zh": "【氣象防汛訊】馬來西亞氣象局（MetMalaysia）發布全國災害氣候預警，證實一年一度的東北季候風已於10月27日起正式活躍並逐步加強，預料將持續肆虐至明年3月上旬。氣象監測模型顯示，季風期間全馬尤其是沙巴東海岸（包括山打根、拿篤、仙本那、古達）以及半島東海岸將至少經歷5波高強度的長命持續暴雨過程。連日積水配合大潮汐現象，極易在山腳沿溪及低窪居住區誘發城市內澇與嚴重山體滑坡。國家天災管理機構（NADMA）已指示沙巴各地方災害委員會全員進入二級待命狀態，疏散中心物資與救生艇已全數部署到位。",
-        "content_bm": "MetMalaysia memberi amaran Monsun Timur Laut dijangka membawa sekurang-kurangnya 5 episod hujan lebat berterusan yang boleh menyebabkan bencana banjir di kawasan pantai timur Sabah."
-    },
-    {
-        "is_top": False,
-        "has_image": True,
-        "img_url": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80",
-        "source": "東方日報 / 吉打現場",
-        "tag_zh": "商業焦點", "tag_bm": "Perniagaan",
-        "title_zh": "【商業焦點】華陽茶室吉打新店推三語菜單迎客現場大排長龍",
-        "title_bm": "Oriental Kopi Buka Cawangan Kedah: Menu Tiga Bahasa Tarik Tumpuan",
-        "excerpt_zh": "華陽茶室進軍吉打首開門市，全面推行國文、中文與英文三語菜單，化解語言誤會現場客似雲來。",
-        "excerpt_bm": "Oriental Kopi memperkenalkan menu tiga bahasa di cawangan terbaharunya di Kedah dan mendapat sambutan hangat.",
-        "content_zh": "【吉打亞羅士打訊】此前因菜單語言標註而在社交媒體引發廣泛輿論熱議的知名連鎖餐飲品牌「華陽茶室」（Oriental Kopi），昨日正式在吉打州開設其北部首間旗艦分店。令人矚目的是，管理層吸取了此前的公眾關切，在新門市全面啟用高規格的馬來文、中文及英文三語對照點餐系統與實體菜單，所有招牌菜品均清晰羅列主要食材源頭與清真認證供應鏈來源。這一兼顧包容與多元文化的務實舉措迅速贏得了不同族群食客的好評，開業當天清晨便吸引大批本地市民在店外大排長龍品嚐招牌蛋撻與濃郁白咖啡，化解爭議並樹立了跨族群商業經營的積極範式。",
-        "content_bm": "Oriental Kopi merasmikan cawangan baharu di Kedah dengan memperkenalkan menu lengkap tiga bahasa, meredakan kebimbangan masyarakat dan menarik kehadiran ramai pengunjung tempatan."
-    },
-    {
-        "is_top": False,
-        "has_image": False,
-        "source": "衛生部 KKM 官方公告",
-        "tag_zh": "公共衛生", "tag_bm": "Kesihatan",
-        "title_zh": "【公共衛生】衛生部推 MyLapor 官方功能，通過 MySejahtera 檢舉違規抽煙",
-        "title_bm": "KKM Lancar MyLapor: Aduan Merokok Dilarang Melalui MySejahtera",
-        "excerpt_zh": "衛生部賦予民眾數字監督權，手機拍下違規吸煙照片一鍵上傳，衛生執法官員將在24小時內到場查處。",
-        "excerpt_bm": "KKM melancarkan ciri MyLapor dalam aplikasi MySejahtera bagi memudahkan aduan premis merokok secara terus.",
-        "content_zh": "【布城衛生訊】衛生部長宣布在國民級應用 MySejahtera 中全面上線全新公眾衛生監督模塊「MyLapor」。新功能專為嚴打餐館、冷氣咖啡廳及公共遊樂場非法違規抽煙行為而設。公眾如在冷氣餐廳或禁止吸煙法定區域目擊違例吸煙或電子煙行為，只需打開 MySejahtera 的 MyLapor 頁面，實時拍照存證、自動定位事發商戶地址並提交舉報。衛生部中央指揮中心收到案件後將自動分派至各縣區衛生執法組，執法官將依照《2024年公共衛生吸煙產品管制法》在規定時限內突擊現場開出至少250令吉的複合罰單，打造無煙清新的就餐環境。",
-        "content_bm": "Kementerian Kesihatan memperkenalkan modul MyLapor di MySejahtera untuk membolehkan orang ramai merakam gambar dan melaporkan pesalah merokok di premis makanan secara terus kepada penguat kuasa."
+        "source": "談談網 / 數碼部",
+        "tag_zh": "數碼便民", "tag_bm": "Digital",
+        "title_zh": "【數碼便民】數碼部宣布 MyGOV APP 正式上線，手機可直接申請換大馬卡",
+        "title_bm": "MyGOV APP Dilancar: Permohonan Gantian MyKad Kini Boleh Dibuat Dalam Talian",
+        "excerpt_zh": "民眾無需再清晨去 JPN 門市排隊，通過全新 MyGOV 應用即可在線驗證身份完成 MyKad 補發與更換手續。",
+        "excerpt_bm": "Kementerian Digital melancarkan aplikasi MyGOV bagi membolehkan penggantian MyKad secara dalam talian.",
+        "content_zh": "【布城訊】數碼部長正式推介全新國家級綜合政務應用程式「MyGOV APP」。該應用深度整合了國民登記局（JPN）核心數據接口，大馬公民即日起因大馬卡損壞或日常更換，無需再親赴登記局分局抽號碼牌苦候，只需在手機端完成生物特徵與數碼身份（Digital ID）雙重認證，即可全程在線提交換卡申請並自選臨近領卡點，大幅節省民間辦事成本。",
+        "content_bm": "Kementerian Digital mengumumkan pelancaran aplikasi MyGOV yang membolehkan rakyat Malaysia memohon penggantian MyKad secara dalam talian tanpa perlu beratur di kaunter JPN."
     },
     {
         "is_top": False,
         "has_image": True,
         "img_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80",
-        "source": "檳城交警調查現場",
-        "tag_zh": "法治嚴打", "tag_bm": "Jenayah",
-        "title_zh": "【法治嚴打】檳警拘捕擅自駕駛貼山寨“Bomba”消拯車標的私家車司機",
-        "title_bm": "Polis Tahan Pemandu Kereta Pasang Pelekat & Siren Bomba Palsu",
-        "excerpt_zh": "私家車擅自貼上消拯局官方標誌並裝配警示燈在公路招搖，檳城交警根據民眾行車記錄儀迅速破案抓人。",
-        "excerpt_bm": "Polis Pulau Pinang menahan seorang lelaki yang menyamar menggunakan kenderaan berperekat Jabatan Bomba palsu.",
-        "content_zh": "【喬治市訊】針對日前在社交短視頻平台瘋傳的「山寨消拯局私家車闖紅燈」案件，檳城總警長證實警方已於前夜在威中區成功逮捕涉案的38歲本地男司機，並當場依法查扣其名下的一輛紅色本田私家車。經警方仔細搜查，該轎車不僅在車門及引擎蓋上全套仿冒貼上大馬消拯局（Bomba）的法定徽章與反光條，車頂更私自改裝加裝了高分貝警報蜂鳴器及頻閃爆閃燈，涉嫌在公路上濫用特權逼迫其他守法車輛讓道。全案目前已援引《刑事法典》第170條文（冒充公務員）及《1987年陸路交通法令》展開全方位刑事調查，罪成可判處長期監禁與鉅額罰款。",
-        "content_bm": "Polis Pulau Pinang bertindak pantas menahan pemandu kereta yang tular kerana memasang pelekat rasmi Jabatan Bomba dan siren kecemasan secara haram untuk mengelirukan pengguna jalan raya."
+        "source": "Moretify / 陸路交通法令",
+        "tag_zh": "民生警示", "tag_bm": "Undang-undang",
+        "title_zh": "【民生警示】拿椅子路錐霸佔公共停車位違法，最高可罰4000或坐牢1年",
+        "title_bm": "Tindakan 'Cop Parking' Guna Kerusi Boleh Didenda Sehingga RM4,000",
+        "excerpt_zh": "交警與市政廳重申嚴厲執法，任何人擅自使用塑膠椅、障礙物人肉霸位均觸犯法令，違者面臨重罰。",
+        "excerpt_bm": "Perbuatan meletakkan halangan bagi menempah petak parkir awam merupakan kesalahan jenayah.",
+        "content_zh": "【吉隆坡訊】針對商業區街道頻繁出現的「拿椅子霸車位（Cop Parking）」惡習，執法當局再次發布嚴正法律科普。根據《1987年陸路交通法令》第50(3)條文，任何人非法阻礙公共道路或公共停車位以保留停車權利均屬刑事罪行。違例者一旦罪成，初犯即可面臨最高4000令吉的罰款或長達12個月的監禁處罰。市政廳呼籲公眾遇此情況可即時拍照定位舉報，由執法人員到場移走障礙物並開出傳票。",
+        "content_bm": "Pihak berkuasa menegaskan bahawa tindakan meletakkan kerusi, kon atau halangan untuk 'cop parking' adalah kesalahan di bawah Seksyen 50(3) Akta Pengangkutan Jalan 1987 yang membawa denda hingga RM4,000."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "風采 / 衛生部",
+        "tag_zh": "公共醫療", "tag_bm": "Kesihatan",
+        "title_zh": "【公共醫療】衛生部推行醫療服務外包見效，公立心臟手術等候期縮短數月",
+        "title_bm": "KKM: Khidmat Luar Hospital Swasta Berjaya Singkatkan Waktu Menunggu Pembedahan",
+        "excerpt_zh": "衛生部長祖基菲里透露，政府將部分手術外包私人醫院協同分流後，病患等候週期大幅縮短2至10週以上。",
+        "excerpt_bm": "Kementerian Kesihatan berjaya memendekkan tempoh menunggu pembedahan melalui penyumberan luar ke hospital swasta.",
+        "content_zh": "【布城醫療訊】衛生部長拿督斯里祖基菲里阿末在國會答詢時透露，衛生部自去年推動的「公共醫療服務外包私立醫院」試點專案取得突破性進展。針對以往公立大醫院動輒排隊等上一兩年的心臟搭橋與複雜心導管手術，在政府資助病患轉診至合約私立專科醫院後，病患整體平均等候時間已大幅縮短2至10週以上，切實化解了公立專科病房長期飽和的醫療痛點。",
+        "content_bm": "Menteri Kesihatan Datuk Seri Dr Dzulkefly Ahmad mengesahkan inisiatif penyumberan luar rawatan ke hospital swasta berjaya memendekkan tempoh menunggu pembedahan kritikal seperti jantung."
+    },
+    {
+        "is_top": False,
+        "has_image": False,
+        "source": "自由日報 / 砂議會",
+        "tag_zh": "東馬政局", "tag_bm": "Politik",
+        "title_zh": "【東馬政局】砂拉越州議會正式解散，法定60天內將舉行全州大選",
+        "title_bm": "Dewan Undangan Negeri Sarawak Bubar, Pilihan Raya Negeri Dalam 60 Hari",
+        "excerpt_zh": "砂拉越總理公署宣布州議會正式解散，大馬選委會將在兩週內召開特別會議敲定第13屆砂州選舉提名與投票日。",
+        "excerpt_bm": "DUN Sarawak dibubarkan secara rasmi membuka laluan kepada Pilihan Raya Negeri ke-13.",
+        "content_zh": "【古晉訊】砂拉越州議會昨日依憲正式宣告解散，標誌著第13屆砂拉越州選舉正式拉開戰幕。根據砂拉越州憲法規定，州選舉必須在議會解散之日起的60天內完成舉行。馬來西亞選舉委員會（SPR）預料將在近期接獲議長正式解散公函後召開特別工作會議，全面敲定全州82個州選區的候選人提名日、競選期以及選民投票日日程表。",
+        "content_bm": "Dewan Undangan Negeri (DUN) Sarawak telah dibubarkan secara rasmi bagi membolehkan Pilihan Raya Negeri (PRN) Ke-13 diadakan dalam tempoh 60 hari mengikut perlembagaan."
     },
     {
         "is_top": False,
         "has_image": True,
         "img_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80",
-        "source": "Kupikupifm / Sazarice 官方",
-        "tag_zh": "沙巴生活", "tag_bm": "Gaya Hidup",
-        "title_zh": "【沙巴生活】Sazarice 聯手 Kupikupifm 展開《Jom Cari Momom》探尋亞庇美食",
-        "title_bm": "Sazarice Bersama Kupikupifm Cari Momom Terpaling Mantap di KK",
-        "excerpt_zh": "沙巴在地電台主持人 Felix 與 Ojoe 現身亞庇街頭，帶著民眾探尋平價大碗的地道沙巴小吃與香米飯店。",
-        "excerpt_bm": "Program Jom Cari Momom bersama Kupikupifm menjelajah gerai makan menarik di sekitar Kota Kinabalu.",
-        "content_zh": "【亞庇生活志】沙巴家喻戶曉的知名米糧品牌 Sazarice 宣布與本土高人氣電台 Kupikupifm 聯合出品的在地美食文化微綜藝《Jom Cari Momom》第5集正式全網開播。本集由當紅主持搭檔 Felix 和 Ojoe 聯袂出鏡，兩位主持人開著採風車走街串巷，深入亞庇市中心下南南以及哥隆邦的老牌茶餐室與平民大排檔。節目以生動幽默的沙巴地道馬來語方言，向全州觀眾大篇幅推介採用優質本地香米燜煮的砂煲雞飯、秘製生肉面以及傳統牛雜粉。節目播出後好評如潮，不僅帶旺了受訪老店的堂食人氣，更引發全州年輕網友熱烈留言互動打卡。",
-        "content_bm": "Program santai Jom Cari Momom yang diterbitkan oleh Sazarice bersama penyampai Kupikupifm mengetengahkan keunikan makanan tempatan Sabah di sekitar Penampang dan Kota Kinabalu."
+        "source": "星洲日報大北馬",
+        "tag_zh": "文化傳媒", "tag_bm": "Media",
+        "title_zh": "【文化傳媒】全國最後一份晚報退場！《光明日報》晚報10月31日出最後一期",
+        "title_bm": "Edisi Petang Guang Ming Daily Tamat 31 Oktober, Catat Sejarah Akhbar Cetak",
+        "excerpt_zh": "為紙本晚報寫下歷史句點！《光明日報》晚報宣布將於本月31日發行告別版，11月1日起全面停刊。",
+        "excerpt_bm": "Akhbar petang terakhir di Malaysia, Guang Ming Daily menamatkan penerbitan fizikalnya pada 31 Oktober ini.",
+        "content_zh": "【檳城訊】伴隨幾代北馬讀者夜間閱讀記憶的全國最後一份中文紙本晚報——《光明日報》晚報，正式發布讀者告別啟事。報社宣布將於2026年10月31日出版最後一期實體晚報，並自11月1日起全面終止在檳城、吉打及玻璃市等地的晚報發行業務。管理層指出，此舉是因應全媒體數碼化轉型的必然戰略調整，晨報與電子報將繼續正常運營，為傳統紙媒的「夜報時代」正式劃下圓滿句號。",
+        "content_bm": "Guang Ming Daily mengumumkan edisi petang terakhir akan diterbitkan pada 31 Oktober 2026 berikutan transformasi digital pembaca, menamatkan legasi akhbar petang di utara tanah air."
     }
 ]
 
@@ -429,348 +410,4 @@ full_html = f"""<!DOCTYPE html>
       border: none;
       padding: 2px 6px;
       border-radius: 3px;
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
-    }}
-    
-    .card-inner {{
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }}
-    
-    .card-meta {{ margin-bottom: 4px; }}
-    .news-tag {{
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 800;
-      color: #9a3412;
-      background: #ffedd5;
-      padding: 1px 5px;
-      border-radius: 4px;
-    }}
-    .news-title {{
-      color: var(--primary-red) !important;
-      font-size: 13px;
-      line-height: 1.35;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }}
-    .top-headline .news-title {{
-      font-size: 16px;
-    }}
-    .news-excerpt {{
-      font-size: 11px;
-      color: #64748b;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }}
-    
-    .full-content {{
-      display: none;
-      font-size: 12px;
-      color: #1e293b;
-      line-height: 1.65;
-      background: #f8fafc;
-      padding: 10px;
-      border-radius: 6px;
-      border-top: 1px dashed #cbd5e1;
-      margin-bottom: 8px;
-      text-align: justify;
-    }}
-    .expand-btn {{
-      margin-top: auto;
-      align-self: flex-start;
-      background: none;
-      border: 1px solid var(--primary-red);
-      color: var(--primary-red);
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      border-radius: 4px;
-      cursor: pointer;
-    }}
-    
-    .section-title {{
-      margin: 20px 0 10px 0;
-      font-size: 15px;
-      font-weight: 800;
-      color: #0f172a;
-      border-left: 4px solid var(--primary-red);
-      padding-left: 8px;
-    }}
-    .events-grid {{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 10px;
-      margin-bottom: 24px;
-    }}
-    .event-card {{
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-top: 3px solid #d97706;
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-    }}
-    .event-date {{
-      font-size: 10px;
-      font-weight: 800;
-      color: #b45309;
-      background: #fef3c7;
-      padding: 2px 6px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 6px;
-      align-self: flex-start;
-    }}
-    .event-title {{
-      font-size: 13px;
-      font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 6px;
-    }}
-    .event-detail-box {{
-      display: none;
-      font-size: 12px;
-      color: #334155;
-      line-height: 1.6;
-      background: #fffbeb;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px dashed #fcd34d;
-      margin: 6px 0;
-    }}
-    .event-links {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }}
-    .event-link-btn {{
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 6px;
-      border-radius: 4px;
-      text-decoration: none;
-      background: #f1f5f9;
-      color: #0284c7;
-      border: 1px solid #cbd5e1;
-    }}
-    
-    .sponsor-card {{
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 8px;
-      padding: 14px;
-      margin-top: 10px;
-    }}
-    .sponsor-title {{
-      font-size: 15px;
-      font-weight: 900;
-      color: #38bdf8;
-      margin-bottom: 4px;
-    }}
-    .sponsor-desc {{
-      font-size: 11px;
-      color: #94a3b8;
-      margin-bottom: 10px;
-    }}
-    .fleet-box {{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4px;
-      font-size: 11px;
-      color: #cbd5e1;
-      margin-bottom: 10px;
-    }}
-    .contact-row {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-      font-size: 11px;
-    }}
-    .wa-btn {{
-      margin-left: auto;
-      background: #22c55e;
-      color: #ffffff;
-      padding: 5px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 11px;
-    }}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="top-bar">
-      <div class="logo-group">
-        <h1 data-zh="西門日報" data-bm="Berita Harian Simon">西門日報</h1>
-      </div>
-      <div class="actions">
-        <select class="archive-select" id="archive-date">
-          <option value="today">📅 今日：{date_str}</option>
-          <option value="yesterday">📅 昨天</option>
-          <option value="prev">📅 前天</option>
-        </select>
-        <button class="install-btn" id="installBtn" onclick="installPWA()">
-          <span>📲 安裝APP</span>
-        </button>
-        <button class="lang-btn" onclick="toggleLanguage()">
-          <span id="lang-text">Bahasa Melayu</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="section-title" data-zh="今日頭條與沙巴要聞" data-bm="Berita Utama & Sabah Hari Ini">今日頭條與沙巴要聞</div>
-    
-    <div class="news-grid">
-      {cards_html}
-    </div>
-
-    <div class="section-title" data-zh="未來兩周至一個月 · 活動預告" data-bm="Acara & Ekspo Sabah (Akan Datang)">未來兩周至一個月 · 活動預告</div>
-    <div class="events-grid">
-      <div class="event-card">
-        <span class="event-date">11月13日 – 15日 · 亞庇 SICC</span>
-        <div class="event-title" data-zh="BIGSABAH Sale 2026 大型商貿展銷盛會" data-bm="Ekspo Jualan Mega BIGSABAH 2026">BIGSABAH Sale 2026 大型商貿展銷盛會</div>
-        <div class="event-detail-box" id="ev_1">
-          <p data-zh="全州規模最大商業展銷盛會！全場設立超過650個品牌展位，涵蓋智能生活家電、沙巴在地製造優品、餐飲加盟招商以及跨國供應鏈展銷，預計帶動數百萬人次商貿對接。" data-bm="Ekspo jualan pengguna terbesar dengan 650 reruai merangkumi perkakas pintar, francais dan bekalan perniagaan.">全州規模最大商業展銷盛會！全場設立超過650個品牌展位，涵蓋智能生活家電、沙巴在地製造優品、餐飲加盟招商以及跨國供應鏈展銷，預計帶動數百萬人次商貿對接。</p>
-          <div class="event-links">
-            <a class="event-link-btn" href="tel:088206000">📞 088-206000</a>
-            <a class="event-link-btn" href="https://wa.me/60168332118" target="_blank">💬 官方 WhatsApp</a>
-          </div>
-        </div>
-        <button class="expand-btn" onclick="toggleExpand('ev_1', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>
-      </div>
-
-      <div class="event-card">
-        <span class="event-date">11月20日 – 22日 · 亞庇 SICC 戶外展區</span>
-        <div class="event-title" data-zh="Borneo 4by4 越野與汽車文化節 (CULT)" data-bm="Festival Budaya Kereta & 4x4 Borneo">Borneo 4by4 越野與汽車文化節 (CULT)</div>
-        <div class="event-detail-box" id="ev_2">
-          <p data-zh="匯聚全婆羅洲四驅越野改裝技術配件商、自駕遊露營配套方案及經典車型，提供品牌直營試駕及汽車後市場商業對接合作。" data-bm="Pameran aksesori 4x4, perkhemahan dan rangkaian perdagangan kenderaan lasak Borneo.">匯聚全婆羅洲四驅越野改裝技術配件商、自駕遊露營配套方案及經典車型，提供品牌直營試駕及汽車後市場商業對接合作。</p>
-          <div class="event-links">
-            <a class="event-link-btn" href="tel:0198812399">📞 019-8812399 組委會</a>
-          </div>
-        </div>
-        <button class="expand-btn" onclick="toggleExpand('ev_2', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>
-      </div>
-
-      <div class="event-card">
-        <span class="event-date">11月29日 · 山打根市議會廣場</span>
-        <div class="event-title" data-zh="2026 依羅普拉慈善長跑與健康博覽會" data-bm="Larian Amal Elopura Sandakan 2026">2026 依羅普拉慈善長跑與健康博覽會</div>
-        <div class="event-detail-box" id="ev_3">
-          <p data-zh="沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。" data-bm="Larian amal mengumpul dana kebajikan untuk kanak-kanak istimewa Sandakan dengan kategori 5KM & 10KM.">沙巴馬拉松系列賽收官站！全部參賽報名結餘款項將捐助山打根特殊兒童康復中心，設半馬、10KM及歡樂跑組別，期間舉辦為期3天的健康博覽會。</p>
-          <div class="event-links">
-            <a class="event-link-btn" href="tel:089221144">📞 089-221144 籌委會</a>
-            <a class="event-link-btn" href="https://wa.me/60109301117" target="_blank">💬 報名諮詢</a>
-          </div>
-        </div>
-        <button class="expand-btn" onclick="toggleExpand('ev_3', this)" data-zh="展開活動詳情 ↓" data-bm="Lihat Info ↓">展開活動詳情 ↓</button>
-      </div>
-    </div>
-
-    <footer class="sponsor-card">
-      <div class="sponsor-title" data-zh="MY CAR ENTERPRISE · 山打根租車與接送服務" data-bm="MY CAR ENTERPRISE · Sewa Kereta Sandakan">MY CAR ENTERPRISE · 山打根租車與接送服務</div>
-      <div class="sponsor-desc" data-zh="全車系齊全 · 自駕自遊 · 商務長租 · 機場專車接送" data-bm="Pandu Sendiri / Sewaan Korporat / Bersama Pemandu">全車系齊全 · 自駕自遊 · 商務長租 · 機場專車接送</div>
-      <div class="fleet-box">
-        <div>• 掀背車：Myvi / Axia</div>
-        <div>• 舒適房車：Vios / Saga / Bezza</div>
-        <div>• 豪華商務：Vellfire / Alphard / Innova</div>
-        <div>• 客運越野：Van 11-12座 / Hilux 4x4</div>
-      </div>
-      <div class="contact-row">
-        <span>負責人：<strong>Marco (010-9301117)</strong></span>
-        <span>微信：<strong>Thien1117</strong></span>
-        <a class="wa-btn" href="https://www.wasap.my/60109301117" target="_blank">WhatsApp 立即預約</a>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    // 註冊 Service Worker，滿足 Android 原生安裝硬性條件
-    if ('serviceWorker' in navigator) {{
-      window.addEventListener('load', () => {{
-        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW register fail:', err));
-      }});
-    }}
-
-    let currentLang = 'zh';
-    function toggleExpand(id, btn) {{
-      const el = document.getElementById(id);
-      const isVisible = el.style.display === 'block';
-      el.style.display = isVisible ? 'none' : 'block';
-      
-      const isEvent = id.startsWith('ev_');
-      if (isEvent) {{
-        btn.innerText = isVisible 
-          ? (currentLang === 'zh' ? '展開活動詳情 ↓' : 'Lihat Info ↓')
-          : (currentLang === 'zh' ? '收起活動詳情 ↑' : 'Tutup Info ↑');
-      }} else {{
-        btn.innerText = isVisible 
-          ? (currentLang === 'zh' ? '展開閱讀全文 ↓' : 'Baca Lanjut ↓')
-          : (currentLang === 'zh' ? '收起全文 ↑' : 'Tutup Bacaan ↑');
-      }}
-    }}
-    function toggleLanguage() {{
-      currentLang = currentLang === 'zh' ? 'bm' : 'zh';
-      document.getElementById('lang-text').innerText = currentLang === 'zh' ? 'Bahasa Melayu' : '中文版';
-      const installText = document.querySelector('#installBtn span');
-      if (installText) {{
-        installText.innerText = currentLang === 'zh' ? '📲 安裝APP' : '📲 Pasang App';
-      }}
-      document.querySelectorAll('[data-zh]').forEach(el => {{
-        const txt = el.getAttribute(`data-${{currentLang}}`);
-        if (txt) el.innerText = txt;
-      }});
-    }}
-    function shareNews(title) {{
-      const shareData = {{
-        title: '《西門日報》',
-        text: title + ' - 詳情閱讀：' + window.location.href,
-        url: window.location.href
-      }};
-      if (navigator.share) {{
-        navigator.share(shareData).catch((e) => console.log(e));
-      }} else {{
-        navigator.clipboard.writeText(shareData.text);
-        alert('新聞標題與鏈接已複製！可直接粘貼至 WhatsApp 或朋友圈分享。');
-      }}
-    }}
-
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {{
-      e.preventDefault();
-      deferredPrompt = e;
-    }});
-
-    function installPWA() {{
-      if (deferredPrompt) {{
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {{
-          deferredPrompt = null;
-        }});
-      }} else {{
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {{
-          alert('【iPhone 安裝方法】：\\n點擊瀏覽器下方中間的「分享」圖示（方框箭頭），滑動選擇【加入主畫面】即可！');
-        }} else {{
-          alert('【Android 安裝方法】：\\n點擊瀏覽器右上角選單（⋮），選擇【加到主畫面】或【安裝應用程式】即可！');
-        }}
-      }}
-    }}
-  </script>
-</body>
-</html>
-"""
-
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(full_html)
-
-print("《西門日報》PWA 核心 Service Worker 與標準 manifest 已成功寫入！")
+      font-size: 10p
