@@ -256,6 +256,7 @@ for idx, item in enumerate(news_items):
     </article>
     """
 
+# 組合 HTML，無轉義衝突
 html_template = """<!DOCTYPE html>
 <html lang="zh-MY">
 <head>
@@ -412,5 +413,4 @@ html_template = """<!DOCTYPE html>
       border-radius: 3px;
       font-size: 10px;
       font-weight: 700;
-      cursor: pointer;
-    
+      curso
