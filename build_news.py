@@ -1,14 +1,15 @@
 import os
 import json
 import base64
-import time
+import zlib
+import struct
 import datetime
 
 my_tz = datetime.timezone(datetime.timedelta(hours=8))
 now = datetime.datetime.now(my_tz)
 date_str = now.strftime("%Y年%m月%d日")
 
-# 1. 寫入 PWA 圖標 (方案3)
+# 1. 寫入 PWA SVG 向量圖標
 icon_content = (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">'
     '<rect width="512" height="512" rx="110" fill="#0f172a"/>'
@@ -26,35 +27,84 @@ icon_content = (
 with open("icon.svg", "w", encoding="utf-8") as f:
     f.write(icon_content)
 
-# 2. 寫入 Service Worker
-sw_content = "self.addEventListener('install', (e) => { self.skipWaiting(); });\nself.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });\nself.addEventListener('fetch', (e) => { e.respondWith(fetch(e.request).catch(() => caches.match(e.request))); });"
-with open("sw.js", "w", encoding="utf-8") as f:
-    f.write(sw_content)
+# 2. 用純 Python 生成 Android Chrome 必備的合法 PNG 格式圖標
+def generate_pwa_png(width, height, filepath):
+    # 生成深藍底、紅心標準 PNG，滿足 PWA 192x192 / 512x512 格式審查
+    raw_data = bytearray()
+    for y in range(height):
+        raw_data.append(0)  # filter type none
+        for x in range(width):
+            # 方案 3 配色：主體深藍 #0f172a，中心印章亮紅 #dc2626
+            cx, cy = width // 2, height // 2
+            dx, dy = abs(x - cx), abs(y - cy)
+            if dx < width * 0.28 and dy < height * 0.28:
+                raw_data.extend([220, 38, 38, 255])
+            else:
+                raw_data.extend([15, 23, 42, 255])
+    
+    def chunk(tag, data):
+        return struct.pack("!I", len(data)) + tag + data + struct.pack("!I", zlib.crc32(tag + data) & 0xffffffff)
+    
+    ihdr = struct.pack("!IIBBBBB", width, height, 8, 6, 0, 0, 0)
+    png_bytes = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(bytes(raw_data))) + chunk(b"IEND", b"")
+    with open(filepath, "wb") as f:
+        f.write(png_bytes)
 
-# 3. 寫入 Manifest
+generate_pwa_png(192, 192, "icon-192.png")
+generate_pwa_png(512, 512, "icon-512.png")
+
+# 3. 寫入符合 PWA 標準規範的 Service Worker (sw.js)
+sw_content = """
+const CACHE_NAME = 'simon-news-v1';
+self.addEventListener('install', (e) => {
+  self.skipWaiting();
+});
+self.addEventListener('activate', (e) => {
+  e.waitUntil(clients.claim());
+});
+self.addEventListener('fetch', (e) => {
+  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+});
+"""
+with open("sw.js", "w", encoding="utf-8") as f:
+    f.write(sw_content.strip())
+
+# 4. 寫入 Manifest，嚴格修正 GitHub Pages 路徑與雙 PNG 圖標
 manifest_content = {
     "name": "西門日報 | Berita Harian Simon",
     "short_name": "西門日報",
     "description": "沙巴與全馬權威早間資訊平台",
-    "start_url": "./index.html",
-    "scope": "./",
+    "start_url": "/sabah-daily-news/index.html",
+    "scope": "/sabah-daily-news/",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#0f172a",
     "theme_color": "#dc2626",
     "icons": [
         {
-            "src": "icon.svg",
-            "sizes": "192x192 512x512",
-            "type": "image/svg+xml",
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
             "purpose": "any maskable"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any"
         }
     ]
 }
 with open("manifest.json", "w", encoding="utf-8") as f:
     json.dump(manifest_content, f, ensure_ascii=False, indent=2)
 
-# 4. 10月30日 全量新聞資料庫（嚴格執行方案A：寧缺毋濫，圖文完全相符，無適配圖一律純文字）
+# 5. 10月30日 全量新聞資料庫（方案 A：精準相符配圖，無圖走清爽純文字）
 news_items = [
     {
         "is_top": True,
@@ -316,7 +366,7 @@ news_items = [
     }
 ]
 
-# 5. 生成新聞卡片
+# 6. 生成新聞卡片
 cards_html = ""
 for idx, item in enumerate(news_items):
     card_id = "card_" + str(idx)
@@ -343,7 +393,7 @@ for idx, item in enumerate(news_items):
         '</div></article>'
     )
 
-# 6. 使用逐行拼接組裝 HTML
+# 7. 組裝 HTML（逐行拼接，徹底杜絕任何三引號語法解析問題）
 lines = [
     '<!DOCTYPE html>',
     '<html lang="zh-MY">',
@@ -352,8 +402,9 @@ lines = [
     '  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">',
     '  <title>西門日報 | Berita Harian Simon</title>',
     '  <link rel="manifest" href="manifest.json">',
+    '  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">',
     '  <link rel="icon" type="image/svg+xml" href="icon.svg">',
-    '  <link rel="apple-touch-icon" href="icon.svg">',
+    '  <link rel="apple-touch-icon" href="icon-192.png">',
     '  <meta name="theme-color" content="#0f172a">',
     '  <meta name="mobile-web-app-capable" content="yes">',
     '  <meta name="apple-mobile-web-app-capable" content="yes">',
@@ -446,7 +497,15 @@ lines = [
     '    </footer>',
     '  </main>',
     '  <script>',
-    '    if ("serviceWorker" in navigator) { window.addEventListener("load", function() { navigator.serviceWorker.register("sw.js").catch(function(err) { console.log(err); }); }); }',
+    '    if ("serviceWorker" in navigator) {',
+    '      window.addEventListener("load", function() {',
+    '        navigator.serviceWorker.register("sw.js", { scope: "/sabah-daily-news/" }).then(function(reg) {',
+    '          console.log("SW registered successfully:", reg);',
+    '        }).catch(function(err) {',
+    '          console.log("SW registration error:", err);',
+    '        });',
+    '      });',
+    '    }',
     '    var currentLang = "zh";',
     '    function toggleExpand(id, btn) {',
     '      var el = document.getElementById(id);',
@@ -469,10 +528,15 @@ lines = [
     '      else { navigator.clipboard.writeText(shareData.text); alert("新聞標題與鏈接已複製！可直接粘貼至 WhatsApp 或朋友圈分享。"); }',
     '    }',
     '    var deferredPrompt;',
-    '    window.addEventListener("beforeinstallprompt", function(e) { e.preventDefault(); deferredPrompt = e; });',
+    '    window.addEventListener("beforeinstallprompt", function(e) {',
+    '      e.preventDefault();',
+    '      deferredPrompt = e;',
+    '    });',
     '    function installPWA() {',
-    '      if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function(choiceResult) { deferredPrompt = null; }); }',
-    '      else {',
+    '      if (deferredPrompt) {',
+    '        deferredPrompt.prompt();',
+    '        deferredPrompt.userChoice.then(function(choiceResult) { deferredPrompt = null; });',
+    '      } else {',
     '        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;',
     '        if (isIOS) { alert("請點擊瀏覽器下方分享按鈕，滑動選擇【加入主畫面】安裝！"); }',
     '        else { alert("請點擊瀏覽器右上角選單（三個點），選擇【加到主畫面】或【安裝應用程式】！"); }',
@@ -487,4 +551,4 @@ full_html = "\n".join(lines)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("《西門日報》方案A精簡配圖版（21條要聞）已成功寫入 index.html！")
+print("《西門日報》全套標準 PWA (雙 PNG + 正確作用域) 已成功生成寫入！")
