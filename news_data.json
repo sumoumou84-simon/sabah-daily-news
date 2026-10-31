@@ -1,5 +1,18 @@
 [
   {
+    "is_top": false,
+    "has_image": true,
+    "source": "自由日报",
+    "tag_zh": "沙巴文教",
+    "tag_bm": "Pendidikan Sabah",
+    "title_zh": "【沙巴文教】出征NXplorers创新大赛 山打根双修学子勇夺全国总冠军",
+    "title_bm": "SM Sung Siew Sandakan Rangkul Juara Kebangsaan Shell NXplorers",
+    "excerpt_zh": "山打根双修中学凭结合AI与太阳能的道路安全系统“DriveShield”，荣获全国总冠军。",
+    "excerpt_bm": "Pasukan SM Sung Siew Sandakan dinobatkan juara kebangsaan Shell NXplorers menerusi ciptaan sistem keselamatan 'DriveShield'.",
+    "content_zh": "（山打根讯）山打根双修中学“Triangle”团队凭借一套结合人工智能（AI）与太阳能供电的道路安全系统“DriveShield”，在Shell NXplorers马来西亚全国创新大赛总决赛中脱颖而出，勇夺全国总冠军。\n\n该团队成员包括学生Ivan Lam Jun Yin、Alan Romeo及Izz Iqbal Rizqin。他们研发的“DriveShield”具备AI监测疲劳、使用手机等危险驾驶行为，并通过车内LED灯与警报即时提醒，同时协助听障人士突破驾驶沟通障碍。作为全国总冠军，该团队将获得全额赞助前往韩国首尔参加学习交流之旅。此外，亚庇诸圣中学代表亦荣获最佳汇报员奖。",
+    "content_bm": "SANDAKAN: Pasukan Triangle dari SM Sung Siew Sandakan melakar kejayaan membanggakan apabila muncul juara kebangsaan dalam Cabaran Shell NXplorers Malaysia menerusi inovasi keselamatan jalan raya 'DriveShield'.\n\nPasukan yang dibarisi Ivan Lam Jun Yin, Alan Romeo, dan Izz Iqbal Rizqin itu membangunkan sistem berkuasa solar dan AI yang berupaya mengesan pemanduan berisiko serta mesra golongan kelainan upaya pendengaran. Kejayaan ini melayakkan mereka menerima tajaan penuh bagi program lawatan pembelajaran ke Seoul, Korea Selatan. Sementara itu, Alvee Aylwin Tan dari SM All Saints Kota Kinabalu turut merangkul Anugerah Pembentang Terbaik dalam pertandingan tersebut."
+  },
+  {
     "is_top": true,
     "has_image": true,
     "source": "自由日报",
