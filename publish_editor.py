@@ -22,23 +22,41 @@ def fetch_image_base64(url: str) -> str:
         return ""
 
 def call_gemini_multimodal(contents_parts: list) -> str:
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={GEMINI_API_KEY}"
-    payload = {
-        "contents": [{"parts": contents_parts}],
-        "generationConfig": {"responseMimeType": "application/json"}
-    }
-    data = json.dumps(payload).encode("utf-8")
+    # 备选模型列表，遇 503 自动平滑切换
+    candidate_models = [
+        "gemini-3.8-flash",
+        "gemini-flash-latest",
+        "gemini-2.5-flash"
+    ]
     
-    for attempt in range(1, 4):
-        try:
-            req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=180) as resp:
-                res_json = json.loads(resp.read().decode("utf-8"))
-                return res_json["candidates"][0]["content"]["parts"][0]["text"]
-        except Exception as e:
-            print(f"⚠️ 第 {attempt} 次生成遇到问题: {e}")
-            time.sleep(attempt * 5)
-    raise RuntimeError("AI 主编排版失败。")
+    last_err = None
+    for model_name in candidate_models:
+        print(f"🔄 尝试通过模型节点 [{model_name}] 编排出刊...")
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={GEMINI_API_KEY}"
+        payload = {
+            "contents": [{"parts": contents_parts}],
+            "generationConfig": {"responseMimeType": "application/json"}
+        }
+        data = json.dumps(payload).encode("utf-8")
+        
+        for attempt in range(1, 3):
+            try:
+                req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+                with urllib.request.urlopen(req, timeout=180) as resp:
+                    res_json = json.loads(resp.read().decode("utf-8"))
+                    text = res_json["candidates"][0]["content"]["parts"][0]["text"]
+                    if text:
+                        return text
+            except urllib.error.HTTPError as e:
+                last_err = e
+                print(f"⚠️ 节点 [{model_name}] 第 {attempt} 次遇到 HTTP {e.code}: {e.reason}")
+                time.sleep(attempt * 3)
+            except Exception as e:
+                last_err = e
+                print(f"⚠️ 节点 [{model_name}] 发生异常: {e}")
+                time.sleep(3)
+                
+    raise RuntimeError(f"所有可用 AI 节点均处于繁忙状态: {last_err}")
 
 def main():
     if not GEMINI_API_KEY:
@@ -86,8 +104,7 @@ def main():
 """
     contents_parts.append({"text": prompt_text})
 
-    # 将用户白天发的所有截图追加给 AI 审阅
-    for idx, d in enumerate(drafts):
+    for d in drafts:
         if d.get("image_url"):
             b64 = fetch_image_base64(d["image_url"])
             if b64:
@@ -105,7 +122,6 @@ def main():
         cleaned = re.sub(r"```$", "", cleaned.strip(), flags=re.MULTILINE)
         final_news = json.loads(cleaned)
 
-    # 写入发布与清空草稿池
     with open(NEWS_FILE, "w", encoding="utf-8") as f:
         json.dump(final_news, f, ensure_ascii=False, indent=2)
 
