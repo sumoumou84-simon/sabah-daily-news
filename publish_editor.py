@@ -1,8 +1,9 @@
 import json
 import os
 import re
+import time
 import urllib.request
-import urllib.parse
+import urllib.error
 from datetime import datetime
 
 # ====== 配置区 ======
@@ -22,11 +23,28 @@ def call_gemini(prompt: str) -> str:
         }
     }
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
     
-    with urllib.request.urlopen(req) as resp:
-        res_json = json.loads(resp.read().decode("utf-8"))
-        return res_json["candidates"][0]["content"]["parts"][0]["text"]
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                res_json = json.loads(resp.read().decode("utf-8"))
+                return res_json["candidates"][0]["content"]["parts"][0]["text"]
+        except urllib.error.HTTPError as e:
+            print(f"⚠️ 第 {attempt} 次请求遭遇 HTTP {e.code}: {e.reason}")
+            if attempt < max_retries:
+                wait_sec = attempt * 4
+                print(f"⏳ 正在等待 {wait_sec} 秒后自动重试...")
+                time.sleep(wait_sec)
+            else:
+                raise e
+        except Exception as e:
+            print(f"⚠️ 请求异常: {e}")
+            if attempt < max_retries:
+                time.sleep(3)
+            else:
+                raise e
 
 def main():
     if not GEMINI_API_KEY:
@@ -45,7 +63,7 @@ def main():
     today_str = datetime.now().strftime("%Y年%m月%d日")
     print(f"[{today_str}] 草稿池当前共有 {draft_count} 篇用户投递素材。")
 
-    # 2. 构建发刊提示词（方案 A：去重、补齐、提炼头条、中马双语排版）
+    # 2. 构建发刊提示词
     prompt = f"""
 你现在是沙巴顶尖数字晨报《西门日报》（Berita Harian Simon）的总编辑。
 今天是 {today_str}。你需要为今天的晨报生成最终正式发布的新闻列表。
@@ -88,7 +106,6 @@ def main():
     try:
         final_news = json.loads(result_text)
     except Exception:
-        # 清理可能附带的 markdown 包裹
         cleaned = re.sub(r"^```json\s*", "", result_text.strip(), flags=re.MULTILINE)
         cleaned = re.sub(r"```$", "", cleaned.strip(), flags=re.MULTILINE)
         final_news = json.loads(cleaned)
@@ -99,7 +116,7 @@ def main():
     with open(NEWS_FILE, "w", encoding="utf-8") as f:
         json.dump(final_news, f, ensure_ascii=False, indent=2)
 
-    # 4. 清空草稿池，为新一天的收集做准备
+    # 4. 清空草稿池
     with open(DRAFT_FILE, "w", encoding="utf-8") as f:
         json.dump([], f, ensure_ascii=False, indent=2)
 
