@@ -1,0 +1,41 @@
+name: 每日清晨8点自动发刊（方案A）
+
+on:
+  schedule:
+    # 每天 UTC 00:00 执行，换算为马来西亚时间（GMT+8）即为早上 08:00
+    - cron: '0 0 * * *'
+  # 允许在 GitHub Actions 页面随时手动点击 "Run workflow" 测试或应急发刊
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 运行主编方案 A 自动排版脚本
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python publish_editor.py
+
+      - name: 提交并推送到 GitHub 触发前端部署
+        run: |
+          git config --global user.name "Simon Daily Bot"
+          git config --global user.email "bot@simondaily.local"
+          git add news_data.json pending_drafts.json
+          if git diff --staged --quiet; then
+            echo "没有内容变动，跳过推送。"
+          else
+            git commit -m "🗞️ 早晨 08:00 自动精编出刊《西门日报》"
+            git push
+          fi
