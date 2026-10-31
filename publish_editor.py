@@ -2,80 +2,72 @@ import json
 import os
 import re
 import time
+import base64
 import urllib.request
 import urllib.error
 from datetime import datetime
 
-# ====== 配置区 ======
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 DRAFT_FILE = "pending_drafts.json"
 NEWS_FILE = "news_data.json"
-TARGET_COUNT = 8  # 保持每日 8-10 篇黄金阅读量，生成速度快且不超时
+TARGET_COUNT = 8
 
-def call_gemini(prompt: str) -> str:
+def fetch_image_base64(url: str) -> str:
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return base64.b64encode(resp.read()).decode("utf-8")
+    except Exception as e:
+        print(f"⚠️ 下载素材图片失败: {e}")
+        return ""
+
+def call_gemini_multimodal(contents_parts: list) -> str:
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key={GEMINI_API_KEY}"
     payload = {
-        "contents": [{
-            "parts": [{"text": prompt}]
-        }],
-        "generationConfig": {
-            "responseMimeType": "application/json"
-        }
+        "contents": [{"parts": contents_parts}],
+        "generationConfig": {"responseMimeType": "application/json"}
     }
     data = json.dumps(payload).encode("utf-8")
     
-    max_retries = 3
-    for attempt in range(1, max_retries + 1):
+    for attempt in range(1, 4):
         try:
             req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
-            # 放宽超时时间到 180 秒，防止长文本生成被打断
             with urllib.request.urlopen(req, timeout=180) as resp:
                 res_json = json.loads(resp.read().decode("utf-8"))
                 return res_json["candidates"][0]["content"]["parts"][0]["text"]
-        except urllib.error.HTTPError as e:
-            print(f"⚠️ 第 {attempt} 次请求遭遇 HTTP {e.code}: {e.reason}")
-            if attempt < max_retries:
-                time.sleep(attempt * 4)
-            else:
-                raise e
         except Exception as e:
-            print(f"⚠️ 请求异常: {e}")
-            if attempt < max_retries:
-                time.sleep(5)
-            else:
-                raise e
+            print(f"⚠️ 第 {attempt} 次生成遇到问题: {e}")
+            time.sleep(attempt * 5)
+    raise RuntimeError("AI 主编排版失败。")
 
 def main():
     if not GEMINI_API_KEY:
-        raise ValueError("未检测到环境变量 GEMINI_API_KEY，请在 GitHub Secrets 中配置。")
+        raise ValueError("未检测到 GEMINI_API_KEY。")
 
-    # 1. 读取 Telegram 积攒的草稿
     drafts = []
     if os.path.exists(DRAFT_FILE):
         try:
             with open(DRAFT_FILE, "r", encoding="utf-8") as f:
                 drafts = json.load(f)
         except Exception as e:
-            print(f"⚠️ 读取草稿箱异常: {e}")
+            print(f"读取草稿失败: {e}")
 
-    draft_count = len(drafts)
     today_str = datetime.now().strftime("%Y年%m月%d日")
-    print(f"[{today_str}] 草稿池当前共有 {draft_count} 篇用户投递素材。")
+    print(f"[{today_str}] 收集到 {len(drafts)} 张用户素材截图，准备出刊。")
 
-    # 2. 构建精炼提示词（精简正文至 100-150 字，极大提升生成速度并防止超时）
-    prompt = f"""
+    contents_parts = []
+    prompt_text = f"""
 你现在是沙巴数字晨报《西门日报》（Berita Harian Simon）的总编辑。
-今天是 {today_str}。你需要为今天的晨报生成最终正式发布的新闻列表。
-
-【已收集的用户投递草稿素材】（数量：{draft_count}）：
-{json.dumps(drafts, ensure_ascii=False, indent=2)}
+今天是 {today_str}。
+请结合附件中用户投稿的新闻报纸截图，生成今日正式出刊的精选要闻列表。
 
 【总编排版与发刊规则】：
-1. 用户投递的新闻优先收录并做事实查重；不足 {TARGET_COUNT} 篇时，自动补充沙巴本地（亚庇、山打根、斗湖等）及全马最新时事经济文教要闻，凑齐约 {TARGET_COUNT} 篇。
-2. 必须挑 1 篇最具社会影响力的沙巴要闻作为头条，将 "is_top" 设为 true，其余为 false。
-3. 中马双语输出：每篇包含中文与马来文的标题、摘要、精炼正文（100-150字，语言干练地道）。
+1. 提取并优先收录用户截图中的新闻，自动进行查重整合（如果多张图讲同一件事，合并为一条权威报道）。
+2. 如果截图中的新闻不足 {TARGET_COUNT} 篇，请自动补充沙巴本地（亚庇、山打根、斗湖等）及全马最新时事、经济、文教或交通要闻，凑齐约 {TARGET_COUNT} 篇。
+3. 挑选 1 篇最重要的沙巴本地新闻作为头条，将 "is_top" 设为 true，其余为 false。
+4. 每篇必须包含严谨、地道的中马双语（标题、摘要、100-150字正文）。
 
-请严格输出为一个纯 JSON 数组，格式如下：
+请严格输出为一个合法的 JSON 数组，格式如下：
 [
   {{
     "is_top": true,
@@ -92,9 +84,19 @@ def main():
   }}
 ]
 """
+    contents_parts.append({"text": prompt_text})
 
-    print("🤖 正在调用 AI 主编进行查重、补全与双语排版...")
-    result_text = call_gemini(prompt)
+    # 将用户白天发的所有截图追加给 AI 审阅
+    for idx, d in enumerate(drafts):
+        if d.get("image_url"):
+            b64 = fetch_image_base64(d["image_url"])
+            if b64:
+                contents_parts.append({
+                    "inline_data": {"mime_type": "image/jpeg", "data": b64}
+                })
+
+    print("🤖 AI 主编正在识图、查重、补齐并编排早报...")
+    result_text = call_gemini_multimodal(contents_parts)
 
     try:
         final_news = json.loads(result_text)
@@ -103,17 +105,14 @@ def main():
         cleaned = re.sub(r"```$", "", cleaned.strip(), flags=re.MULTILINE)
         final_news = json.loads(cleaned)
 
-    print(f"✅ 今日《西门日报》编排完成，共刊发 {len(final_news)} 条要闻！")
-
-    # 3. 写入正式发布文件 news_data.json
+    # 写入发布与清空草稿池
     with open(NEWS_FILE, "w", encoding="utf-8") as f:
         json.dump(final_news, f, ensure_ascii=False, indent=2)
 
-    # 4. 清空草稿池
     with open(DRAFT_FILE, "w", encoding="utf-8") as f:
         json.dump([], f, ensure_ascii=False, indent=2)
 
-    print("📦 已更新 news_data.json，并清空 pending_drafts.json。")
+    print(f"🎉 今日出刊成功，共排版发布 {len(final_news)} 条要闻！")
 
 if __name__ == "__main__":
     main()
