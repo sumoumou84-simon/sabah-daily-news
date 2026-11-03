@@ -1,0 +1,38 @@
+name: 每日西门日报全自动采编推送
+
+on:
+  schedule:
+    # 每天 UTC 23:50 运行（对应马来西亚时间早晨 07:50 准时打捞并出刊）
+    - cron: '50 23 * * *'
+  workflow_dispatch: # 保留 GitHub 网页上一键手动立即运行按钮
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 授权 Actions 推送代码回仓库
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+
+      - name: 执行全自动抓取、双核实与页面编译
+        run: |
+          python agent_reach_editor.py
+
+      - name: 自动提交更新并发布至 GitHub Pages
+        run: |
+          git config --global user.name "Simon-Daily-Bot"
+          git config --global user.email "bot@simondaily.com"
+          git add index.html news_data.json
+          git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
+          git push
