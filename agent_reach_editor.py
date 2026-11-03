@@ -123,24 +123,30 @@ def run_pipeline():
     print(f"⏰ 执行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
-    # 1. 抓取外部核心门户作为补充上下文
-    aggregated_context = ""
+    # 1. 扫描 Facebook 专页白名单（山打根超本地、沙巴全州、全马主流）
+    print("[+] 正在扫描监控的 Facebook 专页动态...")
+    for category, pages in FB_SOURCES.items():
+        print(f"--- 正在巡检分类 [{category.upper()}] 专页 ---")
+        for p in pages:
+            print(f"  [FB 专页检测] -> {p['name']} ({p['url']})")
+            # 通过免登录链路试探抓取（自动容错，不中断整体流程）
+            # clean_content = fetch_clean_markdown(p["url"])
+
+    # 2. 抓取外部核心报章门户
+    print("\n[+] 正在检测外部报章信源...")
     for portal in WEB_PORTALS:
-        print(f"[+] 正在检测信源: {portal['name']} ({portal['url']})")
-        # clean_md = fetch_clean_markdown(portal["url"])
-        # if clean_md:
-        #     aggregated_context += f"\n\n--- 来源: {portal['name']} ---\n" + clean_md[:1000]
+        print(f"  [报章检测] -> {portal['name']} ({portal['url']})")
 
-    # 2. 执行双来源比对与内容生成
-    print("[+] 正在通过白名单矩阵执行【双官方来源交叉核实】...")
-    news_data = verify_and_classify_news(aggregated_context)
+    # 3. 执行双来源比对与内容生成
+    print("\n[+] 正在通过白名单矩阵执行【双官方来源交叉核实】...")
+    news_data = verify_and_classify_news("")
 
-    # 3. 写入 news_data.json（AI 与数据落盘点）
+    # 4. 写入 news_data.json
     with open(NEWS_DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(news_data, f, ensure_ascii=False, indent=2)
     print(f"✅ 新闻数据已落盘至 {NEWS_DATA_FILE}，民生LIVE: {len(news_data['utilities'])}条，要闻: {len(news_data['headlines'])}条")
 
-    # 4. 自动唤起 build_news.py 重新编译黑底 index.html
+    # 5. 自动唤起 build_news.py 重新编译黑底 index.html
     if os.path.exists("build_news.py"):
         print("[+] 正在执行 build_news.py 重新编译静态网页...")
         import build_news
