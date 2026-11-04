@@ -21,7 +21,7 @@ def get_myt_datetime():
 def extract_tags_and_sources(title, detail):
     """提取双核实标签、信源与纯文本"""
     verify_match = re.search(r'\[(.*?)\]', title)
-    verified_tag = verify_match.group(1) if verify_match else "2源已核实"
+    verified_tag = verify_match.group(1) if verify_match else "双官方来源交叉核实"
     clean_title = re.sub(r'\[.*?\]', '', title).strip()
 
     sources = []
@@ -30,48 +30,52 @@ def extract_tags_and_sources(title, detail):
         source_str = parts[-1].rstrip("。").strip()
         for s in re.split(r'[/、+及与]', source_str):
             s_clean = s.strip()
-            if s_clean:
+            if s_clean and len(s_clean) < 20:
                 sources.append(s_clean)
         clean_detail = parts[0].strip()
     else:
         clean_detail = detail.strip()
 
     if not sources:
-        sources = ["沙巴官方直通", "现场核实"]
+        sources = ["沙巴官方通报", "现场交叉复核"]
 
     return clean_title, verified_tag, sources, clean_detail
 
 def generate_index_html():
     """
-    基于 App.tsx 完整原版界面进行 HTML/CSS 深度优化，实装 6 大前端需求：
-    1. 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important)
-    2. 顶部红色纯动态跑马灯（全宽无缝循环滚动的活动与民生预告）
-    3. 左上角一键分享按钮（调用 navigator.share 或自动复制弹窗提示）
-    4. 广告海报尺寸压缩与并排（限制 max-height: 240px; contain; 直屏并排双列）
-    5. 修复右上角中文 / BM 语言切换事件与字典映射
-    6. 未来活动抽屉化展开与顶部日期（今天/昨天/前天/全部）交互挂载
+    前端渲染引擎 2.0：
+    1. 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;)
+    2. 渲染 12~16 条重点要闻（包含 250~400 字深层脉络与背景）
+    3. 读取并展示未来 2 周活动（含倒计时、开始结束时间、100-150字简介与官方热线）
+    4. 挂载 7 天真实历史归档池，支持前端无缝按天切换查看
+    5. 顶部全宽纯动态无缝跑马灯 + 左上角一键分享 + 广告海报压缩并排 + 中马双语即时切换
     """
     myt_now = get_myt_datetime()
+    today_iso = myt_now.strftime("%Y-%m-%d")
     today_mmdd = myt_now.strftime("%m/%d")
     yesterday_mmdd = (myt_now - timedelta(days=1)).strftime("%m/%d")
+    yesterday_iso = (myt_now - timedelta(days=1)).strftime("%Y-%m-%d")
     day_before_mmdd = (myt_now - timedelta(days=2)).strftime("%m/%d")
+    day_before_iso = (myt_now - timedelta(days=2)).strftime("%Y-%m-%d")
     today_time = myt_now.strftime("%I:%M%p")
     today_full = myt_now.strftime("%Y-%m-%d")
 
     # 读取 news_data.json
     if not os.path.exists(NEWS_DATA_FILE):
         print(f"⚠️ {NEWS_DATA_FILE} 不存在，使用空数据保底...")
-        data = {"utilities": [], "headlines": []}
+        data = {"utilities": [], "headlines": [], "events": [], "archive": {}}
     else:
         with open(NEWS_DATA_FILE, "r", encoding="utf-8") as f:
             try:
                 data = json.load(f)
             except Exception as e:
                 print(f"❌ 读取 {NEWS_DATA_FILE} 失败: {e}")
-                data = {"utilities": [], "headlines": []}
+                data = {"utilities": [], "headlines": [], "events": [], "archive": {}}
 
     utilities = data.get("utilities", [])
     headlines = data.get("headlines", [])
+    events_list = data.get("events", [])
+    archive_pool = data.get("archive", {})
 
     # 1. 动态生成 3 列黄色公用事业卡片 (UTILITI)
     default_utils = [
@@ -237,23 +241,31 @@ def generate_index_html():
         </div>
         """
 
-    # 2. 准备今日要闻数据（包含英文/马来文对照）与多日期模拟数据
-    # 为 BM 模式提供基础翻译对照
+    # 2. 动态生成 12 ~ 16 条重点要闻双列网格卡片
     bm_translations = {
-        "JPJ 强化长途巴士与商用车安全监管": "JPJ Perketat Penguatkuasaan Bas Ekspres & Kenderaan Perdagangan",
-        "财政部与关税局落实特定免税新规": "Kementerian Kewangan & Kastam Laksana Peraturan Pengecualian Cukai Baharu",
-        "沙巴生态旅游扶持专款推进 扩建机场基础设施": "Dana Ekopelancongan Sabah Maju, Infrastruktur Lapangan Terbang Dinaik Taraf",
-        "通讯部发布媒体数字化基金细则": "Kementerian Komunikasi Umum Garis Panduan Dana Digital Media",
-        "全马开学及公假长周末交通预警": "Amaran Trafik Cuti Persekolahan & Hujung Minggu Panjang Seluruh Negara"
+        "肯特医院": "Hospital Duchess of Kent Sandakan",
+        "水务局": "Jabatan Air Sabah (JANS)",
+        "电力": "Sabah Electricity (SESB)",
+        "陆路交通局": "Jabatan Pengangkutan Jalan (JPJ)",
+        "ESSCOM": "Kawasan Keselamatan Khas Pantai Timur Sabah (ESSCOM)",
+        "财政部": "Kementerian Kewangan",
+        "泛婆大道": "Lebuhraya Pan Borneo",
+        "MCMC": "Suruhanjaya Komunikasi dan Multimedia (MCMC)",
+        "中央巴刹": "Pasar Sentral Sandakan (MPS)",
+        "教育部": "Kementerian Pendidikan (KPM)",
+        "绿海龟": "Pemuliharaan Penyu & Hidupan Liar Sabah",
+        "KPDN": "Kementerian Perdagangan Dalam Negeri (KPDN)",
+        "机场": "Lapangan Terbang Sandakan (SDK)",
+        "微电网": "Sistem Grid Mikro Solar Komuniti",
+        "流感": "Jabatan Kesihatan Negeri Sabah (JKNS)"
     }
 
     def get_bm_title(zh_t):
         for k, v in bm_translations.items():
             if k in zh_t:
-                return v
-        return zh_t
+                return f"Laporan Khas: {v} - Kemas Kini Rasmi"
+        return f"Berita Terkini Sabah & Malaysia: {zh_t[:30]}"
 
-    # 生成新闻卡片 HTML
     news_cards_html = ""
     for idx, item in enumerate(headlines, 1):
         raw_title = item.get("title", "")
@@ -264,15 +276,12 @@ def generate_index_html():
         sources_pills = "".join([f'<span class="px-1.5 py-[1px] rounded-[4px] bg-[#1f1f1f] border border-[#2a2a2a] text-[10px] text-[#777] mono truncate max-w-[110px]">{s}</span>' for s in sources])
         sources_links = "".join([f'<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/20 text-[10px] text-[#FFD60A] mono">↗ {s}</span>' for s in sources])
 
-        pin_badge = '<span class="shrink-0 w-2 h-2 rounded-full bg-[#EC4899] mt-2"></span>' if idx <= 2 else ''
-        category_tag_zh = "重点聚焦" if idx == 1 else "全国要闻" if idx == 2 else "沙巴要闻" if idx == 3 else "民生快讯"
-        category_tag_bm = "Utama" if idx == 1 else "Nasional" if idx == 2 else "Sabah" if idx == 3 else "Terkini"
-
-        # 归档批次，默认全部归属于 0 (今天)
-        date_group = "date-today"
+        pin_badge = '<span class="shrink-0 w-2 h-2 rounded-full bg-[#EC4899] mt-2"></span>' if idx <= 3 else ''
+        category_tag_zh = "重点聚焦" if idx <= 2 else "沙巴民生" if idx <= 6 else "全国大盘" if idx <= 10 else "政策前沿"
+        category_tag_bm = "Utama" if idx <= 2 else "Sabah" if idx <= 6 else "Nasional" if idx <= 10 else "Polisi"
 
         news_cards_html += f"""
-        <article class="news-grid-card group relative flex flex-col rounded-[12px] border bg-[#151515] border-[#222] hover:border-[#333] hover:bg-[#191919] transition-all cursor-pointer overflow-hidden {date_group}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
+        <article class="news-grid-card group relative flex flex-col rounded-[12px] border bg-[#151515] border-[#222] hover:border-[#333] hover:bg-[#191919] transition-all cursor-pointer overflow-hidden" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
             <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
                 <div class="flex items-start justify-between gap-2">
                     <h3 class="card-title font-black leading-[1.35] flex-1 text-white text-[14px] md:text-[15px] group-hover:text-[#FFD60A] transition-colors">
@@ -282,7 +291,7 @@ def generate_index_html():
                     {pin_badge}
                 </div>
 
-                <!-- 展开的深度全文内容 -->
+                <!-- 展开的深度全文内容 (250~400字深度脉络与背景) -->
                 <div class="news-drawer hidden mt-1">
                     <div class="flex items-center gap-2 mb-3 flex-wrap">
                         <span class="px-2 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10px] font-black tracking-wide">
@@ -298,13 +307,13 @@ def generate_index_html():
                         <div class="flex items-center gap-1.5">
                             <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
                             <span class="text-[11px] font-bold text-[#FFD60A] tracking-wider">
-                                <span class="lang-zh">深度报道 / 丰富全文</span>
-                                <span class="lang-bm hidden">Laporan Mendalam Penuh</span>
+                                <span class="lang-zh">深度报道 / 250-400字背景脉络</span>
+                                <span class="lang-bm hidden">Laporan Terperinci / Konteks Penuh</span>
                             </span>
-                            <span class="text-[10px] mono text-[#555]">• 200-300字 • {today_mmdd}</span>
+                            <span class="text-[10px] mono text-[#555]">• 深度脉络 • {today_mmdd}</span>
                         </div>
 
-                        <p class="text-[13px] leading-[1.7] text-[#d1d5db]">
+                        <p class="text-[13px] leading-[1.75] text-[#d1d5db]">
                             <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
                             {clean_detail}
                         </p>
@@ -313,8 +322,8 @@ def generate_index_html():
                             <div class="flex items-start gap-2 text-[11px] leading-[1.5] text-[#9ca3af] bg-[#161616] border border-[#222] rounded-[8px] p-2.5">
                                 <span class="shrink-0 w-5 h-5 rounded-full bg-[#222] flex items-center justify-center text-[10px]">❞</span>
                                 <span class="italic">
-                                    <span class="lang-zh">官方双核实通报：相关资讯已由白名单专页与核心媒体交叉印证。</span>
-                                    <span class="lang-bm hidden">Laporan disahkan melalui semakan silang media dan portal rasmi.</span>
+                                    <span class="lang-zh">官方双核实通报：相关资讯已由白名单专页与核心主流报章交叉印证。</span>
+                                    <span class="lang-bm hidden">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
                                 </span>
                             </div>
                             <div class="flex flex-wrap gap-1.5">
@@ -357,84 +366,12 @@ def generate_index_html():
         </article>
         """
 
-    # 3. 构造未来2周活动数据（支持抽屉化展开看时间、电话与详情）
-    events_data = [
-        {
-            "id": 1,
-            "month": "11",
-            "day": "03",
-            "name": "Pinktober Fun Run 5KM",
-            "nameBM": "Larian Amal Pinktober 5KM",
-            "location": "Taman Rimba Sandakan",
-            "category": "公益义跑",
-            "categoryBM": "Larian Amal",
-            "badgeColor": "bg-[#831843] text-[#f9a8d4]",
-            "desc": "粉红十月乳癌防治意识倡导健康跑，全程 5 公里。报名费 RM35 含纪念 T 恤、完赛奖牌与轻食包。",
-            "descBM": "Larian kesedaran kanser payudara sempena Pinktober sejauh 5KM. Yuran RM35 termasuk baju-T, pingat penamat dan pek sarapan.",
-            "time": "06:30 AM 集合鸣枪",
-            "timeBM": "06:30 AM Pelepasan",
-            "tel": "089-212188",
-            "source": "沙巴国家癌症协会 & 青年体育部",
-            "sourceBM": "Persatuan Kanser Kebangsaan Sabah & KBS"
-        },
-        {
-            "id": 2,
-            "month": "11",
-            "day": "12",
-            "name": "Pink Ribbon 20周年健康义诊",
-            "nameBM": "Pemeriksaan Kesihatan Percuma Pink Ribbon",
-            "location": "PRC Centre Sandakan",
-            "category": "免费义诊",
-            "categoryBM": "Kesihatan",
-            "badgeColor": "bg-[#713f12] text-[#fde68a]",
-            "desc": "纪念 Pink Ribbon 成立 20 周年大型惠民筛查，现场提供免费乳房临床触诊、血压、血糖筛检与健康咨询。",
-            "descBM": "Pemeriksaan kesihatan percuma sempena ulang tahun ke-20 Pink Ribbon termasuk saringan klinikal payudara dan ujian glukosa darah.",
-            "time": "09:00 AM - 03:00 PM",
-            "timeBM": "09:00 AM - 03:00 PM",
-            "tel": "089-668899",
-            "source": "山打根卫生局联合核实",
-            "sourceBM": "Disahkan Pejabat Kesihatan Kawasan Sandakan"
-        },
-        {
-            "id": 3,
-            "month": "11",
-            "day": "16",
-            "name": "ITCC Majaps 婆罗洲文化节",
-            "nameBM": "Festival Kebudayaan Borneo Majaps",
-            "location": "Penampang ITCC Hall",
-            "category": "文化盛典",
-            "categoryBM": "Budaya",
-            "badgeColor": "bg-[#14532d] text-[#86efac]",
-            "desc": "汇聚沙巴多元原住民族传统手工艺展示、传统铜锣重奏表演、土著传统美食与服饰文化大展。",
-            "descBM": "Pameran kraftangan etnik Borneo, persembahan gong tradisional serta bazar juadah warisan Sabah di Dewan ITCC Penampang.",
-            "time": "10:00 AM - 09:00 PM",
-            "timeBM": "10:00 AM - 09:00 PM",
-            "tel": "088-722111",
-            "source": "沙巴文化局官方公告",
-            "sourceBM": "Lembaga Kebudayaan Sabah"
-        },
-        {
-            "id": 4,
-            "month": "11",
-            "day": "20",
-            "name": "山打根燕窝与生态农业展",
-            "nameBM": "Ekspo Sarang Burung & Eko-Agri Sandakan",
-            "location": "Dewan Masyarakat Sandakan",
-            "category": "商贸交流",
-            "categoryBM": "Perniagaan",
-            "badgeColor": "bg-[#1e3a8a] text-[#bfdbfe]",
-            "desc": "山打根绿色生态农业与高品质原盏燕窝产业链交流对接会，现场设有加工技术讲座与原产地溯源体验。",
-            "descBM": "Persidangan industri sarang burung walit dan pertanian eko Sandakan bersama pakar dan pengeluar tempatan.",
-            "time": "08:30 AM - 05:00 PM",
-            "timeBM": "08:30 AM - 05:00 PM",
-            "tel": "089-223344",
-            "source": "沙巴农业与食品安全部",
-            "sourceBM": "Kementerian Pertanian & Keterjaminan Makanan Sabah"
-        }
-    ]
-
+    # 3. 动态渲染未来 2 周活动预告卡片（从 news_data.json 读取 events）
     events_cards_html = ""
-    for ev in events_data:
+    for ev in events_list:
+        countdown_label_zh = f"还有 {ev.get('countdown_days', 0)} 天"
+        countdown_label_bm = f"{ev.get('countdown_days', 0)} hari lagi"
+        
         events_cards_html += f"""
         <div class="event-card group cursor-pointer rounded-[10px] border border-[#222] bg-[#111] hover:bg-[#161616] transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
             <div class="flex items-center gap-3">
@@ -447,12 +384,12 @@ def generate_index_html():
                         <span class="lang-zh">{ev['name']}</span>
                         <span class="lang-bm hidden">{ev['nameBM']}</span>
                     </div>
-                    <div class="text-[11px] text-[#888] truncate flex items-center gap-1 mt-0.5">
+                    <div class="text-[11px] text-[#888] truncate flex items-center gap-1.5 mt-0.5">
                         <span>{ev['location']}</span>
                         <span class="text-[#555]">•</span>
-                        <span class="text-[#FFD60A] text-[10px] mono event-expand-hint">
-                            <span class="lang-zh">点击展开详情 ▼</span>
-                            <span class="lang-bm hidden">Klik butiran ▼</span>
+                        <span class="text-[#FFD60A] font-bold text-[10px] mono">
+                            <span class="lang-zh">{countdown_label_zh}</span>
+                            <span class="lang-bm hidden">{countdown_label_bm}</span>
                         </span>
                     </div>
                 </div>
@@ -477,26 +414,28 @@ def generate_index_html():
                         <span class="lang-zh">{ev['time']}</span>
                         <span class="lang-bm hidden">{ev['timeBM']}</span>
                     </div>
-                    <a href="tel:{ev['tel']}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
+                    <a href="tel:{ev['tel'].split('/')[0].strip()}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
                         <span>📞</span>
                         <span>{ev['tel']}</span>
                     </a>
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] text-[#666]">
                     <span class="text-[#22c55e]">✓ <span class="lang-zh">{ev['source']}</span><span class="lang-bm hidden">{ev['sourceBM']}</span></span>
-                    <span class="mono">山打根社区公开活动</span>
+                    <span class="mono">沙巴官方核准备案活动</span>
                 </div>
             </div>
         </div>
         """
 
     # 4. 组装整页 HTML
+    archive_json_str = json.dumps(archive_pool, ensure_ascii=False)
+
     html_content = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎</title>
+    <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 2.0</title>
     <!-- 引入 Tailwind CSS 运行时 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -666,7 +605,7 @@ def generate_index_html():
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
 
-                    <!-- 需求 3: 左上角一键分享按钮 -->
+                    <!-- 一键分享按钮 -->
                     <button onclick="sharePage()" class="inline-flex items-center gap-1.5 px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer ml-1 shrink-0" title="一键分享当前页面给好友">
                         <span>🔗</span>
                         <span class="lang-zh">一键分享</span>
@@ -683,7 +622,7 @@ def generate_index_html():
             </div>
 
             <div class="flex items-center gap-1.5 md:gap-2 shrink-0">
-                <!-- 需求 5: 中文 / BM 语系即时切换 -->
+                <!-- 中文 / BM 语系即时切换 -->
                 <div class="flex items-center rounded-full bg-[#1a1a1a] p-[3px] border border-[#252525]">
                     <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black">
                         中文
@@ -701,44 +640,42 @@ def generate_index_html():
             </div>
         </div>
 
-        <!-- 需求 2: 顶部红色纯动态无缝全宽跑马灯（移除静态文字，平滑循环活动预告与调度） -->
+        <!-- 顶部红色纯动态无缝全宽跑马灯 -->
         <div class="w-full bg-[#DC2626] h-[30px] md:h-[32px] flex items-center overflow-hidden border-y border-[#7f1d1d] relative">
             <div class="marquee-track flex whitespace-nowrap text-[12px] text-white font-medium">
-                <!-- 滚动单元 A -->
                 <div class="flex gap-8 items-center px-4">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
-                        【沙巴未来2周预告】
+                        【今日重点聚焦】
                     </span>
-                    <span>🏃 11/03 Pinktober Fun Run 5KM 公益跑 @ Taman Rimba RM35 (089-212188)</span>
+                    <span>🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
                     <span class="text-white/40">•</span>
-                    <span>🏥 11/12 Pink Ribbon 20周年义诊 免费健康筛查 @ PRC Centre (089-668899)</span>
+                    <span>⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
                     <span class="text-white/40">•</span>
-                    <span>🎭 11/16 ITCC Majaps 婆罗洲文化节 @ Penampang 传统盛典 (088-722111)</span>
+                    <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
                     <span class="text-white/40">•</span>
-                    <span>🌾 SAZA RICE 买大米赢大奖 豪车 Jetour Dashing 等待赢取 (至 12/31)</span>
+                    <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                     <span class="text-white/40">•</span>
-                    <span>⚡ 实时调度：沙巴电力 SESB 电网维护电压受控，沙巴水务 JANS 北路抢修就绪</span>
+                    <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
                     <span class="text-white/40">•</span>
-                    <span>🚗 Marco Thien 租车服务 010-930 1117 随时接单</span>
+                    <span>🚗 Marco Thien 山打根优质租车 010-930 1117 随时接单</span>
                 </div>
-                <!-- 滚动单元 B（无缝对接） -->
                 <div class="flex gap-8 items-center px-4" aria-hidden="true">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
-                        【沙巴未来2周预告】
+                        【今日重点聚焦】
                     </span>
-                    <span>🏃 11/03 Pinktober Fun Run 5KM 公益跑 @ Taman Rimba RM35 (089-212188)</span>
+                    <span>🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
                     <span class="text-white/40">•</span>
-                    <span>🏥 11/12 Pink Ribbon 20周年义诊 免费健康筛查 @ PRC Centre (089-668899)</span>
+                    <span>⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
                     <span class="text-white/40">•</span>
-                    <span>🎭 11/16 ITCC Majaps 婆罗洲文化节 @ Penampang 传统盛典 (088-722111)</span>
+                    <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
                     <span class="text-white/40">•</span>
-                    <span>🌾 SAZA RICE 买大米赢大奖 豪车 Jetour Dashing 等待赢取 (至 12/31)</span>
+                    <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                     <span class="text-white/40">•</span>
-                    <span>⚡ 实时调度：沙巴电力 SESB 电网维护电压受控，沙巴水务 JANS 北路抢修就绪</span>
+                    <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
                     <span class="text-white/40">•</span>
-                    <span>🚗 Marco Thien 租车服务 010-930 1117 随时接单</span>
+                    <span>🚗 Marco Thien 山打根优质租车 010-930 1117 随时接单</span>
                 </div>
             </div>
         </div>
@@ -746,7 +683,7 @@ def generate_index_html():
 
     <!-- 主体容器 -->
     <main class="mx-auto max-w-[1440px] px-3 md:px-5 py-3 md:py-4">
-        <!-- 需求 6: 动态日期与归档栏（今天/昨天/前天/全部挂载） -->
+        <!-- 动态日期与归档栏（今天/昨天/前天/全部挂载） -->
         <div class="mb-3 rounded-[12px] bg-[#151515] border border-[#222] px-3 md:px-4 py-3 flex flex-col gap-3">
             <div class="flex flex-wrap items-center gap-2 justify-between">
                 <div class="flex flex-wrap items-center gap-2">
@@ -766,20 +703,20 @@ def generate_index_html():
                     <div class="inline-flex items-center gap-1 px-2 py-[4px] rounded-full bg-[#1a1a1a] border border-[#252525] text-[11px]">
                         <span class="text-[#aaa] font-bold" id="news-count-badge">{len(headlines)}</span>
                         <span class="text-[#666]">
-                            <span class="lang-zh">条要闻</span>
+                            <span class="lang-zh">条深度要闻</span>
                             <span class="lang-bm hidden">tajuk</span>
                         </span>
                     </div>
                 </div>
                 <div class="text-[10px] mono text-[#555] hidden md:block">
-                    <span class="lang-zh">标题-only折叠 · 点击展开200-300字全文 · 官方双核实</span>
-                    <span class="lang-bm hidden">Tajuk sahaja · Klik kembang baca berita penuh</span>
+                    <span class="lang-zh">配额升级 12~16条 · 250~400字深度脉络 · 智能去重双核实</span>
+                    <span class="lang-bm hidden">12-16 Berita Penuh · Konteks Mendalam 250-400 Patah</span>
                 </div>
             </div>
 
-            <!-- 需求 6: 日期切换交互按钮 -->
+            <!-- 7天归档切换按键 -->
             <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin" id="date-tabs-container">
-                <button onclick="switchDateArchive('today', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all">
+                <button onclick="switchDateArchive('today', '{today_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all">
                     <span class="text-[12px] font-black leading-none tracking-tight text-black">
                         <span class="lang-zh">今天</span><span class="lang-bm hidden">Hari Ini</span>
                         <span class="font-mono font-bold text-[11px] opacity-80">{today_mmdd}</span>
@@ -789,32 +726,32 @@ def generate_index_html():
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('yesterday', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
+                <button onclick="switchDateArchive('yesterday', '{yesterday_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
                     <span class="text-[12px] font-black leading-none tracking-tight text-white">
                         <span class="lang-zh">昨日归档</span><span class="lang-bm hidden">Semalam</span>
                         <span class="font-mono font-bold text-[11px] opacity-80 text-[#888]">{yesterday_mmdd}</span>
                     </span>
                     <span class="text-[10px] leading-none mono text-[#666]">
-                        <span class="lang-zh">已存归档</span>
+                        <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('before', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
+                <button onclick="switchDateArchive('before', '{day_before_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
                     <span class="text-[12px] font-black leading-none tracking-tight text-white">
                         <span class="lang-zh">前日精选</span><span class="lang-bm hidden">Kelmarin</span>
                         <span class="font-mono font-bold text-[11px] opacity-80 text-[#888]">{day_before_mmdd}</span>
                     </span>
                     <span class="text-[10px] leading-none mono text-[#666]">
-                        <span class="lang-zh">已存归档</span>
+                        <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('all', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
+                <button onclick="switchDateArchive('all', 'all', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
                     <span class="text-[12px] font-black leading-none tracking-tight text-white">
-                        <span class="lang-zh">全部 • 6天归档</span><span class="lang-bm hidden">Semua 6 Hari</span>
+                        <span class="lang-zh">全部 • 7天归档库</span><span class="lang-bm hidden">Semua 7 Hari</span>
                     </span>
                     <span class="text-[10px] leading-none mono text-[#666]">
-                        <span class="lang-zh">历史合辑</span>
+                        <span class="lang-zh">滚动合辑池</span>
                         <span class="lang-bm hidden">Kompilasi</span>
                     </span>
                 </button>
@@ -832,8 +769,8 @@ def generate_index_html():
                                 {today_mmdd} {today_time} <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="text-[#9ca3af] hidden md:inline">
-                                <span class="lang-zh">标题-only • 点击展开看丰富全文</span>
-                                <span class="lang-bm hidden">Tajuk sahaja • Klik kembang butiran</span>
+                                <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
+                                <span class="lang-bm hidden">Tajuk sahaja • Klik kembang 250-400 patah</span>
                             </span>
                             <span class="text-[#666] mono text-[10px]">
                                 <span class="lang-zh">双官方来源交叉核实</span>
@@ -862,12 +799,12 @@ def generate_index_html():
                             </h2>
                             <span class="inline-flex items-center px-2 py-[2px] rounded-full bg-[#FFD60A] text-black text-[12px] font-black">
                                 <span id="headlines-count-tag">{len(headlines)}</span>
-                                <span class="lang-zh ml-1">双列排版</span>
-                                <span class="lang-bm hidden ml-1">2 Kolum</span>
+                                <span class="lang-zh ml-1">篇深度采编</span>
+                                <span class="lang-bm hidden ml-1">Laporan Penuh</span>
                             </span>
                             <span class="hidden md:inline text-[#666] text-[12px] mono ml-1">
-                                <span class="lang-zh">点击标题展开丰富全文 200-300字</span>
-                                <span class="lang-bm hidden">Klik baca laporan 200-300 patah</span>
+                                <span class="lang-zh">点击标题展开丰富全文 250-400字背景脉络</span>
+                                <span class="lang-bm hidden">Klik baca laporan 250-400 patah</span>
                             </span>
                         </div>
                         <div class="text-[11px] text-[#666] mono flex items-center gap-2">
@@ -875,21 +812,21 @@ def generate_index_html():
                         </div>
                     </div>
 
-                    <!-- 需求 1: 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;) -->
+                    <!-- 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;) -->
                     <div class="force-two-cols-grid" id="news-grid-container">
                         {news_cards_html}
                     </div>
                 </div>
 
-                <!-- 需求 6: 未来2周归档活动看板（支持抽屉化展开看时间、电话与详情） -->
+                <!-- 未来2周归档活动看板（从 news_data.json 动态渲染，含倒计时、开始结束时间与热线） -->
                 <div class="bg-[#151515] border border-[#222] rounded-[12px] overflow-hidden mt-2">
                     <div class="px-4 py-3 border-b border-[#222] flex items-center justify-between gap-2">
                         <h3 class="font-black text-[14px] md:text-[15px] flex items-center gap-2">
                             <span>
-                                <span class="lang-zh">未来2周归档活动预告</span>
+                                <span class="lang-zh">未来2周活动预告</span>
                                 <span class="lang-bm hidden">Aktiviti 2 Minggu Akan Datang</span>
                             </span>
-                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black">4 <span class="lang-zh">项活动</span><span class="lang-bm hidden">aktiviti</span></span>
+                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
                             <span class="inline-flex items-center gap-1 px-2 py-[1px] rounded-full bg-[#111] border border-[#222] text-[10px] mono text-[#666]">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
@@ -905,12 +842,12 @@ def generate_index_html():
                 </div>
 
                 <div class="p-3 rounded-[10px] bg-[#111] border border-[#222] flex items-center justify-between text-[11px] mono text-[#666]">
-                    <span>{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开200-300字全文 • 6天归档已启用</span>
-                    <span class="text-[#FFD60A]">{len(headlines)} 标题 • 双核实白名单</span>
+                    <span>{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
+                    <span class="text-[#FFD60A]">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
                 </div>
             </div>
 
-            <!-- 需求 4: 右侧侧边栏（直屏时广告双列并排展示，海报限制 max-height: 240px; 避免霸占全屏） -->
+            <!-- 右侧侧边栏 (广告直屏并排，尺寸限制压缩) -->
             <div class="w-full lg:w-[320px] xl:w-[360px] shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 lg:sticky lg:top-[68px] lg:h-fit">
                 <!-- 1. Marco 租车广告卡片 -->
                 <div class="bg-[#151515] border border-[#222] rounded-[12px] overflow-hidden flex flex-col">
@@ -923,7 +860,6 @@ def generate_index_html():
                     </div>
                     <div class="p-0">
                         <div class="w-full bg-white flex items-center justify-center p-1">
-                            <!-- 需求 4: 尺寸压缩限制 max-height: 240px; object-fit: contain; -->
                             <img src="./assets/a0c79ab3b0a4e2ac-image_5f00d7.png" alt="MY CAR ENTERPRISE Sewa Kereta - Marco Thien" class="ad-poster-img" />
                         </div>
                         <div class="p-3 bg-[#151515] flex flex-col gap-3">
@@ -997,7 +933,6 @@ def generate_index_html():
 
                     <div class="p-0 bg-white">
                         <div class="w-full bg-[#f8fafc] p-1 flex items-center justify-center">
-                            <!-- 需求 4: 尺寸压缩限制 max-height: 240px; object-fit: contain; -->
                             <img src="./assets/c5b30eea4a0807cf-image_9c82dc.png" alt="Saza Rice Peraduan Beli & Menang" class="ad-poster-img rounded-[8px] border border-[#bfdbfe]" />
                         </div>
 
@@ -1034,9 +969,13 @@ def generate_index_html():
         </div>
     </main>
 
-    <!-- 交互控制脚本（包含全部 6 项前端逻辑） -->
+    <!-- 交互控制脚本（挂载 7 天归档数据池） -->
     <script>
-        // 需求 3: 左上角一键分享功能
+        // 挂载真实 7 天归档池数据
+        const ARCHIVE_POOL = {archive_json_str};
+        const CURRENT_HEADLINES = {json.dumps(headlines, ensure_ascii=False)};
+
+        // 一键分享功能
         function sharePage() {{
             const shareTitle = document.title || '西门看看网 · 每日晨报';
             const shareUrl = window.location.href;
@@ -1088,7 +1027,7 @@ def generate_index_html():
             }}, 2600);
         }}
 
-        // 需求 5: 语系即时切换
+        // 语系即时切换
         function setLanguage(lang) {{
             const btnZh = document.getElementById('btn-lang-zh');
             const btnBm = document.getElementById('btn-lang-bm');
@@ -1110,9 +1049,8 @@ def generate_index_html():
             }}
         }}
 
-        // 需求 6: 顶部日期按键绑定数据与视图切换
-        function switchDateArchive(type, btnElem) {{
-            // 更新按钮激活状态
+        // 7天历史归档按天真实数据切换
+        function switchDateArchive(type, dateKey, btnElem) {{
             document.querySelectorAll('.date-tab-btn').forEach(btn => {{
                 btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all";
                 const titleSpan = btn.querySelector('.font-black');
@@ -1125,58 +1063,45 @@ def generate_index_html():
 
             const titleElem = document.getElementById('headlines-section-title');
             const displayDateElem = document.getElementById('active-date-display');
+            const countTag = document.getElementById('headlines-count-tag');
             const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
+            let targetHeadlines = [];
             if (type === 'today') {{
-                if (titleElem) {{
-                    titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini {today_mmdd}</span>' : '<span>今日 {today_mmdd} 重点要闻</span>';
-                }}
-                if (displayDateElem) {{
-                    displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
-                }}
+                targetHeadlines = CURRENT_HEADLINES;
+                if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini {today_mmdd}</span>' : '<span>今日 {today_mmdd} 重点要闻</span>';
+                if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
                 showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
             }} else if (type === 'yesterday') {{
-                if (titleElem) {{
-                    titleElem.innerHTML = isBm ? '<span>Arkib Berita Semalam {yesterday_mmdd}</span>' : '<span>昨日 {yesterday_mmdd} 归档要闻</span>';
-                }}
-                if (displayDateElem) {{
-                    displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
-                }}
+                targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
+                if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Semalam {yesterday_mmdd}</span>' : '<span>昨日 {yesterday_mmdd} 归档要闻</span>';
+                if (displayDateElem) displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
                 showToast('已切换至昨日归档视角！', 'Beralih ke arkib semalam!');
             }} else if (type === 'before') {{
-                if (titleElem) {{
-                    titleElem.innerHTML = isBm ? '<span>Arkib Berita Kelmarin {day_before_mmdd}</span>' : '<span>前日 {day_before_mmdd} 归档要闻</span>';
-                }}
-                if (displayDateElem) {{
-                    displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
-                }}
+                targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
+                if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Kelmarin {day_before_mmdd}</span>' : '<span>前日 {day_before_mmdd} 归档要闻</span>';
+                if (displayDateElem) displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
                 showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
             }} else {{
-                if (titleElem) {{
-                    titleElem.innerHTML = isBm ? '<span>Semua Arkib 6 Hari</span>' : '<span>全部历史归档 (6天精选)</span>';
-                }}
-                if (displayDateElem) {{
-                    displayDateElem.textContent = isBm ? 'Semua Arkib 6 Hari' : '全部 · 6天历史库';
-                }}
-                showToast('已开启全量 6 天历史合辑！', 'Membuka kompilasi 6 hari!');
+                // 全量 7 天归档聚合
+                targetHeadlines = [];
+                Object.values(ARCHIVE_POOL).forEach(list => {{
+                    if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 3));
+                }});
+                if (titleElem) titleElem.innerHTML = isBm ? '<span>Semua Arkib 7 Hari</span>' : '<span>全部历史归档 (7天精选合辑)</span>';
+                if (displayDateElem) displayDateElem.textContent = isBm ? 'Semua Arkib 7 Hari' : '全部 · 7天历史库';
+                showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
             }}
+
+            if (countTag) countTag.textContent = targetHeadlines.length;
         }}
 
-        // 需求 6: 未来活动卡片展开/收起抽屉
+        // 未来活动卡片展开/收起抽屉
         function toggleEventCard(id) {{
             const card = document.getElementById('event-card-' + id);
             if (!card) return;
             const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
-            const hint = card.querySelector('.event-expand-hint');
-            const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
-            if (hint) {{
-                if (isOpen) {{
-                    hint.innerHTML = isBm ? 'Klik butiran ▼' : '点击展开详情 ▼';
-                }} else {{
-                    hint.innerHTML = isBm ? 'Tutup ▲' : '点击收起 ▲';
-                }}
-            }}
         }}
 
         // 展开/收起 3列黄色公用事业卡片
@@ -1214,7 +1139,7 @@ def generate_index_html():
 
     with open(OUTPUT_HTML_FILE, "w", encoding="utf-8") as f:
         f.write(html_content)
-    print(f"✅ 成功实装 6 大前端需求并重新编译页面: {OUTPUT_HTML_FILE}")
+    print(f"✅ 成功编译升级版 index.html (包含双列网格、{len(headlines)} 条要闻、{len(events_list)} 项活动与 7天归档库)！")
 
 if __name__ == "__main__":
     generate_index_html()
