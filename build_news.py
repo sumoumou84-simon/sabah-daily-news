@@ -43,13 +43,15 @@ def extract_tags_and_sources(title, detail):
 
 def generate_index_html():
     """
-    前端渲染引擎 2.1：
-    1. 重点要闻增加 5 大分类 Tab 选项卡（全部、沙巴&山打根、全国政经、体育焦点、综合百态）
-    2. 卡片绑定 data-category 属性，纯原生 JS 毫秒级免刷新过滤
-    3. 依然严格锁定双列网格排版 (grid-template-columns: repeat(2, 1fr) !important;)
-    4. 渲染 12~16 条重点要闻（包含 250~400 字深层脉络与背景）
-    5. 读取并展示未来 2 周活动（含倒计时、开始结束时间、100-150字简介与官方热线）
-    6. 挂载 7 天真实历史归档池，支持前端无缝按天切换查看
+    前端渲染引擎 3.0：
+    1. 實裝『☀️ 日间 / 🌙 夜间』模式一键切换功能（带 localStorage 状态记忆与秒级平滑切换）
+    2. 夜间深色模式优化（高对比黑金版）：全面提亮正文、标签与摘要，彻底解决发暗模糊痛点
+    3. 日间浅色模式（经典护眼纸质报章风）：暖米白底色 #F8FAFC、纯白立体卡片、深炭黑锐利文字
+    4. 重点要闻 5 大分类 Tab 选项卡（全部、沙巴&山打根、全国政经、体育焦点、综合百态）
+    5. 严格锁定双列网格排版 (grid-template-columns: repeat(2, 1fr) !important;)
+    6. 渲染 20~24 条重点要闻（包含 250~400 字深度背景脉络与双官方核实）
+    7. 未来 2 周活动（含倒计时、开始结束时间、详尽简介与官方热线）
+    8. 7 天真实历史归档池无缝切换
     """
     myt_now = get_myt_datetime()
     today_iso = myt_now.strftime("%Y-%m-%d")
@@ -176,62 +178,62 @@ def generate_index_html():
                         <span class="lang-zh">{u['status']}</span>
                         <span class="lang-bm hidden">{u['statusBM']}</span>
                     </div>
-                    <div class="text-[10px] text-black/60 mono mt-1 font-bold toggle-hint">
+                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint">
                         { '收起 ↑' if is_first else '点击查看详情' }
                     </div>
                 </div>
             </div>
 
             <div class="util-drawer mt-3">
-                <div class="rounded-[10px] bg-[#0f0f0f] border border-[#222] p-3 flex flex-col gap-2.5">
+                <div class="util-drawer-inner rounded-[10px] p-3 flex flex-col gap-2.5">
                     <div class="flex items-center gap-1.5">
                         <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
                         <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
                             <span class="lang-zh">实时详情 LIVE DETAIL</span>
                             <span class="lang-bm hidden">BUTIRAN LANGSUNG</span>
                         </span>
-                        <span class="text-[10px] mono text-[#555]">• {today_mmdd} {u['time']} LIVE</span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• {today_mmdd} {u['time']} LIVE</span>
                     </div>
 
                     <div class="space-y-2">
-                        <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/15 text-[#FFD60A] flex items-center justify-center text-[10px]">!</span>
-                            <span class="text-[#e5e7eb] font-bold lang-zh">{u['issue']}</span>
-                            <span class="text-[#e5e7eb] font-bold lang-bm hidden">{u['issueBM']}</span>
+                        <div class="flex gap-2 text-[12.5px] leading-[1.5]">
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/20 text-[#FFD60A] flex items-center justify-center text-[11px] font-black">!</span>
+                            <span class="font-bold util-detail-title lang-zh">{u['issue']}</span>
+                            <span class="font-bold util-detail-title lang-bm hidden">{u['issueBM']}</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#1f1f1f] text-[#888] flex items-center justify-center text-[10px]">≋</span>
-                            <span class="text-[#9ca3af] lang-zh">{u['pressure']}</span>
-                            <span class="text-[#9ca3af] lang-bm hidden">{u['pressureBM']}</span>
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">≋</span>
+                            <span class="util-detail-sub lang-zh">{u['pressure']}</span>
+                            <span class="util-detail-sub lang-bm hidden">{u['pressureBM']}</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#1f1f1f] text-[#888] flex items-center justify-center text-[10px]">◷</span>
-                            <span class="text-[#d1d5db] lang-zh">{u['recovery']}</span>
-                            <span class="text-[#d1d5db] lang-bm hidden">{u['recoveryBM']}</span>
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">◷</span>
+                            <span class="util-detail-time lang-zh">{u['recovery']}</span>
+                            <span class="util-detail-time lang-bm hidden">{u['recoveryBM']}</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#14532d] text-[#22c55e] flex items-center justify-center text-[10px]">◩</span>
-                            <span class="text-[#9ca3af] lang-zh">{u['tanker']}</span>
-                            <span class="text-[#9ca3af] lang-bm hidden">{u['tankerBM']}</span>
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#14532d] text-[#4ade80] flex items-center justify-center text-[10px]">◩</span>
+                            <span class="util-detail-sub lang-zh">{u['tanker']}</span>
+                            <span class="util-detail-sub lang-bm hidden">{u['tankerBM']}</span>
                         </div>
                     </div>
 
-                    <div class="pt-2 border-t border-[#1f1f1f] flex flex-col gap-2">
+                    <div class="pt-2 border-t border-black/20 flex flex-col gap-2">
                         <div class="flex flex-wrap gap-1.5">
-                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[11px] text-[#e5e7eb] mono">
+                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
                                 <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
                                 {u['consult']}
                             </span>
-                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[11px] text-[#e5e7eb] mono">
+                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
                                 <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
                                 {u['consult2']}
                             </span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#22c55e] text-[10px] font-bold">
+                            <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
                                 ✓ <span class="lang-zh">{u['source']}</span><span class="lang-bm hidden">{u['sourceBM']}</span>
                             </span>
-                            <span class="text-[10px] mono text-[#666]">
+                            <span class="text-[10px] mono text-black/60">
                                 <span class="lang-zh">点击再次收起</span>
                                 <span class="lang-bm hidden">Klik tutup</span>
                             </span>
@@ -242,7 +244,7 @@ def generate_index_html():
         </div>
         """
 
-    # 2. 动态生成 20 ~ 24 条重点要闻双列网格卡片（绑定 data-category 属性）
+    # 2. 动态生成重点要闻双列网格卡片（绑定 data-category 属性，高对比度排版）
     bm_translations = {
         "肯特医院": "Hospital Duchess of Kent Sandakan",
         "水务局": "Jabatan Air Sabah (JANS)",
@@ -284,7 +286,7 @@ def generate_index_html():
         detail = item.get("detail", "")
         clean_title, tag, sources, clean_detail = extract_tags_and_sources(raw_title, detail)
         title_bm = item.get("titleBM") or get_bm_title(clean_title)
-        detail_bm = item.get("detailBM") or f"Laporan berita mendalam mengenai perkembangan rasmi di Sabah dan Malaysia. Maklumat disahkan oleh portal berita dan agensi rasmi berkaitan. {clean_detail[:120]}..."
+        detail_bm = item.get("detailBM") or f"Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. Maklumat disahkan oleh portal berita dan agensi rasmi berkaitan. {clean_detail[:120]}..."
 
         # 核心分类绑定
         category = item.get("category", "general")
@@ -297,16 +299,16 @@ def generate_index_html():
         else:
             category_tag_zh, category_tag_bm = "综合百态", "Umum"
 
-        sources_pills = "".join([f'<span class="px-1.5 py-[1px] rounded-[4px] bg-[#1f1f1f] border border-[#2a2a2a] text-[10px] text-[#777] mono truncate max-w-[110px]">{s}</span>' for s in sources])
-        sources_links = "".join([f'<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/20 text-[10px] text-[#FFD60A] mono">↗ {s}</span>' for s in sources])
+        sources_pills = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources])
+        sources_links = "".join([f'<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ {s}</span>' for s in sources])
 
-        pin_badge = '<span class="shrink-0 w-2 h-2 rounded-full bg-[#EC4899] mt-2"></span>' if idx <= 2 else ''
+        pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
         news_cards_html += f"""
-        <article class="news-grid-card group relative flex flex-col rounded-[12px] border bg-[#151515] border-[#222] hover:border-[#333] hover:bg-[#191919] transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
+        <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
             <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
                 <div class="flex items-start justify-between gap-2">
-                    <h3 class="card-title font-black leading-[1.35] flex-1 text-white text-[14px] md:text-[15px] group-hover:text-[#FFD60A] transition-colors">
+                    <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
                         <span class="lang-zh">{clean_title}</span>
                         <span class="lang-bm hidden">{title_bm}</span>
                     </h3>
@@ -316,42 +318,42 @@ def generate_index_html():
                 <!-- 展开的深度全文内容 (250~400字深度脉络与背景) -->
                 <div class="news-drawer hidden mt-1">
                     <div class="flex items-center gap-2 mb-3 flex-wrap">
-                        <span class="px-2 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10px] font-black tracking-wide">
+                        <span class="px-2.5 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10.5px] font-black tracking-wide">
                             <span class="lang-zh">{category_tag_zh}</span>
                             <span class="lang-bm hidden">{category_tag_bm}</span>
                         </span>
-                        <span class="text-[11px] mono text-[#888]">沙巴 Sabah • 全马</span>
-                        <span class="w-1 h-1 bg-[#333] rounded-full"></span>
-                        <span class="text-[11px] mono text-[#666]">{today_mmdd} {today_time}</span>
+                        <span class="text-[11px] mono sub-meta-text">沙巴 Sabah • 全马</span>
+                        <span class="w-1 h-1 bg-[#475569] rounded-full"></span>
+                        <span class="text-[11px] mono sub-meta-date">{today_mmdd} {today_time}</span>
                     </div>
 
-                    <div class="rounded-[10px] bg-[#0f0f0f] border border-[#222] p-3 space-y-3">
+                    <div class="news-drawer-box rounded-[10px] p-3.5 space-y-3">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
-                            <span class="text-[11px] font-bold text-[#FFD60A] tracking-wider">
+                            <span class="w-1.5 h-4 rounded-full bg-[#FFD60A]"></span>
+                            <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
                                 <span class="lang-zh">深度报道 / 250-400字背景脉络</span>
                                 <span class="lang-bm hidden">Laporan Terperinci / Konteks Penuh</span>
                             </span>
-                            <span class="text-[10px] mono text-[#555]">• 深度脉络 • {today_mmdd}</span>
+                            <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • {today_mmdd}</span>
                         </div>
 
-                        <p class="text-[13px] leading-[1.75] text-[#d1d5db]">
+                        <p class="news-body-text text-[13.5px] leading-[1.8] font-normal">
                             <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
                             <span class="lang-zh">{clean_detail}</span>
                             <span class="lang-bm hidden">{detail_bm}</span>
                         </p>
 
-                        <div class="pt-2 border-t border-[#1f1f1f] flex flex-col gap-2">
-                            <div class="flex items-start gap-2 text-[11px] leading-[1.5] text-[#9ca3af] bg-[#161616] border border-[#222] rounded-[8px] p-2.5">
-                                <span class="shrink-0 w-5 h-5 rounded-full bg-[#222] flex items-center justify-center text-[10px]">❞</span>
-                                <span class="italic">
+                        <div class="pt-2 border-t drawer-divider flex flex-col gap-2">
+                            <div class="quote-box flex items-start gap-2 text-[11.5px] leading-[1.55] rounded-[8px] p-2.5">
+                                <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold quote-icon">❞</span>
+                                <span class="italic font-medium">
                                     <span class="lang-zh">官方双核实通报：相关资讯已由白名单专页与核心主流报章交叉印证。</span>
                                     <span class="lang-bm hidden">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
                                 </span>
                             </div>
-                            <div class="flex flex-wrap gap-1.5">
+                            <div class="flex flex-wrap gap-1.5 items-center">
                                 {sources_links}
-                                <span class="px-2 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#22c55e] font-bold">
+                                <span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">
                                     ✓ {tag}
                                 </span>
                             </div>
@@ -360,11 +362,11 @@ def generate_index_html():
                 </div>
 
                 <div class="flex flex-wrap items-center gap-1.5 mt-auto">
-                    <span class="mono text-[10px] text-[#666]">{today_mmdd} {today_time}</span>
-                    <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#22c55e] border border-[#166534]">
+                    <span class="mono text-[10.5px] font-bold card-meta-time">{today_mmdd} {today_time}</span>
+                    <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                         {tag}
                     </span>
-                    <span class="text-[10px] px-1.5 py-[1px] rounded bg-[#1a1a1a] border border-[#222] text-[#555] mono">
+                    <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
                         <span class="lang-zh">{category_tag_zh}</span>
                         <span class="lang-bm hidden">{category_tag_bm}</span>
                     </span>
@@ -375,8 +377,8 @@ def generate_index_html():
                 </div>
             </div>
 
-            <div class="mt-auto flex items-center justify-between px-3 py-2.5 border-t border-[#1f1f1f] bg-[#111]/50 card-footer">
-                <span class="text-[11px] text-[#555] mono footer-label">
+            <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
+                <span class="text-[11px] mono font-bold footer-label">
                     <span class="lang-zh">标题-only</span>
                     <span class="lang-bm hidden">Tajuk Sahaja</span>
                 </span>
@@ -396,20 +398,20 @@ def generate_index_html():
         countdown_label_bm = f"{ev.get('countdown_days', 0)} hari lagi"
         
         events_cards_html += f"""
-        <div class="event-card group cursor-pointer rounded-[10px] border border-[#222] bg-[#111] hover:bg-[#161616] transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
+        <div class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
             <div class="flex items-center gap-3">
                 <div class="shrink-0 w-[48px] h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none">
                     <span class="font-black text-[13px]">{ev['month']}</span>
                     <span class="font-bold text-[11px]">/{ev['day']}</span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[13px] font-bold leading-tight truncate text-white group-hover:text-[#FFD60A] transition-colors">
+                    <div class="text-[13px] font-bold leading-tight truncate event-title transition-colors">
                         <span class="lang-zh">{ev['name']}</span>
                         <span class="lang-bm hidden">{ev['nameBM']}</span>
                     </div>
-                    <div class="text-[11px] text-[#888] truncate flex items-center gap-1.5 mt-0.5">
+                    <div class="text-[11px] truncate flex items-center gap-1.5 mt-0.5 event-subtitle">
                         <span>{ev['location']}</span>
-                        <span class="text-[#555]">•</span>
+                        <span>•</span>
                         <span class="text-[#FFD60A] font-bold text-[10px] mono">
                             <span class="lang-zh">{countdown_label_zh}</span>
                             <span class="lang-bm hidden">{countdown_label_bm}</span>
@@ -421,17 +423,17 @@ def generate_index_html():
                         <span class="lang-zh">{ev['category']}</span>
                         <span class="lang-bm hidden">{ev['categoryBM']}</span>
                     </span>
-                    <span class="text-[11px] text-[#777] arrow-ev transition-transform">▼</span>
+                    <span class="text-[11px] arrow-ev transition-transform">▼</span>
                 </div>
             </div>
 
-            <div class="event-drawer hidden mt-3 pt-3 border-t border-[#222]">
-                <p class="text-[12px] leading-[1.6] text-[#ccc] mb-2.5">
+            <div class="event-drawer hidden mt-3 pt-3 border-t">
+                <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
                     <span class="lang-zh">{ev['desc']}</span>
                     <span class="lang-bm hidden">{ev['descBM']}</span>
                 </p>
-                <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] bg-[#0a0a0a] p-2 rounded-[8px] border border-[#1f1f1f]">
-                    <div class="flex items-center gap-1.5 text-[#e5e7eb]">
+                <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] p-2 rounded-[8px] event-time-box">
+                    <div class="flex items-center gap-1.5">
                         <span class="text-[#FFD60A]">⏰</span>
                         <span class="lang-zh">{ev['time']}</span>
                         <span class="lang-bm hidden">{ev['timeBM']}</span>
@@ -441,7 +443,7 @@ def generate_index_html():
                         <span>{ev['tel']}</span>
                     </a>
                 </div>
-                <div class="mt-2 flex items-center justify-between text-[10px] text-[#666]">
+                <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
                     <span class="text-[#22c55e]">✓ <span class="lang-zh">{ev['source']}</span><span class="lang-bm hidden">{ev['sourceBM']}</span></span>
                     <span class="mono">沙巴官方核准备案活动</span>
                 </div>
@@ -457,29 +459,23 @@ def generate_index_html():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 2.0</title>
+    <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 3.0</title>
+    <!-- 立即执行内联主题脚本，彻底杜绝切换闪烁 -->
+    <script>
+        (function() {{
+            try {{
+                var saved = localStorage.getItem('sk_theme');
+                var theme = saved || 'dark';
+                document.documentElement.className = theme === 'light' ? 'theme-light' : 'theme-dark';
+            }} catch(e) {{}}
+        }})();
+    </script>
     <!-- 引入 Tailwind CSS 运行时 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {{
-            --bg: #0a0a0a;
-            --bg-soft: #151515;
-            --bg-card: #151515;
-            --border: #222222;
-            --border-soft: #2a2a2a;
-            --text: #f5f5f5;
-            --text-muted: #9ca3af;
-            --text-dim: #6b7280;
-            --yellow: #FFD60A;
-            --yellow-soft: #FFD60A14;
-            --red: #E53935;
-            --red-dark: #991b1b;
-            --green: #22c55e;
-        }}
-
         * {{
             font-family: "Noto Sans SC", system-ui, -apple-system, sans-serif;
             box-sizing: border-box;
@@ -489,24 +485,455 @@ def generate_index_html():
         }}
 
         body {{
-            background-color: var(--bg);
-            color: var(--text);
+            transition: background-color 0.25s ease, color 0.25s ease;
             min-height: 100vh;
         }}
 
-        ::-webkit-scrollbar {{
-            width: 6px;
-            height: 6px;
-        }}
-        ::-webkit-scrollbar-thumb {{
-            background: #2a2a2a;
-            border-radius: 999px;
-        }}
-        ::-webkit-scrollbar-track {{
-            background: transparent;
+        /* =====================================================================
+           夜间深色模式优化 (High-Contrast Dark / 黑金高对比版)
+           彻底提亮文字与边框，消除暗淡模糊
+           ===================================================================== */
+        .theme-dark {{
+            --bg-page: #0B0F17;
+            --bg-header: #0F172A;
+            --border-header: #334155;
+            --bg-card: #1E293B;
+            --bg-card-hover: #243247;
+            --border-card: #334155;
+            --border-card-hover: #475569;
+            --text-title: #F8FAFC;
+            --text-title-hover: #FFD60A;
+            --bg-drawer: #0F172A;
+            --border-drawer: #334155;
+            --text-body: #E2E8F0;
+            --quote-bg: #162032;
+            --quote-border: #2D3D54;
+            --quote-text: #CBD5E1;
+            --source-pill-bg: #0F172A;
+            --source-pill-border: #334155;
+            --source-pill-text: #94A3B8;
+            --card-footer-bg: #131B2A;
+            --card-footer-border: #334155;
+            --card-footer-text: #94A3B8;
+            --sub-meta: #94A3B8;
+            --date-badge-bg: #1E293B;
+            --date-badge-border: #334155;
+            --date-badge-text: #CBD5E1;
+            --panel-bg: #151D2A;
+            --panel-border: #2D3D54;
+            --ad-box-bg: #151D2A;
+            --ad-box-border: #2D3D54;
+            --ad-inner-bg: #0F172A;
+            --ad-inner-border: #334155;
         }}
 
-        /* 需求 1: 强制双列网格无论横向/纵向均保持严格双列 */
+        .theme-dark body {{
+            background-color: var(--bg-page);
+            color: var(--text-title);
+        }}
+        .theme-dark header {{
+            background-color: var(--bg-header) !important;
+            border-color: var(--border-header) !important;
+        }}
+        .theme-dark .theme-panel {{
+            background-color: var(--panel-bg) !important;
+            border-color: var(--panel-border) !important;
+        }}
+        .theme-dark .news-grid-card {{
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-card) !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }}
+        .theme-dark .news-grid-card:hover {{
+            background-color: var(--bg-card-hover) !important;
+            border-color: var(--border-card-hover) !important;
+        }}
+        .theme-dark .news-grid-card.open {{
+            background-color: #243247 !important;
+            border-color: #FFD60A !important;
+            box-shadow: 0 0 0 1px #FFD60A, 0 6px 18px rgba(255, 214, 10, 0.2);
+        }}
+        .theme-dark .news-grid-card .card-title {{
+            color: var(--text-title) !important;
+        }}
+        .theme-dark .news-grid-card:hover .card-title,
+        .theme-dark .news-grid-card.open .card-title {{
+            color: var(--text-title-hover) !important;
+        }}
+        .theme-dark .news-drawer-box {{
+            background-color: var(--bg-drawer) !important;
+            border: 1px solid var(--border-drawer) !important;
+        }}
+        .theme-dark .news-body-text {{
+            color: var(--text-body) !important;
+        }}
+        .theme-dark .quote-box {{
+            background-color: var(--quote-bg) !important;
+            border: 1px solid var(--quote-border) !important;
+            color: var(--quote-text) !important;
+        }}
+        .theme-dark .quote-icon {{
+            background-color: #1E293B !important;
+            color: #FFD60A !important;
+        }}
+        .theme-dark .source-pill {{
+            background-color: var(--source-pill-bg) !important;
+            border: 1px solid var(--source-pill-border) !important;
+            color: var(--source-pill-text) !important;
+        }}
+        .theme-dark .card-footer {{
+            background-color: var(--card-footer-bg) !important;
+            border-top: 1px solid var(--card-footer-border) !important;
+        }}
+        .theme-dark .card-footer .footer-label {{
+            color: var(--card-footer-text) !important;
+        }}
+        .theme-dark .sub-meta-text,
+        .theme-dark .card-meta-time,
+        .theme-dark .drawer-mini-tag {{
+            color: var(--sub-meta) !important;
+        }}
+        .theme-dark .sub-meta-date {{
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .drawer-divider {{
+            border-color: rgba(51, 65, 85, 0.7) !important;
+        }}
+        .theme-dark .category-pill-tag {{
+            background-color: #0F172A !important;
+            border: 1px solid #334155 !important;
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .event-card {{
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-card) !important;
+        }}
+        .theme-dark .event-card:hover {{
+            background-color: var(--bg-card-hover) !important;
+        }}
+        .theme-dark .event-card.open {{
+            background-color: #243247 !important;
+            border-color: #FFD60A !important;
+        }}
+        .theme-dark .event-title {{
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .event-card:hover .event-title {{
+            color: #FFD60A !important;
+        }}
+        .theme-dark .event-subtitle {{
+            color: #94A3B8 !important;
+        }}
+        .theme-dark .event-desc {{
+            color: #E2E8F0 !important;
+        }}
+        .theme-dark .event-time-box {{
+            background-color: #0F172A !important;
+            border: 1px solid #334155 !important;
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .event-meta {{
+            color: #94A3B8 !important;
+        }}
+        .theme-dark .event-card .event-drawer {{
+            border-color: #334155 !important;
+        }}
+        .theme-dark .util-drawer-inner {{
+            background-color: #0F172A !important;
+            border: 1px solid #334155 !important;
+        }}
+        .theme-dark .util-detail-title {{
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .util-detail-sub {{
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .util-detail-time {{
+            color: #E2E8F0 !important;
+        }}
+        .theme-dark .theme-toggle-btn {{
+            background-color: #1E293B;
+            border-color: #FFD60A;
+            color: #FFD60A;
+        }}
+        .theme-dark .lang-switcher-box {{
+            background-color: #0F172A;
+            border-color: #334155;
+        }}
+        .theme-dark .cat-tab-btn:not(.active) {{
+            background-color: #1E293B !important;
+            border-color: #334155 !important;
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .cat-tab-btn:not(.active):hover {{
+            color: #FFFFFF !important;
+            border-color: #64748B !important;
+            background-color: #243247 !important;
+        }}
+        .theme-dark .date-tab-btn:not(.active) {{
+            background-color: #1E293B !important;
+            border-color: #334155 !important;
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .date-tab-btn:not(.active):hover {{
+            border-color: #64748B !important;
+        }}
+        .theme-dark .date-tab-btn:not(.active) .font-black {{
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .marco-card {{
+            background-color: #151D2A !important;
+            border-color: #2D3D54 !important;
+        }}
+        .theme-dark .marco-inner {{
+            background-color: #151D2A !important;
+        }}
+        .theme-dark .marco-box {{
+            background-color: #0F172A !important;
+            border-color: #334155 !important;
+        }}
+        .theme-dark .marco-box-inner {{
+            background-color: #0B0F17 !important;
+            border-color: #334155 !important;
+        }}
+        .theme-dark .footer-note-box {{
+            background-color: #151D2A !important;
+            border-color: #2D3D54 !important;
+            color: #94A3B8 !important;
+        }}
+
+        /* =====================================================================
+           日间浅色模式 (Light Paper Mode / 经典护眼纸质报章风)
+           柔和纸张背景 #F8FAFC，纯白立体卡片，深炭黑文字如实体报章
+           ===================================================================== */
+        .theme-light {{
+            --bg-page: #F8FAFC;
+            --bg-header: #FFFFFF;
+            --border-header: #E2E8F0;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F8FAFC;
+            --border-card: #E2E8F0;
+            --border-card-hover: #CBD5E1;
+            --text-title: #0F172A;
+            --text-title-hover: #D97706;
+            --bg-drawer: #F8FAFC;
+            --border-drawer: #E2E8F0;
+            --text-body: #1E293B;
+            --quote-bg: #F1F5F9;
+            --quote-border: #E2E8F0;
+            --quote-text: #334155;
+            --source-pill-bg: #F1F5F9;
+            --source-pill-border: #E2E8F0;
+            --source-pill-text: #475569;
+            --card-footer-bg: #F8FAFC;
+            --card-footer-border: #E2E8F0;
+            --card-footer-text: #64748B;
+            --sub-meta: #64748B;
+            --date-badge-bg: #FFFFFF;
+            --date-badge-border: #E2E8F0;
+            --date-badge-text: #334155;
+            --panel-bg: #FFFFFF;
+            --panel-border: #E2E8F0;
+            --ad-box-bg: #FFFFFF;
+            --ad-box-border: #E2E8F0;
+            --ad-inner-bg: #F8FAFC;
+            --ad-inner-border: #E2E8F0;
+        }}
+
+        .theme-light body {{
+            background-color: var(--bg-page);
+            color: var(--text-title);
+        }}
+        .theme-light header {{
+            background-color: var(--bg-header) !important;
+            border-color: var(--border-header) !important;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }}
+        .theme-light .theme-panel {{
+            background-color: var(--panel-bg) !important;
+            border-color: var(--panel-border) !important;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        }}
+        .theme-light .news-grid-card {{
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-card) !important;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+        }}
+        .theme-light .news-grid-card:hover {{
+            background-color: var(--bg-card-hover) !important;
+            border-color: var(--border-card-hover) !important;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+        }}
+        .theme-light .news-grid-card.open {{
+            background-color: #FFFFFF !important;
+            border-color: #F59E0B !important;
+            box-shadow: 0 0 0 1px #F59E0B, 0 6px 18px rgba(245, 158, 11, 0.12);
+        }}
+        .theme-light .news-grid-card .card-title {{
+            color: var(--text-title) !important;
+        }}
+        .theme-light .news-grid-card:hover .card-title,
+        .theme-light .news-grid-card.open .card-title {{
+            color: var(--text-title-hover) !important;
+        }}
+        .theme-light .news-drawer-box {{
+            background-color: var(--bg-drawer) !important;
+            border: 1px solid var(--border-drawer) !important;
+        }}
+        .theme-light .news-body-text {{
+            color: var(--text-body) !important;
+        }}
+        .theme-light .quote-box {{
+            background-color: var(--quote-bg) !important;
+            border: 1px solid var(--quote-border) !important;
+            color: var(--quote-text) !important;
+        }}
+        .theme-light .quote-icon {{
+            background-color: #E2E8F0 !important;
+            color: #D97706 !important;
+        }}
+        .theme-light .source-pill {{
+            background-color: var(--source-pill-bg) !important;
+            border: 1px solid var(--source-pill-border) !important;
+            color: var(--source-pill-text) !important;
+        }}
+        .theme-light .card-footer {{
+            background-color: var(--card-footer-bg) !important;
+            border-top: 1px solid var(--card-footer-border) !important;
+        }}
+        .theme-light .card-footer .footer-label {{
+            color: var(--card-footer-text) !important;
+        }}
+        .theme-light .sub-meta-text,
+        .theme-light .card-meta-time,
+        .theme-light .drawer-mini-tag {{
+            color: var(--sub-meta) !important;
+        }}
+        .theme-light .sub-meta-date {{
+            color: #475569 !important;
+        }}
+        .theme-light .drawer-divider {{
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .category-pill-tag {{
+            background-color: #F1F5F9 !important;
+            border: 1px solid #E2E8F0 !important;
+            color: #475569 !important;
+        }}
+        .theme-light .event-card {{
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-card) !important;
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+        }}
+        .theme-light .event-card:hover {{
+            background-color: var(--bg-card-hover) !important;
+        }}
+        .theme-light .event-card.open {{
+            background-color: #FFFFFF !important;
+            border-color: #F59E0B !important;
+            box-shadow: 0 0 0 1px #F59E0B;
+        }}
+        .theme-light .event-title {{
+            color: #0F172A !important;
+        }}
+        .theme-light .event-card:hover .event-title {{
+            color: #D97706 !important;
+        }}
+        .theme-light .event-subtitle {{
+            color: #64748B !important;
+        }}
+        .theme-light .event-desc {{
+            color: #334155 !important;
+        }}
+        .theme-light .event-time-box {{
+            background-color: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+            color: #0F172A !important;
+        }}
+        .theme-light .event-meta {{
+            color: #64748B !important;
+        }}
+        .theme-light .event-card .event-drawer {{
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .util-drawer-inner {{
+            background-color: #FFFFFF !important;
+            border: 1px solid #E2E8F0 !important;
+        }}
+        .theme-light .util-detail-title {{
+            color: #0F172A !important;
+        }}
+        .theme-light .util-detail-sub {{
+            color: #475569 !important;
+        }}
+        .theme-light .util-detail-time {{
+            color: #334155 !important;
+        }}
+        .theme-light .theme-toggle-btn {{
+            background-color: #F1F5F9;
+            border-color: #CBD5E1;
+            color: #0F172A;
+        }}
+        .theme-light .theme-toggle-btn:hover {{
+            background-color: #E2E8F0;
+        }}
+        .theme-light .lang-switcher-box {{
+            background-color: #F1F5F9;
+            border-color: #E2E8F0;
+        }}
+        .theme-light .cat-tab-btn:not(.active) {{
+            background-color: #FFFFFF !important;
+            border-color: #CBD5E1 !important;
+            color: #475569 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }}
+        .theme-light .cat-tab-btn:not(.active):hover {{
+            color: #0F172A !important;
+            border-color: #94A3B8 !important;
+            background-color: #F8FAFC !important;
+        }}
+        .theme-light .date-tab-btn:not(.active) {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+            color: #475569 !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }}
+        .theme-light .date-tab-btn:not(.active):hover {{
+            border-color: #94A3B8 !important;
+        }}
+        .theme-light .date-tab-btn:not(.active) .font-black {{
+            color: #0F172A !important;
+        }}
+        .theme-light .marco-card {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+        }}
+        .theme-light .marco-inner {{
+            background-color: #FFFFFF !important;
+        }}
+        .theme-light .marco-box {{
+            background-color: #F8FAFC !important;
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .marco-box-inner {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .marco-ad-title {{
+            color: #0F172A !important;
+        }}
+        .theme-light .marco-ad-text {{
+            color: #475569 !important;
+        }}
+        .theme-light .footer-note-box {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+            color: #475569 !important;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+        }}
+
+        /* 强制双列网格无论横向/纵向均保持严格双列 */
         .force-two-cols-grid {{
             display: grid !important;
             grid-template-columns: repeat(2, 1fr) !important;
@@ -539,7 +966,7 @@ def generate_index_html():
             animation-play-state: paused;
         }}
 
-        /* 抽屉平滑过渡 */
+        /* 公用事业抽屉平滑过渡 */
         .util-card {{
             background: #FFD60A;
             border: 1px solid #eab308;
@@ -570,14 +997,6 @@ def generate_index_html():
         }}
 
         /* 新闻卡片展开 */
-        .news-grid-card.open {{
-            background: #191919 !important;
-            border-color: rgba(255, 214, 10, 0.4) !important;
-            box-shadow: 0 0 0 1px rgba(255, 214, 10, 0.25);
-        }}
-        .news-grid-card.open .card-title {{
-            color: #FFD60A !important;
-        }}
         .news-grid-card.open .news-drawer {{
             display: block !important;
             animation: fadeIn 0.25s ease;
@@ -593,10 +1012,6 @@ def generate_index_html():
         }}
 
         /* 活动卡片展开样式 */
-        .event-card.open {{
-            border-color: rgba(255, 214, 10, 0.4) !important;
-            background: #161616 !important;
-        }}
         .event-card.open .event-drawer {{
             display: block !important;
             animation: fadeIn 0.25s ease;
@@ -611,10 +1026,10 @@ def generate_index_html():
         }}
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-[#f5f5f5]">
+<body class="transition-colors duration-200">
 
     <!-- 顶部 Header -->
-    <header class="border-b border-[#222] bg-[#0f0f0f] sticky top-0 z-50">
+    <header class="border-b sticky top-0 z-50">
         <div class="mx-auto max-w-[1440px] px-3 md:px-6 h-[52px] md:h-[56px] flex items-center justify-between gap-3">
             <div class="flex items-center gap-2 md:gap-3 min-w-0">
                 <div class="flex items-center gap-2">
@@ -635,7 +1050,7 @@ def generate_index_html():
                     </button>
                 </div>
 
-                <div class="hidden lg:flex items-center gap-2 text-[12px] text-[#888] mono ml-2 truncate">
+                <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
                     <span>{today_mmdd} {today_time} LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
@@ -644,20 +1059,25 @@ def generate_index_html():
             </div>
 
             <div class="flex items-center gap-1.5 md:gap-2 shrink-0">
+                <!-- ☀️ 日间浅色 / 🌙 夜间深色 模式切换高质感胶囊按钮 -->
+                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn inline-flex items-center gap-1.5 px-3 py-[4px] rounded-full text-[12px] font-bold transition-all border cursor-pointer shrink-0 shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
+                    <span id="theme-icon">☀️</span>
+                    <span id="theme-text" class="lang-zh">浅色</span>
+                    <span id="theme-text-bm" class="lang-bm hidden">Cerah</span>
+                </button>
+
                 <!-- 中文 / BM 语系即时切换 -->
-                <div class="flex items-center rounded-full bg-[#1a1a1a] p-[3px] border border-[#252525]">
+                <div class="lang-switcher-box flex items-center rounded-full p-[3px] border">
                     <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black">
                         中文
                     </button>
-                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#777] hover:text-white">
+                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white">
                         BM
                     </button>
                 </div>
-                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#1a1a1a] border border-[#252525] text-[12px] text-white hover:bg-[#222] transition">
+
+                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[12px] text-[#4ade80] hover:bg-[#166534] transition">
                     <span class="w-[8px] h-[8px] rounded-full bg-[#22c55e]"></span> WhatsApp
-                </a>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#1877F2] text-white text-[12px] font-medium">
-                    f Facebook
                 </a>
             </div>
         </div>
@@ -676,9 +1096,11 @@ def generate_index_html():
                     <span class="text-white/40">•</span>
                     <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
                     <span class="text-white/40">•</span>
-                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合高强度攻防特训</span>
+                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
                     <span class="text-white/40">•</span>
-                    <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
+                    <span>⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
+                    <span class="text-white/40">•</span>
+                    <span>🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                     <span class="text-white/40">•</span>
                     <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
                     <span class="text-white/40">•</span>
@@ -695,13 +1117,11 @@ def generate_index_html():
                     <span class="text-white/40">•</span>
                     <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
                     <span class="text-white/40">•</span>
-                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合高强度攻防特训</span>
+                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
                     <span class="text-white/40">•</span>
-                    <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
+                    <span>⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
                     <span class="text-white/40">•</span>
-                    <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
-                    <span class="text-white/40">•</span>
-                    <span>🚗 Marco Thien 山打根优质租车 010-930 1117 随时接单</span>
+                    <span>🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                 </div>
             </div>
         </div>
@@ -710,7 +1130,7 @@ def generate_index_html():
     <!-- 主体容器 -->
     <main class="mx-auto max-w-[1440px] px-3 md:px-5 py-3 md:py-4">
         <!-- 动态日期与归档栏（今天/昨天/前天/全部挂载） -->
-        <div class="mb-3 rounded-[12px] bg-[#151515] border border-[#222] px-3 md:px-4 py-3 flex flex-col gap-3">
+        <div class="mb-3 rounded-[12px] theme-panel border px-3 md:px-4 py-3 flex flex-col gap-3">
             <div class="flex flex-wrap items-center gap-2 justify-between">
                 <div class="flex flex-wrap items-center gap-2">
                     <div class="inline-flex items-center gap-2 px-3 py-[6px] rounded-full bg-[#FFD60A] text-black">
@@ -720,29 +1140,29 @@ def generate_index_html():
                         </span>
                         <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">{today_time} MYT</span>
                     </div>
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#111] border border-[#222] text-[11px] mono text-[#888]">
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
                         Asia/Kuala_Lumpur • {today_full} • 
                         <span class="lang-zh">动态实时更新</span>
                         <span class="lang-bm hidden">Kemas Kini Langsung</span>
                     </div>
-                    <div class="inline-flex items-center gap-1 px-2 py-[4px] rounded-full bg-[#1a1a1a] border border-[#252525] text-[11px]">
-                        <span class="text-[#aaa] font-bold" id="news-count-badge">{len(headlines)}</span>
-                        <span class="text-[#666]">
+                    <div class="inline-flex items-center gap-1 px-2.5 py-[4px] rounded-full border text-[11px]">
+                        <span class="font-bold text-[#FFD60A]" id="news-count-badge">{len(headlines)}</span>
+                        <span class="sub-meta-text">
                             <span class="lang-zh">条深度要闻</span>
                             <span class="lang-bm hidden">tajuk</span>
                         </span>
                     </div>
                 </div>
-                <div class="text-[10px] mono text-[#555] hidden md:block">
-                    <span class="lang-zh">配额升级 12~16条 · 250~400字深度脉络 · 智能去重双核实</span>
-                    <span class="lang-bm hidden">12-16 Berita Penuh · Konteks Mendalam 250-400 Patah</span>
+                <div class="text-[10.5px] mono sub-meta-text hidden md:block">
+                    <span class="lang-zh">全量大配额 20~24条 · 250~400字深度脉络 · 智能去重双核实</span>
+                    <span class="lang-bm hidden">20-24 Berita Penuh · Konteks Mendalam 250-400 Patah</span>
                 </div>
             </div>
 
             <!-- 7天归档切换按键 -->
             <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin" id="date-tabs-container">
-                <button onclick="switchDateArchive('today', '{today_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all">
+                <button onclick="switchDateArchive('today', '{today_iso}', this)" class="date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all">
                     <span class="text-[12px] font-black leading-none tracking-tight text-black">
                         <span class="lang-zh">今天</span><span class="lang-bm hidden">Hari Ini</span>
                         <span class="font-mono font-bold text-[11px] opacity-80">{today_mmdd}</span>
@@ -752,31 +1172,31 @@ def generate_index_html():
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('yesterday', '{yesterday_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight text-white">
+                <button onclick="switchDateArchive('yesterday', '{yesterday_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
+                    <span class="text-[12px] font-black leading-none tracking-tight">
                         <span class="lang-zh">昨日归档</span><span class="lang-bm hidden">Semalam</span>
-                        <span class="font-mono font-bold text-[11px] opacity-80 text-[#888]">{yesterday_mmdd}</span>
+                        <span class="font-mono font-bold text-[11px] opacity-80 sub-meta-text">{yesterday_mmdd}</span>
                     </span>
-                    <span class="text-[10px] leading-none mono text-[#666]">
+                    <span class="text-[10px] leading-none mono sub-meta-text">
                         <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('before', '{day_before_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight text-white">
+                <button onclick="switchDateArchive('before', '{day_before_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
+                    <span class="text-[12px] font-black leading-none tracking-tight">
                         <span class="lang-zh">前日精选</span><span class="lang-bm hidden">Kelmarin</span>
-                        <span class="font-mono font-bold text-[11px] opacity-80 text-[#888]">{day_before_mmdd}</span>
+                        <span class="font-mono font-bold text-[11px] opacity-80 sub-meta-text">{day_before_mmdd}</span>
                     </span>
-                    <span class="text-[10px] leading-none mono text-[#666]">
+                    <span class="text-[10px] leading-none mono sub-meta-text">
                         <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('all', 'all', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight text-white">
+                <button onclick="switchDateArchive('all', 'all', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
+                    <span class="text-[12px] font-black leading-none tracking-tight">
                         <span class="lang-zh">全部 • 7天归档库</span><span class="lang-bm hidden">Semua 7 Hari</span>
                     </span>
-                    <span class="text-[10px] leading-none mono text-[#666]">
+                    <span class="text-[10px] leading-none mono sub-meta-text">
                         <span class="lang-zh">滚动合辑池</span>
                         <span class="lang-bm hidden">Kompilasi</span>
                     </span>
@@ -790,24 +1210,24 @@ def generate_index_html():
             <div class="flex-1 lg:w-[72%] min-w-0 flex flex-col gap-4">
                 <div>
                     <div class="flex flex-wrap items-center gap-2 mb-3">
-                        <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full bg-[#1a1a1a] border border-[#252525] text-[11px] md:text-[12px]">
+                        <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
                                 {today_mmdd} {today_time} <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
-                            <span class="text-[#9ca3af] hidden md:inline">
+                            <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
                                 <span class="lang-bm hidden">Tajuk sahaja • Klik kembang 250-400 patah</span>
                             </span>
-                            <span class="text-[#666] mono text-[10px]">
+                            <span class="mono text-[10.5px] font-bold text-[#4ade80]">
                                 <span class="lang-zh">双官方来源交叉核实</span>
                                 <span class="lang-bm hidden">Disahkan 2 Sumber Rasmi</span>
                             </span>
                         </div>
-                        <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full bg-[#151515] border border-[#222] text-[12px]">
-                            <span class="text-white font-bold">山打根 & 沙巴</span>
-                            <span class="px-1.5 py-[1px] rounded bg-[#222] text-[#aaa] text-[11px]">{len(headlines)} <span class="lang-zh">条标题</span><span class="lang-bm hidden">tajuk</span></span>
-                            <span class="w-1 h-1 bg-[#333] rounded-full"></span>
-                            <span class="text-[#666] text-[11px]">LIVE Filter</span>
+                        <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[12px]">
+                            <span class="font-bold">沙巴 & 全马焦点</span>
+                            <span class="px-1.5 py-[1px] rounded bg-[#FFD60A] text-black font-bold text-[11px]">{len(headlines)} <span class="lang-zh">条标题</span><span class="lang-bm hidden">tajuk</span></span>
+                            <span class="w-1 h-1 bg-[#334155] rounded-full"></span>
+                            <span class="sub-meta-text text-[11px]">LIVE Filter</span>
                         </div>
                     </div>
 
@@ -828,31 +1248,31 @@ def generate_index_html():
                                 <span class="lang-zh ml-1">篇深度采编</span>
                                 <span class="lang-bm hidden ml-1">Laporan Penuh</span>
                             </span>
-                            <span class="hidden md:inline text-[#666] text-[12px] mono ml-1">
+                            <span class="hidden md:inline sub-meta-text text-[12px] mono ml-1">
                                 <span class="lang-zh">点击标题展开丰富全文 250-400字背景脉络</span>
                                 <span class="lang-bm hidden">Klik baca laporan 250-400 patah</span>
                             </span>
                         </div>
-                        <div class="text-[11px] text-[#666] mono flex items-center gap-2">
+                        <div class="text-[11px] sub-meta-text mono flex items-center gap-2">
                             <span>{today_mmdd} • MYT</span>
                         </div>
                     </div>
 
-                    <!-- 新增：新闻分类 Tab 选项卡栏（5大高质感胶囊按钮） -->
+                    <!-- 新闻分类 Tab 选项卡栏（5大高质感胶囊按钮） -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-1 mb-3 scrollbar-thin select-none" id="category-tabs-container">
                         <button onclick="filterNewsCategory('all', this)" class="cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]">
                             <span class="lang-zh">全部</span><span class="lang-bm hidden">Semua</span>
                         </button>
-                        <button onclick="filterNewsCategory('sabah', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                        <button onclick="filterNewsCategory('sabah', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
                             📍 <span class="lang-zh">沙巴 & 山打根</span><span class="lang-bm hidden">Sabah & Sandakan</span>
                         </button>
-                        <button onclick="filterNewsCategory('national', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                        <button onclick="filterNewsCategory('national', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
                             🇲🇾 <span class="lang-zh">全国政经</span><span class="lang-bm hidden">Nasional</span>
                         </button>
-                        <button onclick="filterNewsCategory('sports', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                        <button onclick="filterNewsCategory('sports', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
                             🏸 <span class="lang-zh">体育焦点</span><span class="lang-bm hidden">Sukan</span>
                         </button>
-                        <button onclick="filterNewsCategory('general', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                        <button onclick="filterNewsCategory('general', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
                             🌐 <span class="lang-zh">综合百态</span><span class="lang-bm hidden">Umum</span>
                         </button>
                     </div>
@@ -864,38 +1284,38 @@ def generate_index_html():
                 </div>
 
                 <!-- 未来2周归档活动看板（从 news_data.json 动态渲染，含倒计时、开始结束时间与热线） -->
-                <div class="bg-[#151515] border border-[#222] rounded-[12px] overflow-hidden mt-2">
-                    <div class="px-4 py-3 border-b border-[#222] flex items-center justify-between gap-2">
+                <div class="theme-panel border rounded-[12px] overflow-hidden mt-2">
+                    <div class="px-4 py-3 border-b flex items-center justify-between gap-2">
                         <h3 class="font-black text-[14px] md:text-[15px] flex items-center gap-2">
                             <span>
                                 <span class="lang-zh">未来2周活动预告</span>
                                 <span class="lang-bm hidden">Aktiviti 2 Minggu Akan Datang</span>
                             </span>
                             <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
-                            <span class="inline-flex items-center gap-1 px-2 py-[1px] rounded-full bg-[#111] border border-[#222] text-[10px] mono text-[#666]">
+                            <span class="inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
                             </span>
                         </h3>
-                        <span class="text-[10px] mono text-[#666] text-right leading-tight">
+                        <span class="text-[10px] mono sub-meta-text text-right leading-tight">
                             自动过时 Auto-hide past events ✓
                         </span>
                     </div>
-                    <div class="p-2 grid grid-cols-1 md:grid-cols-2 gap-2" id="events-grid-container">
+                    <div class="p-2.5 grid grid-cols-1 md:grid-cols-2 gap-2" id="events-grid-container">
                         {events_cards_html}
                     </div>
                 </div>
 
-                <div class="p-3 rounded-[10px] bg-[#111] border border-[#222] flex items-center justify-between text-[11px] mono text-[#666]">
+                <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
                     <span>{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
-                    <span class="text-[#FFD60A]">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
+                    <span class="text-[#FFD60A] font-bold">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
                 </div>
             </div>
 
             <!-- 右侧侧边栏 (广告直屏并排，尺寸限制压缩) -->
             <div class="w-full lg:w-[320px] xl:w-[360px] shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 lg:sticky lg:top-[68px] lg:h-fit">
                 <!-- 1. Marco 租车广告卡片 -->
-                <div class="bg-[#151515] border border-[#222] rounded-[12px] overflow-hidden flex flex-col">
+                <div class="marco-card border rounded-[12px] overflow-hidden flex flex-col">
                     <div class="bg-[#FFD60A] px-4 py-2.5 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="w-6 h-6 rounded-[6px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px]">M</span>
@@ -903,17 +1323,17 @@ def generate_index_html():
                         </div>
                         <span class="px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold">AD • Marco Thien</span>
                     </div>
-                    <div class="p-0">
+                    <div class="p-0 marco-inner">
                         <div class="w-full bg-white flex items-center justify-center p-1">
                             <img src="./assets/a0c79ab3b0a4e2ac-image_5f00d7.png" alt="MY CAR ENTERPRISE Sewa Kereta - Marco Thien" class="ad-poster-img" />
                         </div>
-                        <div class="p-3 bg-[#151515] flex flex-col gap-3">
-                            <div class="rounded-[10px] bg-[#111] border border-[#222] p-2.5 flex flex-col gap-2">
+                        <div class="p-3 flex flex-col gap-3">
+                            <div class="rounded-[10px] marco-box border p-2.5 flex flex-col gap-2">
                                 <div class="flex items-center gap-2">
                                     <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black">官方 Official</span>
-                                    <span class="text-[10px] mono text-[#666]">山打根租车服务 Rent Car</span>
+                                    <span class="text-[10px] mono sub-meta-text">山打根租车服务 Rent Car</span>
                                 </div>
-                                <div class="text-[12px] font-black leading-[1.35] text-white">
+                                <div class="text-[12px] font-black leading-[1.35] marco-ad-title">
                                     Kereta Sewa Untuk Semua Keperluan Anda
                                 </div>
                                 <div class="text-[11px] font-bold text-[#FFD60A] tracking-tight">
@@ -921,16 +1341,16 @@ def generate_index_html():
                                 </div>
                                 <div class="grid grid-cols-2 gap-2 pt-1">
                                     <div class="flex flex-col gap-1">
-                                        <span class="text-[9px] mono text-[#666] font-bold tracking-wider">FEATURES / 特色</span>
-                                        <ul class="flex flex-col gap-0.5 text-[10px] text-[#bbb]">
+                                        <span class="text-[9px] mono sub-meta-text font-bold tracking-wider">FEATURES / 特色</span>
+                                        <ul class="flex flex-col gap-0.5 text-[10px] marco-ad-text">
                                             <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-[#FFD60A]"></span>Kereta Bersih</li>
                                             <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-[#FFD60A]"></span>Pelbagai Jenis</li>
                                             <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-[#FFD60A]"></span>Harga Berpatutan</li>
                                         </ul>
                                     </div>
                                     <div class="flex flex-col gap-1">
-                                        <span class="text-[9px] mono text-[#666] font-bold tracking-wider">FLEET / 车型</span>
-                                        <ul class="flex flex-col gap-0.5 text-[10px] text-[#bbb]">
+                                        <span class="text-[9px] mono sub-meta-text font-bold tracking-wider">FLEET / 车型</span>
+                                        <ul class="flex flex-col gap-0.5 text-[10px] marco-ad-text">
                                             <li>• Myvi Axia Bezza</li>
                                             <li>• Vios Vellfire Alza</li>
                                             <li>• Van 11/14 & 4x4</li>
@@ -939,20 +1359,20 @@ def generate_index_html():
                                 </div>
                             </div>
 
-                            <div class="rounded-[10px] bg-[#0f0f0f] border border-[#222] p-2 flex flex-col gap-1.5">
+                            <div class="rounded-[10px] marco-box-inner border p-2 flex flex-col gap-1.5">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
                                         <div class="w-7 h-7 rounded-full bg-[#FFD60A] text-black flex items-center justify-center font-black text-[11px]">M</div>
                                         <div class="leading-tight">
-                                            <div class="text-[11px] font-black text-white">Marco Thien</div>
-                                            <div class="text-[9px] mono text-[#888]">山打根租车</div>
+                                            <div class="text-[11px] font-black marco-ad-title">Marco Thien</div>
+                                            <div class="text-[9px] mono sub-meta-text">山打根租车</div>
                                         </div>
                                     </div>
-                                    <span class="px-2 py-[1px] rounded-full bg-[#14532d] border border-[#166534] text-[#22c55e] text-[9px] font-bold">✓ 已核实 Verified</span>
+                                    <span class="px-2 py-[1px] rounded-full bg-[#14532d] border border-[#166534] text-[#4ade80] text-[9px] font-bold">✓ 已核实 Verified</span>
                                 </div>
-                                <div class="flex items-center justify-between text-[11px] mono pt-1 border-t border-[#1f1f1f]">
-                                    <span class="text-white font-bold">📞 010-930 1117</span>
-                                    <span class="text-[#bbb]">WeChat: Thien1117</span>
+                                <div class="flex items-center justify-between text-[11px] mono pt-1 border-t border-[#334155]/40">
+                                    <span class="font-bold marco-ad-title">📞 010-930 1117</span>
+                                    <span class="sub-meta-text">WeChat: Thien1117</span>
                                 </div>
                             </div>
 
@@ -1014,11 +1434,47 @@ def generate_index_html():
         </div>
     </main>
 
-    <!-- 交互控制脚本（分类过滤 + 7天归档池） -->
+    <!-- 交互控制脚本（模式切换 + 语系切换 + 分类过滤 + 7天归档池） -->
     <script>
         const ARCHIVE_POOL = {archive_json_str};
         const CURRENT_HEADLINES = {json.dumps(headlines, ensure_ascii=False)};
         let activeCategory = 'all';
+
+        // 需求: 『☀️ 日间 / 🌙 夜间』模式秒级切换与 localStorage 记忆
+        function initThemeButton() {{
+            const isLight = document.documentElement.classList.contains('theme-light');
+            const iconElem = document.getElementById('theme-icon');
+            const textZhElem = document.getElementById('theme-text');
+            const textBmElem = document.getElementById('theme-text-bm');
+            if (isLight) {{
+                if (iconElem) iconElem.textContent = '🌙';
+                if (textZhElem) textZhElem.textContent = '深色';
+                if (textBmElem) textBmElem.textContent = 'Gelap';
+            }} else {{
+                if (iconElem) iconElem.textContent = '☀️';
+                if (textZhElem) textZhElem.textContent = '浅色';
+                if (textBmElem) textBmElem.textContent = 'Cerah';
+            }}
+        }}
+
+        function toggleTheme() {{
+            const htmlElem = document.documentElement;
+            const isLight = htmlElem.classList.contains('theme-light');
+            const targetTheme = isLight ? 'dark' : 'light';
+
+            if (targetTheme === 'light') {{
+                htmlElem.classList.remove('theme-dark');
+                htmlElem.classList.add('theme-light');
+                localStorage.setItem('sk_theme', 'light');
+                showToast('☀️ 已切换为日间浅色模式（经典纸质报章风）', '☀️ Mod cerah diaktifkan!');
+            }} else {{
+                htmlElem.classList.remove('theme-light');
+                htmlElem.classList.add('theme-dark');
+                localStorage.setItem('sk_theme', 'dark');
+                showToast('🌙 已切换为夜间深色模式（高对比黑金版）', '🌙 Mod gelap kontras tinggi diaktifkan!');
+            }}
+            initThemeButton();
+        }}
 
         // 需求: 纯原生 JS 毫秒级免刷新分类过滤
         function filterNewsCategory(catKey, btnElem) {{
@@ -1026,7 +1482,7 @@ def generate_index_html():
             
             // 1. 更新 5 个 Tab 按钮的高亮状态
             document.querySelectorAll('.cat-tab-btn').forEach(btn => {{
-                btn.className = "cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]";
+                btn.className = "cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border";
             }});
             btnElem.className = "cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
 
@@ -1109,13 +1565,13 @@ def generate_index_html():
 
             if (lang === '中文') {{
                 btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
-                btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#777] hover:text-white";
+                btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
                 zhElements.forEach(el => el.classList.remove('hidden'));
                 bmElements.forEach(el => el.classList.add('hidden'));
                 document.documentElement.lang = "zh-CN";
             }} else {{
                 btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
-                btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#777] hover:text-white";
+                btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
                 zhElements.forEach(el => el.classList.add('hidden'));
                 bmElements.forEach(el => el.classList.remove('hidden'));
                 document.documentElement.lang = "ms";
@@ -1125,12 +1581,12 @@ def generate_index_html():
         // 7天历史归档按天真实数据切换
         function switchDateArchive(type, dateKey, btnElem) {{
             document.querySelectorAll('.date-tab-btn').forEach(btn => {{
-                btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#252525] bg-[#111] text-[#aaa] hover:border-[#444] transition-all";
+                btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all";
                 const titleSpan = btn.querySelector('.font-black');
                 if (titleSpan) titleSpan.classList.remove('text-black');
             }});
 
-            btnElem.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all";
+            btnElem.className = "date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all";
             const curTitleSpan = btnElem.querySelector('.font-black');
             if (curTitleSpan) curTitleSpan.classList.add('text-black');
 
@@ -1184,7 +1640,6 @@ def generate_index_html():
         function toggleEventCard(id) {{
             const card = document.getElementById('event-card-' + id);
             if (!card) return;
-            const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
         }}
 
@@ -1216,6 +1671,11 @@ def generate_index_html():
                 }}
             }}
         }}
+
+        // 初始化
+        window.addEventListener('DOMContentLoaded', () => {{
+            initThemeButton();
+        }});
     </script>
 </body>
 </html>
@@ -1223,7 +1683,7 @@ def generate_index_html():
 
     with open(OUTPUT_HTML_FILE, "w", encoding="utf-8") as f:
         f.write(html_content)
-    print(f"✅ 成功编译升级版 index.html (包含5大分类Tab、双列网格、{len(headlines)} 条深度要闻)！")
+    print(f"✅ 成功编译升级版 index.html (包含深浅双模切换、高对比黑金/纸质白、5大分类Tab、双列网格、{len(headlines)} 条深度要闻)！")
 
 if __name__ == "__main__":
     generate_index_html()
