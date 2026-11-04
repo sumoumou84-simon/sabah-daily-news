@@ -43,12 +43,13 @@ def extract_tags_and_sources(title, detail):
 
 def generate_index_html():
     """
-    前端渲染引擎 2.0：
-    1. 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;)
-    2. 渲染 12~16 条重点要闻（包含 250~400 字深层脉络与背景）
-    3. 读取并展示未来 2 周活动（含倒计时、开始结束时间、100-150字简介与官方热线）
-    4. 挂载 7 天真实历史归档池，支持前端无缝按天切换查看
-    5. 顶部全宽纯动态无缝跑马灯 + 左上角一键分享 + 广告海报压缩并排 + 中马双语即时切换
+    前端渲染引擎 2.1：
+    1. 重点要闻增加 5 大分类 Tab 选项卡（全部、沙巴&山打根、全国政经、体育焦点、综合百态）
+    2. 卡片绑定 data-category 属性，纯原生 JS 毫秒级免刷新过滤
+    3. 依然严格锁定双列网格排版 (grid-template-columns: repeat(2, 1fr) !important;)
+    4. 渲染 12~16 条重点要闻（包含 250~400 字深层脉络与背景）
+    5. 读取并展示未来 2 周活动（含倒计时、开始结束时间、100-150字简介与官方热线）
+    6. 挂载 7 天真实历史归档池，支持前端无缝按天切换查看
     """
     myt_now = get_myt_datetime()
     today_iso = myt_now.strftime("%Y-%m-%d")
@@ -241,7 +242,7 @@ def generate_index_html():
         </div>
         """
 
-    # 2. 动态生成 12 ~ 16 条重点要闻双列网格卡片
+    # 2. 动态生成 20 ~ 24 条重点要闻双列网格卡片（绑定 data-category 属性）
     bm_translations = {
         "肯特医院": "Hospital Duchess of Kent Sandakan",
         "水务局": "Jabatan Air Sabah (JANS)",
@@ -257,7 +258,18 @@ def generate_index_html():
         "KPDN": "Kementerian Perdagangan Dalam Negeri (KPDN)",
         "机场": "Lapangan Terbang Sandakan (SDK)",
         "微电网": "Sistem Grid Mikro Solar Komuniti",
-        "流感": "Jabatan Kesihatan Negeri Sabah (JKNS)"
+        "流感": "Jabatan Kesihatan Negeri Sabah (JKNS)",
+        "羽球队": "Skuad Badminton Kebangsaan Malaysia",
+        "谢定峰": "Beregu Aaron Chia & Soh Wooi Yik (BAM)",
+        "李梓嘉": "Lee Zii Jia (Team LZJ) Final Jelajah Dunia BWF",
+        "乐蒂": "Pearly Tan & M. Thinaah (Beregu Wanita Kebangsaan)",
+        "Sabah FC": "Sabah FC (Sang Badak) Liga Super Stadium Likas",
+        "英超": "Liga Perdana Inggeris (EPL) Perebutan Kejuaraan",
+        "最低薪金": "Kementerian Sumber Manusia Gaji Minimum",
+        "电动车": "Kementerian Pengangkutan Koridor EV Hijau",
+        "心理健康": "Kementerian Kesihatan Talian Sokongan Kesihatan Mental",
+        "气象局": "Jabatan Meteorologi Amaran Monsun & Cuaca",
+        "运动会": "Sukan Sabah & Kejohanan Sepak Takraw"
     }
 
     def get_bm_title(zh_t):
@@ -271,17 +283,27 @@ def generate_index_html():
         raw_title = item.get("title", "")
         detail = item.get("detail", "")
         clean_title, tag, sources, clean_detail = extract_tags_and_sources(raw_title, detail)
-        title_bm = get_bm_title(clean_title)
+        title_bm = item.get("titleBM") or get_bm_title(clean_title)
+        detail_bm = item.get("detailBM") or f"Laporan berita mendalam mengenai perkembangan rasmi di Sabah dan Malaysia. Maklumat disahkan oleh portal berita dan agensi rasmi berkaitan. {clean_detail[:120]}..."
+
+        # 核心分类绑定
+        category = item.get("category", "general")
+        if category == "sabah":
+            category_tag_zh, category_tag_bm = "沙巴要闻", "Sabah"
+        elif category == "national":
+            category_tag_zh, category_tag_bm = "全国政经", "Nasional"
+        elif category == "sports":
+            category_tag_zh, category_tag_bm = "体育焦点", "Sukan"
+        else:
+            category_tag_zh, category_tag_bm = "综合百态", "Umum"
 
         sources_pills = "".join([f'<span class="px-1.5 py-[1px] rounded-[4px] bg-[#1f1f1f] border border-[#2a2a2a] text-[10px] text-[#777] mono truncate max-w-[110px]">{s}</span>' for s in sources])
         sources_links = "".join([f'<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/20 text-[10px] text-[#FFD60A] mono">↗ {s}</span>' for s in sources])
 
-        pin_badge = '<span class="shrink-0 w-2 h-2 rounded-full bg-[#EC4899] mt-2"></span>' if idx <= 3 else ''
-        category_tag_zh = "重点聚焦" if idx <= 2 else "沙巴民生" if idx <= 6 else "全国大盘" if idx <= 10 else "政策前沿"
-        category_tag_bm = "Utama" if idx <= 2 else "Sabah" if idx <= 6 else "Nasional" if idx <= 10 else "Polisi"
+        pin_badge = '<span class="shrink-0 w-2 h-2 rounded-full bg-[#EC4899] mt-2"></span>' if idx <= 2 else ''
 
         news_cards_html += f"""
-        <article class="news-grid-card group relative flex flex-col rounded-[12px] border bg-[#151515] border-[#222] hover:border-[#333] hover:bg-[#191919] transition-all cursor-pointer overflow-hidden" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
+        <article class="news-grid-card group relative flex flex-col rounded-[12px] border bg-[#151515] border-[#222] hover:border-[#333] hover:bg-[#191919] transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
             <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
                 <div class="flex items-start justify-between gap-2">
                     <h3 class="card-title font-black leading-[1.35] flex-1 text-white text-[14px] md:text-[15px] group-hover:text-[#FFD60A] transition-colors">
@@ -315,7 +337,8 @@ def generate_index_html():
 
                         <p class="text-[13px] leading-[1.75] text-[#d1d5db]">
                             <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
-                            {clean_detail}
+                            <span class="lang-zh">{clean_detail}</span>
+                            <span class="lang-bm hidden">{detail_bm}</span>
                         </p>
 
                         <div class="pt-2 border-t border-[#1f1f1f] flex flex-col gap-2">
@@ -366,7 +389,7 @@ def generate_index_html():
         </article>
         """
 
-    # 3. 动态渲染未来 2 周活动预告卡片（从 news_data.json 读取 events）
+    # 3. 动态渲染未来 2 周活动预告卡片
     events_cards_html = ""
     for ev in events_list:
         countdown_label_zh = f"还有 {ev.get('countdown_days', 0)} 天"
@@ -402,7 +425,6 @@ def generate_index_html():
                 </div>
             </div>
 
-            <!-- 活动抽屉详情面板 -->
             <div class="event-drawer hidden mt-3 pt-3 border-t border-[#222]">
                 <p class="text-[12px] leading-[1.6] text-[#ccc] mb-2.5">
                     <span class="lang-zh">{ev['desc']}</span>
@@ -503,7 +525,7 @@ def generate_index_html():
             }}
         }}
 
-        /* 需求 2: 顶部纯动态无缝全宽走马灯 */
+        /* 顶部纯动态无缝全宽走马灯 */
         @keyframes marquee-seamless {{
             0% {{ transform: translateX(0); }}
             100% {{ transform: translateX(-50%); }}
@@ -561,7 +583,7 @@ def generate_index_html():
             animation: fadeIn 0.25s ease;
         }}
 
-        /* 需求 4: 广告海报高度限制与自适应压缩 */
+        /* 广告海报高度限制与自适应压缩 */
         .ad-poster-img {{
             max-height: 240px !important;
             object-fit: contain !important;
@@ -654,6 +676,8 @@ def generate_index_html():
                     <span class="text-white/40">•</span>
                     <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
                     <span class="text-white/40">•</span>
+                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合高强度攻防特训</span>
+                    <span class="text-white/40">•</span>
                     <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                     <span class="text-white/40">•</span>
                     <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
@@ -670,6 +694,8 @@ def generate_index_html():
                     <span>⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
                     <span class="text-white/40">•</span>
                     <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
+                    <span class="text-white/40">•</span>
+                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合高强度攻防特训</span>
                     <span class="text-white/40">•</span>
                     <span>🛡️ ESSCOM 强化东海安近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
                     <span class="text-white/40">•</span>
@@ -810,6 +836,25 @@ def generate_index_html():
                         <div class="text-[11px] text-[#666] mono flex items-center gap-2">
                             <span>{today_mmdd} • MYT</span>
                         </div>
+                    </div>
+
+                    <!-- 新增：新闻分类 Tab 选项卡栏（5大高质感胶囊按钮） -->
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 mb-3 scrollbar-thin select-none" id="category-tabs-container">
+                        <button onclick="filterNewsCategory('all', this)" class="cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]">
+                            <span class="lang-zh">全部</span><span class="lang-bm hidden">Semua</span>
+                        </button>
+                        <button onclick="filterNewsCategory('sabah', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                            📍 <span class="lang-zh">沙巴 & 山打根</span><span class="lang-bm hidden">Sabah & Sandakan</span>
+                        </button>
+                        <button onclick="filterNewsCategory('national', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                            🇲🇾 <span class="lang-zh">全国政经</span><span class="lang-bm hidden">Nasional</span>
+                        </button>
+                        <button onclick="filterNewsCategory('sports', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                            🏸 <span class="lang-zh">体育焦点</span><span class="lang-bm hidden">Sukan</span>
+                        </button>
+                        <button onclick="filterNewsCategory('general', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]">
+                            🌐 <span class="lang-zh">综合百态</span><span class="lang-bm hidden">Umum</span>
+                        </button>
                     </div>
 
                     <!-- 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;) -->
@@ -969,11 +1014,39 @@ def generate_index_html():
         </div>
     </main>
 
-    <!-- 交互控制脚本（挂载 7 天归档数据池） -->
+    <!-- 交互控制脚本（分类过滤 + 7天归档池） -->
     <script>
-        // 挂载真实 7 天归档池数据
         const ARCHIVE_POOL = {archive_json_str};
         const CURRENT_HEADLINES = {json.dumps(headlines, ensure_ascii=False)};
+        let activeCategory = 'all';
+
+        // 需求: 纯原生 JS 毫秒级免刷新分类过滤
+        function filterNewsCategory(catKey, btnElem) {{
+            activeCategory = catKey;
+            
+            // 1. 更新 5 个 Tab 按钮的高亮状态
+            document.querySelectorAll('.cat-tab-btn').forEach(btn => {{
+                btn.className = "cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 bg-[#161616] text-[#888] border border-[#262626] hover:text-white hover:border-[#444]";
+            }});
+            btnElem.className = "cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
+
+            // 2. 毫秒级免刷新过滤下方卡片
+            const cards = document.querySelectorAll('.news-grid-card');
+            let visibleCount = 0;
+            cards.forEach(card => {{
+                const itemCat = card.getAttribute('data-category');
+                if (catKey === 'all' || itemCat === catKey) {{
+                    card.style.display = '';
+                    visibleCount++;
+                }} else {{
+                    card.style.display = 'none';
+                }}
+            }});
+
+            // 3. 更新标题栏数字显示
+            const countTag = document.getElementById('headlines-count-tag');
+            if (countTag) countTag.textContent = visibleCount;
+        }}
 
         // 一键分享功能
         function sharePage() {{
@@ -1083,7 +1156,6 @@ def generate_index_html():
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
                 showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
             }} else {{
-                // 全量 7 天归档聚合
                 targetHeadlines = [];
                 Object.values(ARCHIVE_POOL).forEach(list => {{
                     if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 3));
@@ -1093,7 +1165,19 @@ def generate_index_html():
                 showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
             }}
 
-            if (countTag) countTag.textContent = targetHeadlines.length;
+            // 保持当前分类过滤规则
+            const cards = document.querySelectorAll('.news-grid-card');
+            let visibleCount = 0;
+            cards.forEach(card => {{
+                const itemCat = card.getAttribute('data-category');
+                if (activeCategory === 'all' || itemCat === activeCategory) {{
+                    card.style.display = '';
+                    visibleCount++;
+                }} else {{
+                    card.style.display = 'none';
+                }}
+            }});
+            if (countTag) countTag.textContent = visibleCount;
         }}
 
         // 未来活动卡片展开/收起抽屉
@@ -1139,7 +1223,7 @@ def generate_index_html():
 
     with open(OUTPUT_HTML_FILE, "w", encoding="utf-8") as f:
         f.write(html_content)
-    print(f"✅ 成功编译升级版 index.html (包含双列网格、{len(headlines)} 条要闻、{len(events_list)} 项活动与 7天归档库)！")
+    print(f"✅ 成功编译升级版 index.html (包含5大分类Tab、双列网格、{len(headlines)} 条深度要闻)！")
 
 if __name__ == "__main__":
     generate_index_html()
