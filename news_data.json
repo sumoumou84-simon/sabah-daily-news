@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05 16:04:52",
+  "updated_at": "2026-11-05 16:10:34",
   "date": "2026-11-05",
   "utilities": [
     {
@@ -12,6 +12,17 @@
     }
   ],
   "headlines": [
+    {
+      "category": "sabah",
+      "title": "山打根肯特医院全面实施专科诊所登记新指南 院方提醒民众先至急诊部缴费再行登记 [自由日报 + 肯特医院官方通告 双核实]",
+      "titleBM": "Hospital Duchess of Kent Sandakan Laksana Garis Panduan Baharu Pendaftaran Klinik Pakar",
+      "sources": [
+        "自由日报",
+        "肯特医院官方通告"
+      ],
+      "detail": "沙巴卫生局与山打根肯特公立医院（Hospital Duchess of Kent）今日正式发布《专科诊所（Klinik Pakar）门诊就诊与收费流程最新指引》。根据院方最新实施的便民就诊规程，凡持有转诊信或定期复诊预约前往各专科诊所就诊的民众，抵达医院后必须先前往急诊部（ETD）侧翼的官方收入柜台完成挂号收费或特许减免核准，随后再凭有效缴费收据前往各专科诊所导诊台，通过全新的医院综合信息系统（MPIS）扫码报到并领取候诊号码牌。背景脉络：以往专科诊所与收费处分散导致长廊排队拥挤与系统数据脱节，新流程旨在理顺门诊账务与分流秩序，日均可为门诊患者缩短约 35 分钟的反复往返时间。院方特别提醒广大高龄患者与陪诊家属留意导流指示牌，如有疑问可至大厅咨询导医台或拨打医院服务热线 089-212111 寻求协助。来源：自由日报东海岸版与肯特医院官方通告同步确认。",
+      "detailBM": "Hospital Duchess of Kent Sandakan menguatkuasakan tatacara baharu kehadiran Klinik Pakar di mana pesakit dikehendaki membuat bayaran di Kaunter Hasil ETD sebelum mendaftar di MPIS."
+    },
     {
       "category": "sabah",
       "title": "山打根水务局（JANS）抢修 Bandar Prima 主干水管 商业区与住宅紧急降压停水 [JANS + Sandakan FM 双核实]",
@@ -339,6 +350,17 @@
   ],
   "archive": {
     "2026-11-05": [
+      {
+        "category": "sabah",
+        "title": "山打根肯特医院全面实施专科诊所登记新指南 院方提醒民众先至急诊部缴费再行登记 [自由日报 + 肯特医院官方通告 双核实]",
+        "titleBM": "Hospital Duchess of Kent Sandakan Laksana Garis Panduan Baharu Pendaftaran Klinik Pakar",
+        "sources": [
+          "自由日报",
+          "肯特医院官方通告"
+        ],
+        "detail": "沙巴卫生局与山打根肯特公立医院（Hospital Duchess of Kent）今日正式发布《专科诊所（Klinik Pakar）门诊就诊与收费流程最新指引》。根据院方最新实施的便民就诊规程，凡持有转诊信或定期复诊预约前往各专科诊所就诊的民众，抵达医院后必须先前往急诊部（ETD）侧翼的官方收入柜台完成挂号收费或特许减免核准，随后再凭有效缴费收据前往各专科诊所导诊台，通过全新的医院综合信息系统（MPIS）扫码报到并领取候诊号码牌。背景脉络：以往专科诊所与收费处分散导致长廊排队拥挤与系统数据脱节，新流程旨在理顺门诊账务与分流秩序，日均可为门诊患者缩短约 35 分钟的反复往返时间。院方特别提醒广大高龄患者与陪诊家属留意导流指示牌，如有疑问可至大厅咨询导医台或拨打医院服务热线 089-212111 寻求协助。来源：自由日报东海岸版与肯特医院官方通告同步确认。",
+        "detailBM": "Hospital Duchess of Kent Sandakan menguatkuasakan tatacara baharu kehadiran Klinik Pakar di mana pesakit dikehendaki membuat bayaran di Kaunter Hasil ETD sebelum mendaftar di MPIS."
+      },
       {
         "category": "sabah",
         "title": "山打根水务局（JANS）抢修 Bandar Prima 主干水管 商业区与住宅紧急降压停水 [JANS + Sandakan FM 双核实]",
