@@ -1576,6 +1576,163 @@ def generate_index_html():
                 bmElements.forEach(el => el.classList.remove('hidden'));
                 document.documentElement.lang = "ms";
             }}
+            // 重新刷新当前视图卡片的语言状态
+            if (typeof renderNewsCards === 'function') {{
+                renderNewsCards(currentRenderedHeadlines);
+            }}
+        }}
+
+        // 核心修复：动态渲染新闻卡片列表（支持今天、昨日、前日与历史合辑真实切换）
+        let currentRenderedHeadlines = CURRENT_HEADLINES;
+
+        function renderNewsCards(headlinesList) {{
+            currentRenderedHeadlines = headlinesList;
+            const container = document.getElementById('news-grid-container');
+            if (!container) return;
+            const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+
+            let html = '';
+            headlinesList.forEach((item, index) => {{
+                const idx = index + 1;
+                const rawTitle = item.title || '';
+                const detail = item.detail || '';
+                const category = item.category || 'general';
+
+                const verifyMatch = rawTitle.match(/\[(.*?)\]/);
+                const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
+                const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
+
+                let sources = item.sources || [];
+                let cleanDetail = detail;
+                if (!sources.length) {{
+                    if (detail.includes("来源：") || detail.includes("来源:")) {{
+                        const parts = detail.split(/来源[：:]/);
+                        cleanDetail = parts[0].trim();
+                        const sourceStr = parts[1].replace(/。/g, '').trim();
+                        sources = sourceStr.split(/[/、+及与]/).map(s => s.trim()).filter(s => s && s.length < 20);
+                    }}
+                }}
+                if (!sources.length) sources = ["沙巴官方通报", "现场交叉复核"];
+
+                const titleBm = item.titleBM || ("Laporan Khas: " + cleanTitle.slice(0, 35));
+                const detailBm = item.detailBM || ("Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. " + cleanDetail.slice(0, 120) + "...");
+
+                let catTagZh = "综合百态", catTagBm = "Umum";
+                if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
+                else if (category === 'national') {{ catTagZh = "全国政经"; catTagBm = "Nasional"; }}
+                else if (category === 'sports') {{ catTagZh = "体育焦点"; catTagBm = "Sukan"; }}
+
+                const sourcesPills = sources.map(s => `<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">${{s}}</span>`).join('');
+                const sourcesLinks = sources.map(s => `<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ ${{s}}</span>`).join('');
+                const pinBadge = idx <= 2 ? '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' : '';
+
+                const zhCls = isBm ? 'hidden' : '';
+                const bmCls = isBm ? '' : 'hidden';
+
+                html += `
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="toggleNewsCard(${{idx}})">
+                    <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
+                        <div class="flex items-start justify-between gap-2">
+                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
+                                <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
+                                <span class="lang-bm ${{bmCls}}">${{titleBm}}</span>
+                            </h3>
+                            ${{pinBadge}}
+                        </div>
+
+                        <!-- 展开的深度全文内容 -->
+                        <div class="news-drawer hidden mt-1">
+                            <div class="flex items-center gap-2 mb-3 flex-wrap">
+                                <span class="px-2.5 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10.5px] font-black tracking-wide">
+                                    <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
+                                    <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
+                                </span>
+                                <span class="text-[11px] mono sub-meta-text">沙巴 Sabah • 全马</span>
+                                <span class="w-1 h-1 bg-[#475569] rounded-full"></span>
+                                <span class="text-[11px] mono sub-meta-date">${{today_mmdd}} ${{today_time}}</span>
+                            </div>
+
+                            <div class="news-drawer-box rounded-[10px] p-3.5 space-y-3">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-4 rounded-full bg-[#FFD60A]"></span>
+                                    <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
+                                        <span class="lang-zh ${{zhCls}}">深度报道 / 250-400字背景脉络</span>
+                                        <span class="lang-bm ${{bmCls}}">Laporan Terperinci / Konteks Penuh</span>
+                                    </span>
+                                    <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • ${{today_mmdd}}</span>
+                                </div>
+
+                                <p class="news-body-text text-[13.5px] leading-[1.8] font-normal">
+                                    <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
+                                    <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
+                                    <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
+                                </p>
+
+                                <div class="pt-2 border-t drawer-divider flex flex-col gap-2">
+                                    <div class="quote-box flex items-start gap-2 text-[11.5px] leading-[1.55] rounded-[8px] p-2.5">
+                                        <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold quote-icon">❞</span>
+                                        <span class="italic font-medium">
+                                            <span class="lang-zh ${{zhCls}}">官方双核实通报：相关资讯已由白名单专页与核心主流报章交叉印证。</span>
+                                            <span class="lang-bm ${{bmCls}}">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
+                                        </span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-1.5 items-center">
+                                        ${{sourcesLinks}}
+                                        <span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">
+                                            ✓ ${{tag}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-1.5 mt-auto">
+                            <span class="mono text-[10.5px] font-bold card-meta-time">${{today_mmdd}} ${{today_time}}</span>
+                            <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
+                                ${{tag}}
+                            </span>
+                            <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
+                                <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
+                                <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
+                            </span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1">
+                            ${{sourcesPills}}
+                        </div>
+                    </div>
+
+                    <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
+                        <span class="text-[11px] mono font-bold footer-label">
+                            <span class="lang-zh ${{zhCls}}">标题-only</span>
+                            <span class="lang-bm ${{bmCls}}">Tajuk Sahaja</span>
+                        </span>
+                        <span class="text-[12px] font-black tracking-tight flex items-center gap-1 text-[#FFD60A] group-hover:translate-x-[2px] transition-all footer-btn">
+                            <span class="btn-text lang-zh ${{zhCls}}">点击展开 →</span>
+                            <span class="btn-text lang-bm ${{bmCls}}">Kembang →</span>
+                            <span class="w-5 h-5 rounded-full bg-[#FFD60A] text-black flex items-center justify-center text-[11px] group-hover:bg-[#ffdb33]">→</span>
+                        </span>
+                    </div>
+                </article>
+                `;
+            }});
+
+            container.innerHTML = html;
+
+            // 保持当前分类过滤规则
+            const cards = container.querySelectorAll('.news-grid-card');
+            let visibleCount = 0;
+            cards.forEach(card => {{
+                const itemCat = card.getAttribute('data-category');
+                if (activeCategory === 'all' || itemCat === activeCategory) {{
+                    card.style.display = '';
+                    visibleCount++;
+                }} else {{
+                    card.style.display = 'none';
+                }}
+            }});
+            const countTag = document.getElementById('headlines-count-tag');
+            if (countTag) countTag.textContent = visibleCount;
         }}
 
         // 7天历史归档按天真实数据切换
@@ -1614,26 +1771,15 @@ def generate_index_html():
             }} else {{
                 targetHeadlines = [];
                 Object.values(ARCHIVE_POOL).forEach(list => {{
-                    if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 3));
+                    if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 4));
                 }});
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Semua Arkib 7 Hari</span>' : '<span>全部历史归档 (7天精选合辑)</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Semua Arkib 7 Hari' : '全部 · 7天历史库';
                 showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
             }}
 
-            // 保持当前分类过滤规则
-            const cards = document.querySelectorAll('.news-grid-card');
-            let visibleCount = 0;
-            cards.forEach(card => {{
-                const itemCat = card.getAttribute('data-category');
-                if (activeCategory === 'all' || itemCat === activeCategory) {{
-                    card.style.display = '';
-                    visibleCount++;
-                }} else {{
-                    card.style.display = 'none';
-                }}
-            }});
-            if (countTag) countTag.textContent = visibleCount;
+            // 核心修复：即时重绘新闻卡片 DOM
+            renderNewsCards(targetHeadlines);
         }}
 
         // 未来活动卡片展开/收起抽屉

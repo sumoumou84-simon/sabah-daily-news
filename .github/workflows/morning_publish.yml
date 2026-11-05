@@ -24,8 +24,12 @@ jobs:
       - name: 安装基础依赖
         run: |
           pip install --upgrade pip
+          pip install requests urllib3 || true
 
       - name: 执行全自动抓取、双核实与页面编译
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: |
           python agent_reach_editor.py
 
@@ -33,6 +37,6 @@ jobs:
         run: |
           git config --global user.name "Simon-Daily-Bot"
           git config --global user.email "bot@simondaily.com"
-          git add index.html news_data.json
+          git add index.html news_data.json archive_history.json || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
           git push
