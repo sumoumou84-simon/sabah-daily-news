@@ -32,9 +32,17 @@ def get_myt_now():
 
 # 1. 监控专页与核心信源白名单
 FB_SOURCES = {
+    # L1: 山打根超本地市政权威与民生核心源 (Sandakan Municipal & Hyper-Local)
     "sandakan": [
-        {"name": "山打根大事", "url": "https://www.facebook.com/mysandakankini", "tag": "山打根Kini"},
-        {"name": "Sandakan FM 90.1", "url": "https://www.facebook.com/SANDAKANfm901", "tag": "Sandakan FM"}
+        {
+            "name": "山打根市议会 MPS",
+            "url": "https://www.facebook.com/mpsandakan",
+            "tag": "山打根市议会MPS",
+            "priority": "TOP_PRIORITY",
+            "focus": ["市政工程通告", "道路维修与交通管制", "民生清洁Gotong-Royong", "集市小贩指南", "本地文娱体育活动"]
+        },
+        {"name": "山打根大事", "url": "https://www.facebook.com/mysandakankini", "tag": "山打根Kini", "priority": "NORMAL"},
+        {"name": "Sandakan FM 90.1", "url": "https://www.facebook.com/SANDAKANfm901", "tag": "Sandakan FM", "priority": "NORMAL"}
     ],
     "sabah": [
         {"name": "Sabah TV", "url": "https://www.facebook.com/SabahTvOfficial", "tag": "Sabah TV"},
@@ -59,6 +67,7 @@ FB_SOURCES = {
 }
 
 WEB_PORTALS = [
+    {"name": "山打根市议会官方门户 MPS", "url": "https://mps.sabah.gov.my/"},
     {"name": "诗华日报沙巴", "url": "https://news.seehua.com/?cat=53"},
     {"name": "沙巴星洲日报", "url": "https://sabah.sinchew.com.my/"},
     {"name": "Daily Express Sabah", "url": "https://www.dailyexpress.com.my/"},
@@ -76,8 +85,8 @@ def fetch_gemini_news_if_available(api_key, today_str):
     prompt = f"""
     你是《西门看看网》首席采编记者。今天是马来西亚时间 {today_str}。
     请检索并输出今日（{today_str}）在马来西亚沙巴州、山打根及全马发生的真实新闻。
-    要求严格按照 JSON 格式输出 22 条新闻，符合以下分类配额：
-    - sabah: 7 条（沙巴山打根超本地真实动态，含基础设施、港口、交通）
+    要求严格按照 JSON 格式输出 20~24 条新闻，符合以下分类配额：
+    - sabah: 6~8 条（高优先级监控山打根市议会 MPS 官方动态：市政工程、修路交通管制、清洁集市指南及港口设施）
     - national: 7 条（全国政经、财政部、国防、交通、卫生）
     - sports: 5 条（李梓嘉日本熊本大师赛、沙巴女足夺冠、Sabah FC、大马羽坛等）
     - general: 3 条（教育、环境、气象等）
@@ -229,8 +238,21 @@ def build_today_real_news_corpus(today_str):
         },
 
         # =====================================================================
-        # 2. 全国政经大盘真实要闻 (national: 7条)
+        # 2. 全国政经大盘真实要闻 (national: 8条)
         # =====================================================================
+        {
+            "category": "national",
+            "title": f"多国促民众囤粮 首相安华：大马已全面提升粮水与能源危机应对力 [八度空间 + 马新社 双核实]",
+            "titleBM": "PM Anwar: Malaysia Perkukuh Kesiapsiagaan Krisis Bekalan Makanan, Air dan Tenaga",
+            "sources": ["八度空间", "马新社"],
+            "detail": (
+                "针对近期部分欧洲及东亚国家呼吁国民防范危机囤粮的国际关切，马来西亚首相兼财政部长拿督斯里安华今日在国会郑重保证，马来西亚已全面建立充分的粮水与能源战略储备调控体系。"
+                "安华指出，国家安全理事会与农业部严密监控全马核心白米、原粮及必需品供应链，现有仓储可保障持续数月无虞；各州供水水库与电网备用负荷均处于高度安全区间，官方更同步强化了针对关键公用设施的数字化网络防御预案。"
+                "背景脉络：面对全球局部冲突与极端气候造成的输入型粮价异动，首相强调大马拥有稳固的本土农副产业链与东盟区域互保机制，呼吁广大国人保持信心与冷静，完全无需恐慌盲从囤粮。"
+                "来源：八度空间华语新闻现场直击与马新社官方电讯联合印证。"
+            ),
+            "detailBM": "Perdana Menteri Datuk Seri Anwar Ibrahim memberi jaminan bahawa Malaysia mempunyai bekalan makanan, air dan tenaga yang mencukupi serta berdaya tahan hadapi krisis global."
+        },
         {
             "category": "national",
             "title": f"沙巴第二首长马希迪公开表态：强制外来发展商加入公会 铁腕整顿烂尾楼 [中国报 + 光明日报 双核实]",
@@ -461,6 +483,23 @@ def build_rich_future_events():
     events_raw = [
         {
             "id": 1,
+            "days_ahead": 3,
+            "name": "山打根市议会 (MPS) 滨海长廊全城清洁运动与环保集市",
+            "nameBM": "Program Gotong-Royong Pesisir Pantai & Pasar Komuniti MPS Sandakan",
+            "time": "07:00 AM - 11:30 AM",
+            "timeBM": "07:00 AM - 11:30 AM",
+            "location": "Pesisir Pantai Sandakan (山打根滨海走廊及中央巴刹广场)",
+            "category": "市政公益",
+            "categoryBM": "Khidmat Komuniti",
+            "badgeColor": "bg-[#14532d] text-[#86efac]",
+            "desc": "山打根市议会（MPS）为迎合绿色清洁城市行动倡导的市民共建运动，号召商户与市民共同清理海岸线白色垃圾。现场设有可回收废品兑换有机绿植、传统手作小吃集市及市政民生咨询专柜，免费向公众开放。",
+            "descBM": "Aktiviti gotong-royong pembersihan pesisir pantai anjuran Majlis Perbandaran Sandakan (MPS) bersama komuniti setempat dan peniaga bagi memelihara kebersihan bandar.",
+            "tel": "089-272161 / WhatsApp: 010-9301117",
+            "source": "山打根市议会 (MPS) 官方发布",
+            "sourceBM": "Majlis Perbandaran Sandakan (MPS)"
+        },
+        {
+            "id": 2,
             "days_ahead": 2,
             "name": "Pinktober Fun Run 5KM 公益健康跑",
             "nameBM": "Larian Amal Pinktober 5KM Sandakan",

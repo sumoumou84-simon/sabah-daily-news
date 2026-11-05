@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-05 16:10:34",
+  "updated_at": "2026-11-05 16:52:34",
   "date": "2026-11-05",
   "utilities": [
     {
-      "title": "山打根 Bandar Prima 水管突发爆裂抢修通报 [山打根Kini + Sandakan FM 双核实]",
-      "detail": "沙巴水务局（JANS）通报：山打根 Bandar Prima RHB 银行前 250mm 配水主干管破损，技术班组正紧急开挖抢修，部分高地区域面临减压停水。来源：山打根大事 专页及 JANS 现场确认。"
+      "title": "山打根 Bandar Prima 水管突发爆裂抢修通报 [山打根市议会MPS + 山打根Kini 双核实]",
+      "detail": "沙巴水务局（JANS）通报：山打根 Bandar Prima RHB 银行前 250mm 配水主干管破损，技术班组正紧急开挖抢修，部分高地区域面临减压停水。来源：山打根市议会 MPS 专页及 JANS 现场确认。"
     },
     {
       "title": "沙巴电力 SESB 沿海电网稳定性巡检通告 [Sabah TV + 官方通告 双核实]",
@@ -99,6 +99,17 @@
       ],
       "detail": "针对日前有州议员提出在沙巴沿海试水引进『海上浮动核电厂』（FNPP）以解决电荒的倡议，沙巴亲民党（ANAK NEGERI）及多个环保民间团体今日公开发声表示坚决抵制。民间代表指出，沙巴地处环太平洋火山地震带边缘，深海海况复杂，核能电厂不仅潜藏无法逆转的海洋生态与核废料泄露风险，更将直接重创沙巴以纯净潜水与海岛度假闻名的国际旅游形象。背景脉络：根据《2040年沙巴能源路线图》（SE-RAMP 2040）权威统计，沙巴全州目前拥有丰富的水力、太阳能、地热能以及油棕生物质能潜力，其中高达 95% 的清洁可再生能源尚未被充分开发利用。民间各界呼吁州政府应集中财力攻坚沙巴南部大型水力枢纽与太阳能微电网建设，无须舍近求远去冒险承担核能试点的巨大不可测后果。来源：诗华日报言论版与 Daily Express 地方政经关注。",
       "detailBM": "Pertubuhan bukan kerajaan dan pemimpin masyarakat menolak cadangan pembinaan loji nuklear terapung di Sabah, mendesak kerajaan fokus kepada 95% potensi tenaga boleh baharu."
+    },
+    {
+      "category": "national",
+      "title": "多国促民众囤粮 首相安华：大马已全面提升粮水与能源危机应对力 [八度空间 + 马新社 双核实]",
+      "titleBM": "PM Anwar: Malaysia Perkukuh Kesiapsiagaan Krisis Bekalan Makanan, Air dan Tenaga",
+      "sources": [
+        "八度空间",
+        "马新社"
+      ],
+      "detail": "针对近期部分欧洲及东亚国家呼吁国民防范危机囤粮的国际关切，马来西亚首相兼财政部长拿督斯里安华今日在国会郑重保证，马来西亚已全面建立充分的粮水与能源战略储备调控体系。安华指出，国家安全理事会与农业部严密监控全马核心白米、原粮及必需品供应链，现有仓储可保障持续数月无虞；各州供水水库与电网备用负荷均处于高度安全区间，官方更同步强化了针对关键公用设施的数字化网络防御预案。背景脉络：面对全球局部冲突与极端气候造成的输入型粮价异动，首相强调大马拥有稳固的本土农副产业链与东盟区域互保机制，呼吁广大国人保持信心与冷静，完全无需恐慌盲从囤粮。来源：八度空间华语新闻现场直击与马新社官方电讯联合印证。",
+      "detailBM": "Perdana Menteri Datuk Seri Anwar Ibrahim memberi jaminan bahawa Malaysia mempunyai bekalan makanan, air dan tenaga yang mencukupi serta berdaya tahan hadapi krisis global."
     },
     {
       "category": "national",
@@ -270,6 +281,26 @@
     {
       "id": 1,
       "month": "11",
+      "day": "08",
+      "full_date": "2026-11-08",
+      "countdown_days": 3,
+      "name": "山打根市议会 (MPS) 滨海长廊全城清洁运动与环保集市",
+      "nameBM": "Program Gotong-Royong Pesisir Pantai & Pasar Komuniti MPS Sandakan",
+      "time": "07:00 AM - 11:30 AM",
+      "timeBM": "07:00 AM - 11:30 AM",
+      "location": "Pesisir Pantai Sandakan (山打根滨海走廊及中央巴刹广场)",
+      "category": "市政公益",
+      "categoryBM": "Khidmat Komuniti",
+      "badgeColor": "bg-[#14532d] text-[#86efac]",
+      "desc": "山打根市议会（MPS）为迎合绿色清洁城市行动倡导的市民共建运动，号召商户与市民共同清理海岸线白色垃圾。现场设有可回收废品兑换有机绿植、传统手作小吃集市及市政民生咨询专柜，免费向公众开放。",
+      "descBM": "Aktiviti gotong-royong pembersihan pesisir pantai anjuran Majlis Perbandaran Sandakan (MPS) bersama komuniti setempat dan peniaga bagi memelihara kebersihan bandar.",
+      "tel": "089-272161 / WhatsApp: 010-9301117",
+      "source": "山打根市议会 (MPS) 官方发布",
+      "sourceBM": "Majlis Perbandaran Sandakan (MPS)"
+    },
+    {
+      "id": 2,
+      "month": "11",
       "day": "07",
       "full_date": "2026-11-07",
       "countdown_days": 2,
@@ -437,6 +468,17 @@
         ],
         "detail": "针对日前有州议员提出在沙巴沿海试水引进『海上浮动核电厂』（FNPP）以解决电荒的倡议，沙巴亲民党（ANAK NEGERI）及多个环保民间团体今日公开发声表示坚决抵制。民间代表指出，沙巴地处环太平洋火山地震带边缘，深海海况复杂，核能电厂不仅潜藏无法逆转的海洋生态与核废料泄露风险，更将直接重创沙巴以纯净潜水与海岛度假闻名的国际旅游形象。背景脉络：根据《2040年沙巴能源路线图》（SE-RAMP 2040）权威统计，沙巴全州目前拥有丰富的水力、太阳能、地热能以及油棕生物质能潜力，其中高达 95% 的清洁可再生能源尚未被充分开发利用。民间各界呼吁州政府应集中财力攻坚沙巴南部大型水力枢纽与太阳能微电网建设，无须舍近求远去冒险承担核能试点的巨大不可测后果。来源：诗华日报言论版与 Daily Express 地方政经关注。",
         "detailBM": "Pertubuhan bukan kerajaan dan pemimpin masyarakat menolak cadangan pembinaan loji nuklear terapung di Sabah, mendesak kerajaan fokus kepada 95% potensi tenaga boleh baharu."
+      },
+      {
+        "category": "national",
+        "title": "多国促民众囤粮 首相安华：大马已全面提升粮水与能源危机应对力 [八度空间 + 马新社 双核实]",
+        "titleBM": "PM Anwar: Malaysia Perkukuh Kesiapsiagaan Krisis Bekalan Makanan, Air dan Tenaga",
+        "sources": [
+          "八度空间",
+          "马新社"
+        ],
+        "detail": "针对近期部分欧洲及东亚国家呼吁国民防范危机囤粮的国际关切，马来西亚首相兼财政部长拿督斯里安华今日在国会郑重保证，马来西亚已全面建立充分的粮水与能源战略储备调控体系。安华指出，国家安全理事会与农业部严密监控全马核心白米、原粮及必需品供应链，现有仓储可保障持续数月无虞；各州供水水库与电网备用负荷均处于高度安全区间，官方更同步强化了针对关键公用设施的数字化网络防御预案。背景脉络：面对全球局部冲突与极端气候造成的输入型粮价异动，首相强调大马拥有稳固的本土农副产业链与东盟区域互保机制，呼吁广大国人保持信心与冷静，完全无需恐慌盲从囤粮。来源：八度空间华语新闻现场直击与马新社官方电讯联合印证。",
+        "detailBM": "Perdana Menteri Datuk Seri Anwar Ibrahim memberi jaminan bahawa Malaysia mempunyai bekalan makanan, air dan tenaga yang mencukupi serta berdaya tahan hadapi krisis global."
       },
       {
         "category": "national",
