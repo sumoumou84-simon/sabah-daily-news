@@ -1590,7 +1590,6 @@ def generate_index_html():
                 <!-- 弹窗大标题 -->
                 <h2 class="text-[17px] sm:text-[20px] font-black leading-[1.4] transition-colors modal-headline" id="modal-title"></h2>
 
-                <!-- 封面大图 (仅真实原生 og:image 存在时渲染展示) -->
                 <!-- 封面大图 (仅真实原生 image_url 存在时渲染展示，无图时彻底隐藏不留空白) -->
                 <div id="modal-cover-wrap" class="hidden modal-cover-wrap w-full overflow-hidden rounded-lg mb-4 border shadow-sm">
                     <img id="modal-cover-img" src="" alt="新闻配图" class="rounded-lg max-h-72 w-full object-cover" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'; this.style.display='none';">
@@ -2041,22 +2040,31 @@ html += `
             // 3. 设置封面大图 (仅真实原生 image_url 存在时渲染展示，无图彻底隐藏)
             const coverWrap = document.getElementById('modal-cover-wrap');
             const coverImg = document.getElementById('modal-cover-img');
-            const imgUrl = (item.image_url && typeof item.image_url === 'string') ? item.image_url.trim() : '';
+            const imgUrl = (item && item.image_url && typeof item.image_url === 'string') ? item.image_url.trim() : '';
+
             if (imgUrl && imgUrl !== 'null' && imgUrl !== 'undefined') {{
+                if (coverWrap) {{
+                    coverWrap.classList.remove('hidden');
+                    coverWrap.style.display = 'block';
+                }}
                 if (coverImg) {{
-                    coverImg.src = imgUrl;
                     coverImg.style.display = 'block';
                     coverImg.onerror = function() {{
+                        console.warn('[ModalImage] 加载失败，自动隐藏大图容器:', imgUrl);
                         if (coverWrap) {{
                             coverWrap.classList.add('hidden');
                             coverWrap.style.display = 'none';
                         }}
                         this.style.display = 'none';
                     }};
-                }}
-                if (coverWrap) {{
-                    coverWrap.classList.remove('hidden');
-                    coverWrap.style.display = 'block';
+                    coverImg.onload = function() {{
+                        if (coverWrap) {{
+                            coverWrap.classList.remove('hidden');
+                            coverWrap.style.display = 'block';
+                        }}
+                        this.style.display = 'block';
+                    }};
+                    coverImg.src = imgUrl;
                 }}
             }} else {{
                 if (coverImg) {{
