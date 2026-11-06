@@ -80,13 +80,31 @@ WEB_PORTALS = [
 
 def extract_opengraph_image(url):
     """
-    轻量级原生 HTML 解析，提取原始网页的 OpenGraph 封面图 (<meta property="og:image" content="...">) 或正文首张大图 URL。
-    如果存在则返回规范化的绝对 URL；若无或无效则返回 None。
-    【重要准则】：此步骤只做原生 HTTP/HTML 解析，严禁增加任何额外的 LLM 调用！
+    轻量级原生 HTML 解析，提取原始网页专属 OpenGraph 封面图 (<meta property="og:image" content="...">) 或正文首张大图 URL。
+    【严格防串台准则】：
+    1. 仅限针对具体的文章详情单页（带具体文章ID/日期路径）提取，严禁在首页或分类页抓取。
+    2. 绝不递归抓取页面中的其他文章链接。
+    3. 严禁抓取侧边栏、推荐位、广告位、全站Logo或通用分享图。
+    4. 无当前文章正文专属图一律返回 None，宁缺毋滥。
     设置 4.0 秒严格超时保护与异常容错。
     """
     if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
         return None
+    
+    # 必须符合真实文章单页路径特征，排除纯门户首页/分类页
+    article_path_patterns = (
+        "news.seehua.com/post/",
+        "sabah.sinchew.com.my/news/",
+        "sinchew.com.my/news/",
+        "www.dailyexpress.com.my/news/",
+        "www.chinapress.com.my/20",
+        "chinapress.com.my/20",
+        "www.malaysiakini.com/news/",
+        "www.freemalaysiatoday.com/category/",
+    )
+    if not any(pat in url for pat in article_path_patterns):
+        return None
+
     try:
         req = urllib.request.Request(
             url,
@@ -101,33 +119,43 @@ def extract_opengraph_image(url):
                 return None
             chunk = resp.read(150000).decode("utf-8", errors="replace")
             
-            # 1. 优先提取 OpenGraph / Twitter Card 官方封面图
+            # 1. 优先提取当前单篇正文 OpenGraph / Twitter Card 官方封面图
             og_patterns = [
-                r'<meta\s+[^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\']\s+[^>]*?content=["\']([^"\']+)["\']',
-                r'<meta\s+[^>]*?content=["\']([^"\']+)["\']\s+[^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\']',
+                r'<meta\s+[^>]*?(?:property|name)=["'](?:og:image|twitter:image)["']\s+[^>]*?content=["']([^"']+)["']',
+                r'<meta\s+[^>]*?content=["']([^"']+)["']\s+[^>]*?(?:property|name)=["'](?:og:image|twitter:image)["']',
             ]
             for pat in og_patterns:
                 m = re.search(pat, chunk, re.IGNORECASE)
                 if m:
                     img_url = m.group(1).strip()
+                    img_lower = img_url.lower()
                     # 严格拦截外部占位图 / stock / 纯假图
-                    if any(stock in img_url.lower() for stock in ["unsplash.com", "placeholder", "dummy", "shutterstock", "gettyimages", "stock"]):
+                    if any(stock in img_lower for stock in ["unsplash.com", "placeholder", "dummy", "shutterstock", "gettyimages", "stock"]):
                         continue
-                    # 排除各大站点的默认占位纯 Logo 或全站通用分享图
-                    if not any(bad in img_url.lower() for bad in ["default-share", "mini-de-logo", "logosh4", "see-hualogo", "default-banner", "default_image", "cropped-seehua"]):
-                        if img_url.startswith("//"):
-                            return "https:" + img_url
-                        elif img_url.startswith("/"):
-                            parsed = urllib.parse.urlparse(url)
-                            return f"{parsed.scheme}://{parsed.netloc}{img_url}"
-                        elif img_url.startswith(("http://", "https://")):
-                            return img_url
+                    # 排除各大站点的默认占位纯 Logo、全站通用分享图或侧边推荐图
+                    if any(bad in img_lower for bad in [
+                        "default-share", "mini-de-logo", "logosh4", "see-hualogo", "default-banner", 
+                        "default_image", "cropped-seehua", "sidebar", "icon", "avatar", "logo"
+                    ]):
+                        continue
+                    
+                    if img_url.startswith("//"):
+                        return "https:" + img_url
+                    elif img_url.startswith("/"):
+                        parsed = urllib.parse.urlparse(url)
+                        return f"{parsed.scheme}://{parsed.netloc}{img_url}"
+                    elif img_url.startswith(("http://", "https://")):
+                        return img_url
 
-            # 2. 从页面中提取主流媒体（星洲日报、诗华、Daily Express、中国报等）真实正文大图
-            img_matches = re.findall(r'<img\s+[^>]*?(?:src|data-src|data-lazy-src)=["\']([^"\']+)["\']', chunk, re.IGNORECASE)
+            # 2. 从页面中提取真实正文首张大图（严格排除侧边栏、推荐位、Logo及小图标）
+            img_matches = re.findall(r'<img\s+[^>]*?(?:src|data-src|data-lazy-src)=["']([^"']+)["']', chunk, re.IGNORECASE)
             for raw_img in img_matches:
                 img_lower = raw_img.lower()
-                if any(bad in img_lower for bad in ["logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", "btn", "badge", "unsplash", "placeholder", "share", "default"]):
+                if any(bad in img_lower for bad in [
+                    "logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", 
+                    "btn", "badge", "unsplash", "placeholder", "share", "default", "sidebar", 
+                    "widget", "thumb", "recommend", "footer", "header", "author"
+                ]):
                     continue
                 if any(source_pat in img_lower for source_pat in ["wp-content/uploads/20", "uploads/news", "sinchew.com.my", "seehua.com", "dailyexpress.com.my", "chinapress.com.my"]):
                     if raw_img.startswith("//"):
@@ -137,22 +165,6 @@ def extract_opengraph_image(url):
                         return f"{parsed.scheme}://{parsed.netloc}{raw_img}"
                     elif raw_img.startswith(("http://", "https://")):
                         return raw_img
-
-            # 3. 若为报章门户首页/分类页未直接暴露大图，尝试提取首条真实文章正文的 og:image
-            article_patterns = [
-                r'href=["\'](https://news\.seehua\.com/post/\d+/)["\']',
-                r'href=["\'](https://sabah\.sinchew\.com\.my/news/\d+/[^"\']+)["\']',
-                r'href=["\'](/news/\d+/[^"\']+)["\']',
-                r'href=["\'](https://www\.chinapress\.com\.my/\d{8}/[^"\']+)["\']',
-            ]
-            for a_pat in article_patterns:
-                m_art = re.search(a_pat, chunk, re.IGNORECASE)
-                if m_art:
-                    sub_url = m_art.group(1)
-                    if sub_url.startswith("/"):
-                        parsed = urllib.parse.urlparse(url)
-                        sub_url = f"{parsed.scheme}://{parsed.netloc}{sub_url}"
-                    return extract_opengraph_image(sub_url)
 
     except Exception:
         pass

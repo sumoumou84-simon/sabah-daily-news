@@ -305,9 +305,11 @@ def generate_index_html():
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
         image_url = item.get("image_url")
+        has_image = bool(image_url)
+        card_cls = "has-image" if has_image else "no-image"
         clean_title_esc = clean_title.replace('"', '&quot;')
         cover_img_html = ""
-        if image_url:
+        if has_image:
             cover_img_html = f'''
             <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
                 <img src="{image_url}" alt="{clean_title_esc}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
@@ -315,11 +317,11 @@ def generate_index_html():
             </div>'''
 
         news_cards_html += f"""
-        <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
+        <article class="news-grid-card {card_cls} group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
             {cover_img_html}
-            <div class="p-3 md:p-[14px] flex flex-col gap-2.5 flex-1">
+            <div class="card-inner-box p-3 md:p-3.5 flex flex-col gap-2 flex-1">
                 <div class="flex items-start justify-between gap-2">
-                    <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
+                    <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15px] transition-colors">
                         <span class="lang-zh">{clean_title}</span>
                         <span class="lang-bm hidden">{title_bm}</span>
                     </h3>
@@ -327,7 +329,7 @@ def generate_index_html():
                 </div>
 
                 <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
-                <p class="card-summary text-[12.5px] leading-[1.65] line-clamp-2">
+                <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
                     <span class="lang-zh">{clean_detail}</span>
                     <span class="lang-bm hidden">{detail_bm}</span>
                 </p>
@@ -342,14 +344,13 @@ def generate_index_html():
                         <span class="lang-bm hidden">{category_tag_bm}</span>
                     </span>
                 </div>
-
             </div>
 
             <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
                 <div class="flex flex-wrap gap-1 min-w-0">
                     {sources_pills}
                 </div>
-                <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap">
+                <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
                     <span class="lang-zh">查看全文 ➡</span>
                     <span class="lang-bm hidden">Baca ➡</span>
                 </button>
@@ -987,23 +988,55 @@ def generate_index_html():
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
         }}
 
-        /* 强制双列网格无论横向/纵向均保持严格双列 */
-        .force-two-cols-grid {{
-            display: grid !important;
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px;
+        /* 杂志瀑布流（Masonry Columns）：按内容自然定高，彻底根除 items-stretch 等高拉伸与底部空洞 */
+        .news-masonry-container,
+        #news-grid-container {{
+            column-count: 2 !important;
+            column-gap: 16px !important;
+            display: block !important;
+            width: 100% !important;
         }}
-        @media (max-width: 640px) {{
-            .force-two-cols-grid {{
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 8px;
+        @media (max-width: 768px) {{
+            .news-masonry-container,
+            #news-grid-container {{
+                column-count: 1 !important;
+                column-gap: 12px !important;
             }}
-            .news-grid-card {{
-                padding: 10px 8px !important;
-            }}
-            .news-grid-card .card-title {{
-                font-size: 13.5px !important;
-            }}
+        }}
+
+        /* 瀑布流卡片防跨列截断与自适应自然定高 */
+        .news-grid-card {{
+            display: inline-block !important;
+            width: 100% !important;
+            margin-bottom: 16px !important;
+            break-inside: avoid !important;
+            -webkit-column-break-inside: avoid !important;
+            page-break-inside: avoid !important;
+            box-sizing: border-box !important;
+            vertical-align: top !important;
+        }}
+
+        /* 无图纯文字小卡片：内边距与留白精致紧凑，紧密贴合上一张卡片 */
+        .news-grid-card.no-image {{
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }}
+        .news-grid-card.no-image .card-inner-box {{
+            padding: 11px 13px !important;
+            gap: 7px !important;
+        }}
+        .news-grid-card.no-image .card-title {{
+            font-size: 13.5px !important;
+            line-height: 1.4 !important;
+        }}
+        .news-grid-card.no-image .card-summary {{
+            font-size: 12px !important;
+            line-height: 1.55 !important;
+        }}
+
+        /* 有图大卡片：封面展示与内边距 */
+        .news-grid-card.has-image .card-inner-box {{
+            padding: 13px 15px !important;
+            gap: 9px !important;
         }}
 
         /* 顶部纯动态无缝全宽走马灯 */
@@ -1342,7 +1375,7 @@ def generate_index_html():
                     </div>
 
                     <!-- 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;) -->
-                    <div class="force-two-cols-grid" id="news-grid-container">
+                    <div class="columns-1 md:columns-2 gap-4 news-masonry-container" id="news-grid-container">
                         {news_cards_html}
                     </div>
                 </div>
@@ -1766,19 +1799,21 @@ def generate_index_html():
                 const bmCls = isBm ? '' : 'hidden';
 
                 const imageUrl = item.image_url || '';
+                const hasImage = Boolean(imageUrl);
+                const cardCls = hasImage ? 'has-image' : 'no-image';
                 const safeTitle = cleanTitle.replace(/"/g, '&quot;');
-                const coverImgHtml = imageUrl ? `
+                const coverImgHtml = hasImage ? `
                 <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
                     <img src="${{imageUrl}}" alt="${{safeTitle}}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
                 </div>` : '';
 
                 html += `
-                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
+                <article class="news-grid-card ${{cardCls}} group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
                     ${{coverImgHtml}}
-                    <div class="p-3 md:p-[14px] flex flex-col gap-2.5 flex-1">
+                    <div class="card-inner-box p-3 md:p-3.5 flex flex-col gap-2 flex-1">
                         <div class="flex items-start justify-between gap-2">
-                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
+                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15px] transition-colors">
                                 <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
                                 <span class="lang-bm ${{bmCls}}">${{titleBm}}</span>
                             </h3>
@@ -1786,7 +1821,7 @@ def generate_index_html():
                         </div>
 
                         <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
-                        <p class="card-summary text-[12.5px] leading-[1.65] line-clamp-2">
+                        <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
                             <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
                             <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
                         </p>
@@ -1801,15 +1836,13 @@ def generate_index_html():
                                 <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
                             </span>
                         </div>
-
-                        </div>
                     </div>
 
                     <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
                         <div class="flex flex-wrap gap-1 min-w-0">
                             ${{sourcesPills}}
                         </div>
-                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap">
+                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
                             <span class="lang-zh ${{zhCls}}">查看全文 ➡</span>
                             <span class="lang-bm ${{bmCls}}">Baca ➡</span>
                         </button>
