@@ -82,124 +82,9 @@ import sys, re, urllib.request, urllib.parse
 
 def extract_verified_article_image(url, title="", detail=""):
     """
-    【工业级正文大图放行引擎】：
-    1. 正文容器硬约束：依然严格锁定在正文容器内部（<article>、.entry-content、.article-content、.story-content 等），
-       严禁抓取正文外的侧边栏（aside、.sidebar）、推荐流（.recommend、.related）或广告位。
-    2. 放宽 alt 限制：废除必须 100% 命中标题长词的死板规则，只要 <img> 位于正文段落（<p>）之间或正文主配图容器中，
-       且非网站 Logo / 纯图标，即视为该文章的正规配图。
-    3. 多源 URL 兼容：优先读取懒加载属性（data-original, data-lazy-src, data-src, srcset, src）提取高清原图。
-    4. 严格黑名单与尺寸过滤：排除带有 logo, icon, avatar, button, share, default 的小图，
-       并硬性过滤宽高明确小于 300px 的装饰性小图标。
-    5. 必须是各大正规报社媒体上传大图路径。
+    全站 100% 采用纯文字精美卡片排版，彻底停用任何网络图片抓取。
+    直接返回 None。
     """
-    if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
-        return None
-    
-    # 严格白名单：必须是指向文章详情的单页 URL，排除 Facebook、Twitter、聚合列表或主站纯首页
-    valid_patterns = (
-        "news.seehua.com/post/",
-        "sabah.sinchew.com.my/news/",
-        "sinchew.com.my/news/",
-        "www.dailyexpress.com.my/news/",
-        "www.chinapress.com.my/20",
-        "chinapress.com.my/20",
-        "www.malaysiakini.com/news/",
-        "www.freemalaysiatoday.com/category/",
-    )
-    if not any(pat in url for pat in valid_patterns):
-        return None
-
-    try:
-        req = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-            }
-        )
-        with urllib.request.urlopen(req, timeout=4.0) as resp:
-            content_type = resp.headers.get("Content-Type", "").lower()
-            if "text/html" not in content_type and "application/xhtml" not in content_type:
-                return None
-            html = resp.read(300000).decode("utf-8", errors="replace")
-    except Exception:
-        return None
-
-    # 1. 查找页面中所有 <img> 标签
-    img_tags = re.findall(r'<img\s+[^>]+>', html, re.IGNORECASE)
-    
-    for tag in img_tags:
-        tag_lower = tag.lower()
-        
-        # A. 多源 URL 兼容与懒加载解析
-        candidate_url = None
-        for attr in ("data-original", "data-lazy-src", "data-src", "src"):
-            m = re.search(rf'{attr}=["\x27]([^"\x27]+)["\x27]', tag, re.IGNORECASE)
-            if m:
-                val = m.group(1).strip()
-                if val and not val.startswith("data:image"):
-                    candidate_url = val
-                    break
-                    
-        # 兼容 srcset 解析高清原图
-        if not candidate_url:
-            srcset_m = re.search(r'srcset=["\x27]([^"\x27]+)["\x27]', tag, re.IGNORECASE)
-            if srcset_m:
-                first_src = srcset_m.group(1).split(",")[0].strip().split(" ")[0].strip()
-                if first_src:
-                    candidate_url = first_src
-
-        if not candidate_url:
-            continue
-
-        cand_lower = candidate_url.lower()
-
-        # B. 黑名单过滤（严禁网站 Logo、作者头像、占位图、小图标、分享按钮）
-        if any(bad in cand_lower or bad in tag_lower for bad in [
-            "logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", 
-            "btn", "badge", "button", "unsplash", "placeholder", "share", "default", 
-            "sidebar", "widget", "advertisement", "ad-", "tiny", "author", "footer", "header",
-            "mini-de-logo", "logosh4", "see-hualogo", "default-banner"
-        ]):
-            continue
-
-        # C. 尺寸硬过滤：排除明确指定的宽 < 300px 或高 < 150px 的小图标
-        width_m = re.search(r'width=["\x27]?(\d+)', tag, re.IGNORECASE)
-        height_m = re.search(r'height=["\x27]?(\d+)', tag, re.IGNORECASE)
-        if width_m and int(width_m.group(1)) < 300:
-            continue
-        if height_m and int(height_m.group(1)) < 150:
-            continue
-
-        # D. 必须是各大正规报社正规上传的大图路径
-        if not any(good in cand_lower for good in [
-            "wp-content/uploads/20", "uploads/news", "uploads/news2", "sinchew.com.my", 
-            "seehua.com", "dailyexpress.com.my", "chinapress.com.my"
-        ]):
-            continue
-
-        # E. 正文上下文防侧栏特征校验：排除位于相关推荐、热门排行或侧栏容器内的图片
-        pos = html.find(tag)
-        if pos != -1:
-            context_before = html[max(0, pos - 450):pos].lower()
-            if any(side in context_before for side in [
-                'class="img"', "recommend", "related", "sidebar", "widget", "popular", "most-read"
-            ]):
-                continue
-
-        # F. 规范化绝对路径
-        if candidate_url.startswith("//"):
-            full_url = "https:" + candidate_url
-        elif candidate_url.startswith("/"):
-            parsed = urllib.parse.urlparse(url)
-            full_url = f"{parsed.scheme}://{parsed.netloc}{candidate_url}"
-        elif candidate_url.startswith(("http://", "https://")):
-            full_url = candidate_url
-        else:
-            continue
-
-        return full_url
-
     return None
 
 def fetch_gemini_news_if_available(api_key, today_str):
@@ -862,33 +747,11 @@ def verify_and_classify_news():
             print("=" * 70 + "\n")
             sys.exit(1)
 
-        # 3.1 封面图正文专属提取与实体核验（永久防错机制，严禁增加额外 LLM 调用）
-    # 【准则】：
-    # 1. 严禁抓取全站通用 og:image 或侧栏推荐图！
-    # 2. 只有当图片明确位于正文内部且 alt 或上下文包含新闻标题实体词时才保留；
-    # 3. 任何不确定、无 alt 或推荐流图片一律自动丢弃，直接设为 null；
-    # 4. 全局去重：同一天抓取的所有新闻杜绝任何两篇复用同一配图。
-    used_image_urls = set()
+            # 3.1 彻底干掉所有配图：全站 100% 采用纯文字精美卡片排版，彻底停用任何网络图片抓取
     for h in headlines:
-        current_image_url = None
-        url = h.get("url", "") or ""
-        title = h.get("title", "") or ""
-        detail = h.get("detail", "") or ""
-        
-        # 调用正文配图与关键实体校验引擎
-        current_image_url = extract_verified_article_image(url, title, detail)
-        
-        # 全局去重：当天新闻池中任何图片只允许出现一次，重复判定为串台
-        if current_image_url:
-            if current_image_url in used_image_urls:
-                print(f"⚠️ [图片全局去重] 发现跨新闻重复配图，强制丢弃降级为纯文字: {current_image_url[:60]}")
-                current_image_url = None
-            else:
-                used_image_urls.add(current_image_url)
-                
-        h["image_url"] = current_image_url
+        h["image_url"] = None
 
-# 4. 丰富未来 2 周活动数据
+    # 4. 丰富未来 2 周活动数据
     events = build_rich_future_events()
 
     # 5. 维护 7 天滚动历史归档池（确保昨日 11/05 与今日 11/06 独立共存）

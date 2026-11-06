@@ -304,60 +304,47 @@ def generate_index_html():
 
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
-        image_url = item.get("image_url")
-        has_image = bool(image_url)
-        card_cls = "has-image" if has_image else "no-image"
-        clean_title_esc = clean_title.replace('"', '&quot;')
-        cover_img_html = ""
-        if has_image:
-            cover_img_html = f'''
-            <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
-                <img src="{image_url}" alt="{clean_title_esc}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-            </div>'''
-
         news_cards_html += f"""
-        <article class="news-grid-card {card_cls} group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
-            {cover_img_html}
-            <div class="card-inner-box p-3 md:p-3.5 flex flex-col gap-2 flex-1">
-                <div class="flex items-start justify-between gap-2">
-                    <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15px] transition-colors">
-                        <span class="lang-zh">{clean_title}</span>
-                        <span class="lang-bm hidden">{title_bm}</span>
-                    </h3>
-                    {pin_badge}
-                </div>
-
-                <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
-                <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
-                    <span class="lang-zh">{clean_detail}</span>
-                    <span class="lang-bm hidden">{detail_bm}</span>
-                </p>
-
-                <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
-                    <span class="mono text-[10.5px] font-bold card-meta-time">{today_mmdd} {today_time}</span>
-                    <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
-                        {tag}
-                    </span>
-                    <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
-                        <span class="lang-zh">{category_tag_zh}</span>
-                        <span class="lang-bm hidden">{category_tag_bm}</span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
-                <div class="flex flex-wrap gap-1 min-w-0">
-                    {sources_pills}
-                </div>
-                <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
-                    <span class="lang-zh">查看全文 ➡</span>
-                    <span class="lang-bm hidden">Baca ➡</span>
-                </button>
-            </div>
-        </article>
-        """
-
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
+                    <div class="card-inner-box p-3.5 md:p-4 flex flex-col gap-2.5 flex-1">
+                        <div class="flex items-start justify-between gap-2">
+                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14.5px] md:text-[15.5px] transition-colors">
+                                <span class="lang-zh">{clean_title}</span>
+                                <span class="lang-bm hidden">{title_bm}</span>
+                            </h3>
+                            {pin_badge}
+                        </div>
+        
+                        <!-- 2 行精炼引言 (纯文字紧凑排版) -->
+                        <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
+                            <span class="lang-zh">{clean_detail}</span>
+                            <span class="lang-bm hidden">{detail_bm}</span>
+                        </p>
+        
+                        <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
+                            <span class="mono text-[10.5px] font-bold card-meta-time">{today_mmdd} {today_time}</span>
+                            <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
+                                {tag}
+                            </span>
+                            <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
+                                <span class="lang-zh">{category_tag_zh}</span>
+                                <span class="lang-bm hidden">{category_tag_bm}</span>
+                            </span>
+                        </div>
+                    </div>
+        
+                    <div class="mt-auto flex items-center justify-between gap-2 px-3.5 py-2.5 card-footer border-t border-white/5">
+                        <div class="flex flex-wrap gap-1 min-w-0">
+                            {sources_pills}
+                        </div>
+                        <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
+                            <span class="lang-zh">查看全文 ➡</span>
+                            <span class="lang-bm hidden">Baca ➡</span>
+                        </button>
+                    </div>
+                </article>
+                """
+        
     # 3. 动态渲染未来 2 周活动预告卡片
     events_cards_html = ""
     for ev in events_list:
@@ -1006,37 +993,34 @@ def generate_index_html():
 
         /* 瀑布流卡片防跨列截断与自适应自然定高 */
         .news-grid-card {{
-            display: inline-block !important;
-            width: 100% !important;
-            margin-bottom: 16px !important;
-            break-inside: avoid !important;
-            -webkit-column-break-inside: avoid !important;
-            page-break-inside: avoid !important;
-            box-sizing: border-box !important;
-            vertical-align: top !important;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 16px;
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            box-sizing: border-box;
+            vertical-align: top;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
         }}
 
-        /* 无图纯文字小卡片：内边距与留白精致紧凑，紧密贴合上一张卡片 */
-        .news-grid-card.no-image {{
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }}
-        .news-grid-card.no-image .card-inner-box {{
-            padding: 11px 13px !important;
-            gap: 7px !important;
-        }}
-        .news-grid-card.no-image .card-title {{
-            font-size: 13.5px !important;
-            line-height: 1.4 !important;
-        }}
-        .news-grid-card.no-image .card-summary {{
-            font-size: 12px !important;
-            line-height: 1.55 !important;
+        /* 分类过滤隐藏样式（最高优先级） */
+        .news-grid-card.category-hidden {{
+            display: none !important;
         }}
 
-        /* 有图大卡片：封面展示与内边距 */
-        .news-grid-card.has-image .card-inner-box {{
-            padding: 13px 15px !important;
-            gap: 9px !important;
+        /* 纯文字精美卡片内边距与留白 */
+        .news-grid-card .card-inner-box {{
+            padding: 14px 16px;
+            gap: 10px;
+        }}
+        .news-grid-card .card-title {{
+            font-size: 14.5px;
+            line-height: 1.42;
+        }}
+        .news-grid-card .card-summary {{
+            font-size: 12.5px;
+            line-height: 1.62;
         }}
 
         /* 顶部纯动态无缝全宽走马灯 */
@@ -1549,9 +1533,7 @@ def generate_index_html():
                 <h2 class="text-[17px] sm:text-[20px] font-black leading-[1.4] transition-colors modal-headline" id="modal-title"></h2>
 
                 <!-- 封面大图 (仅真实原生 og:image 存在时渲染展示) -->
-                <div id="modal-cover-wrap" class="hidden relative w-full aspect-video rounded-xl overflow-hidden border modal-cover-wrap">
-                    <img id="modal-cover-img" src="" alt="" class="w-full h-full object-cover" />
-                </div>
+                <div id="modal-cover-wrap" class="hidden" style="display:none !important;"></div>
 
                 <!-- 深度报道全文内容 (250~400字背景脉络与政策细则) -->
                 <div class="modal-detail-box rounded-xl p-4 sm:p-5 space-y-3">
@@ -1650,17 +1632,23 @@ def generate_index_html():
             document.querySelectorAll('.cat-tab-btn').forEach(btn => {{
                 btn.className = "cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border";
             }});
-            btnElem.className = "cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
+            const targetBtn = btnElem || document.querySelector(`.cat-tab-btn[onclick*="'${{catKey}}'"]`);
+            if (targetBtn) {{
+                targetBtn.className = "cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
+            }}
 
-            // 2. 毫秒级免刷新过滤下方卡片
+            // 2. 毫秒级免刷新过滤下方卡片（双重保障：移除!important并使用category-hidden类）
             const cards = document.querySelectorAll('.news-grid-card');
             let visibleCount = 0;
+            const targetCat = (catKey || '').trim().toLowerCase();
             cards.forEach(card => {{
-                const itemCat = card.getAttribute('data-category');
-                if (catKey === 'all' || itemCat === catKey) {{
+                const itemCat = (card.getAttribute('data-category') || '').trim().toLowerCase();
+                if (targetCat === 'all' || itemCat === targetCat) {{
+                    card.classList.remove('category-hidden');
                     card.style.display = '';
                     visibleCount++;
                 }} else {{
+                    card.classList.add('category-hidden');
                     card.style.display = 'none';
                 }}
             }});
@@ -1669,6 +1657,7 @@ def generate_index_html():
             const countTag = document.getElementById('headlines-count-tag');
             if (countTag) countTag.textContent = visibleCount;
         }}
+        window.filterNewsCategory = filterNewsCategory;
 
         // 一键分享功能
         function sharePage() {{
@@ -1798,29 +1787,18 @@ def generate_index_html():
                 const zhCls = isBm ? 'hidden' : '';
                 const bmCls = isBm ? '' : 'hidden';
 
-                const imageUrl = item.image_url || '';
-                const hasImage = Boolean(imageUrl);
-                const cardCls = hasImage ? 'has-image' : 'no-image';
-                const safeTitle = cleanTitle.replace(/"/g, '&quot;');
-                const coverImgHtml = hasImage ? `
-                <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
-                    <img src="${{imageUrl}}" alt="${{safeTitle}}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                </div>` : '';
-
-                html += `
-                <article class="news-grid-card ${{cardCls}} group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
-                    ${{coverImgHtml}}
-                    <div class="card-inner-box p-3 md:p-3.5 flex flex-col gap-2 flex-1">
+html += `
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
+                    <div class="card-inner-box p-3.5 md:p-4 flex flex-col gap-2.5 flex-1">
                         <div class="flex items-start justify-between gap-2">
-                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15px] transition-colors">
+                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14.5px] md:text-[15.5px] transition-colors">
                                 <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
                                 <span class="lang-bm ${{bmCls}}">${{titleBm}}</span>
                             </h3>
                             ${{pinBadge}}
                         </div>
 
-                        <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
+                        <!-- 2 行精炼引言 (纯文字紧凑排版) -->
                         <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
                             <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
                             <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
@@ -1838,11 +1816,11 @@ def generate_index_html():
                         </div>
                     </div>
 
-                    <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
+                    <div class="mt-auto flex items-center justify-between gap-2 px-3.5 py-2.5 card-footer border-t border-white/5">
                         <div class="flex flex-wrap gap-1 min-w-0">
                             ${{sourcesPills}}
                         </div>
-                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
+                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
                             <span class="lang-zh ${{zhCls}}">查看全文 ➡</span>
                             <span class="lang-bm ${{bmCls}}">Baca ➡</span>
                         </button>
@@ -1856,12 +1834,15 @@ def generate_index_html():
             // 保持当前分类过滤规则
             const cards = container.querySelectorAll('.news-grid-card');
             let visibleCount = 0;
+            const targetCat = (activeCategory || 'all').trim().toLowerCase();
             cards.forEach(card => {{
-                const itemCat = card.getAttribute('data-category');
-                if (activeCategory === 'all' || itemCat === activeCategory) {{
+                const itemCat = (card.getAttribute('data-category') || '').trim().toLowerCase();
+                if (targetCat === 'all' || itemCat === targetCat) {{
+                    card.classList.remove('category-hidden');
                     card.style.display = '';
                     visibleCount++;
                 }} else {{
+                    card.classList.add('category-hidden');
                     card.style.display = 'none';
                 }}
             }});
