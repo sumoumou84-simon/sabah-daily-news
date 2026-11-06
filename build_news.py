@@ -283,8 +283,12 @@ def generate_index_html():
     news_cards_html = ""
     for idx, item in enumerate(headlines, 1):
         raw_title = item.get("title", "")
-        detail = item.get("detail", "")
+        detail = item.get("detail", "") or item.get("summary", "")
         clean_title, tag, sources, clean_detail = extract_tags_and_sources(raw_title, detail)
+        if item.get('sources'):
+            sources = item.get('sources')
+        elif item.get('source'):
+            sources = [item.get('source')]
         title_bm = item.get("titleBM") or get_bm_title(clean_title)
         detail_bm = item.get("detailBM") or f"Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. Maklumat disahkan oleh portal berita dan agensi rasmi berkaitan. {clean_detail[:120]}..."
 
@@ -1187,7 +1191,7 @@ def generate_index_html():
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>{today_mmdd} {today_time} LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • {today_mmdd} {today_time} LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -1278,7 +1282,7 @@ def generate_index_html():
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
                         Asia/Kuala_Lumpur • {today_full} • 
-                        <span class="lang-zh">动态实时更新</span>
+                        <span class="lang-zh">每日 05:00 AM 准时晨报</span>
                         <span class="lang-bm hidden">Kemas Kini Langsung</span>
                     </div>
                     <div class="inline-flex items-center gap-1 px-2.5 py-[4px] rounded-full border text-[11px]">
@@ -1807,14 +1811,14 @@ def generate_index_html():
             headlinesList.forEach((item, index) => {{
                 const idx = index + 1;
                 const rawTitle = item.title || '';
-                const detail = item.detail || '';
+                const detail = item.detail || item.summary || '';
                 const category = item.category || 'general';
 
                 const verifyMatch = rawTitle.match(/\[(.*?)\]/);
                 const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
                 const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
 
-                let sources = item.sources || [];
+                let sources = item.sources || (item.source ? [item.source] : []);
                 let cleanDetail = detail;
                 if (!sources.length) {{
                     if (detail.includes("来源：") || detail.includes("来源:")) {{
@@ -1977,14 +1981,14 @@ html += `
             const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
             const rawTitle = item.title || '';
-            const detail = item.detail || '';
+            const detail = item.detail || item.summary || '';
             const category = item.category || 'general';
 
             const verifyMatch = rawTitle.match(/\[(.*?)\]/);
             const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
             const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
 
-            let sources = item.sources || [];
+            let sources = item.sources || (item.source ? [item.source] : []);
             let cleanDetail = detail;
             if (!sources.length) {{
                 if (detail.includes("来源：") || detail.includes("来源:")) {{

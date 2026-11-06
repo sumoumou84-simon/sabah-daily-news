@@ -13,6 +13,38 @@
   ],
   "headlines": [
     {
+      "id": "manual_20261106_sabah_01",
+      "category": "sabah",
+      "title": "冯晋哲：涵盖德士出租车及校车 沙巴1106名司机获发1000令吉特别援助金",
+      "summary": "沙巴工业及企业发展部长冯晋哲今日代表沙巴州政府宣布，全州共有 1,106 名符合资格的德士、出租车及校车司机，将获得每人 1,000 令吉的一次性特别援助金，以实质减免前线营运者的生活开销与燃油负担。该计划属于州政府关爱交通业者专项扶持，款项将直接发放至受惠司机账户。",
+      "detail": "沙巴工业及企业发展部长冯晋哲今日代表沙巴州政府宣布，全州共有 1,106 名符合资格的德士、出租车及校车司机，将获得每人 1,000 令吉的一次性特别援助金，以实质减免前线营运者的生活开销与燃油负担。该计划属于州政府关爱交通业者专项扶持，款项将直接发放至受惠司机账户。",
+      "source": "沙巴星洲日报 官方专页",
+      "sources": [
+        "沙巴星洲日报 官方专页"
+      ],
+      "time": "11/06 05:00PM",
+      "image_url": "https://sabah.sinchew.com.my/wp-content/uploads/2026/11/taxi-aid-sabah.jpg",
+      "url": "https://sabah.sinchew.com.my/",
+      "titleBM": "Phoong Jin Zhe: 1,106 Pemandu Teksi & Bas Sekolah Sabah Terima Bantuan Khas RM1,000",
+      "detailBM": "Menteri Pembangunan Perindustrian dan Keusahawanan Sabah Phoong Jin Zhe mengumumkan seramai 1,106 pemandu teksi dan bas sekolah menerima bantuan khas one-off RM1,000 bagi meringankan kos sara hidup."
+    },
+    {
+      "id": "manual_20261106_national_02",
+      "category": "national",
+      "title": "伊朗与美国冲突恐引发网络威胁 全国警察总长：大马警方全面提高戒备",
+      "summary": "鉴于中东伊朗与美国之间的地缘冲突升级，全国警察总长今日指出，国际对抗极可能蔓延至网络战。大马皇家警察（PDRM）商业罪案调查部与网安部门已全面提升戒备级别，严密监控关键金融与政府基础设施系统，防止遭受任何外部黑客与恶意渗透。",
+      "detail": "鉴于中东伊朗与美国之间的地缘冲突升级，全国警察总长今日指出，国际对抗极可能蔓延至网络战。大马皇家警察（PDRM）商业罪案调查部与网安部门已全面提升戒备级别，严密监控关键金融与政府基础设施系统，防止遭受任何外部黑客与恶意渗透。",
+      "source": "沙巴诗华日报 独家专线",
+      "sources": [
+        "沙巴诗华日报 独家专线"
+      ],
+      "time": "11/06 05:00PM",
+      "image_url": "https://news.seehua.com/wp-content/uploads/2026/11/igp-cyber-security.jpg",
+      "url": "https://news.seehua.com/post/1599845/",
+      "titleBM": "Konflik Iran-AS: PDRM Tingkat Kesiapsiagaan Hadapi Potensi Ancaman Siber Global",
+      "detailBM": "Ketua Polis Negara menyatakan Polis Diraja Malaysia (PDRM) bersiap sedia memantau sistem kritikal negara bagi mencegah sebarang pencerobohan siber akibat konflik antarabangsa."
+    },
+    {
       "category": "sabah",
       "title": "沙巴丰收节与原住民竹筏赛正式列入国家非物质文化遗产名录 [自由日报 + 诗华日报 双核实]",
       "url": "https://news.seehua.com/post/1600286/",
