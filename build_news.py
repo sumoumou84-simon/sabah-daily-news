@@ -304,8 +304,19 @@ def generate_index_html():
 
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
+        image_url = item.get("image_url")
+        clean_title_esc = clean_title.replace('"', '&quot;')
+        cover_img_html = ""
+        if image_url:
+            cover_img_html = f'''
+            <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
+                <img src="{image_url}" alt="{clean_title_esc}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            </div>'''
+
         news_cards_html += f"""
         <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
+            {cover_img_html}
             <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
                 <div class="flex items-start justify-between gap-2">
                     <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
@@ -539,6 +550,10 @@ def generate_index_html():
             background-color: var(--panel-bg) !important;
             border-color: var(--panel-border) !important;
         }}
+                .theme-dark .card-cover-wrap {{
+            background-color: #0F172A !important;
+            border-bottom: 1px solid #334155 !important;
+        }}
         .theme-dark .news-grid-card {{
             background-color: var(--bg-card) !important;
             border-color: var(--border-card) !important;
@@ -753,6 +768,10 @@ def generate_index_html():
             background-color: var(--panel-bg) !important;
             border-color: var(--panel-border) !important;
             box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        }}
+                .theme-light .card-cover-wrap {{
+            background-color: #F1F5F9 !important;
+            border-bottom: 1px solid #E2E8F0 !important;
         }}
         .theme-light .news-grid-card {{
             background-color: var(--bg-card) !important;
@@ -1632,8 +1651,17 @@ def generate_index_html():
                 const zhCls = isBm ? 'hidden' : '';
                 const bmCls = isBm ? '' : 'hidden';
 
+                const imageUrl = item.image_url || '';
+                const safeTitle = cleanTitle.replace(/"/g, '&quot;');
+                const coverImgHtml = imageUrl ? `
+                <div class="card-cover-wrap relative w-full aspect-video overflow-hidden bg-[#0f172a] border-b border-[#334155]/60 group-hover:opacity-95 transition-all">
+                    <img src="${{imageUrl}}" alt="${{safeTitle}}" loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.parentElement.style.display=\'none\';" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                </div>` : '';
+
                 html += `
                 <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="toggleNewsCard(${{idx}})">
+                    ${{coverImgHtml}}
                     <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
                         <div class="flex items-start justify-between gap-2">
                             <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">

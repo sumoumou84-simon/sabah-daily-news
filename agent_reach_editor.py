@@ -78,6 +78,64 @@ WEB_PORTALS = [
     {"name": "Stadium Astro 马来西亚体育", "url": "https://www.stadiumastro.com/"}
 ]
 
+def extract_opengraph_image(url):
+    """
+    轻量级原生 HTML 解析，提取原始网页的 OpenGraph 封面图 (<meta property="og:image" content="...">) 或正文首张大图 URL。
+    如果存在则返回规范化的绝对 URL；若无或无效则返回 None。
+    【重要准则】：此步骤只做原生 HTTP/HTML 解析，严禁增加任何额外的 LLM 调用！
+    设置 3.5 秒严格超时保护与异常容错。
+    """
+    if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
+        return None
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=3.5) as resp:
+            content_type = resp.headers.get("Content-Type", "").lower()
+            if "text/html" not in content_type and "application/xhtml" not in content_type:
+                return None
+            chunk = resp.read(65536).decode("utf-8", errors="replace")
+            
+            # 1. 优先提取 OpenGraph / Twitter Card 官方封面图
+            og_patterns = [
+                r'<meta\s+[^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\']\s+[^>]*?content=["\']([^"\']+)["\']',
+                r'<meta\s+[^>]*?content=["\']([^"\']+)["\']\s+[^>]*?(?:property|name)=["\'](?:og:image|twitter:image)["\']',
+            ]
+            for pat in og_patterns:
+                m = re.search(pat, chunk, re.IGNORECASE)
+                if m:
+                    img_url = m.group(1).strip()
+                    if img_url.startswith("//"):
+                        return "https:" + img_url
+                    elif img_url.startswith("/"):
+                        parsed = urllib.parse.urlparse(url)
+                        return f"{parsed.scheme}://{parsed.netloc}{img_url}"
+                    elif img_url.startswith(("http://", "https://")):
+                        return img_url
+
+            # 2. 回退提取正文首张大图 (排除常见 icon/logo)
+            img_matches = re.findall(r'<img\s+[^>]*?src=["\']([^"\']+)["\']', chunk, re.IGNORECASE)
+            for raw_img in img_matches:
+                img_lower = raw_img.lower()
+                if any(bad in img_lower for bad in ["logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", "btn", "badge"]):
+                    continue
+                if any(ext in img_lower for ext in [".jpg", ".jpeg", ".png", ".webp"]):
+                    if raw_img.startswith("//"):
+                        return "https:" + raw_img
+                    elif raw_img.startswith("/"):
+                        parsed = urllib.parse.urlparse(url)
+                        return f"{parsed.scheme}://{parsed.netloc}{raw_img}"
+                    elif raw_img.startswith(("http://", "https://")):
+                        return raw_img
+    except Exception:
+        pass
+    return None
+
 def fetch_gemini_news_if_available(api_key, today_str):
     """
     当 GitHub Actions 或本地配置了 GEMINI_API_KEY 时，
@@ -147,6 +205,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"沙巴丰收节与原住民竹筏赛正式列入国家非物质文化遗产名录 [自由日报 + 诗华日报 双核实]",
+            "url": "https://news.seehua.com/?cat=53",
+            "image_url": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Pesta Kaamatan & Lumba Rakit Borneo Diiktiraf Warisan Budaya Tidak Ketara Kebangsaan",
             "sources": ["自由日报", "诗华日报"],
             "detail": (
@@ -160,6 +220,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"山打根中华商会提呈5项港口振兴备忘录 促紧急疏浚浅滩航道与增补起重机 [沙巴星洲日报 + 诗华日报 双核实]",
+            "url": "https://sabah.sinchew.com.my/",
+            "image_url": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Dewan Perniagaan Cina Sandakan Kemuka 5 Syor Naik Taraf Operasi Pelabuhan",
             "sources": ["沙巴星洲日报", "诗华日报"],
             "detail": (
@@ -173,6 +235,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"2026沙巴全州永续校园环境奖揭晓 山打根大同华小荣膺全州华小组总冠军 [沙巴星洲日报 + 诗华日报 双核实]",
+            "url": "https://mps.sabah.gov.my/",
+            "image_url": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80",
             "titleBM": "SJK(C) Tai Tong Sandakan Muncul Juara Keseluruhan Anugerah Sekolah Lestari Sabah 2026",
             "sources": ["沙巴星洲日报", "诗华日报"],
             "detail": (
@@ -186,6 +250,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"沙巴水务局通报斗湖古哈拉抽水机故障与兵南邦排污管迁移 多区紧急制水 [JANS + Sabah TV 双核实]",
+            "url": "https://www.facebook.com/SabahTvOfficial",
+            "image_url": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
             "titleBM": "JANS Maklumkan Pam Rosak di Tawau & Pemindahan Paip Penampang Cetus Gangguan Air",
             "sources": ["沙巴水务局", "Sabah TV"],
             "detail": (
@@ -199,6 +265,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"亚庇警方突击豪华独立别墅瓦解跨国网络诈骗据点 逮捕14名外籍涉案嫌犯 [Daily Express + 诗华日报 双核实]",
+            "url": "https://www.dailyexpress.com.my/",
+            "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Polis Sabah Serbu Banglo Mewah di KK, Tumpaskan Sindiket Penipuan Siber Antarabangsa",
             "sources": ["Daily Express", "诗华日报"],
             "detail": (
@@ -213,6 +281,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"沙巴警察总监公布肃毒战报：首10个月缉获2.87亿毒品 创历史单年新高 [中国报 + 八度空间 双核实]",
+            "url": "https://www.facebook.com/ChinaPressMY",
+            "image_url": "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Polis Sabah Rampas Dadah Bernilai RM287 Juta Sepanjang 10 Bulan Pertama 2026",
             "sources": ["中国报", "八度空间"],
             "detail": (
@@ -227,6 +297,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"慕斯达法沙慕宣布：沙巴年入5万以下群体享全额免费官方法律援助 [马新社 + Sabah TV 双核实]",
+            "url": "https://www.facebook.com/mdn.feeds",
+            "image_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Mustapha Sakmud Umum Bantuan Guaman Percuma untuk Isi Rumah Berpendapatan Bawah RM50k",
             "sources": ["马新社", "Sabah TV"],
             "detail": (
@@ -241,6 +313,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"里卡士区州议员敦促教育部加快制定《全州反校园霸凌与心理安全应急标准》 [诗华日报 + 星洲日报 双核实]",
+            "url": "https://sabah.sinchew.com.my/",
+            "image_url": None,
             "titleBM": "ADUN Likas Gesa KPM Segerakan SOP Anti-Buli & Keselamatan Mental Pelajar Sekolah",
             "sources": ["诗华日报", "沙巴星洲日报"],
             "detail": (
@@ -259,6 +333,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"针对朝野部长公开辩论 首相安华强调内阁紧密团结：部际政策讨论绝非分裂 [八度空间 + 马新社 双核实]",
+            "url": "https://www.facebook.com/8TV.NEWS",
+            "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
             "titleBM": "PM Anwar Tegaskan Kabinet Kekal Padu: Perbezaan Pendapat Kementerian Bukan Perpecahan",
             "sources": ["八度空间", "马新社"],
             "detail": (
@@ -273,6 +349,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"财政部国家会计局通报：全马无人认领款项破140亿 促民众通过eGUMIS核查 [中国报 + 光明日报 双核实]",
+            "url": "https://www.chinapress.com.my/",
+            "image_url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Jabatan Akauntan Negara: Wang Tak Dituntut (WTD) Cecah RM14 Bilion, Semak di eGUMIS",
             "sources": ["中国报", "光明日报"],
             "detail": (
@@ -286,6 +364,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"交通部启动全生命周期拥车成本优惠研究 推动电动车路税与二手保值新架构 [光明日报 + 中国报 双核实]",
+            "url": "https://www.facebook.com/GuangMingDaily",
+            "image_url": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Kementerian Pengangkutan Kaji Struktur Cukai Jalan & Nilai Terpakai Kenderaan EV",
             "sources": ["光明日报", "中国报"],
             "detail": (
@@ -300,6 +380,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"国家银行宣布维持隔夜政策利率在3.00%水平 符合国家经济平稳走势 [马新社 + 八度空间 双核实]",
+            "url": "https://www.facebook.com/mdn.feeds",
+            "image_url": None,
             "titleBM": "Bank Negara Malaysia Kekalkan Kadar Dasar Semalaman (OPR) pada 3.00 Peratus",
             "sources": ["马新社", "八度空间"],
             "detail": (
@@ -314,6 +396,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"APAD增派轻快铁格拉那再也线早晚高峰列车 缩短间隔至3分钟缓解拥挤 [中国报 + 八度空间 双核实]",
+            "url": "https://www.facebook.com/8TV.NEWS",
+            "image_url": "https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=800&q=80",
             "titleBM": "APAD & Prasarana Tambah Tren Waktu Puncak Laluan Kelana Jaya Selang 3 Minit",
             "sources": ["中国报", "八度空间"],
             "detail": (
@@ -328,6 +412,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"投贸部启动东马绿色物流与冷链扶持计划 赋能中小企业跨国出海 [马新社 + 诗华日报 双核实]",
+            "url": "https://news.seehua.com/?cat=53",
+            "image_url": None,
             "titleBM": "MITI Lancar Pelan Logistik Hijau & Rangkaian Sejuk Pacu PKS Sabah dan Sarawak",
             "sources": ["马新社", "诗华日报"],
             "detail": (
@@ -342,6 +428,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"国防部重申东马防卫平衡战略：沙砂驻军比例稳步提至50% 纳闽基地扩建 [中国报 + 八度空间 双核实]",
+            "url": "https://www.facebook.com/ChinaPressMY",
+            "image_url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Kementerian Pertahanan Tingkat Nisbah Penempatan Anggota ke 50% di Sabah & Sarawak",
             "sources": ["中国报", "八度空间"],
             "detail": (
@@ -356,6 +444,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"农业部严打跨州囤积居奇 保证全马白米战略储备与统制糖供应充裕 [光明日报 + 诗华日报 双核实]",
+            "url": "https://www.facebook.com/GuangMingDaily",
+            "image_url": None,
             "titleBM": "KPKM Jamin Bekalan Beras Putih & Gula Pasir Mencukupi, Banteras Sorok Bekalan",
             "sources": ["光明日报", "诗华日报"],
             "detail": (
@@ -374,6 +464,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"日本羽球大师赛抽签出炉 李梓嘉独闯男单正赛首圈对古贺穗次轮或碰波波夫 [中国报体育 + 马新社体育 双核实]",
+            "url": "https://www.chinapress.com.my/category/sports/",
+            "image_url": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Undian Master Kumamoto: Lee Zii Jia Wakili Tunggal Negara, Tentang Koga di Pusingan Pertama",
             "sources": ["中国报体育", "马新社体育"],
             "detail": (
@@ -388,6 +480,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"沙巴女足全国决赛 1-0 险胜雪兰莪FC 荣膺队史三冠王两连霸 [Sabah FC + Sabah TV 双核实]",
+            "url": "https://www.facebook.com/sabahfcofficial",
+            "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Sabah FA Juara Liga Wanita Kebangsaan (LWN) 2026, Tewaskan Selangor FC 1-0",
             "sources": ["Sabah FC", "Sabah TV"],
             "detail": (
@@ -402,6 +496,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"名宿拉昔西迪点评国羽后备军：建议多打挑战赛积攒手感 支持李梓嘉迎战15分制 [中国报体育 + 大马羽总 双核实]",
+            "url": "https://www.facebook.com/badmintonassocmalaysia",
+            "image_url": None,
             "titleBM": "Rashid Sidek Saran Pelapis Negara Sertai Kejohanan Siri Antarabangsa",
             "sources": ["中国报体育", "大马羽总"],
             "detail": (
@@ -416,6 +512,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"沙巴足球俱乐部备战超级联赛客战硬仗 主帅王金瑞强化战术反击阵型 [Sabah FC + Stadium Astro 双核实]",
+            "url": "https://www.stadiumastro.com/",
+            "image_url": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80",
             "titleBM": "Sabah FC Perkemas Formasi Taktikal Hadapi Jadual Padat Liga Super 2026/27",
             "sources": ["Sabah FC", "Stadium Astro"],
             "detail": (
@@ -430,6 +528,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"沙巴铅球新星厄尔·伊萨克全面换用成年组器械 确立2027东运会冲金目标 [Sabah TV + 中国报体育 双核实]",
+            "url": "https://www.facebook.com/chinapress.sports",
+            "image_url": None,
             "titleBM": "Bintang Lontar Peluru Sabah Earl Isaac Sasar Kelayakan Sukan SEA 2027",
             "sources": ["Sabah TV", "中国报体育"],
             "detail": (
@@ -448,6 +548,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "general",
             "title": f"山打根大同小学与启华小学联合举办校园防火避灾应急演练 [沙巴星洲日报 + 诗华日报 双核实]",
+            "url": "https://sabah.sinchew.com.my/",
+            "image_url": "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=800&q=80",
             "titleBM": "SJK(C) Tai Tong & SJK(C) Chi Hwa Anjur Latihan Kecemasan Kebakaran Bersama Bomba",
             "sources": ["沙巴星洲日报", "诗华日报"],
             "detail": (
@@ -462,6 +564,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "general",
             "title": f"沙巴红新月会联手肯特医院血库举办爱心献血运动 呼吁市民积极补充库存 [Sandakan FM + 肯特医院官方 双核实]",
+            "url": "https://www.facebook.com/SANDAKANfm901",
+            "image_url": None,
             "titleBM": "Bulan Sabit Merah & Tabung Darah Hospital Duchess of Kent Anjur Kempen Derma Darah",
             "sources": ["Sandakan FM", "肯特医院官方"],
             "detail": (
@@ -476,6 +580,8 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "general",
             "title": f"气象局更新沙巴东海岸强风巨浪三级黄色预警 敦促苏禄海小型渔船归港避风 [Sandakan FM + Sabah TV 双核实]",
+            "url": "https://www.facebook.com/SabahTvOfficial",
+            "image_url": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80",
             "titleBM": "METMalaysia Keluarkan Amaran Kuning Angin Kencang & Laut Bergelora di Laut Sulu Sabah",
             "sources": ["Sandakan FM", "Sabah TV"],
             "detail": (
@@ -689,6 +795,14 @@ def verify_and_classify_news():
             print(f"   3. 修复网络或密钥后，重新触发工作流，即可全自动抓取属于 {today_iso} 的新鲜新闻。")
             print("=" * 70 + "\n")
             sys.exit(1)
+
+    # 3.1 封面图提取与解析（按需求严格执行原生 HTML/OpenGraph 提取，严禁增加额外 LLM 调用）
+    for h in headlines:
+        if h.get("url") and not h.get("image_url"):
+            extracted_img = extract_opengraph_image(h["url"])
+            h["image_url"] = extracted_img if extracted_img else None
+        elif "image_url" not in h or not h.get("image_url"):
+            h["image_url"] = None
 
     # 4. 丰富未来 2 周活动数据
     events = build_rich_future_events()
