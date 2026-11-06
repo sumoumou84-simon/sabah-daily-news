@@ -1168,13 +1168,13 @@ def generate_index_html():
             to {{ opacity: 1; transform: translateY(0); }}
         }}
         /* 沉浸式独立全文阅读弹窗样式 (强制顶级层级与居中 Flex 浮出) */
-        #news-modal {{
+        #news-modal, #disclaimer-modal {{
             z-index: 9999 !important;
         }}
-        #news-modal.hidden {{
+        #news-modal.hidden, #disclaimer-modal.hidden {{
             display: none !important;
         }}
-        #news-modal:not(.hidden) {{
+        #news-modal:not(.hidden), #disclaimer-modal:not(.hidden) {{
             display: flex !important;
         }}
 
@@ -1628,6 +1628,152 @@ def generate_index_html():
                 </div>
             </div>
         </div>
+
+    <!-- 页脚极简轻量版权与免责声明链接 -->
+    <footer class="mt-8 mb-4 text-center py-4 border-t border-white/5">
+        <div class="flex items-center justify-center gap-2 flex-wrap text-xs text-stone-400">
+            <span>© 2026 西门看看网 Simon KanKan</span>
+            <span>•</span>
+            <a onclick="openDisclaimerModal()" class="text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 underline cursor-pointer transition">
+                <span class="lang-zh">法律免责与版权声明</span>
+                <span class="lang-bm hidden">Penafian & Hak Cipta</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- 法律免责与版权声明轻量弹窗 (Disclaimer Modal) -->
+    <div id="disclaimer-modal" class="fixed inset-0 z-[10000] hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleDisclaimerBackdropClick(event)">
+        <div class="relative w-11/12 sm:w-full max-w-2xl max-h-[88vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden border modal-content-box" onclick="event.stopPropagation()">
+            <!-- 弹窗顶部栏：标题与 ✕ 按钮 -->
+            <div class="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3.5 border-b modal-header-bar backdrop-blur-md">
+                <div class="flex items-center gap-2">
+                    <span class="px-2 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[11px] font-black tracking-wide">LEGAL</span>
+                    <h3 class="text-[15px] sm:text-[16px] font-black">
+                        <span class="lang-zh">法律免责与版权声明</span>
+                        <span class="lang-bm hidden">Penafian & Hak Cipta</span>
+                    </h3>
+                </div>
+                <button onclick="closeDisclaimerModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-[18px] font-bold transition hover:scale-110 modal-close-btn" title="关闭 (Esc)">
+                    ✕
+                </button>
+            </div>
+
+            <!-- 弹窗主体滚动区 -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 modal-body-scroll scrollbar-thin text-[13px] leading-relaxed">
+                <!-- 中文版声明 -->
+                <div class="lang-zh space-y-3.5">
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>⚖️</span>
+                            <span>一、合理使用原则（Fair Use）</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            《西门看看网》属于非营利性质的沙巴本土公益民生信息汇聚与晨报速递平台。本平台所采编、引述之新闻标题、核心数据与市政通告，均基于促进公共利益、紧急公用事业通报与资讯透明之合理使用（Fair Use）原则，旨在方便沙巴及全马居民获取及时民生要闻。
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>📰</span>
+                            <span>二、官方信源溯源与版权归属</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            本站坚守严谨的新闻伦理，每一篇报道均显式标明首发媒体或官方发布机构（包括但不限于：星洲日报沙巴版、诗华日报、亚洲时报、沙巴水务局 JANS、山打根市议会 MPS、沙巴电力 SESB、大马皇家警察 PDRM 等），并保留原文溯源出处。原新闻报道之完整著作权、商标权及知识产权，均完整归属于原作者及原始出版媒体所有。
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>🛡️</span>
+                            <span>三、24小时快速下架与联络通道（Takedown Policy）</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            本平台高度尊重知识产权权利人、原报社及相关当事人的合法权益。若版权持有方或相关机构对本站所载之任何引述内容、文字摘要或机构通告存有异议，或提出勘误、更新或下架要求，欢迎通过以下官方通道联系我们。本站承诺在核验后 <strong>24小时内</strong> 无条件配合更正或予以删除下架：
+                        </p>
+                        <div class="mt-2 p-2.5 rounded-lg bg-black/30 border border-white/10 flex items-center justify-between flex-wrap gap-2 text-[12px] mono">
+                            <div>
+                                <div class="font-bold text-[#FFD60A]">联络人：Simon / 运维团队</div>
+                                <div class="opacity-80">WhatsApp：+60 10-930 1117</div>
+                            </div>
+                            <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="px-3 py-1 rounded-md bg-[#22c55e] hover:bg-[#16a34a] text-black font-black text-[11px] transition">
+                                立即 WhatsApp 联络
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>⚠️</span>
+                            <span>四、公用事业信息免责</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            本站所展示的公用事业（供水、供电、路况等）实时资讯转引自有关当局最新公开发布通告。因现场突发天气、抢修工况演变导致的实际通水通电时间调整，请以各公用事业局现场实际处置与官方热线最新答复为准。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 马来文版声明 (BM) -->
+                <div class="lang-bm hidden space-y-3.5">
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>⚖️</span>
+                            <span>1. Doktrin Penggunaan Wajar (Fair Use)</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            Simon KanKan merupakan platform agregasi maklumat komuniti dan buletin harian tempatan Sabah yang bersifat bukan keuntungan. Segala tajuk berita, fakta angka dan notis utiliti yang dipetik adalah berdasarkan doktrin Penggunaan Wajar (Fair Use) demi kepentingan awam dan ketelusan maklumat bagi penduduk Sabah dan Malaysia amnya.
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>📰</span>
+                            <span>2. Penghargaan Sumber Asal & Hak Cipta</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            Kami mematuhi etika kewartawanan dengan menyatakan secara jelas sumber asal bagi setiap laporan berita dan hebahan utiliti (termasuk Sin Chew Daily Sabah, See Hua Daily, Overseas Chinese Daily News, JANS, MPS, SESB, PDRM dan sebagainya). Hak cipta intelek, cap dagang dan pemilikan asal kandungan kekal milik penuh penerbit serta penulis asal.
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>🛡️</span>
+                            <span>3. Saluran Penurunan Kandungan 24 Jam (Takedown Policy)</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            Pihak pengurusan sentiasa menghormati hak cipta intelek pemilik asal. Sekiranya mana-mana pihak berkuasa, agensi berita atau individu mempunyai sebarang keberatan atau meminta pindaan/penurunan kandungan yang disiarkan di laman ini, sila hubungi kami melalui saluran berikut. Kami komited untuk mengambil tindakan dalam tempoh <strong>24 jam</strong> selepas pengesahan:
+                        </p>
+                        <div class="mt-2 p-2.5 rounded-lg bg-black/30 border border-white/10 flex items-center justify-between flex-wrap gap-2 text-[12px] mono">
+                            <div>
+                                <div class="font-bold text-[#FFD60A]">Hubungi: Simon / Pasukan Pengendali</div>
+                                <div class="opacity-80">WhatsApp: +60 10-930 1117</div>
+                            </div>
+                            <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="px-3 py-1 rounded-md bg-[#22c55e] hover:bg-[#16a34a] text-black font-black text-[11px] transition">
+                                Hubungi Melalui WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="rounded-xl p-3.5 modal-detail-box border border-white/5 space-y-2">
+                        <div class="font-black text-[14px] text-[#FFD60A] flex items-center gap-1.5">
+                            <span>⚠️</span>
+                            <span>4. Penafian Liabiliti Utiliti</span>
+                        </div>
+                        <p class="text-[12.5px] opacity-90 leading-relaxed">
+                            Semua maklumat utiliti awam (bekalan air, elektrik dan trafik jalan raya) dirujuk daripada notis rasmi pihak berkuasa terkini. Sebarang perubahan jadual operasi akibat faktor cuaca atau teknikal di lapangan adalah tertakluk kepada keputusan muktamad pihak berkuasa berkenaan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 弹窗底部操作按钮：关闭 -->
+                <div class="pt-3 pb-1 flex justify-center border-t border-white/10">
+                    <button onclick="closeDisclaimerModal()" class="px-8 py-2.5 rounded-xl bg-[#FFD60A] hover:bg-[#ffde33] text-black font-black text-[13px] tracking-wide shadow-md transition-all">
+                        <span class="lang-zh">我已阅读并知晓</span>
+                        <span class="lang-bm hidden">Saya Faham & Tutup</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 独立沉浸式全文阅读弹窗 (Modal) -->
     <div id="news-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleModalBackdropClick(event)">
@@ -2191,10 +2337,36 @@ html += `
             }}
         }}
 
+        // 免责声明弹窗交互控制
+        function openDisclaimerModal() {{
+            const modal = document.getElementById('disclaimer-modal');
+            if (modal) {{
+                modal.classList.remove('hidden');
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }}
+        }}
+
+        function closeDisclaimerModal() {{
+            const modal = document.getElementById('disclaimer-modal');
+            if (modal) {{
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }}
+        }}
+
+        function handleDisclaimerBackdropClick(event) {{
+            if (event.target.id === 'disclaimer-modal') {{
+                closeDisclaimerModal();
+            }}
+        }}
+
         // 绑定键盘 Esc 键快速关闭弹窗
         window.addEventListener('keydown', (e) => {{
             if (e.key === 'Escape') {{
                 closeNewsModal();
+                closeDisclaimerModal();
             }}
         }});
 
@@ -2202,6 +2374,9 @@ html += `
         window.openNewsModal = openNewsModal;
         window.closeNewsModal = closeNewsModal;
         window.handleModalBackdropClick = handleModalBackdropClick;
+        window.openDisclaimerModal = openDisclaimerModal;
+        window.closeDisclaimerModal = closeDisclaimerModal;
+        window.handleDisclaimerBackdropClick = handleDisclaimerBackdropClick;
 
         // 初始化
         window.addEventListener('DOMContentLoaded', () => {{
