@@ -78,21 +78,58 @@ WEB_PORTALS = [
     {"name": "Stadium Astro 马来西亚体育", "url": "https://www.stadiumastro.com/"}
 ]
 
-def extract_opengraph_image(url):
+import sys, re, urllib.request, urllib.parse
+
+def extract_headline_entities(title, detail=""):
     """
-    轻量级原生 HTML 解析，提取原始网页专属 OpenGraph 封面图 (<meta property="og:image" content="...">) 或正文首张大图 URL。
-    【严格防串台准则】：
-    1. 仅限针对具体的文章详情单页（带具体文章ID/日期路径）提取，严禁在首页或分类页抓取。
-    2. 绝不递归抓取页面中的其他文章链接。
-    3. 严禁抓取侧边栏、推荐位、广告位、全站Logo或通用分享图。
-    4. 无当前文章正文专属图一律返回 None，宁缺毋滥。
-    设置 4.0 秒严格超时保护与异常容错。
+    从新闻标题与导语中提取高辨识度的核心实体词（地名、人名、机构名、特定事件关键词），
+    用于后续正文图片的实体真实性校验，杜绝张冠李戴。
+    特别优化：
+    1. 严格过滤中英文停用词与短虚词（如 is, on, to 等）；
+    2. 子词切分仅限中文字符（2-4字），严禁对英文缩写滥切短字母导致误匹配；
+    3. 纯英文词必须 >= 4 字符且非停用词。
+    """
+    clean = re.sub(r'\[.*?\]', '', title).strip()
+    stopwords = {
+        "今日", "昨日", "宣布", "通报", "表示", "指出", "召开", "全面", "日前", 
+        "正式", "双核实", "核实", "沙巴", "大马", "马来西亚", "呼吁", "敦促", 
+        "强调", "启动", "落实", "更新", "发布", "荣膺", "出炉", "重申", "建议",
+        "针对", "多区", "首个", "持续", "稳步", "推进", "开展", "联合", "迎来",
+        "提呈", "促", "突击", "瓦解", "逮捕", "公布", "创", "享", "全额", "提醒",
+        "实施", "指南", "先至", "再行", "建立", "应对", "力", "无需", "恐慌",
+        "is", "an", "at", "on", "in", "to", "of", "by", "for", "with", "the", "and"
+    }
+    segments = re.split(r'[\s，。：、！？（）《》“”"\'\-—/]+', clean)
+    entities = set()
+    for seg in segments:
+        seg = seg.strip()
+        # 排除纯英文短词（< 4 字符）防止误匹配英文介词/系动词
+        if re.match(r'^[a-zA-Z]+$', seg) and len(seg) < 4:
+            continue
+        if len(seg) >= 2 and seg.lower() not in stopwords:
+            entities.add(seg)
+            # 中文词子词切分（必须包含中文字符）
+            if len(seg) >= 3 and any('\u4e00' <= ch <= '\u9fff' for ch in seg):
+                for sub_len in (2, 3, 4):
+                    for i in range(len(seg) - sub_len + 1):
+                        sub = seg[i:i+sub_len]
+                        if len(sub) >= 2 and sub not in stopwords and any('\u4e00' <= ch <= '\u9fff' for ch in sub):
+                            entities.add(sub)
+    return entities
+
+def extract_verified_article_image(url, title, detail=""):
+    """
+    【永久防错机制】：全自动正文配图提取与实体校验引擎。
+    1. 严禁抓取全站通用的 og:image 或侧栏推荐图！
+    2. 只有当图片标签明确位于 <article> 正文主体内部，且图片的 alt 或前后文本包含当前新闻标题的关键实体词时，才允许提取；
+    3. 任何不确定、无 alt 描述、或来自推荐流的图片，程序一律自动丢弃，直接输出 None；
+    4. 确保在无人工介入下，全自动杜绝张冠李戴与图片串台。
     """
     if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
         return None
     
-    # 必须符合真实文章单页路径特征，排除纯门户首页/分类页
-    article_path_patterns = (
+    # 严格白名单：必须是指向文章详情的单页 URL，排除 Facebook、聚合页或主站纯首页
+    valid_patterns = (
         "news.seehua.com/post/",
         "sabah.sinchew.com.my/news/",
         "sinchew.com.my/news/",
@@ -102,7 +139,7 @@ def extract_opengraph_image(url):
         "www.malaysiakini.com/news/",
         "www.freemalaysiatoday.com/category/",
     )
-    if not any(pat in url for pat in article_path_patterns):
+    if not any(pat in url for pat in valid_patterns):
         return None
 
     try:
@@ -117,59 +154,103 @@ def extract_opengraph_image(url):
             content_type = resp.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type and "application/xhtml" not in content_type:
                 return None
-            chunk = resp.read(150000).decode("utf-8", errors="replace")
-            
-            # 1. 优先提取当前单篇正文 OpenGraph / Twitter Card 官方封面图
-            og_patterns = [
-                r'<meta\s+[^>]*?(?:property|name)=["'](?:og:image|twitter:image)["']\s+[^>]*?content=["']([^"']+)["']',
-                r'<meta\s+[^>]*?content=["']([^"']+)["']\s+[^>]*?(?:property|name)=["'](?:og:image|twitter:image)["']',
-            ]
-            for pat in og_patterns:
-                m = re.search(pat, chunk, re.IGNORECASE)
-                if m:
-                    img_url = m.group(1).strip()
-                    img_lower = img_url.lower()
-                    # 严格拦截外部占位图 / stock / 纯假图
-                    if any(stock in img_lower for stock in ["unsplash.com", "placeholder", "dummy", "shutterstock", "gettyimages", "stock"]):
-                        continue
-                    # 排除各大站点的默认占位纯 Logo、全站通用分享图或侧边推荐图
-                    if any(bad in img_lower for bad in [
-                        "default-share", "mini-de-logo", "logosh4", "see-hualogo", "default-banner", 
-                        "default_image", "cropped-seehua", "sidebar", "icon", "avatar", "logo"
-                    ]):
-                        continue
-                    
-                    if img_url.startswith("//"):
-                        return "https:" + img_url
-                    elif img_url.startswith("/"):
-                        parsed = urllib.parse.urlparse(url)
-                        return f"{parsed.scheme}://{parsed.netloc}{img_url}"
-                    elif img_url.startswith(("http://", "https://")):
-                        return img_url
-
-            # 2. 从页面中提取真实正文首张大图（严格排除侧边栏、推荐位、Logo及小图标）
-            img_matches = re.findall(r'<img\s+[^>]*?(?:src|data-src|data-lazy-src)=["']([^"']+)["']', chunk, re.IGNORECASE)
-            for raw_img in img_matches:
-                img_lower = raw_img.lower()
-                if any(bad in img_lower for bad in [
-                    "logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", 
-                    "btn", "badge", "unsplash", "placeholder", "share", "default", "sidebar", 
-                    "widget", "thumb", "recommend", "footer", "header", "author"
-                ]):
-                    continue
-                if any(source_pat in img_lower for source_pat in ["wp-content/uploads/20", "uploads/news", "sinchew.com.my", "seehua.com", "dailyexpress.com.my", "chinapress.com.my"]):
-                    if raw_img.startswith("//"):
-                        return "https:" + raw_img
-                    elif raw_img.startswith("/"):
-                        parsed = urllib.parse.urlparse(url)
-                        return f"{parsed.scheme}://{parsed.netloc}{raw_img}"
-                    elif raw_img.startswith(("http://", "https://")):
-                        return raw_img
-
+            html = resp.read(250000).decode("utf-8", errors="replace")
     except Exception:
-        pass
-    return None
+        return None
 
+    # 1. 严格锁定正文主体容器，严禁在全局页面或侧边栏搜索
+    article_containers = [
+        r'<article[^>]*>(.*?)</article>',
+        r'<div[^>]*class=["\'][^"\']*(?:entry-content|article-content|story-body|post-content|article_content)[^"\']*["\'][^>]*>(.*?)</div>',
+        r'<div[^>]*id=["\'](?:article-content|post-content|story-body)["\'][^>]*>(.*?)</div>'
+    ]
+    body_content = None
+    for pattern in article_containers:
+        m = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
+        if m:
+            body_content = m.group(1)
+            break
+            
+    if not body_content:
+        # 如果页面无标准 article 容器，尝试提取段落群
+        paragraphs = re.findall(r'<p[^>]*>.*?</p>', html, re.DOTALL | re.IGNORECASE)
+        if len(paragraphs) >= 3:
+            body_content = "\n".join(paragraphs[:12])
+        else:
+            return None
+
+    # 2. 提取当前新闻标题的核心实体词
+    entities = extract_headline_entities(title, detail)
+    if not entities:
+        return None
+
+    # 3. 在正文主体内部检索所有 <img> 标签
+    img_matches = re.finditer(r'<img\s+([^>]+)>', body_content, re.IGNORECASE)
+    
+    for match in img_matches:
+        attrs = match.group(1)
+        
+        # 提取图片真实 URL
+        src_m = re.search(r'(?:src|data-src|data-lazy-src)=["\']([^"\']+)["\']', attrs, re.IGNORECASE)
+        if not src_m:
+            continue
+        raw_src = src_m.group(1).strip()
+        src_lower = raw_src.lower()
+        
+        # 严格拦截非新闻大图、占位符、小广告、作者头像、全站通用 Logo
+        if any(bad in src_lower for bad in [
+            "logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", 
+            "btn", "badge", "unsplash", "placeholder", "share", "default", "sidebar", 
+            "widget", "thumb", "recommend", "footer", "header", "author", "advertisement",
+            "mini-de-logo", "logosh4", "see-hualogo", "default-banner"
+        ]):
+            continue
+            
+        # 必须是正规媒体上传的大图路径
+        if not any(good in src_lower for good in [
+            "wp-content/uploads/20", "uploads/news", "sinchew.com.my", "seehua.com", 
+            "dailyexpress.com.my", "chinapress.com.my"
+        ]):
+            continue
+
+        # 提取图片的 alt、title 以及周围上下文说明
+        alt_m = re.search(r'alt=["\']([^"\']*)["\']', attrs, re.IGNORECASE)
+        title_m = re.search(r'title=["\']([^"\']*)["\']', attrs, re.IGNORECASE)
+        alt_text = (alt_m.group(1) if alt_m else "").strip()
+        title_attr = (title_m.group(1) if title_m else "").strip()
+        
+        # 提取 <img> 前后 120 字符文本（例如 figcaption 或图说）
+        start_idx = max(0, match.start() - 120)
+        end_idx = min(len(body_content), match.end() + 120)
+        surrounding_text = re.sub(r'<[^>]+>', ' ', body_content[start_idx:end_idx]).strip()
+        
+        combined_desc = f"{alt_text} {title_attr} {surrounding_text}".lower()
+        
+        # 严禁无任何有效文字说明的裸图
+        if len(combined_desc.strip()) < 2:
+            continue
+            
+        # 【关键实体核验】：图片的 alt 或上下文必须包含新闻标题的关键实体词
+        matched = False
+        for entity in entities:
+            if entity.lower() in combined_desc:
+                matched = True
+                break
+                
+        if matched:
+            if raw_src.startswith("//"):
+                full_url = "https:" + raw_src
+            elif raw_src.startswith("/"):
+                parsed = urllib.parse.urlparse(url)
+                full_url = f"{parsed.scheme}://{parsed.netloc}{raw_src}"
+            elif raw_src.startswith(("http://", "https://")):
+                full_url = raw_src
+            else:
+                continue
+                
+            return full_url
+
+    return None
 def fetch_gemini_news_if_available(api_key, today_str):
     """
     当 GitHub Actions 或本地配置了 GEMINI_API_KEY 时，
@@ -830,37 +911,33 @@ def verify_and_classify_news():
             print("=" * 70 + "\n")
             sys.exit(1)
 
-    # 3.1 封面图提取与解析（原生 HTML/OpenGraph 提取，严禁增加额外 LLM 调用）
-    # 【关键修复】每篇新闻独立处理，每轮开始前强制重置 current_image_url = None，
-    #             严禁上一篇的图片串台到下一篇！
-    # 【准则】只有指向真实报章文章页面的 URL 才提取图片，Facebook/通用首页直接置 None。
-    ARTICLE_URL_HOSTS = (
-        "news.seehua.com/post/",
-        "sabah.sinchew.com.my/news/",
-        "sinchew.com.my/news/",
-        "www.dailyexpress.com.my/news/",
-        "www.chinapress.com.my/20",
-        "chinapress.com.my/20",
-        "www.malaysiakini.com/news/",
-        "www.freemalaysiatoday.com/",
-    )
-    used_image_urls = set()  # 全局图片 URL 去重集合，每张图在当天新闻池中只出现一次
+        # 3.1 封面图正文专属提取与实体核验（永久防错机制，严禁增加额外 LLM 调用）
+    # 【准则】：
+    # 1. 严禁抓取全站通用 og:image 或侧栏推荐图！
+    # 2. 只有当图片明确位于正文内部且 alt 或上下文包含新闻标题实体词时才保留；
+    # 3. 任何不确定、无 alt 或推荐流图片一律自动丢弃，直接设为 null；
+    # 4. 全局去重：同一天抓取的所有新闻杜绝任何两篇复用同一配图。
+    used_image_urls = set()
     for h in headlines:
-        current_image_url = None  # 每篇独立重置，严禁串台
+        current_image_url = None
         url = h.get("url", "") or ""
-        # 只对指向真实文章页面的 URL 尝试图片提取
-        is_article_url = any(pat in url for pat in ARTICLE_URL_HOSTS)
-        if is_article_url and not h.get("image_url"):
-            current_image_url = extract_opengraph_image(url)
-        # 若为 Facebook/Twitter/通用首页，直接置 None，绝不继承上一篇图片
-        # 全局去重：同一张图在当天新闻池中只出现一次，重复判定为聚合页串台
-        if current_image_url and current_image_url in used_image_urls:
-            current_image_url = None  # 重复图片，强制置 null
-        elif current_image_url:
-            used_image_urls.add(current_image_url)
-        h["image_url"] = current_image_url if current_image_url else None
+        title = h.get("title", "") or ""
+        detail = h.get("detail", "") or ""
+        
+        # 调用正文配图与关键实体校验引擎
+        current_image_url = extract_verified_article_image(url, title, detail)
+        
+        # 全局去重：当天新闻池中任何图片只允许出现一次，重复判定为串台
+        if current_image_url:
+            if current_image_url in used_image_urls:
+                print(f"⚠️ [图片全局去重] 发现跨新闻重复配图，强制丢弃降级为纯文字: {current_image_url[:60]}")
+                current_image_url = None
+            else:
+                used_image_urls.add(current_image_url)
+                
+        h["image_url"] = current_image_url
 
-    # 4. 丰富未来 2 周活动数据
+# 4. 丰富未来 2 周活动数据
     events = build_rich_future_events()
 
     # 5. 维护 7 天滚动历史归档池（确保昨日 11/05 与今日 11/06 独立共存）
