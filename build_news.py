@@ -305,40 +305,34 @@ def generate_index_html():
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
         news_cards_html += f"""
-                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
-                    <div class="card-inner-box p-3.5 md:p-4 flex flex-col gap-2.5 flex-1">
-                        <div class="flex items-start justify-between gap-2">
-                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14.5px] md:text-[15.5px] transition-colors">
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
+                    <div class="card-inner-box p-2.5 sm:p-3 md:p-3.5 flex flex-col gap-2 flex-1">
+                        <div class="flex items-start justify-between gap-1.5">
+                            <h3 class="card-title font-bold leading-snug flex-1 text-[13px] sm:text-[14px] md:text-[15px] transition-colors line-clamp-3">
                                 <span class="lang-zh">{clean_title}</span>
                                 <span class="lang-bm hidden">{title_bm}</span>
                             </h3>
                             {pin_badge}
                         </div>
-        
-                        <!-- 2 行精炼引言 (纯文字紧凑排版) -->
-                        <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
-                            <span class="lang-zh">{clean_detail}</span>
-                            <span class="lang-bm hidden">{detail_bm}</span>
-                        </p>
-        
-                        <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
-                            <span class="mono text-[10.5px] font-bold card-meta-time">{today_mmdd} {today_time}</span>
-                            <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
+
+                        <div class="flex flex-wrap items-center gap-1 mt-auto pt-1">
+                            <span class="mono text-[9.5px] sm:text-[10px] font-bold card-meta-time">{today_mmdd}</span>
+                            <span class="inline-flex items-center px-1.5 py-[0.5px] rounded text-[9px] sm:text-[9.5px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                                 {tag}
                             </span>
-                            <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
+                            <span class="category-pill-tag text-[9px] sm:text-[9.5px] px-1.5 py-[0.5px] rounded mono font-bold">
                                 <span class="lang-zh">{category_tag_zh}</span>
                                 <span class="lang-bm hidden">{category_tag_bm}</span>
                             </span>
                         </div>
                     </div>
-        
-                    <div class="mt-auto flex items-center justify-between gap-2 px-3.5 py-2.5 card-footer border-t border-white/5">
+
+                    <div class="mt-auto flex items-center justify-between gap-1.5 px-2.5 py-2 sm:px-3 sm:py-2.5 card-footer border-t border-white/5">
                         <div class="flex flex-wrap gap-1 min-w-0">
                             {sources_pills}
                         </div>
-                        <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
-                            <span class="lang-zh">查看全文 ➡</span>
+                        <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-0.5 px-2 py-1 sm:px-2.5 sm:py-1 rounded-md bg-[#FFD60A] text-black font-black text-[10px] sm:text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
+                            <span class="lang-zh">查看 ➡</span>
                             <span class="lang-bm hidden">Baca ➡</span>
                         </button>
                     </div>
@@ -991,17 +985,34 @@ def generate_index_html():
             }}
         }}
 
-        /* 瀑布流卡片防跨列截断与自适应自然定高 */
+        /* 手机与平板端全量强制严格双列并排 (grid-cols-2) */
+        #news-grid-container {{
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 8px !important;
+            width: 100% !important;
+            align-items: stretch !important;
+        }}
+        @media (min-width: 640px) {{
+            #news-grid-container {{
+                gap: 12px !important;
+            }}
+        }}
+        @media (min-width: 768px) {{
+            #news-grid-container {{
+                gap: 16px !important;
+            }}
+        }}
+
+        /* 纯标题自适应双列极简卡片 */
         .news-grid-card {{
-            display: inline-block;
+            display: flex !important;
+            flex-direction: column !important;
             width: 100%;
-            margin-bottom: 16px;
-            break-inside: avoid;
-            -webkit-column-break-inside: avoid;
-            page-break-inside: avoid;
+            height: 100%;
             box-sizing: border-box;
-            vertical-align: top;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0 !important;
         }}
 
         /* 分类过滤隐藏样式（最高优先级） */
@@ -1009,18 +1020,24 @@ def generate_index_html():
             display: none !important;
         }}
 
-        /* 纯文字精美卡片内边距与留白 */
         .news-grid-card .card-inner-box {{
-            padding: 14px 16px;
-            gap: 10px;
+            padding: 10px 10px 8px 10px;
+            gap: 6px;
         }}
         .news-grid-card .card-title {{
-            font-size: 14.5px;
-            line-height: 1.42;
+            font-size: 13px;
+            line-height: 1.36;
+            font-weight: 700;
         }}
-        .news-grid-card .card-summary {{
-            font-size: 12.5px;
-            line-height: 1.62;
+        @media (min-width: 640px) {{
+            .news-grid-card .card-inner-box {{
+                padding: 12px 14px 10px 14px;
+                gap: 8px;
+            }}
+            .news-grid-card .card-title {{
+                font-size: 14.5px;
+                line-height: 1.4;
+            }}
         }}
 
         /* 顶部纯动态无缝全宽走马灯 */
@@ -1359,7 +1376,7 @@ def generate_index_html():
                     </div>
 
                     <!-- 强制双列网格 (grid-template-columns: repeat(2, 1fr) !important;) -->
-                    <div class="columns-1 md:columns-2 gap-4 news-masonry-container" id="news-grid-container">
+                    <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 w-full" id="news-grid-container">
                         {news_cards_html}
                     </div>
                 </div>
@@ -1788,40 +1805,34 @@ def generate_index_html():
                 const bmCls = isBm ? '' : 'hidden';
 
 html += `
-                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden break-inside-avoid mb-4" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
-                    <div class="card-inner-box p-3.5 md:p-4 flex flex-col gap-2.5 flex-1">
-                        <div class="flex items-start justify-between gap-2">
-                            <h3 class="card-title font-black leading-[1.38] flex-1 text-[14.5px] md:text-[15.5px] transition-colors">
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
+                    <div class="card-inner-box p-2.5 sm:p-3 md:p-3.5 flex flex-col gap-2 flex-1">
+                        <div class="flex items-start justify-between gap-1.5">
+                            <h3 class="card-title font-bold leading-snug flex-1 text-[13px] sm:text-[14px] md:text-[15px] transition-colors line-clamp-3">
                                 <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
                                 <span class="lang-bm ${{bmCls}}">${{titleBm}}</span>
                             </h3>
                             ${{pinBadge}}
                         </div>
 
-                        <!-- 2 行精炼引言 (纯文字紧凑排版) -->
-                        <p class="card-summary text-[12px] md:text-[12.5px] leading-[1.6] line-clamp-2">
-                            <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
-                            <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
-                        </p>
-
-                        <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
-                            <span class="mono text-[10.5px] font-bold card-meta-time">${{cardDateTag}}</span>
-                            <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
+                        <div class="flex flex-wrap items-center gap-1 mt-auto pt-1">
+                            <span class="mono text-[9.5px] sm:text-[10px] font-bold card-meta-time">${{cardDateTag}}</span>
+                            <span class="inline-flex items-center px-1.5 py-[0.5px] rounded text-[9px] sm:text-[9.5px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                                 ${{tag}}
                             </span>
-                            <span class="category-pill-tag text-[10px] px-1.5 py-[1px] rounded mono font-bold">
+                            <span class="category-pill-tag text-[9px] sm:text-[9.5px] px-1.5 py-[0.5px] rounded mono font-bold">
                                 <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
                                 <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
                             </span>
                         </div>
                     </div>
 
-                    <div class="mt-auto flex items-center justify-between gap-2 px-3.5 py-2.5 card-footer border-t border-white/5">
+                    <div class="mt-auto flex items-center justify-between gap-1.5 px-2.5 py-2 sm:px-3 sm:py-2.5 card-footer border-t border-white/5">
                         <div class="flex flex-wrap gap-1 min-w-0">
                             ${{sourcesPills}}
                         </div>
-                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
-                            <span class="lang-zh ${{zhCls}}">查看全文 ➡</span>
+                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-0.5 px-2 py-1 sm:px-2.5 sm:py-1 rounded-md bg-[#FFD60A] text-black font-black text-[10px] sm:text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
+                            <span class="lang-zh ${{zhCls}}">查看 ➡</span>
                             <span class="lang-bm ${{bmCls}}">Baca ➡</span>
                         </button>
                     </div>
