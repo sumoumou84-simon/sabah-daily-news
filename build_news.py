@@ -1591,7 +1591,7 @@ def generate_index_html():
                 <h2 class="text-[17px] sm:text-[20px] font-black leading-[1.4] transition-colors modal-headline" id="modal-title"></h2>
 
                 <!-- 封面大图 (仅真实原生 image_url 存在时渲染展示，无图时彻底隐藏不留空白) -->
-                <div id="modal-cover-wrap" class="hidden modal-cover-wrap w-full overflow-hidden rounded-lg mb-4 border shadow-sm">
+                <div id="modal-cover-wrap" class="hidden modal-cover-wrap w-full overflow-hidden rounded-lg mb-4 border shadow-sm" style="display:none;">
                     <img id="modal-cover-img" src="" alt="新闻配图" class="rounded-lg max-h-72 w-full object-cover" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'; this.style.display='none';">
                 </div>
 
