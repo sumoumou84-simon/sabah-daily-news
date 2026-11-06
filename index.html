@@ -783,7 +783,7 @@
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>每日 05:00 AM 准时晨报 • 11/06 05:58PM LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • 11/06 06:08PM LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -869,7 +869,7 @@
                         <span class="text-[12px] font-black tracking-tight" id="active-date-display">
                             今天 11/06 · MYT自动计算
                         </span>
-                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">05:58PM MYT</span>
+                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">06:08PM MYT</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
@@ -943,7 +943,7 @@
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
-                                11/06 05:58PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
+                                11/06 06:08PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
@@ -966,28 +966,32 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-4 items-start">
                         
         <div class="util-card open" id="util-card-0" onclick="toggleUtilCard(0)">
-            <div class="flex items-center justify-between w-full">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0">
-                        W
+            <div class="flex items-start justify-between gap-2.5 w-full">
+                <!-- 左侧：图标 + 标题 + 时间戳 (弹性自适应 min-w-0 flex-1，绝不挤压) -->
+                <div class="flex items-start gap-2.5 min-w-0 flex-1">
+                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0 mt-0.5">
+                        M
                     </div>
-                    <div class="leading-tight">
-                        <div class="text-black font-black text-[13px] tracking-tight flex items-center gap-1.5">
-                            <span class="lang-zh">山打根市议会（MPS）道路维修与夜市</span>
-                            <span class="lang-bm hidden">山打根市议会（MPS）道路维修与夜市</span>
-                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] flex items-center justify-center text-[10px] arrow-util">▼</span>
+                    <div class="leading-snug min-w-0 flex-1">
+                        <div class="text-black font-black text-[13px] tracking-tight flex items-start gap-1 flex-wrap">
+                            <span class="lang-zh break-words">山打根市议会 (MPS) 道路维修与夜市</span>
+                            <span class="lang-bm hidden break-words">Penyelenggaraan Jalan & Pasar Malam MPS Sandakan</span>
+                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono">11/06 07:30 • LIVE</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/06 07:30 • LIVE</div>
                     </div>
                 </div>
-                <div class="text-right shrink-0">
-                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold">
-                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse"></span>
-                        <span class="lang-zh">LIVE 抢修中</span>
-                        <span class="lang-bm hidden">LANGSUNG Baik Pulih</span>
+
+                <!-- 右侧：状态胶囊 + 切换提示 (设置 shrink-0 不换行且绝不向左侵占文字区域) -->
+                <div class="text-right shrink-0 flex flex-col items-end">
+                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold shrink-0 whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>
+                        <span class="lang-zh whitespace-nowrap">LIVE 抢修中</span>
+                        <span class="lang-bm hidden whitespace-nowrap">LANGSUNG Baik Pulih</span>
                     </div>
-                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint">
-                        收起 ↑
+                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint whitespace-nowrap">
+                        <span class="lang-zh">收起 ↑</span>
+                        <span class="lang-bm hidden">Tutup ↑</span>
                     </div>
                 </div>
             </div>
@@ -1007,22 +1011,22 @@
                         <div class="flex gap-2 text-[12.5px] leading-[1.5]">
                             <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/20 text-[#FFD60A] flex items-center justify-center text-[11px] font-black">!</span>
                             <span class="font-bold util-detail-title lang-zh">山打根市议会（MPS）工务组通告：拉卜路 4 哩至 8 哩路段自今日起展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行。</span>
-                            <span class="font-bold util-detail-title lang-bm hidden">Pembaikan paip utama Jalan Utara, gangguan bekalan sementara kawasan tinggi</span>
+                            <span class="font-bold util-detail-title lang-bm hidden">Notis Jabatan Kerja MPS Sandakan: Kerja-kerja penurapan semula asfalt dijalankan secara berperingkat dari Batu 4 hingga Batu 8 Jalan Labuk bermula hari ini. Kawalan had laju dan laluan bergilir dilaksanakan sepanjang tempoh kerja. Sumber: Laman Rasmi MPS Sandakan.</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
                             <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">≋</span>
-                            <span class="util-detail-sub lang-zh">降压供水区：Cecily、北路2哩至4哩</span>
-                            <span class="util-detail-sub lang-bm hidden">Kawasan tekanan rendah: Cecily, Batu 2 - 4 Jalan Utara</span>
+                            <span class="util-detail-sub lang-zh">影响路段：拉卜路4哩至8哩、市区夜市周边</span>
+                            <span class="util-detail-sub lang-bm hidden">Kawasan terlibat: Batu 4 - 8 Jalan Labuk & sekitar pasar malam</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
                             <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">◷</span>
-                            <span class="util-detail-time lang-zh">预计修复：今晚 20:00 前逐步恢复常压</span>
-                            <span class="util-detail-time lang-bm hidden">Jangka pulih: Beransur pulih sebelum 20:00 malam ini</span>
+                            <span class="util-detail-time lang-zh">工程进展：分阶段铺设，维持双向通行</span>
+                            <span class="util-detail-time lang-bm hidden">Kemajuan: Penurapan berperingkat, laluan dua hala dikekalkan</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
                             <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#14532d] text-[#4ade80] flex items-center justify-center text-[10px]">◩</span>
-                            <span class="util-detail-sub lang-zh">配水应急车：已派驻山打根肯特医院及核心住宅区</span>
-                            <span class="util-detail-sub lang-bm hidden">Lori tangki air digerakkan ke Hospital Kent & kawasan perumahan</span>
+                            <span class="util-detail-sub lang-zh">交通指引：现场设有警示标牌及交警协管</span>
+                            <span class="util-detail-sub lang-bm hidden">Kawalan lalu lintas: Papan tanda amaran dan anggota bertugas di lokasi</span>
                         </div>
                     </div>
 
@@ -1030,16 +1034,16 @@
                         <div class="flex flex-wrap gap-1.5">
                             <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
                                 <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
-                                089-666000
+                                089-272161
                             </span>
                             <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
                                 <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
-                                Careline 24J
+                                MPS Careline
                             </span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
-                                ✓ <span class="lang-zh">山打根市议会MPS + 官方通报 双核实</span><span class="lang-bm hidden">Disahkan JANS & MPS</span>
+                                ✓ <span class="lang-zh">山打根市议会MPS + 官方通报 双核实</span><span class="lang-bm hidden">Disahkan MPS & Hebahan Rasmi</span>
                             </span>
                             <span class="text-[10px] mono text-black/60">
                                 <span class="lang-zh">点击再次收起</span>
@@ -1052,28 +1056,122 @@
         </div>
         
         <div class="util-card " id="util-card-1" onclick="toggleUtilCard(1)">
-            <div class="flex items-center justify-between w-full">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0">
-                        E
+            <div class="flex items-start justify-between gap-2.5 w-full">
+                <!-- 左侧：图标 + 标题 + 时间戳 (弹性自适应 min-w-0 flex-1，绝不挤压) -->
+                <div class="flex items-start gap-2.5 min-w-0 flex-1">
+                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0 mt-0.5">
+                        W
                     </div>
-                    <div class="leading-tight">
-                        <div class="text-black font-black text-[13px] tracking-tight flex items-center gap-1.5">
-                            <span class="lang-zh">沙巴水务局（JANS）斗湖古哈拉抽水</span>
-                            <span class="lang-bm hidden">沙巴水务局（JANS）斗湖古哈拉抽水</span>
-                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] flex items-center justify-center text-[10px] arrow-util">▼</span>
+                    <div class="leading-snug min-w-0 flex-1">
+                        <div class="text-black font-black text-[13px] tracking-tight flex items-start gap-1 flex-wrap">
+                            <span class="lang-zh break-words">沙巴水务局 (JANS) 斗湖古哈拉抽水</span>
+                            <span class="lang-bm hidden break-words">Operasi Pengepaman Air JANS Tawau Kuhara</span>
+                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono">11/06 08:00 • LIVE</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/06 07:45 • LIVE</div>
                     </div>
                 </div>
-                <div class="text-right shrink-0">
-                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold">
-                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse"></span>
-                        <span class="lang-zh">LIVE 维护</span>
-                        <span class="lang-bm hidden">LANGSUNG Selenggara</span>
+
+                <!-- 右侧：状态胶囊 + 切换提示 (设置 shrink-0 不换行且绝不向左侵占文字区域) -->
+                <div class="text-right shrink-0 flex flex-col items-end">
+                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold shrink-0 whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>
+                        <span class="lang-zh whitespace-nowrap">LIVE 抢修中</span>
+                        <span class="lang-bm hidden whitespace-nowrap">LANGSUNG Baik Pulih</span>
                     </div>
-                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint">
-                        点击查看详情
+                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint whitespace-nowrap">
+                        <span class="lang-zh">点击查看详情</span>
+                        <span class="lang-bm hidden">Klik untuk butiran</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="util-drawer mt-3">
+                <div class="util-drawer-inner rounded-[10px] p-3 flex flex-col gap-2.5">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
+                        <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
+                            <span class="lang-zh">实时详情 LIVE DETAIL</span>
+                            <span class="lang-bm hidden">BUTIRAN LANGSUNG</span>
+                        </span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• 11/06 07:45 LIVE</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex gap-2 text-[12.5px] leading-[1.5]">
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/20 text-[#FFD60A] flex items-center justify-center text-[11px] font-black">!</span>
+                            <span class="font-bold util-detail-title lang-zh">沙巴水务局发布通告：古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低，已调配应急送水车备勤。</span>
+                            <span class="font-bold util-detail-title lang-bm hidden">Notis JANS: Kerja pembaikan kecemasan galas pam utama di Stesen Pam Air Kuhara Tawau sedang giat dijalankan. Bandar Tawau dan kawasan pesisir mengalami tekanan air rendah berjadual. Lori tangki air telah digerakkan.</span>
+                        </div>
+                        <div class="flex gap-2 text-[12px] leading-[1.5]">
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">≋</span>
+                            <span class="util-detail-sub lang-zh">降压供水区：斗湖市区及沿海片区</span>
+                            <span class="util-detail-sub lang-bm hidden">Kawasan tekanan rendah: Bandar Tawau & kawasan persisiran</span>
+                        </div>
+                        <div class="flex gap-2 text-[12px] leading-[1.5]">
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">◷</span>
+                            <span class="util-detail-time lang-zh">预计修复：今晚 22:00 前完成调试并逐步恢复常压</span>
+                            <span class="util-detail-time lang-bm hidden">Jangka pulih: Siap dibaiki sebelum 22:00 malam ini</span>
+                        </div>
+                        <div class="flex gap-2 text-[12px] leading-[1.5]">
+                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#14532d] text-[#4ade80] flex items-center justify-center text-[10px]">◩</span>
+                            <span class="util-detail-sub lang-zh">配水应急车：已派驻斗湖核心住宅区与医疗中心备勤</span>
+                            <span class="util-detail-sub lang-bm hidden">Lori tangki air digerakkan ke kawasan perumahan & pusat kesihatan</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-black/20 flex flex-col gap-2">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
+                                <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
+                                089-761057
+                            </span>
+                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
+                                <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
+                                JANS 24J
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
+                                ✓ <span class="lang-zh">JANS + Sabah TV 双核实</span><span class="lang-bm hidden">Disahkan JANS & Sabah TV</span>
+                            </span>
+                            <span class="text-[10px] mono text-black/60">
+                                <span class="lang-zh">点击再次收起</span>
+                                <span class="lang-bm hidden">Klik tutup</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="util-card " id="util-card-2" onclick="toggleUtilCard(2)">
+            <div class="flex items-start justify-between gap-2.5 w-full">
+                <!-- 左侧：图标 + 标题 + 时间戳 (弹性自适应 min-w-0 flex-1，绝不挤压) -->
+                <div class="flex items-start gap-2.5 min-w-0 flex-1">
+                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0 mt-0.5">
+                        E
+                    </div>
+                    <div class="leading-snug min-w-0 flex-1">
+                        <div class="text-black font-black text-[13px] tracking-tight flex items-start gap-1 flex-wrap">
+                            <span class="lang-zh break-words">沙巴电力 SESB 电网调度</span>
+                            <span class="lang-bm hidden break-words">Sabah Electricity (SESB) Grid</span>
+                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
+                        </div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/06 08:00 • LIVE</div>
+                    </div>
+                </div>
+
+                <!-- 右侧：状态胶囊 + 切换提示 (设置 shrink-0 不换行且绝不向左侵占文字区域) -->
+                <div class="text-right shrink-0 flex flex-col items-end">
+                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold shrink-0 whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>
+                        <span class="lang-zh whitespace-nowrap">LIVE 维护</span>
+                        <span class="lang-bm hidden whitespace-nowrap">LANGSUNG Selenggara</span>
+                    </div>
+                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint whitespace-nowrap">
+                        <span class="lang-zh">点击查看详情</span>
+                        <span class="lang-bm hidden">Klik untuk butiran</span>
                     </div>
                 </div>
             </div>
@@ -1092,7 +1190,7 @@
                     <div class="space-y-2">
                         <div class="flex gap-2 text-[12.5px] leading-[1.5]">
                             <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/20 text-[#FFD60A] flex items-center justify-center text-[11px] font-black">!</span>
-                            <span class="font-bold util-detail-title lang-zh">沙巴水务局发布通告：古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低，已调配应急送水车备勤。</span>
+                            <span class="font-bold util-detail-title lang-zh">电网稳定性例行调度维护，已启用后备发电机组</span>
                             <span class="font-bold util-detail-title lang-bm hidden">Penyelenggaraan grid berkala, genset sokongan diaktifkan</span>
                         </div>
                         <div class="flex gap-2 text-[12px] leading-[1.5]">
@@ -1125,93 +1223,7 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
-                                ✓ <span class="lang-zh">JANS + Sabah TV 双核实</span><span class="lang-bm hidden">Disahkan SESB</span>
-                            </span>
-                            <span class="text-[10px] mono text-black/60">
-                                <span class="lang-zh">点击再次收起</span>
-                                <span class="lang-bm hidden">Klik tutup</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="util-card " id="util-card-2" onclick="toggleUtilCard(2)">
-            <div class="flex items-center justify-between w-full">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0">
-                        T
-                    </div>
-                    <div class="leading-tight">
-                        <div class="text-black font-black text-[13px] tracking-tight flex items-center gap-1.5">
-                            <span class="lang-zh">山打根交通 MPS</span>
-                            <span class="lang-bm hidden">Trafik Sandakan (MPS)</span>
-                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] flex items-center justify-center text-[10px] arrow-util">▼</span>
-                        </div>
-                        <div class="text-black/70 text-[11px] mono">11/06 07:15 • LIVE</div>
-                    </div>
-                </div>
-                <div class="text-right shrink-0">
-                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold">
-                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse"></span>
-                        <span class="lang-zh">LIVE 通畅</span>
-                        <span class="lang-bm hidden">LANGSUNG Lancar</span>
-                    </div>
-                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint">
-                        点击查看详情
-                    </div>
-                </div>
-            </div>
-
-            <div class="util-drawer mt-3">
-                <div class="util-drawer-inner rounded-[10px] p-3 flex flex-col gap-2.5">
-                    <div class="flex items-center gap-1.5">
-                        <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
-                        <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
-                            <span class="lang-zh">实时详情 LIVE DETAIL</span>
-                            <span class="lang-bm hidden">BUTIRAN LANGSUNG</span>
-                        </span>
-                        <span class="text-[10px] mono text-[#94A3B8]">• 11/06 07:15 LIVE</span>
-                    </div>
-
-                    <div class="space-y-2">
-                        <div class="flex gap-2 text-[12.5px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#FFD60A]/20 text-[#FFD60A] flex items-center justify-center text-[11px] font-black">!</span>
-                            <span class="font-bold util-detail-title lang-zh">市区及主要出入口主干道交通畅行，无重大积水</span>
-                            <span class="font-bold util-detail-title lang-bm hidden">Trafik lancar di jalan utama bandar, tiada banjir kilat</span>
-                        </div>
-                        <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">≋</span>
-                            <span class="util-detail-sub lang-zh">重点路段：拉卜路、北路车流量平稳</span>
-                            <span class="util-detail-sub lang-bm hidden">Jalan Labuk & Jalan Utara trafik terkawal</span>
-                        </div>
-                        <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-black/30 text-[#94A3B8] flex items-center justify-center text-[10px]">◷</span>
-                            <span class="util-detail-time lang-zh">全马长假交通联巡已启动，交警要道巡逻</span>
-                            <span class="util-detail-time lang-bm hidden">Rondaan polis trafik sempena cuti panjang beroperasi</span>
-                        </div>
-                        <div class="flex gap-2 text-[12px] leading-[1.5]">
-                            <span class="shrink-0 w-5 h-5 rounded-[5px] bg-[#14532d] text-[#4ade80] flex items-center justify-center text-[10px]">◩</span>
-                            <span class="util-detail-sub lang-zh">拖车应急热线常设备勤</span>
-                            <span class="util-detail-sub lang-bm hidden">Perkhidmatan tunda kecemasan tersedia</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2 border-t border-black/20 flex flex-col gap-2">
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
-                                <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
-                                089-272161
-                            </span>
-                            <span class="inline-flex items-center gap-1 px-2 py-[3px] rounded-full bg-black/40 text-[11px] text-[#F8FAFC] mono font-bold">
-                                <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
-                                MPS Trafik
-                            </span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
-                                ✓ <span class="lang-zh">山打根市议会 & 交警</span><span class="lang-bm hidden">Disahkan MPS & Polis</span>
+                                ✓ <span class="lang-zh">SESB 官方通报</span><span class="lang-bm hidden">Disahkan SESB</span>
                             </span>
                             <span class="text-[10px] mono text-black/60">
                                 <span class="lang-zh">点击再次收起</span>
@@ -2362,7 +2374,7 @@
                 </div>
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
-                    <span>11/06 05:58PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
+                    <span>11/06 06:08PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
                     <span class="text-[#FFD60A] font-bold">26 篇深度要闻 • 双核实白名单</span>
                 </div>
             </div>
@@ -2715,7 +2727,7 @@
 
         // 核心修复：动态渲染新闻卡片列表（支持今天、昨日、前日与历史合辑真实切换）
         let currentRenderedHeadlines = CURRENT_HEADLINES;
-        let currentRenderedDateLabel = '11/06 05:58PM';
+        let currentRenderedDateLabel = '11/06 06:08PM';
 
         function renderNewsCards(headlinesList, dateLabel) {
             currentRenderedHeadlines = headlinesList;
@@ -2838,10 +2850,10 @@ html += `
             const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
             let targetHeadlines = [];
-            let cardDateLabel = '11/06 05:58PM';
+            let cardDateLabel = '11/06 06:08PM';
             if (type === 'today') {
                 targetHeadlines = CURRENT_HEADLINES;
-                cardDateLabel = '11/06 05:58PM';
+                cardDateLabel = '11/06 06:08PM';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini 11/06</span>' : '<span>今日 11/06 重点要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini 11/06 · Auto MYT' : '今天 11/06 · MYT自动计算';
                 showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
@@ -2883,11 +2895,17 @@ html += `
         function toggleUtilCard(id) {
             const card = document.getElementById('util-card-' + id);
             if (!card) return;
-            const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
+            const nowOpen = card.classList.contains('open');
             const hint = card.querySelector('.toggle-hint');
             if (hint) {
-                hint.textContent = isOpen ? '点击查看详情' : '收起 ↑';
+                const zhText = nowOpen ? '收起 ↑' : '点击查看详情';
+                const bmText = nowOpen ? 'Tutup ↑' : 'Klik untuk butiran';
+                const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+                hint.innerHTML = `
+                    <span class="lang-zh ${isBm ? 'hidden' : ''}">${zhText}</span>
+                    <span class="lang-bm ${isBm ? '' : 'hidden'}">${bmText}</span>
+                `;
             }
         }
 

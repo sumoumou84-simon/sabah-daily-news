@@ -3,12 +3,30 @@
   "date": "2026-11-06",
   "utilities": [
     {
+      "id": "M",
       "title": "山打根市议会（MPS）道路维修与夜市交通管制通告 [山打根市议会MPS + 官方通报 双核实]",
-      "detail": "山打根市议会（MPS）工务组通告：拉卜路 4 哩至 8 哩路段自今日起展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行。来源：山打根市议会 MPS 专页及市政巡查确认。"
+      "titleBM": "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan [Disahkan MPS & Hebahan Rasmi]",
+      "label": "山打根市议会 (MPS) 道路维修与夜市",
+      "labelBM": "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan",
+      "status": "LIVE 抢修中",
+      "statusBM": "LANGSUNG Baik Pulih",
+      "detail": "山打根市议会（MPS）工务组通告：拉卜路 4 哩至 8 哩路段自今日起展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行。来源：山打根市议会 MPS 专页及市政巡查确认。",
+      "detailBM": "Notis Jabatan Kerja MPS Sandakan: Kerja-kerja penurapan semula asfalt dijalankan secara berperingkat dari Batu 4 hingga Batu 8 Jalan Labuk bermula hari ini. Kawalan had laju dan laluan bergilir dilaksanakan sepanjang tempoh kerja. Sumber: Laman Rasmi MPS Sandakan.",
+      "source": "山打根市议会MPS + 官方通报 双核实",
+      "sourceBM": "Disahkan MPS & Hebahan Rasmi"
     },
     {
+      "id": "W",
       "title": "沙巴水务局（JANS）斗湖古哈拉抽水泵站抢修与减压通报 [JANS + Sabah TV 双核实]",
-      "detail": "沙巴水务局发布通告：古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低，已调配应急送水车备勤。"
+      "titleBM": "Operasi Pengepaman Air JANS Tawau Kuhara [Disahkan JANS & Sabah TV]",
+      "label": "沙巴水务局 (JANS) 斗湖古哈拉抽水",
+      "labelBM": "Operasi Pengepaman Air JANS Tawau Kuhara",
+      "status": "LIVE 抢修中",
+      "statusBM": "LANGSUNG Baik Pulih",
+      "detail": "沙巴水务局发布通告：古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低，已调配应急送水车备勤。",
+      "detailBM": "Notis JANS: Kerja pembaikan kecemasan galas pam utama di Stesen Pam Air Kuhara Tawau sedang giat dijalankan. Bandar Tawau dan kawasan pesisir mengalami tekanan air rendah berjadual. Lori tangki air telah digerakkan.",
+      "source": "JANS + Sabah TV 双核实",
+      "sourceBM": "Disahkan JANS & Sabah TV"
     }
   ],
   "headlines": [

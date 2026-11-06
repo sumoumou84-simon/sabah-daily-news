@@ -83,29 +83,49 @@ def generate_index_html():
     # 1. 动态生成 3 列黄色公用事业卡片 (UTILITI)
     default_utils = [
         {
-            "id": "W",
-            "label": "沙巴水务局 JANS",
-            "labelBM": "Jabatan Air Sabah (JANS)",
+            "id": "M",
+            "label": "山打根市议会 (MPS) 道路维修与夜市",
+            "labelBM": "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan",
             "time": "07:30",
             "status": "LIVE 抢修中",
             "statusBM": "LANGSUNG Baik Pulih",
-            "issue": "北路主干管网减压抢修，高地段供水短暂停顿",
-            "issueBM": "Pembaikan paip utama Jalan Utara, gangguan bekalan sementara kawasan tinggi",
-            "pressure": "降压供水区：Cecily、北路2哩至4哩",
-            "pressureBM": "Kawasan tekanan rendah: Cecily, Batu 2 - 4 Jalan Utara",
-            "recovery": "预计修复：今晚 20:00 前逐步恢复常压",
-            "recoveryBM": "Jangka pulih: Beransur pulih sebelum 20:00 malam ini",
-            "tanker": "配水应急车：已派驻山打根肯特医院及核心住宅区",
-            "tankerBM": "Lori tangki air digerakkan ke Hospital Kent & kawasan perumahan",
-            "consult": "089-666000",
-            "consult2": "Careline 24J",
-            "source": "沙巴水务局与市议会双核实",
-            "sourceBM": "Disahkan JANS & MPS"
+            "issue": "拉卜路 4 哩至 8 哩路段展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行",
+            "issueBM": "Kerja penurapan semula asfalt dijalankan di Batu 4 - Batu 8 Jalan Labuk. Kawalan had laju dan laluan bergilir dilaksanakan.",
+            "pressure": "影响路段：拉卜路4哩至8哩、市区夜市周边",
+            "pressureBM": "Kawasan terlibat: Batu 4 - 8 Jalan Labuk & sekitar pasar malam",
+            "recovery": "工程进展：分阶段铺设，维持双向通行",
+            "recoveryBM": "Kemajuan: Penurapan berperingkat, laluan dua hala dikekalkan",
+            "tanker": "交通指引：现场设有警示标牌及交警协管",
+            "tankerBM": "Kawalan lalu lintas: Papan tanda amaran dan anggota bertugas di lokasi",
+            "consult": "089-272161",
+            "consult2": "MPS Careline",
+            "source": "山打根市议会 & 官方通报 双核实",
+            "sourceBM": "Disahkan MPS & Hebahan Rasmi"
+        },
+        {
+            "id": "W",
+            "label": "沙巴水务局 (JANS) 斗湖古哈拉抽水",
+            "labelBM": "Operasi Pengepaman Air JANS Tawau Kuhara",
+            "time": "07:45",
+            "status": "LIVE 抢修中",
+            "statusBM": "LANGSUNG Baik Pulih",
+            "issue": "古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低",
+            "issueBM": "Kerja pembaikan kecemasan galas pam utama Stesen Kuhara Tawau sedang dijalankan, kawasan terlibat tekanan rendah",
+            "pressure": "降压供水区：斗湖市区及沿海片区",
+            "pressureBM": "Kawasan tekanan rendah: Bandar Tawau & kawasan persisiran",
+            "recovery": "预计修复：今晚 22:00 前完成调试并逐步恢复常压",
+            "recoveryBM": "Jangka pulih: Siap dibaiki sebelum 22:00 malam ini",
+            "tanker": "配水应急车：已派驻斗湖核心住宅区与医疗中心备勤",
+            "tankerBM": "Lori tangki air digerakkan ke kawasan perumahan & pusat kesihatan",
+            "consult": "089-761057",
+            "consult2": "JANS 24J",
+            "source": "沙巴水务局 & Sabah TV 双核实",
+            "sourceBM": "Disahkan JANS & Sabah TV"
         },
         {
             "id": "E",
-            "label": "沙巴电力 SESB",
-            "labelBM": "Sabah Electricity (SESB)",
+            "label": "沙巴电力 SESB 电网调度",
+            "labelBM": "Sabah Electricity (SESB) Grid",
             "time": "08:00",
             "status": "LIVE 维护",
             "statusBM": "LANGSUNG Selenggara",
@@ -121,36 +141,71 @@ def generate_index_html():
             "consult2": "SESB Care",
             "source": "SESB 官方通报",
             "sourceBM": "Disahkan SESB"
-        },
-        {
-            "id": "T",
-            "label": "山打根交通 MPS",
-            "labelBM": "Trafik Sandakan (MPS)",
-            "time": "07:15",
-            "status": "LIVE 通畅",
-            "statusBM": "LANGSUNG Lancar",
-            "issue": "市区及主要出入口主干道交通畅行，无重大积水",
-            "issueBM": "Trafik lancar di jalan utama bandar, tiada banjir kilat",
-            "pressure": "重点路段：拉卜路、北路车流量平稳",
-            "pressureBM": "Jalan Labuk & Jalan Utara trafik terkawal",
-            "recovery": "全马长假交通联巡已启动，交警要道巡逻",
-            "recoveryBM": "Rondaan polis trafik sempena cuti panjang beroperasi",
-            "tanker": "拖车应急热线常设备勤",
-            "tankerBM": "Perkhidmatan tunda kecemasan tersedia",
-            "consult": "089-272161",
-            "consult2": "MPS Trafik",
-            "source": "山打根市议会 & 交警",
-            "sourceBM": "Disahkan MPS & Polis"
         }
     ]
 
     for i, u_raw in enumerate(utilities):
         if i < len(default_utils):
             c_title, v_tag, s_list, c_detail = extract_tags_and_sources(u_raw.get("title", ""), u_raw.get("detail", ""))
-            default_utils[i]["label"] = c_title[:18]
-            default_utils[i]["labelBM"] = c_title[:18]
-            default_utils[i]["issue"] = c_detail
-            default_utils[i]["source"] = v_tag
+            
+            # 中文标题
+            if u_raw.get("label"):
+                default_utils[i]["label"] = u_raw["label"]
+            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
+                default_utils[i]["label"] = "山打根市议会 (MPS) 道路维修与夜市"
+            elif "水务局" in c_title or "JANS" in c_title or "古哈拉" in c_title:
+                default_utils[i]["label"] = "沙巴水务局 (JANS) 斗湖古哈拉抽水"
+            else:
+                default_utils[i]["label"] = c_title[:24]
+
+            # 马来文 BM 标题：全面本地化映射，杜绝中马文混杂
+            if u_raw.get("labelBM"):
+                default_utils[i]["labelBM"] = u_raw["labelBM"]
+            elif u_raw.get("titleBM"):
+                bm_title, _, _, _ = extract_tags_and_sources(u_raw["titleBM"], "")
+                default_utils[i]["labelBM"] = bm_title
+            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
+                default_utils[i]["labelBM"] = "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan"
+            elif "水务局" in c_title or "JANS" in c_title or "古哈拉" in c_title:
+                default_utils[i]["labelBM"] = "Operasi Pengepaman Air JANS Tawau Kuhara"
+            elif "电力" in c_title or "SESB" in c_title:
+                default_utils[i]["labelBM"] = "Sabah Electricity (SESB) Grid"
+            else:
+                default_utils[i]["labelBM"] = default_utils[i].get("labelBM", "Notis Rasmi Utiliti Awam")
+
+            # 徽章 ID
+            if u_raw.get("id"):
+                default_utils[i]["id"] = u_raw["id"]
+            elif "市议会" in c_title or "MPS" in c_title:
+                default_utils[i]["id"] = "M"
+            elif "水务局" in c_title or "JANS" in c_title:
+                default_utils[i]["id"] = "W"
+            elif "电力" in c_title or "SESB" in c_title:
+                default_utils[i]["id"] = "E"
+
+            # 状态文案
+            if u_raw.get("status"):
+                default_utils[i]["status"] = u_raw["status"]
+            if u_raw.get("statusBM"):
+                default_utils[i]["statusBM"] = u_raw["statusBM"]
+
+            # 正文内容
+            if c_detail:
+                default_utils[i]["issue"] = c_detail
+            if u_raw.get("detailBM"):
+                default_utils[i]["issueBM"] = u_raw["detailBM"]
+            elif u_raw.get("issueBM"):
+                default_utils[i]["issueBM"] = u_raw["issueBM"]
+
+            # 核验信源
+            if v_tag:
+                default_utils[i]["source"] = v_tag
+            if u_raw.get("sourceBM"):
+                default_utils[i]["sourceBM"] = u_raw["sourceBM"]
+            elif "MPS" in v_tag:
+                default_utils[i]["sourceBM"] = "Disahkan MPS & Hebahan Rasmi"
+            elif "JANS" in v_tag:
+                default_utils[i]["sourceBM"] = "Disahkan JANS & Sabah TV"
 
     utiliti_cards_html = ""
     for idx, u in enumerate(default_utils):
@@ -158,28 +213,32 @@ def generate_index_html():
         open_cls = "open" if is_first else ""
         utiliti_cards_html += f"""
         <div class="util-card {open_cls}" id="util-card-{idx}" onclick="toggleUtilCard({idx})">
-            <div class="flex items-center justify-between w-full">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0">
+            <div class="flex items-start justify-between gap-2.5 w-full">
+                <!-- 左侧：图标 + 标题 + 时间戳 (弹性自适应 min-w-0 flex-1，绝不挤压) -->
+                <div class="flex items-start gap-2.5 min-w-0 flex-1">
+                    <div class="w-8 h-8 rounded-[8px] bg-black text-[#FFD60A] flex items-center justify-center font-black text-[12px] shrink-0 mt-0.5">
                         {u['id']}
                     </div>
-                    <div class="leading-tight">
-                        <div class="text-black font-black text-[13px] tracking-tight flex items-center gap-1.5">
-                            <span class="lang-zh">{u['label']}</span>
-                            <span class="lang-bm hidden">{u['labelBM']}</span>
-                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] flex items-center justify-center text-[10px] arrow-util">▼</span>
+                    <div class="leading-snug min-w-0 flex-1">
+                        <div class="text-black font-black text-[13px] tracking-tight flex items-start gap-1 flex-wrap">
+                            <span class="lang-zh break-words">{u['label']}</span>
+                            <span class="lang-bm hidden break-words">{u['labelBM']}</span>
+                            <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono">{today_mmdd} {u['time']} • LIVE</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">{today_mmdd} {u['time']} • LIVE</div>
                     </div>
                 </div>
-                <div class="text-right shrink-0">
-                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold">
-                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse"></span>
-                        <span class="lang-zh">{u['status']}</span>
-                        <span class="lang-bm hidden">{u['statusBM']}</span>
+
+                <!-- 右侧：状态胶囊 + 切换提示 (设置 shrink-0 不换行且绝不向左侵占文字区域) -->
+                <div class="text-right shrink-0 flex flex-col items-end">
+                    <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold shrink-0 whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>
+                        <span class="lang-zh whitespace-nowrap">{u['status']}</span>
+                        <span class="lang-bm hidden whitespace-nowrap">{u['statusBM']}</span>
                     </div>
-                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint">
-                        { '收起 ↑' if is_first else '点击查看详情' }
+                    <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint whitespace-nowrap">
+                        <span class="lang-zh">{ '收起 ↑' if is_first else '点击查看详情' }</span>
+                        <span class="lang-bm hidden">{ 'Tutup ↑' if is_first else 'Klik untuk butiran' }</span>
                     </div>
                 </div>
             </div>
@@ -1967,11 +2026,17 @@ html += `
         function toggleUtilCard(id) {{
             const card = document.getElementById('util-card-' + id);
             if (!card) return;
-            const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
+            const nowOpen = card.classList.contains('open');
             const hint = card.querySelector('.toggle-hint');
             if (hint) {{
-                hint.textContent = isOpen ? '点击查看详情' : '收起 ↑';
+                const zhText = nowOpen ? '收起 ↑' : '点击查看详情';
+                const bmText = nowOpen ? 'Tutup ↑' : 'Klik untuk butiran';
+                const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+                hint.innerHTML = `
+                    <span class="lang-zh ${{isBm ? 'hidden' : ''}}">${{zhText}}</span>
+                    <span class="lang-bm ${{isBm ? '' : 'hidden'}}">${{bmText}}</span>
+                `;
             }}
         }}
 
