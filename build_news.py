@@ -343,21 +343,16 @@ def generate_index_html():
                     </span>
                 </div>
 
-                <div class="flex flex-wrap gap-1">
-                    {sources_pills}
-                </div>
             </div>
 
-            <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
-                <span class="text-[11px] mono font-bold footer-label">
-                    <span class="lang-zh">深度要闻</span>
-                    <span class="lang-bm hidden">Laporan Penuh</span>
-                </span>
-                <span class="text-[12px] font-black tracking-tight flex items-center gap-1 text-[#FFD60A] group-hover:translate-x-[2px] transition-all footer-btn">
-                    <span class="btn-text lang-zh">点击查看 ➔</span>
-                    <span class="btn-text lang-bm hidden">Lihat Penuh ➔</span>
-                    <span class="w-5 h-5 rounded-full bg-[#FFD60A] text-black flex items-center justify-center text-[11px] group-hover:bg-[#ffdb33]">→</span>
-                </span>
+            <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
+                <div class="flex flex-wrap gap-1 min-w-0">
+                    {sources_pills}
+                </div>
+                <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap">
+                    <span class="lang-zh">查看全文 ➡</span>
+                    <span class="lang-bm hidden">Baca ➡</span>
+                </button>
             </div>
         </article>
         """
@@ -1504,7 +1499,7 @@ def generate_index_html():
 
     <!-- 独立沉浸式全文阅读弹窗 (Modal) -->
     <div id="news-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleModalBackdropClick(event)">
-        <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden border modal-content-box" onclick="event.stopPropagation()">
+        <div class="relative w-11/12 sm:w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden border modal-content-box" onclick="event.stopPropagation()">
             <!-- 弹窗顶部粘性栏：分类徽章、时间、双核实与右上角 ✕ 关闭按钮 -->
             <div class="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-5 py-3 border-b modal-header-bar backdrop-blur-md">
                 <div class="flex items-center gap-2 flex-wrap" id="modal-tags">
@@ -1535,7 +1530,7 @@ def generate_index_html():
                         </span>
                     </div>
 
-                    <p class="text-[13.5px] sm:text-[14.5px] leading-[1.85] font-normal modal-body-text" id="modal-body"></p>
+                    <p class="text-[13.5px] sm:text-[14.5px] leading-[2] font-normal modal-body-text" id="modal-body"></p>
                 </div>
 
                 <!-- 官方双核实通报细节与信源链接 -->
@@ -1807,21 +1802,17 @@ def generate_index_html():
                             </span>
                         </div>
 
-                        <div class="flex flex-wrap gap-1">
-                            ${{sourcesPills}}
                         </div>
                     </div>
 
-                    <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
-                        <span class="text-[11px] mono font-bold footer-label">
-                            <span class="lang-zh ${{zhCls}}">深度要闻</span>
-                            <span class="lang-bm ${{bmCls}}">Laporan Penuh</span>
-                        </span>
-                        <span class="text-[12px] font-black tracking-tight flex items-center gap-1 text-[#FFD60A] group-hover:translate-x-[2px] transition-all footer-btn">
-                            <span class="btn-text lang-zh ${{zhCls}}">点击查看 ➔</span>
-                            <span class="btn-text lang-bm ${{bmCls}}">Lihat Penuh ➔</span>
-                            <span class="w-5 h-5 rounded-full bg-[#FFD60A] text-black flex items-center justify-center text-[11px] group-hover:bg-[#ffdb33]">→</span>
-                        </span>
+                    <div class="mt-auto flex items-center justify-between gap-2 px-3 py-2 card-footer">
+                        <div class="flex flex-wrap gap-1 min-w-0">
+                            ${{sourcesPills}}
+                        </div>
+                        <button onclick="event.stopPropagation(); openNewsModal(${{index}})" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#FFD60A] text-black font-black text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap">
+                            <span class="lang-zh ${{zhCls}}">查看全文 ➡</span>
+                            <span class="lang-bm ${{bmCls}}">Baca ➡</span>
+                        </button>
                     </div>
                 </article>
                 `;
