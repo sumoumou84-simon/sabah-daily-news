@@ -315,9 +315,9 @@ def generate_index_html():
             </div>'''
 
         news_cards_html += f"""
-        <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="toggleNewsCard({idx})">
+        <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
             {cover_img_html}
-            <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
+            <div class="p-3 md:p-[14px] flex flex-col gap-2.5 flex-1">
                 <div class="flex items-start justify-between gap-2">
                     <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
                         <span class="lang-zh">{clean_title}</span>
@@ -326,53 +326,13 @@ def generate_index_html():
                     {pin_badge}
                 </div>
 
-                <!-- 展开的深度全文内容 (250~400字深度脉络与背景) -->
-                <div class="news-drawer hidden mt-1">
-                    <div class="flex items-center gap-2 mb-3 flex-wrap">
-                        <span class="px-2.5 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10.5px] font-black tracking-wide">
-                            <span class="lang-zh">{category_tag_zh}</span>
-                            <span class="lang-bm hidden">{category_tag_bm}</span>
-                        </span>
-                        <span class="text-[11px] mono sub-meta-text">沙巴 Sabah • 全马</span>
-                        <span class="w-1 h-1 bg-[#475569] rounded-full"></span>
-                        <span class="text-[11px] mono sub-meta-date">{today_mmdd} {today_time}</span>
-                    </div>
+                <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
+                <p class="card-summary text-[12.5px] leading-[1.65] line-clamp-2">
+                    <span class="lang-zh">{clean_detail}</span>
+                    <span class="lang-bm hidden">{detail_bm}</span>
+                </p>
 
-                    <div class="news-drawer-box rounded-[10px] p-3.5 space-y-3">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-1.5 h-4 rounded-full bg-[#FFD60A]"></span>
-                            <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
-                                <span class="lang-zh">深度报道 / 250-400字背景脉络</span>
-                                <span class="lang-bm hidden">Laporan Terperinci / Konteks Penuh</span>
-                            </span>
-                            <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • {today_mmdd}</span>
-                        </div>
-
-                        <p class="news-body-text text-[13.5px] leading-[1.8] font-normal">
-                            <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
-                            <span class="lang-zh">{clean_detail}</span>
-                            <span class="lang-bm hidden">{detail_bm}</span>
-                        </p>
-
-                        <div class="pt-2 border-t drawer-divider flex flex-col gap-2">
-                            <div class="quote-box flex items-start gap-2 text-[11.5px] leading-[1.55] rounded-[8px] p-2.5">
-                                <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold quote-icon">❞</span>
-                                <span class="italic font-medium">
-                                    <span class="lang-zh">官方双核实通报：相关资讯已由白名单专页与核心主流报章交叉印证。</span>
-                                    <span class="lang-bm hidden">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
-                                </span>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5 items-center">
-                                {sources_links}
-                                <span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">
-                                    ✓ {tag}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap items-center gap-1.5 mt-auto">
+                <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
                     <span class="mono text-[10.5px] font-bold card-meta-time">{today_mmdd} {today_time}</span>
                     <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                         {tag}
@@ -390,12 +350,12 @@ def generate_index_html():
 
             <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
                 <span class="text-[11px] mono font-bold footer-label">
-                    <span class="lang-zh">标题-only</span>
-                    <span class="lang-bm hidden">Tajuk Sahaja</span>
+                    <span class="lang-zh">深度要闻</span>
+                    <span class="lang-bm hidden">Laporan Penuh</span>
                 </span>
                 <span class="text-[12px] font-black tracking-tight flex items-center gap-1 text-[#FFD60A] group-hover:translate-x-[2px] transition-all footer-btn">
-                    <span class="btn-text lang-zh">点击展开 →</span>
-                    <span class="btn-text lang-bm hidden">Kembang →</span>
+                    <span class="btn-text lang-zh">点击查看 ➔</span>
+                    <span class="btn-text lang-bm hidden">Lihat Penuh ➔</span>
                     <span class="w-5 h-5 rounded-full bg-[#FFD60A] text-black flex items-center justify-center text-[11px] group-hover:bg-[#ffdb33]">→</span>
                 </span>
             </div>
@@ -494,6 +454,12 @@ def generate_index_html():
         .mono {{
             font-family: "JetBrains Mono", monospace;
         }}
+        .line-clamp-2 {{
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }}
 
         body {{
             transition: background-color 0.25s ease, color 0.25s ease;
@@ -553,6 +519,43 @@ def generate_index_html():
                 .theme-dark .card-cover-wrap {{
             background-color: #0F172A !important;
             border-bottom: 1px solid #334155 !important;
+        }}
+                /* 弹窗沉浸阅读暗黑模式 */
+        .theme-dark .modal-content-box {{
+            background-color: #1E293B !important;
+            border-color: #334155 !important;
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .modal-header-bar {{
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            border-color: #334155 !important;
+        }}
+        .theme-dark .modal-close-btn {{
+            background-color: #334155 !important;
+            color: #F8FAFC !important;
+        }}
+        .theme-dark .modal-close-btn:hover {{
+            background-color: #475569 !important;
+            color: #FFD60A !important;
+        }}
+        .theme-dark .modal-detail-box {{
+            background-color: #0F172A !important;
+            border: 1px solid #334155 !important;
+        }}
+        .theme-dark .modal-body-text {{
+            color: #E2E8F0 !important;
+        }}
+        .theme-dark .modal-verify-box {{
+            background-color: #162032 !important;
+            border-color: #2D3D54 !important;
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .card-summary {{
+            color: #94A3B8 !important;
+        }}
+        .theme-dark .modal-cover-wrap {{
+            border-color: #334155 !important;
+            background-color: #0F172A !important;
         }}
         .theme-dark .news-grid-card {{
             background-color: var(--bg-card) !important;
@@ -772,6 +775,43 @@ def generate_index_html():
                 .theme-light .card-cover-wrap {{
             background-color: #F1F5F9 !important;
             border-bottom: 1px solid #E2E8F0 !important;
+        }}
+                /* 弹窗沉浸阅读浅色模式 */
+        .theme-light .modal-content-box {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+            color: #0F172A !important;
+        }}
+        .theme-light .modal-header-bar {{
+            background-color: rgba(248, 250, 252, 0.95) !important;
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .modal-close-btn {{
+            background-color: #F1F5F9 !important;
+            color: #475569 !important;
+        }}
+        .theme-light .modal-close-btn:hover {{
+            background-color: #E2E8F0 !important;
+            color: #0F172A !important;
+        }}
+        .theme-light .modal-detail-box {{
+            background-color: #F8FAFC !important;
+            border: 1px solid #E2E8F0 !important;
+        }}
+        .theme-light .modal-body-text {{
+            color: #334155 !important;
+        }}
+        .theme-light .modal-verify-box {{
+            background-color: #F1F5F9 !important;
+            border-color: #E2E8F0 !important;
+            color: #475569 !important;
+        }}
+        .theme-light .card-summary {{
+            color: #64748B !important;
+        }}
+        .theme-light .modal-cover-wrap {{
+            border-color: #E2E8F0 !important;
+            background-color: #F1F5F9 !important;
         }}
         .theme-light .news-grid-card {{
             background-color: var(--bg-card) !important;
@@ -1451,6 +1491,75 @@ def generate_index_html():
                 </div>
             </div>
         </div>
+
+    <!-- 独立沉浸式全文阅读弹窗 (Modal) -->
+    <div id="news-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleModalBackdropClick(event)">
+        <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden border modal-content-box" onclick="event.stopPropagation()">
+            <!-- 弹窗顶部粘性栏：分类徽章、时间、双核实与右上角 ✕ 关闭按钮 -->
+            <div class="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-5 py-3 border-b modal-header-bar backdrop-blur-md">
+                <div class="flex items-center gap-2 flex-wrap" id="modal-tags">
+                    <!-- 动态注入分类与核实标签 -->
+                </div>
+                <button onclick="closeNewsModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-[18px] font-bold transition hover:scale-110 modal-close-btn" title="关闭 (Esc)">
+                    ✕
+                </button>
+            </div>
+
+            <!-- 弹窗主体滚动区 -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 modal-body-scroll scrollbar-thin">
+                <!-- 弹窗大标题 -->
+                <h2 class="text-[17px] sm:text-[20px] font-black leading-[1.4] transition-colors modal-headline" id="modal-title"></h2>
+
+                <!-- 封面大图 (仅真实原生 og:image 存在时渲染展示) -->
+                <div id="modal-cover-wrap" class="hidden relative w-full aspect-video rounded-xl overflow-hidden border modal-cover-wrap">
+                    <img id="modal-cover-img" src="" alt="" class="w-full h-full object-cover" />
+                </div>
+
+                <!-- 深度报道全文内容 (250~400字背景脉络与政策细则) -->
+                <div class="modal-detail-box rounded-xl p-4 sm:p-5 space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-4 rounded-full bg-[#FFD60A]"></span>
+                        <span class="text-[11.5px] font-black text-[#FFD60A] tracking-wider">
+                            <span class="lang-zh">深度要闻 / 250-400字背景脉络与政策细则</span>
+                            <span class="lang-bm hidden">Laporan Mendalam / Konteks Penuh & Dasar Rasmi</span>
+                        </span>
+                    </div>
+
+                    <p class="text-[13.5px] sm:text-[14.5px] leading-[1.85] font-normal modal-body-text" id="modal-body"></p>
+                </div>
+
+                <!-- 官方双核实通报细节与信源链接 -->
+                <div class="rounded-xl p-4 border modal-verify-box space-y-2.5">
+                    <div class="flex items-start gap-2 text-[12px] leading-[1.6]">
+                        <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold bg-[#FFD60A] text-black">✓</span>
+                        <div>
+                            <span class="font-bold text-[#FFD60A]">
+                                <span class="lang-zh">官方双核实通报：</span>
+                                <span class="lang-bm hidden">Pengesahan Rasmi:</span>
+                            </span>
+                            <span class="opacity-90 italic">
+                                <span class="lang-zh">相关资讯已由白名单专页与核心主流报章交叉印证。</span>
+                                <span class="lang-bm hidden">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 items-center pt-2 border-t border-white/10" id="modal-sources">
+                        <!-- 来源胶囊链接 -->
+                    </div>
+                </div>
+
+                <!-- 正文最底部醒目的黄色大按钮：↑ 收起并返回列表 -->
+                <div class="pt-2 pb-1 flex justify-center">
+                    <button onclick="closeNewsModal()" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#FFD60A] hover:bg-[#ffde33] text-black font-black text-[13.5px] tracking-wide shadow-[0_4px_16px_rgba(255,214,10,0.35)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                        <span>↑</span>
+                        <span class="lang-zh">收起并返回列表</span>
+                        <span class="lang-bm hidden">Tutup & Kembali ke Senarai</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </main>
 
     <!-- 交互控制脚本（模式切换 + 语系切换 + 分类过滤 + 7天归档池） -->
@@ -1660,9 +1769,9 @@ def generate_index_html():
                 </div>` : '';
 
                 html += `
-                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="toggleNewsCard(${{idx}})">
+                <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
                     ${{coverImgHtml}}
-                    <div class="p-3 md:p-[14px] flex flex-col gap-2.5">
+                    <div class="p-3 md:p-[14px] flex flex-col gap-2.5 flex-1">
                         <div class="flex items-start justify-between gap-2">
                             <h3 class="card-title font-black leading-[1.38] flex-1 text-[14px] md:text-[15.5px] transition-colors">
                                 <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
@@ -1671,53 +1780,13 @@ def generate_index_html():
                             ${{pinBadge}}
                         </div>
 
-                        <!-- 展开的深度全文内容 -->
-                        <div class="news-drawer hidden mt-1">
-                            <div class="flex items-center gap-2 mb-3 flex-wrap">
-                                <span class="px-2.5 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10.5px] font-black tracking-wide">
-                                    <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
-                                    <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
-                                </span>
-                                <span class="text-[11px] mono sub-meta-text">沙巴 Sabah • 全马</span>
-                                <span class="w-1 h-1 bg-[#475569] rounded-full"></span>
-                                <span class="text-[11px] mono sub-meta-date">${{cardDateTag}}</span>
-                            </div>
+                        <!-- 2 行简略引言 (紧凑视图，拒绝默认展开平铺几百字) -->
+                        <p class="card-summary text-[12.5px] leading-[1.65] line-clamp-2">
+                            <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
+                            <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
+                        </p>
 
-                            <div class="news-drawer-box rounded-[10px] p-3.5 space-y-3">
-                                <div class="flex items-center gap-1.5">
-                                    <span class="w-1.5 h-4 rounded-full bg-[#FFD60A]"></span>
-                                    <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
-                                        <span class="lang-zh ${{zhCls}}">深度报道 / 250-400字背景脉络</span>
-                                        <span class="lang-bm ${{bmCls}}">Laporan Terperinci / Konteks Penuh</span>
-                                    </span>
-                                    <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • ${{cardDateTag}}</span>
-                                </div>
-
-                                <p class="news-body-text text-[13.5px] leading-[1.8] font-normal">
-                                    <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
-                                    <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
-                                    <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
-                                </p>
-
-                                <div class="pt-2 border-t drawer-divider flex flex-col gap-2">
-                                    <div class="quote-box flex items-start gap-2 text-[11.5px] leading-[1.55] rounded-[8px] p-2.5">
-                                        <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold quote-icon">❞</span>
-                                        <span class="italic font-medium">
-                                            <span class="lang-zh ${{zhCls}}">官方双核实通报：相关资讯已由白名单专页与核心主流报章交叉印证。</span>
-                                            <span class="lang-bm ${{bmCls}}">Maklumat disahkan melalui semakan silang portal rasmi dan akhbar utama.</span>
-                                        </span>
-                                    </div>
-                                    <div class="flex flex-wrap gap-1.5 items-center">
-                                        ${{sourcesLinks}}
-                                        <span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">
-                                            ✓ ${{tag}}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap items-center gap-1.5 mt-auto">
+                        <div class="flex flex-wrap items-center gap-1.5 mt-auto pt-1">
                             <span class="mono text-[10.5px] font-bold card-meta-time">${{cardDateTag}}</span>
                             <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                                 ${{tag}}
@@ -1735,12 +1804,12 @@ def generate_index_html():
 
                     <div class="mt-auto flex items-center justify-between px-3 py-2.5 card-footer">
                         <span class="text-[11px] mono font-bold footer-label">
-                            <span class="lang-zh ${{zhCls}}">标题-only</span>
-                            <span class="lang-bm ${{bmCls}}">Tajuk Sahaja</span>
+                            <span class="lang-zh ${{zhCls}}">深度要闻</span>
+                            <span class="lang-bm ${{bmCls}}">Laporan Penuh</span>
                         </span>
                         <span class="text-[12px] font-black tracking-tight flex items-center gap-1 text-[#FFD60A] group-hover:translate-x-[2px] transition-all footer-btn">
-                            <span class="btn-text lang-zh ${{zhCls}}">点击展开 →</span>
-                            <span class="btn-text lang-bm ${{bmCls}}">Kembang →</span>
+                            <span class="btn-text lang-zh ${{zhCls}}">点击查看 ➔</span>
+                            <span class="btn-text lang-bm ${{bmCls}}">Lihat Penuh ➔</span>
                             <span class="w-5 h-5 rounded-full bg-[#FFD60A] text-black flex items-center justify-center text-[11px] group-hover:bg-[#ffdb33]">→</span>
                         </span>
                     </div>
@@ -1837,18 +1906,128 @@ def generate_index_html():
             }}
         }}
 
-        // 展开/收起 新闻网格卡片
-        function toggleNewsCard(id) {{
-            const card = document.getElementById('news-card-' + id);
-            if (!card) return;
-            const isOpen = card.classList.contains('open');
-            card.classList.toggle('open');
-            const footerBtn = card.querySelector('.footer-btn .btn-text');
-            const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
-            if (footerBtn) {{
-                if (isOpen) {{
-                    footerBtn.textContent = isBm ? 'Kembang →' : '点击展开 →';
-                }} else {{
+        // 核心重构：沉浸式独立全文阅读弹窗 (Modal)
+        function openNewsModal(index) {{
+            const item = currentRenderedHeadlines[index];
+            if (!item) return;
+
+            const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+
+            const rawTitle = item.title || '';
+            const detail = item.detail || '';
+            const category = item.category || 'general';
+
+            const verifyMatch = rawTitle.match(/\[(.*?)\]/);
+            const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
+            const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
+
+            let sources = item.sources || [];
+            let cleanDetail = detail;
+            if (!sources.length) {{
+                if (detail.includes("来源：") || detail.includes("来源:")) {{
+                    const parts = detail.split(/来源[：:]/);
+                    cleanDetail = parts[0].trim();
+                    const sourceStr = parts[1].replace(/。/g, '').trim();
+                    sources = sourceStr.split(/[/、+及与]/).map(s => s.trim()).filter(s => s && s.length < 20);
+                }}
+            }}
+            if (!sources.length) sources = ["沙巴官方通报", "现场交叉复核"];
+
+            const titleBm = item.titleBM || ("Laporan Khas: " + cleanTitle.slice(0, 35));
+            const detailBm = item.detailBM || ("Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. " + cleanDetail.slice(0, 120) + "...");
+
+            let catTagZh = "综合百态", catTagBm = "Umum";
+            if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
+            else if (category === 'national') {{ catTagZh = "全国政经"; catTagBm = "Nasional"; }}
+            else if (category === 'sports') {{ catTagZh = "体育焦点"; catTagBm = "Sukan"; }}
+
+            const zhCls = isBm ? 'hidden' : '';
+            const bmCls = isBm ? '' : 'hidden';
+
+            // 1. 设置大标题
+            const modalTitle = document.getElementById('modal-title');
+            if (modalTitle) {{
+                modalTitle.innerHTML = `
+                    <span class="lang-zh ${{zhCls}}">${{cleanTitle}}</span>
+                    <span class="lang-bm ${{bmCls}}">${{titleBm}}</span>
+                `;
+            }}
+
+            // 2. 设置顶部标签
+            const modalTags = document.getElementById('modal-tags');
+            if (modalTags) {{
+                modalTags.innerHTML = `
+                    <span class="px-2.5 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[10.5px] font-black tracking-wide">
+                        <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
+                        <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
+                    </span>
+                    <span class="mono text-[11px] font-bold sub-meta-date">${{var}}</span>
+                    <span class="inline-flex items-center px-2 py-[2px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
+                        ✓ ${{tag}}
+                    </span>
+                `;
+            }}
+
+            // 3. 设置封面大图 (仅真实原生 og:image 存在时展示)
+            const coverWrap = document.getElementById('modal-cover-wrap');
+            const coverImg = document.getElementById('modal-cover-img');
+            if (item.image_url) {{
+                if (coverImg) {{
+                    coverImg.src = item.image_url;
+                    coverImg.onerror = function() {{
+                        if (coverWrap) coverWrap.classList.add('hidden');
+                    }};
+                }}
+                if (coverWrap) coverWrap.classList.remove('hidden');
+            }} else {{
+                if (coverWrap) coverWrap.classList.add('hidden');
+            }}
+
+            // 4. 设置深度全文内容
+            const modalBody = document.getElementById('modal-body');
+            if (modalBody) {{
+                modalBody.innerHTML = `
+                    <span class="inline-block w-2 h-2 rounded-full bg-[#FFD60A] mr-2 mb-[2px]"></span>
+                    <span class="lang-zh ${{zhCls}}">${{cleanDetail}}</span>
+                    <span class="lang-bm ${{bmCls}}">${{detailBm}}</span>
+                `;
+            }}
+
+            // 5. 设置核实来源胶囊
+            const modalSources = document.getElementById('modal-sources');
+            if (modalSources) {{
+                const links = sources.map(s => `<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ ${{s}}</span>`).join('');
+                modalSources.innerHTML = links + `<span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">✓ ${{tag}}</span>`;
+            }}
+
+            // 6. 打开弹窗并平滑锁定背景滚动
+            const modal = document.getElementById('news-modal');
+            if (modal) {{
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }}
+        }}
+
+        function closeNewsModal() {{
+            const modal = document.getElementById('news-modal');
+            if (modal) {{
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }}
+        }}
+
+        function handleModalBackdropClick(event) {{
+            if (event.target.id === 'news-modal') {{
+                closeNewsModal();
+            }}
+        }}
+
+        // 绑定键盘 Esc 键快速关闭弹窗
+        window.addEventListener('keydown', (e) => {{
+            if (e.key === 'Escape') {{
+                closeNewsModal();
+            }}
+        }}); else {{
                     footerBtn.textContent = isBm ? 'Tutup ↑' : '收起 ↑';
                 }}
             }}
