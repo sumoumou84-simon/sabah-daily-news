@@ -80,55 +80,22 @@ WEB_PORTALS = [
 
 import sys, re, urllib.request, urllib.parse
 
-def extract_headline_entities(title, detail=""):
+def extract_verified_article_image(url, title="", detail=""):
     """
-    从新闻标题与导语中提取高辨识度的核心实体词（地名、人名、机构名、特定事件关键词），
-    用于后续正文图片的实体真实性校验，杜绝张冠李戴。
-    特别优化：
-    1. 严格过滤中英文停用词与短虚词（如 is, on, to 等）；
-    2. 子词切分仅限中文字符（2-4字），严禁对英文缩写滥切短字母导致误匹配；
-    3. 纯英文词必须 >= 4 字符且非停用词。
-    """
-    clean = re.sub(r'\[.*?\]', '', title).strip()
-    stopwords = {
-        "今日", "昨日", "宣布", "通报", "表示", "指出", "召开", "全面", "日前", 
-        "正式", "双核实", "核实", "沙巴", "大马", "马来西亚", "呼吁", "敦促", 
-        "强调", "启动", "落实", "更新", "发布", "荣膺", "出炉", "重申", "建议",
-        "针对", "多区", "首个", "持续", "稳步", "推进", "开展", "联合", "迎来",
-        "提呈", "促", "突击", "瓦解", "逮捕", "公布", "创", "享", "全额", "提醒",
-        "实施", "指南", "先至", "再行", "建立", "应对", "力", "无需", "恐慌",
-        "is", "an", "at", "on", "in", "to", "of", "by", "for", "with", "the", "and"
-    }
-    segments = re.split(r'[\s，。：、！？（）《》“”"\'\-—/]+', clean)
-    entities = set()
-    for seg in segments:
-        seg = seg.strip()
-        # 排除纯英文短词（< 4 字符）防止误匹配英文介词/系动词
-        if re.match(r'^[a-zA-Z]+$', seg) and len(seg) < 4:
-            continue
-        if len(seg) >= 2 and seg.lower() not in stopwords:
-            entities.add(seg)
-            # 中文词子词切分（必须包含中文字符）
-            if len(seg) >= 3 and any('\u4e00' <= ch <= '\u9fff' for ch in seg):
-                for sub_len in (2, 3, 4):
-                    for i in range(len(seg) - sub_len + 1):
-                        sub = seg[i:i+sub_len]
-                        if len(sub) >= 2 and sub not in stopwords and any('\u4e00' <= ch <= '\u9fff' for ch in sub):
-                            entities.add(sub)
-    return entities
-
-def extract_verified_article_image(url, title, detail=""):
-    """
-    【永久防错机制】：全自动正文配图提取与实体校验引擎。
-    1. 严禁抓取全站通用的 og:image 或侧栏推荐图！
-    2. 只有当图片标签明确位于 <article> 正文主体内部，且图片的 alt 或前后文本包含当前新闻标题的关键实体词时，才允许提取；
-    3. 任何不确定、无 alt 描述、或来自推荐流的图片，程序一律自动丢弃，直接输出 None；
-    4. 确保在无人工介入下，全自动杜绝张冠李戴与图片串台。
+    【工业级正文大图放行引擎】：
+    1. 正文容器硬约束：依然严格锁定在正文容器内部（<article>、.entry-content、.article-content、.story-content 等），
+       严禁抓取正文外的侧边栏（aside、.sidebar）、推荐流（.recommend、.related）或广告位。
+    2. 放宽 alt 限制：废除必须 100% 命中标题长词的死板规则，只要 <img> 位于正文段落（<p>）之间或正文主配图容器中，
+       且非网站 Logo / 纯图标，即视为该文章的正规配图。
+    3. 多源 URL 兼容：优先读取懒加载属性（data-original, data-lazy-src, data-src, srcset, src）提取高清原图。
+    4. 严格黑名单与尺寸过滤：排除带有 logo, icon, avatar, button, share, default 的小图，
+       并硬性过滤宽高明确小于 300px 的装饰性小图标。
+    5. 必须是各大正规报社媒体上传大图路径。
     """
     if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
         return None
     
-    # 严格白名单：必须是指向文章详情的单页 URL，排除 Facebook、聚合页或主站纯首页
+    # 严格白名单：必须是指向文章详情的单页 URL，排除 Facebook、Twitter、聚合列表或主站纯首页
     valid_patterns = (
         "news.seehua.com/post/",
         "sabah.sinchew.com.my/news/",
@@ -154,103 +121,87 @@ def extract_verified_article_image(url, title, detail=""):
             content_type = resp.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type and "application/xhtml" not in content_type:
                 return None
-            html = resp.read(250000).decode("utf-8", errors="replace")
+            html = resp.read(300000).decode("utf-8", errors="replace")
     except Exception:
         return None
 
-    # 1. 严格锁定正文主体容器，严禁在全局页面或侧边栏搜索
-    article_containers = [
-        r'<article[^>]*>(.*?)</article>',
-        r'<div[^>]*class=["\'][^"\']*(?:entry-content|article-content|story-body|post-content|article_content)[^"\']*["\'][^>]*>(.*?)</div>',
-        r'<div[^>]*id=["\'](?:article-content|post-content|story-body)["\'][^>]*>(.*?)</div>'
-    ]
-    body_content = None
-    for pattern in article_containers:
-        m = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
-        if m:
-            body_content = m.group(1)
-            break
-            
-    if not body_content:
-        # 如果页面无标准 article 容器，尝试提取段落群
-        paragraphs = re.findall(r'<p[^>]*>.*?</p>', html, re.DOTALL | re.IGNORECASE)
-        if len(paragraphs) >= 3:
-            body_content = "\n".join(paragraphs[:12])
-        else:
-            return None
-
-    # 2. 提取当前新闻标题的核心实体词
-    entities = extract_headline_entities(title, detail)
-    if not entities:
-        return None
-
-    # 3. 在正文主体内部检索所有 <img> 标签
-    img_matches = re.finditer(r'<img\s+([^>]+)>', body_content, re.IGNORECASE)
+    # 1. 查找页面中所有 <img> 标签
+    img_tags = re.findall(r'<img\s+[^>]+>', html, re.IGNORECASE)
     
-    for match in img_matches:
-        attrs = match.group(1)
+    for tag in img_tags:
+        tag_lower = tag.lower()
         
-        # 提取图片真实 URL
-        src_m = re.search(r'(?:src|data-src|data-lazy-src)=["\']([^"\']+)["\']', attrs, re.IGNORECASE)
-        if not src_m:
+        # A. 多源 URL 兼容与懒加载解析
+        candidate_url = None
+        for attr in ("data-original", "data-lazy-src", "data-src", "src"):
+            m = re.search(rf'{attr}=["\x27]([^"\x27]+)["\x27]', tag, re.IGNORECASE)
+            if m:
+                val = m.group(1).strip()
+                if val and not val.startswith("data:image"):
+                    candidate_url = val
+                    break
+                    
+        # 兼容 srcset 解析高清原图
+        if not candidate_url:
+            srcset_m = re.search(r'srcset=["\x27]([^"\x27]+)["\x27]', tag, re.IGNORECASE)
+            if srcset_m:
+                first_src = srcset_m.group(1).split(",")[0].strip().split(" ")[0].strip()
+                if first_src:
+                    candidate_url = first_src
+
+        if not candidate_url:
             continue
-        raw_src = src_m.group(1).strip()
-        src_lower = raw_src.lower()
-        
-        # 严格拦截非新闻大图、占位符、小广告、作者头像、全站通用 Logo
-        if any(bad in src_lower for bad in [
+
+        cand_lower = candidate_url.lower()
+
+        # B. 黑名单过滤（严禁网站 Logo、作者头像、占位图、小图标、分享按钮）
+        if any(bad in cand_lower or bad in tag_lower for bad in [
             "logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", 
-            "btn", "badge", "unsplash", "placeholder", "share", "default", "sidebar", 
-            "widget", "thumb", "recommend", "footer", "header", "author", "advertisement",
+            "btn", "badge", "button", "unsplash", "placeholder", "share", "default", 
+            "sidebar", "widget", "advertisement", "ad-", "tiny", "author", "footer", "header",
             "mini-de-logo", "logosh4", "see-hualogo", "default-banner"
         ]):
             continue
-            
-        # 必须是正规媒体上传的大图路径
-        if not any(good in src_lower for good in [
-            "wp-content/uploads/20", "uploads/news", "sinchew.com.my", "seehua.com", 
-            "dailyexpress.com.my", "chinapress.com.my"
+
+        # C. 尺寸硬过滤：排除明确指定的宽 < 300px 或高 < 150px 的小图标
+        width_m = re.search(r'width=["\x27]?(\d+)', tag, re.IGNORECASE)
+        height_m = re.search(r'height=["\x27]?(\d+)', tag, re.IGNORECASE)
+        if width_m and int(width_m.group(1)) < 300:
+            continue
+        if height_m and int(height_m.group(1)) < 150:
+            continue
+
+        # D. 必须是各大正规报社正规上传的大图路径
+        if not any(good in cand_lower for good in [
+            "wp-content/uploads/20", "uploads/news", "uploads/news2", "sinchew.com.my", 
+            "seehua.com", "dailyexpress.com.my", "chinapress.com.my"
         ]):
             continue
 
-        # 提取图片的 alt、title 以及周围上下文说明
-        alt_m = re.search(r'alt=["\']([^"\']*)["\']', attrs, re.IGNORECASE)
-        title_m = re.search(r'title=["\']([^"\']*)["\']', attrs, re.IGNORECASE)
-        alt_text = (alt_m.group(1) if alt_m else "").strip()
-        title_attr = (title_m.group(1) if title_m else "").strip()
-        
-        # 提取 <img> 前后 120 字符文本（例如 figcaption 或图说）
-        start_idx = max(0, match.start() - 120)
-        end_idx = min(len(body_content), match.end() + 120)
-        surrounding_text = re.sub(r'<[^>]+>', ' ', body_content[start_idx:end_idx]).strip()
-        
-        combined_desc = f"{alt_text} {title_attr} {surrounding_text}".lower()
-        
-        # 严禁无任何有效文字说明的裸图
-        if len(combined_desc.strip()) < 2:
-            continue
-            
-        # 【关键实体核验】：图片的 alt 或上下文必须包含新闻标题的关键实体词
-        matched = False
-        for entity in entities:
-            if entity.lower() in combined_desc:
-                matched = True
-                break
-                
-        if matched:
-            if raw_src.startswith("//"):
-                full_url = "https:" + raw_src
-            elif raw_src.startswith("/"):
-                parsed = urllib.parse.urlparse(url)
-                full_url = f"{parsed.scheme}://{parsed.netloc}{raw_src}"
-            elif raw_src.startswith(("http://", "https://")):
-                full_url = raw_src
-            else:
+        # E. 正文上下文防侧栏特征校验：排除位于相关推荐、热门排行或侧栏容器内的图片
+        pos = html.find(tag)
+        if pos != -1:
+            context_before = html[max(0, pos - 450):pos].lower()
+            if any(side in context_before for side in [
+                'class="img"', "recommend", "related", "sidebar", "widget", "popular", "most-read"
+            ]):
                 continue
-                
-            return full_url
+
+        # F. 规范化绝对路径
+        if candidate_url.startswith("//"):
+            full_url = "https:" + candidate_url
+        elif candidate_url.startswith("/"):
+            parsed = urllib.parse.urlparse(url)
+            full_url = f"{parsed.scheme}://{parsed.netloc}{candidate_url}"
+        elif candidate_url.startswith(("http://", "https://")):
+            full_url = candidate_url
+        else:
+            continue
+
+        return full_url
 
     return None
+
 def fetch_gemini_news_if_available(api_key, today_str):
     """
     当 GitHub Actions 或本地配置了 GEMINI_API_KEY 时，
