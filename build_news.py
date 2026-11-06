@@ -1083,6 +1083,16 @@ def generate_index_html():
             from {{ opacity: 0; transform: translateY(-4px); }}
             to {{ opacity: 1; transform: translateY(0); }}
         }}
+        /* 沉浸式独立全文阅读弹窗样式 (强制顶级层级与居中 Flex 浮出) */
+        #news-modal {{
+            z-index: 9999 !important;
+        }}
+        #news-modal.hidden {{
+            display: none !important;
+        }}
+        #news-modal:not(.hidden) {{
+            display: flex !important;
+        }}
     </style>
 </head>
 <body class="transition-colors duration-200">
@@ -1493,7 +1503,7 @@ def generate_index_html():
         </div>
 
     <!-- 独立沉浸式全文阅读弹窗 (Modal) -->
-    <div id="news-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleModalBackdropClick(event)">
+    <div id="news-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-sm transition-opacity duration-200" onclick="handleModalBackdropClick(event)">
         <div class="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl shadow-2xl overflow-hidden border modal-content-box" onclick="event.stopPropagation()">
             <!-- 弹窗顶部粘性栏：分类徽章、时间、双核实与右上角 ✕ 关闭按钮 -->
             <div class="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-5 py-3 border-b modal-header-bar backdrop-blur-md">
@@ -1961,7 +1971,7 @@ def generate_index_html():
                         <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
                         <span class="lang-bm ${{bmCls}}">${{catTagBm}}</span>
                     </span>
-                    <span class="mono text-[11px] font-bold sub-meta-date">${{var}}</span>
+                    <span class="mono text-[11px] font-bold sub-meta-date">${{currentRenderedDateLabel}}</span>
                     <span class="inline-flex items-center px-2 py-[2px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                         ✓ ${{tag}}
                     </span>
@@ -2004,6 +2014,7 @@ def generate_index_html():
             const modal = document.getElementById('news-modal');
             if (modal) {{
                 modal.classList.remove('hidden');
+                modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }}
         }}
@@ -2012,6 +2023,7 @@ def generate_index_html():
             const modal = document.getElementById('news-modal');
             if (modal) {{
                 modal.classList.add('hidden');
+                modal.style.display = 'none';
                 document.body.style.overflow = '';
             }}
         }}
@@ -2027,11 +2039,12 @@ def generate_index_html():
             if (e.key === 'Escape') {{
                 closeNewsModal();
             }}
-        }}); else {{
-                    footerBtn.textContent = isBm ? 'Tutup ↑' : '收起 ↑';
-                }}
-            }}
-        }}
+        }});
+
+        // 显式挂载到 window 对象上，确保全局任何内联 onclick 均可 100% 稳定调用
+        window.openNewsModal = openNewsModal;
+        window.closeNewsModal = closeNewsModal;
+        window.handleModalBackdropClick = handleModalBackdropClick;
 
         // 初始化
         window.addEventListener('DOMContentLoaded', () => {{

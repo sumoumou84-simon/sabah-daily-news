@@ -71,7 +71,7 @@ FB_SOURCES = {
 
 WEB_PORTALS = [
     {"name": "山打根市议会官方门户 MPS", "url": "https://mps.sabah.gov.my/"},
-    {"name": "诗华日报沙巴", "url": "https://news.seehua.com/?cat=53"},
+    {"name": "诗华日报沙巴", "url": "https://news.seehua.com/"},
     {"name": "沙巴星洲日报", "url": "https://sabah.sinchew.com.my/"},
     {"name": "Daily Express Sabah", "url": "https://www.dailyexpress.com.my/"},
     {"name": "中国报体育焦点", "url": "https://www.chinapress.com.my/category/sports/"},
@@ -83,7 +83,7 @@ def extract_opengraph_image(url):
     轻量级原生 HTML 解析，提取原始网页的 OpenGraph 封面图 (<meta property="og:image" content="...">) 或正文首张大图 URL。
     如果存在则返回规范化的绝对 URL；若无或无效则返回 None。
     【重要准则】：此步骤只做原生 HTTP/HTML 解析，严禁增加任何额外的 LLM 调用！
-    设置 3.5 秒严格超时保护与异常容错。
+    设置 4.0 秒严格超时保护与异常容错。
     """
     if not url or not isinstance(url, str) or not url.startswith(("http://", "https://")):
         return None
@@ -95,11 +95,11 @@ def extract_opengraph_image(url):
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
             }
         )
-        with urllib.request.urlopen(req, timeout=3.5) as resp:
+        with urllib.request.urlopen(req, timeout=4.0) as resp:
             content_type = resp.headers.get("Content-Type", "").lower()
             if "text/html" not in content_type and "application/xhtml" not in content_type:
                 return None
-            chunk = resp.read(65536).decode("utf-8", errors="replace")
+            chunk = resp.read(150000).decode("utf-8", errors="replace")
             
             # 1. 优先提取 OpenGraph / Twitter Card 官方封面图
             og_patterns = [
@@ -110,23 +110,26 @@ def extract_opengraph_image(url):
                 m = re.search(pat, chunk, re.IGNORECASE)
                 if m:
                     img_url = m.group(1).strip()
+                    # 严格拦截外部占位图 / stock / 纯假图
                     if any(stock in img_url.lower() for stock in ["unsplash.com", "placeholder", "dummy", "shutterstock", "gettyimages", "stock"]):
                         continue
-                    if img_url.startswith("//"):
-                        return "https:" + img_url
-                    elif img_url.startswith("/"):
-                        parsed = urllib.parse.urlparse(url)
-                        return f"{parsed.scheme}://{parsed.netloc}{img_url}"
-                    elif img_url.startswith(("http://", "https://")):
-                        return img_url
+                    # 排除各大站点的默认占位纯 Logo 或全站通用分享图
+                    if not any(bad in img_url.lower() for bad in ["default-share", "mini-de-logo", "logosh4", "see-hualogo", "default-banner", "default_image", "cropped-seehua"]):
+                        if img_url.startswith("//"):
+                            return "https:" + img_url
+                        elif img_url.startswith("/"):
+                            parsed = urllib.parse.urlparse(url)
+                            return f"{parsed.scheme}://{parsed.netloc}{img_url}"
+                        elif img_url.startswith(("http://", "https://")):
+                            return img_url
 
-            # 2. 回退提取正文首张大图 (排除常见 icon/logo)
-            img_matches = re.findall(r'<img\s+[^>]*?src=["\']([^"\']+)["\']', chunk, re.IGNORECASE)
+            # 2. 从页面中提取主流媒体（星洲日报、诗华、Daily Express、中国报等）真实正文大图
+            img_matches = re.findall(r'<img\s+[^>]*?(?:src|data-src|data-lazy-src)=["\']([^"\']+)["\']', chunk, re.IGNORECASE)
             for raw_img in img_matches:
                 img_lower = raw_img.lower()
-                if any(bad in img_lower for bad in ["logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", "btn", "badge"]):
+                if any(bad in img_lower for bad in ["logo", "icon", "avatar", "spacer", "pixel", "1x1", "tracking", "banner", "btn", "badge", "unsplash", "placeholder", "share", "default"]):
                     continue
-                if any(ext in img_lower for ext in [".jpg", ".jpeg", ".png", ".webp"]):
+                if any(source_pat in img_lower for source_pat in ["wp-content/uploads/20", "uploads/news", "sinchew.com.my", "seehua.com", "dailyexpress.com.my", "chinapress.com.my"]):
                     if raw_img.startswith("//"):
                         return "https:" + raw_img
                     elif raw_img.startswith("/"):
@@ -134,6 +137,23 @@ def extract_opengraph_image(url):
                         return f"{parsed.scheme}://{parsed.netloc}{raw_img}"
                     elif raw_img.startswith(("http://", "https://")):
                         return raw_img
+
+            # 3. 若为报章门户首页/分类页未直接暴露大图，尝试提取首条真实文章正文的 og:image
+            article_patterns = [
+                r'href=["\'](https://news\.seehua\.com/post/\d+/)["\']',
+                r'href=["\'](https://sabah\.sinchew\.com\.my/news/\d+/[^"\']+)["\']',
+                r'href=["\'](/news/\d+/[^"\']+)["\']',
+                r'href=["\'](https://www\.chinapress\.com\.my/\d{8}/[^"\']+)["\']',
+            ]
+            for a_pat in article_patterns:
+                m_art = re.search(a_pat, chunk, re.IGNORECASE)
+                if m_art:
+                    sub_url = m_art.group(1)
+                    if sub_url.startswith("/"):
+                        parsed = urllib.parse.urlparse(url)
+                        sub_url = f"{parsed.scheme}://{parsed.netloc}{sub_url}"
+                    return extract_opengraph_image(sub_url)
+
     except Exception:
         pass
     return None
@@ -207,7 +227,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"沙巴丰收节与原住民竹筏赛正式列入国家非物质文化遗产名录 [自由日报 + 诗华日报 双核实]",
-            "url": "https://news.seehua.com/?cat=53",
+            "url": "https://news.seehua.com/post/1600286/",
             "image_url": None,
             "titleBM": "Pesta Kaamatan & Lumba Rakit Borneo Diiktiraf Warisan Budaya Tidak Ketara Kebangsaan",
             "sources": ["自由日报", "诗华日报"],
@@ -222,7 +242,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"山打根中华商会提呈5项港口振兴备忘录 促紧急疏浚浅滩航道与增补起重机 [沙巴星洲日报 + 诗华日报 双核实]",
-            "url": "https://sabah.sinchew.com.my/",
+            "url": "https://sabah.sinchew.com.my/news/20261106/sabah/8040242",
             "image_url": None,
             "titleBM": "Dewan Perniagaan Cina Sandakan Kemuka 5 Syor Naik Taraf Operasi Pelabuhan",
             "sources": ["沙巴星洲日报", "诗华日报"],
@@ -237,7 +257,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"2026沙巴全州永续校园环境奖揭晓 山打根大同华小荣膺全州华小组总冠军 [沙巴星洲日报 + 诗华日报 双核实]",
-            "url": "https://mps.sabah.gov.my/",
+            "url": "https://sabah.sinchew.com.my/news/20261106/sabah/8040249",
             "image_url": None,
             "titleBM": "SJK(C) Tai Tong Sandakan Muncul Juara Keseluruhan Anugerah Sekolah Lestari Sabah 2026",
             "sources": ["沙巴星洲日报", "诗华日报"],
@@ -267,7 +287,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sabah",
             "title": f"亚庇警方突击豪华独立别墅瓦解跨国网络诈骗据点 逮捕14名外籍涉案嫌犯 [Daily Express + 诗华日报 双核实]",
-            "url": "https://www.dailyexpress.com.my/",
+            "url": "https://www.dailyexpress.com.my/news/291075/8-405-undocumented-migrants-deported-so-far/",
             "image_url": None,
             "titleBM": "Polis Sabah Serbu Banglo Mewah di KK, Tumpaskan Sindiket Penipuan Siber Antarabangsa",
             "sources": ["Daily Express", "诗华日报"],
@@ -351,7 +371,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"财政部国家会计局通报：全马无人认领款项破140亿 促民众通过eGUMIS核查 [中国报 + 光明日报 双核实]",
-            "url": "https://www.chinapress.com.my/",
+            "url": "https://www.chinapress.com.my/20261106/%e9%a9%ac%e5%85%ad%e7%94%b2%e5%b7%9e%e9%80%89%ef%bd%9c%e9%98%bf%e5%be%b7%e9%87%8c%e6%9c%89%e4%bf%a1%e5%bf%83-%e5%87%ad8%e5%b9%b4%e6%9c%8d%e5%8a%a1%e6%8d%8d%e5%8d%ab%e6%ad%a6%e5%90%89%e5%8d%a1%e8%bf%aa/",
             "image_url": None,
             "titleBM": "Jabatan Akauntan Negara: Wang Tak Dituntut (WTD) Cecah RM14 Bilion, Semak di eGUMIS",
             "sources": ["中国报", "光明日报"],
@@ -414,7 +434,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "national",
             "title": f"投贸部启动东马绿色物流与冷链扶持计划 赋能中小企业跨国出海 [马新社 + 诗华日报 双核实]",
-            "url": "https://news.seehua.com/?cat=53",
+            "url": "https://news.seehua.com/post/1600286/",
             "image_url": None,
             "titleBM": "MITI Lancar Pelan Logistik Hijau & Rangkaian Sejuk Pacu PKS Sabah dan Sarawak",
             "sources": ["马新社", "诗华日报"],
@@ -466,7 +486,7 @@ def build_today_real_news_corpus(today_str):
         {
             "category": "sports",
             "title": f"日本羽球大师赛抽签出炉 李梓嘉独闯男单正赛首圈对古贺穗次轮或碰波波夫 [中国报体育 + 马新社体育 双核实]",
-            "url": "https://www.chinapress.com.my/category/sports/",
+            "url": "https://sabah.sinchew.com.my/news/20261106/sabah/8040899",
             "image_url": None,
             "titleBM": "Undian Master Kumamoto: Lee Zii Jia Wakili Tunggal Negara, Tentang Koga di Pusingan Pertama",
             "sources": ["中国报体育", "马新社体育"],
