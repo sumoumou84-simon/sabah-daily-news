@@ -209,10 +209,8 @@ def generate_index_html():
 
     utiliti_cards_html = ""
     for idx, u in enumerate(default_utils):
-        is_first = (idx == 0)
-        open_cls = "open" if is_first else ""
         utiliti_cards_html += f"""
-        <div class="util-card {open_cls}" id="util-card-{idx}" onclick="toggleUtilCard({idx})">
+        <div class="util-card" id="util-card-{idx}" onclick="toggleUtilCard({idx})">
             <div class="flex items-start justify-between gap-2.5 w-full">
                 <!-- 左侧：图标 + 标题 + 时间戳 (弹性自适应 min-w-0 flex-1，绝不挤压) -->
                 <div class="flex items-start gap-2.5 min-w-0 flex-1">
@@ -237,8 +235,8 @@ def generate_index_html():
                         <span class="lang-bm hidden whitespace-nowrap">{u['statusBM']}</span>
                     </div>
                     <div class="text-[10px] text-black/70 mono mt-1 font-bold toggle-hint whitespace-nowrap">
-                        <span class="lang-zh">{ '收起 ↑' if is_first else '点击查看详情' }</span>
-                        <span class="lang-bm hidden">{ 'Tutup ↑' if is_first else 'Klik untuk butiran' }</span>
+                        <span class="lang-zh">点击查看详情</span>
+                        <span class="lang-bm hidden">Klik untuk butiran</span>
                     </div>
                 </div>
             </div>
