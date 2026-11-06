@@ -818,13 +818,35 @@ def verify_and_classify_news():
             print("=" * 70 + "\n")
             sys.exit(1)
 
-    # 3.1 封面图提取与解析（按需求严格执行原生 HTML/OpenGraph 提取，严禁增加额外 LLM 调用）
+    # 3.1 封面图提取与解析（原生 HTML/OpenGraph 提取，严禁增加额外 LLM 调用）
+    # 【关键修复】每篇新闻独立处理，每轮开始前强制重置 current_image_url = None，
+    #             严禁上一篇的图片串台到下一篇！
+    # 【准则】只有指向真实报章文章页面的 URL 才提取图片，Facebook/通用首页直接置 None。
+    ARTICLE_URL_HOSTS = (
+        "news.seehua.com/post/",
+        "sabah.sinchew.com.my/news/",
+        "sinchew.com.my/news/",
+        "www.dailyexpress.com.my/news/",
+        "www.chinapress.com.my/20",
+        "chinapress.com.my/20",
+        "www.malaysiakini.com/news/",
+        "www.freemalaysiatoday.com/",
+    )
+    used_image_urls = set()  # 全局图片 URL 去重集合，每张图在当天新闻池中只出现一次
     for h in headlines:
-        if h.get("url") and not h.get("image_url"):
-            extracted_img = extract_opengraph_image(h["url"])
-            h["image_url"] = extracted_img if extracted_img else None
-        elif "image_url" not in h or not h.get("image_url"):
-            h["image_url"] = None
+        current_image_url = None  # 每篇独立重置，严禁串台
+        url = h.get("url", "") or ""
+        # 只对指向真实文章页面的 URL 尝试图片提取
+        is_article_url = any(pat in url for pat in ARTICLE_URL_HOSTS)
+        if is_article_url and not h.get("image_url"):
+            current_image_url = extract_opengraph_image(url)
+        # 若为 Facebook/Twitter/通用首页，直接置 None，绝不继承上一篇图片
+        # 全局去重：同一张图在当天新闻池中只出现一次，重复判定为聚合页串台
+        if current_image_url and current_image_url in used_image_urls:
+            current_image_url = None  # 重复图片，强制置 null
+        elif current_image_url:
+            used_image_urls.add(current_image_url)
+        h["image_url"] = current_image_url if current_image_url else None
 
     # 4. 丰富未来 2 周活动数据
     events = build_rich_future_events()
