@@ -977,13 +977,7 @@ def generate_index_html():
             display: block !important;
             width: 100% !important;
         }}
-        @media (max-width: 768px) {{
-            .news-masonry-container,
-            #news-grid-container {{
-                column-count: 1 !important;
-                column-gap: 12px !important;
-            }}
-        }}
+
 
         /* 手机与平板端全量强制严格双列并排 (grid-cols-2) */
         #news-grid-container {{
@@ -1122,28 +1116,71 @@ def generate_index_html():
         #news-modal:not(.hidden) {{
             display: flex !important;
         }}
+
+        /* 隐藏滚动条但保留平滑横向滚动 */
+        .no-scrollbar::-webkit-scrollbar {{
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+        }}
+        .no-scrollbar {{
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }}
+
+        /* 顶部 Header 深色/浅色模式切换按钮防挤压 */
+        .theme-toggle-btn {{
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+            min-width: 64px !important;
+            box-sizing: border-box !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }}
+        @media (max-width: 640px) {{
+            .theme-toggle-btn {{
+                min-width: 58px !important;
+                padding: 3px 8px !important;
+                font-size: 11px !important;
+                gap: 4px !important;
+            }}
+        }}
+
+        /* 分类 Tab 原生横向平滑滚动 (Mobile Scrollable Tabs) */
+        #category-tabs-container {{
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            scroll-behavior: smooth !important;
+            -webkit-overflow-scrolling: touch;
+        }}
+        #category-tabs-container .cat-tab-btn {{
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+        }}
     </style>
 </head>
 <body class="transition-colors duration-200">
 
     <!-- 顶部 Header -->
     <header class="border-b sticky top-0 z-50">
-        <div class="mx-auto max-w-[1440px] px-3 md:px-6 h-[52px] md:h-[56px] flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2 md:gap-3 min-w-0">
-                <div class="flex items-center gap-2">
-                    <span class="text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap">
+        <div class="mx-auto max-w-[1440px] px-2.5 sm:px-4 md:px-6 h-[50px] sm:h-[52px] md:h-[56px] flex items-center justify-between gap-1.5 sm:gap-3">
+            <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <span class="text-[15.5px] sm:text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap">
                         <span class="lang-zh">西门看看网</span>
                         <span class="lang-bm hidden">Simon Kankan</span>
                     </span>
-                    <span class="inline-flex items-center px-2 py-[2px] rounded-[6px] bg-[#FFD60A] text-black text-[11px] font-bold leading-none shrink-0">
+                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-[5px] sm:rounded-[6px] bg-[#FFD60A] text-black text-[10px] sm:text-[11px] font-bold leading-none shrink-0 whitespace-nowrap">
                         <span class="lang-zh">每日晨报</span>
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
 
-                    <!-- 一键分享按钮 -->
-                    <button onclick="sharePage()" class="inline-flex items-center gap-1.5 px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer ml-1 shrink-0" title="一键分享当前页面给好友">
+                    <!-- 一键分享按钮 (窄屏优化：手机端精炼图标+文字自适应，绝不挤压右侧按钮) -->
+                    <button onclick="sharePage()" class="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[10.5px] sm:text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
                         <span>🔗</span>
-                        <span class="lang-zh">一键分享</span>
+                        <span class="lang-zh hidden sm:inline">一键分享</span>
                         <span class="lang-bm hidden">Kongsi</span>
                     </button>
                 </div>
@@ -1156,20 +1193,20 @@ def generate_index_html():
                 </div>
             </div>
 
-            <div class="flex items-center gap-1.5 md:gap-2 shrink-0">
-                <!-- ☀️ 日间浅色 / 🌙 夜间深色 模式切换高质感胶囊按钮 -->
-                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn inline-flex items-center gap-1.5 px-3 py-[4px] rounded-full text-[12px] font-bold transition-all border cursor-pointer shrink-0 shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <!-- ☀️ 日间浅色 / 🌙 夜间深色 模式切换高质感胶囊按钮 (固定尺寸与shrink-0防止被挤压) -->
+                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text" class="lang-zh">浅色</span>
                     <span id="theme-text-bm" class="lang-bm hidden">Cerah</span>
                 </button>
 
                 <!-- 中文 / BM 语系即时切换 -->
-                <div class="lang-switcher-box flex items-center rounded-full p-[3px] border">
-                    <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black">
+                <div class="lang-switcher-box flex items-center rounded-full p-[2px] sm:p-[3px] border shrink-0">
+                    <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all bg-[#FFD60A] text-black shrink-0 whitespace-nowrap">
                         中文
                     </button>
-                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white">
+                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all text-[#888] hover:text-white shrink-0 whitespace-nowrap">
                         BM
                     </button>
                 </div>
@@ -1334,14 +1371,14 @@ def generate_index_html():
                         {utiliti_cards_html}
                     </div>
 
-                    <!-- 今日要闻标题栏 -->
-                    <div class="flex items-center justify-between mb-3">
+                    <!-- 今日要闻标题栏 (预留足够安全间距，杜绝层叠挤压) -->
+                    <div class="flex items-center justify-between gap-2 flex-wrap mb-1">
                         <div class="flex items-center gap-2 flex-wrap">
-                            <h2 class="text-[17px] md:text-[19px] font-black tracking-tight" id="headlines-section-title">
+                            <h2 class="text-[16px] sm:text-[18px] md:text-[19px] font-black tracking-tight" id="headlines-section-title">
                                 <span class="lang-zh">今日 {today_mmdd} 重点要闻</span>
                                 <span class="lang-bm hidden">Berita Utama Hari Ini {today_mmdd}</span>
                             </h2>
-                            <span class="inline-flex items-center px-2 py-[2px] rounded-full bg-[#FFD60A] text-black text-[12px] font-black">
+                            <span class="inline-flex items-center px-2 py-[2px] rounded-full bg-[#FFD60A] text-black text-[11px] sm:text-[12px] font-black shrink-0">
                                 <span id="headlines-count-tag">{len(headlines)}</span>
                                 <span class="lang-zh ml-1">篇深度采编</span>
                                 <span class="lang-bm hidden ml-1">Laporan Penuh</span>
@@ -1351,26 +1388,26 @@ def generate_index_html():
                                 <span class="lang-bm hidden">Klik baca laporan 250-400 patah</span>
                             </span>
                         </div>
-                        <div class="text-[11px] sub-meta-text mono flex items-center gap-2">
+                        <div class="text-[10px] sm:text-[11px] sub-meta-text mono flex items-center gap-1.5 shrink-0">
                             <span>{today_mmdd} • MYT</span>
                         </div>
                     </div>
 
-                    <!-- 新闻分类 Tab 选项卡栏（5大高质感胶囊按钮） -->
-                    <div class="flex items-center gap-2 overflow-x-auto pb-1 mb-3 scrollbar-thin select-none" id="category-tabs-container">
-                        <button onclick="filterNewsCategory('all', this)" class="cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]">
+                    <!-- 新闻分类 Tab 选项卡栏（5大高质感胶囊按钮，开启原生横向平滑滚动 Mobile Scrollable Tabs） -->
+                    <div class="flex flex-nowrap items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 mt-3 mb-2 select-none" id="category-tabs-container">
+                        <button onclick="filterNewsCategory('all', this)" class="cat-tab-btn active shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]">
                             <span class="lang-zh">全部</span><span class="lang-bm hidden">Semua</span>
                         </button>
-                        <button onclick="filterNewsCategory('sabah', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
+                        <button onclick="filterNewsCategory('sabah', this)" class="cat-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all border">
                             📍 <span class="lang-zh">沙巴 & 山打根</span><span class="lang-bm hidden">Sabah & Sandakan</span>
                         </button>
-                        <button onclick="filterNewsCategory('national', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
+                        <button onclick="filterNewsCategory('national', this)" class="cat-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all border">
                             🇲🇾 <span class="lang-zh">全国政经</span><span class="lang-bm hidden">Nasional</span>
                         </button>
-                        <button onclick="filterNewsCategory('sports', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
+                        <button onclick="filterNewsCategory('sports', this)" class="cat-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all border">
                             🏸 <span class="lang-zh">体育焦点</span><span class="lang-bm hidden">Sukan</span>
                         </button>
-                        <button onclick="filterNewsCategory('general', this)" class="cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border">
+                        <button onclick="filterNewsCategory('general', this)" class="cat-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all border">
                             🌐 <span class="lang-zh">综合百态</span><span class="lang-bm hidden">Umum</span>
                         </button>
                     </div>
@@ -1645,13 +1682,13 @@ def generate_index_html():
         function filterNewsCategory(catKey, btnElem) {{
             activeCategory = catKey;
             
-            // 1. 更新 5 个 Tab 按钮的高亮状态
+            // 1. 更新 5 个 Tab 按钮的高亮状态 (保持 shrink-0 whitespace-nowrap 绝不折行或被挤压)
             document.querySelectorAll('.cat-tab-btn').forEach(btn => {{
-                btn.className = "cat-tab-btn px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all shrink-0 border";
+                btn.className = "cat-tab-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-bold transition-all border";
             }});
             const targetBtn = btnElem || document.querySelector(`.cat-tab-btn[onclick*="'${{catKey}}'"]`);
             if (targetBtn) {{
-                targetBtn.className = "cat-tab-btn active px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all shrink-0 bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
+                targetBtn.className = "cat-tab-btn active shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-full text-[12px] font-black transition-all bg-[#FFD60A] text-black border border-[#FFD60A] shadow-[0_2px_8px_rgba(255,214,10,0.3)]";
             }}
 
             // 2. 毫秒级免刷新过滤下方卡片（双重保障：移除!important并使用category-hidden类）
