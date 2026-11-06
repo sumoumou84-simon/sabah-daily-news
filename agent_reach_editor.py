@@ -127,6 +127,8 @@ def fetch_gemini_news_if_available(api_key, today_str):
     - sports: 5 条（羽球战报李梓嘉/谢苏组合、Sabah FC、田径SUKMA等）
     - general: 3 条（文教防灾演练、气象局巨浪强风警报、社会公益捐血）
     每条必须包含 category, title (带[来源1 + 来源2 双核实]), titleBM, detail (280~380字深度背景脉络), detailBM, sources。
+    【关键双语对等铁律】：
+    严禁对马来语版做极简敷衍概括！要求马来语正文（detailBM）必须全面对标中文版深度，保持 200~350 词（perkataan）的等量多段落深度报道，必须完整保留报道中的具体数据（如款项金额、人数、百分比）、条款细则、官方部长/发言人引述与深度背景脉络！
     铁律：image_url 一律硬性输出 null，严禁使用任何外部公版假图！
     请直接输出 JSON 数组，不要包裹额外 markdown 标记。
     """
