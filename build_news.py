@@ -1584,9 +1584,12 @@ def generate_index_html():
 
         // 核心修复：动态渲染新闻卡片列表（支持今天、昨日、前日与历史合辑真实切换）
         let currentRenderedHeadlines = CURRENT_HEADLINES;
+        let currentRenderedDateLabel = '{today_mmdd} {today_time}';
 
-        function renderNewsCards(headlinesList) {{
+        function renderNewsCards(headlinesList, dateLabel) {{
             currentRenderedHeadlines = headlinesList;
+            if (dateLabel) currentRenderedDateLabel = dateLabel;
+            const cardDateTag = currentRenderedDateLabel;
             const container = document.getElementById('news-grid-container');
             if (!container) return;
             const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
@@ -1649,7 +1652,7 @@ def generate_index_html():
                                 </span>
                                 <span class="text-[11px] mono sub-meta-text">沙巴 Sabah • 全马</span>
                                 <span class="w-1 h-1 bg-[#475569] rounded-full"></span>
-                                <span class="text-[11px] mono sub-meta-date">${{today_mmdd}} ${{today_time}}</span>
+                                <span class="text-[11px] mono sub-meta-date">${{cardDateTag}}</span>
                             </div>
 
                             <div class="news-drawer-box rounded-[10px] p-3.5 space-y-3">
@@ -1659,7 +1662,7 @@ def generate_index_html():
                                         <span class="lang-zh ${{zhCls}}">深度报道 / 250-400字背景脉络</span>
                                         <span class="lang-bm ${{bmCls}}">Laporan Terperinci / Konteks Penuh</span>
                                     </span>
-                                    <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • ${{today_mmdd}}</span>
+                                    <span class="text-[10px] mono drawer-mini-tag">• 深度脉络 • ${{cardDateTag}}</span>
                                 </div>
 
                                 <p class="news-body-text text-[13.5px] leading-[1.8] font-normal">
@@ -1687,7 +1690,7 @@ def generate_index_html():
                         </div>
 
                         <div class="flex flex-wrap items-center gap-1.5 mt-auto">
-                            <span class="mono text-[10.5px] font-bold card-meta-time">${{today_mmdd}} ${{today_time}}</span>
+                            <span class="mono text-[10.5px] font-bold card-meta-time">${{cardDateTag}}</span>
                             <span class="inline-flex items-center px-1.5 py-[1px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
                                 ${{tag}}
                             </span>
@@ -1753,18 +1756,22 @@ def generate_index_html():
             const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
             let targetHeadlines = [];
+            let cardDateLabel = '{today_mmdd} {today_time}';
             if (type === 'today') {{
                 targetHeadlines = CURRENT_HEADLINES;
+                cardDateLabel = '{today_mmdd} {today_time}';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini {today_mmdd}</span>' : '<span>今日 {today_mmdd} 重点要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
                 showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
             }} else if (type === 'yesterday') {{
                 targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
+                cardDateLabel = '{yesterday_mmdd} 历史归档';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Semalam {yesterday_mmdd}</span>' : '<span>昨日 {yesterday_mmdd} 归档要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
                 showToast('已切换至昨日归档视角！', 'Beralih ke arkib semalam!');
             }} else if (type === 'before') {{
                 targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
+                cardDateLabel = '{day_before_mmdd} 历史精选';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Kelmarin {day_before_mmdd}</span>' : '<span>前日 {day_before_mmdd} 归档要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
                 showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
@@ -1773,13 +1780,14 @@ def generate_index_html():
                 Object.values(ARCHIVE_POOL).forEach(list => {{
                     if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 4));
                 }});
+                cardDateLabel = '7天历史合辑';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Semua Arkib 7 Hari</span>' : '<span>全部历史归档 (7天精选合辑)</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Semua Arkib 7 Hari' : '全部 · 7天历史库';
                 showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
             }}
 
             // 核心修复：即时重绘新闻卡片 DOM
-            renderNewsCards(targetHeadlines);
+            renderNewsCards(targetHeadlines, cardDateLabel);
         }}
 
         // 未来活动卡片展开/收起抽屉
