@@ -783,7 +783,7 @@
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>每日 05:00 AM 准时晨报 • 11/06 05:11PM LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • 11/06 05:17PM LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -869,7 +869,7 @@
                         <span class="text-[12px] font-black tracking-tight" id="active-date-display">
                             今天 11/06 · MYT自动计算
                         </span>
-                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">05:11PM MYT</span>
+                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">05:17PM MYT</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
@@ -943,7 +943,7 @@
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
-                                11/06 05:11PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
+                                11/06 05:17PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
@@ -2362,7 +2362,7 @@
                 </div>
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
-                    <span>11/06 05:11PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
+                    <span>11/06 05:17PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
                     <span class="text-[#FFD60A] font-bold">26 篇深度要闻 • 双核实白名单</span>
                 </div>
             </div>
@@ -2507,7 +2507,10 @@
                 <h2 class="text-[17px] sm:text-[20px] font-black leading-[1.4] transition-colors modal-headline" id="modal-title"></h2>
 
                 <!-- 封面大图 (仅真实原生 og:image 存在时渲染展示) -->
-                <div id="modal-cover-wrap" class="hidden" style="display:none !important;"></div>
+                <!-- 封面大图 (仅真实原生 image_url 存在时渲染展示，无图时彻底隐藏不留空白) -->
+                <div id="modal-cover-wrap" class="hidden modal-cover-wrap w-full overflow-hidden rounded-lg mb-4 border shadow-sm">
+                    <img id="modal-cover-img" src="" alt="新闻配图" class="rounded-lg max-h-72 w-full object-cover" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'; this.style.display='none';">
+                </div>
 
                 <!-- 深度报道全文内容 (250~400字背景脉络与政策细则) -->
                 <div class="modal-detail-box rounded-xl p-4 sm:p-5 space-y-3">
@@ -2713,7 +2716,7 @@
 
         // 核心修复：动态渲染新闻卡片列表（支持今天、昨日、前日与历史合辑真实切换）
         let currentRenderedHeadlines = CURRENT_HEADLINES;
-        let currentRenderedDateLabel = '11/06 05:11PM';
+        let currentRenderedDateLabel = '11/06 05:17PM';
 
         function renderNewsCards(headlinesList, dateLabel) {
             currentRenderedHeadlines = headlinesList;
@@ -2836,10 +2839,10 @@ html += `
             const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
             let targetHeadlines = [];
-            let cardDateLabel = '11/06 05:11PM';
+            let cardDateLabel = '11/06 05:17PM';
             if (type === 'today') {
                 targetHeadlines = CURRENT_HEADLINES;
-                cardDateLabel = '11/06 05:11PM';
+                cardDateLabel = '11/06 05:17PM';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini 11/06</span>' : '<span>今日 11/06 重点要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini 11/06 · Auto MYT' : '今天 11/06 · MYT自动计算';
                 showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
@@ -2951,19 +2954,35 @@ html += `
                 `;
             }
 
-            // 3. 设置封面大图 (仅真实原生 og:image 存在时展示)
+            // 3. 设置封面大图 (仅真实原生 image_url 存在时渲染展示，无图彻底隐藏)
             const coverWrap = document.getElementById('modal-cover-wrap');
             const coverImg = document.getElementById('modal-cover-img');
-            if (item.image_url) {
+            const imgUrl = (item.image_url && typeof item.image_url === 'string') ? item.image_url.trim() : '';
+            if (imgUrl && imgUrl !== 'null' && imgUrl !== 'undefined') {
                 if (coverImg) {
-                    coverImg.src = item.image_url;
+                    coverImg.src = imgUrl;
+                    coverImg.style.display = 'block';
                     coverImg.onerror = function() {
-                        if (coverWrap) coverWrap.classList.add('hidden');
+                        if (coverWrap) {
+                            coverWrap.classList.add('hidden');
+                            coverWrap.style.display = 'none';
+                        }
+                        this.style.display = 'none';
                     };
                 }
-                if (coverWrap) coverWrap.classList.remove('hidden');
+                if (coverWrap) {
+                    coverWrap.classList.remove('hidden');
+                    coverWrap.style.display = 'block';
+                }
             } else {
-                if (coverWrap) coverWrap.classList.add('hidden');
+                if (coverImg) {
+                    coverImg.src = '';
+                    coverImg.style.display = 'none';
+                }
+                if (coverWrap) {
+                    coverWrap.classList.add('hidden');
+                    coverWrap.style.display = 'none';
+                }
             }
 
             // 4. 设置深度全文内容
@@ -2998,6 +3017,16 @@ html += `
                 modal.classList.add('hidden');
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+            }
+            const coverWrap = document.getElementById('modal-cover-wrap');
+            if (coverWrap) {
+                coverWrap.classList.add('hidden');
+                coverWrap.style.display = 'none';
+            }
+            const coverImg = document.getElementById('modal-cover-img');
+            if (coverImg) {
+                coverImg.src = '';
+                coverImg.style.display = 'none';
             }
         }
 
