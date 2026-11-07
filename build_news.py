@@ -469,6 +469,26 @@ def generate_index_html():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 3.0</title>
+    <!-- PWA 配置与 Service Worker 注册 -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#f8fafc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="西门日报">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <script>
+        if ('serviceWorker' in navigator) {{
+            window.addEventListener('load', function() {{
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(reg) {{
+                        console.log('[PWA] ServiceWorker registered with scope:', reg.scope);
+                    }})
+                    .catch(function(err) {{
+                        console.error('[PWA] ServiceWorker registration failed:', err);
+                    }});
+            }});
+        }}
+    </script>
     <!-- 立即执行内联主题脚本，彻底杜绝切换闪烁 -->
     <script>
         (function() {{
