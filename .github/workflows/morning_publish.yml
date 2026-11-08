@@ -2,8 +2,7 @@ name: 每日西门日报全自动采编推送
 
 on:
   schedule:
-    # 每天 UTC 21:00 运行（严格对应马来西亚时间清晨 05:00 AM 触发上线最新晨报）
-    - cron: '0 21 * * *'
+    - cron: '45 19 * * *'  # 03:45 AM MYT (UTC+8)
   workflow_dispatch: # 保留 GitHub 网页上一键手动立即运行按钮
 
 jobs:
