@@ -18,6 +18,16 @@
     "backoff_factor": 1.5,
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
   },
+  "gemini_quota": {
+    "daily_request_limit": 5,
+    "per_run_request_limit": 1,
+    "candidate_models": [
+      "gemini-3.5-flash-lite"
+    ],
+    "timezone": "Asia/Kuala_Lumpur",
+    "fail_closed": true,
+    "state_file": "config/gemini_quota_state.json"
+  },
   "rss_feeds": [
     {
       "name": "Google News Sabah (ZH)",
