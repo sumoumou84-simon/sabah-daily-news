@@ -176,7 +176,7 @@ class NewsSynthesizer:
                     f"Pihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: {', '.join(sources)}."
                 )
 
-                orig_pub = art.published_at.isoformat() if art.published_at else now_iso
+                orig_pub = art.published_at.isoformat() if art.published_at else None
                 collected = art.extra.get("collected_at") or now_iso
 
                 synthesized.append({

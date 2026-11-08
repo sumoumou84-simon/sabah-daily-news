@@ -2,6 +2,7 @@ import re
 import html
 from urllib.parse import urljoin
 from typing import List, Dict, Any, Optional
+from datetime import datetime, timezone, timedelta
 from .base import BaseCollector, RawArticle, fetch_url_with_retry
 
 class PortalCollector(BaseCollector):
@@ -29,31 +30,70 @@ class PortalCollector(BaseCollector):
         else:
             source_label = "诗华日报"
 
-        # Matches post links like href="https://news.seehua.com/post/123456" or href="/post/123456"
-        matches = re.findall(
-            r'<a\s+[^>]*href=[\'"]([^\'"]*(?:post/\d+|archives/\d+)[^\'"]*)[\'"][^>]*>([^<]{8,100})</a>',
+        # 1. First attempt structured card extraction with verified timestamp
+        entry_matches = re.findall(
+            r'<h3[^>]*class=[\'"][^\'"]*entry-title[^\'"]*[\'"]>\s*<a\s+[^>]*href=[\'"]([^\'"]+)[\'"][^>]*>(.*?)</a>\s*</h3>.*?'
+            r'<time[^>]*class=[\'"][^\'"]*entry-date[^\'"]*[\'"][^>]*datetime=[\'"]([^\'"]+)[\'"]',
             html_doc,
-            re.IGNORECASE
+            re.DOTALL | re.IGNORECASE
         )
+
         seen_urls = set()
-        for link, text in matches:
-            clean_title = self._clean_text(text)
+        for link, title_raw, dt_str in entry_matches:
+            clean_title = self._clean_text(title_raw)
             full_url = urljoin(url, link)
             if not clean_title or full_url in seen_urls:
                 continue
-            if len(clean_title) < 8 or "更多" in clean_title or "上一页" in clean_title:
+            if len(clean_title) < 8:
                 continue
+
+            dt = None
+            if dt_str:
+                try:
+                    dt = datetime.fromisoformat(dt_str)
+                except Exception:
+                    dt = None
+
             seen_urls.add(full_url)
             articles.append(RawArticle(
                 title=clean_title,
                 url=full_url,
                 source=source_label,
                 category=category,
+                published_at=dt,
                 language="zh",
                 extra={"portal": portal_name}
             ))
             if len(articles) >= 15:
                 break
+
+        # 2. Fallback to general anchor extraction if structured modules were absent
+        if not articles:
+            matches = re.findall(
+                r'<a\s+[^>]*href=[\'"]([^\'"]*(?:post/\d+|archives/\d+)[^\'"]*)[\'"][^>]*>([^<]{8,100})</a>',
+                html_doc,
+                re.IGNORECASE
+            )
+            for link, text in matches:
+                clean_title = self._clean_text(text)
+                full_url = urljoin(url, link)
+                if not clean_title or full_url in seen_urls:
+                    continue
+                if len(clean_title) < 8 or "更多" in clean_title or "上一页" in clean_title:
+                    continue
+                seen_urls.add(full_url)
+                articles.append(RawArticle(
+                    title=clean_title,
+                    url=full_url,
+                    source=source_label,
+                    category=category,
+                    published_at=None,
+                    language="zh",
+                    extra={"portal": portal_name}
+                ))
+                if len(articles) >= 15:
+                    break
+
         return articles
 
     def _parse_sinchew(self, portal_name: str, url: str, category: str) -> List[RawArticle]:
@@ -74,12 +114,23 @@ class PortalCollector(BaseCollector):
                 continue
             if len(clean_title) < 8 or "星洲" in clean_title and len(clean_title) < 12:
                 continue
+
+            dt = None
+            m_date = re.search(r'/news/(\d{4})(\d{2})(\d{2})/', link)
+            if m_date:
+                try:
+                    y, m, d = m_date.groups()
+                    dt = datetime(int(y), int(m), int(d), 7, 0, tzinfo=timezone(timedelta(hours=8)))
+                except Exception:
+                    dt = None
+
             seen_urls.add(link)
             articles.append(RawArticle(
                 title=clean_title,
                 url=link,
                 source="沙巴星洲日报",
                 category=category,
+                published_at=dt,
                 language="zh",
                 extra={"portal": portal_name}
             ))

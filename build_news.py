@@ -88,53 +88,58 @@ def generate_index_html():
             "label": "山打根市议会 (MPS) 道路维修与夜市",
             "labelBM": "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan",
             "time": cur_time_hm,
-            "status": "LIVE 抢修中",
-            "statusBM": "LANGSUNG Baik Pulih",
-            "issue": "拉卜路 4 哩至 8 哩路段展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行",
-            "issueBM": "Kerja penurapan semula asfalt dijalankan di Batu 4 - Batu 8 Jalan Labuk. Kawalan had laju dan laluan bergilir dilaksanakan.",
-            "pressure": "影响路段：拉卜路4哩至8哩、市区夜市周边",
+            "status": "待核实",
+            "statusBM": "Dalam Pengesahan",
+            "verified": False,
+            "is_live": False,
+            "issue": "拉卜路 4 哩至 8 哩路段例行巡查维护。官方信源今日暂无突发紧急抢修通告，市议会正进行例行巡检与排水清淤。",
+            "issueBM": "Penyelenggaraan rutin di Batu 4 - Batu 8 Jalan Labuk. Tiada notis kecemasan baharu hari ini, pemantauan berkala sedang dijalankan.",
+            "pressure": "影响路段：拉卜路4哩至8哩、市区夜市周边例行巡检",
             "pressureBM": "Kawasan terlibat: Batu 4 - 8 Jalan Labuk & sekitar pasar malam",
-            "recovery": "工程进展：分阶段铺设，维持双向通行",
-            "recoveryBM": "Kemajuan: Penurapan berperingkat, laluan dua hala dikekalkan",
-            "tanker": "交通指引：现场设有警示标牌及交警协管",
-            "tankerBM": "Kawalan lalu lintas: Papan tanda amaran dan anggota bertugas di lokasi",
+            "recovery": "工程进展：例行维护与日常巡视，维持双向通行",
+            "recoveryBM": "Kemajuan: Penyelenggaraan rutin, laluan dua hala dikekalkan",
+            "tanker": "交通指引：现场设有警示标牌，维持常态通行",
+            "tankerBM": "Kawalan lalu lintas: Papan tanda amaran di lokasi",
             "consult": "089-272161",
             "consult2": "MPS Careline",
-            "source": "山打根市议会 & 官方通报 双核实",
-            "sourceBM": "Disahkan MPS & Hebahan Rasmi"
+            "source": "山打根市议会通告复核中",
+            "sourceBM": "Menunggu Pengesahan MPS"
         },
         {
             "id": "W",
             "label": "沙巴水务局 (JANS) 斗湖古哈拉供水",
             "labelBM": "Operasi Pemulihan Bekalan Air JANS Tawau Kuhara",
             "time": cur_time_hm,
-            "status": "LIVE 供水恢复",
-            "statusBM": "LANGSUNG Tekanan Normal",
-            "verified": True,
+            "status": "待核实",
+            "statusBM": "Dalam Pengesahan",
+            "verified": False,
+            "is_live": False,
             "official_source_url": "https://water.sabah.gov.my/",
-            "issue": "古哈拉抽水主站核心机组轴承抢修已于昨夜全面竣工，今晨管网注水完成，全线恢复常压供水。",
-            "issueBM": "Kerja pembaikan kecemasan galas pam utama Stesen Kuhara Tawau telah disiapkan sepenuhnya dan bekalan air bersih pulih.",
-            "pressure": "水压状态：斗湖市区及沿海片区水压全面恢复平稳常态",
-            "pressureBM": "Kawasan bekalan: Tekanan air di bandar Tawau dan persisiran kembali normal",
-            "recovery": "工程验收：主站设备抢修全面告竣，已恢复全天候平稳供水",
-            "recoveryBM": "Kemajuan: Pembaikan siap sepenuhnya dan operasi pam kembali lancar",
-            "tanker": "应急保障：管网运行正常，应急送水车已解除一级待命",
-            "tankerBM": "Lori tangki: Operasi kecemasan ditamatkan susulan pemulihan bekalan",
+            "issue": "今日官方信源暂无突发紧急抢修通告。斗湖古哈拉抽水主站维持常态平稳供水，水务局正进行全区例行巡检与水压监测。",
+            "issueBM": "Tiada notis kecemasan baharu hari ini. Stesen Kuhara Tawau beroperasi secara berkala dan pemantauan tekanan air dijalankan.",
+            "pressure": "水压状态：斗湖市区及沿海片区维持例行常压监测",
+            "pressureBM": "Kawasan bekalan: Tekanan air di bandar Tawau dan persisiran dipantau",
+            "recovery": "工程验收：主站设备运行平稳，维持全天候常态供水",
+            "recoveryBM": "Kemajuan: Operasi stesen pam beroperasi secara berkala",
+            "tanker": "应急保障：管网运行正常，应急送水车解除一级待命",
+            "tankerBM": "Lori tangki: Operasi penghantaran kecemasan tidak aktif",
             "consult": "089-761057",
             "consult2": "JANS 24J",
-            "source": "沙巴水务局 JANS 官方通报",
-            "sourceBM": "Disahkan JANS"
+            "source": "沙巴水务局通报复核中",
+            "sourceBM": "Menunggu Pengesahan JANS"
         },
         {
             "id": "E",
             "label": "沙巴电力 SESB 电网调度",
             "labelBM": "Sabah Electricity (SESB) Grid",
             "time": cur_time_hm,
-            "status": "LIVE 维护",
-            "statusBM": "LANGSUNG Selenggara",
-            "issue": "电网稳定性例行调度维护，已启用后备发电机组",
-            "issueBM": "Penyelenggaraan grid berkala, genset sokongan diaktifkan",
-            "pressure": "监测范围：山打根工业区及沿海变电枢纽",
+            "status": "待核实",
+            "statusBM": "Dalam Pengesahan",
+            "verified": False,
+            "is_live": False,
+            "issue": "今日官方信源暂无突发大面积断电通告。全州电网维持稳定性例行调度维护与常态巡检。",
+            "issueBM": "Tiada notis kecemasan blackout hari ini. Penyelenggaraan grid berkala sedang dijalankan.",
+            "pressure": "监测范围：山打根工业区及沿海变电枢纽例行监测",
             "pressureBM": "Kawasan terlibat: Zon Perindustrian Sandakan & pencawang pesisir",
             "recovery": "全线电压稳定受控，无大面积断电风险",
             "recoveryBM": "Voltan grid terkawal, tiada risiko blackout menyeluruh",
@@ -142,8 +147,8 @@ def generate_index_html():
             "tankerBM": "Pasukan teknikal bersedia 24 jam",
             "consult": "15454",
             "consult2": "SESB Care",
-            "source": "SESB 官方通报",
-            "sourceBM": "Disahkan SESB"
+            "source": "沙巴电力通报复核中",
+            "sourceBM": "Menunggu Pengesahan SESB"
         }
     ]
 
@@ -216,8 +221,27 @@ def generate_index_html():
             elif "JANS" in v_tag:
                 default_utils[i]["sourceBM"] = "Disahkan JANS & Sabah TV"
 
+            # 保持严格真实核验状态 (严禁未核验卡片虚标 LIVE)
+            if "verified" in u_raw:
+                default_utils[i]["verified"] = u_raw["verified"]
+            if "is_live" in u_raw:
+                default_utils[i]["is_live"] = u_raw["is_live"]
+            if not default_utils[i].get("verified"):
+                default_utils[i]["status"] = u_raw.get("status", "待核实")
+                if "LIVE" in default_utils[i]["status"]:
+                    default_utils[i]["status"] = "待核实"
+                default_utils[i]["statusBM"] = u_raw.get("statusBM", "Dalam Pengesahan")
+                if "LANGSUNG" in default_utils[i]["statusBM"]:
+                    default_utils[i]["statusBM"] = "Dalam Pengesahan"
+
     utiliti_cards_html = ""
     for idx, u in enumerate(default_utils):
+        is_verified = u.get("verified", False)
+        pulse_dot = '<span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>' if is_verified else '<span class="w-1.5 h-1.5 bg-amber-400 rounded-full shrink-0"></span>'
+        live_label_text = f"{today_mmdd} {u['time']} • {'LIVE' if is_verified else '待核实'}"
+        live_header_zh = "实时详情 LIVE DETAIL" if is_verified else "监测详情 STATUS DETAIL"
+        live_header_bm = "BUTIRAN LANGSUNG" if is_verified else "STATUS PEMANTAUAN"
+
         utiliti_cards_html += f"""
         <div class="util-card" id="util-card-{idx}" onclick="toggleUtilCard({idx})">
             <div class="flex items-start justify-between gap-2.5 w-full">
@@ -232,14 +256,14 @@ def generate_index_html():
                             <span class="lang-bm hidden break-words">{u['labelBM']}</span>
                             <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono mt-0.5">{today_mmdd} {u['time']} • LIVE</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">{live_label_text}</div>
                     </div>
                 </div>
 
                 <!-- 右侧：状态胶囊 + 切换提示 (设置 shrink-0 不换行且绝不向左侵占文字区域) -->
                 <div class="text-right shrink-0 flex flex-col items-end">
                     <div class="inline-flex items-center gap-1 px-2 py-[2px] rounded-full bg-black text-[#FFD60A] text-[10px] font-bold shrink-0 whitespace-nowrap">
-                        <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>
+                        {pulse_dot}
                         <span class="lang-zh whitespace-nowrap">{u['status']}</span>
                         <span class="lang-bm hidden whitespace-nowrap">{u['statusBM']}</span>
                     </div>
@@ -255,10 +279,10 @@ def generate_index_html():
                     <div class="flex items-center gap-1.5">
                         <span class="w-1 h-4 rounded-full bg-[#FFD60A]"></span>
                         <span class="text-[11px] font-black text-[#FFD60A] tracking-wider">
-                            <span class="lang-zh">实时详情 LIVE DETAIL</span>
-                            <span class="lang-bm hidden">BUTIRAN LANGSUNG</span>
+                            <span class="lang-zh">{live_header_zh}</span>
+                            <span class="lang-bm hidden">{live_header_bm}</span>
                         </span>
-                        <span class="text-[10px] mono text-[#94A3B8]">• {today_mmdd} {u['time']} LIVE</span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• {live_label_text}</span>
                     </div>
 
                     <div class="space-y-2">

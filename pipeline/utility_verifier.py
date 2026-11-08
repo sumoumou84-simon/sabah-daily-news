@@ -102,8 +102,15 @@ class UtilityVerifier:
         if not sources_list and u.get("source"):
             sources_list = [u["source"]]
 
-        # Strict LIVE verification check
-        if source_url and str(source_url).startswith("http") and source_timestamp:
+        # Strict LIVE verification check: card must explicitly be verified with active emergency announcement
+        if u.get("verified") is False:
+            u["verified"] = False
+            u["is_live"] = False
+            u["status"] = "待核实"
+            u["statusBM"] = "Dalam Pengesahan"
+            u["source"] = u.get("source", "官方渠道通告复核中")
+            u["sourceBM"] = u.get("sourceBM", "Menunggu Pengesahan Rasmi")
+        elif source_url and str(source_url).startswith("http") and source_timestamp and u.get("verified") is True:
             u["verified"] = True
             u["is_live"] = True
         else:
