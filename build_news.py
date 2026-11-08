@@ -1541,7 +1541,7 @@ def generate_index_html():
                             <span class="font-bold"><span class="lang-zh">沙巴 & 全马焦点</span><span class="lang-bm hidden">Fokus Sabah & Malaysia</span></span>
                             <span class="px-1.5 py-[1px] rounded bg-[#FFD60A] text-black font-bold text-[11px]">{len(headlines)} <span class="lang-zh">条标题</span><span class="lang-bm hidden">tajuk</span></span>
                             <span class="w-1 h-1 bg-[#334155] rounded-full"></span>
-                            <span class="sub-meta-text text-[11px]">LIVE Filter</span>
+                            <span class="sub-meta-text text-[11px]"><span class="lang-zh">实时筛选</span><span class="lang-bm hidden">Penapis Langsung</span></span>
                         </div>
                     </div>
 
@@ -1612,7 +1612,7 @@ def generate_index_html():
                             </span>
                         </h3>
                         <span class="text-[10px] mono sub-meta-text text-right leading-tight">
-                            自动过时 Auto-hide past events ✓
+                            <span class="lang-zh">自动隐藏过期活动 ✓</span><span class="lang-bm hidden">Auto-sembunyi aktiviti lalu ✓</span>
                         </span>
                     </div>
                     <div class="p-2.5 grid grid-cols-1 md:grid-cols-2 gap-2" id="events-grid-container">
