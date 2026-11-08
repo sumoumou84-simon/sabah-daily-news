@@ -1,292 +1,557 @@
 {
   "2026-11-08": [
     {
+      "id": "art_sabah_1",
       "category": "sabah",
-      "title": "古晋达闽路取缔酒驾 2男子落网 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 古晋达闽路取缔酒驾 2男子落网",
-      "detail": "【权威动态播报】古晋达闽路取缔酒驾 2男子落网。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 古晋达闽路取缔酒驾 2男子落网.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "title": "婆罗洲观鸟节明起山打根举行 料吸引5000人共赏雨林生态 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 婆罗洲观鸟节明起山打根举行 料吸引5000人共赏雨林生态",
+      "detail": "【权威动态播报】婆罗洲观鸟节明起山打根举行 料吸引5000人共赏雨林生态。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 婆罗洲观鸟节明起山打根举行 料吸引5000人共赏雨林生态.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
       "sources": [
         "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600181",
+      "source_urls": [
+        "https://news.seehua.com/post/1600181"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sandakan"
+    },
+    {
+      "id": "art_sabah_2",
+      "category": "sabah",
+      "title": "亚庇亿达公路发生夺命车祸 摩多撞回转皮卡骑士毙命 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 亚庇亿达公路发生夺命车祸 摩多撞回转皮卡骑士毙命",
+      "detail": "【权威动态播报】亚庇亿达公路发生夺命车祸 摩多撞回转皮卡骑士毙命。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 亚庇亿达公路发生夺命车祸 摩多撞回转皮卡骑士毙命.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601551",
+      "source_urls": [
+        "https://news.seehua.com/post/1601551"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_3",
+      "category": "sabah",
+      "title": "亚庇大型爱心捐血活动 905包血液冲刺1200包 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 亚庇大型爱心捐血活动 905包血液冲刺1200包",
+      "detail": "【权威动态播报】亚庇大型爱心捐血活动 905包血液冲刺1200包。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 亚庇大型爱心捐血活动 905包血液冲刺1200包.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601275",
+      "source_urls": [
+        "https://news.seehua.com/post/1601275"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_4",
+      "category": "sabah",
+      "title": "维克多料接任沙巴警察总监 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 维克多料接任沙巴警察总监",
+      "detail": "【权威动态播报】维克多料接任沙巴警察总监。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 维克多料接任沙巴警察总监.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600890",
+      "source_urls": [
+        "https://news.seehua.com/post/1600890"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_5",
+      "category": "sabah",
+      "title": "亚庇警区总部销毁20件2020年至2026年期间9份调查档案... [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 亚庇警区总部销毁20件2020年至2026年期间9份调查档案...",
+      "detail": "【权威动态播报】亚庇警区总部销毁20件2020年至2026年期间9份调查档案...。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 亚庇警区总部销毁20件2020年至2026年期间9份调查档案....\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600715",
+      "source_urls": [
+        "https://news.seehua.com/post/1600715"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_6",
+      "category": "sabah",
+      "title": "沙巴旅游局主席与新任首席执行员会面及交流 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 沙巴旅游局主席与新任首席执行员会面及交流",
+      "detail": "【权威动态播报】沙巴旅游局主席与新任首席执行员会面及交流。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 沙巴旅游局主席与新任首席执行员会面及交流.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600714",
+      "source_urls": [
+        "https://news.seehua.com/post/1600714"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_7",
+      "category": "sabah",
+      "title": "冯晋哲：政府正计划扩大亚庇粉红巴士服务范围 将路线延伸至人... [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 冯晋哲：政府正计划扩大亚庇粉红巴士服务范围 将路线延伸至人...",
+      "detail": "【权威动态播报】冯晋哲：政府正计划扩大亚庇粉红巴士服务范围 将路线延伸至人...。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 冯晋哲：政府正计划扩大亚庇粉红巴士服务范围 将路线延伸至人....\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600707",
+      "source_urls": [
+        "https://news.seehua.com/post/1600707"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_8",
+      "category": "sabah",
+      "title": "沙巴1105名德士、出租车及校车司机 受惠于2027年财政... [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 沙巴1105名德士、出租车及校车司机 受惠于2027年财政...",
+      "detail": "【权威动态播报】沙巴1105名德士、出租车及校车司机 受惠于2027年财政...。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 沙巴1105名德士、出租车及校车司机 受惠于2027年财政....\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1600706",
+      "source_urls": [
+        "https://news.seehua.com/post/1600706"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_national_9",
+      "category": "national",
+      "title": "Malaysian King’s warning raises stakes as Najib’s house arrest remains in legal limbo [The Straits Times 实时发布]",
+      "titleBM": "Laporan Berita: Malaysian King’s warning raises stakes as Najib’s house arrest remains in legal limbo",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5\" target=\"_blank\">Malaysian King’s warning raises stakes as Najib’s house arrest remains in legal limbo</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxOVGhoUEpfUFJRQU5sOE5tTnJLVjBUMWhLelpqT09GTXlCWXhPZUtWWmFsQ0xGRl9GWEN0QTAxZTJ1cC11a0dCNFUyMkNDbGp2Y0M0RzVwRHBNQWppdUF0NUJiYXJac3BHYlB3bDhSbXk1MkY1Wi1zSE9fWGtnQ0ZnRWE1NUdFZ0hXOE9RMHpUQzczd0E?oc=5\" target=\"_blank\">Malaysia's king says Najib's conditional pardon is unambiguous, warns against disputing it</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNA</font></li><li><a href=\"https://news.google.com/rss/articles/CBMizAFBVV95cUxNRko4UGx3Z0RKalc1N1lIM2lWREx0dWtBMGNwNlNmci1zS21HeWZONUtnUTFXT1FBM0NEOGZHSlN4YXVLMDdiR3BOb1dnbjZkUXp5UktST0xWSm1vbTBneVpmQ3hwZnk2WHkwMWpkbUdkZXJfQVl1VE16eXQtXzBUVlRCUTBVZXlaczJaZERhel9tOTR0STZrVF9DMS01blhIZGc3Rm1BRVRZR1F3djloc2NoMDEzWlFNVzNiY1lqUTN4Q1I0VVhLenI3cTM?oc=5\" target=\"_blank\">Malaysia’s king: Najib’s pardon is clear; Anwar instructs Attorney General to explain house-arrest delay</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPTkNCZjZDX0dTbTdrRFd2SC10NVdpMXhzaG11TXExTWRQWEZVcE15NGR2emhDVnRvWUZWVHQ1eU1GUkduRmNTakZMRzlialpOaDYxa0Q3dlh5aFNmTVBkblZWYS1VWkk5Ukl3VlJiYnZoWFFXUnJsRkVDdXoydzl5ak1QOVNCOHhGV21yckxUWEh1WlR3cVBWQk9FZjNFMDZxTFJkZ01HSHo5NmxZcFE?oc=5\" target=\"_blank\">Najib pays $15.7 million fine, but his road home hits legal roadblock</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxPVS02VUdFa3pNQ1hFNTNTN1RKMHppZ01VVExuZktoRXQ5dHRab3hKZkJRUmRLQm1aVlBTS3N5c3ZlZFNudlBVcFNzekFLdVBqYVVNOUZuSXhTd1B2dXM1Q21ETndWRVExV1VvVTlBa1MxQWh2TVNubWhSamZhekMxT3NkY21rUnduNmRkMzNONXNtY2phYzlLbGozVkxUcFJDX3F5YldVRmQ0bk5MTmp1eFZlbXctc3hGcHZ2VXYtM2ZpV3ZoZTFDQUs3VUxYMHFfaDIyZ9IB2gFBVV95cUxPSlFJdVRlNElMMjRwUjh2cVBLS0ppS1diYjRHUWstUWF3aWpmNm1wZmo0cFBDSDQwYy1KM3h5T1JNTHNodTMxNlA0dmJVRHBoMUhFTEl3aV93UGRxNFdvZUR2NmNFbjZTeXZJSHhSWTFLeW1wbDA5aU9SOWdzUXJkMFdNNmxEWHJvTjBEY0RGaHNhVkh0WUNvYzVxQWlfdkhiV0dlNGdlcVI0MWkzUmNtRXUtVkt0MHZ1eWJGMVAzcEY4dW8yVEJLc2M1SXlNaHBHenV5MGpGZEE4QQ?oc=5\" target=\"_blank\">Umno leaders lodge police reports, Dr Akmal demands action on Najib’s house arrest delay</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Malay Mail</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：The Straits Times。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5\" target=\"_blank\">Malaysian King’s warning raises stakes as Najib’s house arrest remains in legal limbo</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxOVGhoUEpfUFJRQU5sOE5tTnJLVjBUMWhLelpqT09GTXlCWXhPZUtWWmFsQ0xGRl9GWEN0QTAxZTJ1cC11a0dCNFUyMkNDbGp2Y0M0RzVwRHBNQWppdUF0NUJiYXJac3BHYlB3bDhSbXk1MkY1Wi1zSE9fWGtnQ0ZnRWE1NUdFZ0hXOE9RMHpUQzczd0E?oc=5\" target=\"_blank\">Malaysia's king says Najib's conditional pardon is unambiguous, warns against disputing it</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">CNA</font></li><li><a href=\"https://news.google.com/rss/articles/CBMizAFBVV95cUxNRko4UGx3Z0RKalc1N1lIM2lWREx0dWtBMGNwNlNmci1zS21HeWZONUtnUTFXT1FBM0NEOGZHSlN4YXVLMDdiR3BOb1dnbjZkUXp5UktST0xWSm1vbTBneVpmQ3hwZnk2WHkwMWpkbUdkZXJfQVl1VE16eXQtXzBUVlRCUTBVZXlaczJaZERhel9tOTR0STZrVF9DMS01blhIZGc3Rm1BRVRZR1F3djloc2NoMDEzWlFNVzNiY1lqUTN4Q1I0VVhLenI3cTM?oc=5\" target=\"_blank\">Malaysia’s king: Najib’s pardon is clear; Anwar instructs Attorney General to explain house-arrest delay</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPTkNCZjZDX0dTbTdrRFd2SC10NVdpMXhzaG11TXExTWRQWEZVcE15NGR2emhDVnRvWUZWVHQ1eU1GUkduRmNTakZMRzlialpOaDYxa0Q3dlh5aFNmTVBkblZWYS1VWkk5Ukl3VlJiYnZoWFFXUnJsRkVDdXoydzl5ak1QOVNCOHhGV21yckxUWEh1WlR3cVBWQk9FZjNFMDZxTFJkZ01HSHo5NmxZcFE?oc=5\" target=\"_blank\">Najib pays $15.7 million fine, but his road home hits legal roadblock</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxPVS02VUdFa3pNQ1hFNTNTN1RKMHppZ01VVExuZktoRXQ5dHRab3hKZkJRUmRLQm1aVlBTS3N5c3ZlZFNudlBVcFNzekFLdVBqYVVNOUZuSXhTd1B2dXM1Q21ETndWRVExV1VvVTlBa1MxQWh2TVNubWhSamZhekMxT3NkY21rUnduNmRkMzNONXNtY2phYzlLbGozVkxUcFJDX3F5YldVRmQ0bk5MTmp1eFZlbXctc3hGcHZ2VXYtM2ZpV3ZoZTFDQUs3VUxYMHFfaDIyZ9IB2gFBVV95cUxPSlFJdVRlNElMMjRwUjh2cVBLS0ppS1diYjRHUWstUWF3aWpmNm1wZmo0cFBDSDQwYy1KM3h5T1JNTHNodTMxNlA0dmJVRHBoMUhFTEl3aV93UGRxNFdvZUR2NmNFbjZTeXZJSHhSWTFLeW1wbDA5aU9SOWdzUXJkMFdNNmxEWHJvTjBEY0RGaHNhVkh0WUNvYzVxQWlfdkhiV0dlNGdlcVI0MWkzUmNtRXUtVkt0MHZ1eWJGMVAzcEY4dW8yVEJLc2M1SXlNaHBHenV5MGpGZEE4QQ?oc=5\" target=\"_blank\">Umno leaders lodge police reports, Dr Akmal demands action on Najib’s house arrest delay</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Malay Mail</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: The Straits Times.",
+      "source": "The Straits Times",
+      "sources": [
+        "The Straits Times"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T11:50:00+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_10",
+      "category": "national",
+      "title": "Hong Kong airport drug arrest linked to syndicate busted by police, says Bukit Aman [The Star 实时发布]",
+      "titleBM": "Laporan Berita: Hong Kong airport drug arrest linked to syndicate busted by police, says Bukit Aman",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5\" target=\"_blank\">Hong Kong airport drug arrest linked to syndicate busted by police, says Bukit Aman</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMizgFBVV95cUxPclJaM0hBUzVVTXRMMU9VLXlaOUl4YmpRWmYtR1Rtd21FNVpQZUpsNkZCai1kQnJ3UVltcWFxR1hpZmdzRWpndzI4UDhnMzc4MGNvQ0w4LWM5RU5sRUNwLW5lTUNTZ3FUVUw3dUlaTjVpQl9mdFh6Sk1JWGVpM1JTR0YzMVp4THpoMlZwNXVXRktxVEhrMzBpY0JidGFWMkhuQi1Ja000RDBzVFh4V1J2djB1UXBuTnVaamQ3aVRuSzM2LXVudUdsbzk2VUVfUQ?oc=5\" target=\"_blank\">HK authorities nab another traveller from Malaysia with cocaine in shoes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPOE43Q24wRlJVRGEzMUt0S203QnhGVEhJNUkzOGJPMGNjWVpxNU8zNGxNcktzNG95SWlBN0hVZjJBWTV0aEY1ajZ0Z3NGQ2xSUDRteE1SdFRSUVh0eFV5RXFjUi1UVlF5Wkl4eVA5STVhZzZCX0hRZ21Tc3RWVWk4ZkxfUmdwRTFnWGV4cllERWVxTkhxdHdhX0ZFajJiVTZXQmRiNXlhLTBiZGpTanFLdGtUc24yNTlseHB2WG13?oc=5\" target=\"_blank\">Hong Kong Customs Seizes 7kg of Cannabis, Arrests Two Women at Airport</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">巴士的報</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxPUmlHTUpLcHFpdmoyUlJUbk95M3pLRVhsUFU4czBBR1VtVmsyVXRJMDExWjJoaGFxMEZNZjE3M2dxdEFScDR4cUwzcXdhVVBhWjdpSTZmNXpGNl8yMlZfZUV4a1diWEJhYzFNS0hleFRMdy0xV0QzMVNvbzFibVVRcGJSSmQ0WWNnX0lKVkJnOTlIMS03RlpteFR5QUQtY0Z5Z080MjJ5VnRnM0xZaW9saXFMem9nU3hfTlA2TF9ydF92VVptMHZzQk5DbW9CSW5wclk3Sld6QnHSAd4BQVVfeXFMUHBWZC1KUkl1MHM3b0FGb1U3dU50WUpzRm9aZEEzRTYzNmJHa0dIUVBPZ0h4NkxIZlhRSmNBY2tUREZ0V0ZJMGJ1WnM4NHpNbnZaRDctdHRwTk1lQUxsbU1SeXZwYlRNY2huX3lYb2JnSTlvM05FTF90Vy1jaE5DaTFIcll5UE03T3FvcXVUb0R3SXVleDg0X0pKZFkzcnozX0g1UWRib1p1Y2J4VHNUWDNlNUtVZF9mLWRMalNLNnU4UjZHZm5UWHNNSThudi0zVWlLWmM0Qjh3LVY0QXJB?oc=5\" target=\"_blank\">Financially vulnerable Malaysians targeted for recruitment as drug mules, police say</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Malay Mail</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxOTkprMnFFcHU2czg5Y2dKRGRZS2Q1NHdjeE9oQlY5MnJOYWtTMTlzSkxWcmY2UktLRXl2Y2FLODlpbWMzT2FNUHF6UzRGbnZkSElIclRMZE5aOW5jT1dOS1pMbzFzUTRxQVBVN0VNTzdyQjNJTVR0NnhnV01USGZCRlBqLW04d2ZkWWtDQnI4S08wdTFqT182aXRGRTFJdlJid3dsdGUzdGtKVk9BX3VHU1hqUmhVRVZQaVZROXdB?oc=5\" target=\"_blank\">Police arrest Chinese national in Penang over suspected cocaine-smuggling syndicate</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Sun Malaysia</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：The Star。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5\" target=\"_blank\">Hong Kong airport drug arrest linked to syndicate busted by police, says Bukit Aman</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMizgFBVV95cUxPclJaM0hBUzVVTXRMMU9VLXlaOUl4YmpRWmYtR1Rtd21FNVpQZUpsNkZCai1kQnJ3UVltcWFxR1hpZmdzRWpndzI4UDhnMzc4MGNvQ0w4LWM5RU5sRUNwLW5lTUNTZ3FUVUw3dUlaTjVpQl9mdFh6Sk1JWGVpM1JTR0YzMVp4THpoMlZwNXVXRktxVEhrMzBpY0JidGFWMkhuQi1Ja000RDBzVFh4V1J2djB1UXBuTnVaamQ3aVRuSzM2LXVudUdsbzk2VUVfUQ?oc=5\" target=\"_blank\">HK authorities nab another traveller from Malaysia with cocaine in shoes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPOE43Q24wRlJVRGEzMUt0S203QnhGVEhJNUkzOGJPMGNjWVpxNU8zNGxNcktzNG95SWlBN0hVZjJBWTV0aEY1ajZ0Z3NGQ2xSUDRteE1SdFRSUVh0eFV5RXFjUi1UVlF5Wkl4eVA5STVhZzZCX0hRZ21Tc3RWVWk4ZkxfUmdwRTFnWGV4cllERWVxTkhxdHdhX0ZFajJiVTZXQmRiNXlhLTBiZGpTanFLdGtUc24yNTlseHB2WG13?oc=5\" target=\"_blank\">Hong Kong Customs Seizes 7kg of Cannabis, Arrests Two Women at Airport</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">巴士的報</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxPUmlHTUpLcHFpdmoyUlJUbk95M3pLRVhsUFU4czBBR1VtVmsyVXRJMDExWjJoaGFxMEZNZjE3M2dxdEFScDR4cUwzcXdhVVBhWjdpSTZmNXpGNl8yMlZfZUV4a1diWEJhYzFNS0hleFRMdy0xV0QzMVNvbzFibVVRcGJSSmQ0WWNnX0lKVkJnOTlIMS03RlpteFR5QUQtY0Z5Z080MjJ5VnRnM0xZaW9saXFMem9nU3hfTlA2TF9ydF92VVptMHZzQk5DbW9CSW5wclk3Sld6QnHSAd4BQVVfeXFMUHBWZC1KUkl1MHM3b0FGb1U3dU50WUpzRm9aZEEzRTYzNmJHa0dIUVBPZ0h4NkxIZlhRSmNBY2tUREZ0V0ZJMGJ1WnM4NHpNbnZaRDctdHRwTk1lQUxsbU1SeXZwYlRNY2huX3lYb2JnSTlvM05FTF90Vy1jaE5DaTFIcll5UE03T3FvcXVUb0R3SXVleDg0X0pKZFkzcnozX0g1UWRib1p1Y2J4VHNUWDNlNUtVZF9mLWRMalNLNnU4UjZHZm5UWHNNSThudi0zVWlLWmM0Qjh3LVY0QXJB?oc=5\" target=\"_blank\">Financially vulnerable Malaysians targeted for recruitment as drug mules, police say</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Malay Mail</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxOTkprMnFFcHU2czg5Y2dKRGRZS2Q1NHdjeE9oQlY5MnJOYWtTMTlzSkxWcmY2UktLRXl2Y2FLODlpbWMzT2FNUHF6UzRGbnZkSElIclRMZE5aOW5jT1dOS1pMbzFzUTRxQVBVN0VNTzdyQjNJTVR0NnhnV01USGZCRlBqLW04d2ZkWWtDQnI4S08wdTFqT182aXRGRTFJdlJid3dsdGUzdGtKVk9BX3VHU1hqUmhVRVZQaVZROXdB?oc=5\" target=\"_blank\">Police arrest Chinese national in Penang over suspected cocaine-smuggling syndicate</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Sun Malaysia</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: The Star.",
+      "source": "The Star",
+      "sources": [
+        "The Star"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T10:01:00+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_national_11",
+      "category": "national",
+      "title": "妻子虐9岁女儿判监5年 丈夫涉4强奸罪 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 妻子虐9岁女儿判监5年 丈夫涉4强奸罪",
+      "detail": "【权威动态播报】妻子虐9岁女儿判监5年 丈夫涉4强奸罪。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 妻子虐9岁女儿判监5年 丈夫涉4强奸罪.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1601452",
+      "source_urls": [
+        "https://news.seehua.com/post/1601452"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_12",
+      "category": "national",
+      "title": "泛婆大道再传夺命车祸 39岁摩哆骑士撞防护栏当场亡 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 泛婆大道再传夺命车祸 39岁摩哆骑士撞防护栏当场亡",
+      "detail": "【权威动态播报】泛婆大道再传夺命车祸 39岁摩哆骑士撞防护栏当场亡。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 泛婆大道再传夺命车祸 39岁摩哆骑士撞防护栏当场亡.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1601110",
+      "source_urls": [
+        "https://news.seehua.com/post/1601110"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_13",
+      "category": "national",
+      "title": "假冒万字票中奖支票骗财骗金饰 警方逮捕2印尼男子 追缉另一嫌... [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 假冒万字票中奖支票骗财骗金饰 警方逮捕2印尼男子 追缉另一嫌...",
+      "detail": "【权威动态播报】假冒万字票中奖支票骗财骗金饰 警方逮捕2印尼男子 追缉另一嫌...。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 假冒万字票中奖支票骗财骗金饰 警方逮捕2印尼男子 追缉另一嫌....\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1600846",
+      "source_urls": [
+        "https://news.seehua.com/post/1600846"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_14",
+      "category": "national",
+      "title": "外劳无合法驾照驾驶罗里 JPJ泛婆大道扣押10吨罗里 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 外劳无合法驾照驾驶罗里 JPJ泛婆大道扣押10吨罗里",
+      "detail": "【权威动态播报】外劳无合法驾照驾驶罗里 JPJ泛婆大道扣押10吨罗里。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 外劳无合法驾照驾驶罗里 JPJ泛婆大道扣押10吨罗里.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1599773",
+      "source_urls": [
+        "https://news.seehua.com/post/1599773"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_15",
+      "category": "national",
+      "title": "古晋达闽路取缔酒驾 2男子落网 [诗华日报 (砂拉越版) 实时发布]",
+      "titleBM": "Laporan Berita: 古晋达闽路取缔酒驾 2男子落网",
+      "detail": "【权威动态播报】古晋达闽路取缔酒驾 2男子落网。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报 (砂拉越版)。",
+      "detailBM": "Notis Berita Rasmi: 古晋达闽路取缔酒驾 2男子落网.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报 (砂拉越版).",
+      "source": "诗华日报 (砂拉越版)",
+      "sources": [
+        "诗华日报 (砂拉越版)"
       ],
       "url": "https://news.seehua.com/post/1601592",
-      "image_url": null
+      "source_urls": [
+        "https://news.seehua.com/post/1601592"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sarawak"
     },
     {
-      "category": "sabah",
-      "title": "张健仁：为民发声 盼选民支持行动党 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 张健仁：为民发声 盼选民支持行动党",
-      "detail": "【权威动态播报】张健仁：为民发声 盼选民支持行动党。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 张健仁：为民发声 盼选民支持行动党.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_national_16",
+      "category": "national",
+      "title": "张健仁：为民发声 盼选民支持行动党 [诗华日报 (砂拉越版) 实时发布]",
+      "titleBM": "Laporan Berita: 张健仁：为民发声 盼选民支持行动党",
+      "detail": "【权威动态播报】张健仁：为民发声 盼选民支持行动党。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报 (砂拉越版)。",
+      "detailBM": "Notis Berita Rasmi: 张健仁：为民发声 盼选民支持行动党.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报 (砂拉越版).",
+      "source": "诗华日报 (砂拉越版)",
       "sources": [
-        "诗华日报沙巴版"
+        "诗华日报 (砂拉越版)"
       ],
       "url": "https://news.seehua.com/post/1601547",
-      "image_url": null
+      "source_urls": [
+        "https://news.seehua.com/post/1601547"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sarawak"
     },
     {
-      "category": "sabah",
-      "title": "舞台设施公厕竣工 美里珠巴5号路巴刹换新貌 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌",
-      "detail": "【权威动态播报】舞台设施公厕竣工 美里珠巴5号路巴刹换新貌。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_sports_17",
+      "category": "sports",
+      "title": "Badminton: Defensive woes haunt Wei Chong-Kai Wun in Korea Open semis [BWF World Tour + The Star 双核实]",
+      "titleBM": "Laporan Berita: Badminton: Defensive woes haunt Wei Chong-Kai Wun in Korea Open semis",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5\" target=\"_blank\">Badminton: Defensive woes haunt Wei Chong-Kai Wun in Korea Open semis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxOQjBzWk5BemVFemlhQUZCbjZaSXQ2NTREd0dacDRyMjNlUmpubGxxT2F2WngzM0tvVE54MGYxMldDdUVDcXozVU52ZWNoN1VqNWUzUjlJQnBlbFpxb19hSVg4aGY0UXQ2YzhSQVZGUmRkY1FjdWNhY2h6WjNDeXVKbGZZV0NkaTVKNkNvdE1pWkQ1WEpzeXAzRnlqTkRRQQ?oc=5\" target=\"_blank\">Korea Open: Quiet Step Forward</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BWF World Tour Finals</font></li><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE5PU3ZZY214Wi1EMEE4VjVlZGtRUmt3ZFp6YXFHX21HeExVTFJMeHVqQXFwd0lNenAyX3BOeTJtVzMtUVUyZng5NWpBMGJiSDVMUGM3NDZIV0JCVW1tb1VydWc3ZHVvTWlEcmc1a0hZR0VHX2xqNFNVc0VsRXg?oc=5\" target=\"_blank\">Wei Chong-Kai Wun Keep Korean Dream Alive</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sarawak Tribune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZDhwVXB0bjB3dl9aRmFvNDZBUEJXUk1XdWtnaWp4dVlCOXFWWnVFRnJodkI4VlMycFZpMkVQb1NoN2dRNWNqOVNsNzBrZUdJQ0NGNUtzVW01bXl0N3RNU010RFBSaDZyZ1VEY3c5UjNsRzlWOHd0eUgxWGZ1UmxOTXd5Q2JvXzNrem9kMGg4OGloOGpPdGZVeG4zWGZBZC1FQlBBMmgzNVc5Q2NQOFF0NS1Bc0xoTjhFbzNVZFdDOEFrS3hTZklYd9IBuwFBVV95cUxOYXFoZ3dTXzhuVllWcm55R1dtajIzQkZhSllpakNSZ194UHh5YWtfNkNvQVpHWWFIajNFT0RYWmZTV3h2U0NWeXpsYmd1X3hRdEtnZW13TEJpWEZBVEw1ekNKUEsxczlCVGJtbkJrSUxwSU42M05qMnhpaUdiRkxBZGM1eGExVVBYZTRFLWNEUnZkUVpEcmxJTldoTThFSEowN3FIRFBBc2FKUGdwcVcwMm1uRWpCa0RfSWhr?oc=5\" target=\"_blank\">Former world champs Hoki-Kobayashi stand in Wei Jie-Ee Yi's way</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRzlaUjRxbFlwcVJfdEFKS1M5UG5wRUhUWTltbHpaNXE5TjZfV3BISTBuUFdBRW9lcml5R01HMjJnSDRUbFoxR3QyV2JSMFhqUWk4cFRMSkdmRUZBLTFPZjl2aWRjRXRkallHa2VlQkFTQUxUc2lIVW8teE04VHlJV1VzaHFkN1k0WmRkM2tVZzN1UGhIX3ZxaXgwNnl0TGpmWHhyeHFuQmw0WkRmQWoxTzMwWW1vZy1PSmVMRHVQT2RUa0U?oc=5\" target=\"_blank\">Wei Chong-Kai Wun to face world No 1 pair at Korea Open semis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：BWF World Tour, The Star。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5\" target=\"_blank\">Badminton: Defensive woes haunt Wei Chong-Kai Wun in Korea Open semis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxOQjBzWk5BemVFemlhQUZCbjZaSXQ2NTREd0dacDRyMjNlUmpubGxxT2F2WngzM0tvVE54MGYxMldDdUVDcXozVU52ZWNoN1VqNWUzUjlJQnBlbFpxb19hSVg4aGY0UXQ2YzhSQVZGUmRkY1FjdWNhY2h6WjNDeXVKbGZZV0NkaTVKNkNvdE1pWkQ1WEpzeXAzRnlqTkRRQQ?oc=5\" target=\"_blank\">Korea Open: Quiet Step Forward</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BWF World Tour Finals</font></li><li><a href=\"https://news.google.com/rss/articles/CBMifEFVX3lxTE5PU3ZZY214Wi1EMEE4VjVlZGtRUmt3ZFp6YXFHX21HeExVTFJMeHVqQXFwd0lNenAyX3BOeTJtVzMtUVUyZng5NWpBMGJiSDVMUGM3NDZIV0JCVW1tb1VydWc3ZHVvTWlEcmc1a0hZR0VHX2xqNFNVc0VsRXg?oc=5\" target=\"_blank\">Wei Chong-Kai Wun Keep Korean Dream Alive</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sarawak Tribune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxOZDhwVXB0bjB3dl9aRmFvNDZBUEJXUk1XdWtnaWp4dVlCOXFWWnVFRnJodkI4VlMycFZpMkVQb1NoN2dRNWNqOVNsNzBrZUdJQ0NGNUtzVW01bXl0N3RNU010RFBSaDZyZ1VEY3c5UjNsRzlWOHd0eUgxWGZ1UmxOTXd5Q2JvXzNrem9kMGg4OGloOGpPdGZVeG4zWGZBZC1FQlBBMmgzNVc5Q2NQOFF0NS1Bc0xoTjhFbzNVZFdDOEFrS3hTZklYd9IBuwFBVV95cUxOYXFoZ3dTXzhuVllWcm55R1dtajIzQkZhSllpakNSZ194UHh5YWtfNkNvQVpHWWFIajNFT0RYWmZTV3h2U0NWeXpsYmd1X3hRdEtnZW13TEJpWEZBVEw1ekNKUEsxczlCVGJtbkJrSUxwSU42M05qMnhpaUdiRkxBZGM1eGExVVBYZTRFLWNEUnZkUVpEcmxJTldoTThFSEowN3FIRFBBc2FKUGdwcVcwMm1uRWpCa0RfSWhr?oc=5\" target=\"_blank\">Former world champs Hoki-Kobayashi stand in Wei Jie-Ee Yi's way</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRzlaUjRxbFlwcVJfdEFKS1M5UG5wRUhUWTltbHpaNXE5TjZfV3BISTBuUFdBRW9lcml5R01HMjJnSDRUbFoxR3QyV2JSMFhqUWk4cFRMSkdmRUZBLTFPZjl2aWRjRXRkallHa2VlQkFTQUxUc2lIVW8teE04VHlJV1VzaHFkN1k0WmRkM2tVZzN1UGhIX3ZxaXgwNnl0TGpmWHhyeHFuQmw0WkRmQWoxTzMwWW1vZy1PSmVMRHVQT2RUa0U?oc=5\" target=\"_blank\">Wei Chong-Kai Wun to face world No 1 pair at Korea Open semis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: BWF World Tour, The Star.",
+      "source": "The Star",
       "sources": [
-        "诗华日报沙巴版"
+        "BWF World Tour",
+        "The Star"
       ],
-      "url": "https://news.seehua.com/post/1601534",
-      "image_url": null
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T09:08:00+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sandakan"
     },
     {
-      "category": "sabah",
-      "title": "陈超耀：发展关键 治安良好游客安心 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 陈超耀：发展关键 治安良好游客安心",
-      "detail": "【权威动态播报】陈超耀：发展关键 治安良好游客安心。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 陈超耀：发展关键 治安良好游客安心.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_sports_18",
+      "category": "sports",
+      "title": "Lee Chong Wei Academy graduate delivers UAE's first Youth Olympic gold [NST Online 实时发布]",
+      "titleBM": "Laporan Berita: Lee Chong Wei Academy graduate delivers UAE's first Youth Olympic gold",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5\" target=\"_blank\">Lee Chong Wei Academy graduate delivers UAE's first Youth Olympic gold</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTWFOZ3NtMjRUa2tTN1pWMm03NUJHU3lzNEZ6Sk9WaVU5V0QzcGt2T0l3ODU4TkRzdXBhbnZ5QjBKMXpxd2tldDJFVDNfa25FWm5ZQkl6YlE1Wm1VWVoxVmZOOFZpcGVndU9BeFJVT1pBeHVrcFJrNE1tcm01YWlyN3pEUE1XU2lMWHhWV2N1OVFPQ2M1YVV4ZVFocGpmcVpPVXZZWFh3WnBhcGxjdXc0QTZnU0R4TXlXdWhqdng0b2MyY2VOSjJPWEJHUzVFOGxtQXlrX3dodU5adUnSAesBQVVfeXFMTUN3MXRia3dhdzBYNC1teWZBWVZveVR4TEJsZ3ZLOURpNW5GbkFGM0NySi1sakFQVmhZYVVPNm5nSmNCR2NCTkEzYXJiZkNwMklIRGpNLWNxNXlDQ3lyYzZsQWRsMTRkTlhJWlk1bFBvNFZNaGFWaGhIWW40cE5nME9FaUVlM1dXenNZQTNmZVFPN2duenNGMWNTUmRERGF6R2xobWJlazY2WERoLU8tRUp5ZTd0ck9aU0Q5ak9PQ29mRDljR3BkLS13NUlSOGEtMDQ2MFV3bUJOZWNOMF9tOXd4U1IyRHJVdzFuOA?oc=5\" target=\"_blank\">‘UAE is my first home’: Dubai teenager Riyan Malhan on historic Youth Olympic gold and a Diwali to remember</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Gulf News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxPXzJtY1lEZGh4Z1JncTFzMXZ3LXoydGc0MnR5NFJPVDkzWDhKbXJGbm5zSXJKYzRGSGpRczE4eFcyVUd1OUptMjJoVlFQb0JYUnlxanZiUUYtdVVVa3JWVlUwSkEwUWYxd2xsWWlFTWwxS3NCVEpIa3kxdGZBQXp0VTd4dExSNkJua1dRdE40NEpCVUtWZ19iTzFtSVNtQXpDa3VnM2NXaWJzTGZrZnV1b0d6LS1ReWvSAdIBQVVfeXFMTlFKdy0yMU9oZGptWU5vb0E0YnJHQWZPdTluZXB5VmxTcG4yRWVzbzJ6WDlrUzdCZnJQSUlkZ2V0UkRremJhbG9ja1NRQk5SZWNTc2Q1emhaemdBN0JoSDNSSkZ0WDlrcklvOV8tZk45OVJWUHFyMEJmM3ptbm5TMTFCeUM5WG9KZ0lUR3o4RXFXNkVYLS1ROXJzZE5ZRWZEbUtuamp6b0J2allNUDBZUXRtY3ZKM0NqVFIyMGl5TWE1RHNteVZ0cGtHMmNvcGFkaHJn?oc=5\" target=\"_blank\">Sports Minister receives Youth Olympic badminton gold medallist Riyan Malhan</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Emirates 24|7</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxNZEljOVZzUzFXM2JHRUdZTFU3Z0hNTGZVNy1ZaWI0NTh2N3VxSndlOUlvaW0xOGktaHFYVzdWbHlzdGtTaU1kQkE4ZWxIVk9ocWRTcUFLSnFibndXQjlCUUxadTVGY3FDT1hjM1ZTSlFyZVZfYXJ3bXVYdXFzNG12cWotazY4UHU5aGs5Wl9TakE4Z0I2Uk9fbExtdmtfWXVVYkFWSGxzSDNDR2UxUHhOblJ6Y2VCYXdaOXc?oc=5\" target=\"_blank\">Malhan makes history with UAE’s first gold medal at Youth Olympics | Gulf Today - newspaper</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Magzter</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxNTmdmM2F0U09MN3NOUXJUbzZhX25DQk5LUUs2SkZEQy1Kenc1YWN5SDl4WGpYeTl6RTBwQVZ0dTF1UjlfTWMyWENDeEtjc0kxcmxBd2xXb1ZTZ2t5dS1qMzhqNDZSSHBfUldlZG0zOURwekJMUnBHMGNvUEdSbXZhRmVWdzlpV2RVSDhpbTIyVk8?oc=5\" target=\"_blank\">UAE celebrates historic badminton gold at Dakar 2026 Youth Olympics</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">www.wam.ae</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：NST Online。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5\" target=\"_blank\">Lee Chong Wei Academy graduate delivers UAE's first Youth Olympic gold</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTWFOZ3NtMjRUa2tTN1pWMm03NUJHU3lzNEZ6Sk9WaVU5V0QzcGt2T0l3ODU4TkRzdXBhbnZ5QjBKMXpxd2tldDJFVDNfa25FWm5ZQkl6YlE1Wm1VWVoxVmZOOFZpcGVndU9BeFJVT1pBeHVrcFJrNE1tcm01YWlyN3pEUE1XU2lMWHhWV2N1OVFPQ2M1YVV4ZVFocGpmcVpPVXZZWFh3WnBhcGxjdXc0QTZnU0R4TXlXdWhqdng0b2MyY2VOSjJPWEJHUzVFOGxtQXlrX3dodU5adUnSAesBQVVfeXFMTUN3MXRia3dhdzBYNC1teWZBWVZveVR4TEJsZ3ZLOURpNW5GbkFGM0NySi1sakFQVmhZYVVPNm5nSmNCR2NCTkEzYXJiZkNwMklIRGpNLWNxNXlDQ3lyYzZsQWRsMTRkTlhJWlk1bFBvNFZNaGFWaGhIWW40cE5nME9FaUVlM1dXenNZQTNmZVFPN2duenNGMWNTUmRERGF6R2xobWJlazY2WERoLU8tRUp5ZTd0ck9aU0Q5ak9PQ29mRDljR3BkLS13NUlSOGEtMDQ2MFV3bUJOZWNOMF9tOXd4U1IyRHJVdzFuOA?oc=5\" target=\"_blank\">‘UAE is my first home’: Dubai teenager Riyan Malhan on historic Youth Olympic gold and a Diwali to remember</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Gulf News</font></li><li><a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxPXzJtY1lEZGh4Z1JncTFzMXZ3LXoydGc0MnR5NFJPVDkzWDhKbXJGbm5zSXJKYzRGSGpRczE4eFcyVUd1OUptMjJoVlFQb0JYUnlxanZiUUYtdVVVa3JWVlUwSkEwUWYxd2xsWWlFTWwxS3NCVEpIa3kxdGZBQXp0VTd4dExSNkJua1dRdE40NEpCVUtWZ19iTzFtSVNtQXpDa3VnM2NXaWJzTGZrZnV1b0d6LS1ReWvSAdIBQVVfeXFMTlFKdy0yMU9oZGptWU5vb0E0YnJHQWZPdTluZXB5VmxTcG4yRWVzbzJ6WDlrUzdCZnJQSUlkZ2V0UkRremJhbG9ja1NRQk5SZWNTc2Q1emhaemdBN0JoSDNSSkZ0WDlrcklvOV8tZk45OVJWUHFyMEJmM3ptbm5TMTFCeUM5WG9KZ0lUR3o4RXFXNkVYLS1ROXJzZE5ZRWZEbUtuamp6b0J2allNUDBZUXRtY3ZKM0NqVFIyMGl5TWE1RHNteVZ0cGtHMmNvcGFkaHJn?oc=5\" target=\"_blank\">Sports Minister receives Youth Olympic badminton gold medallist Riyan Malhan</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Emirates 24|7</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxNZEljOVZzUzFXM2JHRUdZTFU3Z0hNTGZVNy1ZaWI0NTh2N3VxSndlOUlvaW0xOGktaHFYVzdWbHlzdGtTaU1kQkE4ZWxIVk9ocWRTcUFLSnFibndXQjlCUUxadTVGY3FDT1hjM1ZTSlFyZVZfYXJ3bXVYdXFzNG12cWotazY4UHU5aGs5Wl9TakE4Z0I2Uk9fbExtdmtfWXVVYkFWSGxzSDNDR2UxUHhOblJ6Y2VCYXdaOXc?oc=5\" target=\"_blank\">Malhan makes history with UAE’s first gold medal at Youth Olympics | Gulf Today - newspaper</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Magzter</font></li><li><a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxNTmdmM2F0U09MN3NOUXJUbzZhX25DQk5LUUs2SkZEQy1Kenc1YWN5SDl4WGpYeTl6RTBwQVZ0dTF1UjlfTWMyWENDeEtjc0kxcmxBd2xXb1ZTZ2t5dS1qMzhqNDZSSHBfUldlZG0zOURwekJMUnBHMGNvUEdSbXZhRmVWdzlpV2RVSDhpbTIyVk8?oc=5\" target=\"_blank\">UAE celebrates historic badminton gold at Dakar 2026 Youth Olympics</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">www.wam.ae</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: NST Online.",
+      "source": "NST Online",
       "sources": [
-        "诗华日报沙巴版"
+        "NST Online"
       ],
-      "url": "https://news.seehua.com/post/1601528",
-      "image_url": null
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T10:47:17+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     },
     {
-      "category": "sabah",
-      "title": "陈祥业：防洪规划未落实 人联治水多年无效 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 陈祥业：防洪规划未落实 人联治水多年无效",
-      "detail": "【权威动态播报】陈祥业：防洪规划未落实 人联治水多年无效。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 陈祥业：防洪规划未落实 人联治水多年无效.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_sports_19",
+      "category": "sports",
+      "title": "Portugal's Jorge Jesus: I 'don't feel guilty' about Ronaldo's retirement [ESPN 实时发布]",
+      "titleBM": "Laporan Berita: Portugal's Jorge Jesus: I 'don't feel guilty' about Ronaldo's retirement",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5\" target=\"_blank\">Portugal's Jorge Jesus: I 'don't feel guilty' about Ronaldo's retirement</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9QNUZWcVc5Z0w5S0thZkItMmM1Wm5zRHl5Q1psYmdMNnZPaXJUa2JhV3B4LVI5alBCNGhibFhUNFZyZ0FCZWlOTHVJV29kY3dmdmZkZ1hVLVVmWERYMlFabTEteDFkUHE0a1RB?oc=5\" target=\"_blank\">Cristiano Ronaldo retirement: Why has Portugal legend retired from international game?</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxQVlVyUGtzUWRUdVlZN1pzVFlpaEJWa2dzbS1qS2dtQVJaZjhkYzBYY3JFOURvRnQ3OWo1XzlsZ04xU0d0SmVQdFMyaGhDb1p6UGZRdXFIenhscV9pd0hjX2RSTDhsS29vS2o5NjFvVHJqTmZ0by00UTZWQXFnWnRvQmFycmdiOGtmLXFVQ1F0R3VfT1ZfYUdnLW5uUTFmLUx5cXF0azY3TXBJTmZSTm5B0gG0AUFVX3lxTE5EbFhWN1d2cWxEbzBub0dKSEhWaUIzWTlEMlVUZ3VBMGQyNlplaTk4akdqTXkzYzh4Z2FSYklBQmptS2ZKR0xrTlNvem5KOUh5R05jRFJUaHpIQXFMZTg4NXg4ZzJtT3JpQXRZVlZ1TTFUbkcwY2FtTy1jUE1SQkM5VDlDRi1nMHA2T1NfVWU0VG5SUktpVHhvVkl0UEFNOWNhdTBWM21xRzVnWVBuYjkxcl9sSw?oc=5\" target=\"_blank\">Cristiano Ronaldo: Portugal’s polarising icon and his bitter final act</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Al Jazeera</font></li><li><a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxNY25OdHhvUVd0SjRkQmt2a0k3c2tSVnYzbEhQb2JiRks4aXhwYnp3VnFsbjFLQWJDSWsyUUxPeGRDZ1Jwems4eFJTbE1iTHlpN1NaM0d0WUtPc2FtT25SX1h4MFI3RFJQUVQxcUZIZmpLaW5uN1p4c0pLcVdrMHlFaFVIM3NkREpOY2FjRnRmR2RkSGN1V1JtbFVmZklhc2stdjZ2UUFEby1DRFYxNDYtcW5pVGdlR3QzMkVWVk5mSVRCM0hE?oc=5\" target=\"_blank\">Even in final act, ‘washed-up’ Ronaldo’s numbers stack up against greats</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxPMUlmYjhYcGdTSEpLdzhyYm1ieFpoclFNUktiTVlyWXhxZHE3LUVvT2RxS2dDdWx6OXd1TkcxZU1ZYXo1MU8tSl9BVGV5UWFzNXZjVjBPNWRPVTZTOG0wVUEzcFdfMTBnaThITHBKbGRtTkNISWlIU19ReUE5X2luZHhLdXFKc21XQkZWT0VzajNVbXoxNmZfRXN2cGtuMXpVSmREU2ZJblIxWnB5dldXclFOUQ?oc=5\" target=\"_blank\">Cristiano Ronaldo merely the latest example of a great player who couldn’t let go | Jonathan Wilson</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：ESPN。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5\" target=\"_blank\">Portugal's Jorge Jesus: I 'don't feel guilty' about Ronaldo's retirement</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE9QNUZWcVc5Z0w5S0thZkItMmM1Wm5zRHl5Q1psYmdMNnZPaXJUa2JhV3B4LVI5alBCNGhibFhUNFZyZ0FCZWlOTHVJV29kY3dmdmZkZ1hVLVVmWERYMlFabTEteDFkUHE0a1RB?oc=5\" target=\"_blank\">Cristiano Ronaldo retirement: Why has Portugal legend retired from international game?</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxQVlVyUGtzUWRUdVlZN1pzVFlpaEJWa2dzbS1qS2dtQVJaZjhkYzBYY3JFOURvRnQ3OWo1XzlsZ04xU0d0SmVQdFMyaGhDb1p6UGZRdXFIenhscV9pd0hjX2RSTDhsS29vS2o5NjFvVHJqTmZ0by00UTZWQXFnWnRvQmFycmdiOGtmLXFVQ1F0R3VfT1ZfYUdnLW5uUTFmLUx5cXF0azY3TXBJTmZSTm5B0gG0AUFVX3lxTE5EbFhWN1d2cWxEbzBub0dKSEhWaUIzWTlEMlVUZ3VBMGQyNlplaTk4akdqTXkzYzh4Z2FSYklBQmptS2ZKR0xrTlNvem5KOUh5R05jRFJUaHpIQXFMZTg4NXg4ZzJtT3JpQXRZVlZ1TTFUbkcwY2FtTy1jUE1SQkM5VDlDRi1nMHA2T1NfVWU0VG5SUktpVHhvVkl0UEFNOWNhdTBWM21xRzVnWVBuYjkxcl9sSw?oc=5\" target=\"_blank\">Cristiano Ronaldo: Portugal’s polarising icon and his bitter final act</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Al Jazeera</font></li><li><a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxNY25OdHhvUVd0SjRkQmt2a0k3c2tSVnYzbEhQb2JiRks4aXhwYnp3VnFsbjFLQWJDSWsyUUxPeGRDZ1Jwems4eFJTbE1iTHlpN1NaM0d0WUtPc2FtT25SX1h4MFI3RFJQUVQxcUZIZmpLaW5uN1p4c0pLcVdrMHlFaFVIM3NkREpOY2FjRnRmR2RkSGN1V1JtbFVmZklhc2stdjZ2UUFEby1DRFYxNDYtcW5pVGdlR3QzMkVWVk5mSVRCM0hE?oc=5\" target=\"_blank\">Even in final act, ‘washed-up’ Ronaldo’s numbers stack up against greats</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxPMUlmYjhYcGdTSEpLdzhyYm1ieFpoclFNUktiTVlyWXhxZHE3LUVvT2RxS2dDdWx6OXd1TkcxZU1ZYXo1MU8tSl9BVGV5UWFzNXZjVjBPNWRPVTZTOG0wVUEzcFdfMTBnaThITHBKbGRtTkNISWlIU19ReUE5X2luZHhLdXFKc21XQkZWT0VzajNVbXoxNmZfRXN2cGtuMXpVSmREU2ZJblIxWnB5dldXclFOUQ?oc=5\" target=\"_blank\">Cristiano Ronaldo merely the latest example of a great player who couldn’t let go | Jonathan Wilson</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: ESPN.",
+      "source": "ESPN",
       "sources": [
-        "诗华日报沙巴版"
+        "ESPN"
       ],
-      "url": "https://news.seehua.com/post/1601531",
-      "image_url": null
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-06T19:22:00+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     },
     {
-      "category": "sabah",
-      "title": "俞小珊：未来5年续落实 埔奕聚焦5发展方向 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 俞小珊：未来5年续落实 埔奕聚焦5发展方向",
-      "detail": "【权威动态播报】俞小珊：未来5年续落实 埔奕聚焦5发展方向。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 俞小珊：未来5年续落实 埔奕聚焦5发展方向.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_sports_20",
+      "category": "sports",
+      "title": "China MMA champion Zhang Weili faces family pressure to find a partner, go on blind dates [The Star 实时发布]",
+      "titleBM": "Laporan Berita: China MMA champion Zhang Weili faces family pressure to find a partner, go on blind dates",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5\" target=\"_blank\">China MMA champion Zhang Weili faces family pressure to find a partner, go on blind dates</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxPalVnRnFnS2Z2MTQ3OTJobnVqaUFfMGtBM2NhVTIwTzAwcVlkNk9nUENlcFAyQnQtVTlqNGhSNWpiZ2hJUXRrTjVQejRWNkYyMzlXZnB0WEVWVFE0QlJLcWVwU2ZfaVQtaDNIUDRWWV9nRW5OQTVKWDBCQjFPaHhHaWhB?oc=5\" target=\"_blank\">Zhang Weili says family pressuring her to get married</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">MyMMANews</font></li><li><a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxQbWo5ZjFUSWdQNW0xeFJqVk50UEFZbjRIYUc1TVRrZ3BkR0JwSHRrcjRRN1Y3YkRWNG1hNmFqQjRKRkZnOXZwWDRRVFZnRDlwZ1B3MmpmSkg4RnRkWXVxTDVQZy1kYTFzV2dtX2NMcmtWRzdkMnY0MFlTejl3MncwV2ktbURmN09NbjBsZWRLR0RGd3BzSUFzUkxB?oc=5\" target=\"_blank\">Chinese female MMA champion feels pressured for not having a boyfriend at age 37.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Vietnam.vn</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：The Star。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5\" target=\"_blank\">China MMA champion Zhang Weili faces family pressure to find a partner, go on blind dates</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxPalVnRnFnS2Z2MTQ3OTJobnVqaUFfMGtBM2NhVTIwTzAwcVlkNk9nUENlcFAyQnQtVTlqNGhSNWpiZ2hJUXRrTjVQejRWNkYyMzlXZnB0WEVWVFE0QlJLcWVwU2ZfaVQtaDNIUDRWWV9nRW5OQTVKWDBCQjFPaHhHaWhB?oc=5\" target=\"_blank\">Zhang Weili says family pressuring her to get married</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">MyMMANews</font></li><li><a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxQbWo5ZjFUSWdQNW0xeFJqVk50UEFZbjRIYUc1TVRrZ3BkR0JwSHRrcjRRN1Y3YkRWNG1hNmFqQjRKRkZnOXZwWDRRVFZnRDlwZ1B3MmpmSkg4RnRkWXVxTDVQZy1kYTFzV2dtX2NMcmtWRzdkMnY0MFlTejl3MncwV2ktbURmN09NbjBsZWRLR0RGd3BzSUFzUkxB?oc=5\" target=\"_blank\">Chinese female MMA champion feels pressured for not having a boyfriend at age 37.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Vietnam.vn</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: The Star.",
+      "source": "The Star",
       "sources": [
-        "诗华日报沙巴版"
+        "The Star"
       ],
-      "url": "https://news.seehua.com/post/1601527",
-      "image_url": null
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T05:48:00+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
     },
     {
-      "category": "sabah",
-      "title": "李景胜：营运开销大 2洗肾中心年缺250万 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 李景胜：营运开销大 2洗肾中心年缺250万",
-      "detail": "【权威动态播报】李景胜：营运开销大 2洗肾中心年缺250万。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 李景胜：营运开销大 2洗肾中心年缺250万.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_sports_21",
+      "category": "sports",
+      "title": "Ronaldo, not Messi, is the blueprint for Malaysian footballers [NST Online 实时发布]",
+      "titleBM": "Laporan Berita: Ronaldo, not Messi, is the blueprint for Malaysian footballers",
+      "detail": "【权威动态播报】<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxQWjRqd1N0SjZuQnJiMEdjUFd5QXRyNjdFdUJyMDJTMmdEN3NhWDlZUHVvYzhubnA5VmlYYTNGRklTWmJLWWFhSy1oaUkzcDg5Z1VhTF9SbFBxb2Y5LVpReXRlRUk3VDBjVDdxTjh5clpsbUVpTnFCTmlCeElqOUNBb096bXpuWk1ZcE9BY0l1VkhTdENoVGQwOXBxLWtUM0tCNFBDSnpua9IBrAFBVV95cUxQVlRsRVRFbTdtN0FfMXpLb3hDaGtNVjVLbG5Rd2xQNHVxMXdic0oxZnpNTjFjczF4dTdXRGMwUDRzcDlKOXlObDlDSU10RzVjQUwwNEtJNXNWZF9nRlljWk1JWmt4dVk4aXBKM09pc0p2VXJsbXk2dG1RS3lCRnM1WGFQUG9xN3lkNXpqYTFtb3ViVDZmNXQ3cjlOQ2FhYVFXVUtoNmIyN2FGTlZ4?oc=5\" target=\"_blank\">Ronaldo, not Messi, is the blueprint for Malaysian footballers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：NST Online。",
+      "detailBM": "Notis Berita Rasmi: <a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxQWjRqd1N0SjZuQnJiMEdjUFd5QXRyNjdFdUJyMDJTMmdEN3NhWDlZUHVvYzhubnA5VmlYYTNGRklTWmJLWWFhSy1oaUkzcDg5Z1VhTF9SbFBxb2Y5LVpReXRlRUk3VDBjVDdxTjh5clpsbUVpTnFCTmlCeElqOUNBb096bXpuWk1ZcE9BY0l1VkhTdENoVGQwOXBxLWtUM0tCNFBDSnpua9IBrAFBVV95cUxQVlRsRVRFbTdtN0FfMXpLb3hDaGtNVjVLbG5Rd2xQNHVxMXdic0oxZnpNTjFjczF4dTdXRGMwUDRzcDlKOXlObDlDSU10RzVjQUwwNEtJNXNWZF9nRlljWk1JWmt4dVk4aXBKM09pc0p2VXJsbXk2dG1RS3lCRnM1WGFQUG9xN3lkNXpqYTFtb3ViVDZmNXQ3cjlOQ2FhYVFXVUtoNmIyN2FGTlZ4?oc=5\" target=\"_blank\">Ronaldo, not Messi, is the blueprint for Malaysian footballers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: NST Online.",
+      "source": "NST Online",
       "sources": [
-        "诗华日报沙巴版"
+        "NST Online"
       ],
-      "url": "https://news.seehua.com/post/1601525",
-      "image_url": null
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWjRqd1N0SjZuQnJiMEdjUFd5QXRyNjdFdUJyMDJTMmdEN3NhWDlZUHVvYzhubnA5VmlYYTNGRklTWmJLWWFhSy1oaUkzcDg5Z1VhTF9SbFBxb2Y5LVpReXRlRUk3VDBjVDdxTjh5clpsbUVpTnFCTmlCeElqOUNBb096bXpuWk1ZcE9BY0l1VkhTdENoVGQwOXBxLWtUM0tCNFBDSnpua9IBrAFBVV95cUxQVlRsRVRFbTdtN0FfMXpLb3hDaGtNVjVLbG5Rd2xQNHVxMXdic0oxZnpNTjFjczF4dTdXRGMwUDRzcDlKOXlObDlDSU10RzVjQUwwNEtJNXNWZF9nRlljWk1JWmt4dVk4aXBKM09pc0p2VXJsbXk2dG1RS3lCRnM1WGFQUG9xN3lkNXpqYTFtb3ViVDZmNXQ3cjlOQ2FhYVFXVUtoNmIyN2FGTlZ4?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWjRqd1N0SjZuQnJiMEdjUFd5QXRyNjdFdUJyMDJTMmdEN3NhWDlZUHVvYzhubnA5VmlYYTNGRklTWmJLWWFhSy1oaUkzcDg5Z1VhTF9SbFBxb2Y5LVpReXRlRUk3VDBjVDdxTjh5clpsbUVpTnFCTmlCeElqOUNBb096bXpuWk1ZcE9BY0l1VkhTdENoVGQwOXBxLWtUM0tCNFBDSnpua9IBrAFBVV95cUxQVlRsRVRFbTdtN0FfMXpLb3hDaGtNVjVLbG5Rd2xQNHVxMXdic0oxZnpNTjFjczF4dTdXRGMwUDRzcDlKOXlObDlDSU10RzVjQUwwNEtJNXNWZF9nRlljWk1JWmt4dVk4aXBKM09pc0p2VXJsbXk2dG1RS3lCRnM1WGFQUG9xN3lkNXpqYTFtb3ViVDZmNXQ3cjlOQ2FhYVFXVUtoNmIyN2FGTlZ4?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T01:28:24+00:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     },
     {
-      "category": "sabah",
-      "title": "砂总理：洗肾中心年耗800万 红新月会需各界支持 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 砂总理：洗肾中心年耗800万 红新月会需各界支持",
-      "detail": "【权威动态播报】砂总理：洗肾中心年耗800万 红新月会需各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 砂总理：洗肾中心年耗800万 红新月会需各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_general_22",
+      "category": "general",
+      "title": "MRR2凌晨惊悚车祸 两车相撞酿一死一重伤惨剧 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: MRR2凌晨惊悚车祸 两车相撞酿一死一重伤惨剧",
+      "detail": "【权威动态播报】MRR2凌晨惊悚车祸 两车相撞酿一死一重伤惨剧。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: MRR2凌晨惊悚车祸 两车相撞酿一死一重伤惨剧.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
       "sources": [
-        "诗华日报沙巴版"
+        "诗华日报"
       ],
-      "url": "https://news.seehua.com/post/1601512",
-      "image_url": null
+      "url": "https://news.seehua.com/post/1601635",
+      "source_urls": [
+        "https://news.seehua.com/post/1601635"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     },
     {
-      "category": "sabah",
-      "title": "砂总理：乌鲁文化中心开放共享 展现砂多元包容精神 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神",
-      "detail": "【权威动态播报】砂总理：乌鲁文化中心开放共享 展现砂多元包容精神。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_general_23",
+      "category": "general",
+      "title": "助手透露：英国国王将“认真”考虑访问中国一事 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 助手透露：英国国王将“认真”考虑访问中国一事",
+      "detail": "【权威动态播报】助手透露：英国国王将“认真”考虑访问中国一事。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 助手透露：英国国王将“认真”考虑访问中国一事.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
       "sources": [
-        "诗华日报沙巴版"
+        "诗华日报"
       ],
-      "url": "https://news.seehua.com/post/1601518",
-      "image_url": null
+      "url": "https://news.seehua.com/post/1601627",
+      "source_urls": [
+        "https://news.seehua.com/post/1601627"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     },
     {
-      "category": "sabah",
-      "title": "赵俊文：刑罚不应靠募款 政治献金须透明化 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 赵俊文：刑罚不应靠募款 政治献金须透明化",
-      "detail": "【权威动态播报】赵俊文：刑罚不应靠募款 政治献金须透明化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 赵俊文：刑罚不应靠募款 政治献金须透明化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "id": "art_general_24",
+      "category": "general",
+      "title": "KTMB器材仓库陷火海 恶火狂烧95%损失惨重 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: KTMB器材仓库陷火海 恶火狂烧95%损失惨重",
+      "detail": "【权威动态播报】KTMB器材仓库陷火海 恶火狂烧95%损失惨重。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: KTMB器材仓库陷火海 恶火狂烧95%损失惨重.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
       "sources": [
-        "诗华日报沙巴版"
+        "诗华日报"
       ],
-      "url": "https://news.seehua.com/post/1601483",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "苏海利：连接马汶通道 都九关卡强化管控 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 苏海利：连接马汶通道 都九关卡强化管控",
-      "detail": "【权威动态播报】苏海利：连接马汶通道 都九关卡强化管控。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 苏海利：连接马汶通道 都九关卡强化管控.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
-      "sources": [
-        "诗华日报沙巴版"
+      "url": "https://news.seehua.com/post/1601632",
+      "source_urls": [
+        "https://news.seehua.com/post/1601632"
       ],
-      "url": "https://news.seehua.com/post/1601492",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "砂总理：个人表现各方意见 综合因素考量峇南候选人 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 砂总理：个人表现各方意见 综合因素考量峇南候选人",
-      "detail": "【权威动态播报】砂总理：个人表现各方意见 综合因素考量峇南候选人。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 砂总理：个人表现各方意见 综合因素考量峇南候选人.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601489",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通",
-      "detail": "【权威动态播报】砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601486",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "诗巫男子遭利器刺伤身亡 警方捕9男女助查 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 诗巫男子遭利器刺伤身亡 警方捕9男女助查",
-      "detail": "【权威动态播报】诗巫男子遭利器刺伤身亡 警方捕9男女助查。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 诗巫男子遭利器刺伤身亡 警方捕9男女助查.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601476",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "严缺外劳影响营运 油棕小园主呈诉求信 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Laporan Berita Utama: 严缺外劳影响营运 油棕小园主呈诉求信",
-      "detail": "【权威动态播报】严缺外劳影响营运 油棕小园主呈诉求信。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
-      "detailBM": "Notis Berita Rasmi: 严缺外劳影响营运 油棕小园主呈诉求信.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601480",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "【小彻小悟】分数之外的那一笔 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 【小彻小悟】分数之外的那一笔",
-      "detail": "【权威动态播报】【小彻小悟】分数之外的那一笔。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 【小彻小悟】分数之外的那一笔.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8028321",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作",
-      "detail": "【权威动态播报】陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8045833",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "马西迪：落实培训资格认证 推动乐龄护理专业化 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 马西迪：落实培训资格认证 推动乐龄护理专业化",
-      "detail": "【权威动态播报】马西迪：落实培训资格认证 推动乐龄护理专业化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 马西迪：落实培训资格认证 推动乐龄护理专业化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045875",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "培育篮坛新秀需经费 潘志勇吁各界支持 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 培育篮坛新秀需经费 潘志勇吁各界支持",
-      "detail": "【权威动态播报】培育篮坛新秀需经费 潘志勇吁各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 培育篮坛新秀需经费 潘志勇吁各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045848",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "安迪：提供优质环境 改善幼教设施水平 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 安迪：提供优质环境 改善幼教设施水平",
-      "detail": "【权威动态播报】安迪：提供优质环境 改善幼教设施水平。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 安迪：提供优质环境 改善幼教设施水平.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045773",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "深耕拿笃教育逾一甲子 宋小芬感恩各界相伴 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴",
-      "detail": "【权威动态播报】深耕拿笃教育逾一甲子 宋小芬感恩各界相伴。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045792",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "曾国竣：法律不能沦为装饰 须追究“知情出租者” [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 曾国竣：法律不能沦为装饰 须追究“知情出租者”",
-      "detail": "【权威动态播报】曾国竣：法律不能沦为装饰 须追究“知情出租者”。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 曾国竣：法律不能沦为装饰 须追究“知情出租者”.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045787",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "泛道骑车失控撞洋灰墩 男子当场伤重身亡 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 泛道骑车失控撞洋灰墩 男子当场伤重身亡",
-      "detail": "【权威动态播报】泛道骑车失控撞洋灰墩 男子当场伤重身亡。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 泛道骑车失控撞洋灰墩 男子当场伤重身亡.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045515",
-      "image_url": null
-    },
-    {
-      "category": "sabah",
-      "title": "【小彻小悟】人生像一座扯旗山 [沙巴星洲日报 实时发布]",
-      "titleBM": "Laporan Berita Utama: 【小彻小悟】人生像一座扯旗山",
-      "detail": "【权威动态播报】【小彻小悟】人生像一座扯旗山。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
-      "detailBM": "Notis Berita Rasmi: 【小彻小悟】人生像一座扯旗山.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261025/sabah/7982394",
-      "image_url": null
+      "image_url": null,
+      "original_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "collected_at": "2026-11-08T08:59:49.105007+08:00",
+      "site_published_at": "2026-11-08T08:59:52.495457+08:00",
+      "updated_at": "2026-11-08T08:59:52.495457+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
     }
   ],
   "2026-11-07": [

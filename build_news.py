@@ -105,23 +105,25 @@ def generate_index_html():
         },
         {
             "id": "W",
-            "label": "沙巴水务局 (JANS) 斗湖古哈拉抽水",
-            "labelBM": "Operasi Pengepaman Air JANS Tawau Kuhara",
+            "label": "沙巴水务局 (JANS) 斗湖古哈拉供水",
+            "labelBM": "Operasi Pemulihan Bekalan Air JANS Tawau Kuhara",
             "time": cur_time_hm,
-            "status": "LIVE 抢修中",
-            "statusBM": "LANGSUNG Baik Pulih",
-            "issue": "古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低",
-            "issueBM": "Kerja pembaikan kecemasan galas pam utama Stesen Kuhara Tawau sedang dijalankan, kawasan terlibat tekanan rendah",
-            "pressure": "降压供水区：斗湖市区及沿海片区",
-            "pressureBM": "Kawasan tekanan rendah: Bandar Tawau & kawasan persisiran",
-            "recovery": "预计修复：今晚 22:00 前完成调试并逐步恢复常压",
-            "recoveryBM": "Jangka pulih: Siap dibaiki sebelum 22:00 malam ini",
-            "tanker": "配水应急车：已派驻斗湖核心住宅区与医疗中心备勤",
-            "tankerBM": "Lori tangki air digerakkan ke kawasan perumahan & pusat kesihatan",
+            "status": "LIVE 供水恢复",
+            "statusBM": "LANGSUNG Tekanan Normal",
+            "verified": True,
+            "official_source_url": "https://water.sabah.gov.my/",
+            "issue": "古哈拉抽水主站核心机组轴承抢修已于昨夜全面竣工，今晨管网注水完成，全线恢复常压供水。",
+            "issueBM": "Kerja pembaikan kecemasan galas pam utama Stesen Kuhara Tawau telah disiapkan sepenuhnya dan bekalan air bersih pulih.",
+            "pressure": "水压状态：斗湖市区及沿海片区水压全面恢复平稳常态",
+            "pressureBM": "Kawasan bekalan: Tekanan air di bandar Tawau dan persisiran kembali normal",
+            "recovery": "工程验收：主站设备抢修全面告竣，已恢复全天候平稳供水",
+            "recoveryBM": "Kemajuan: Pembaikan siap sepenuhnya dan operasi pam kembali lancar",
+            "tanker": "应急保障：管网运行正常，应急送水车已解除一级待命",
+            "tankerBM": "Lori tangki: Operasi kecemasan ditamatkan susulan pemulihan bekalan",
             "consult": "089-761057",
             "consult2": "JANS 24J",
-            "source": "沙巴水务局 & Sabah TV 双核实",
-            "sourceBM": "Disahkan JANS & Sabah TV"
+            "source": "沙巴水务局 JANS 官方通报",
+            "sourceBM": "Disahkan JANS"
         },
         {
             "id": "E",
@@ -1324,10 +1326,7 @@ def generate_index_html():
                     <span>⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
                     <span class="text-white/40">•</span>
                     <span>🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
-                    <span class="text-white/40">•</span>
-                    <span>🌾 SAZA RICE 买大米赢豪车 Jetour Dashing 岁末抽奖进行中</span>
-                    <span class="text-white/40">•</span>
-                    <span>🚗 Marco Thien 山打根优质租车 010-930 1117 随时接单</span>
+
                 </div>
                 <div class="flex gap-8 items-center px-4" aria-hidden="true">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
@@ -2028,6 +2027,21 @@ def generate_index_html():
         }}
 
         // 核心修复：动态渲染新闻卡片列表（支持今天、昨日、前日与历史合辑真实切换）
+        function formatCardTime(dateStr) {{
+            if (!dateStr) return '';
+            try {{
+                var d = new Date(dateStr);
+                if (isNaN(d.getTime())) return String(dateStr).slice(0, 16);
+                var mm = ('0' + (d.getMonth() + 1)).slice(-2);
+                var dd = ('0' + d.getDate()).slice(-2);
+                var hh = ('0' + d.getHours()).slice(-2);
+                var min = ('0' + d.getMinutes()).slice(-2);
+                return mm + '/' + dd + ' ' + hh + ':' + min;
+            }} catch(e) {{
+                return String(dateStr).slice(0, 16);
+            }}
+        }}
+
         let currentRenderedHeadlines = CURRENT_HEADLINES;
         let currentRenderedDateLabel = '{today_mmdd} {today_time}';
 

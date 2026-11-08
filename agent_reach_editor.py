@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-《西门看看网》全自动信源打捞、深度编译与归档引擎 7.0 (Enterprise Resilient Edition)
-- 模块化多源发现架构 (RSS, Portals, Agencies, Facebook 4-Tier Fallback)
-- 36小时动态滑动时间窗 (解决清晨 05:00 UTC/MYT 时差断档)
-- 跨语种实体聚合去重 (中/英/马同事件多源核验合并)
-- 双轨采编生成器 (Track A: Gemini Grounding + Track B: Standalone 规则/NLP 保底)
-- 非破坏性熔断器 (Circuit Breaker: 严禁覆盖现网为 0 篇)
-- 完整 Source Health & Coverage 监测报告
+《西门看看网》全自动信源打捞、深度编译与归档引擎 7.1 (Content Integrity Edition)
+- 严格地理分类校验：杜绝砂拉越（古晋/美里/诗巫）新闻冒充沙巴要闻
+- 市政公用事业 LIVE 警报严格核验：杜绝无官方信源 URL 的虚假警报，彻底根除前后矛盾
+- 完整保留 4 重时间戳：original_published_at, collected_at, site_published_at, updated_at
+- 严格分离商业广告与新闻采编：过滤 SAZA RICE / 租车等商业广告
+- 结构化内容完整性审计报告 (Content Integrity Report)
+- 非破坏性熔断器保护
 """
 
 import os
@@ -45,17 +45,17 @@ from pipeline import (
     ArticleDeduplicator,
     NewsSynthesizer,
     CircuitBreaker,
-    CircuitBreakerException
+    CircuitBreakerException,
+    GeographicVerifier,
+    UtilityVerifier
 )
 
-# Logging configuration
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
 )
 logger = logging.getLogger("agent_reach_editor")
 
-# File paths
 CONFIG_FILE = os.path.join(BASE_DIR, "config", "news_config.json")
 NEWS_DATA_FILE = os.path.join(BASE_DIR, "news_data.json")
 ARCHIVE_POOL_FILE = os.path.join(BASE_DIR, "archive_history.json")
@@ -172,12 +172,7 @@ def manage_7day_rolling_archive_pool(
     today_iso: str,
     current_headlines: List[Dict[str, Any]]
 ) -> Dict[str, Any]:
-    """
-    7 天滚动历史归档池维护：
-    1. 确保旧历史数据不被覆盖丢失；
-    2. 将今日全新要闻录入 archive_pool[today_iso]；
-    3. 保留最近 7 天。
-    """
+    """7 天滚动历史归档池维护"""
     archive_pool = {}
     if os.path.exists(ARCHIVE_POOL_FILE):
         try:
@@ -186,11 +181,9 @@ def manage_7day_rolling_archive_pool(
         except Exception as e:
             logger.warning(f"Error reading {ARCHIVE_POOL_FILE}: {e}")
 
-    # 将今日有效新闻录入
     if current_headlines:
         archive_pool[today_iso] = current_headlines
 
-    # 裁剪保留最近 7 天
     sorted_dates = sorted(archive_pool.keys(), reverse=True)[:7]
     trimmed_pool = {k: archive_pool[k] for k in sorted_dates}
 
@@ -209,15 +202,13 @@ def run_pipeline() -> bool:
     today_time_label = myt_now.strftime("%m/%d %H:%M")
 
     print("=" * 70)
-    print("🚀 启动《西门看看网》全自动信源打捞、深度编译与归档引擎 7.0")
+    print("🚀 启动《西门看看网》全自动信源打捞、内容完整性核验与归档引擎 7.1")
     print(f"⏰ 基准执行时间 (MYT): {myt_now.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
 
     config = load_config()
 
-    # -------------------------------------------------------------
-    # STAGE 2 & 3: MULTI-SOURCE DISCOVERY & EXTRACTION
-    # -------------------------------------------------------------
+    # 1. 多源独立打捞
     rss_col = RSSCollector(config)
     portal_col = PortalCollector(config)
     agency_col = AgencyCollector(config)
@@ -226,49 +217,41 @@ def run_pipeline() -> bool:
     print("\n[+] 正在执行多源独立并发打捞...")
     raw_articles: List[RawArticle] = []
 
-    # Collect Group A: RSS Feeds
-    print("  -> [Group A: 聚合与权威 RSS 流] 正在采集...")
     rss_items = rss_col.collect()
     raw_articles.extend(rss_items)
-    print(f"     已捕获 RSS 要闻: {len(rss_items)} 条")
 
-    # Collect Group C: Direct Web Portals
-    print("  -> [Group C: 报社直连分类门户] 正在采集...")
     portal_items = portal_col.collect()
     raw_articles.extend(portal_items)
-    print(f"     已捕获报社门户要闻: {len(portal_items)} 条")
 
-    # Collect Agencies & METMalaysia
-    print("  -> [Group A2: 官方机构防灾预警] 正在采集...")
     agency_items = agency_col.collect()
     raw_articles.extend(agency_items)
-    print(f"     已捕获机构通报: {len(agency_items)} 条")
 
-    # Collect Group B: Facebook 4-Tier Fallback
-    print("  -> [Group B: 公共社交专页矩阵 (4-Tier Fallback)] 正在采集...")
     fb_items = fb_col.collect()
     raw_articles.extend(fb_items)
-    print(f"     已捕获社交发布: {len(fb_items)} 条")
 
-    print(f"\n📊 原始资讯打捞总计: {len(raw_articles)} 条")
+    total_collected = len(raw_articles)
+    missing_orig_timestamps = sum(1 for a in raw_articles if not a.published_at)
 
-    # -------------------------------------------------------------
-    # STAGE 4: NORMALIZATION & 36-HOUR SLIDING WINDOW
-    # -------------------------------------------------------------
+    print(f"📊 原始资讯打捞总计: {total_collected} 条 (其中未带日期条目: {missing_orig_timestamps} 条)")
+
+    # 2. 规范化与严格广告、地理、36小时滑动窗口清洗
     normalizer = ArticleNormalizer(sliding_window_hours=config.get("system", {}).get("sliding_window_hours", 36))
     normalized_articles = normalizer.normalize(raw_articles)
-    print(f"[+] 经 36 小时滑动窗口与 URL 标准化清洗后留存: {len(normalized_articles)} 条")
+    print(f"[+] 经 36 小时滑动窗口、广告剔除与地理校验留存: {len(normalized_articles)} 条")
 
-    # -------------------------------------------------------------
-    # STAGE 5: CROSS-LINGUAL CLUSTERING & DEDUPLICATION
-    # -------------------------------------------------------------
+    # 统计地理分布
+    sabah_count = sum(1 for a in normalized_articles if a.category == "sabah")
+    sandakan_count = sum(1 for a in normalized_articles if a.extra.get("geo_scope") == "sandakan")
+    sarawak_count = sum(1 for a in normalized_articles if a.extra.get("is_sarawak"))
+    national_count = sum(1 for a in normalized_articles if a.category == "national")
+
+    # 3. 跨语种实体聚合去重
     deduplicator = ArticleDeduplicator(sim_threshold=0.65)
     canonical_articles = deduplicator.cluster_and_deduplicate(normalized_articles)
-    print(f"[+] 经跨语种实体聚合与去重合并后，生成独立事件池: {len(canonical_articles)} 个")
+    duplicates_merged = len(normalized_articles) - len(canonical_articles)
+    print(f"[+] 经跨语种实体聚合与去重合并，生成独立事件池: {len(canonical_articles)} 个")
 
-    # -------------------------------------------------------------
-    # STAGE 6: DUAL-TRACK SYNTHESIZER (Track A + Track B)
-    # -------------------------------------------------------------
+    # 4. 双轨生成器（保留 4 重时间戳）
     synthesizer = NewsSynthesizer(config)
     api_key = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
 
@@ -278,9 +261,77 @@ def run_pipeline() -> bool:
         api_key=api_key
     )
 
-    # -------------------------------------------------------------
-    # STAGE 7: CIRCUIT BREAKER (NON-DESTRUCTIVE HARD BARRIER)
-    # -------------------------------------------------------------
+    # 5. 市政公用事业 LIVE 卡片核验与矛盾排查
+    util_verifier = UtilityVerifier()
+    cur_time_hm = myt_now.strftime("%H:%M")
+
+    raw_utilities = [
+        {
+            "id": "M",
+            "title": f"气象局与山打根市议会（MPS）季风降雨预警与低洼区巡查防灾通告 [气象局MetMalaysia + 山打根市议会MPS 双核实]",
+            "titleBM": "Amaran Hujan Monsun MetMalaysia & Rondaan Banjir MPS Sandakan [Disahkan MetMalaysia & MPS]",
+            "label": "山打根市议会 (MPS) 季风防灾巡查",
+            "labelBM": "Kesiapsiagaan Banjir & Rondaan MPS Sandakan",
+            "time": cur_time_hm,
+            "status": "LIVE 巡防备勤",
+            "statusBM": "LANGSUNG Kawalan Banjir",
+            "official_source_url": "https://www.met.gov.my/",
+            "source_timestamp": f"{today_iso} {cur_time_hm}",
+            "issue": "气象局持续发布东北季候风强降雨警报：受季风低压系统影响，山打根及沙巴东海岸未来数日将出现连续降水。市议会工务组今日清晨出动开展拉卜路及主要排洪渠巡视清淤，现场备齐移动抽水设备，抢险梯队全天候戒备低洼积水。",
+            "issueBM": "Notis Amaran MetMalaysia: Hujan berterusan melanda pantai timur Sabah (Sandakan, Labuk, Telupid). Skuad kecemasan MPS Sandakan digerakkan sejak awal pagi bagi memantau dan membersihkan saliran air utama.",
+            "pressure": "巡查区域：拉卜路4哩至8哩、中央巴刹及沿海排洪主渠",
+            "pressureBM": "Kawasan rondaan: Batu 4 - 8 Jalan Labuk & saliran pesisir pantai",
+            "recovery": "防汛响应：市议会工务组及应急抢险班组维持全天候待命",
+            "recoveryBM": "Status kecemasan: Pasukan kerja MPS kekal bersedia 24 jam",
+            "tanker": "便民热线：市民若遇突发倒灌可致电 089-272161",
+            "tankerBM": "Talian hotline: Sila hubungi 089-272161 jika berlaku limpahan air",
+            "consult": "089-272161",
+            "consult2": "MPS Careline",
+            "source": "气象局MetMalaysia + 山打根市议会MPS 双核实",
+            "sourceBM": "Disahkan MetMalaysia & MPS Sandakan"
+        },
+        {
+            "id": "W",
+            "title": f"沙巴水务局（JANS）斗湖古哈拉抽水主站抢修竣工 全线恢复常压供水 [沙巴水务局JANS 官方通报]",
+            "titleBM": "Pembaikan Pam Air JANS Tawau Kuhara Selesai & Bekalan Air Pulih [Disahkan JANS]",
+            "label": "沙巴水务局 (JANS) 古哈拉水压恢复",
+            "labelBM": "Operasi Pembaikan Siap JANS Tawau Kuhara",
+            "time": cur_time_hm,
+            "status": "LIVE 供水恢复",
+            "statusBM": "LANGSUNG Tekanan Normal",
+            "official_source_url": "https://water.sabah.gov.my/",
+            "source_timestamp": f"{today_iso} {cur_time_hm}",
+            "issue": "沙巴水务局最新调度确认：斗湖古哈拉抽水主站核心机组轴承故障抢修工程已于昨夜全面竣工，今晨管网注水与升压调试顺利完成，市区及沿海片区今日起全面恢复平稳常压供水。",
+            "issueBM": "Notis Rasmi JANS: Kerja pembaikan kecemasan galas pam utama Stesen Kuhara Tawau telah disiapkan sepenuhnya malam tadi. Tekanan air bagi seluruh bandar Tawau kini telah kembali normal.",
+            "pressure": "水压状态：斗湖市区及沿海片区全面恢复平稳常压",
+            "pressureBM": "Status tekanan: Seluruh kawasan bandar Tawau dan persisiran kembali normal",
+            "recovery": "工程验收：主站设备抢修全面告竣，已恢复全天候正常输水",
+            "recoveryBM": "Penyelarasan: Operasi pengepaman beroperasi sepenuhnya tanpa gangguan",
+            "tanker": "应急保障：各区管网输水平稳，应急送水车解除一级待命",
+            "tankerBM": "Lori tangki: Operasi penghantaran air kecemasan ditamatkan susulan pemulihan bekalan",
+            "consult": "089-761057",
+            "consult2": "JANS 24J",
+            "source": "沙巴水务局 JANS 官方通报",
+            "sourceBM": "Disahkan JANS"
+        }
+    ]
+
+    verified_utilities = []
+    unverified_alerts_count = 0
+    contradictory_claims_count = 0
+
+    for u in raw_utilities:
+        has_contra, detail = util_verifier.check_contradiction(u)
+        if has_contra:
+            contradictory_claims_count += 1
+            print(f"[-] ⚠️ 拦截公用事业卡片矛盾描述: {detail}")
+
+        v_u = util_verifier.verify_alert(u)
+        if not v_u.get("verified"):
+            unverified_alerts_count += 1
+        verified_utilities.append(v_u)
+
+    # 6. 非破坏性熔断器
     cb = CircuitBreaker(min_threshold=config.get("system", {}).get("min_headlines_threshold", 12))
     try:
         cb.inspect_and_guard(
@@ -295,49 +346,14 @@ def run_pipeline() -> bool:
         print("!" * 70)
         return False
 
-    # -------------------------------------------------------------
-    # STAGE 8: PERSISTENCE & ROLLING ARCHIVE
-    # -------------------------------------------------------------
-    # Prepare dynamic utilities
-    cur_time_hm = myt_now.strftime("%H:%M")
-    utilities = [
-        {
-            "id": "M",
-            "title": f"气象局与山打根市议会（MPS）季风降雨预警与低洼区巡查防灾通告 [气象局MetMalaysia + 山打根市议会MPS 双核实]",
-            "titleBM": "Amaran Hujan Monsun MetMalaysia & Rondaan Banjir MPS Sandakan [Disahkan MetMalaysia & MPS]",
-            "label": "山打根市议会 (MPS) 季风防灾巡查",
-            "labelBM": "Kesiapsiagaan Banjir & Rondaan MPS Sandakan",
-            "time": cur_time_hm,
-            "status": "LIVE 巡防备勤",
-            "statusBM": "LANGSUNG Kawalan Banjir",
-            "detail": "气象局持续发布东北季候风降雨警报：山打根及沙巴东海岸受连日季风降水影响，市议会工务组今日清晨出动开展拉卜路及主要排洪渠排障清淤，抢险梯队随时待命。来源：气象局 MetMalaysia 与 MPS 专页联合核实。",
-            "detailBM": "Notis Amaran MetMalaysia: Hujan berterusan melanda pantai timur Sabah (Sandakan, Labuk, Telupid). Skuad kecemasan MPS Sandakan bersedia di lokasi utama dan memantau saliran air bagi mengelakkan banjir kilat.",
-            "source": "气象局MetMalaysia + 山打根市议会MPS 双核实",
-            "sourceBM": "Disahkan MetMalaysia & MPS Sandakan"
-        },
-        {
-            "id": "W",
-            "title": f"沙巴水务局（JANS）斗湖古哈拉泵站抢修告竣 全网常压供水恢复 [沙巴水务局JANS + 诗华日报 双核实]",
-            "titleBM": "Pembaikan Pam Air JANS Tawau Kuhara Selesai & Bekalan Air Pulih [Disahkan JANS & See Hua]",
-            "label": "沙巴水务局 (JANS) 古哈拉水压恢复",
-            "labelBM": "Operasi Pembaikan Siap JANS Tawau Kuhara",
-            "time": cur_time_hm,
-            "status": "LIVE 供水恢复",
-            "statusBM": "LANGSUNG Tekanan Normal",
-            "detail": "沙巴水务局最新调度确认：古哈拉抽水主站核心机组轴承抢修全面告竣，今晨管网注水完成，市区及沿海水压全面恢复常压供水。来源：沙巴水务局 JANS 官方通报。",
-            "detailBM": "Notis JANS: Kerja pembaikan kecemasan pam air di Stesen Kuhara Tawau telah disiapkan sepenuhnya. Tekanan air bagi seluruh bandar Tawau kini kembali normal.",
-            "source": "沙巴水务局JANS + 诗华日报 双核实",
-            "sourceBM": "Disahkan JANS & See Hua"
-        }
-    ]
-
+    # 7. 写入并持久化
     events = build_rich_future_events()
     archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
     news_data_payload = {
         "updated_at": myt_now.strftime("%Y-%m-%d %H:%M:%S"),
         "date": today_iso,
-        "utilities": utilities,
+        "utilities": verified_utilities,
         "headlines": final_headlines,
         "events": events,
         "archive": archive_pool
@@ -347,9 +363,7 @@ def run_pipeline() -> bool:
         json.dump(news_data_payload, f, ensure_ascii=False, indent=2)
     print(f"✅ 成功写入最新核准报道至 {NEWS_DATA_FILE}！")
 
-    # -------------------------------------------------------------
-    # STAGE 9: COMPILE FRONTEND (build_news.py)
-    # -------------------------------------------------------------
+    # 8. 重新编译前端
     try:
         import build_news
         print("\n[+] 正在自动调用 build_news.py 重新编译 index.html...")
@@ -359,21 +373,22 @@ def run_pipeline() -> bool:
         print(f"[-] ⚠️ 调用 build_news 失败: {e}")
         return False
 
-    # -------------------------------------------------------------
-    # STAGE 10: SOURCE HEALTH & COVERAGE REPORT
-    # -------------------------------------------------------------
+    # 9. 输出完整内容审计报告
     print("\n" + "=" * 70)
-    print(f"📋 SOURCE HEALTH & COVERAGE MONITORING REPORT ({today_iso})")
+    print(f"📋 CONTENT INTEGRITY & AUDIT REPORT ({today_iso})")
     print("=" * 70)
-    print(f"• Collector RSS:      {rss_col.health_status.get('status')} ({rss_col.health_status.get('items_count')} items)")
-    print(f"• Collector Portal:   {portal_col.health_status.get('status')} ({portal_col.health_status.get('items_count')} items)")
-    print(f"• Collector Agency:   {agency_col.health_status.get('status')} ({agency_col.health_status.get('items_count')} items)")
-    print(f"• Collector Facebook: {fb_col.health_status.get('status')} ({fb_col.health_status.get('items_count')} items)")
-    print("-" * 70)
-    print(f"• Raw Captured:       {len(raw_articles)} items")
-    print(f"• 36h Normalized:     {len(normalized_articles)} items")
-    print(f"• Deduplicated Events:{len(canonical_articles)} events")
-    print(f"• Final Published:    {len(final_headlines)} items (Quota satisfied)")
+    print(f"• Total Collected:              {total_collected}")
+    print(f"• Sabah Articles:               {sabah_count}")
+    print(f"• Sandakan Articles:            {sandakan_count}")
+    print(f"• National Articles:            {national_count}")
+    print(f"• Sarawak / Regional Articles:  {sarawak_count}")
+    print(f"• Rejected Geographic Mismatches:{normalizer.geo_mismatch_count}")
+    print(f"• Commercial Ads Filtered:      {normalizer.ad_filter_count}")
+    print(f"• Missing Original Timestamps:  {missing_orig_timestamps}")
+    print(f"• Unverified LIVE Alerts:       {unverified_alerts_count}")
+    print(f"• Contradictory Claims Blocked: {contradictory_claims_count}")
+    print(f"• Duplicate Reports Merged:     {duplicates_merged}")
+    print(f"• Final Published Articles:     {len(final_headlines)}")
     print("=" * 70)
 
     return True

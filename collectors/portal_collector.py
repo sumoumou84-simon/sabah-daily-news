@@ -21,6 +21,14 @@ class PortalCollector(BaseCollector):
         if not html_doc:
             return articles
 
+        # Correct publisher identity based on section
+        if "cat=8" in url:
+            source_label = "诗华日报沙巴版"
+        elif "cat=3" in url:
+            source_label = "诗华日报 (砂拉越版)"
+        else:
+            source_label = "诗华日报"
+
         # Matches post links like href="https://news.seehua.com/post/123456" or href="/post/123456"
         matches = re.findall(
             r'<a\s+[^>]*href=[\'"]([^\'"]*(?:post/\d+|archives/\d+)[^\'"]*)[\'"][^>]*>([^<]{8,100})</a>',
@@ -39,7 +47,7 @@ class PortalCollector(BaseCollector):
             articles.append(RawArticle(
                 title=clean_title,
                 url=full_url,
-                source="诗华日报沙巴版",
+                source=source_label,
                 category=category,
                 language="zh",
                 extra={"portal": portal_name}
@@ -125,7 +133,7 @@ class PortalCollector(BaseCollector):
                 continue
 
             try:
-                if p_type == "seehua":
+                if p_type.startswith("seehua"):
                     items = self._parse_seehua(p_name, p_url, p_cat)
                 elif p_type == "sinchew":
                     items = self._parse_sinchew(p_name, p_url, p_cat)

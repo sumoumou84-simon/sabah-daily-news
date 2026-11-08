@@ -84,14 +84,20 @@
     {
       "name": "诗华日报沙巴焦点",
       "category": "sabah",
+      "url": "https://news.seehua.com/?cat=8",
+      "type": "seehua_sabah"
+    },
+    {
+      "name": "诗华日报砂拉越焦点",
+      "category": "national",
       "url": "https://news.seehua.com/?cat=3",
-      "type": "seehua"
+      "type": "seehua_sarawak"
     },
     {
       "name": "诗华日报实时首页",
       "category": "general",
       "url": "https://news.seehua.com/",
-      "type": "seehua"
+      "type": "seehua_general"
     },
     {
       "name": "星洲日报沙巴版",
