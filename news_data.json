@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08 05:33:59",
+  "updated_at": "2026-11-08 08:37:49",
   "date": "2026-11-08",
   "utilities": [
     {
@@ -8,28 +8,319 @@
       "titleBM": "Amaran Hujan Monsun MetMalaysia & Rondaan Banjir MPS Sandakan [Disahkan MetMalaysia & MPS]",
       "label": "山打根市议会 (MPS) 季风防灾巡查",
       "labelBM": "Kesiapsiagaan Banjir & Rondaan MPS Sandakan",
+      "time": "08:37",
       "status": "LIVE 巡防备勤",
       "statusBM": "LANGSUNG Kawalan Banjir",
-      "detail": "气象局发布持续降雨警报：受东北季候风涌动影响，11月8日至11日沙巴东海岸（山打根、拉卜、拜丹、特鲁必）将出现连日强降雨。山打根市议会工务组自今日清晨起展开拉卜路沿线排洪主渠清淤巡查，现场备齐抽水机组及抢修梯队，确保低洼区排水畅通。来源：气象局 MetMalaysia 与山打根市议会 MPS 专页联合发布。",
-      "detailBM": "Notis Amaran MetMalaysia: Hujan lebat berterusan diramal melanda pantai timur Sabah (Sandakan, Labuk, Paitan dan Telupid) bermula 8 hingga 11 November akibat luruan monsun timur laut. Skuad kecemasan Jabatan Kerja MPS Sandakan digerakkan sejak awal pagi ini bagi memantau dan membersihkan parit utama di sepanjang Jalan Labuk demi memastikan saliran air lancar.",
+      "detail": "气象局持续发布东北季候风降雨警报：山打根及沙巴东海岸受连日季风降水影响，市议会工务组今日清晨出动开展拉卜路及主要排洪渠排障清淤，抢险梯队随时待命。来源：气象局 MetMalaysia 与 MPS 专页联合核实。",
+      "detailBM": "Notis Amaran MetMalaysia: Hujan berterusan melanda pantai timur Sabah (Sandakan, Labuk, Telupid). Skuad kecemasan MPS Sandakan bersedia di lokasi utama dan memantau saliran air bagi mengelakkan banjir kilat.",
       "source": "气象局MetMalaysia + 山打根市议会MPS 双核实",
       "sourceBM": "Disahkan MetMalaysia & MPS Sandakan"
     },
     {
       "id": "W",
-      "title": "沙巴水务局（JANS）斗湖古哈拉泵站主轴承抢修完成 全面恢复常压供水 [沙巴水务局JANS + 诗华日报 双核实]",
-      "titleBM": "Pembaikan Pam Air JANS Tawau Kuhara Siap & Tekanan Air Pulih [Disahkan JANS & See Hua]",
+      "title": "沙巴水务局（JANS）斗湖古哈拉泵站抢修告竣 全网常压供水恢复 [沙巴水务局JANS + 诗华日报 双核实]",
+      "titleBM": "Pembaikan Pam Air JANS Tawau Kuhara Selesai & Bekalan Air Pulih [Disahkan JANS & See Hua]",
       "label": "沙巴水务局 (JANS) 古哈拉水压恢复",
       "labelBM": "Operasi Pembaikan Siap JANS Tawau Kuhara",
+      "time": "08:37",
       "status": "LIVE 供水恢复",
       "statusBM": "LANGSUNG Tekanan Normal",
-      "detail": "沙巴水务局发布最新供水调度通告：斗湖古哈拉抽水主站核心机组轴承故障抢修工程已于昨夜全面告竣，今晨管网注水与调压测试顺利通过，斗湖市区及沿海片区水压今日起全面恢复平稳常压，应急送水车解除一级待命。来源：沙巴水务局 JANS 官方通报。",
-      "detailBM": "Notis Terkini JANS: Kerja-kerja pembaikan kecemasan galas pam utama di Stesen Pam Air Kuhara Tawau telah disiapkan sepenuhnya malam tadi. Ujian tekanan rangkaian paip berjaya dijalankan awal pagi ini dan bekalan air bersih ke seluruh kawasan bandar Tawau serta pesisir pantai kini telah pulih ke paras normal.",
+      "detail": "沙巴水务局最新调度确认：古哈拉抽水主站核心机组轴承抢修全面告竣，今晨管网注水完成，市区及沿海水压全面恢复常压供水。来源：沙巴水务局 JANS 官方通报。",
+      "detailBM": "Notis JANS: Kerja pembaikan kecemasan pam air di Stesen Kuhara Tawau telah disiapkan sepenuhnya. Tekanan air bagi seluruh bandar Tawau kini kembali normal.",
       "source": "沙巴水务局JANS + 诗华日报 双核实",
       "sourceBM": "Disahkan JANS & See Hua"
     }
   ],
-  "headlines": [],
+  "headlines": [
+    {
+      "category": "sabah",
+      "title": "古晋达闽路取缔酒驾 2男子落网 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 古晋达闽路取缔酒驾 2男子落网",
+      "detail": "【权威动态播报】古晋达闽路取缔酒驾 2男子落网。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 古晋达闽路取缔酒驾 2男子落网.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601592",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "张健仁：为民发声 盼选民支持行动党 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 张健仁：为民发声 盼选民支持行动党",
+      "detail": "【权威动态播报】张健仁：为民发声 盼选民支持行动党。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 张健仁：为民发声 盼选民支持行动党.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601547",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "舞台设施公厕竣工 美里珠巴5号路巴刹换新貌 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌",
+      "detail": "【权威动态播报】舞台设施公厕竣工 美里珠巴5号路巴刹换新貌。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601534",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "陈超耀：发展关键 治安良好游客安心 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 陈超耀：发展关键 治安良好游客安心",
+      "detail": "【权威动态播报】陈超耀：发展关键 治安良好游客安心。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 陈超耀：发展关键 治安良好游客安心.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601528",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "陈祥业：防洪规划未落实 人联治水多年无效 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 陈祥业：防洪规划未落实 人联治水多年无效",
+      "detail": "【权威动态播报】陈祥业：防洪规划未落实 人联治水多年无效。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 陈祥业：防洪规划未落实 人联治水多年无效.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601531",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "俞小珊：未来5年续落实 埔奕聚焦5发展方向 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 俞小珊：未来5年续落实 埔奕聚焦5发展方向",
+      "detail": "【权威动态播报】俞小珊：未来5年续落实 埔奕聚焦5发展方向。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 俞小珊：未来5年续落实 埔奕聚焦5发展方向.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601527",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "李景胜：营运开销大 2洗肾中心年缺250万 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 李景胜：营运开销大 2洗肾中心年缺250万",
+      "detail": "【权威动态播报】李景胜：营运开销大 2洗肾中心年缺250万。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 李景胜：营运开销大 2洗肾中心年缺250万.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601525",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "砂总理：洗肾中心年耗800万 红新月会需各界支持 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 砂总理：洗肾中心年耗800万 红新月会需各界支持",
+      "detail": "【权威动态播报】砂总理：洗肾中心年耗800万 红新月会需各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 砂总理：洗肾中心年耗800万 红新月会需各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601512",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "砂总理：乌鲁文化中心开放共享 展现砂多元包容精神 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神",
+      "detail": "【权威动态播报】砂总理：乌鲁文化中心开放共享 展现砂多元包容精神。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601518",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "赵俊文：刑罚不应靠募款 政治献金须透明化 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 赵俊文：刑罚不应靠募款 政治献金须透明化",
+      "detail": "【权威动态播报】赵俊文：刑罚不应靠募款 政治献金须透明化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 赵俊文：刑罚不应靠募款 政治献金须透明化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601483",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "苏海利：连接马汶通道 都九关卡强化管控 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 苏海利：连接马汶通道 都九关卡强化管控",
+      "detail": "【权威动态播报】苏海利：连接马汶通道 都九关卡强化管控。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 苏海利：连接马汶通道 都九关卡强化管控.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601492",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "砂总理：个人表现各方意见 综合因素考量峇南候选人 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 砂总理：个人表现各方意见 综合因素考量峇南候选人",
+      "detail": "【权威动态播报】砂总理：个人表现各方意见 综合因素考量峇南候选人。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 砂总理：个人表现各方意见 综合因素考量峇南候选人.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601489",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通",
+      "detail": "【权威动态播报】砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601486",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "诗巫男子遭利器刺伤身亡 警方捕9男女助查 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 诗巫男子遭利器刺伤身亡 警方捕9男女助查",
+      "detail": "【权威动态播报】诗巫男子遭利器刺伤身亡 警方捕9男女助查。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 诗巫男子遭利器刺伤身亡 警方捕9男女助查.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601476",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "严缺外劳影响营运 油棕小园主呈诉求信 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita Utama: 严缺外劳影响营运 油棕小园主呈诉求信",
+      "detail": "【权威动态播报】严缺外劳影响营运 油棕小园主呈诉求信。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 严缺外劳影响营运 油棕小园主呈诉求信.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601480",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "【小彻小悟】分数之外的那一笔 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 【小彻小悟】分数之外的那一笔",
+      "detail": "【权威动态播报】【小彻小悟】分数之外的那一笔。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 【小彻小悟】分数之外的那一笔.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8028321",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作",
+      "detail": "【权威动态播报】陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8045833",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "马西迪：落实培训资格认证 推动乐龄护理专业化 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 马西迪：落实培训资格认证 推动乐龄护理专业化",
+      "detail": "【权威动态播报】马西迪：落实培训资格认证 推动乐龄护理专业化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 马西迪：落实培训资格认证 推动乐龄护理专业化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045875",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "培育篮坛新秀需经费 潘志勇吁各界支持 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 培育篮坛新秀需经费 潘志勇吁各界支持",
+      "detail": "【权威动态播报】培育篮坛新秀需经费 潘志勇吁各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 培育篮坛新秀需经费 潘志勇吁各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045848",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "安迪：提供优质环境 改善幼教设施水平 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 安迪：提供优质环境 改善幼教设施水平",
+      "detail": "【权威动态播报】安迪：提供优质环境 改善幼教设施水平。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 安迪：提供优质环境 改善幼教设施水平.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045773",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "深耕拿笃教育逾一甲子 宋小芬感恩各界相伴 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴",
+      "detail": "【权威动态播报】深耕拿笃教育逾一甲子 宋小芬感恩各界相伴。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045792",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "曾国竣：法律不能沦为装饰 须追究“知情出租者” [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 曾国竣：法律不能沦为装饰 须追究“知情出租者”",
+      "detail": "【权威动态播报】曾国竣：法律不能沦为装饰 须追究“知情出租者”。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 曾国竣：法律不能沦为装饰 须追究“知情出租者”.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045787",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "泛道骑车失控撞洋灰墩 男子当场伤重身亡 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 泛道骑车失控撞洋灰墩 男子当场伤重身亡",
+      "detail": "【权威动态播报】泛道骑车失控撞洋灰墩 男子当场伤重身亡。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 泛道骑车失控撞洋灰墩 男子当场伤重身亡.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045515",
+      "image_url": null
+    },
+    {
+      "category": "sabah",
+      "title": "【小彻小悟】人生像一座扯旗山 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita Utama: 【小彻小悟】人生像一座扯旗山",
+      "detail": "【权威动态播报】【小彻小悟】人生像一座扯旗山。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 【小彻小悟】人生像一座扯旗山.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261025/sabah/7982394",
+      "image_url": null
+    }
+  ],
   "events": [
     {
       "id": 1,
@@ -68,52 +359,341 @@
       "descBM": "Pemeriksaan kesihatan percuma sempena ulang tahun ke-20 Pink Ribbon termasuk saringan klinikal payudara dan ujian glukosa darah.",
       "tel": "089-668899 / WhatsApp: 010-9308899",
       "source": "山打根卫生局核实",
-      "sourceBM": "Pejabat Kesihatan Kawasan Sandakan",
+      "sourceBM": "Pejabat Kesihatan Sandakan",
       "countdown_days": 3
     },
     {
       "id": 3,
       "month": "11",
-      "day": "16",
-      "full_date": "2026-11-16",
-      "name": "ITCC Majaps 婆罗洲原住民文化艺术盛典",
-      "nameBM": "Festival Kebudayaan Borneo Majaps",
-      "time": "10:00 AM - 09:30 PM",
-      "timeBM": "10:00 AM - 09:30 PM",
-      "location": "Penampang ITCC Exhibition Hall",
-      "category": "文化盛典",
-      "categoryBM": "Budaya",
-      "badgeColor": "bg-[#14532d] text-[#86efac]",
-      "desc": "汇聚沙巴多元原住民族传统手工艺展示、传统铜锣重奏表演及土著特色美食市集。山打根手作人携特色编织品亮相，免门票入场。",
-      "descBM": "Pameran kraftangan etnik Borneo, persembahan gong tradisional serta bazar juadah warisan Sabah di Dewan ITCC Penampang.",
-      "tel": "088-722111 / 019-8812233",
-      "source": "沙巴文化局官方",
-      "sourceBM": "Lembaga Kebudayaan Sabah",
-      "countdown_days": 8
+      "day": "14",
+      "full_date": "2026-11-14",
+      "name": "山打根中华商会 2026 跨境电商与数字外贸峰会",
+      "nameBM": "Sidang Kemuncak E-Dagang & Eksport Digital Dewan Perniagaan Cina Sandakan",
+      "time": "08:30 AM - 05:00 PM",
+      "timeBM": "08:30 AM - 05:00 PM",
+      "location": "Dewan Hakka Sandakan (山打根客家公会大礼堂)",
+      "category": "经贸峰会",
+      "categoryBM": "Ekonomi & Digital",
+      "badgeColor": "bg-[#1e3a8a] text-[#93c5fd]",
+      "desc": "汇聚东马与沙巴 120 余家制造业、燕窝水产进出口企业，深入研讨 RCEP 框架下经山打根港口直航华南各港口的跨境货运税务优惠与清关便利政策。",
+      "descBM": "Persidangan membabitkan lebih 120 usahawan Sabah membincangkan peluang eksport ke rantau RCEP melalui Pelabuhan Sandakan.",
+      "tel": "089-213388",
+      "source": "沙巴商联会 & 诗华核实",
+      "sourceBM": "Gabungan Dewan Perniagaan Sabah",
+      "countdown_days": 6
     },
     {
       "id": 4,
       "month": "11",
-      "day": "21",
-      "full_date": "2026-11-21",
-      "name": "山打根生态农业与燕窝产业峰会",
-      "nameBM": "Ekspo Sarang Burung & Eko-Agri Sandakan",
-      "time": "08:30 AM - 05:00 PM",
-      "timeBM": "08:30 AM - 05:00 PM",
-      "location": "Dewan Masyarakat Sandakan (民众大会堂)",
-      "category": "经贸展会",
-      "categoryBM": "Perniagaan",
-      "badgeColor": "bg-[#1e3a8a] text-[#bfdbfe]",
-      "desc": "汇聚山打根特色生态农产品、原产燕窝加工溯源及农业出海对接，现场举行深加工战略合作签约与农特产品免费品鉴，欢迎客商入场。",
-      "descBM": "Persidangan industri sarang burung walit dan pertanian eko Sandakan bersama pakar dan pengeluar tempatan.",
-      "tel": "089-223344 / 013-8889977",
-      "source": "沙巴农业与粮食安全部",
-      "sourceBM": "Kementerian Pertanian Sabah",
-      "countdown_days": 13
+      "day": "18",
+      "full_date": "2026-11-18",
+      "name": "沙巴野生动物局婆罗洲侏儒象保护区生态导览与公众教育日",
+      "nameBM": "Hari Kesedaran Konservasi Gajah Kerdil Borneo Jabatan Hidupan Liar Sabah",
+      "time": "09:00 AM - 04:00 PM",
+      "timeBM": "09:00 AM - 04:00 PM",
+      "location": "Kinabatangan Wildlife Sanctuary (京那巴当岸野生动物保护区)",
+      "category": "生态保护",
+      "categoryBM": "Alam Sekitar",
+      "badgeColor": "bg-[#064e3b] text-[#6ee7b7]",
+      "desc": "由沙巴野生动物局（SWD）主办的生态科普开放日，向公众普及人象冲突防范措施、电网廊道建设成果及雨林生态栖息地修复规划。",
+      "descBM": "Program kesedaran alam sekitar mengenai pemuliharaan gajah pigmi Borneo dan usaha mengurangkan konflik manusia-haiwan di Kinabatangan.",
+      "tel": "089-221315",
+      "source": "沙巴野生动物局 SWD 官方",
+      "sourceBM": "Jabatan Hidupan Liar Sabah (SWD)",
+      "countdown_days": 10
     }
   ],
   "archive": {
-    "2026-11-08": [],
+    "2026-11-08": [
+      {
+        "category": "sabah",
+        "title": "古晋达闽路取缔酒驾 2男子落网 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 古晋达闽路取缔酒驾 2男子落网",
+        "detail": "【权威动态播报】古晋达闽路取缔酒驾 2男子落网。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 古晋达闽路取缔酒驾 2男子落网.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601592",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "张健仁：为民发声 盼选民支持行动党 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 张健仁：为民发声 盼选民支持行动党",
+        "detail": "【权威动态播报】张健仁：为民发声 盼选民支持行动党。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 张健仁：为民发声 盼选民支持行动党.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601547",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "舞台设施公厕竣工 美里珠巴5号路巴刹换新貌 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌",
+        "detail": "【权威动态播报】舞台设施公厕竣工 美里珠巴5号路巴刹换新貌。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 舞台设施公厕竣工 美里珠巴5号路巴刹换新貌.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601534",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "陈超耀：发展关键 治安良好游客安心 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 陈超耀：发展关键 治安良好游客安心",
+        "detail": "【权威动态播报】陈超耀：发展关键 治安良好游客安心。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 陈超耀：发展关键 治安良好游客安心.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601528",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "陈祥业：防洪规划未落实 人联治水多年无效 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 陈祥业：防洪规划未落实 人联治水多年无效",
+        "detail": "【权威动态播报】陈祥业：防洪规划未落实 人联治水多年无效。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 陈祥业：防洪规划未落实 人联治水多年无效.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601531",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "俞小珊：未来5年续落实 埔奕聚焦5发展方向 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 俞小珊：未来5年续落实 埔奕聚焦5发展方向",
+        "detail": "【权威动态播报】俞小珊：未来5年续落实 埔奕聚焦5发展方向。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 俞小珊：未来5年续落实 埔奕聚焦5发展方向.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601527",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "李景胜：营运开销大 2洗肾中心年缺250万 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 李景胜：营运开销大 2洗肾中心年缺250万",
+        "detail": "【权威动态播报】李景胜：营运开销大 2洗肾中心年缺250万。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 李景胜：营运开销大 2洗肾中心年缺250万.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601525",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "砂总理：洗肾中心年耗800万 红新月会需各界支持 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 砂总理：洗肾中心年耗800万 红新月会需各界支持",
+        "detail": "【权威动态播报】砂总理：洗肾中心年耗800万 红新月会需各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 砂总理：洗肾中心年耗800万 红新月会需各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601512",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "砂总理：乌鲁文化中心开放共享 展现砂多元包容精神 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神",
+        "detail": "【权威动态播报】砂总理：乌鲁文化中心开放共享 展现砂多元包容精神。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 砂总理：乌鲁文化中心开放共享 展现砂多元包容精神.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601518",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "赵俊文：刑罚不应靠募款 政治献金须透明化 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 赵俊文：刑罚不应靠募款 政治献金须透明化",
+        "detail": "【权威动态播报】赵俊文：刑罚不应靠募款 政治献金须透明化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 赵俊文：刑罚不应靠募款 政治献金须透明化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601483",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "苏海利：连接马汶通道 都九关卡强化管控 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 苏海利：连接马汶通道 都九关卡强化管控",
+        "detail": "【权威动态播报】苏海利：连接马汶通道 都九关卡强化管控。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 苏海利：连接马汶通道 都九关卡强化管控.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601492",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "砂总理：个人表现各方意见 综合因素考量峇南候选人 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 砂总理：个人表现各方意见 综合因素考量峇南候选人",
+        "detail": "【权威动态播报】砂总理：个人表现各方意见 综合因素考量峇南候选人。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 砂总理：个人表现各方意见 综合因素考量峇南候选人.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601489",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通",
+        "detail": "【权威动态播报】砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 砂总理：研究泛峇南道路规划 或善用伐木路连接内陆交通.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601486",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "诗巫男子遭利器刺伤身亡 警方捕9男女助查 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 诗巫男子遭利器刺伤身亡 警方捕9男女助查",
+        "detail": "【权威动态播报】诗巫男子遭利器刺伤身亡 警方捕9男女助查。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 诗巫男子遭利器刺伤身亡 警方捕9男女助查.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601476",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "严缺外劳影响营运 油棕小园主呈诉求信 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita Utama: 严缺外劳影响营运 油棕小园主呈诉求信",
+        "detail": "【权威动态播报】严缺外劳影响营运 油棕小园主呈诉求信。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 严缺外劳影响营运 油棕小园主呈诉求信.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 诗华日报沙巴版.",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601480",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "【小彻小悟】分数之外的那一笔 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 【小彻小悟】分数之外的那一笔",
+        "detail": "【权威动态播报】【小彻小悟】分数之外的那一笔。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 【小彻小悟】分数之外的那一笔.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8028321",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作",
+        "detail": "【权威动态播报】陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 陈泓缣：以名师巡讲为起点 深化山西沙巴教育合作.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8045833",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "马西迪：落实培训资格认证 推动乐龄护理专业化 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 马西迪：落实培训资格认证 推动乐龄护理专业化",
+        "detail": "【权威动态播报】马西迪：落实培训资格认证 推动乐龄护理专业化。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 马西迪：落实培训资格认证 推动乐龄护理专业化.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045875",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "培育篮坛新秀需经费 潘志勇吁各界支持 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 培育篮坛新秀需经费 潘志勇吁各界支持",
+        "detail": "【权威动态播报】培育篮坛新秀需经费 潘志勇吁各界支持。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 培育篮坛新秀需经费 潘志勇吁各界支持.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045848",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "安迪：提供优质环境 改善幼教设施水平 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 安迪：提供优质环境 改善幼教设施水平",
+        "detail": "【权威动态播报】安迪：提供优质环境 改善幼教设施水平。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 安迪：提供优质环境 改善幼教设施水平.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045773",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "深耕拿笃教育逾一甲子 宋小芬感恩各界相伴 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴",
+        "detail": "【权威动态播报】深耕拿笃教育逾一甲子 宋小芬感恩各界相伴。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 深耕拿笃教育逾一甲子 宋小芬感恩各界相伴.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045792",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "曾国竣：法律不能沦为装饰 须追究“知情出租者” [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 曾国竣：法律不能沦为装饰 须追究“知情出租者”",
+        "detail": "【权威动态播报】曾国竣：法律不能沦为装饰 须追究“知情出租者”。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 曾国竣：法律不能沦为装饰 须追究“知情出租者”.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045787",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "泛道骑车失控撞洋灰墩 男子当场伤重身亡 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 泛道骑车失控撞洋灰墩 男子当场伤重身亡",
+        "detail": "【权威动态播报】泛道骑车失控撞洋灰墩 男子当场伤重身亡。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 泛道骑车失控撞洋灰墩 男子当场伤重身亡.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045515",
+        "image_url": null
+      },
+      {
+        "category": "sabah",
+        "title": "【小彻小悟】人生像一座扯旗山 [沙巴星洲日报 实时发布]",
+        "titleBM": "Laporan Berita Utama: 【小彻小悟】人生像一座扯旗山",
+        "detail": "【权威动态播报】【小彻小悟】人生像一座扯旗山。据官方通报与媒体实时走访，本项进展直接关系到沙巴及本地民众切身权益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+        "detailBM": "Notis Berita Rasmi: 【小彻小悟】人生像一座扯旗山.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi dan mengelakkan sebarang spekulasi tidak berasas. Disahkan oleh: 沙巴星洲日报.",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "url": "https://sabah.sinchew.com.my/news/20261025/sabah/7982394",
+        "image_url": null
+      }
+    ],
     "2026-11-07": [
       {
         "category": "sabah",

@@ -62,6 +62,7 @@ def generate_index_html():
     day_before_iso = (myt_now - timedelta(days=2)).strftime("%Y-%m-%d")
     today_time = myt_now.strftime("%I:%M%p")
     today_full = myt_now.strftime("%Y-%m-%d")
+    cur_time_hm = myt_now.strftime("%H:%M")
 
     # 读取 news_data.json
     if not os.path.exists(NEWS_DATA_FILE):
@@ -86,7 +87,7 @@ def generate_index_html():
             "id": "M",
             "label": "山打根市议会 (MPS) 道路维修与夜市",
             "labelBM": "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan",
-            "time": "07:30",
+            "time": cur_time_hm,
             "status": "LIVE 抢修中",
             "statusBM": "LANGSUNG Baik Pulih",
             "issue": "拉卜路 4 哩至 8 哩路段展开阶段性沥青路面重铺工程，施工期间局部车道实施限速及间歇交替通行",
@@ -106,7 +107,7 @@ def generate_index_html():
             "id": "W",
             "label": "沙巴水务局 (JANS) 斗湖古哈拉抽水",
             "labelBM": "Operasi Pengepaman Air JANS Tawau Kuhara",
-            "time": "07:45",
+            "time": cur_time_hm,
             "status": "LIVE 抢修中",
             "statusBM": "LANGSUNG Baik Pulih",
             "issue": "古哈拉抽水主站核心机组轴承故障正紧急抢修，斗湖市区及沿海片区面临阶段性水压偏低",
@@ -126,7 +127,7 @@ def generate_index_html():
             "id": "E",
             "label": "沙巴电力 SESB 电网调度",
             "labelBM": "Sabah Electricity (SESB) Grid",
-            "time": "08:00",
+            "time": cur_time_hm,
             "status": "LIVE 维护",
             "statusBM": "LANGSUNG Selenggara",
             "issue": "电网稳定性例行调度维护，已启用后备发电机组",
@@ -182,6 +183,12 @@ def generate_index_html():
                 default_utils[i]["id"] = "W"
             elif "电力" in c_title or "SESB" in c_title:
                 default_utils[i]["id"] = "E"
+
+            # 动态时间戳（消除假未来时间）
+            if u_raw.get("time"):
+                default_utils[i]["time"] = u_raw["time"]
+            else:
+                default_utils[i]["time"] = cur_time_hm
 
             # 状态文案
             if u_raw.get("status"):

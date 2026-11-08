@@ -1,0 +1,149 @@
+{
+  "system": {
+    "app_name": "西门看看网 · 每日晨报",
+    "version": "7.0.0",
+    "timezone": "Asia/Kuala_Lumpur",
+    "sliding_window_hours": 36,
+    "min_headlines_threshold": 12,
+    "quotas": {
+      "sabah": 8,
+      "national": 8,
+      "sports": 5,
+      "general": 3
+    }
+  },
+  "network": {
+    "timeout_seconds": 12,
+    "max_retries": 2,
+    "backoff_factor": 1.5,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+  },
+  "rss_feeds": [
+    {
+      "name": "Google News Sabah (ZH)",
+      "category": "sabah",
+      "url": "https://news.google.com/rss/search?q=Sabah+when:2d&hl=zh-MY&gl=MY&ceid=MY:zh-Hans"
+    },
+    {
+      "name": "Google News Sandakan (ZH)",
+      "category": "sabah",
+      "url": "https://news.google.com/rss/search?q=Sandakan+when:2d&hl=zh-MY&gl=MY&ceid=MY:zh-Hans"
+    },
+    {
+      "name": "Google News Sabah (EN)",
+      "category": "sabah",
+      "url": "https://news.google.com/rss/search?q=Sabah+news+when:2d&hl=en-MY&gl=MY&ceid=MY:en"
+    },
+    {
+      "name": "Google News Sandakan (EN)",
+      "category": "sabah",
+      "url": "https://news.google.com/rss/search?q=Sandakan+news+when:2d&hl=en-MY&gl=MY&ceid=MY:en"
+    },
+    {
+      "name": "Google News Sabah (MS)",
+      "category": "sabah",
+      "url": "https://news.google.com/rss/search?q=Sabah+berita+when:2d&hl=ms-MY&gl=MY&ceid=MY:ms"
+    },
+    {
+      "name": "Google News Nation (ZH)",
+      "category": "national",
+      "url": "https://news.google.com/rss/headlines/section/topic/NATION?hl=zh-MY&gl=MY&ceid=MY:zh-Hans"
+    },
+    {
+      "name": "Google News Sports (ZH)",
+      "category": "sports",
+      "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=zh-MY&gl=MY&ceid=MY:zh-Hans"
+    },
+    {
+      "name": "Bing News Sabah (EN)",
+      "category": "sabah",
+      "url": "https://www.bing.com/news/search?q=Sabah+Malaysia&format=rss"
+    },
+    {
+      "name": "Bing News Sandakan (EN)",
+      "category": "sabah",
+      "url": "https://www.bing.com/news/search?q=Sandakan+Sabah&format=rss"
+    },
+    {
+      "name": "The Borneo Post Sabah",
+      "category": "sabah",
+      "url": "https://www.theborneopost.com/news/sabah/feed/"
+    },
+    {
+      "name": "Daily Express Sabah RSS",
+      "category": "sabah",
+      "url": "https://www.dailyexpress.com.my/rss.cfm"
+    },
+    {
+      "name": "Bernama National RSS",
+      "category": "national",
+      "url": "https://www.bernama.com/en/rssfeed.php?category=general"
+    }
+  ],
+  "web_portals": [
+    {
+      "name": "诗华日报沙巴焦点",
+      "category": "sabah",
+      "url": "https://news.seehua.com/?cat=3",
+      "type": "seehua"
+    },
+    {
+      "name": "诗华日报实时首页",
+      "category": "general",
+      "url": "https://news.seehua.com/",
+      "type": "seehua"
+    },
+    {
+      "name": "星洲日报沙巴版",
+      "category": "sabah",
+      "url": "https://sabah.sinchew.com.my/",
+      "type": "sinchew"
+    },
+    {
+      "name": "Free Malaysia Today Sabah",
+      "category": "sabah",
+      "url": "https://www.freemalaysiatoday.com/category/category/nation/sabah/",
+      "type": "generic_html"
+    }
+  ],
+  "agencies": [
+    {
+      "name": "气象局 MetMalaysia",
+      "category": "sabah",
+      "warning_url": "https://www.met.gov.my/iklim/amaran/",
+      "type": "metmalaysia"
+    },
+    {
+      "name": "沙巴水务局 JANS",
+      "category": "sabah",
+      "notice_url": "https://water.sabah.gov.my/",
+      "type": "jans"
+    }
+  ],
+  "facebook_pages": [
+    {
+      "handle": "mpsandakan",
+      "name": "山打根市议会 MPS",
+      "category": "sabah",
+      "keywords": ["Sandakan", "MPS", "Jalan", "Pasar", "Banjir", "Kerja"]
+    },
+    {
+      "handle": "jansabah",
+      "name": "沙巴水务局 JANS",
+      "category": "sabah",
+      "keywords": ["Air", "Paip", "Gangguan", "Loji", "Tekanan", "Pembaikan"]
+    },
+    {
+      "handle": "mysesb",
+      "name": "沙巴电力 SESB",
+      "category": "sabah",
+      "keywords": ["SESB", "Bekalan", "Elektrik", "Penyelenggaraan", "Grid"]
+    },
+    {
+      "handle": "mysandakankini",
+      "name": "山打根大事 Sandakan Kini",
+      "category": "sabah",
+      "keywords": ["Sandakan", "Kini", "Polis", "Kemalangan", "Hebahan"]
+    }
+  ]
+}

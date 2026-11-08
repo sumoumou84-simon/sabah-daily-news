@@ -33,10 +33,14 @@ jobs:
         run: |
           python agent_reach_editor.py
 
+      - name: 生产防空屏熔断校验
+        run: |
+          python -c "import json, sys; d=json.load(open('news_data.json', encoding='utf-8')); count=len(d.get('headlines', [])); sys.exit(0) if count >= 10 else (print(f'CRITICAL: Circuit breaker triggered! Only {count} articles.'), sys.exit(1))"
+
       - name: 自动提交更新并发布至 GitHub Pages
         run: |
           git config --global user.name "Simon-Daily-Bot"
           git config --global user.email "bot@simondaily.com"
-          git add index.html news_data.json archive_history.json || true
+          git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
           git push
