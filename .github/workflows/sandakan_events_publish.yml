@@ -1,0 +1,63 @@
+name: 山打根活动周历独立发布流程 (Sandakan Events Publish)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '仅执行测试与构建校验，不发布 (Dry Run Only)'
+        required: true
+        default: true
+        type: boolean
+
+# 最小化权限控制：干跑仅需读取仓库代码，绝无写入或发布权限 (Least-Privilege)
+permissions:
+  contents: read
+
+jobs:
+  build_events_artifact:
+    name: 构建沙巴山打根活动独立公开发布工件
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库代码 (Checkout Repository)
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 运行环境 (Setup Python 3.11)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖 (Install Dependencies)
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 || true
+
+      - name: 执行事件引擎单元测试与回归套件 (Run Event Engine Tests)
+        run: |
+          python -m unittest discover -s tests -p "test_*.py"
+
+      - name: 构建安全隔离公开发布工件 (Build Allowlisted Public Artifact)
+        run: |
+          python scripts/build_sandakan_events_site.py --source events_data.json --dest dist_events
+
+      - name: 严苛校验发布工件隔离性 (Verify Public Artifact Isolation)
+        run: |
+          echo "Checking dist_events directory contents..."
+          ls -la dist_events/
+          # 确保绝无内部文件泄露
+          if [ -f "dist_events/events_data.json" ]; then
+            echo "CRITICAL SECURITY BREACH: Raw events_data.json detected in public artifact!"
+            exit 1
+          fi
+          if [ -d "dist_events/event_engine" ]; then
+            echo "CRITICAL SECURITY BREACH: Internal event_engine directory detected in public artifact!"
+            exit 1
+          fi
+          echo "Artifact isolation verified successfully."
+
+      - name: 上传构建工件供审核 (Upload Build Artifact for Review)
+        uses: actions/upload-artifact@v4
+        with:
+          name: sandakan-events-public-artifact
+          path: dist_events/
+          retention-days: 7
