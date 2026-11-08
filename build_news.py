@@ -380,7 +380,10 @@ def generate_index_html():
         elif item.get('source'):
             sources = [item.get('source')]
         title_bm = item.get("titleBM") or get_bm_title(clean_title)
-        detail_bm = item.get("detailBM") or f"Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. Maklumat disahkan oleh portal berita dan agensi rasmi berkaitan. {clean_detail[:120]}..."
+        detail_bm = item.get("detailBM") or "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]"
+        tag_bm = item.get("tagBM") or "Disahkan Rasmi"
+        source_bm = item.get("sourceBM") or (sources[0] if sources else "Hebahan Rasmi")
+        sources_bm = [item.get("sourceBM")] if item.get("sourceBM") else sources
 
         # 核心分类绑定
         category = item.get("category", "general")
@@ -393,8 +396,8 @@ def generate_index_html():
         else:
             category_tag_zh, category_tag_bm = "综合百态", "Umum"
 
-        sources_pills = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources])
-        sources_links = "".join([f'<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ {s}</span>' for s in sources])
+        sources_pills_zh = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources])
+        sources_pills_bm = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources_bm])
 
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
@@ -412,7 +415,8 @@ def generate_index_html():
                         <div class="flex flex-wrap items-center gap-1 mt-auto pt-1">
                             <span class="mono text-[9.5px] sm:text-[10px] font-bold card-meta-time">{today_mmdd}</span>
                             <span class="inline-flex items-center px-1.5 py-[0.5px] rounded text-[9px] sm:text-[9.5px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
-                                {tag}
+                                <span class="lang-zh">{tag}</span>
+                                <span class="lang-bm hidden">{tag_bm}</span>
                             </span>
                             <span class="category-pill-tag text-[9px] sm:text-[9.5px] px-1.5 py-[0.5px] rounded mono font-bold">
                                 <span class="lang-zh">{category_tag_zh}</span>
@@ -423,7 +427,8 @@ def generate_index_html():
 
                     <div class="mt-auto flex items-center justify-between gap-1.5 px-2.5 py-2 sm:px-3 sm:py-2.5 card-footer border-t border-white/5">
                         <div class="flex flex-wrap gap-1 min-w-0">
-                            {sources_pills}
+                            <div class="lang-zh flex flex-wrap gap-1">{sources_pills_zh}</div>
+                            <div class="lang-bm hidden flex flex-wrap gap-1">{sources_pills_bm}</div>
                         </div>
                         <button onclick="event.stopPropagation(); openNewsModal({idx-1})" class="shrink-0 inline-flex items-center gap-0.5 px-2 py-1 sm:px-2.5 sm:py-1 rounded-md bg-[#FFD60A] text-black font-black text-[10px] sm:text-[11px] hover:bg-[#ffde33] active:scale-95 transition-all whitespace-nowrap shadow-sm">
                             <span class="lang-zh">查看 ➡</span>
@@ -1337,37 +1342,74 @@ def generate_index_html():
                 <div class="flex gap-8 items-center px-4">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
-                        【今日重点聚焦】
+                        <span class="lang-zh">【今日重点聚焦】</span>
+                        <span class="lang-bm hidden">【FOKUS UTAMA HARI INI】</span>
                     </span>
-                    <span>🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
+                    <span>
+                        <span class="lang-zh">🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
+                        <span class="lang-bm hidden">🏥 Naik Taraf ICU Hospital Duchess of Kent Sandakan Terima RM12.8 Juta, Tambah 18 Katil</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
+                    <span>
+                        <span class="lang-zh">⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
+                        <span class="lang-bm hidden">⚡ JANS Gerakkan Radar Paip Bawah Tanah & Siap Siaga 14 Lori Tangki Air Kecemasan</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
+                    <span>
+                        <span class="lang-zh">🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
+                        <span class="lang-bm hidden">🚌 JPJ & Polis Lancar Ops Perisai Bas Ekspres, Periksa Tiket Digital & Pemandu</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
+                    <span>
+                        <span class="lang-zh">🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
+                        <span class="lang-bm hidden">🏸 Skuad Badminton Negara Aaron Chia-Wooi Yik & Lee Zii Jia Giat Latihan Final Jelajah Dunia</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
+                    <span>
+                        <span class="lang-zh">⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
+                        <span class="lang-bm hidden">⚽ Sabah FC Gandakan Persiapan Liga Super di Stadium Likas Menjelang Aksi Panas</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
-
+                    <span>
+                        <span class="lang-zh">🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
+                        <span class="lang-bm hidden">🛡️ ESSCOM Tingkat Rondaan Keselamatan Pesisir Pantai Timur demi Sektor Pelancongan & Nelayan</span>
+                    </span>
                 </div>
                 <div class="flex gap-8 items-center px-4" aria-hidden="true">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
-                        【今日重点聚焦】
+                        <span class="lang-zh">【今日重点聚焦】</span>
+                        <span class="lang-bm hidden">【FOKUS UTAMA HARI INI】</span>
                     </span>
-                    <span>🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
+                    <span>
+                        <span class="lang-zh">🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
+                        <span class="lang-bm hidden">🏥 Naik Taraf ICU Hospital Duchess of Kent Sandakan Terima RM12.8 Juta, Tambah 18 Katil</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
+                    <span>
+                        <span class="lang-zh">⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
+                        <span class="lang-bm hidden">⚡ JANS Gerakkan Radar Paip Bawah Tanah & Siap Siaga 14 Lori Tangki Air Kecemasan</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
+                    <span>
+                        <span class="lang-zh">🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
+                        <span class="lang-bm hidden">🚌 JPJ & Polis Lancar Ops Perisai Bas Ekspres, Periksa Tiket Digital & Pemandu</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
+                    <span>
+                        <span class="lang-zh">🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
+                        <span class="lang-bm hidden">🏸 Skuad Badminton Negara Aaron Chia-Wooi Yik & Lee Zii Jia Giat Latihan Final Jelajah Dunia</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
+                    <span>
+                        <span class="lang-zh">⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
+                        <span class="lang-bm hidden">⚽ Sabah FC Gandakan Persiapan Liga Super di Stadium Likas Menjelang Aksi Panas</span>
+                    </span>
                     <span class="text-white/40">•</span>
-                    <span>🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
+                    <span>
+                        <span class="lang-zh">🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
+                        <span class="lang-bm hidden">🛡️ ESSCOM Tingkat Rondaan Keselamatan Pesisir Pantai Timur demi Sektor Pelancongan & Nelayan</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -1470,7 +1512,7 @@ def generate_index_html():
                             </span>
                         </div>
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[12px]">
-                            <span class="font-bold">沙巴 & 全马焦点</span>
+                            <span class="font-bold"><span class="lang-zh">沙巴 & 全马焦点</span><span class="lang-bm hidden">Fokus Sabah & Malaysia</span></span>
                             <span class="px-1.5 py-[1px] rounded bg-[#FFD60A] text-black font-bold text-[11px]">{len(headlines)} <span class="lang-zh">条标题</span><span class="lang-bm hidden">tajuk</span></span>
                             <span class="w-1 h-1 bg-[#334155] rounded-full"></span>
                             <span class="sub-meta-text text-[11px]">LIVE Filter</span>
@@ -1553,8 +1595,14 @@ def generate_index_html():
                 </div>
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
-                    <span>{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
-                    <span class="text-[#FFD60A] font-bold">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
+                    <span>
+                        <span class="lang-zh">{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
+                        <span class="lang-bm hidden">{today_mmdd} {today_time} MYT • Klik tajuk untuk baca laporan penuh 250-400 patah perkataan • Arkib 7 hari tersedia</span>
+                    </span>
+                    <span class="text-[#FFD60A] font-bold">
+                        <span class="lang-zh">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
+                        <span class="lang-bm hidden">{len(headlines)} Berita Penuh Sahih • Disahkan</span>
+                    </span>
                 </div>
             </div>
 
@@ -2100,16 +2148,21 @@ def generate_index_html():
                 }}
                 if (!sources.length) sources = ["沙巴官方通报", "现场交叉复核"];
 
-                const titleBm = item.titleBM || ("Laporan Khas: " + cleanTitle.slice(0, 35));
-                const detailBm = item.detailBM || ("Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. " + cleanDetail.slice(0, 120) + "...");
+                const titleBm = item.titleBM || "[Tajuk BM dalam proses kemas kini]";
+                const detailBm = item.detailBM || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
+                const tagBm = item.tagBM || "Disahkan Rasmi";
 
                 let catTagZh = "综合百态", catTagBm = "Umum";
                 if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
                 else if (category === 'national') {{ catTagZh = "全国政经"; catTagBm = "Nasional"; }}
                 else if (category === 'sports') {{ catTagZh = "体育焦点"; catTagBm = "Sukan"; }}
 
-                const sourcesPills = sources.map(s => `<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">${{s}}</span>`).join('');
-                const sourcesLinks = sources.map(s => `<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ ${{s}}</span>`).join('');
+                const sourcesZh = sources;
+                const sourcesBm = item.sourceBM ? [item.sourceBM] : (item.sourcesBM || sources);
+                const currentSources = isBm ? sourcesBm : sourcesZh;
+                const currentTag = isBm ? tagBm : tag;
+
+                const sourcesPills = currentSources.map(s => `<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">${{s}}</span>`).join('');
                 const pinBadge = idx <= 2 ? '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' : '';
 
                 const zhCls = isBm ? 'hidden' : '';
@@ -2129,7 +2182,7 @@ html += `
                         <div class="flex flex-wrap items-center gap-1 mt-auto pt-1">
                             <span class="mono text-[9.5px] sm:text-[10px] font-bold card-meta-time">${{cardDateTag}}</span>
                             <span class="inline-flex items-center px-1.5 py-[0.5px] rounded text-[9px] sm:text-[9.5px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
-                                ${{tag}}
+                                ${{currentTag}}
                             </span>
                             <span class="category-pill-tag text-[9px] sm:text-[9.5px] px-1.5 py-[0.5px] rounded mono font-bold">
                                 <span class="lang-zh ${{zhCls}}">${{catTagZh}}</span>
@@ -2276,8 +2329,9 @@ html += `
             }}
             if (!sources.length) sources = ["沙巴官方通报", "现场交叉复核"];
 
-            const titleBm = item.titleBM || ("Laporan Khas: " + cleanTitle.slice(0, 35));
-            const detailBm = item.detailBM || ("Laporan berita mendalam mengenai perkembangan terkini di Sabah dan seluruh Malaysia. " + cleanDetail.slice(0, 120) + "...");
+            const titleBm = item.titleBM || "[Tajuk BM dalam proses kemas kini]";
+            const detailBm = item.detailBM || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
+            const tagBm = item.tagBM || "Disahkan Rasmi";
 
             let catTagZh = "综合百态", catTagBm = "Umum";
             if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
@@ -2286,6 +2340,7 @@ html += `
 
             const zhCls = isBm ? 'hidden' : '';
             const bmCls = isBm ? '' : 'hidden';
+            const modalCurrentTag = isBm ? tagBm : tag;
 
             // 1. 设置大标题
             const modalTitle = document.getElementById('modal-title');
@@ -2306,7 +2361,7 @@ html += `
                     </span>
                     <span class="mono text-[11px] font-bold sub-meta-date">${{currentRenderedDateLabel}}</span>
                     <span class="inline-flex items-center px-2 py-[2px] rounded-[4px] text-[10px] font-bold bg-[#14532d] text-[#4ade80] border border-[#166534]">
-                        ✓ ${{tag}}
+                        ✓ ${{modalCurrentTag}}
                     </span>
                 `;
             }}
@@ -2364,8 +2419,9 @@ html += `
             // 5. 设置核实来源胶囊
             const modalSources = document.getElementById('modal-sources');
             if (modalSources) {{
-                const links = sources.map(s => `<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ ${{s}}</span>`).join('');
-                modalSources.innerHTML = links + `<span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">✓ ${{tag}}</span>`;
+                const modalSourcesList = isBm ? (item.sourceBM ? [item.sourceBM] : (item.sourcesBM || sources)) : sources;
+                const links = modalSourcesList.map(s => `<span class="px-2 py-[3px] rounded-full bg-[#FFD60A]/10 border border-[#FFD60A]/30 text-[10.5px] text-[#FFD60A] mono font-bold">↗ ${{s}}</span>`).join('');
+                modalSources.innerHTML = links + `<span class="px-2.5 py-[3px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] text-[#4ade80] font-bold">✓ ${{modalCurrentTag}}</span>`;
             }}
 
             // 6. 打开弹窗并平滑锁定背景滚动
