@@ -203,16 +203,25 @@ def generate_index_html():
             if u_raw.get("statusBM"):
                 default_utils[i]["statusBM"] = u_raw["statusBM"]
 
-            # 正文内容
-            if c_detail:
+            # 正文内容与状态子项
+            if u_raw.get("issue"):
+                default_utils[i]["issue"] = u_raw["issue"]
+            elif c_detail:
                 default_utils[i]["issue"] = c_detail
             if u_raw.get("detailBM"):
                 default_utils[i]["issueBM"] = u_raw["detailBM"]
             elif u_raw.get("issueBM"):
                 default_utils[i]["issueBM"] = u_raw["issueBM"]
 
+            # 子项指标：气压/范围、恢复/进展、保障/交通、咨询电话、官方信源链接等
+            for key in ["pressure", "pressureBM", "recovery", "recoveryBM", "tanker", "tankerBM", "consult", "consult2", "official_source_url", "source_timestamp"]:
+                if u_raw.get(key):
+                    default_utils[i][key] = u_raw[key]
+
             # 核验信源
-            if v_tag:
+            if u_raw.get("source"):
+                default_utils[i]["source"] = u_raw["source"]
+            elif v_tag:
                 default_utils[i]["source"] = v_tag
             if u_raw.get("sourceBM"):
                 default_utils[i]["sourceBM"] = u_raw["sourceBM"]
@@ -237,10 +246,27 @@ def generate_index_html():
     utiliti_cards_html = ""
     for idx, u in enumerate(default_utils):
         is_verified = u.get("verified", False)
-        pulse_dot = '<span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>' if is_verified else '<span class="w-1.5 h-1.5 bg-amber-400 rounded-full shrink-0"></span>'
-        live_label_text = f"{today_mmdd} {u['time']} • {'LIVE' if is_verified else '待核实'}"
-        live_header_zh = "实时详情 LIVE DETAIL" if is_verified else "监测详情 STATUS DETAIL"
-        live_header_bm = "BUTIRAN LANGSUNG" if is_verified else "STATUS PEMANTAUAN"
+        is_live = u.get("is_live", False)
+        if is_live:
+            pulse_dot = '<span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse shrink-0"></span>'
+            status_tag_zh = "LIVE"
+            status_tag_bm = "LANGSUNG"
+            live_header_zh = "实时详情 LIVE DETAIL"
+            live_header_bm = "BUTIRAN LANGSUNG"
+        elif is_verified:
+            pulse_dot = '<span class="w-1.5 h-1.5 bg-emerald-400 rounded-full shrink-0"></span>'
+            status_tag_zh = u.get("status", "预警发布")
+            status_tag_bm = u.get("statusBM", "Amaran Awal")
+            live_header_zh = "预警发布 ADVANCE ADVISORY"
+            live_header_bm = "BUTIRAN AMARAN AWAL"
+        else:
+            pulse_dot = '<span class="w-1.5 h-1.5 bg-amber-400 rounded-full shrink-0"></span>'
+            status_tag_zh = "待核实"
+            status_tag_bm = "Dalam Pengesahan"
+            live_header_zh = "监测详情 STATUS DETAIL"
+            live_header_bm = "STATUS PEMANTAUAN"
+
+        live_label_text = f"{today_mmdd} {u['time']} • {status_tag_zh}"
 
         utiliti_cards_html += f"""
         <div class="util-card" id="util-card-{idx}" onclick="toggleUtilCard({idx})">
@@ -320,9 +346,9 @@ def generate_index_html():
                             </span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold">
+                            <a href="{u.get('official_source_url', '#')}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2 py-[2px] rounded-[6px] bg-[#14532d] border border-[#166534] text-[#4ade80] text-[10px] font-bold hover:underline" onclick="event.stopPropagation()">
                                 ✓ <span class="lang-zh">{u['source']}</span><span class="lang-bm hidden">{u['sourceBM']}</span>
-                            </span>
+                            </a>
                             <span class="text-[10px] mono text-black/60">
                                 <span class="lang-zh">点击再次收起</span>
                                 <span class="lang-bm hidden">Klik tutup</span>

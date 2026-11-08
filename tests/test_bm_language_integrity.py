@@ -92,5 +92,51 @@ class TestBMLanguageIntegrity(unittest.TestCase):
         self.assertIn('【FOKUS UTAMA HARI INI】', self.html, "HTML marquee must contain BM focus header.")
         self.assertIn('Naik Taraf ICU Hospital Duchess of Kent Sandakan', self.html, "HTML marquee must contain BM Duchess of Kent news.")
 
+    def test_art_sabah_1_no_fabricated_details(self):
+        """Verify art_sabah_1 BM summary is strictly faithful without fabricated hospital/legal claims."""
+        art1 = next(item for item in self.headlines if item["id"] == "art_sabah_1")
+        detail_bm = art1.get("detailBM", "")
+        self.assertNotIn("Seksyen 41(1)", detail_bm, "Must not fabricate Section 41(1) charge in art_sabah_1.")
+        self.assertNotIn("Hospital Queen Elizabeth", detail_bm, "Must not fabricate Queen Elizabeth Hospital in art_sabah_1.")
+        self.assertNotIn("kecederaan parah di kepala", detail_bm, "Must not fabricate unverified medical injury descriptions.")
+        self.assertIn("Jalan Lintas", detail_bm)
+        self.assertIn("pusingan U", detail_bm)
+        self.assertIn("maut", detail_bm)
+
+    def test_neutral_verified_bm_attribution(self):
+        """Verify all verifiedBM fields use neutral media/portal attribution rather than unverified police/hospital claims."""
+        for item in self.headlines:
+            hid = item.get("id")
+            v_bm = item.get("verifiedBM", "")
+            self.assertNotIn("Polis Trafik", v_bm, f"Article {hid} should not claim unverified police verification in {v_bm}")
+            self.assertNotIn("Pihak Hospital", v_bm, f"Article {hid} should not claim unverified hospital verification in {v_bm}")
+            self.assertNotIn("Bukit Aman", v_bm, f"Article {hid} should not claim unverified Bukit Aman verification in {v_bm}")
+            self.assertTrue(v_bm.startswith("Dipetik daripada") or v_bm.startswith("Sumber:"),
+                            f"Article {hid} verifiedBM must start with neutral citation: {v_bm}")
+
+    def test_metmalaysia_card_accuracy(self):
+        """Verify MetMalaysia utility card has accurate official URL, effective dates, and non-live advisory status."""
+        met_card = next(u for u in self.utilities if u.get("id") == "MET")
+        self.assertEqual(met_card.get("official_source_url"), "https://www.met.gov.my/data/IWR30007.html")
+        self.assertEqual(met_card.get("source_timestamp"), "2026-11-06 14:10")
+        self.assertEqual(met_card.get("status"), "预警发布")
+        self.assertEqual(met_card.get("statusBM"), "Amaran Awal")
+        self.assertFalse(met_card.get("is_live"), "MetMalaysia card must not be marked is_live on Nov 8 (advance warning for Nov 9-11).")
+        self.assertTrue(met_card.get("verified"), "MetMalaysia card must be verified with official warning number.")
+        self.assertIn("9 November 2026", met_card.get("issueBM", ""))
+        self.assertIn("JMM.RML07/701/03 JLD7(097)", met_card.get("titleBM", ""))
+
+    def test_index_html_metmalaysia_rendering(self):
+        """Verify compiled index.html renders MetMalaysia card accurately without MPS leakage."""
+        self.assertIn("https://www.met.gov.my/data/IWR30007.html", self.html)
+        self.assertIn("Amaran Awal", self.html)
+        # Check that Card 1 (util-card-0) does not contain MPS road maintenance text
+        card0_match = re.search(r'id="util-card-0".*?id="util-card-1"', self.html, re.DOTALL)
+        if card0_match:
+            card0_html = card0_match.group(0)
+            self.assertNotIn("Jalan Labuk", card0_html)
+            self.assertNotIn("拉卜路", card0_html)
+            self.assertIn("IWR30007", card0_html)
+
 if __name__ == '__main__':
     unittest.main()
