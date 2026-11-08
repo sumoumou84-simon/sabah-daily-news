@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "timezone": "Asia/Kuala_Lumpur",
+  "date": "2026-11-08",
+  "reserved_count": 0,
+  "daily_limit": 5,
+  "reservations": [],
+  "last_updated": "2026-11-08T21:50:00+08:00",
+  "status": "IDLE",
+  "initialization_mode": "AUTHORIZED_PHASE_N4"
+}
