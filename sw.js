@@ -1,5 +1,5 @@
 // Service Worker for 西门看看网 (Simon Kankan Daily News)
-const CACHE_NAME = 'simon-kankan-v1';
+const CACHE_NAME = 'simon-kankan-v2';
 
 const PRECACHE_ASSETS = [
   './',
@@ -46,7 +46,7 @@ self.addEventListener('fetch', (event) => {
   // HTML / Navigation requests: Network-First with cache fallback
   if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-cache' })
         .then((networkRes) => {
           if (networkRes && networkRes.status === 200) {
             const resClone = networkRes.clone();
