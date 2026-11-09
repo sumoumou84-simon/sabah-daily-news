@@ -1,0 +1,54 @@
+name: 诊断测试：Phase D-3 单次生成三篇完整新闻 (非发布)
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: '授权运行说明 (例如: Phase D-3 授权单次 API 请求生成三篇完整双语新闻)'
+        required: true
+        default: 'Phase D-3 Authorized Single API Request Three Articles'
+
+concurrency:
+  group: sabah-news-publishing-lock
+  cancel-in-progress: false
+
+jobs:
+  phase_d3_generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 授权 QuotaManager 写入并推送配额预留记录至 origin/main
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 tzdata || true
+
+      - name: 配置 Git 提交身份 (供 QuotaManager 预留与终态写入)
+        run: |
+          git config --global user.name "Simon-Daily-Bot"
+          git config --global user.email "bot@simondaily.com"
+
+      - name: 执行 Phase D-3 单次生成三篇完整双语新闻
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GITHUB_ACTIONS: "true"
+        run: |
+          python scripts/generate_three_articles_d3.py
+
+      - name: 上传诊断报告产物 (非发布)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase-d3-three-articles-report
+          path: reports/phase_d3_three_articles_*.json
+          retention-days: 7
