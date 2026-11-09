@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 3.0</title>
     <!-- PWA 配置与 Service Worker 注册 -->
     <link rel="manifest" href="./manifest.json">
@@ -17,6 +20,9 @@
                 navigator.serviceWorker.register('./sw.js')
                     .then(function(reg) {
                         reg.update();
+                        if (reg.waiting) {
+                            reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+                        }
                         console.log('[PWA] ServiceWorker registered with scope:', reg.scope);
                     })
                     .catch(function(err) {
@@ -804,7 +810,7 @@
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>每日 05:00 AM 准时晨报 • 11/09 05:30PM LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • 11/09 05:51PM LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -924,7 +930,7 @@
                         <span class="text-[12px] font-black tracking-tight" id="active-date-display">
                             今天 11/09 · MYT自动计算
                         </span>
-                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">05:30PM MYT</span>
+                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">05:51PM MYT</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
@@ -998,7 +1004,7 @@
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
-                                11/09 05:30PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
+                                11/09 05:51PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
@@ -1213,7 +1219,7 @@
                             <span class="lang-bm hidden break-words">Sabah Electricity (SESB) Grid</span>
                             <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono mt-0.5">11/09 17:30 • 待核实</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/09 17:51 • 待核实</div>
                     </div>
                 </div>
 
@@ -1239,7 +1245,7 @@
                             <span class="lang-zh">监测详情 STATUS DETAIL</span>
                             <span class="lang-bm hidden">STATUS PEMANTAUAN</span>
                         </span>
-                        <span class="text-[10px] mono text-[#94A3B8]">• 11/09 17:30 • 待核实</span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• 11/09 17:51 • 待核实</span>
                     </div>
 
                     <div class="space-y-2">
@@ -1922,8 +1928,8 @@
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
                     <span>
-                        <span class="lang-zh">11/09 05:30PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
-                        <span class="lang-bm hidden">11/09 05:30PM MYT • Klik tajuk untuk baca laporan penuh 250-400 patah perkataan • Arkib 7 hari tersedia</span>
+                        <span class="lang-zh">11/09 05:51PM MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
+                        <span class="lang-bm hidden">11/09 05:51PM MYT • Klik tajuk untuk baca laporan penuh 250-400 patah perkataan • Arkib 7 hari tersedia</span>
                     </span>
                     <span class="text-[#FFD60A] font-bold">
                         <span class="lang-zh">10 篇深度要闻 • 双核实白名单</span>
@@ -2441,7 +2447,7 @@
         }
 
         let currentRenderedHeadlines = CURRENT_HEADLINES;
-        let currentRenderedDateLabel = '11/09 05:30PM';
+        let currentRenderedDateLabel = '11/09 05:51PM';
 
         function renderNewsCards(headlinesList, dateLabel) {
             currentRenderedHeadlines = headlinesList;
@@ -2569,10 +2575,10 @@ html += `
             const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
 
             let targetHeadlines = [];
-            let cardDateLabel = '11/09 05:30PM';
+            let cardDateLabel = '11/09 05:51PM';
             if (type === 'today') {
                 targetHeadlines = CURRENT_HEADLINES;
-                cardDateLabel = '11/09 05:30PM';
+                cardDateLabel = '11/09 05:51PM';
                 if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini 11/09</span>' : '<span>今日 11/09 重点要闻</span>';
                 if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini 11/09 · Auto MYT' : '今天 11/09 · MYT自动计算';
                 showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
@@ -2825,9 +2831,36 @@ html += `
         window.closeDisclaimerModal = closeDisclaimerModal;
         window.handleDisclaimerBackdropClick = handleDisclaimerBackdropClick;
 
+        // 核心动态数据同步：确保无论浏览器是否命中缓存，均主动获取最新 news_data.json 并重新刷新卡片
+        async function syncNewsDataRuntime() {
+            try {
+                const timestamp = Date.now();
+                const res = await fetch('./news_data.json?v=' + timestamp, {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
+                });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data && Array.isArray(data.headlines) && data.headlines.length > 0) {
+                    window.CURRENT_HEADLINES = data.headlines;
+                    if (data.archive) {
+                        window.ARCHIVE_POOL = Object.assign({}, window.ARCHIVE_POOL, data.archive);
+                    }
+                    const countTag = document.getElementById('headlines-count-tag');
+                    if (countTag) countTag.textContent = data.headlines.length;
+                    if (typeof renderNewsCards === 'function') {
+                        renderNewsCards(data.headlines);
+                    }
+                }
+            } catch (err) {
+                console.warn('[Sync] Fallback to embedded static HTML:', err);
+            }
+        }
+
         // 初始化
         window.addEventListener('DOMContentLoaded', () => {
             initThemeButton();
+            syncNewsDataRuntime();
         });
     </script>
 </body>

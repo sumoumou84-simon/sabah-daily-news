@@ -118,6 +118,19 @@ def publish_d14():
         json.dump(prod_data, f, ensure_ascii=False, indent=2)
     print(f"✅ Successfully updated {news_data_path} with 10 real D-13.2 articles.")
 
+    # Also synchronize archive_history.json
+    archive_history_path = os.path.join(BASE_DIR, "archive_history.json")
+    if os.path.exists(archive_history_path):
+        try:
+            with open(archive_history_path, "r", encoding="utf-8") as f:
+                ah_data = json.load(f)
+            ah_data["2026-11-09"] = production_headlines
+            with open(archive_history_path, "w", encoding="utf-8") as f:
+                json.dump(ah_data, f, ensure_ascii=False, indent=2)
+            print(f"✅ Successfully synchronized {archive_history_path} with 10 real D-13.2 articles.")
+        except Exception as e:
+            print(f"⚠️ Warning: could not update {archive_history_path}: {e}")
+
     # 5. Compile index.html
     build_news.generate_index_html()
     print("✅ Successfully generated production index.html.")

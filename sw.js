@@ -1,5 +1,5 @@
 // Service Worker for 西门看看网 (Simon Kankan Daily News)
-const CACHE_NAME = 'simon-kankan-v2';
+const CACHE_NAME = 'simon-kankan-v3';
 
 const PRECACHE_ASSETS = [
   './',
@@ -8,6 +8,13 @@ const PRECACHE_ASSETS = [
   './icon-192.png',
   './icon-512.png'
 ];
+
+// Handle skipWaiting message from client
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 // Install: precache essential shell assets and activate immediately
 self.addEventListener('install', (event) => {
@@ -25,6 +32,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((name) => {
           if (name !== CACHE_NAME) {
+            console.log('[PWA] Deleting old cache:', name);
             return caches.delete(name);
           }
         })
@@ -40,6 +48,16 @@ self.addEventListener('fetch', (event) => {
 
   // Ignore non-GET requests and unsupported schemes (e.g. chrome-extension)
   if (req.method !== 'GET' || !req.url.startsWith('http')) {
+    return;
+  }
+
+  // Real-time data files: Always Network-Only with cache bypass (never serve stale news data)
+  if (req.url.includes('news_data.json') || req.url.includes('archive_history.json')) {
+    event.respondWith(
+      fetch(req, { cache: 'no-store' }).catch(() => {
+        return caches.match(req);
+      })
+    );
     return;
   }
 

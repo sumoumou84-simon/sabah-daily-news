@@ -532,6 +532,9 @@ def generate_index_html():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 3.0</title>
     <!-- PWA 配置与 Service Worker 注册 -->
     <link rel="manifest" href="./manifest.json">
@@ -546,6 +549,9 @@ def generate_index_html():
                 navigator.serviceWorker.register('./sw.js')
                     .then(function(reg) {{
                         reg.update();
+                        if (reg.waiting) {{
+                            reg.waiting.postMessage({{ type: 'SKIP_WAITING' }});
+                        }}
                         console.log('[PWA] ServiceWorker registered with scope:', reg.scope);
                     }})
                     .catch(function(err) {{
@@ -2526,9 +2532,36 @@ html += `
         window.closeDisclaimerModal = closeDisclaimerModal;
         window.handleDisclaimerBackdropClick = handleDisclaimerBackdropClick;
 
+        // 核心动态数据同步：确保无论浏览器是否命中缓存，均主动获取最新 news_data.json 并重新刷新卡片
+        async function syncNewsDataRuntime() {{
+            try {{
+                const timestamp = Date.now();
+                const res = await fetch('./news_data.json?v=' + timestamp, {{
+                    cache: 'no-store',
+                    headers: {{ 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }}
+                }});
+                if (!res.ok) return;
+                const data = await res.json();
+                if (data && Array.isArray(data.headlines) && data.headlines.length > 0) {{
+                    window.CURRENT_HEADLINES = data.headlines;
+                    if (data.archive) {{
+                        window.ARCHIVE_POOL = Object.assign({{}}, window.ARCHIVE_POOL, data.archive);
+                    }}
+                    const countTag = document.getElementById('headlines-count-tag');
+                    if (countTag) countTag.textContent = data.headlines.length;
+                    if (typeof renderNewsCards === 'function') {{
+                        renderNewsCards(data.headlines);
+                    }}
+                }}
+            }} catch (err) {{
+                console.warn('[Sync] Fallback to embedded static HTML:', err);
+            }}
+        }}
+
         // 初始化
         window.addEventListener('DOMContentLoaded', () => {{
             initThemeButton();
+            syncNewsDataRuntime();
         }});
     </script>
 </body>
