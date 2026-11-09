@@ -27,7 +27,8 @@ SABAH_ENTITIES = [
     "jeffrey kitingan", "杰菲里", "frankie poon", "潘明丰", "vivian wong", "黄诗怡",
     "bung moktar", "邦莫达", "shafie apdal", "沙菲益", "warisan", "民兴党",
     "grs", "沙盟", "upko", "沙民统", "pbs", "沙巴团结党", "star", "沙巴立新党",
-    "ldp", "自民党", "sapp", "进步党"
+    "ldp", "自民党", "sapp", "进步党",
+    "沙陆交局", "ciltm", "kkia", "庇机场", "亚庇机场"
 ]
 
 # Sarawak geographic anchors (districts, towns, leaders, agencies)
@@ -59,6 +60,23 @@ SARAWAK_ENTITIES = [
     "dbku", "mbks", "smc", "诗巫市议会", "mbm", "美里市政局", "petros", "unifor"
 ]
 
+# Peninsular locations (Phase D-11.2 - Prevent national/peninsular news leaking into Sabah/Sandakan)
+PENINSULAR_LOCATIONS = [
+    "selangor", "雪兰莪", "shah alam", "莎阿南", "taman sri muda", "太子园",
+    "klang", "巴生", "petaling jaya", "八打灵再也", "subang", "梳邦", "puchong", "蒲种",
+    "kuala lumpur", "吉隆坡", "putrajaya", "布城", "cyberjaya", "赛城",
+    "penang", "槟城", "pulau pinang", "槟州", "george town", "乔治市", "butterworth", "北海",
+    "perak", "霹雳", "ipoh", "怡保", "taiping", "太平",
+    "johor", "柔佛", "johor bahru", "新山", "muar", "麻坡", "batu pahat", "峇株巴辖",
+    "kedah", "吉打", "alor setar", "亚罗士打", "sungai petani", "双溪大年",
+    "kelantan", "吉兰丹", "kota bharu", "哥打峇鲁",
+    "terengganu", "登嘉楼", "kuala terengganu", "瓜拉登嘉楼",
+    "pahang", "彭亨", "kuantan", "关丹", "cameron highlands", "金马仑",
+    "melaka", "马六甲", "malacca",
+    "negeri sembilan", "森美兰", "seremban", "芙蓉",
+    "perlis", "玻璃市", "kangar", "加央"
+]
+
 class GeographicVerifier:
     def __init__(self):
         pass
@@ -81,6 +99,16 @@ class GeographicVerifier:
 
         return found_sabah, found_sarawak
 
+    def inspect_peninsular(self, text: str) -> List[str]:
+        """Return found Peninsular Malaysia anchor mentions."""
+        lower_t = text.lower()
+        found_peninsular = []
+        for anchor in PENINSULAR_LOCATIONS:
+            pattern = r'\b' + re.escape(anchor) + r'\b' if anchor.isascii() else re.escape(anchor)
+            if re.search(pattern, lower_t):
+                found_peninsular.append(anchor)
+        return found_peninsular
+
     def verify(
         self,
         title: str,
@@ -93,33 +121,63 @@ class GeographicVerifier:
         """
         Strict Geographic Verification Engine:
         - Never classify an article as Sabah news merely because publisher is Sabah-facing.
-        - Strict isolation between Sabah and Sarawak.
+        - Geographic classification for Sandakan/Sabah requires actual evidence in title or body.
+        - Strict isolation between Sabah, Sarawak, and Peninsular Malaysia.
+        - RSS query tokens or feed names alone NEVER trigger Sandakan or Sabah classification.
         - Reclassifies or rejects geographic mismatches.
         """
-        combined_text = f"{title} {snippet} {body}"
-        found_sabah, found_sarawak = self.inspect_text(combined_text)
+        # Authoritative content text: title + body (ignore query tokens in snippet)
+        content_text = f"{title or ''} {body or ''}"
+        content_lower = content_text.lower()
+
+        found_sabah_content, found_sarawak_content = self.inspect_text(content_text)
+        found_peninsular_content = self.inspect_peninsular(content_text)
 
         # Also inspect URL indicators
         url_lower = (url or "").lower()
-        if "cat=8" in url_lower or "sabah.sinchew" in url_lower or "/news/sabah" in url_lower:
-            if "sabah_url_indicator" not in found_sabah:
-                found_sabah.append("sabah_url_indicator")
+        has_sabah_url = "cat=8" in url_lower or "sabah.sinchew" in url_lower or "/news/sabah" in url_lower
+        has_sarawak_url = "cat=3" in url_lower or "/news/sarawak" in url_lower or "sinchew.com.my/category/砂拉越" in url_lower
 
-        if "cat=3" in url_lower or "/news/sarawak" in url_lower or "sinchew.com.my/category/砂拉越" in url_lower:
-            if "sarawak_url_indicator" not in found_sarawak:
-                found_sarawak.append("sarawak_url_indicator")
+        found_sabah = list(set(found_sabah_content))
+        if has_sabah_url and "sabah_url_indicator" not in found_sabah:
+            found_sabah.append("sabah_url_indicator")
 
-        is_sabah = len(found_sabah) > 0
-        is_sarawak = len(found_sarawak) > 0
+        found_sarawak = list(set(found_sarawak_content))
+        if has_sarawak_url and "sarawak_url_indicator" not in found_sarawak:
+            found_sarawak.append("sarawak_url_indicator")
+
+        # Explicit Sandakan check ONLY in content_text (title + body)
+        sandakan_terms = ["sandakan", "山打根", "肯特医院", "hospital duchess of kent", "hdok", "majlis perbandaran sandakan"]
+        has_sandakan = any(term in content_lower for term in sandakan_terms)
+        if not has_sandakan and ("mps" in (title or "").lower() or "mps" in (body or "").lower()):
+            if not any(pen in content_lower for pen in ["selayang", "seremban"]):
+                has_sandakan = True
+
+        has_real_sabah_content = len(found_sabah_content) > 0
+        has_peninsular = len(found_peninsular_content) > 0
 
         # Scope determination
-        geo_scope = "national"
-        if any(term in combined_text.lower() for term in ["sandakan", "山打根", "mps", "肯特医院"]):
+        if has_peninsular and not has_real_sabah_content:
+            # Clear Peninsular news leaking into query results
+            geo_scope = "national"
+            is_sabah = False
+            is_sarawak = len(found_sarawak_content) > 0
+        elif has_sandakan:
             geo_scope = "sandakan"
-        elif is_sabah and not is_sarawak:
+            is_sabah = True
+            is_sarawak = False
+        elif has_real_sabah_content or (has_sabah_url and not found_sarawak_content and not has_peninsular):
             geo_scope = "sabah"
-        elif is_sarawak and not is_sabah:
+            is_sabah = True
+            is_sarawak = False
+        elif len(found_sarawak) > 0 and not has_real_sabah_content:
             geo_scope = "sarawak"
+            is_sabah = False
+            is_sarawak = True
+        else:
+            geo_scope = "national"
+            is_sabah = False
+            is_sarawak = False
 
         # Publisher Correction
         corrected_source = source
@@ -137,9 +195,16 @@ class GeographicVerifier:
         verified_category = proposed_category
         rejection_reason = None
 
-        if proposed_category == "sabah":
+        if has_peninsular and not has_real_sabah_content:
+            if proposed_category == "sabah":
+                verified_category = "national"
+                rejection_reason = (
+                    f"GEOGRAPHIC_MISMATCH: Article concerns Peninsular Malaysia ({', '.join(found_peninsular_content[:3])}) "
+                    f"with no Sabah relevance. Reclassified to national."
+                )
+        elif proposed_category == "sabah":
             # If proposed category is Sabah, but the article has Sarawak anchors and NO Sabah anchors:
-            if is_sarawak and not (set(found_sabah) - {"sabah_url_indicator"}):
+            if is_sarawak and not has_real_sabah_content:
                 verified_category = "national"  # Demote from Sabah to National/Regional
                 rejection_reason = (
                     f"GEOGRAPHIC_MISMATCH: Article concerns Sarawak ({', '.join(found_sarawak[:3])}) "

@@ -47,7 +47,8 @@ from pipeline import (
     CircuitBreaker,
     CircuitBreakerException,
     GeographicVerifier,
-    UtilityVerifier
+    UtilityVerifier,
+    BilingualFactValidator
 )
 
 logging.basicConfig(
@@ -336,6 +337,16 @@ def run_pipeline() -> bool:
         verified_utilities.append(v_u)
 
     # 6. 非破坏性熔断器
+    # 5.1 BilingualFactValidator secondary payload verification
+    fact_validator = BilingualFactValidator()
+    audited_utilities = []
+    for u in verified_utilities:
+        u_valid, u_errs = fact_validator.validate_utility_card(u)
+        if not u_valid:
+            print(f'[-] ⚠️ 拦截公用事业卡片事实错误: {u_errs}')
+            continue
+        audited_utilities.append(u)
+
     cb = CircuitBreaker(min_threshold=config.get("system", {}).get("min_headlines_threshold", 12))
     try:
         cb.inspect_and_guard(
@@ -351,15 +362,22 @@ def run_pipeline() -> bool:
         return False
 
     # 7. 写入并持久化
-    events = build_rich_future_events()
+    raw_events = build_rich_future_events()
+    audited_events = []
+    for ev in raw_events:
+        ev_valid, ev_errs = fact_validator.validate_future_event(ev)
+        if not ev_valid:
+            print(f'[-] ⚠️ 拦截未来事件事实错误: {ev_errs}')
+            continue
+        audited_events.append(ev)
     archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
     news_data_payload = {
         "updated_at": myt_now.strftime("%Y-%m-%d %H:%M:%S"),
         "date": today_iso,
-        "utilities": verified_utilities,
+        "utilities": audited_utilities,
         "headlines": final_headlines,
-        "events": events,
+        "events": audited_events,
         "archive": archive_pool
     }
 

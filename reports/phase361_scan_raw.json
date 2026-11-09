@@ -1,0 +1,114 @@
+{
+  ".github/workflows/sandakan_events_publish.yml": {
+    "file_size": 1909,
+    "patterns_found": {}
+  },
+  "config/sandakan_event_config.json": {
+    "file_size": 2306,
+    "patterns_found": {}
+  },
+  "data/sandakan_events_cache.json": {
+    "file_size": 18731,
+    "patterns_found": {}
+  },
+  "event_engine/__init__.py": {
+    "file_size": 577,
+    "patterns_found": {}
+  },
+  "event_engine/collectors/__init__.py": {
+    "file_size": 198,
+    "patterns_found": {}
+  },
+  "event_engine/collectors/base.py": {
+    "file_size": 4026,
+    "patterns_found": {}
+  },
+  "event_engine/collectors/stb_collector.py": {
+    "file_size": 13726,
+    "patterns_found": {}
+  },
+  "event_engine/collectors/ticket2u_collector.py": {
+    "file_size": 10810,
+    "patterns_found": {}
+  },
+  "event_engine/deduplicator.py": {
+    "file_size": 6023,
+    "patterns_found": {}
+  },
+  "event_engine/engine.py": {
+    "file_size": 20394,
+    "patterns_found": {}
+  },
+  "event_engine/frontend_adapter.py": {
+    "file_size": 6403,
+    "patterns_found": {}
+  },
+  "event_engine/geo_verifier.py": {
+    "file_size": 3299,
+    "patterns_found": {}
+  },
+  "event_engine/interface.py": {
+    "file_size": 4996,
+    "patterns_found": {}
+  },
+  "event_engine/models.py": {
+    "file_size": 4553,
+    "patterns_found": {}
+  },
+  "event_engine/normalizer.py": {
+    "file_size": 3456,
+    "patterns_found": {}
+  },
+  "event_engine/time_engine.py": {
+    "file_size": 7530,
+    "patterns_found": {}
+  },
+  "event_engine/trust_assessor.py": {
+    "file_size": 8250,
+    "patterns_found": {}
+  },
+  "events.html": {
+    "file_size": 43138,
+    "patterns_found": {}
+  },
+  "events_data.json": {
+    "file_size": 18731,
+    "patterns_found": {}
+  },
+  "events_frontend.json": {
+    "file_size": 5150,
+    "patterns_found": {}
+  },
+  "scripts/build_sandakan_events_site.py": {
+    "file_size": 6606,
+    "patterns_found": {}
+  },
+  "scripts/sandakan_event_engine.py": {
+    "file_size": 2087,
+    "patterns_found": {}
+  },
+  "tests/test_collector_fixtures.py": {
+    "file_size": 29769,
+    "patterns_found": {}
+  },
+  "tests/test_event_engine.py": {
+    "file_size": 20725,
+    "patterns_found": {}
+  },
+  "tests/test_event_engine_integration.py": {
+    "file_size": 44413,
+    "patterns_found": {}
+  },
+  "tests/test_frontend_adapter.py": {
+    "file_size": 19330,
+    "patterns_found": {}
+  },
+  "tests/test_phase32_lifecycle_validation.py": {
+    "file_size": 17601,
+    "patterns_found": {}
+  },
+  "tests/test_phase34_security_and_build.py": {
+    "file_size": 8128,
+    "patterns_found": {}
+  }
+}

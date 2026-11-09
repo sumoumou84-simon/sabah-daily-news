@@ -11,6 +11,19 @@ from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from collectors.base import RawArticle
+from pipeline.fact_verifier import BilingualFactValidator, WEEKDAY_ZH_MAP, WEEKDAY_BM_MAP
+from pipeline.fact_schema import (
+    StructuredArticle,
+    HeadlineRecord,
+    ClaimRecord,
+    StylisticTransitions,
+    FactItem,
+    FactCategory,
+    FactStatus,
+    SemanticLifecycleState,
+    NormalizedMonetaryValue,
+    NormalizedDateValue
+)
 
 logger = logging.getLogger("pipeline.synthesizer")
 
@@ -182,15 +195,19 @@ class QuotaManager:
                 logger.error(f"[QUOTA FAIL-CLOSED: Condition C] Remote fetch failure: {res_fetch.stderr.strip()}")
                 return None, "CONDITION_C_FETCH_FAILURE"
 
-            # 3. Check if state file exists in origin/main
+            # 3. Check if state file exists in active branch or origin/main
             git_path = self.state_file.replace("\\", "/")
-            res_show = subprocess.run(["git", "show", f"origin/main:{git_path}"], capture_output=True, text=True, check=False)
+            active_branch = os.getenv("GITHUB_REF_NAME") or "main"
+            res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], capture_output=True, text=True, check=False)
+            if res_show.returncode != 0 and active_branch != "main":
+                res_show = subprocess.run(["git", "show", f"origin/main:{git_path}"], capture_output=True, text=True, check=False)
+
             if res_show.returncode != 0:
                 if self.allow_first_time_init:
                     logger.info("[QUOTA Condition A] First-time initialization explicitly authorized.")
                     return self._build_fresh_state(), "CONDITION_A_FIRST_TIME_INIT"
                 else:
-                    logger.error(f"[QUOTA FAIL-CLOSED: Condition B] State file missing from origin/main.")
+                    logger.error(f"[QUOTA FAIL-CLOSED: Condition B] State file missing from origin/{active_branch} and origin/main.")
                     return None, "CONDITION_B_MISSING_REMOTE"
 
             # 4. Parse remote content
@@ -291,8 +308,9 @@ class QuotaManager:
                 logger.error(f"[GIT ISOLATION ABORT] Git commit failed: {res_commit.stderr}")
                 return False
 
-            # 6. Push to origin/main
-            cmd_push = ["git", "push", "origin", "main"]
+            # 6. Push to origin with strict branch isolation (never push to main from test branch)
+            active_branch = os.getenv("GITHUB_REF_NAME") or "main"
+            cmd_push = ["git", "push", "origin", f"HEAD:{active_branch}"]
             res_push = subprocess.run(cmd_push, capture_output=True, text=True, check=False)
             if res_push.returncode != 0:
                 logger.error(f"[GIT ISOLATION ABORT] Git push failed or was rejected: {res_push.stderr}")
@@ -398,6 +416,52 @@ class NewsSynthesizer:
     def __init__(self, config: Optional[Dict[str, Any]] = None, quota_mgr: Optional[QuotaManager] = None):
         self.config = config or {}
         self.quota_mgr = quota_mgr or QuotaManager(self.config)
+        self.validator = BilingualFactValidator()
+        self.min_headlines_threshold = self.config.get("system", {}).get("min_headlines_threshold", 10)
+
+    def validate_article_parity(
+        self,
+        article: Dict[str, Any],
+        canonical_facts: Optional[Dict[str, FactItem]] = None
+    ) -> Tuple[bool, List[str]]:
+        """
+        Validate cross-lingual factual parity for a synthesized headline dictionary.
+        Converts the dictionary into a StructuredArticle and executes the full
+        BilingualFactValidator.validate_structured_article() contract.
+        Enforces identical fact gate across Track A and Track B.
+        """
+        category = article.get("category", "sabah")
+        title_zh = article.get("title", "")
+        title_bm = article.get("titleBM", "")
+        detail_zh = article.get("detail", "")
+        detail_bm = article.get("detailBM", "")
+        source = article.get("source", "")
+        url = article.get("url", "")
+
+        facts = canonical_facts or {}
+        fids = [fid for fid, f in facts.items() if f.status == FactStatus.VERIFIED]
+
+        structured = StructuredArticle(
+            article_id=article.get("id", f"art_{category}"),
+            category=category,
+            headline=HeadlineRecord(zh_text=title_zh, bm_text=title_bm, fact_ids=fids),
+            core_claims=[
+                ClaimRecord(
+                    claim_id="CLM_01",
+                    fact_ids=fids,
+                    semantic_state=SemanticLifecycleState.INFORMATIONAL,
+                    zh_text=detail_zh,
+                    bm_text=detail_bm
+                )
+            ],
+            narrative_claims=[],
+            transitions=StylisticTransitions(),
+            source_url=url,
+            publisher=source
+        )
+
+        res = self.validator.validate_structured_article(structured, facts)
+        return res.is_valid, res.errors
 
     def _clean_markdown_json(self, raw_text: str) -> Optional[List[Dict[str, Any]]]:
         try:
@@ -494,7 +558,7 @@ class NewsSynthesizer:
                 res_json = json.loads(resp.read().decode("utf-8"))
                 text = res_json["candidates"][0]["content"]["parts"][0]["text"]
                 items = self._clean_markdown_json(text)
-                if items and len(items) >= 10:
+                if items and len(items) >= self.min_headlines_threshold:
                     for itm in items:
                         itm["image_url"] = None
                     self.quota_mgr.finalize_slot(res_id, "COMPLETED")
@@ -502,7 +566,7 @@ class NewsSynthesizer:
                     return items
                 else:
                     self.quota_mgr.finalize_slot(res_id, "FAILED_INSUFFICIENT_ITEMS")
-                    logger.warning("Gemini output was malformed or had fewer than 10 articles. Immediate abort.")
+                    logger.warning(f"Gemini output had fewer than {self.min_headlines_threshold} articles. Immediate abort.")
                     return None
         except urllib.error.HTTPError as e:
             self.quota_mgr.finalize_slot(res_id, f"FAILED_HTTP_{e.code}")
@@ -517,105 +581,285 @@ class NewsSynthesizer:
             logger.warning(f"Gemini unexpected error: {e}. Immediate abort of Track A (no retry).")
             return None
 
+    def record_token_usage(
+        self,
+        token_record: Dict[str, Any],
+        log_path: Optional[str] = None
+    ) -> None:
+        """Durably record Gemini API token usage metadata to JSONL log."""
+        target_path = log_path or os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "reports",
+            "token_usage_observation.jsonl"
+        )
+        os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        try:
+            with open(target_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(token_record, ensure_ascii=False) + "\n")
+            logger.info(f"[TOKEN MONITOR] Appended token usage to: {target_path}")
+        except Exception as e:
+            logger.warning(f"[TOKEN MONITOR] Failed to write token usage log: {e}")
+
+    def synthesize_track_a_single_batch(
+        self,
+        api_key: str,
+        today_iso: str,
+        batch_stories: List[RawArticle],
+        usage_log_path: Optional[str] = None
+    ) -> Optional[List[Dict[str, Any]]]:
+        """
+        Phase D-11 Core Architecture: Single-Batch Gemini Request for Daily Top-10 Edition.
+        Enforces:
+        - Exactly ONE Gemini HTTP request for the entire batch (up to 10 stories).
+        - Model: gemini-3.5-flash-lite only.
+        - Write-ahead remote quota reservation (1 slot).
+        - Max output tokens: 8192 (comfortable headroom for 10 stories).
+        - Post-response validation: finishReason == 'STOP', no truncation, D-7 fact verifier.
+        - Captures usageMetadata to reports/token_usage_observation.jsonl.
+        - Fail-closed: Zero retries, zero model cascade, zero fake-news fallback.
+        """
+        if not api_key:
+            logger.warning("[TRACK A ABORTED] No API key provided.")
+            return None
+
+        if not batch_stories:
+            logger.warning("[TRACK A ABORTED] Empty batch stories list.")
+            return None
+
+        candidate_models = self.quota_mgr.candidate_models
+        model = candidate_models[0] if candidate_models else "gemini-3.5-flash-lite"
+
+        # 1. Write-Ahead Quota Reservation BEFORE HTTP execution
+        reservation = self.quota_mgr.reserve_slot(model)
+        if not reservation:
+            logger.warning("[TRACK A ABORTED] Quota reservation denied or failed. Aborting Track A.")
+            return None
+
+        res_id = reservation["reservation_id"]
+
+        # 2. Format Consolidated Batch Context
+        story_blocks = []
+        for i, art in enumerate(batch_stories[:10], 1):
+            sources_str = ", ".join(art.extra.get("corroborating_sources", [art.source]))
+            body_text = (art.body or art.snippet or art.title).strip()
+            # Truncate each source body to 3000 chars to avoid exceeding input context
+            if len(body_text) > 3000:
+                body_text = body_text[:3000] + "..."
+            story_blocks.append(
+                f"=== 故事 {i} [{art.category.upper()}] ===\n"
+                f"原标题: {art.title}\n"
+                f"信源: {sources_str} ({art.url})\n"
+                f"发布时间: {art.published_at.isoformat() if art.published_at else '当日'}\n"
+                f"真实正文素材:\n{body_text}\n"
+            )
+
+        context_block = "\n".join(story_blocks)
+
+        prompt = f"""你是《西门看看网》首席双语采编主任。今天是马来西亚时间 {today_iso}。
+以下是今日经过严格地理与事实核实遴选的沙巴与全马重大新闻素材（共 {len(batch_stories[:10])} 篇一手完整正文素材）：
+
+{context_block}
+
+【任务要求】
+请在单次响应中，为上述 {len(batch_stories[:10])} 篇新闻分别撰写完整的双语深度报道（中文与马来文严格事实对等）。
+严禁分批输出！严禁捏造未经原文提及的人名、款项、日期或机构！
+
+规则：
+1. 真实性铁律：必须取材自上述提供的真实正文，保留所有具体款项金额、数字、机构名称及官方回应；
+2. 双语深度对等：
+   - detail: 中文深度段落，包含背景脉络与具体事实，250~350字；
+   - detailBM: 马来文等量深度报道，120~180 perkataan（标准 Bahasa Melayu，严禁以 'Laporan Berita:' 粗糙拼凑！）；
+3. 标题对等：title 为中文主标题，titleBM 为精准马来文主标题；
+4. 输出格式必须为合法 JSON 数组：
+[
+  {{
+    "story_index": 1,
+    "category": "sabah",
+    "title": "中文主标题",
+    "titleBM": "Tajuk Berita Bahasa Melayu",
+    "detail": "中文深度正文...",
+    "detailBM": "Teks berita mendalam Bahasa Melayu...",
+    "source_url": "https://...",
+    "publisher": "..."
+  }}
+]
+直接输出 JSON 数组，严禁在开头或结尾添加任何其他文本说明。
+"""
+
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": 0.2,
+                "maxOutputTokens": 8192,
+                "responseMimeType": "application/json"
+            }
+        }
+
+        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        http_code = None
+        res_json = None
+        finish_reason = "UNKNOWN"
+
+        try:
+            req = urllib.request.Request(
+                endpoint,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"}
+            )
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                http_code = resp.getcode()
+                raw_body = resp.read().decode("utf-8")
+                res_json = json.loads(raw_body)
+        except urllib.error.HTTPError as e:
+            http_code = e.code
+            self.quota_mgr.finalize_slot(res_id, f"FAILED_HTTP_{e.code}")
+            logger.warning(f"[TRACK A FAILED] Gemini HTTP {e.code} error: {e}. Immediate abort.")
+            return None
+        except urllib.error.URLError as e:
+            self.quota_mgr.finalize_slot(res_id, "FAILED_TIMEOUT_OR_NETWORK")
+            logger.warning(f"[TRACK A FAILED] Gemini network error: {e}. Immediate abort.")
+            return None
+        except Exception as e:
+            self.quota_mgr.finalize_slot(res_id, "FAILED_UNEXPECTED")
+            logger.warning(f"[TRACK A FAILED] Unexpected error: {e}. Immediate abort.")
+            return None
+
+        # 3. Post-Response Inspection & Token Logging
+        usage_meta = res_json.get("usageMetadata", {}) if res_json else {}
+        candidates = res_json.get("candidates", []) if res_json else []
+
+        if candidates:
+            finish_reason = candidates[0].get("finishReason", "UNKNOWN")
+
+        # Extract generated items
+        items = []
+        if candidates and finish_reason == "STOP":
+            try:
+                part_text = candidates[0]["content"]["parts"][0]["text"]
+                items = self._clean_markdown_json(part_text) or []
+            except Exception as e:
+                logger.warning(f"[TRACK A PARSE ERROR] Failed to parse Gemini response JSON: {e}")
+
+        # Check truncation fail-closed
+        if finish_reason == "MAX_TOKENS":
+            self.quota_mgr.finalize_slot(res_id, "FAILED_TRUNCATED")
+            logger.error("[TRACK A TRUNCATED] Finish reason was MAX_TOKENS. Truncated output discarded.")
+            return None
+
+        # 4. Bind Authoritative Application Metadata & Validate with D-7
+        accepted_articles: List[Dict[str, Any]] = []
+        rejected_articles: List[Dict[str, Any]] = []
+
+        now_iso = datetime.now(MYT_TZ).isoformat()
+
+        for idx, item in enumerate(items):
+            # Match with original RawArticle
+            s_idx = item.get("story_index", idx + 1) - 1
+            orig_art = batch_stories[s_idx] if (0 <= s_idx < len(batch_stories)) else (batch_stories[idx] if idx < len(batch_stories) else None)
+
+            if orig_art:
+                item["source"] = orig_art.source
+                item["sources"] = orig_art.extra.get("corroborating_sources", [orig_art.source])
+                item["url"] = orig_art.url
+                item["source_urls"] = orig_art.extra.get("corroborating_urls", [orig_art.url])
+                item["original_published_at"] = orig_art.published_at.isoformat() if orig_art.published_at else None
+                item["geo_scope"] = orig_art.extra.get("geo_scope", orig_art.category)
+            else:
+                item["source"] = item.get("publisher", "官方信源")
+                item["sources"] = [item["source"]]
+                item["url"] = item.get("source_url", "")
+                item["source_urls"] = [item["url"]] if item["url"] else []
+                item["original_published_at"] = None
+                item["geo_scope"] = item.get("category", "sabah")
+
+            item["id"] = f"art_{item.get('category', 'sabah')}_{len(accepted_articles)+1:02d}"
+            item["image_url"] = None
+            item["collected_at"] = now_iso
+            item["site_published_at"] = now_iso
+            item["updated_at"] = now_iso
+            item["is_updated"] = False
+
+            # D-7 Full Fact Validation Gate
+            is_valid, errs = self.validate_article_parity(item)
+            if is_valid:
+                item["validation_status"] = "VERIFIED"
+                accepted_articles.append(item)
+            else:
+                logger.warning(f"[FACT GATE REJECTED] {item.get('title')}: {errs}")
+                rejected_articles.append({"article": item, "errors": errs})
+
+        # 5. Record Token Observation
+        token_entry = {
+            "timestamp_myt": datetime.now(MYT_TZ).isoformat(),
+            "model": model,
+            "reservation_id": res_id,
+            "http_status": http_code,
+            "finish_reason": finish_reason,
+            "prompt_token_count": usage_meta.get("promptTokenCount", "UNAVAILABLE"),
+            "candidates_token_count": usage_meta.get("candidatesTokenCount", "UNAVAILABLE"),
+            "total_token_count": usage_meta.get("totalTokenCount", "UNAVAILABLE"),
+            "thoughts_token_count": usage_meta.get("thoughtsTokenCount", "UNAVAILABLE"),
+            "stories_input_count": len(batch_stories[:10]),
+            "stories_generated_count": len(items),
+            "stories_accepted_count": len(accepted_articles),
+            "stories_rejected_count": len(rejected_articles)
+        }
+        self.record_token_usage(token_entry, usage_log_path)
+
+        # 6. Finalize Quota Slot
+        if len(accepted_articles) >= self.min_headlines_threshold:
+            self.quota_mgr.finalize_slot(res_id, "COMPLETED")
+            logger.info(f"[TRACK A SUCCESS] Generated and verified {len(accepted_articles)} articles.")
+            return accepted_articles
+        else:
+            self.quota_mgr.finalize_slot(res_id, "FAILED_INSUFFICIENT_ITEMS")
+            logger.warning(
+                f"[TRACK A INSUFFICIENT] Accepted {len(accepted_articles)} articles, "
+                f"below threshold ({self.min_headlines_threshold}). Failing closed."
+            )
+            return None
+
     def synthesize_track_b_standalone(
         self,
         today_iso: str,
         articles: List[RawArticle]
     ) -> List[Dict[str, Any]]:
         """
-        Track B (Standalone Fallback): Direct Rule-Based / NLP Synthesizer.
-        - 100% credential-free, zero Gemini network calls.
-        - Strict Category Quota Partitioning (sabah: 8, national: 8, sports: 5, general: 3).
-        - Strict Geographic Verification: Sarawak news is NEVER categorized as Sabah.
-        - Preserves all 4 timestamps (original_published_at, collected_at, site_published_at, updated_at).
-        - Validates source URLs and source identities.
+        Track B (Preserved Data Structuring):
+        Exposes clean, authentic confirmed headlines and existing snippets/bodies.
+        DOES NOT SYNTHESIZE FAKE NEWS BOILERPLATE.
         """
         now_myt = datetime.now(MYT_TZ)
         now_iso = now_myt.isoformat()
-
-        # Partition articles by verified category
-        cat_buckets: Dict[str, List[RawArticle]] = {
-            "sabah": [],
-            "national": [],
-            "sports": [],
-            "general": []
-        }
-
-        def priority_score(a: RawArticle):
-            score = 0
-            if a.language == "zh":
-                score += 15
-            if a.category == "sabah":
-                score += 10
-            if "sandakan" in a.title.lower() or "山打根" in a.title:
-                score += 8
-            score += len(a.extra.get("corroborating_sources", [])) * 2
-            return score
-
-        sorted_articles = sorted(articles, key=priority_score, reverse=True)
-
-        for art in sorted_articles:
-            cat = art.category if art.category in cat_buckets else "general"
-            cat_buckets[cat].append(art)
-
-        quotas = {"sabah": 8, "national": 8, "sports": 5, "general": 3}
         synthesized: List[Dict[str, Any]] = []
 
-        for cat, limit in quotas.items():
-            selected = cat_buckets.get(cat, [])[:limit]
-            for art in selected:
-                c_title = art.title.strip()
-                sources = art.extra.get("corroborating_sources", [art.source])
-                if len(sources) >= 2:
-                    source_tag = f" [{sources[0]} + {sources[1]} 双核实]"
-                elif len(sources) == 1:
-                    source_tag = f" [{sources[0]} 实时发布]"
-                else:
-                    source_tag = " [权威信源核实]"
+        for idx, art in enumerate(articles[:10], 1):
+            c_title = art.title.strip()
+            sources = art.extra.get("corroborating_sources", [art.source])
+            cat = art.category or "sabah"
 
-                full_title_zh = c_title if "[" in c_title else f"{c_title}{source_tag}"
+            # Clean substantive body or lead paragraph
+            clean_body = (art.body or art.snippet or c_title).strip()
 
-                title_bm = art.extra.get("titleBM")
-                if not title_bm:
-                    if art.language == "ms":
-                        title_bm = c_title
-                    else:
-                        title_bm = f"Laporan Berita: {c_title}"
-
-                snippet_clean = art.snippet or art.body or c_title
-                detail_zh = (
-                    f"【权威动态播报】{snippet_clean}。"
-                    f"据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。"
-                    f"事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：{', '.join(sources)}。"
-                )
-
-                detail_bm = (
-                    f"Notis Berita Rasmi: {snippet_clean}.\n\n"
-                    f"Pihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: {', '.join(sources)}."
-                )
-
-                orig_pub = art.published_at.isoformat() if art.published_at else None
-                collected = art.extra.get("collected_at") or now_iso
-
-                synthesized.append({
-                    "id": f"art_{cat}_{len(synthesized)+1}",
-                    "category": cat,
-                    "title": full_title_zh,
-                    "titleBM": title_bm,
-                    "detail": detail_zh,
-                    "detailBM": detail_bm,
-                    "source": art.source,
-                    "sources": sources,
-                    "url": art.url,
-                    "source_urls": [art.url],
-                    "image_url": None,
-                    "original_published_at": orig_pub,
-                    "collected_at": collected,
-                    "site_published_at": now_iso,
-                    "updated_at": now_iso,
-                    "is_updated": False,
-                    "geo_scope": art.extra.get("geo_scope", "national")
-                })
+            synthesized.append({
+                "id": f"art_{cat}_{idx:02d}",
+                "category": cat,
+                "title": c_title,
+                "titleBM": art.extra.get("titleBM", ""),
+                "detail": clean_body,
+                "detailBM": art.extra.get("detailBM", ""),
+                "source": art.source,
+                "sources": sources,
+                "url": art.url,
+                "source_urls": art.extra.get("corroborating_urls", [art.url]),
+                "image_url": None,
+                "original_published_at": art.published_at.isoformat() if art.published_at else None,
+                "collected_at": art.extra.get("collected_at", now_iso),
+                "site_published_at": now_iso,
+                "updated_at": now_iso,
+                "is_updated": False,
+                "geo_scope": art.extra.get("geo_scope", "sabah")
+            })
 
         return synthesized
 
@@ -625,20 +869,33 @@ class NewsSynthesizer:
         articles: List[RawArticle],
         api_key: Optional[str] = None
     ) -> List[Dict[str, Any]]:
-        """Execute Dual-Track synthesis: try Track A first, seamless fallback to Track B."""
+        """
+        Single-Batch Dispatch Entry Point.
+        If Track A succeeds, returns verified batch.
+        If Track A fails or has no key, FAILS CLOSED: Zero fallback to fake-news boilerplate.
+        """
         logger.info(f"Synthesizer input: {len(articles)} canonical articles")
 
-        # Track A: Gemini API (Guarded by QuotaManager with remote write-ahead enforcement)
         if api_key:
-            logger.info("Attempting Track A: Gemini Grounding synthesis...")
-            gemini_results = self.synthesize_track_a_gemini(api_key, today_iso, articles)
-            if gemini_results and len(gemini_results) >= 10:
-                logger.info(f"Track A succeeded with {len(gemini_results)} items.")
+            logger.info("Executing Track A: Single-Batch Gemini Request...")
+            gemini_results = self.synthesize_track_a_single_batch(
+                api_key=api_key,
+                today_iso=today_iso,
+                batch_stories=articles
+            )
+            if gemini_results and len(gemini_results) >= self.min_headlines_threshold:
                 return gemini_results
-            logger.warning("Track A skipped or produced insufficient articles. Falling back to Track B.")
 
-        # Track B: Standalone Fallback Synthesizer (0 Gemini calls)
-        logger.info("Executing Track B: Standalone Rule-Based / NLP Synthesizer...")
-        track_b_results = self.synthesize_track_b_standalone(today_iso, articles)
-        logger.info(f"Track B delivered {len(track_b_results)} authentic articles.")
-        return track_b_results
+        # Production policy: Do not generate fake-news template boilerplate
+        logger.warning(
+            "[SYNTHESIZER FAIL-CLOSED] Gemini API synthesis unavailable or failed. "
+            "Policy strictly prohibits fake news template fallback. Returning 0 articles."
+        )
+        return []
+
+        # Production policy: Do not generate fake-news template boilerplate
+        logger.warning(
+            "[SYNTHESIZER FAIL-CLOSED] Gemini API synthesis unavailable or failed. "
+            "Policy strictly prohibits fake news template fallback. Returning 0 articles."
+        )
+        return []

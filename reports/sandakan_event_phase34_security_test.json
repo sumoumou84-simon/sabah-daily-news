@@ -1,0 +1,109 @@
+{
+  "test_phase": "3.4",
+  "audit_timestamp": "2026-11-08T14:52:30+08:00",
+  "test_suite": "tests/test_phase34_security_and_build.py",
+  "url_security_tests": [
+    {
+      "test_case": "HTTPS absolute URL",
+      "input": "https://sabahtourism.com/event/bird-festival/",
+      "expected": "ACCEPTED",
+      "result": "PASS",
+      "reason": "Valid absolute HTTPS URL with valid host"
+    },
+    {
+      "test_case": "HTTP absolute URL",
+      "input": "http://example.com/festival",
+      "expected": "ACCEPTED",
+      "result": "PASS",
+      "reason": "Valid absolute HTTP URL with valid host"
+    },
+    {
+      "test_case": "javascript: scheme (lowercase)",
+      "input": "javascript:alert(1)",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Prohibited executable script pseudo-protocol"
+    },
+    {
+      "test_case": "JAVASCRIPT: scheme (uppercase)",
+      "input": "JAVASCRIPT:alert(document.cookie)",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Case-insensitive scheme check rejects uppercase JAVASCRIPT"
+    },
+    {
+      "test_case": "javaScript: scheme (mixed-case)",
+      "input": "javaScript:evil()",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Case-insensitive scheme check rejects mixed-case javaScript"
+    },
+    {
+      "test_case": "data: URI scheme",
+      "input": "data:text/html,<script>alert(1)</script>",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Prohibited data URI scheme"
+    },
+    {
+      "test_case": "vbscript: URI scheme",
+      "input": "vbscript:msgbox('XSS')",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Prohibited vbscript pseudo-protocol"
+    },
+    {
+      "test_case": "file: URI scheme",
+      "input": "file:///etc/passwd",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Prohibited local filesystem URI scheme"
+    },
+    {
+      "test_case": "Protocol-relative URL",
+      "input": "//sabahtourism.com/evil",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Protocol-relative URL lacks explicit absolute scheme and is rejected"
+    },
+    {
+      "test_case": "Missing host (netloc)",
+      "input": "https://",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "URL has no network location / host"
+    },
+    {
+      "test_case": "Missing host with path",
+      "input": "https:///path/only",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "URL has empty netloc"
+    },
+    {
+      "test_case": "Whitespace and null",
+      "input": "   ",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Empty or whitespace-only input rejected"
+    },
+    {
+      "test_case": "Malformed string",
+      "input": "not_a_valid_url",
+      "expected": "REJECTED",
+      "result": "PASS",
+      "reason": "Lacks scheme and parsing structure"
+    }
+  ],
+  "frontend_link_clickability_test": {
+    "test_case": "Unsafe URL non-clickability",
+    "behavior": "When an event contains an invalid or unsafe primary source URL (e.g. javascript:), frontend_adapter.py sets primary_source_url to null, and events.html does not render an anchor element",
+    "result": "PASS"
+  },
+  "summary": {
+    "total_security_cases": 14,
+    "passed": 14,
+    "failed": 0,
+    "verdict": "VERIFIED_SECURE"
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "execution_mode": "PHASE_D12_SINGLE_BATCH_EXECUTION",
+    "target_news_date": "2026-11-09",
+    "timestamp_myt": "2026-11-09T15:58:28.821935+08:00",
+    "model_configured": "gemini-3.5-flash-lite",
+    "endpoint_configured": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+    "gemini_api_requests_dispatched": 0,
+    "quota_slots_reserved": 0,
+    "git_operations": "PROHIBITED_ZERO_OPERATIONS",
+    "production_publishing": "PROHIBITED_ZERO_PUBLISHING",
+    "production_hashes": {
+      "news_data_json_sha256": "ae9fc8fe5de9c0271fd51e72d5c69222af28d4816ff5399d27c2700819a6b6c2",
+      "index_html_sha256": "c578bcc1d9f1ffa7b4c3db2a7ed3877533901ae64537808cdea84dccab6c293a",
+      "unchanged_bit_for_bit": true
+    }
+  },
+  "preflight_audit": {
+    "1_manifest_files_exist": {
+      "status": "PASS",
+      "json_path": "C:\\simon kankan\\reports\\editorial_readiness_d11_6.json",
+      "md_path": "C:\\simon kankan\\reports\\editorial_readiness_d11_6.md"
+    },
+    "2_all_10_stories_loaded": {
+      "status": "PASS",
+      "story_count": 10
+    },
+    "3_source_records_available": {
+      "status": "PASS",
+      "verified_count": 10
+    },
+    "4_substantive_material_present": {
+      "status": "PASS",
+      "total_substantive_chars": 46862,
+      "average_chars_per_story": 4686
+    },
+    "5_fixed_model_verified": {
+      "status": "PASS",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "6_configured_endpoint_verified": {
+      "status": "PASS",
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+    },
+    "7_quotamanager_myt_date_verified": {
+      "status": "PASS",
+      "state_date": "2026-11-09",
+      "current_myt_date": "2026-11-09",
+      "timezone": "Asia/Kuala_Lumpur"
+    },
+    "8_internal_quota_confirmed": {
+      "status": "PASS",
+      "reserved_before": 3,
+      "daily_limit": 5,
+      "slots_remaining": 2
+    },
+    "9_token_limits_accommodated": {
+      "status": "PASS",
+      "estimated_input_tokens": 12500,
+      "model_input_token_limit": 1048576,
+      "max_output_tokens_configured": 8192,
+      "estimated_output_tokens": 3500
+    },
+    "10_single_execution_configured": {
+      "status": "PASS",
+      "per_run_limit": 1,
+      "enforcement": "EXACTLY_1_HTTP_CALL_NO_RETRY"
+    },
+    "11_credential_availability": {
+      "status": "FAIL_NO_LOCAL_CREDENTIAL",
+      "credential_detected": false,
+      "note": "GitHub Actions secret 'secrets.GEMINI_API_KEY' is configured for CI runners; local environment currently has 0 key."
+    }
+  },
+  "execution_summary": {
+    "http_requests_sent": 0,
+    "reservation_id": null,
+    "quota_reserved": false,
+    "model_used": "gemini-3.5-flash-lite",
+    "http_status": null,
+    "raw_response": null,
+    "token_usage": null,
+    "generated_articles_count": 0,
+    "passed_validation_count": 0,
+    "rejected_articles_count": 0,
+    "rejection_details": [],
+    "execution_outcome": "PREFLIGHT_HALTED_MISSING_LOCAL_API_KEY",
+    "error_detail": "GEMINI_API_KEY environment variable is not populated in local session. Emitted 0 HTTP requests."
+  },
+  "shortlisted_stories": [
+    {
+      "rank": 1,
+      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+      "title_bm": "Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan",
+      "category": "sabah",
+      "geographic_scope": "SANDAKAN / SABAH",
+      "primary_sources": [
+        "诗华日报沙巴版",
+        "Daily Express Malaysia"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 7015,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "14th Sabah Local Government Games opened in Sandakan by Minister Arifin Arif; promotes inter-council cooperation, town beautification, and economic boost to local businesses."
+    },
+    {
+      "rank": 2,
+      "title": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
+      "title_bm": "Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji",
+      "category": "sabah",
+      "geographic_scope": "SABAH STATEWIDE",
+      "primary_sources": [
+        "Borneo Post",
+        "The Star"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 4895,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Chief Minister Hajiji Noor confirms Sabah Budget 2027 will allocate major funding to resolve persistent clean water supply, electricity, and road connectivity across all districts."
+    },
+    {
+      "rank": 3,
+      "title": "沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区",
+      "title_bm": "DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong",
+      "category": "national",
+      "geographic_scope": "KOTA KINABALU / SANDAKAN",
+      "primary_sources": [
+        "Daily Express Malaysia",
+        "The Star"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 6843,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Sabah DAP Chairman Phoong Jin Zhe affirms party resolution to defend Kota Kinabalu and Sandakan parliamentary seats while pursuing internal party restructuring."
+    },
+    {
+      "rank": 4,
+      "title": "兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命",
+      "title_bm": "Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit",
+      "category": "sabah",
+      "geographic_scope": "PENAMPANG / SABAH",
+      "primary_sources": [
+        "TV Sabah News",
+        "诗华日报沙巴版",
+        "Daily Express Malaysia"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 3,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 1380,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Fatal road accident at Jalan Penampang where a 41-year-old motorcyclist died on the spot after losing control and crashing into a roadside drainage barrier."
+    },
+    {
+      "rank": 5,
+      "title": "沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案",
+      "title_bm": "Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu",
+      "category": "national",
+      "geographic_scope": "SABAH STATEWIDE",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 2849,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "State government initiates research on Sabah Sustainable Transport Master Plan (SSTMP) to solve urban congestion in Kota Kinabalu and enhance statewide freight links."
+    },
+    {
+      "rank": 6,
+      "title": "泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程",
+      "title_bm": "Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1",
+      "category": "national",
+      "geographic_scope": "SABAH INFRASTRUCTURE",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 10780,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Comprehensive progress assessment of Phase 1 Pan Borneo Highway in Sabah, examining completed packages, ongoing delays, and federal funding commitments."
+    },
+    {
+      "rank": 7,
+      "title": "沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动",
+      "title_bm": "Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi",
+      "category": "national",
+      "geographic_scope": "SABAH / SANDAKAN PORT",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 1792,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Sabah Immigration Department deports 8,472 undocumented immigrants via sea and air operations, including recent transfer of 466 detainees from Sandakan Port."
+    },
+    {
+      "rank": 8,
+      "title": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
+      "title_bm": "MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu",
+      "category": "sabah",
+      "geographic_scope": "EAST COAST SABAH / KUDAT / SANDAKAN",
+      "primary_sources": [
+        "诗华日报沙巴版",
+        "NST Online"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 365,
+      "editorial_status": "READY_WITH_LIMITED_SOURCE_MATERIAL",
+      "summary": "MetMalaysia issues yellow-level alert for persistent rainfall affecting Kudat, Sandakan, Kinabatangan, Beluran, and Telupid through Wednesday."
+    },
+    {
+      "rank": 9,
+      "title": "亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益",
+      "title_bm": "Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan",
+      "category": "national",
+      "geographic_scope": "KOTA KINABALU / TUARAN / KIMANIS",
+      "primary_sources": [
+        "Jesselton Times",
+        "星洲日报沙巴版",
+        "Daily Express Malaysia",
+        "Bernama"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 4,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 10304,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "In-depth debate on upgrading existing KKIA terminal vs constructing new international airport in Kimanis/Tuaran, evaluating capex, connectivity, and commercial impact."
+    },
+    {
+      "rank": 10,
+      "title": "第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客",
+      "title_bm": "Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta",
+      "category": "national",
+      "geographic_scope": "SANDAKAN (SEPILOK RDC)",
+      "primary_sources": [
+        "诗华日报"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 639,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "16th Borneo Bird Festival at Rainforest Discovery Centre in Sandakan concludes with record 45 bird race teams from Malaysia, Singapore, Philippines, and overseas."
+    }
+  ],
+  "quota_state": {
+    "date": "2026-11-09",
+    "reserved_count": 3,
+    "daily_limit": 5,
+    "status": "COMPLETED"
+  }
+}

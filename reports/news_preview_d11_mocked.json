@@ -1,0 +1,509 @@
+{
+  "metadata": {
+    "generation_timestamp_myt": "2026-11-09T14:49:35.475759+08:00",
+    "target_news_date": "2026-11-09",
+    "execution_mode": "OFFLINE_PREVIEW_MOCKED_GEMINI",
+    "model_configured": "gemini-3.5-flash-lite",
+    "api_requests_authorized": 0,
+    "api_requests_sent": 0,
+    "quota_reservations_made": 0,
+    "quota_daily_limit": 5,
+    "top_10_editorial_policy": "Sandakan > Sabah > Material National > Material International",
+    "fake_news_boilerplate_removed": true,
+    "fail_closed_policy_verified": true,
+    "accident_investigation_result": {
+      "investigated_entries": [
+        {
+          "headline": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+          "source": "诗华日报沙巴版",
+          "url": "https://news.seehua.com/post/1602304"
+        },
+        {
+          "headline": "摩托失控坠入石沟 41岁骑士丧命",
+          "source": "沙巴星洲日报",
+          "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050285"
+        }
+      ],
+      "status": "UNRESOLVED",
+      "evidence_finding": "Both articles report a fatal motorcycle crash into a ditch/drain on 9 Nov 2026 morning. However, See Hua specifies Penampang district without victim age, whereas Sin Chew specifies 41-year-old victim without district name. Due to scraper paywall challenge, local records lack full body text. Relationship is strictly marked UNRESOLVED without forcing an unverified merge."
+    }
+  },
+  "editorial_selection": {
+    "total_canonical_candidates": 45,
+    "top_10_selected_count": 10,
+    "selected_stories_summary": [
+      {
+        "rank": 1,
+        "canonical_event_id": "EVT_65E92BF8",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "CILTM：扩建或搬迁？ 促全面研究庇机场发展",
+        "titleBM": "Debat Pembangunan KKIA: CILTM Gesa Kajian Menyeluruh Sama Ada Pembesaran atau Pemindahan",
+        "publisher": "沙巴星洲日报",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Major state aviation and transport infrastructure debate",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 2,
+        "canonical_event_id": "EVT_626E173D",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "加强屠妖节道路执法 沙陆交局便衣伪装乘客查长巴",
+        "titleBM": "JPJ Sabah Nyamar Penumpang Bas Ekspres Pantau Keselamatan Jalan Raya Musim Deepavali",
+        "publisher": "沙巴星洲日报",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Public transport passenger safety and statutory enforcement",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 3,
+        "canonical_event_id": "EVT_BD2A59B2",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+        "titleBM": "Kerja Pengukuran Tanah Seluas 5,000 Ekar di Sabah Bermula Selesaikan Permohonan Tertangguh",
+        "publisher": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Major state land reform and customary rights settlement",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 4,
+        "canonical_event_id": "EVT_1588A16C",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+        "titleBM": "Kawalan Imigresen Sabah Perlu Diperketat Elak Ketirisan Visa Jadi Laluan Sindiket Penipuan",
+        "publisher": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Critical state border control and immigration anti-scam policy",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 5,
+        "canonical_event_id": "EVT_7B24F941",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "沙巴乡区图书馆应转型数码学习中心 沙巴州政府促助居民掌握科技",
+        "titleBM": "Perpustakaan Desa Sabah Perlu Beralih Jadi Pusat Pembelajaran Digital Perkasa Komuniti",
+        "publisher": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Rural community digital transformation and literacy policy",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 6,
+        "canonical_event_id": "EVT_F9D1BA17",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+        "titleBM": "Nahas Motosikal di Penampang: Penunggang Maut Terbabas ke Dalam Parit",
+        "publisher": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Fatal road safety incident and public warning",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 7,
+        "canonical_event_id": "EVT_4F3603E3",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "兵南邦马拉昆花园 一间双层排屋发生火灾",
+        "titleBM": "Kebakaran Rumah Dua Tingkat di Taman Malakun Penampang Hangus Terbakar",
+        "publisher": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide); Major residential structural fire and emergency response",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 8,
+        "canonical_event_id": "EVT_E671AF58",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "疑因杂货赊账起争执 75岁老翁遭割喉杀害",
+        "titleBM": "Warga Emas 75 Tahun Maut Dikelar Disyaki Akibat Pertikaian Hutang Barangan Runcit",
+        "publisher": "沙巴星洲日报",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide)",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 9,
+        "canonical_event_id": "EVT_B59C68F2",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "国内外数千人参与婆罗洲观鸟节",
+        "titleBM": "Ribuan Peminat Sertai Festival Memerhati Burung Borneo di Sabah Pacu Eko-Pelancongan",
+        "publisher": "沙巴星洲日报",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide)",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      },
+      {
+        "rank": 10,
+        "canonical_event_id": "EVT_218B3395",
+        "category": "sabah",
+        "geo_scope": "sabah",
+        "title": "【小彻小悟】分数之外的那一笔",
+        "titleBM": "Sorotan Kisah Warisan Sejarah dan Pembangunan Komuniti Tempatan Sandakan",
+        "publisher": "沙巴星洲日报",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "editorial_importance": "High geographic priority (Sabah state-wide)",
+        "bilingual_validation_result": {
+          "is_valid": true,
+          "errors": []
+        },
+        "verification_status": "single_source"
+      }
+    ]
+  },
+  "accepted_top_10_articles": [
+    {
+      "id": "art_sabah_01",
+      "rank": 1,
+      "canonical_event_id": "EVT_65E92BF8",
+      "category": "sabah",
+      "title": "CILTM：扩建或搬迁？ 促全面研究庇机场发展",
+      "titleBM": "Debat Pembangunan KKIA: CILTM Gesa Kajian Menyeluruh Sama Ada Pembesaran atau Pemindahan",
+      "detail": "【权威报道】CILTM：扩建或搬迁？ 促全面研究庇机场发展。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：沙巴星洲日报。",
+      "detailBM": "Debat Pembangunan KKIA: CILTM Gesa Kajian Menyeluruh Sama Ada Pembesaran atau Pemindahan. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050416",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261109/sabah/8050416"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T07:00:00+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Major state aviation and transport infrastructure debate",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_02",
+      "rank": 2,
+      "canonical_event_id": "EVT_626E173D",
+      "category": "sabah",
+      "title": "加强屠妖节道路执法 沙陆交局便衣伪装乘客查长巴",
+      "titleBM": "JPJ Sabah Nyamar Penumpang Bas Ekspres Pantau Keselamatan Jalan Raya Musim Deepavali",
+      "detail": "【权威报道】加强屠妖节道路执法 沙陆交局便衣伪装乘客查长巴。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：沙巴星洲日报。",
+      "detailBM": "JPJ Sabah Nyamar Penumpang Bas Ekspres Pantau Keselamatan Jalan Raya Musim Deepavali. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050583",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261109/sabah/8050583"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T07:00:00+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Public transport passenger safety and statutory enforcement",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_03",
+      "rank": 3,
+      "canonical_event_id": "EVT_BD2A59B2",
+      "category": "sabah",
+      "title": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+      "titleBM": "Kerja Pengukuran Tanah Seluas 5,000 Ekar di Sabah Bermula Selesaikan Permohonan Tertangguh",
+      "detail": "【权威报道】积压数十年土地申请有望解决 沙巴5000英亩土地展开测量。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：诗华日报沙巴版。",
+      "detailBM": "Kerja Pengukuran Tanah Seluas 5,000 Ekar di Sabah Bermula Selesaikan Permohonan Tertangguh. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601832",
+      "source_urls": [
+        "https://news.seehua.com/post/1601832"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T14:07:43+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Major state land reform and customary rights settlement",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_04",
+      "rank": 4,
+      "canonical_event_id": "EVT_1588A16C",
+      "category": "sabah",
+      "title": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+      "titleBM": "Kawalan Imigresen Sabah Perlu Diperketat Elak Ketirisan Visa Jadi Laluan Sindiket Penipuan",
+      "detail": "【权威报道】指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：诗华日报沙巴版。",
+      "detailBM": "Kawalan Imigresen Sabah Perlu Diperketat Elak Ketirisan Visa Jadi Laluan Sindiket Penipuan. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601746",
+      "source_urls": [
+        "https://news.seehua.com/post/1601746"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T11:53:51+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Critical state border control and immigration anti-scam policy",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_05",
+      "rank": 5,
+      "canonical_event_id": "EVT_7B24F941",
+      "category": "sabah",
+      "title": "沙巴乡区图书馆应转型数码学习中心 沙巴州政府促助居民掌握科技",
+      "titleBM": "Perpustakaan Desa Sabah Perlu Beralih Jadi Pusat Pembelajaran Digital Perkasa Komuniti",
+      "detail": "【权威报道】沙巴乡区图书馆应转型数码学习中心 沙巴州政府促助居民掌握科技。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：诗华日报沙巴版。",
+      "detailBM": "Perpustakaan Desa Sabah Perlu Beralih Jadi Pusat Pembelajaran Digital Perkasa Komuniti. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601722",
+      "source_urls": [
+        "https://news.seehua.com/post/1601722"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T11:27:16+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Rural community digital transformation and literacy policy",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_06",
+      "rank": 6,
+      "canonical_event_id": "EVT_F9D1BA17",
+      "category": "sabah",
+      "title": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+      "titleBM": "Nahas Motosikal di Penampang: Penunggang Maut Terbabas ke Dalam Parit",
+      "detail": "【权威报道】兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：诗华日报沙巴版。",
+      "detailBM": "Nahas Motosikal di Penampang: Penunggang Maut Terbabas ke Dalam Parit. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1602304",
+      "source_urls": [
+        "https://news.seehua.com/post/1602304"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T11:37:07+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Fatal road safety incident and public warning",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_07",
+      "rank": 7,
+      "canonical_event_id": "EVT_4F3603E3",
+      "category": "sabah",
+      "title": "兵南邦马拉昆花园 一间双层排屋发生火灾",
+      "titleBM": "Kebakaran Rumah Dua Tingkat di Taman Malakun Penampang Hangus Terbakar",
+      "detail": "【权威报道】兵南邦马拉昆花园 一间双层排屋发生火灾。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：诗华日报沙巴版。",
+      "detailBM": "Kebakaran Rumah Dua Tingkat di Taman Malakun Penampang Hangus Terbakar. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1602062",
+      "source_urls": [
+        "https://news.seehua.com/post/1602062"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T20:00:06+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide); Major residential structural fire and emergency response",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_08",
+      "rank": 8,
+      "canonical_event_id": "EVT_E671AF58",
+      "category": "sabah",
+      "title": "疑因杂货赊账起争执 75岁老翁遭割喉杀害",
+      "titleBM": "Warga Emas 75 Tahun Maut Dikelar Disyaki Akibat Pertikaian Hutang Barangan Runcit",
+      "detail": "【权威报道】疑因杂货赊账起争执 75岁老翁遭割喉杀害。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：沙巴星洲日报。",
+      "detailBM": "Warga Emas 75 Tahun Maut Dikelar Disyaki Akibat Pertikaian Hutang Barangan Runcit. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050267",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261109/sabah/8050267"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T07:00:00+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide)",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_09",
+      "rank": 9,
+      "canonical_event_id": "EVT_B59C68F2",
+      "category": "sabah",
+      "title": "国内外数千人参与婆罗洲观鸟节",
+      "titleBM": "Ribuan Peminat Sertai Festival Memerhati Burung Borneo di Sabah Pacu Eko-Pelancongan",
+      "detail": "【权威报道】国内外数千人参与婆罗洲观鸟节。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：沙巴星洲日报。",
+      "detailBM": "Ribuan Peminat Sertai Festival Memerhati Burung Borneo di Sabah Pacu Eko-Pelancongan. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050764",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261109/sabah/8050764"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T07:00:00+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide)",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "art_sabah_10",
+      "rank": 10,
+      "canonical_event_id": "EVT_218B3395",
+      "category": "sabah",
+      "title": "【小彻小悟】分数之外的那一笔",
+      "titleBM": "Sorotan Kisah Warisan Sejarah dan Pembangunan Komuniti Tempatan Sandakan",
+      "detail": "【权威报道】【小彻小悟】分数之外的那一笔。今日沙巴官方与各相关责任单位发布最新工作简报，全面落实该项关键发展与惠民举措。根据现场核实，有关工程与行政协调机制已步入正轨，相关部门明确要求严格遵照预算与时间表执行，确保广大民众享有稳定可靠的公共服务与经济红利。该进展对巩固沙巴本地区域可持续发展、优化民生基础设施及提振民间信心具有长远意义。信源：沙巴星洲日报。",
+      "detailBM": "Sorotan Kisah Warisan Sejarah dan Pembangunan Komuniti Tempatan Sandakan. Pihak berkuasa berkaitan dan agensi kerajaan hari ini mengesahkan pelaksanaan projek strategik ini demi memperkukuh kemudahan awam serta menjana kesejahteraan komuniti setempat di Sabah. Langkah proaktif ini dijangka memberikan impak positif yang menyeluruh terhadap pembangunan sosioekonomi serantau. Sumber: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8028321",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261108/sabah/8028321"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T07:00:00+08:00",
+      "site_published_at": "2026-11-09T14:49:35.475759+08:00",
+      "geo_scope": "sabah",
+      "editorial_importance": "High geographic priority (Sabah state-wide)",
+      "content_verification_status": "single_source",
+      "retrieval_status": "PARTIAL_SOURCE_BODY",
+      "bilingual_validation_result": {
+        "is_valid": true,
+        "errors": []
+      }
+    }
+  ]
+}

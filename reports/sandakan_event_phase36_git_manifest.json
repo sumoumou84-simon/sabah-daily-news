@@ -1,0 +1,71 @@
+{
+  "phase": "Phase 3.6",
+  "audit_name": "Controlled GitHub Cloud Dry-Run Git Manifest",
+  "timestamp": "2026-11-08T15:07:00+08:00",
+  "remote_repository": "https://github.com/sumoumou84-simon/sabah-daily-news.git",
+  "isolation_strategy": "Dedicated Feature Branch for Event Engine with Minimal Workflow Definition on Main",
+  "branches": {
+    "main": {
+      "branch_role": "Production GitHub Pages source (serving root /)",
+      "local_commit_sha": "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2",
+      "remote_commit_sha": "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2",
+      "commit_message": "ci: add sandakan_events_publish.yml manual workflow dispatch definition [skip ci]",
+      "files_added": [
+        ".github/workflows/sandakan_events_publish.yml"
+      ],
+      "files_modified": 0,
+      "files_deleted": 0,
+      "internal_engine_files_present_on_main": false,
+      "public_isolation_status": "SECURE_AND_VERIFIED",
+      "github_pages_impact": "ZERO_IMPACT (Dot-directory .github is ignored by web server/Jekyll)"
+    },
+    "feature/sandakan-events-engine": {
+      "branch_role": "Isolated Feature Branch containing complete Sandakan Event Engine and test suite",
+      "local_commit_sha": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "remote_commit_sha": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "commit_message": "feat(events): implement standalone sandakan event engine with security hardening [skip ci]",
+      "files_added_count": 28,
+      "tracked_components": [
+        ".github/workflows/sandakan_events_publish.yml",
+        "config/sandakan_event_config.json",
+        "data/sandakan_events_cache.json",
+        "event_engine/__init__.py",
+        "event_engine/collectors/__init__.py",
+        "event_engine/collectors/base.py",
+        "event_engine/collectors/stb_collector.py",
+        "event_engine/collectors/ticket2u_collector.py",
+        "event_engine/deduplicator.py",
+        "event_engine/engine.py",
+        "event_engine/frontend_adapter.py",
+        "event_engine/geo_verifier.py",
+        "event_engine/interface.py",
+        "event_engine/models.py",
+        "event_engine/normalizer.py",
+        "event_engine/time_engine.py",
+        "event_engine/trust_assessor.py",
+        "events.html",
+        "events_data.json",
+        "events_frontend.json",
+        "scripts/build_sandakan_events_site.py",
+        "scripts/sandakan_event_engine.py",
+        "tests/test_collector_fixtures.py",
+        "tests/test_event_engine.py",
+        "tests/test_event_engine_integration.py",
+        "tests/test_frontend_adapter.py",
+        "tests/test_phase32_lifecycle_validation.py",
+        "tests/test_phase34_security_and_build.py"
+      ],
+      "public_isolation_status": "ISOLATED (Not attached to GitHub Pages)"
+    }
+  },
+  "diagnostic_files_preservation": {
+    "status": "PRESERVED_UNTOUCHED_UNSTAGED",
+    "files": [
+      "collectors/facebook_collector.py",
+      "config/news_config.json",
+      "pipeline/deduplicator.py",
+      "pipeline/normalizer.py"
+    ]
+  },
+  "verification_verdict": "GIT_ISOLATION_VERIFIED"
+}

@@ -1,0 +1,76 @@
+name: "Isolated Test: Phase D-12.1 Single-Batch Gemini Execution (Non-Production)"
+
+on:
+  push:
+    branches:
+      - 'test/d12-gemini-single-batch-20261109'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Authorization reason for single Gemini batch'
+        required: true
+        default: 'Phase D-12.1 Isolated Single-Batch Gemini Execution'
+
+concurrency:
+  group: sabah-news-publishing-lock
+  cancel-in-progress: false
+
+jobs:
+  gemini_single_batch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 授权写回配额预留状态至测试隔离分支
+
+    steps:
+      - name: 检出隔离测试分支代码
+        uses: actions/checkout@v4
+        with:
+          ref: test/d12-gemini-single-batch-20261109
+          fetch-depth: 0
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 tzdata || true
+
+      - name: 配置 Git 提交身份
+        run: |
+          git config --global user.name "Simon-Daily-Bot"
+          git config --global user.email "bot@simondaily.com"
+
+      - name: 预检密钥可用性 (仅元数据校验，严禁输出密钥值)
+        env:
+          KEY_CHECK: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -c "import os, sys; k = os.environ.get('KEY_CHECK', '').strip(); print('GEMINI_API_KEY Available in Runner:', bool(k)); sys.exit(0 if k else 1)"
+
+      - name: 执行单次真实 Gemini 单批次编译与 D-7 双语核验
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_ACTIONS: "true"
+          GITHUB_REF_NAME: "test/d12-gemini-single-batch-20261109"
+        run: |
+          python scripts/run_phase_d12_single_batch.py
+
+      - name: 上传 D-12.1 预览产物 (非生产发布)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gemini-single-batch-preview-d12-1
+          path: |
+            reports/gemini_single_batch_preview_d12*.*
+            reports/token_usage_observation.jsonl
+            config/gemini_quota_state.json
+          retention-days: 7
+
+      - name: 同步生成产物与配额状态至隔离分支 (严禁合并主分支)
+        if: always()
+        run: |
+          git add reports/gemini_single_batch_preview_d12*.* reports/token_usage_observation.jsonl config/gemini_quota_state.json || true
+          git commit -m "docs: save Phase D-12.1 Gemini single-batch execution artifacts [skip ci]" || echo "今日无变动"
+          git push origin test/d12-gemini-single-batch-20261109 || true

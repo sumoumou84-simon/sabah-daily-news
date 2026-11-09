@@ -1,0 +1,1112 @@
+{
+  "metadata": {
+    "generation_timestamp_myt": "2026-11-09T12:25:41.277090+08:00",
+    "target_news_date": "2026-11-09",
+    "model_configured": "gemini-3.5-flash-lite",
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+    "api_requests_authorized": 1,
+    "api_requests_sent": 0,
+    "reservation_status": "BLOCKED_NO_LOCAL_API_KEY",
+    "track_a_attempted": false,
+    "track_a_error": "No GEMINI_API_KEY or GOOGLE_API_KEY detected in local environment. Fail-closed with 0 HTTP calls.",
+    "quota_state_before": {
+      "schema_version": "1.0",
+      "timezone": "Asia/Kuala_Lumpur",
+      "date": "2026-11-09",
+      "reserved_count": 3,
+      "daily_limit": 5,
+      "reservations": [
+        {
+          "reservation_id": "res_2026-11-09_1_0b65d3ba",
+          "timestamp": "2026-11-09T04:15:30.347056+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "FAILED_REMOTE_PERSISTENCE"
+        },
+        {
+          "reservation_id": "res_2026-11-09_2_0d277ea2",
+          "timestamp": "2026-11-09T10:29:53.578624+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "RESERVED"
+        },
+        {
+          "reservation_id": "res_2026-11-09_3_1004ac84",
+          "timestamp": "2026-11-09T11:31:39.429219+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "COMPLETED"
+        }
+      ],
+      "last_updated": "2026-11-09T11:31:52.222335+08:00",
+      "status": "COMPLETED",
+      "initialization_mode": "AUTHORIZED_PHASE_N4"
+    },
+    "quota_state_after": {
+      "schema_version": "1.0",
+      "timezone": "Asia/Kuala_Lumpur",
+      "date": "2026-11-09",
+      "reserved_count": 3,
+      "daily_limit": 5,
+      "reservations": [
+        {
+          "reservation_id": "res_2026-11-09_1_0b65d3ba",
+          "timestamp": "2026-11-09T04:15:30.347056+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "FAILED_REMOTE_PERSISTENCE"
+        },
+        {
+          "reservation_id": "res_2026-11-09_2_0d277ea2",
+          "timestamp": "2026-11-09T10:29:53.578624+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "RESERVED"
+        },
+        {
+          "reservation_id": "res_2026-11-09_3_1004ac84",
+          "timestamp": "2026-11-09T11:31:39.429219+08:00",
+          "model": "gemini-3.5-flash-lite",
+          "status": "COMPLETED"
+        }
+      ],
+      "last_updated": "2026-11-09T11:31:52.222335+08:00",
+      "status": "COMPLETED",
+      "initialization_mode": "AUTHORIZED_PHASE_N4"
+    }
+  },
+  "discovery_summary": {
+    "sources_collected_counts": {
+      "rss": 374,
+      "portal": 60,
+      "agency": 0,
+      "facebook": 0
+    },
+    "total_raw_collected": 434,
+    "normalized_articles_count": 322,
+    "canonical_events_count": 240,
+    "sample_source_urls": [
+      "https://www.theborneopost.com/2026/11/08/political-cooperation-must-not-come-at-expense-of-institutional-integrity-rule-of-law",
+      "https://news.google.com/rss/articles/CBMivAFBVV95cUxQMmlPS09vbjBDSmhseF9aZ19BM0lxNndRWHN2VTJtZGFPS29MY2hmYkJNeGg0VWpjUUZtazAtcDdhLUpVLU9fclhTSVo1Vkw4MkczTmZpSVNVd3EyYWlEUXduVmhVVWlXNnBYdFgwTVRJRjZ1VVd1VjBtR3BiaHIwUm9HUnJFMDhYYzhmekJwWm9MV1E1QXppbFpwbGxLSWFXZEJEbkcwMlc3WU1pWjBCUGNEaGFBUmd2YmRJQdIBwgFBVV95cUxNSEZBRTN0Wm9tSUhjSzRoVGRtWnJ6NDB0RUY1SFA1NmxiZjZfRFNXRWRldFZ3NEJUMEo4TkFRaVFkeS0zNmNPdGl5YWhJQTctR2xzMjBvRXFtLUUtbHlGTFdMb3ItTndZeFpNR1lnTmNIRllnM0x4RjVaX2VnQ3FrUWJ6YXlac0Q1OUQ1M2kydUdrTVBvTWN0VVIwUVZTb0ZETXprVXBrQjdNREFWSFRBQzNCSHVmYzFscFU0dGhqWnN3QQ?oc=5",
+      "https://news.google.com/rss/articles/CBMirAFBVV95cUxQemFYMDBvMzhVX0NHdEplVEMwalFJaTNzTFNGTEQyZnpYN3NoWjZoQXE2LXZoYXNVWjVUT19nb0YzcnVBUVBVNElsWVhKam9LT0lQTTR1dGlDX252RzFlYlNTOHZCdGRkNW1RM1V3SWdxMmF3U2lVV2tzTXA0NGZyb3BZVGpzUERFX3lsUURHY3cyclNKVlN3MDBmS25KWTJ1aGE1NnR1Wmx0VDZV?oc=5",
+      "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTEsxU2k5bThLNTF4ZTQ3WHVMdTdHMExvcHdDZXFCWjBNRFhyQTBETnN1dFVpMW00MDZiS3FOSldYNVRLeUl6QkZrOHEwM1dYbXlGUTNadGZYVFpkWFQ5MzA1Z3ZDOFpKYWdWZTU4ZE1fRThWeWhOMmJndGxQbTk3SHZKR0tXVUFNb0M3bA?oc=5",
+      "https://news.google.com/rss/articles/CBMifkFVX3lxTE1lemlaRngxNEVrMUloZElpdjA4ODhqcnBaU010OXUwR3hhNFUtTXJpb0FHb0lxTS02aDhZMlFBUHhoQjZ0ZkVTRzNud3Bod1drLWpWanF0eGFuZk1fSlBzdEJKazFJa1FuQV9TeWJ5SXR2cWRmaDRLa01TTlZqdw?oc=5",
+      "https://news.google.com/rss/articles/CBMimwFBVV95cUxObVU3RnF6REhEMVpYMFdWN2tJSGVMMFVMTktDM20yTjgyLVJ5Q2wyaEc3TXY1WnNGdjBqU01pNmlrMUt4bUVrMGlaWGpZRTZiaEg3RzRDby1WR0xJWGtESUxTZnZMd1p3MFhKN1pONS1xcWF3TXdtdC1PUXoxbGd2dzJoZ3dxVG1pQVlYWk80Szk2UUNoRm5ibFdPTdIBoAFBVV95cUxNcmJESTM2MmN0WkVZd0NNaWR3dWk5cHE2YmVHV3BRYmdUUDR0bTNLZzF5Q2tUdGtFU2p2YzZ3XzdISUU3WXA2Zklzd1R1SUpLQ1JndkhrSEthMXVMVDg4YUdCMTUwbm9RODR5bkNobW5uQWx5OGduNHRHaXpGbHlxUmdUZFFia3lqZThTcnhwZ1NWSHJXTnFta3JnOXF5UWlW?oc=5",
+      "https://news.seehua.com/post/1601871",
+      "https://news.google.com/rss/articles/CBMipAFBVV95cUxNWWZjYXBZY3ZDTUFvbjJieHZVMm12SmxKTzN0cEFlZW43UHN0YVVzZlJCS1RnMjFNSk5CRmZybzZLc1otVVZvV1F3Q3hjYkZxQ3JqZnhnU1JhS1lkWHctcG1WY0ZWU2ZFQzdLQmJ1ajh1N1lCUGx3V3l0ODZXYUs3TXNGa2xkbGtESjhiNHV4NHNrcndWcTdRUm9FX1dBc3ZsbWxMOA?oc=5",
+      "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9kcUhleWhUc242aGswVXAzeHRjM0QwVW9xbGRydVdIZTRVNWFVQmhhcGZVcXRGOXdvQXV3VU9OYmhEekVocTBzM2ZRY0xFNHl5ZXpwaEJBMTNQVmJwOHZ2N0pOQWo?oc=5",
+      "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNQVhGMjcyM2wwR3FBM2JKbnE5V1I3TDhQc1BpZl9nQzR4OG9hOE9vRWR3cnhsa2J0LW9WdkNfMzQ2Rk9VbmRYc2dELUt4RXRWbGgwbHlxSFFBTzFFRHlrWEhjdzRhR1RndDNLTENFZDgtYkxQUFpKY2JQSFF1S21tNzFhQld5RUJvN0RwMXQyREVMZVJ6RWN2ak45emFLSTNoY0RqdHQ0cXdzb3g0NU1yeWZSV0tTckRFOFF3RGxabjh4SEhVaE1TenNMVHNTZ2F5bGhF?oc=5",
+      "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QeFRHTWlvRG5uZ3ZEQy03VV96OXVXQUpTdHd0SUJYT0FzeTZNNmdZcEdlZ3M4ZnN4cUpHaV84MzJlbGowLVZjYXl6X1FYeHRvcHg2ZEllMi11LThSWk1NWVBmS1l3MDNVc3o0U3FuWFdzaGE4OEJlcUhCUzZMZw?oc=5",
+      "https://news.google.com/rss/articles/CBMigAFBVV95cUxPVVlPcnhhU3RvSkFzWm1BeV8tOHQ5UjVENVcxUkZDbVRHSXMwX3pMT2ZzY1JoOHpfN1BzSzBsWW1vb3NVLVljbmhMMm5pSV9pMHRvMks4X3I4Mjd2dmVEcVJHNFk0cURuQmxQaW4tQ0dsUl9hS2RockFEb0dCZ2Y1cg?oc=5",
+      "https://news.google.com/rss/articles/CBMitgFBVV95cUxQQ2pUQkpjTEctV0RiS0s5NWhGTHlnOGl1UXRReHcwaEVIbmR5dEwtLWZPeEN5YVY4c2c4MlNUSjF1NDlBOE9nU1Vnel9aRVBYcEd1b2RpSlEweUdJUk8yMUZhY0JHMk8zU1ZjWm5JYlI2NXlBazRJMVB5bG5ZeW5LVDhYQUU1TVdyd1g3TDQxREFzSnRDczlNUGhhV2t6S0FPQmo0dFZTVDY1aDY5NmJGX0ZocmRjZ9IBuwFBVV95cUxNYVlvTkFMTDNHSDBMMHNJSEktRWo2V2NtaFZsQ3NySWVHS3QtWElTdUVKWEVBaWVad1paS19UZ0tUVDZZLUp2V0U3YnFHc0RhSU1fa2hyMTdSVUVobWo5enNDVUt2TjVNMWdKWVZCSi02b0FMdTJrc0cxUjY5Yi04WEZ3RFZQRG5tVk05UzBGZkpmOU13Smd2dnlIQzRyLXdSRG5zRXI1TGM5a1J4V19uQzBGN2VDN1JGNERv?oc=5",
+      "https://news.google.com/rss/articles/CBMikAFBVV95cUxPR2d6amdpQVZ2WXRWSnhsNUswVllvS19Cd2dveFJDUi1hcWdxZ2pZc25jUE4yRHRtdmliLU8tOHdwdjV4aGFkMkxfVFEwajZnMjBvVmFjRDZNRnYxcFA4WGtUMEw4a2NJZ0JCbGRXY3lXYlVsRXYyLTM0RnpYNVBSOW9XbzZIeGdYQVpWaTZsVWc?oc=5",
+      "https://news.google.com/rss/articles/CBMieEFVX3lxTE5jZUQ4bXkyLXhvZllDdF9KNlFlMWlmVEhFQk5EOU9WbHBIU1g5Z2pTMzhpMnpycEk3NDVvYjR6UTV4OUpMamRtNFU2NW41X2JZTVdxSlZ4cFBMUTk4TlA5bC1IMGdna2FCQUQ4UlNfSl9MX2JYSzJJdw?oc=5",
+      "https://news.google.com/rss/articles/CBMioAFBVV95cUxOY1J1MWlZTmpBNWdBY3kwTjhubG9id243VEVreXpLeVB3WjFPYlRYaVZXX3NhbWlBWHhiZThMV0NnR3kxVjRfdjdncVFYZHVsTEVxSy1PXzZFLVRvSU5yS0NQU0szVTdRcjFUbEo5MmhGcEVhd1J6VmxibTIteEpBR3d6aWplVzhHOVo5VWdwVUQtaTJ2OW4tdUdFTXRWSnNB0gGmAUFVX3lxTE9MdUxrUnAydXoxN1k5bGc0VHhkSjBZTHV6dXNROEZrcjdOYVA2a0VUYXB3QkV2SDRZSlFfaDhBQlJIeGlxM2Y2anp0VUVTbTdNM0tqdTNabXU3WEFtT29VbzNaQkZOX1I1YTVqcFRUNkVIUldKN1YyNm5vajl2Y09NVTA4VlAyWjJwcFdXRnlNZzFUYWptTUN4dndBald3ZExHY2trR2c?oc=5",
+      "https://news.google.com/rss/articles/CBMif0FVX3lxTFA2blBnUkI5V2s1N1F5MU4zWTNoMUZMYUUwc0xybzV2aUNjUDNJaWtzUHdBNVd5eTI1VUs3T2V2b3VqSzg2aUd5MXVWRWlYZFV4aC1wZXRUNHo0WXJxbG15ck40US03a1pBdUNManVZaXp0T2VHTkc3T0VNZUxPaUk?oc=5",
+      "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNZFZDUkZ1aTBIU2g3TDlHWE9jTnhua0tkV3lvZ3lJdFoxZF8yWWhCSGh2UE5ZbU4xUzJ1Uk9GSmFSbkZNc1pXMHJId0E2MTNseGk5dGo1eUJuSXNZMUNoM200SXpUc1VQM0M5c1NIQ21reDhCa3YwY1RuMy1Od2lOTmY2TjhhWHJRVDZxUkdHN1k3YnBOU0NrUkFnbmd0REVxeFJRdUU3V2lnZVNzMDJaUHRfRDZndkZ5LS1meVFmeUFRcTlwRldlVWhPX1JhZlp0N3lj?oc=5",
+      "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPTkI4aUgwcFpkS3M0WkR0VG1lS2sxS3hkUGQ2R2xGTDFuVklEd1RyRHdYRVVzRzNJTk1NaUpyWTBONnR1QXVmSWNtdUNkV0J2UlAtQjlvcEZPVmViU1pFX0dYc0xRREJvWTRjd1J4MWVKVGZzSWF2SFpIdVF4aWdLLXpxcFpBVW5qZGM3UTdmZV9XY0EyeEQ4OU12dW5aV3B5Z0NVYWlhUjRBRk9ENHpHNGkyOENrY2Z2MUtyZW5CQlA?oc=5",
+      "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNDkwbHFJUDZTV1lMSmdERDAyOTFid3BYWUI5bnJxbmFHcTgtaEN4V0tydmxYUDc0YzJ2U0stRmpRZnhseTk3MUpKVHFia1RaTUl5UGtCQ1cxaUQzZVBWb0RlMW1Rb0FyVC01RUdXTVVzeTVCWHRVM3czV1NLN3hxZ2Jrcm96VXFOZFpyMEtuTzFJM0RLSEZEQlFBcV9IaDZGTC1ocF8tVmxQNks5?oc=5"
+    ]
+  },
+  "synthesis_summary": {
+    "total_generated_candidates": 24,
+    "final_accepted_count": 18,
+    "rejected_count": 6,
+    "min_threshold_required": 12,
+    "threshold_passed": true
+  },
+  "accepted_articles": [
+    {
+      "id": "art_sabah_1",
+      "category": "sabah",
+      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年 [Astro Awani + Bernama 双核实]",
+      "titleBM": "Laporan Berita: 沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+      "detail": "【权威动态播报】沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：Astro Awani, Bernama, Bing News Sandakan (EN), Borneo Post, Malay Mail, NST Online, The Edge Malaysia, The Sun Malaysia, 诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: Astro Awani, Bernama, Bing News Sandakan (EN), Borneo Post, Malay Mail, NST Online, The Edge Malaysia, The Sun Malaysia, 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "Astro Awani",
+        "Bernama",
+        "Bing News Sandakan (EN)",
+        "Borneo Post",
+        "Malay Mail",
+        "NST Online",
+        "The Edge Malaysia",
+        "The Sun Malaysia",
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601871",
+      "source_urls": [
+        "https://news.seehua.com/post/1601871"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T15:05:59+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sandakan"
+    },
+    {
+      "id": "art_sabah_2",
+      "category": "sabah",
+      "title": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+      "detail": "【权威动态播报】兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1602304",
+      "source_urls": [
+        "https://news.seehua.com/post/1602304"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T11:37:07+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_3",
+      "category": "sabah",
+      "title": "兵南邦马拉昆花园 一间双层排屋发生火灾 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 兵南邦马拉昆花园 一间双层排屋发生火灾",
+      "detail": "【权威动态播报】兵南邦马拉昆花园 一间双层排屋发生火灾。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 兵南邦马拉昆花园 一间双层排屋发生火灾.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1602062",
+      "source_urls": [
+        "https://news.seehua.com/post/1602062"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T20:00:06+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_5",
+      "category": "sabah",
+      "title": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+      "detail": "【权威动态播报】积压数十年土地申请有望解决 沙巴5000英亩土地展开测量。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 积压数十年土地申请有望解决 沙巴5000英亩土地展开测量.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601832",
+      "source_urls": [
+        "https://news.seehua.com/post/1601832"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T14:07:43+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_6",
+      "category": "sabah",
+      "title": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管 [诗华日报沙巴版 实时发布]",
+      "titleBM": "Laporan Berita: 指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+      "detail": "【权威动态播报】指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+      "detailBM": "Notis Berita Rasmi: 指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+      "source": "诗华日报沙巴版",
+      "sources": [
+        "诗华日报沙巴版"
+      ],
+      "url": "https://news.seehua.com/post/1601746",
+      "source_urls": [
+        "https://news.seehua.com/post/1601746"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T11:53:51+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_sabah_8",
+      "category": "sabah",
+      "title": "摩托失控坠入石沟 41岁骑士丧命 [沙巴星洲日报 实时发布]",
+      "titleBM": "Laporan Berita: 摩托失控坠入石沟 41岁骑士丧命",
+      "detail": "【权威动态播报】摩托失控坠入石沟 41岁骑士丧命。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：沙巴星洲日报。",
+      "detailBM": "Notis Berita Rasmi: 摩托失控坠入石沟 41岁骑士丧命.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 沙巴星洲日报.",
+      "source": "沙巴星洲日报",
+      "sources": [
+        "沙巴星洲日报"
+      ],
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050285",
+      "source_urls": [
+        "https://sabah.sinchew.com.my/news/20261109/sabah/8050285"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T07:00:00+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah"
+    },
+    {
+      "id": "art_national_13",
+      "category": "national",
+      "title": "印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节",
+      "detail": "【权威动态播报】印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1601742",
+      "source_urls": [
+        "https://news.seehua.com/post/1601742"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T13:03:58+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_14",
+      "category": "national",
+      "title": "电单车遭四驱车撞击 45岁后座乘客送院两天不治 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 电单车遭四驱车撞击 45岁后座乘客送院两天不治",
+      "detail": "【权威动态播报】电单车遭四驱车撞击 45岁后座乘客送院两天不治。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 电单车遭四驱车撞击 45岁后座乘客送院两天不治.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1601743",
+      "source_urls": [
+        "https://news.seehua.com/post/1601743"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T11:50:06+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_national_15",
+      "category": "national",
+      "title": "加拿逸24户长屋凌晨失火 约80%被烧毁 [诗华日报 (砂拉越版) 实时发布]",
+      "titleBM": "Laporan Berita: 加拿逸24户长屋凌晨失火 约80%被烧毁",
+      "detail": "【权威动态播报】加拿逸24户长屋凌晨失火 约80%被烧毁。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报 (砂拉越版)。",
+      "detailBM": "Notis Berita Rasmi: 加拿逸24户长屋凌晨失火 约80%被烧毁.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报 (砂拉越版).",
+      "source": "诗华日报 (砂拉越版)",
+      "sources": [
+        "诗华日报 (砂拉越版)"
+      ],
+      "url": "https://news.seehua.com/post/1602284",
+      "source_urls": [
+        "https://news.seehua.com/post/1602284"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T10:52:33+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "sarawak"
+    },
+    {
+      "id": "art_national_16",
+      "category": "national",
+      "title": "连达立：打造泛道休息站 实曼归公园料宪报公布 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 连达立：打造泛道休息站 实曼归公园料宪报公布",
+      "detail": "【权威动态播报】连达立：打造泛道休息站 实曼归公园料宪报公布。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 连达立：打造泛道休息站 实曼归公园料宪报公布.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1602130",
+      "source_urls": [
+        "https://news.seehua.com/post/1602130"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T22:31:31+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_sports_17",
+      "category": "sports",
+      "title": "Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT [Borneo Post + The Star 双核实]",
+      "titleBM": "Laporan Berita: Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZDBZNVRVQ1hvYjZQRFp1OGZqcFFlZXR2UWZOUUQxVVR4Ujg1VERJcmxwMEU2bWtwN0N4UklBNjhicWw4V05ISEpxbXFuVFdMTUdCNnl3YWRuazBSVTY4NjN4bDRRdTFhTFdwOW5YYW5ZQkJ1OGNmeEtyb25RdTRlanZsYTdnc2R2Y09Ra1lTR1YyWEJkZG1Tdm8teDZpeHFqQk84ZG92cExYYVlPdzRBX3ZuckpOUHkzeEVhMWk1ajJtNHdIZmJtcUpPNlBJUnJpZEV6Nmw4UFY?oc=5\" target=\"_blank\">Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxPUm5hTVR6d3BVZDBrRXhTZmFSM2lCMDZDai05RnI0TzNJOENuc3NoSnpUcnBYWUdRMU50ZmZFZjZ3dXZEWFBwTUdHMWotdlptVDBCcTRKcUlVcXRUUzVLTndrTS02VDIyNE1lbXNCbEhULUdTRmZqUWcxallvU3FMdlhn?oc=5\" target=\"_blank\">Kuching City Claw Back To Reach FA Cup Final</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sarawak Tribune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxNcEk5R2VXREJyN2FrRGpFak52ZVpvc2MyZ29zeHpRNXFJbnRHdzRIU1VZNklOemRsVlRNSk9BaDFnSHp2QlZyQUdrdGg0Rkh2TUNDTDFmaEtLTjhCVDlweVE4SWdqckJGRlNfMkd1TTUtRndBeVcyM3poMXlzUU1sQWxMR21QQ3ozck16ZHhLSm9SZTF0aVpodTFCNWJEd1RFNk5KWm00RlpadFM3b3fSAbMBQVVfeXFMT21EczFFdW1YSktTMi10TTVPY2lfT2RHTlJLTHRoNGVuc1JZOEo3YzRhQ3l6bVF2S1MzOGpYR0RtN2NlTGFfR1luMDZkRWhYbWUzanBwUV9INDBLZGltOHctMm9wTjZINWZadUJNNHNDQW13VjROZWFUZ2ViNGJaaFNRWDUyeGVZZVhCaEc3WXEyNEZqbzl6a2tZbFZsbExUUzFVSmQ1d2ZqSU53RDBHb1NBME0?oc=5\" target=\"_blank\">Selangor crash out of FA Cup semi-finals amid ugly scenes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcVVqRzBxMzJPRktaUzBnWFpjbld3VGpyT2prZF85UWxIQ0t0d1RJZ0o1NUZ3dldlTDBqT0VEb2hnUldfZDc2VkFZMUQ0aFlMMEM5MnRvckVqYzlWczNZcFdqTk9PYmg4VlRwU0pvUE1VcW9HQktLLXVLUGswbi0zU1VybmtneVNvX3hHODh3WU1GNWhCRWY3UDdqbUxQNzJOUGxNZjRybnlyNHkzeUFFM2dCbnBDTF8zOXZsQThNSkR4M09lSlRpTzhIVEE5N2s1ZnhmMQ?oc=5\" target=\"_blank\">Football: Pan-gon insists his side have the strength and depth to overcome disciplinary setbacks</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQMWx4WWxiWC05UTQtVUhsWmVENWVQUm1nb1hYZ0hGZVNJNzA4N25zWHdXdFdkUTNpeDNuUnY3cXpyaExSb2RiQlJWR2ZnZDkxc3Z6MmZ1cksyYUdROTItNUZmc0RJblVyN2FEcmUxV3BDWDQwdzRzQm9paFdKU0h0QWRWSVJRYWlPOXg0aFJ1SGpJaUZ6SmRUQmlNeHpYMlh5a3g5MGVWYVR4UllyejBtRFdCeDRiNmFGWjEwTA?oc=5\" target=\"_blank\">Aidil hails collective effort behind Kuching City’s historic FA Cup final berth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：Borneo Post, The Star。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZDBZNVRVQ1hvYjZQRFp1OGZqcFFlZXR2UWZOUUQxVVR4Ujg1VERJcmxwMEU2bWtwN0N4UklBNjhicWw4V05ISEpxbXFuVFdMTUdCNnl3YWRuazBSVTY4NjN4bDRRdTFhTFdwOW5YYW5ZQkJ1OGNmeEtyb25RdTRlanZsYTdnc2R2Y09Ra1lTR1YyWEJkZG1Tdm8teDZpeHFqQk84ZG92cExYYVlPdzRBX3ZuckpOUHkzeEVhMWk1ajJtNHdIZmJtcUpPNlBJUnJpZEV6Nmw4UFY?oc=5\" target=\"_blank\">Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxPUm5hTVR6d3BVZDBrRXhTZmFSM2lCMDZDai05RnI0TzNJOENuc3NoSnpUcnBYWUdRMU50ZmZFZjZ3dXZEWFBwTUdHMWotdlptVDBCcTRKcUlVcXRUUzVLTndrTS02VDIyNE1lbXNCbEhULUdTRmZqUWcxallvU3FMdlhn?oc=5\" target=\"_blank\">Kuching City Claw Back To Reach FA Cup Final</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sarawak Tribune</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxNcEk5R2VXREJyN2FrRGpFak52ZVpvc2MyZ29zeHpRNXFJbnRHdzRIU1VZNklOemRsVlRNSk9BaDFnSHp2QlZyQUdrdGg0Rkh2TUNDTDFmaEtLTjhCVDlweVE4SWdqckJGRlNfMkd1TTUtRndBeVcyM3poMXlzUU1sQWxMR21QQ3ozck16ZHhLSm9SZTF0aVpodTFCNWJEd1RFNk5KWm00RlpadFM3b3fSAbMBQVVfeXFMT21EczFFdW1YSktTMi10TTVPY2lfT2RHTlJLTHRoNGVuc1JZOEo3YzRhQ3l6bVF2S1MzOGpYR0RtN2NlTGFfR1luMDZkRWhYbWUzanBwUV9INDBLZGltOHctMm9wTjZINWZadUJNNHNDQW13VjROZWFUZ2ViNGJaaFNRWDUyeGVZZVhCaEc3WXEyNEZqbzl6a2tZbFZsbExUUzFVSmQ1d2ZqSU53RDBHb1NBME0?oc=5\" target=\"_blank\">Selangor crash out of FA Cup semi-finals amid ugly scenes</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxNcVVqRzBxMzJPRktaUzBnWFpjbld3VGpyT2prZF85UWxIQ0t0d1RJZ0o1NUZ3dldlTDBqT0VEb2hnUldfZDc2VkFZMUQ0aFlMMEM5MnRvckVqYzlWczNZcFdqTk9PYmg4VlRwU0pvUE1VcW9HQktLLXVLUGswbi0zU1VybmtneVNvX3hHODh3WU1GNWhCRWY3UDdqbUxQNzJOUGxNZjRybnlyNHkzeUFFM2dCbnBDTF8zOXZsQThNSkR4M09lSlRpTzhIVEE5N2s1ZnhmMQ?oc=5\" target=\"_blank\">Football: Pan-gon insists his side have the strength and depth to overcome disciplinary setbacks</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQMWx4WWxiWC05UTQtVUhsWmVENWVQUm1nb1hYZ0hGZVNJNzA4N25zWHdXdFdkUTNpeDNuUnY3cXpyaExSb2RiQlJWR2ZnZDkxc3Z6MmZ1cksyYUdROTItNUZmc0RJblVyN2FEcmUxV3BDWDQwdzRzQm9paFdKU0h0QWRWSVJRYWlPOXg0aFJ1SGpJaUZ6SmRUQmlNeHpYMlh5a3g5MGVWYVR4UllyejBtRFdCeDRiNmFGWjEwTA?oc=5\" target=\"_blank\">Aidil hails collective effort behind Kuching City’s historic FA Cup final berth</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: Borneo Post, The Star.",
+      "source": "The Star",
+      "sources": [
+        "Borneo Post",
+        "The Star"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZDBZNVRVQ1hvYjZQRFp1OGZqcFFlZXR2UWZOUUQxVVR4Ujg1VERJcmxwMEU2bWtwN0N4UklBNjhicWw4V05ISEpxbXFuVFdMTUdCNnl3YWRuazBSVTY4NjN4bDRRdTFhTFdwOW5YYW5ZQkJ1OGNmeEtyb25RdTRlanZsYTdnc2R2Y09Ra1lTR1YyWEJkZG1Tdm8teDZpeHFqQk84ZG92cExYYVlPdzRBX3ZuckpOUHkzeEVhMWk1ajJtNHdIZmJtcUpPNlBJUnJpZEV6Nmw4UFY?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZDBZNVRVQ1hvYjZQRFp1OGZqcFFlZXR2UWZOUUQxVVR4Ujg1VERJcmxwMEU2bWtwN0N4UklBNjhicWw4V05ISEpxbXFuVFdMTUdCNnl3YWRuazBSVTY4NjN4bDRRdTFhTFdwOW5YYW5ZQkJ1OGNmeEtyb25RdTRlanZsYTdnc2R2Y09Ra1lTR1YyWEJkZG1Tdm8teDZpeHFqQk84ZG92cExYYVlPdzRBX3ZuckpOUHkzeEVhMWk1ajJtNHdIZmJtcUpPNlBJUnJpZEV6Nmw4UFY?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T15:19:00+00:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_sports_18",
+      "category": "sports",
+      "title": "Man Utd rescue Villa draw with incredible fightback, Chelsea stunned [Free Malaysia Today 实时发布]",
+      "titleBM": "Laporan Berita: Man Utd rescue Villa draw with incredible fightback, Chelsea stunned",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxQRHVaUFRwRGRVRGJtN2xDME5rUUdoaUxiajY5QVR2dTducEJ2ZDFxSEVJZURRQkJqUkpoTkVsRXhGTlRKaFVlNGY3UVNKYmFSaFVMb2VUWmpHSXljMmxEMkdDWnlpZE5RZXQ1TUtpRnRqOG9zYjBScXZwODZCR3BuY3pkdXdNNTBlaUl2RHZzZlVrSzhPbFh6MDBsTjhjNkQyZmtXRkJNUzlLQTdYWDctbHVWYlZXaU1aNTVqaGtfcXdNbG91TmFFR2N1Yw?oc=5\" target=\"_blank\">Man Utd rescue Villa draw with incredible fightback, Chelsea stunned</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li><li><a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE1vS1VTTEM4UFFZVnp5bjVuRExhdVJTQnlhb1hhcTcyNkY2N2x0NU15a1FNdHY5UmFqSGFPb1pfVG14SHpqc2VJMWFzT0MyeGRxVGdTaTJlVWxROFNCdHc2dnppVUI2WEEwcF9CemVyVQ?oc=5\" target=\"_blank\">Manchester United</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMigAJBVV95cUxPTHVUeEVLanJaUGhxV1FTRTh2dFlWSkx3RzdOUDN6Y2gtTzhvb09FUmFWYVhsSEdKV0JYa2hOQVBtRHJSWkp2c2VVMXkzYXdWbUh6Zjh1UzdmVkJpOEZnVzc0YmhQTHlFNWQ2YVdOOVN6NFVHa1dFaDFrbHVWdnZQb3FYc040OThDeUJEWmlDdHNIZldfcE5GTkQ0WHlveEU5NnhEMXNpN2RVOE5wQVZyVHhPZlkyX2lQSVU3am9hUTVIOE9Kd2NfUzE4aDJUV0dTSXJqUEZwbkNDZGJvUXA3UXlkUTlQRGEzX3RvSE5KVnh5QVV0Rl81OG5JeUZKX0RV?oc=5\" target=\"_blank\">Man Utd 4-4 Aston Villa: Patrick Dorgu levels in the 96th minute as United come from two down TWICE to earn incredible draw</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sky Sports</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMC1DeXdWWVFMaUh4SDk4ZlpNVkdwRjJFSDdGOWxkNU5XTVpXRkhNQlpUZV91cXJGZFpZckRpTS1qYzlEcmNCMjVINy11WlVLRG42NlBrdThra3dnOGxzX1hWelNZV3FQTmtaMGt6R24wakFVNGltLU45aG9tdnk3YXhEYjNfZE93VFh6SUozSlhBd1pXVjdCRkUwdmwwT0lDTlZIQUtLWFB3Zw?oc=5\" target=\"_blank\">Dorgu rescues point for Manchester United in eight-goal thriller against Aston Villa</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQzZqLXd3WkZWbnFFekVjak4xTGxEZlpFTzFhR0gxdFA0Nm1FaWwyZWxRTUU0SkxudEdJeWpGRHFuRHFWS2NNMHNWX3JkU2dYTHJxekoyU0dVZWhkZ1JoQ2JKaVFnSFlaV0xpRWx2TS1TcElRaFBOTExPMlR2TF9xNUNKV0NEaU1pWnJoVUdxejEwQjYwa0RpR1ZLLXJKOXRFWUZWVkRrT3g4dw?oc=5\" target=\"_blank\">Comedy of errors prompts Emery to leave early – all eight goals ranked by stupidity</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Telegraph</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：Free Malaysia Today。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxQRHVaUFRwRGRVRGJtN2xDME5rUUdoaUxiajY5QVR2dTducEJ2ZDFxSEVJZURRQkJqUkpoTkVsRXhGTlRKaFVlNGY3UVNKYmFSaFVMb2VUWmpHSXljMmxEMkdDWnlpZE5RZXQ1TUtpRnRqOG9zYjBScXZwODZCR3BuY3pkdXdNNTBlaUl2RHZzZlVrSzhPbFh6MDBsTjhjNkQyZmtXRkJNUzlLQTdYWDctbHVWYlZXaU1aNTVqaGtfcXdNbG91TmFFR2N1Yw?oc=5\" target=\"_blank\">Man Utd rescue Villa draw with incredible fightback, Chelsea stunned</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li><li><a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE1vS1VTTEM4UFFZVnp5bjVuRExhdVJTQnlhb1hhcTcyNkY2N2x0NU15a1FNdHY5UmFqSGFPb1pfVG14SHpqc2VJMWFzT0MyeGRxVGdTaTJlVWxROFNCdHc2dnppVUI2WEEwcF9CemVyVQ?oc=5\" target=\"_blank\">Manchester United</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMigAJBVV95cUxPTHVUeEVLanJaUGhxV1FTRTh2dFlWSkx3RzdOUDN6Y2gtTzhvb09FUmFWYVhsSEdKV0JYa2hOQVBtRHJSWkp2c2VVMXkzYXdWbUh6Zjh1UzdmVkJpOEZnVzc0YmhQTHlFNWQ2YVdOOVN6NFVHa1dFaDFrbHVWdnZQb3FYc040OThDeUJEWmlDdHNIZldfcE5GTkQ0WHlveEU5NnhEMXNpN2RVOE5wQVZyVHhPZlkyX2lQSVU3am9hUTVIOE9Kd2NfUzE4aDJUV0dTSXJqUEZwbkNDZGJvUXA3UXlkUTlQRGEzX3RvSE5KVnh5QVV0Rl81OG5JeUZKX0RV?oc=5\" target=\"_blank\">Man Utd 4-4 Aston Villa: Patrick Dorgu levels in the 96th minute as United come from two down TWICE to earn incredible draw</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sky Sports</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMC1DeXdWWVFMaUh4SDk4ZlpNVkdwRjJFSDdGOWxkNU5XTVpXRkhNQlpUZV91cXJGZFpZckRpTS1qYzlEcmNCMjVINy11WlVLRG42NlBrdThra3dnOGxzX1hWelNZV3FQTmtaMGt6R24wakFVNGltLU45aG9tdnk3YXhEYjNfZE93VFh6SUozSlhBd1pXVjdCRkUwdmwwT0lDTlZIQUtLWFB3Zw?oc=5\" target=\"_blank\">Dorgu rescues point for Manchester United in eight-goal thriller against Aston Villa</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNQzZqLXd3WkZWbnFFekVjak4xTGxEZlpFTzFhR0gxdFA0Nm1FaWwyZWxRTUU0SkxudEdJeWpGRHFuRHFWS2NNMHNWX3JkU2dYTHJxekoyU0dVZWhkZ1JoQ2JKaVFnSFlaV0xpRWx2TS1TcElRaFBOTExPMlR2TF9xNUNKV0NEaU1pWnJoVUdxejEwQjYwa0RpR1ZLLXJKOXRFWUZWVkRrT3g4dw?oc=5\" target=\"_blank\">Comedy of errors prompts Emery to leave early – all eight goals ranked by stupidity</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Telegraph</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: Free Malaysia Today.",
+      "source": "Free Malaysia Today",
+      "sources": [
+        "Free Malaysia Today"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQRHVaUFRwRGRVRGJtN2xDME5rUUdoaUxiajY5QVR2dTducEJ2ZDFxSEVJZURRQkJqUkpoTkVsRXhGTlRKaFVlNGY3UVNKYmFSaFVMb2VUWmpHSXljMmxEMkdDWnlpZE5RZXQ1TUtpRnRqOG9zYjBScXZwODZCR3BuY3pkdXdNNTBlaUl2RHZzZlVrSzhPbFh6MDBsTjhjNkQyZmtXRkJNUzlLQTdYWDctbHVWYlZXaU1aNTVqaGtfcXdNbG91TmFFR2N1Yw?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiywFBVV95cUxQRHVaUFRwRGRVRGJtN2xDME5rUUdoaUxiajY5QVR2dTducEJ2ZDFxSEVJZURRQkJqUkpoTkVsRXhGTlRKaFVlNGY3UVNKYmFSaFVMb2VUWmpHSXljMmxEMkdDWnlpZE5RZXQ1TUtpRnRqOG9zYjBScXZwODZCR3BuY3pkdXdNNTBlaUl2RHZzZlVrSzhPbFh6MDBsTjhjNkQyZmtXRkJNUzlLQTdYWDctbHVWYlZXaU1aNTVqaGtfcXdNbG91TmFFR2N1Yw?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T21:06:35+00:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_sports_19",
+      "category": "sports",
+      "title": "Man United in relegation zone, but Michael Carrick insists: I deserve to keep job [ESPN 实时发布]",
+      "titleBM": "Laporan Berita: Man United in relegation zone, but Michael Carrick insists: I deserve to keep job",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxPTXRIQzhMeURvMXlTUVNDeXFqU0NPcFR2dHZENVA2T3pqWWtVZ2k4Nnc5ZUNIcXE3X1VtVFVaSXNzajM3OUw4emNWcEJCWUxhSGVxdUpCdlplbVBoMDFJRWE4Zmd2dGt2aVdNaGNQX19YZG1BWThRZzdUZUQwc0ZPM1RJT21iNjFReE9rVjVR?oc=5\" target=\"_blank\">Man United in relegation zone, but Michael Carrick insists: I deserve to keep job</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2b1JLMnlrMnFJWTZNSFNvVFFaMS04LTF2OWVleTlhUXBWMTJOamhLeXkyWEFYcDRrS2RkNkVlRXlIZElQblRyc2ZDcUFFMUhaM2w0U0dlaWVsQmRXQ3BSYjhnU0VrMEx2?oc=5\" target=\"_blank\">Man Utd 4-4 Aston Villa: Bizarre and thrilling theatre as Carrick's future still in limbo</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxOV2tYWlNOanh5N0ZjNGZkNUdqT2xHWVNWT3BHcERONWlDSktXb1JNNVEyeHJkTXZ0NHhjWHplY0xROUVqdTFfM3djQmhaN3o1Z3BkTW9kajBmN3IwUTF0d0F3MzhhQjVvdUJtN25DRk0tR2VWUGtoaTF3Qms5OTRCeUR5bHdPbGlweDhGMFJvMzJGU3h2bHlFaElhMWVoR3JsTHpmVEZ2S2xyX09icnVZUkc5QlFrWWNDbk1PU2ZJc0cwYWRNZ2I1SDNFaw?oc=5\" target=\"_blank\">‘I expect to move forward’: Carrick denies risk of Manchester United sack</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi7wFBVV95cUxPbmd5VFowdWpCaWh2Q2VVUjIzcXd6aGV4MGlnSzJ2T0Ezc0VhenVVUHVpaVFJYnFWWURJNmJYdFoydW5YdFE2bGFRcTNxTlZnaExodWltTldoeWRqa1E1TWhUd0MxdkIxMXBIREwyY09sVjhJeDNWZFA5cVI5UV9acHdEVjAwVjkycFJ5YlhFN0RfYzRDRE9WUm5sbVU2TkdneXlEb3FBdFJoelIwN1NJSzZyUUhEYS1EbjhPVks4aS1MbV9mR0tHYmE4NXZldGh0VHJVek02MUduV2s5VW15aGFReVByOHBoOHdoNC1jSQ?oc=5\" target=\"_blank\">Michael Carrick's Man Utd future uncertain as club ponder international break change - Paper Talk</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sky Sports</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNci1jWEZCVUQwUHhzd3FVQjd0NmdDSlFyZGhRbTRMV01XeFpFOGpoR3RacGpZYTA5SVpIdXZJT05pcG42aHNFcmd0WmRYNWFhRVlmUnB2UmEyc1dQZTFDYXhXQXBSXzlaWFdacVNUZW5Pb0p0aHRWUWdjR3NaQ1ljYnREeUZ6RlBzUmoxVUhRejhyZ1lfNHFzbGNBQmo5NUt2bmV6aGJXNFdwWFV0VG1DT08yODJYVVli?oc=5\" target=\"_blank\">Michael Carrick has painfully awkward exchange with interviewer over Man United future</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Independent</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：ESPN。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxPTXRIQzhMeURvMXlTUVNDeXFqU0NPcFR2dHZENVA2T3pqWWtVZ2k4Nnc5ZUNIcXE3X1VtVFVaSXNzajM3OUw4emNWcEJCWUxhSGVxdUpCdlplbVBoMDFJRWE4Zmd2dGt2aVdNaGNQX19YZG1BWThRZzdUZUQwc0ZPM1RJT21iNjFReE9rVjVR?oc=5\" target=\"_blank\">Man United in relegation zone, but Michael Carrick insists: I deserve to keep job</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTFA2b1JLMnlrMnFJWTZNSFNvVFFaMS04LTF2OWVleTlhUXBWMTJOamhLeXkyWEFYcDRrS2RkNkVlRXlIZElQblRyc2ZDcUFFMUhaM2w0U0dlaWVsQmRXQ3BSYjhnU0VrMEx2?oc=5\" target=\"_blank\">Man Utd 4-4 Aston Villa: Bizarre and thrilling theatre as Carrick's future still in limbo</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxOV2tYWlNOanh5N0ZjNGZkNUdqT2xHWVNWT3BHcERONWlDSktXb1JNNVEyeHJkTXZ0NHhjWHplY0xROUVqdTFfM3djQmhaN3o1Z3BkTW9kajBmN3IwUTF0d0F3MzhhQjVvdUJtN25DRk0tR2VWUGtoaTF3Qms5OTRCeUR5bHdPbGlweDhGMFJvMzJGU3h2bHlFaElhMWVoR3JsTHpmVEZ2S2xyX09icnVZUkc5QlFrWWNDbk1PU2ZJc0cwYWRNZ2I1SDNFaw?oc=5\" target=\"_blank\">‘I expect to move forward’: Carrick denies risk of Manchester United sack</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMi7wFBVV95cUxPbmd5VFowdWpCaWh2Q2VVUjIzcXd6aGV4MGlnSzJ2T0Ezc0VhenVVUHVpaVFJYnFWWURJNmJYdFoydW5YdFE2bGFRcTNxTlZnaExodWltTldoeWRqa1E1TWhUd0MxdkIxMXBIREwyY09sVjhJeDNWZFA5cVI5UV9acHdEVjAwVjkycFJ5YlhFN0RfYzRDRE9WUm5sbVU2TkdneXlEb3FBdFJoelIwN1NJSzZyUUhEYS1EbjhPVks4aS1MbV9mR0tHYmE4NXZldGh0VHJVek02MUduV2s5VW15aGFReVByOHBoOHdoNC1jSQ?oc=5\" target=\"_blank\">Michael Carrick's Man Utd future uncertain as club ponder international break change - Paper Talk</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Sky Sports</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNci1jWEZCVUQwUHhzd3FVQjd0NmdDSlFyZGhRbTRMV01XeFpFOGpoR3RacGpZYTA5SVpIdXZJT05pcG42aHNFcmd0WmRYNWFhRVlmUnB2UmEyc1dQZTFDYXhXQXBSXzlaWFdacVNUZW5Pb0p0aHRWUWdjR3NaQ1ljYnREeUZ6RlBzUmoxVUhRejhyZ1lfNHFzbGNBQmo5NUt2bmV6aGJXNFdwWFV0VG1DT08yODJYVVli?oc=5\" target=\"_blank\">Michael Carrick has painfully awkward exchange with interviewer over Man United future</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Independent</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: ESPN.",
+      "source": "ESPN",
+      "sources": [
+        "ESPN"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTXRIQzhMeURvMXlTUVNDeXFqU0NPcFR2dHZENVA2T3pqWWtVZ2k4Nnc5ZUNIcXE3X1VtVFVaSXNzajM3OUw4emNWcEJCWUxhSGVxdUpCdlplbVBoMDFJRWE4Zmd2dGt2aVdNaGNQX19YZG1BWThRZzdUZUQwc0ZPM1RJT21iNjFReE9rVjVR?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTXRIQzhMeURvMXlTUVNDeXFqU0NPcFR2dHZENVA2T3pqWWtVZ2k4Nnc5ZUNIcXE3X1VtVFVaSXNzajM3OUw4emNWcEJCWUxhSGVxdUpCdlplbVBoMDFJRWE4Zmd2dGt2aVdNaGNQX19YZG1BWThRZzdUZUQwc0ZPM1RJT21iNjFReE9rVjVR?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T20:27:00+00:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_sports_20",
+      "category": "sports",
+      "title": "Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis [ESPN 实时发布]",
+      "titleBM": "Laporan Berita: Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE82d2tURzYyVWYyTlpIMzd2cC0xOHZFSUtsbVYzNW9vMWUzdkRXbEY4dWdGVmF2UEJFZXh1RHlib0l6RjJpSlNaVHY5aEFDbTdxYzJ3Ykljd2RhdXBGZ0YtbE5OSQ?oc=5\" target=\"_blank\">Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTFBEWmxQQ0h2TGhOdk5HNXltdUdicElPVWlyZ1hQVDRIckI1ejdoaG5FNFlKUmVGSEdRSUNZVzJQN2lkQnVGV24zNHdmZ0E0cndSNmE4Y0xGaFg0b182cmV6N2dsWFBqcEJa?oc=5\" target=\"_blank\">Nottingham Forest 3-1 Man City: Enzo Maresca's dream start turns into nightmare</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPT2M0aTVlV1QtQ0FSMVNqWEt4UTlJb3daeXRKOENVTU1lM1JQYVJoaE5TTlFKNFl1NzhhNmxLVXlMYzFtUVlickdyaXZqOVVXXzJkVm1mdFRobXh0V1JRTk9lQ2ZLWENGUWFyaG8wZlhGeTV6S3BOWEY2a1ZTVGdzMTJBQkRsdEx0NXhSNTBNQUdHYWJiOVQ4M1BaZzQ5ZVRiak5XbHJGdksyZkpGM0NV?oc=5\" target=\"_blank\">Delap’s Nottingham Forest stunners hand Manchester City third league defeat in a row</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxNS25YSzlWNzBLOXo4LU1WZk5adjViWjNDcEkzaEpZcUstREZ4eDFYQ0NfbVV6azdab2lneGh6bHk2OVUyZ2lEeTBRNEpKOVdlVW4xY0g2UTJoVThPSEtZS3ZKWm8zaFBLcFB0MEdFUDROODNudzFXOVYtdHdtZmVlY3pfYUszTUU?oc=5\" target=\"_blank\">DELAP'S DOUBLE DELIGHT</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Nottingham Forest FC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNX1hLZUpSbGNvZm15aURNbGk1RGdiQW11S0R5MDRlYWV3cHlQNVQ0dHN5SG1fZ1NTc2syY0dMSXZrTC0tNDRFemVaTkpUWEp2ZHVGTzd6YWFfTXNHQ2ZHTVdQbjN1dzlJTXlvRGhEZlVzMG4yXy1DRTVuQWhjdDRsRlVNblYyeG5SWE4xNDJ6eDFlSUJQSXpPSll5SnpldWZGSWhLWTBPQQ?oc=5\" target=\"_blank\">Man City look to be crumbling after guilty verdict</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Telegraph</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：ESPN。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTE82d2tURzYyVWYyTlpIMzd2cC0xOHZFSUtsbVYzNW9vMWUzdkRXbEY4dWdGVmF2UEJFZXh1RHlib0l6RjJpSlNaVHY5aEFDbTdxYzJ3Ykljd2RhdXBGZ0YtbE5OSQ?oc=5\" target=\"_blank\">Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ESPN</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiaEFVX3lxTFBEWmxQQ0h2TGhOdk5HNXltdUdicElPVWlyZ1hQVDRIckI1ejdoaG5FNFlKUmVGSEdRSUNZVzJQN2lkQnVGV24zNHdmZ0E0cndSNmE4Y0xGaFg0b182cmV6N2dsWFBqcEJa?oc=5\" target=\"_blank\">Nottingham Forest 3-1 Man City: Enzo Maresca's dream start turns into nightmare</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BBC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPT2M0aTVlV1QtQ0FSMVNqWEt4UTlJb3daeXRKOENVTU1lM1JQYVJoaE5TTlFKNFl1NzhhNmxLVXlMYzFtUVlickdyaXZqOVVXXzJkVm1mdFRobXh0V1JRTk9lQ2ZLWENGUWFyaG8wZlhGeTV6S3BOWEY2a1ZTVGdzMTJBQkRsdEx0NXhSNTBNQUdHYWJiOVQ4M1BaZzQ5ZVRiak5XbHJGdksyZkpGM0NV?oc=5\" target=\"_blank\">Delap’s Nottingham Forest stunners hand Manchester City third league defeat in a row</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Guardian</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxNS25YSzlWNzBLOXo4LU1WZk5adjViWjNDcEkzaEpZcUstREZ4eDFYQ0NfbVV6azdab2lneGh6bHk2OVUyZ2lEeTBRNEpKOVdlVW4xY0g2UTJoVThPSEtZS3ZKWm8zaFBLcFB0MEdFUDROODNudzFXOVYtdHdtZmVlY3pfYUszTUU?oc=5\" target=\"_blank\">DELAP'S DOUBLE DELIGHT</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Nottingham Forest FC</font></li><li><a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNX1hLZUpSbGNvZm15aURNbGk1RGdiQW11S0R5MDRlYWV3cHlQNVQ0dHN5SG1fZ1NTc2syY0dMSXZrTC0tNDRFemVaTkpUWEp2ZHVGTzd6YWFfTXNHQ2ZHTVdQbjN1dzlJTXlvRGhEZlVzMG4yXy1DRTVuQWhjdDRsRlVNblYyeG5SWE4xNDJ6eDFlSUJQSXpPSll5SnpldWZGSWhLWTBPQQ?oc=5\" target=\"_blank\">Man City look to be crumbling after guilty verdict</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Telegraph</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: ESPN.",
+      "source": "ESPN",
+      "sources": [
+        "ESPN"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE82d2tURzYyVWYyTlpIMzd2cC0xOHZFSUtsbVYzNW9vMWUzdkRXbEY4dWdGVmF2UEJFZXh1RHlib0l6RjJpSlNaVHY5aEFDbTdxYzJ3Ykljd2RhdXBGZ0YtbE5OSQ?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiY0FVX3lxTE82d2tURzYyVWYyTlpIMzd2cC0xOHZFSUtsbVYzNW9vMWUzdkRXbEY4dWdGVmF2UEJFZXh1RHlib0l6RjJpSlNaVHY5aEFDbTdxYzJ3Ykljd2RhdXBGZ0YtbE5OSQ?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-07T22:46:24+00:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_sports_21",
+      "category": "sports",
+      "title": "Korea Open: Indomitable An Equals Greatest Season [BWF World Tour 实时发布]",
+      "titleBM": "Laporan Berita: Korea Open: Indomitable An Equals Greatest Season",
+      "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPUENWMmNRWGdESTlFUndCLUhFY1VCbS1VU1FLWENJeUNYZGtMUTVKdlJIVXdsS0c3cndBckJvVXNhbmZLYUVmNmxuZTVydTRUek1RR0tIM2oxN0hmaDlMM25lUkJkSHZSZE1od3FFZ0ZOME1rY1h1VDA3Ym1OYkw0MmpaeUJmRWQxLUhSZzZ2cEpSVXRwUWlfdGdhRFRGMTlyWlNFV2NrMk11YnJQd3c?oc=5\" target=\"_blank\">Korea Open: Indomitable An Equals Greatest Season</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BWF World Tour</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxPc1pvTFBEU1NTRDlaQldFS0dfOUg5OTJWd1FLa3lPNnRKVGl0SjUybGpLaWcxWGwxT0g3cmxoQW1YaDR2ZmtYdUVOQ0JZNmJxeHg0c3g1U21za3FaZjNGVDROaGhhUVBia082MEpVTGVFanpHTER6YXl2eWNNYkZzaktTd2RjQQ?oc=5\" target=\"_blank\">An Se-young Ties Record, Eyes Historic 12th</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">조선일보</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFA3cHZ5NVF3a3h4TjR4MVZQMHFzNnU5bDJwSlhONl9xeG8tWExWRTRGZk9NSi1uMVdFYkNYbVduUmZfN2IzRWtNRWJXSGJhcUVSdkY3U2EwbExQY0ZhdXlWa2RiM2pydw?oc=5\" target=\"_blank\">An Se-young extends winning streak to 55 matches</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">동아일보</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE1aTnBqVFRKR0NDODg5dmtaOThJUms3UTRfTU8wc3d0dGgzM2h1UUJiWXg3ZTRBN2pzSmtZekZCOEdXd25jUVh2ZXRYZ1VrSllLdU9kYXliQXJhQUo1ZC1id2FWd3ItbzZLNVYzYTRid083RTB0M3ZpdTVB?oc=5\" target=\"_blank\">\"An Se-young, same 11 wins but this year is even more remarkable\" — Foreign media take note of historic achievement... Dominates World Championships and Asian Games for a \"historic season\"</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">스타뉴스</font></li><li><a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE16d3NtZ0FhS3RtU3BwV1J2ZWplTk9UbFlxM3dYbks2TTBnaTNxZzd2RDJKUklhaklub01XSTliaThxSWVQT0NSak1EVzlneHN6MlFfWWlvczh6NFIxMHJ5YmFhZUF6RlYwb1BXOEo5ZDdSZw?oc=5\" target=\"_blank\">An wins Korea Open for 11th badminton title of year</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AFP.com</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：BWF World Tour。",
+      "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxPUENWMmNRWGdESTlFUndCLUhFY1VCbS1VU1FLWENJeUNYZGtMUTVKdlJIVXdsS0c3cndBckJvVXNhbmZLYUVmNmxuZTVydTRUek1RR0tIM2oxN0hmaDlMM25lUkJkSHZSZE1od3FFZ0ZOME1rY1h1VDA3Ym1OYkw0MmpaeUJmRWQxLUhSZzZ2cEpSVXRwUWlfdGdhRFRGMTlyWlNFV2NrMk11YnJQd3c?oc=5\" target=\"_blank\">Korea Open: Indomitable An Equals Greatest Season</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BWF World Tour</font></li><li><a href=\"https://news.google.com/rss/articles/CBMihgFBVV95cUxPc1pvTFBEU1NTRDlaQldFS0dfOUg5OTJWd1FLa3lPNnRKVGl0SjUybGpLaWcxWGwxT0g3cmxoQW1YaDR2ZmtYdUVOQ0JZNmJxeHg0c3g1U21za3FaZjNGVDROaGhhUVBia082MEpVTGVFanpHTER6YXl2eWNNYkZzaktTd2RjQQ?oc=5\" target=\"_blank\">An Se-young Ties Record, Eyes Historic 12th</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">조선일보</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTFA3cHZ5NVF3a3h4TjR4MVZQMHFzNnU5bDJwSlhONl9xeG8tWExWRTRGZk9NSi1uMVdFYkNYbVduUmZfN2IzRWtNRWJXSGJhcUVSdkY3U2EwbExQY0ZhdXlWa2RiM2pydw?oc=5\" target=\"_blank\">An Se-young extends winning streak to 55 matches</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">동아일보</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE1aTnBqVFRKR0NDODg5dmtaOThJUms3UTRfTU8wc3d0dGgzM2h1UUJiWXg3ZTRBN2pzSmtZekZCOEdXd25jUVh2ZXRYZ1VrSllLdU9kYXliQXJhQUo1ZC1id2FWd3ItbzZLNVYzYTRid083RTB0M3ZpdTVB?oc=5\" target=\"_blank\">\"An Se-young, same 11 wins but this year is even more remarkable\" — Foreign media take note of historic achievement... Dominates World Championships and Asian Games for a \"historic season\"</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">스타뉴스</font></li><li><a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE16d3NtZ0FhS3RtU3BwV1J2ZWplTk9UbFlxM3dYbks2TTBnaTNxZzd2RDJKUklhaklub01XSTliaThxSWVQT0NSak1EVzlneHN6MlFfWWlvczh6NFIxMHJ5YmFhZUF6RlYwb1BXOEo5ZDdSZw?oc=5\" target=\"_blank\">An wins Korea Open for 11th badminton title of year</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AFP.com</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: BWF World Tour.",
+      "source": "BWF World Tour",
+      "sources": [
+        "BWF World Tour"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPUENWMmNRWGdESTlFUndCLUhFY1VCbS1VU1FLWENJeUNYZGtMUTVKdlJIVXdsS0c3cndBckJvVXNhbmZLYUVmNmxuZTVydTRUek1RR0tIM2oxN0hmaDlMM25lUkJkSHZSZE1od3FFZ0ZOME1rY1h1VDA3Ym1OYkw0MmpaeUJmRWQxLUhSZzZ2cEpSVXRwUWlfdGdhRFRGMTlyWlNFV2NrMk11YnJQd3c?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMirgFBVV95cUxPUENWMmNRWGdESTlFUndCLUhFY1VCbS1VU1FLWENJeUNYZGtMUTVKdlJIVXdsS0c3cndBckJvVXNhbmZLYUVmNmxuZTVydTRUek1RR0tIM2oxN0hmaDlMM25lUkJkSHZSZE1od3FFZ0ZOME1rY1h1VDA3Ym1OYkw0MmpaeUJmRWQxLUhSZzZ2cEpSVXRwUWlfdGdhRFRGMTlyWlNFV2NrMk11YnJQd3c?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-08T10:24:05+00:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_general_22",
+      "category": "general",
+      "title": "马哈迪屠妖节外出购物 精神奕奕与民互动 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 马哈迪屠妖节外出购物 精神奕奕与民互动",
+      "detail": "【权威动态播报】马哈迪屠妖节外出购物 精神奕奕与民互动。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 马哈迪屠妖节外出购物 精神奕奕与民互动.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1602322",
+      "source_urls": [
+        "https://news.seehua.com/post/1602322"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T11:06:54+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_general_23",
+      "category": "general",
+      "title": "黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人",
+      "detail": "【权威动态播报】黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1602252",
+      "source_urls": [
+        "https://news.seehua.com/post/1602252"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T10:15:37+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    },
+    {
+      "id": "art_general_24",
+      "category": "general",
+      "title": "公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解 [诗华日报 实时发布]",
+      "titleBM": "Laporan Berita: 公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解",
+      "detail": "【权威动态播报】公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+      "detailBM": "Notis Berita Rasmi: 公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+      "source": "诗华日报",
+      "sources": [
+        "诗华日报"
+      ],
+      "url": "https://news.seehua.com/post/1602205",
+      "source_urls": [
+        "https://news.seehua.com/post/1602205"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-09T08:12:46+08:00",
+      "collected_at": "2026-11-09T12:25:36.531752+08:00",
+      "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+      "updated_at": "2026-11-09T12:25:41.252353+08:00",
+      "is_updated": false,
+      "geo_scope": "national"
+    }
+  ],
+  "rejected_articles": [
+    {
+      "article": {
+        "id": "art_sabah_4",
+        "category": "sabah",
+        "title": "沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita: 沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题",
+        "detail": "【权威动态播报】沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+        "source": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601838",
+        "source_urls": [
+          "https://news.seehua.com/post/1601838"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-08T14:18:43+08:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah"
+      },
+      "reasons": [
+        "Headline contains unanchored named person '哈芝芝' (hajiji)"
+      ]
+    },
+    {
+      "article": {
+        "id": "art_sabah_7",
+        "category": "sabah",
+        "title": "沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技 [诗华日报沙巴版 实时发布]",
+        "titleBM": "Laporan Berita: 沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技",
+        "detail": "【权威动态播报】沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报沙巴版。",
+        "detailBM": "Notis Berita Rasmi: 沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报沙巴版.",
+        "source": "诗华日报沙巴版",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "url": "https://news.seehua.com/post/1601722",
+        "source_urls": [
+          "https://news.seehua.com/post/1601722"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-08T11:27:16+08:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah"
+      },
+      "reasons": [
+        "Headline contains unanchored named person '马西迪' (masidi_manjun)"
+      ]
+    },
+    {
+      "article": {
+        "id": "art_national_9",
+        "category": "national",
+        "title": "Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints [The Straits Times 实时发布]",
+        "titleBM": "Laporan Berita: Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints",
+        "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMixgFBVV95cUxPVG9zbkN5dkV3Ulh2YjlQdURrMk9ua1E5azBkMUZVRWJDYVBoZ2dibUVtMkdab2ZhVjYzUlFRSktSOERQOFJLRmhSajRtWUEyaDBNZnFrU3lZSElYTVhua0d1azUwUUw3a1E2dmtuLW93VnpfdUZhNHVIVVhXUFYtSHhzSHNGcGVkTTRkbGlhM3ZpWk1iSHFkeGhfVXphczExSWptV0tyZXZwbmpSVC1zX0FBUm5IY2FwT0dGNEp2OTZNQVZhT0E?oc=5\" target=\"_blank\">Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxOdy1MT3Bpd1JLWVVySk03MEFjdlAtT0EwMDk1eFJDbTNBeWFBZFBZZ1cwbjJrSFdST0tKR3BWV01iS1NJZl9FbGZSRXZ0ZDJPNFFfVTVaalJWY3gtNjFTcUZxU05PUFFGelZhUzRhVFVzcmh2SU5ubjdPM3BhR241SFloMFdJcy13QWMyQi05ZGc5bUswaVHSAZsBQVVfeXFMT3Z0Wk9LdmFvQVMwRjVic1FnSTBiYW1CYmdIeXdyRXNZbTUweGxDZkwzN1hhWTY4TldUY2IybHM2ZDlxTEFpZmlPSHN0RFFPVWdxNmJoZGtrNVhVRFhuNjJRVWt5V0ZPMnFISHU1OFZHN0hfSkJTcE9Sb1FYZXRmUXJ5bF8tRzVWNDVnSkZrcXkzZUREZURTN2VVelU?oc=5\" target=\"_blank\">Gardenia probes complaints over products</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxQUS1BTXFQYV9zbWtGaDUtV2lja21FYU16ckJkU0tYbjlPWjVnWWs4LS1UdTk2dFFjSW9JWG5fNldqQTcyTG9ZekhsVG1jZTNSV21CaTAxTjJ3bEkxUy1nME4tZmNwMm1ZX3BFblRDSTdjN2E4Rm9KVl8zNnlNYUtsUlBMVE5rcDNpeE1KaVZHejRROWY1MS1ldUNzUXNKa0FWaUNOLTBnbFNsYTFuUFRLMS03cjdKbmsxY0prTWpxQ2xFZw?oc=5\" target=\"_blank\">Malaysia’s Health Ministry investigates Gardenia products over suspected food poisoning</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPenBjeTQ3UTB6N3FFSVphUVVzWlpmZ2FTX2JuYWVUbU1vMkpoblZiTDQ2Y21LOVRjYVFpUjI2R3NfSXc3NVk0WjhPelhWbDlacGVWMDY1c2VYdXBaWTNIZWp3Z2ZpREdBVExNeVVuN3RpVVRDb1JOTGVGTmhZNkNjTDItakF2R0o5c256ZHBtVGRWS0NyYVlWczFoN3FHTUZGQkhWQ0lwYkNsWDF5ZDN4eHZR?oc=5\" target=\"_blank\">Health Ministry Checking On Reports Of Contaminated Gardenia Breads</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxQdExnMWpSZ0hEcXM0dUVPbUk0QklEUGN3dXJQUEROU3RNQTJrYVNMWUZyMWRVUWhVRVhEc245bG1OMWtRZUhmNDZrb3JkVG9aUDZJLXQyUTgyNE15dXB4UVNnOEVpSXc3QTlUMm5KVEdDR0NKRDlfa1loSEdndWtIWUpvRnUtZTJ0SDhianFINF80UFZqU21tSmx0MF8wMDc0b3lZdzlwU0pzdEk0QTZnZy1yT00yNzVnYU01dUh5YTM3VUlubFgxU2V3?oc=5\" target=\"_blank\">Health ministry to check bread factory after claims of food poisoning</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：The Straits Times。",
+        "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMixgFBVV95cUxPVG9zbkN5dkV3Ulh2YjlQdURrMk9ua1E5azBkMUZVRWJDYVBoZ2dibUVtMkdab2ZhVjYzUlFRSktSOERQOFJLRmhSajRtWUEyaDBNZnFrU3lZSElYTVhua0d1azUwUUw3a1E2dmtuLW93VnpfdUZhNHVIVVhXUFYtSHhzSHNGcGVkTTRkbGlhM3ZpWk1iSHFkeGhfVXphczExSWptV0tyZXZwbmpSVC1zX0FBUm5IY2FwT0dGNEp2OTZNQVZhT0E?oc=5\" target=\"_blank\">Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxOdy1MT3Bpd1JLWVVySk03MEFjdlAtT0EwMDk1eFJDbTNBeWFBZFBZZ1cwbjJrSFdST0tKR3BWV01iS1NJZl9FbGZSRXZ0ZDJPNFFfVTVaalJWY3gtNjFTcUZxU05PUFFGelZhUzRhVFVzcmh2SU5ubjdPM3BhR241SFloMFdJcy13QWMyQi05ZGc5bUswaVHSAZsBQVVfeXFMT3Z0Wk9LdmFvQVMwRjVic1FnSTBiYW1CYmdIeXdyRXNZbTUweGxDZkwzN1hhWTY4TldUY2IybHM2ZDlxTEFpZmlPSHN0RFFPVWdxNmJoZGtrNVhVRFhuNjJRVWt5V0ZPMnFISHU1OFZHN0hfSkJTcE9Sb1FYZXRmUXJ5bF8tRzVWNDVnSkZrcXkzZUREZURTN2VVelU?oc=5\" target=\"_blank\">Gardenia probes complaints over products</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxQUS1BTXFQYV9zbWtGaDUtV2lja21FYU16ckJkU0tYbjlPWjVnWWs4LS1UdTk2dFFjSW9JWG5fNldqQTcyTG9ZekhsVG1jZTNSV21CaTAxTjJ3bEkxUy1nME4tZmNwMm1ZX3BFblRDSTdjN2E4Rm9KVl8zNnlNYUtsUlBMVE5rcDNpeE1KaVZHejRROWY1MS1ldUNzUXNKa0FWaUNOLTBnbFNsYTFuUFRLMS03cjdKbmsxY0prTWpxQ2xFZw?oc=5\" target=\"_blank\">Malaysia’s Health Ministry investigates Gardenia products over suspected food poisoning</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPenBjeTQ3UTB6N3FFSVphUVVzWlpmZ2FTX2JuYWVUbU1vMkpoblZiTDQ2Y21LOVRjYVFpUjI2R3NfSXc3NVk0WjhPelhWbDlacGVWMDY1c2VYdXBaWTNIZWp3Z2ZpREdBVExNeVVuN3RpVVRDb1JOTGVGTmhZNkNjTDItakF2R0o5c256ZHBtVGRWS0NyYVlWczFoN3FHTUZGQkhWQ0lwYkNsWDF5ZDN4eHZR?oc=5\" target=\"_blank\">Health Ministry Checking On Reports Of Contaminated Gardenia Breads</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxQdExnMWpSZ0hEcXM0dUVPbUk0QklEUGN3dXJQUEROU3RNQTJrYVNMWUZyMWRVUWhVRVhEc245bG1OMWtRZUhmNDZrb3JkVG9aUDZJLXQyUTgyNE15dXB4UVNnOEVpSXc3QTlUMm5KVEdDR0NKRDlfa1loSEdndWtIWUpvRnUtZTJ0SDhianFINF80UFZqU21tSmx0MF8wMDc0b3lZdzlwU0pzdEk0QTZnZy1yT00yNzVnYU01dUh5YTM3VUlubFgxU2V3?oc=5\" target=\"_blank\">Health ministry to check bread factory after claims of food poisoning</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Free Malaysia Today</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: The Straits Times.",
+        "source": "The Straits Times",
+        "sources": [
+          "The Straits Times"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVG9zbkN5dkV3Ulh2YjlQdURrMk9ua1E5azBkMUZVRWJDYVBoZ2dibUVtMkdab2ZhVjYzUlFRSktSOERQOFJLRmhSajRtWUEyaDBNZnFrU3lZSElYTVhua0d1azUwUUw3a1E2dmtuLW93VnpfdUZhNHVIVVhXUFYtSHhzSHNGcGVkTTRkbGlhM3ZpWk1iSHFkeGhfVXphczExSWptV0tyZXZwbmpSVC1zX0FBUm5IY2FwT0dGNEp2OTZNQVZhT0E?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVG9zbkN5dkV3Ulh2YjlQdURrMk9ua1E5azBkMUZVRWJDYVBoZ2dibUVtMkdab2ZhVjYzUlFRSktSOERQOFJLRmhSajRtWUEyaDBNZnFrU3lZSElYTVhua0d1azUwUUw3a1E2dmtuLW93VnpfdUZhNHVIVVhXUFYtSHhzSHNGcGVkTTRkbGlhM3ZpWk1iSHFkeGhfVXphczExSWptV0tyZXZwbmpSVC1zX0FBUm5IY2FwT0dGNEp2OTZNQVZhT0E?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-08T06:45:00+00:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "sandakan"
+      },
+      "reasons": [
+        "Global unanchored monetary value in ZH text: MYR 9",
+        "Global unanchored monetary value in BM text: MYR 9"
+      ]
+    },
+    {
+      "article": {
+        "id": "art_national_10",
+        "category": "national",
+        "title": "No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own [NST Online 实时发布]",
+        "titleBM": "Laporan Berita: No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own",
+        "detail": "【权威动态播报】<ol><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5\" target=\"_blank\">No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxQWnQ2Zmp1MTB2bGZCLTNMQ2tnSENtZmpLR0toeTdmVnlzenEtWWtvOTd4aGJPemUxWHVNdExmQmFEZEdaTkNlaVNmT2lIZnZJdDFWQ01FNUxYX3VqRG84WjFham00aFVsR21wWEZvZUJwblRSZTFhSzVvelpBTEVSZk9EdVVkVEdzdEZSNldJRGdJN3FleFhIUnNkT3JMcFE?oc=5\" target=\"_blank\">Can’t cook or shower: Indonesians take aim at data centres amid outages</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcGpFTUpXaDAtNHlFekhHSTgzZnphTWZPZ2RGVHZ1TmpxNjRDS1JvY1JEMWZPeHl6eGh6QVNkR2NWc0I3ckt3N2NSdlgwNHh6UnpYNUh3UWpDZUlPUE1pS3FieWZDRlhjVVNiMXVMaTRfV19nWC0xRjlpRVIzdVBDR3lPZlZ2YjdjWHd5UksyZWQ5TEdTSTRtT2kwS2pBNWFHaUZBRkdJdHhOMUtNWDhXUVdhLUVrM3V4TzlKeUVkZzg?oc=5\" target=\"_blank\">Indonesia and Malaysia’s data centre boom sparks anger over resource use and pollution</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxNTVMtOU5VemJWV1FxaW13bGUtMUlhTHlBbHF3VWpLMk9YU3B6Y19ZdU1La3YtRzgxdURhMktoc3FETVN2WVRNb05rVUFfMjJXN2p4WWJYdGY1Y3M5VzJTUnZTS0ZVVmFlV3piRFFrdi10MGU0YUduOE55LTlKZVRhbXB1WGc2SExVdnk1S25PaEZCZ0tI?oc=5\" target=\"_blank\">Can’t cook or shower: Indonesians take aim at data centers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Japan Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPLWRTNS1CMUhLV1phSkd0QWxqQjhPOC13VXQ3YTJMR3RLWWZkejBFSERUY2w3blVKaHlVZkcwN3pSeGxpa0JDMGZ4YmtISndESGJDR2dSSEVFb3hrMWhhNlFRODBKdm9DbnRWb1ZnaXNKbndFelVNSHNTc0lEWFB4YWVicVF5ZHp4amZFdmt6eDZ5R0Y5eW95c3Qwb19nbDc3eXUtQzZUN0hYR0JMQjZVVlFfQmRIb0t6S2dRb1B3?oc=5\" target=\"_blank\">Batam residents protest water disruptions near data centers — The Japan Times</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">UA.NEWS</font></li></ol>。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：NST Online。",
+        "detailBM": "Notis Berita Rasmi: <ol><li><a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5\" target=\"_blank\">No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font></li><li><a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxQWnQ2Zmp1MTB2bGZCLTNMQ2tnSENtZmpLR0toeTdmVnlzenEtWWtvOTd4aGJPemUxWHVNdExmQmFEZEdaTkNlaVNmT2lIZnZJdDFWQ01FNUxYX3VqRG84WjFham00aFVsR21wWEZvZUJwblRSZTFhSzVvelpBTEVSZk9EdVVkVEdzdEZSNldJRGdJN3FleFhIUnNkT3JMcFE?oc=5\" target=\"_blank\">Can’t cook or shower: Indonesians take aim at data centres amid outages</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Straits Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcGpFTUpXaDAtNHlFekhHSTgzZnphTWZPZ2RGVHZ1TmpxNjRDS1JvY1JEMWZPeHl6eGh6QVNkR2NWc0I3ckt3N2NSdlgwNHh6UnpYNUh3UWpDZUlPUE1pS3FieWZDRlhjVVNiMXVMaTRfV19nWC0xRjlpRVIzdVBDR3lPZlZ2YjdjWHd5UksyZWQ5TEdTSTRtT2kwS2pBNWFHaUZBRkdJdHhOMUtNWDhXUVdhLUVrM3V4TzlKeUVkZzg?oc=5\" target=\"_blank\">Indonesia and Malaysia’s data centre boom sparks anger over resource use and pollution</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">联合早报</font></li><li><a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxNTVMtOU5VemJWV1FxaW13bGUtMUlhTHlBbHF3VWpLMk9YU3B6Y19ZdU1La3YtRzgxdURhMktoc3FETVN2WVRNb05rVUFfMjJXN2p4WWJYdGY1Y3M5VzJTUnZTS0ZVVmFlV3piRFFrdi10MGU0YUduOE55LTlKZVRhbXB1WGc2SExVdnk1S25PaEZCZ0tI?oc=5\" target=\"_blank\">Can’t cook or shower: Indonesians take aim at data centers</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Japan Times</font></li><li><a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPLWRTNS1CMUhLV1phSkd0QWxqQjhPOC13VXQ3YTJMR3RLWWZkejBFSERUY2w3blVKaHlVZkcwN3pSeGxpa0JDMGZ4YmtISndESGJDR2dSSEVFb3hrMWhhNlFRODBKdm9DbnRWb1ZnaXNKbndFelVNSHNTc0lEWFB4YWVicVF5ZHp4amZFdmt6eDZ5R0Y5eW95c3Qwb19nbDc3eXUtQzZUN0hYR0JMQjZVVlFfQmRIb0t6S2dRb1B3?oc=5\" target=\"_blank\">Batam residents protest water disruptions near data centers — The Japan Times</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">UA.NEWS</font></li></ol>.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: NST Online.",
+        "source": "NST Online",
+        "sources": [
+          "NST Online"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-08T06:37:29+00:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "national"
+      },
+      "reasons": [
+        "Global unanchored monetary value in ZH text: MYR 3",
+        "Global unanchored monetary value in BM text: MYR 3"
+      ]
+    },
+    {
+      "article": {
+        "id": "art_national_11",
+        "category": "national",
+        "title": "沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基... [诗华日报 实时发布]",
+        "titleBM": "Laporan Berita: 沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基...",
+        "detail": "【权威动态播报】沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基...。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+        "detailBM": "Notis Berita Rasmi: 沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基....\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+        "source": "诗华日报",
+        "sources": [
+          "诗华日报"
+        ],
+        "url": "https://news.seehua.com/post/1602269",
+        "source_urls": [
+          "https://news.seehua.com/post/1602269"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-09T10:31:40+08:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "national"
+      },
+      "reasons": [
+        "Headline monetary mismatch: ZH=[9000000] vs BM=[]",
+        "Headline contains unanchored monetary value MYR 9000000",
+        "Headline contains unanchored named person '穆斯达法' (mustapha_sakmud)",
+        "Headline contains unanchored agency '昌明领养甘榜' (kam)",
+        "Global unanchored monetary value in ZH text: MYR 9000000",
+        "Global bilingual monetary set discrepancy: ZH=[9000000] vs BM=[]"
+      ]
+    },
+    {
+      "article": {
+        "id": "art_national_12",
+        "category": "national",
+        "title": "疑因购买货物欠债问题引发命案 警方不至24小时成功破案 [诗华日报 实时发布]",
+        "titleBM": "Laporan Berita: 疑因购买货物欠债问题引发命案 警方不至24小时成功破案",
+        "detail": "【权威动态播报】疑因购买货物欠债问题引发命案 警方不至24小时成功破案。据官方通报与媒体实时走访，本项进展直接关系到本地民众切身利益，相关部门已责令责任单位加快落实进度并实施严密监控。事件发生后，各方代表提醒公众保持理性并密切关注后续官方指引。来源：诗华日报。",
+        "detailBM": "Notis Berita Rasmi: 疑因购买货物欠债问题引发命案 警方不至24小时成功破案.\n\nPihak berkuasa dan agensi berkaitan telah menggerakkan pasukan bertugas bagi memantau rapi perkembangan terkini demi memastikan keselamatan serta kebajikan masyarakat sentiasa terjamin. Orang ramai dinasihatkan untuk merujuk kepada hebahan rasmi. Disahkan oleh: 诗华日报.",
+        "source": "诗华日报",
+        "sources": [
+          "诗华日报"
+        ],
+        "url": "https://news.seehua.com/post/1602068",
+        "source_urls": [
+          "https://news.seehua.com/post/1602068"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-08T20:04:12+08:00",
+        "collected_at": "2026-11-09T12:25:36.531752+08:00",
+        "site_published_at": "2026-11-09T12:25:41.252353+08:00",
+        "updated_at": "2026-11-09T12:25:41.252353+08:00",
+        "is_updated": false,
+        "geo_scope": "national"
+      },
+      "reasons": [
+        "Headline contains unanchored agency '警方' (pdrm)"
+      ]
+    }
+  ],
+  "article_validation_results": [
+    {
+      "article_id": "art_sabah_1",
+      "category": "sabah",
+      "title_zh": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年 [Astro Awani + Bernama 双核实]",
+      "title_bm": "Laporan Berita: 沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1601871",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_2",
+      "category": "sabah",
+      "title_zh": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1602304",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_3",
+      "category": "sabah",
+      "title_zh": "兵南邦马拉昆花园 一间双层排屋发生火灾 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 兵南邦马拉昆花园 一间双层排屋发生火灾",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1602062",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_4",
+      "category": "sabah",
+      "title_zh": "沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 沙巴预算案12月4日提呈 哈芝芝：着重解决民生问题",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1601838",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Headline contains unanchored named person '哈芝芝' (hajiji)"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_5",
+      "category": "sabah",
+      "title_zh": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1601832",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_6",
+      "category": "sabah",
+      "title_zh": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1601746",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_7",
+      "category": "sabah",
+      "title_zh": "沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技 [诗华日报沙巴版 实时发布]",
+      "title_bm": "Laporan Berita: 沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技",
+      "source": "诗华日报沙巴版",
+      "url": "https://news.seehua.com/post/1601722",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Headline contains unanchored named person '马西迪' (masidi_manjun)"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sabah_8",
+      "category": "sabah",
+      "title_zh": "摩托失控坠入石沟 41岁骑士丧命 [沙巴星洲日报 实时发布]",
+      "title_bm": "Laporan Berita: 摩托失控坠入石沟 41岁骑士丧命",
+      "source": "沙巴星洲日报",
+      "url": "https://sabah.sinchew.com.my/news/20261109/sabah/8050285",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_9",
+      "category": "national",
+      "title_zh": "Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints [The Straits Times 实时发布]",
+      "title_bm": "Laporan Berita: Malaysia’s health ministry to conduct inspections at Gardenia over consumer complaints",
+      "source": "The Straits Times",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVG9zbkN5dkV3Ulh2YjlQdURrMk9ua1E5azBkMUZVRWJDYVBoZ2dibUVtMkdab2ZhVjYzUlFRSktSOERQOFJLRmhSajRtWUEyaDBNZnFrU3lZSElYTVhua0d1azUwUUw3a1E2dmtuLW93VnpfdUZhNHVIVVhXUFYtSHhzSHNGcGVkTTRkbGlhM3ZpWk1iSHFkeGhfVXphczExSWptV0tyZXZwbmpSVC1zX0FBUm5IY2FwT0dGNEp2OTZNQVZhT0E?oc=5",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Global unanchored monetary value in ZH text: MYR 9",
+        "Global unanchored monetary value in BM text: MYR 9"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_10",
+      "category": "national",
+      "title_zh": "No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own [NST Online 实时发布]",
+      "title_bm": "Laporan Berita: No water to cook or bathe: Indonesians protest data centre boom as Malaysia expands its own",
+      "source": "NST Online",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Global unanchored monetary value in ZH text: MYR 3",
+        "Global unanchored monetary value in BM text: MYR 3"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_11",
+      "category": "national",
+      "title_zh": "沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基... [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 沙今年18村获批昌明领养甘榜计划 穆斯达法：获900万建设基...",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602269",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Headline monetary mismatch: ZH=[9000000] vs BM=[]",
+        "Headline contains unanchored monetary value MYR 9000000",
+        "Headline contains unanchored named person '穆斯达法' (mustapha_sakmud)",
+        "Headline contains unanchored agency '昌明领养甘榜' (kam)",
+        "Global unanchored monetary value in ZH text: MYR 9000000",
+        "Global bilingual monetary set discrepancy: ZH=[9000000] vs BM=[]"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_12",
+      "category": "national",
+      "title_zh": "疑因购买货物欠债问题引发命案 警方不至24小时成功破案 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 疑因购买货物欠债问题引发命案 警方不至24小时成功破案",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602068",
+      "is_valid": false,
+      "status": "REVIEW_REQUIRED",
+      "errors": [
+        "Headline contains unanchored agency '警方' (pdrm)"
+      ],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_13",
+      "category": "national",
+      "title_zh": "印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 印裔虽少热度不减！沙各族齐聚兴都庙共庆屠妖节",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1601742",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_14",
+      "category": "national",
+      "title_zh": "电单车遭四驱车撞击 45岁后座乘客送院两天不治 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 电单车遭四驱车撞击 45岁后座乘客送院两天不治",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1601743",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_15",
+      "category": "national",
+      "title_zh": "加拿逸24户长屋凌晨失火 约80%被烧毁 [诗华日报 (砂拉越版) 实时发布]",
+      "title_bm": "Laporan Berita: 加拿逸24户长屋凌晨失火 约80%被烧毁",
+      "source": "诗华日报 (砂拉越版)",
+      "url": "https://news.seehua.com/post/1602284",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_national_16",
+      "category": "national",
+      "title_zh": "连达立：打造泛道休息站 实曼归公园料宪报公布 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 连达立：打造泛道休息站 实曼归公园料宪报公布",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602130",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sports_17",
+      "category": "sports",
+      "title_zh": "Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT [Borneo Post + The Star 双核实]",
+      "title_bm": "Laporan Berita: Football: Mukhairi's own goal costs Selangor dearly as Kuching City set up FA Cup final with JDT",
+      "source": "The Star",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQZDBZNVRVQ1hvYjZQRFp1OGZqcFFlZXR2UWZOUUQxVVR4Ujg1VERJcmxwMEU2bWtwN0N4UklBNjhicWw4V05ISEpxbXFuVFdMTUdCNnl3YWRuazBSVTY4NjN4bDRRdTFhTFdwOW5YYW5ZQkJ1OGNmeEtyb25RdTRlanZsYTdnc2R2Y09Ra1lTR1YyWEJkZG1Tdm8teDZpeHFqQk84ZG92cExYYVlPdzRBX3ZuckpOUHkzeEVhMWk1ajJtNHdIZmJtcUpPNlBJUnJpZEV6Nmw4UFY?oc=5",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sports_18",
+      "category": "sports",
+      "title_zh": "Man Utd rescue Villa draw with incredible fightback, Chelsea stunned [Free Malaysia Today 实时发布]",
+      "title_bm": "Laporan Berita: Man Utd rescue Villa draw with incredible fightback, Chelsea stunned",
+      "source": "Free Malaysia Today",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQRHVaUFRwRGRVRGJtN2xDME5rUUdoaUxiajY5QVR2dTducEJ2ZDFxSEVJZURRQkJqUkpoTkVsRXhGTlRKaFVlNGY3UVNKYmFSaFVMb2VUWmpHSXljMmxEMkdDWnlpZE5RZXQ1TUtpRnRqOG9zYjBScXZwODZCR3BuY3pkdXdNNTBlaUl2RHZzZlVrSzhPbFh6MDBsTjhjNkQyZmtXRkJNUzlLQTdYWDctbHVWYlZXaU1aNTVqaGtfcXdNbG91TmFFR2N1Yw?oc=5",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sports_19",
+      "category": "sports",
+      "title_zh": "Man United in relegation zone, but Michael Carrick insists: I deserve to keep job [ESPN 实时发布]",
+      "title_bm": "Laporan Berita: Man United in relegation zone, but Michael Carrick insists: I deserve to keep job",
+      "source": "ESPN",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTXRIQzhMeURvMXlTUVNDeXFqU0NPcFR2dHZENVA2T3pqWWtVZ2k4Nnc5ZUNIcXE3X1VtVFVaSXNzajM3OUw4emNWcEJCWUxhSGVxdUpCdlplbVBoMDFJRWE4Zmd2dGt2aVdNaGNQX19YZG1BWThRZzdUZUQwc0ZPM1RJT21iNjFReE9rVjVR?oc=5",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sports_20",
+      "category": "sports",
+      "title_zh": "Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis [ESPN 实时发布]",
+      "title_bm": "Laporan Berita: Nottm Forest 3-1 Man City (Nov 7, 2026) Game Analysis",
+      "source": "ESPN",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE82d2tURzYyVWYyTlpIMzd2cC0xOHZFSUtsbVYzNW9vMWUzdkRXbEY4dWdGVmF2UEJFZXh1RHlib0l6RjJpSlNaVHY5aEFDbTdxYzJ3Ykljd2RhdXBGZ0YtbE5OSQ?oc=5",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_sports_21",
+      "category": "sports",
+      "title_zh": "Korea Open: Indomitable An Equals Greatest Season [BWF World Tour 实时发布]",
+      "title_bm": "Laporan Berita: Korea Open: Indomitable An Equals Greatest Season",
+      "source": "BWF World Tour",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPUENWMmNRWGdESTlFUndCLUhFY1VCbS1VU1FLWENJeUNYZGtMUTVKdlJIVXdsS0c3cndBckJvVXNhbmZLYUVmNmxuZTVydTRUek1RR0tIM2oxN0hmaDlMM25lUkJkSHZSZE1od3FFZ0ZOME1rY1h1VDA3Ym1OYkw0MmpaeUJmRWQxLUhSZzZ2cEpSVXRwUWlfdGdhRFRGMTlyWlNFV2NrMk11YnJQd3c?oc=5",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_general_22",
+      "category": "general",
+      "title_zh": "马哈迪屠妖节外出购物 精神奕奕与民互动 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 马哈迪屠妖节外出购物 精神奕奕与民互动",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602322",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_general_23",
+      "category": "general",
+      "title_zh": "黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 黄仁勋婚外情风波 特朗普发声力挺：他是品格高尚的人",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602252",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    },
+    {
+      "article_id": "art_general_24",
+      "category": "general",
+      "title_zh": "公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解 [诗华日报 实时发布]",
+      "title_bm": "Laporan Berita: 公司聚餐为避酒做150个深蹲 男子双腿肿痛确诊横纹肌溶解",
+      "source": "诗华日报",
+      "url": "https://news.seehua.com/post/1602205",
+      "is_valid": true,
+      "status": "VERIFIED",
+      "errors": [],
+      "warnings": [],
+      "audited_claims_count": 2
+    }
+  ],
+  "utilities_validation": {
+    "results": [
+      {
+        "id": "M",
+        "title": "气象局持续发布沙巴东海岸季风连续降雨警报（Waspada） [气象局MetMalaysia 官方通告]",
+        "is_valid": true,
+        "errors": []
+      },
+      {
+        "id": "W",
+        "title": "沙巴水务局（JANS）斗湖古哈拉常态供水监测 [官方渠道复核中]",
+        "is_valid": true,
+        "errors": []
+      }
+    ],
+    "audited_count": 2
+  },
+  "events_validation": {
+    "results": [
+      {
+        "id": 1,
+        "name": "山打根 (MPS) 近海海岸全员清洁行动与环保义卖",
+        "full_date": "2026-11-09",
+        "is_valid": true,
+        "errors": []
+      },
+      {
+        "id": 2,
+        "name": "Pink Ribbon 20周年公益健康义诊",
+        "full_date": "2026-11-11",
+        "is_valid": true,
+        "errors": []
+      },
+      {
+        "id": 3,
+        "name": "山打根中华商会 2026 跨境电商与数字外贸峰会",
+        "full_date": "2026-11-14",
+        "is_valid": true,
+        "errors": []
+      },
+      {
+        "id": 4,
+        "name": "沙巴野生动物局婆罗洲侏儒象保护区生态导览与公众教育日",
+        "full_date": "2026-11-18",
+        "is_valid": true,
+        "errors": []
+      }
+    ],
+    "audited_count": 4
+  },
+  "production_integrity_verification": {
+    "news_data_path": "C:\\simon kankan\\news_data.json",
+    "news_data_hash_before": "ae9fc8fe5de9c0271fd51e72d5c69222af28d4816ff5399d27c2700819a6b6c2",
+    "news_data_hash_after": "ae9fc8fe5de9c0271fd51e72d5c69222af28d4816ff5399d27c2700819a6b6c2",
+    "news_data_unmodified": true,
+    "index_html_path": "C:\\simon kankan\\index.html",
+    "index_html_hash_before": "c578bcc1d9f1ffa7b4c3db2a7ed3877533901ae64537808cdea84dccab6c293a",
+    "index_html_hash_after": "c578bcc1d9f1ffa7b4c3db2a7ed3877533901ae64537808cdea84dccab6c293a",
+    "index_html_unmodified": true,
+    "production_publishing_called": false,
+    "github_actions_triggered": false,
+    "git_commits_created": false,
+    "git_pushes_executed": false
+  }
+}

@@ -177,7 +177,7 @@ class TestGeminiQuotaProtection(unittest.TestCase):
         slot2 = qm.reserve_slot("gemini-3.5-flash-lite")
         self.assertIsNone(slot2, "Second request in same run must be rejected")
 
-    # 10. HTTP 429 consumes quota and selects Track B
+    # 10. HTTP 429 consumes quota and fails closed (D-11: no fake-news fallback)
     def test_10_http_429_consumes_quota_and_selects_track_b(self):
         qm = QuotaManager(self.config, state_file_override=self.state_file, execution_mode_override="MOCK_TEST")
         valid_remote = self._create_valid_remote_state(0)
@@ -189,9 +189,8 @@ class TestGeminiQuotaProtection(unittest.TestCase):
 
         with patch("urllib.request.urlopen", side_effect=urllib.error.HTTPError("https://x", 429, "Too Many Requests", {}, None)):
             res = synth.synthesize("2026-11-08", test_articles, api_key="test_key")
-            self.assertIsNotNone(res)
-            self.assertTrue(len(res) > 0)
-            self.assertIn("art_sabah_1", res[0]["id"])
+            # D-11 fail closed: 0 articles returned when Gemini fails
+            self.assertEqual(res, [])
 
         state = qm.load_and_validate_local_state()
         self.assertEqual(state["reserved_count"], 1)
@@ -242,7 +241,7 @@ class TestGeminiQuotaProtection(unittest.TestCase):
             RawArticle(title="山打根市民中心开放", url="https://x.com/2", source="星洲日报", category="sabah", snippet="市民热烈参与活动")
         ]
         with patch("urllib.request.urlopen") as mock_url:
-            res = synth.synthesize("2026-11-08", test_articles, api_key=None)
+            res = synth.synthesize_track_b_standalone("2026-11-08", test_articles)
             self.assertEqual(len(res), 2)
             mock_url.assert_not_called()
 

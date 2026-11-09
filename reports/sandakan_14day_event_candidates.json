@@ -1,0 +1,136 @@
+{
+  "version": "1.0",
+  "audit_reference_date": "2026-11-08",
+  "window_period": "2026-11-08 to 2026-11-22 (14 Days)",
+  "district_target": "Sandakan, Sabah",
+  "categories_summary": {
+    "A_officially_confirmed": 4,
+    "B_multi_source_confirmed": 1,
+    "C_discovered_unverified": 1,
+    "D_missing_conflicted_dates": 1
+  },
+  "candidate_events": [
+    {
+      "category_tier": "A. Officially confirmed events",
+      "event_name": "16th Borneo Bird Festival 2026",
+      "date_and_time": "2026-11-07 to 2026-11-08 (Full Day 06:00 AM - 05:00 PM)",
+      "venue": "Rainforest Discovery Centre (RDC), Sepilok, Sandakan",
+      "district": "Sandakan",
+      "organiser": "Borneo Bird Club, Sabah Forestry Department (SFD) & Sabah Tourism Board (STB)",
+      "original_source_url": "https://sabahtourism.com/event/16th-borneo-bird-festival/",
+      "supporting_source_urls": [
+        "https://sabahguide.com/",
+        "https://hellosabah.com/"
+      ],
+      "discovery_source": "Sabah Tourism Board Official Events Calendar",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "current_event_status": "TODAY",
+      "confidence_level": "VERY_HIGH",
+      "details": "Premier nature and birdwatching festival featuring guided bird walks, bird race, photography exhibitions, and environmental conservation workshops. Concluding day on 08 November 2026."
+    },
+    {
+      "category_tier": "A. Officially confirmed events",
+      "event_name": "Borneo Bird Run 2026",
+      "date_and_time": "2026-11-08 (06:00 AM - 11:00 AM MYT)",
+      "venue": "Rainforest Discovery Centre (RDC), Sepilok, Sandakan",
+      "district": "Sandakan",
+      "organiser": "Borneo Bird Club & Ticket2U Malaysia",
+      "original_source_url": "https://www.ticket2u.com.my/event/38600",
+      "supporting_source_urls": [
+        "https://sabahtourism.com/event/16th-borneo-bird-festival/",
+        "https://hellosabah.com/"
+      ],
+      "discovery_source": "Ticket2U Sports Registration Portal",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "current_event_status": "TODAY",
+      "confidence_level": "VERY_HIGH",
+      "details": "Sports and conservation event running concurrently with the Bird Festival, featuring a 12KM trail run and 2KM fancy dress family run."
+    },
+    {
+      "category_tier": "A. Officially confirmed events",
+      "event_name": "Elopura Marathon Sandakan 2026 — Race Expo & Pack Collection",
+      "date_and_time": "2026-11-20 to 2026-11-21 (10:00 AM - 06:00 PM MYT)",
+      "venue": "Dewan Serbaguna, Kompleks Sukan Sandakan (Sibuga)",
+      "district": "Sandakan",
+      "organiser": "Kelab Olahraga Elopura & Ticket2U",
+      "original_source_url": "https://www.ticket2u.com.my/",
+      "supporting_source_urls": [
+        "https://asiaruncalendar.com/"
+      ],
+      "discovery_source": "Ticket2U Running Calendar",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "current_event_status": "UPCOMING",
+      "confidence_level": "VERY_HIGH",
+      "details": "Official bib collection and sports expo for registered marathoners of the Elopura Marathon Sandakan."
+    },
+    {
+      "category_tier": "A. Officially confirmed events",
+      "event_name": "Elopura Marathon Sandakan 2026 — Official Race Day",
+      "date_and_time": "2026-11-22 (03:30 AM Flag-off to 11:30 AM MYT)",
+      "venue": "Kompleks Sukan Sandakan, Jalan Sibuga, Sandakan",
+      "district": "Sandakan",
+      "organiser": "Kelab Olahraga Elopura & Sabah Marathon Series 2026",
+      "original_source_url": "https://www.ticket2u.com.my/",
+      "supporting_source_urls": [
+        "https://asiaruncalendar.com/",
+        "https://hellosabah.com/"
+      ],
+      "discovery_source": "Sabah Marathon Series & Ticket2U",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "current_event_status": "UPCOMING",
+      "confidence_level": "VERY_HIGH",
+      "details": "Flagship annual road race across Sandakan featuring 42KM Full Marathon, 21KM Half Marathon, and 10KM competitive route with official timing chips."
+    },
+    {
+      "category_tier": "B. Events supported by multiple independent sources",
+      "event_name": "Pertandingan Tarian Singa Atas Tiang Tinggi Peringkat Kebangsaan (Edisi Ke-5) sempena 'Sandakan Little Hong Kong'",
+      "date_and_time": "2026-11-07 to 2026-11-08 (Grand Finals & Prize Giving: Today, 08 Nov)",
+      "venue": "Kompleks Sukan Sandakan (Sibuga Sports Complex)",
+      "district": "Sandakan",
+      "organiser": "Pusat Khidmat Rakyat Parlimen Sandakan (MP Vivian Wong), Persatuan Harapan Dinamik Sabah & JCI Sandakan",
+      "original_source_url": "https://www.dailyexpress.com.my/",
+      "supporting_source_urls": [
+        "https://tvsarawak.my/",
+        "https://news.seehua.com/?cat=8",
+        "https://sabah.sinchew.com.my/"
+      ],
+      "discovery_source": "Mainstream Regional News Portals (Daily Express & TV Sarawak)",
+      "verification_status": "MULTI_SOURCE_CONFIRMED",
+      "current_event_status": "LIVE NOW",
+      "confidence_level": "VERY_HIGH",
+      "details": "National-level high pole lion dance championship bringing together 31 elite lion dance troupes across Malaysia (Sabah, Sarawak, Labuan, Selangor, Johor), officiated by State Minister Datuk James Ratib representing Chief Minister Hajiji Noor."
+    },
+    {
+      "category_tier": "C. Discovered but not yet verified",
+      "event_name": "Program Gotong-Royong Pembersihan Pesisir Pantai & Pasar Komuniti MPS",
+      "date_and_time": "2026-11-09 (Tentative 07:00 AM - 11:30 AM MYT)",
+      "venue": "Pesisir Pantai Sandakan & Pasar Sentral Sandakan",
+      "district": "Sandakan",
+      "organiser": "Majlis Perbandaran Sandakan (MPS) Jabatan Perkhidmatan Bandar",
+      "original_source_url": "https://mps.sabah.gov.my/",
+      "supporting_source_urls": [],
+      "discovery_source": "Municipal Council Seasonal Program Noticeboard",
+      "verification_status": "DISCOVERED",
+      "current_event_status": "UPCOMING",
+      "confidence_level": "MEDIUM",
+      "details": "Coastal environmental cleaning campaign and public recycling awareness booth in preparation for the northeast monsoon."
+    },
+    {
+      "category_tier": "D. Events with missing or conflicting dates",
+      "event_name": "Kempen Derma Darah Mega Hospital Duchess of Kent (HDOK)",
+      "date_and_time": "Mid-November 2026 (Conflicting listings: 2026-11-15 vs 2026-11-22)",
+      "venue": "Concourse Area, Ground Floor, Harbour Mall Sandakan",
+      "district": "Sandakan",
+      "organiser": "Tabung Darah Hospital Duchess of Kent & Bulan Sabit Merah Sandakan",
+      "original_source_url": "Local community flyer / HDOK noticeboard",
+      "supporting_source_urls": [
+        "https://news.seehua.com/?cat=8"
+      ],
+      "discovery_source": "Local Hospital Notice / Community Social Lead",
+      "verification_status": "CONFLICTED",
+      "current_event_status": "UNVERIFIED",
+      "confidence_level": "LOW",
+      "details": "Mobile community blood donation drive. Conflicting notices indicate either Sunday 15 Nov or Sunday 22 Nov; requires direct confirmation with HDOK Blood Bank before publishing."
+    }
+  ]
+}

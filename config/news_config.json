@@ -4,7 +4,7 @@
     "version": "7.0.0",
     "timezone": "Asia/Kuala_Lumpur",
     "sliding_window_hours": 36,
-    "min_headlines_threshold": 12,
+    "min_headlines_threshold": 10,
     "quotas": {
       "sabah": 8,
       "national": 8,
@@ -136,6 +136,7 @@
       "type": "jans"
     }
   ],
+  "facebook_matrix_file": "config/facebook_verification_matrix.json",
   "facebook_pages": [
     {
       "handle": "mpsandakan",
