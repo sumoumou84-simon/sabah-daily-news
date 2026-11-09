@@ -28,6 +28,10 @@ jobs:
           ref: test/d12-gemini-single-batch-20261109
           fetch-depth: 0
 
+      - name: 确保处于测试分支非游离状态
+        run: |
+          git checkout test/d12-gemini-single-batch-20261109
+
       - name: 配置 Python 环境
         uses: actions/setup-python@v5
         with:
@@ -73,4 +77,4 @@ jobs:
         run: |
           git add reports/gemini_single_batch_preview_d12*.* reports/token_usage_observation.jsonl config/gemini_quota_state.json || true
           git commit -m "docs: save Phase D-12.1 Gemini single-batch execution artifacts [skip ci]" || echo "今日无变动"
-          git push origin test/d12-gemini-single-batch-20261109 || true
+          git push origin HEAD:test/d12-gemini-single-batch-20261109 || true

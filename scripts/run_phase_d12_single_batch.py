@@ -457,6 +457,7 @@ def build_d12_markdown_report(data: dict) -> str:
         "> **Fail-Closed Security Invariant:** In strict adherence to Section 2 (*'If any mandatory prerequisite fails, STOP before API execution and report the specific reason'*), because the local runner environment does not possess `GEMINI_API_KEY` (which is configured securely as GitHub Actions Secret `secrets.GEMINI_API_KEY`), execution halted cleanly prior to HTTP dispatch. Exactly **0 Gemini API calls** were emitted, preserving quota slot 4 for authorized CI workflow runs.",
         "",
         "---",
+    ]
     gen_articles = ex.get("generated_articles", [])
     if gen_articles:
         lines.extend([

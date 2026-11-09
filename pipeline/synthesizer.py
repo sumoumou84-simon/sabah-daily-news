@@ -182,22 +182,22 @@ class QuotaManager:
         Returns: (state_dict_or_None, condition_code)
         """
         try:
-            # 1. Verify current branch is main
+            # 1. Verify current branch is main or active test branch
+            active_branch = os.getenv("GITHUB_REF_NAME") or "main"
             res_br = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, check=False)
             current_branch = res_br.stdout.strip()
-            if current_branch != "main":
-                logger.error(f"[QUOTA FAIL-CLOSED] Unexpected active branch '{current_branch}', expected 'main'.")
+            if current_branch and current_branch not in ("main", active_branch):
+                logger.error(f"[QUOTA FAIL-CLOSED] Unexpected active branch '{current_branch}', expected 'main' or '{active_branch}'.")
                 return None, "UNEXPECTED_BRANCH"
 
-            # 2. Fetch origin/main metadata
-            res_fetch = subprocess.run(["git", "fetch", "origin", "main", "--quiet"], capture_output=True, text=True, check=False)
+            # 2. Fetch origin metadata
+            res_fetch = subprocess.run(["git", "fetch", "origin", active_branch, "--quiet"], capture_output=True, text=True, check=False)
             if res_fetch.returncode != 0:
                 logger.error(f"[QUOTA FAIL-CLOSED: Condition C] Remote fetch failure: {res_fetch.stderr.strip()}")
                 return None, "CONDITION_C_FETCH_FAILURE"
 
             # 3. Check if state file exists in active branch or origin/main
             git_path = self.state_file.replace("\\", "/")
-            active_branch = os.getenv("GITHUB_REF_NAME") or "main"
             res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], capture_output=True, text=True, check=False)
             if res_show.returncode != 0 and active_branch != "main":
                 res_show = subprocess.run(["git", "show", f"origin/main:{git_path}"], capture_output=True, text=True, check=False)
