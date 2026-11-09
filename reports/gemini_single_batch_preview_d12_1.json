@@ -1,0 +1,412 @@
+{
+  "metadata": {
+    "execution_mode": "PHASE_D12_SINGLE_BATCH_EXECUTION",
+    "target_news_date": "2026-11-09",
+    "timestamp_myt": "2026-11-09T16:11:50.482019+08:00",
+    "model_configured": "gemini-3.5-flash-lite",
+    "endpoint_configured": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+    "gemini_api_requests_dispatched": 1,
+    "quota_slots_reserved": 1,
+    "git_operations": "PROHIBITED_ZERO_OPERATIONS",
+    "production_publishing": "PROHIBITED_ZERO_PUBLISHING",
+    "production_hashes": {
+      "news_data_json_sha256": "c47187fd39d559e95026a5f775dcfe4c5c3c61db4451c5f5ba0ec75dc02b852d",
+      "index_html_sha256": "d63e0b018145e77216a2aa14f2f71f36aa13a5d03a226ceefedcf3f450d3ada7",
+      "unchanged_bit_for_bit": true
+    }
+  },
+  "preflight_audit": {
+    "1_manifest_files_exist": {
+      "status": "PASS",
+      "json_path": "/home/runner/work/sabah-daily-news/sabah-daily-news/reports/editorial_readiness_d11_6.json",
+      "md_path": "/home/runner/work/sabah-daily-news/sabah-daily-news/reports/editorial_readiness_d11_6.md"
+    },
+    "2_all_10_stories_loaded": {
+      "status": "PASS",
+      "story_count": 10
+    },
+    "3_source_records_available": {
+      "status": "PASS",
+      "verified_count": 10
+    },
+    "4_substantive_material_present": {
+      "status": "PASS",
+      "total_substantive_chars": 46862,
+      "average_chars_per_story": 4686
+    },
+    "5_fixed_model_verified": {
+      "status": "PASS",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "6_configured_endpoint_verified": {
+      "status": "PASS",
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+    },
+    "7_quotamanager_myt_date_verified": {
+      "status": "PASS",
+      "state_date": "2026-11-09",
+      "current_myt_date": "2026-11-09",
+      "timezone": "Asia/Kuala_Lumpur"
+    },
+    "8_internal_quota_confirmed": {
+      "status": "PASS",
+      "reserved_before": 3,
+      "daily_limit": 5,
+      "slots_remaining": 2
+    },
+    "9_token_limits_accommodated": {
+      "status": "PASS",
+      "estimated_input_tokens": 12500,
+      "model_input_token_limit": 1048576,
+      "max_output_tokens_configured": 8192,
+      "estimated_output_tokens": 3500
+    },
+    "10_single_execution_configured": {
+      "status": "PASS",
+      "per_run_limit": 1,
+      "enforcement": "EXACTLY_1_HTTP_CALL_NO_RETRY"
+    },
+    "11_credential_availability": {
+      "status": "PASS",
+      "credential_detected": true,
+      "note": "GitHub Actions secret 'secrets.GEMINI_API_KEY' is configured for CI runners; local environment currently has 0 key."
+    }
+  },
+  "execution_summary": {
+    "http_requests_sent": 1,
+    "reservation_id": "res_2026-11-09_4_20298302",
+    "quota_reserved": true,
+    "model_used": "gemini-3.5-flash-lite",
+    "http_status": 200,
+    "raw_response": {
+      "candidates": [
+        {
+          "content": {
+            "parts": [
+              {
+                "text": "[\n  {\n    \"story_index\": 1,\n    \"category\": \"sabah\",\n    \"title\": \"沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年\",\n    \"titleBM\": \"Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan\",\n    \"detail\": \"第14届沙巴地方政府运动会（Sukan PBT Sabah）正式在山打根盛大开幕，由科学、工艺及革新部长拿督阿里芬阿里夫主持推介礼。本届运动会旨在通过体育竞技促进各地方议会官员与员工之间的跨区域紧密合作与交流，同时积极推动市容美化工作，全力为2027马来西亚旅游年做好万全准备。主办方指出，活动不仅有助提升公务员体能与团队凝聚力，更通过大量外地代表团的涌入，直接带动山打根当地酒店、餐饮及零售等中小企业的经济活力，实现地方治理与旅游经济的双赢局面。\",\n    \"detailBM\": \"Sukan PBT Sabah kali ke-14 telah dirasmikan di Sandakan oleh Menteri Sains, Teknologi dan Inovasi, Datuk Seri Arifin Arif. Kejohanan ini bertujuan memperkukuh kerjasama merentas daerah dan semangat berpasukan dalam kalangan pegawai pihak berkuasa tempatan (PBT). Selain mempromosikan gaya hidup sihat, penganjuran ini turut memainkan peranan penting dalam usaha memperindah bandar sebagai persiapan menyambut Tahun Melawat Malaysia 2027. Kehadiran ribuan peserta dari seluruh negeri dijangka merangsang ekonomi tempatan, khususnya sektor perhotelan, peruncitan, dan industri kecil sederhana di Sandakan.\",\n    \"publisher\": \"诗华日报沙巴版, Daily Express Malaysia\"\n  },\n  {\n    \"story_index\": 2,\n    \"category\": \"sabah\",\n    \"title\": \"沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展\",\n    \"titleBM\": \"Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji\",\n    \"detail\": \"沙巴州首席部长拿督斯里哈芝芝诺日前发表声明，明确指出即将出台的沙巴2027年州财政预算案将把核心资源倾斜于解决长期困扰民生的基本基础设施建设。州政府承诺将大幅增加拨款，全面根治全州各县面临的干净自来水供应短缺、电力供应不稳定以及道路网连接不畅等沉疴。哈芝芝强调，基础建设是推动沙巴经济腾飞和吸引外资的基石，政府将以务实高效的态度监督各项工程落地，确保每一笔公共开支都能切实惠及基层百姓，提升全州人民的生活质量。\",\n    \"detailBM\": \"Ketua Menteri Sabah, Datuk Seri Hajiji Noor, menegaskan bahawa Belanjawan Sabah 2027 akan memberi tumpuan khusus kepada penyelesaian isu infrastruktur asas di seluruh negeri. Kerajaan negeri komited menyalurkan peruntukan besar bagi menangani masalah bekalan air bersih, kestabilan bekalan elektrik, dan rangkaian perhubungan jalan raya yang sekian lama membelenggu rakyat. Hajiji menekankan bahawa pembangunan infrastruktur yang cekap adalah kunci kepada kemajuan ekonomi dan kesejahteraan rakyat, serta memastikan setiap peruntukan memberikan impak langsung kepada penduduk setempat.\",\n    \"publisher\": \"Borneo Post, The Star\"\n  },\n  {\n    \"story_index\": 3,\n    \"category\": \"national\",\n    \"title\": \"沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区\",\n    \"titleBM\": \"DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong\",\n    \"detail\": \"随着第16届全国大选（PRU16）的步伐日益临近，民主行动党沙巴州委员会日前召开战略会议。沙巴行动党主席冯晋哲正式对外宣布，该党已经作好全面迎战准备，并将采取不妥协的坚定姿态，全力捍卫亚庇（Kota Kinabalu）和山打根（Sandakan）这两个传统国会议席。冯晋哲指出，面对日趋复杂的政治格局，党内正在紧锣密鼓地推进架构重组与基层动员工作，确保以最强大的凝聚力和民意基础迎接选战考验，继续为沙巴人民争取公平与发展权益。\",\n    \"detailBM\": \"Menjelang Pilihan Raya Umum ke-16 (PRU16), Pengerusi DAP Sabah, Phoong Jin Zhe, mengumumkan bahawa partinya bertekad mempertahankan dua kerusi Parlimen tradisi iaitu Kota Kinabalu dan Sandakan. Menurut beliau, DAP Sabah sedang giat melaksanakan proses penyusunan semula jentera parti di peringkat akar umbi bagi memastikan kesiapsiagaan optimum. Kepimpinan parti komited memperkukuhkan sokongan rakyat dan meneruskan agenda perjuangan demi kepentingan serta hak pembangunan masyarakat di negeri ini.\",\n    \"publisher\": \"Daily Express Malaysia, The Star\"\n  },\n  {\n    \"story_index\": 4,\n    \"category\": \"sabah\",\n    \"title\": \"兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命\",\n    \"titleBM\": \"Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit\",\n    \"detail\": \"沙巴兵南邦（Penampang）道路于今日凌晨发生一起严重且不幸的交通意外，导致一名41岁的本地男摩托车骑士当场魂断公路。根据警方初步调查显示，事发时该名骑士独自骑摩托车行经兵南邦路段，疑似因车速过快或未能在夜间及时反应，导致车辆突然失控，猛烈撞向路旁坚硬的混凝土排水沟屏障。由于撞击力巨大，骑士头部及身体多处受重创，救护人员赶到现场后证实其已无生命迹象。目前警方正援引相关交通法令深入调查事故的具体起因。\",\n    \"detailBM\": \"Satu kemalangan maut melibatkan sebuah motosikal berlaku di Jalan Penampang awal pagi tadi, menyebabkan seorang penunggang lelaki berusia 41 tahun disahkan meninggal dunia di tempat kejadian. Siasatan awal pihak polis mendapati mangsa hilang kawalan sebelum terbabas dan melanggar parit konkrit di bahu jalan. Akibat impak pelanggaran yang kuat, mangsa mengalami kecederaan parah pada bahagian kepala dan badan. Pihak polis sedang menjalankan siasatan lanjut di bawah akta berkaitan bagi mengenal pasti punca sebenar tragedi ini.\",\n    \"publisher\": \"TV Sabah News, 诗华日报沙巴版, Daily Express Malaysia\"\n  },\n  {\n    \"story_index\": 5,\n    \"category\": \"national\",\n    \"title\": \"沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案\",\n    \"titleBM\": \"Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu\",\n    \"detail\": \"为彻底舒缓亚庇都会区日益严重的交通拥堵问题，并构建现代化物流体系，沙巴州政府宣布正式全面启动《沙巴可持续交通与综合物流蓝图》（SSTMP）研究工作。该项由专业交通规划团队主导的研究，将深入探讨公共交通系统的重组、城市轻轨或快捷巴士服务的可行性，以及改善全州货物运输与港口物流的高效连通方案。州政府希望通过这份宏观长远的发展蓝图，解决因城市化进程加快带来的交通瓶颈，为沙巴的长远经济繁荣和绿色低碳出行奠定坚实基础。\",\n    \"detailBM\": \"Bagi menangani kesesakan lalu lintas yang semakin meruncing di Kota Kinabalu serta memperkukuh rantaian logistik negeri, kerajaan Sabah telah memulakan Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu (SSTMP). Kajian komprehensif ini merangkumi penambahbaikan sistem pengangkutan awam bandar, penerokaan mod pengangkutan moden, serta kecekapan rangkaian pengangkutan kargo. Kerajaan negeri optimis pelan strategik ini mampu menyelesaikan masalah mobiliti bandar dan menyokong pertumbuhan ekonomi jangka panjang Sabah.\",\n    \"publisher\": \"Borneo Post\"\n  },\n  {\n    \"story_index\": 6,\n    \"category\": \"national\",\n    \"title\": \"泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程\",\n    \"titleBM\": \"Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1\",\n    \"detail\": \"备受沙巴人民瞩目的泛婆大道（Pan Borneo Highway）沙巴第一阶段工程进展持续成为社会焦点。州政府与联邦工程部正密切配合，全面评估已竣工路段的运营状况并着手解决多起因工程延误而滞后的施工配套。相关部门承诺将采取更严格的承包商问责机制，积极克服公用设施迁移、土地征用及地质复杂等技术挑战。各方正全力冲刺，力争早日完成第一阶段的各个关键施工标段，从而大幅改善沙巴东西海岸的物流效率，降低运输成本。\",\n    \"detailBM\": \"Perkembangan projek Lebuhraya Pan Borneo Sabah Fasa 1 terus mendapat perhatian serius pihak berkuasa dalam usaha mengatasi pelbagai isu kelewatan. Kerajaan negeri dan Persekutuan kini mempergiat kerjasama untuk menyelesaikan pelbagai cabaran teknikal, termasuk isu utiliti dan pengambilan tanah. Langkah-langkah pemantauan ketat dikenakan terhadap kontraktor terbabit bagi memastikan pakej-pakej yang tertangguh dapat disiapkan segera, demi menjamin keselesaan pengguna jalan raya serta mempercepatkan pembangunan ekonomi wilayah ini.\",\n    \"publisher\": \"Borneo Post\"\n  },\n  {\n    \"story_index\": 7,\n    \"category\": \"national\",\n    \"title\": \"沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动\",\n    \"titleBM\": \"Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi\",\n    \"detail\": \"沙巴州移民局持续采取铁腕政策打击非法入境活动。根据最新统计数据表明，该局自今年初以来，已通过海陆空多维度的77次大规模取缔与遣返行动，成功将累计8,472名各类无证非法移民驱逐出境。其中包括近期通过山打根港口（Sandakan Port）安全转移并遣送回国的466名扣留中心滞留人员。沙巴移民局重申，当局将继续与各安全执法机构紧密配合，严厉打击偷渡及非法劳工现象，坚决捍卫国家主权与边境安全。\",\n    \"detailBM\": \"Jabatan Imigresen Sabah terus memperhebatkan operasi penguatkuasaan dengan merekodkan pengusiran seramai 8,472 pendatang tanpa izin (PATI) menerusi 77 siri operasi setakat ini. Operasi merangkumi penghantaran pulang melalui laluan darat, laut, dan udara, termasuk pemindahan terbaharu melibatkan 466 tahanan melalui Pelabuhan Sandakan. Pihak imigresen menegaskan bahawa operasi penguatkuasaan ini akan diteruskan secara konsisten bagi memastikan keselamatan dan ketenteraman awam di negeri Sabah sentiasa terpelihara.\",\n    \"publisher\": \"Borneo Post\"\n  },\n  {\n    \"story_index\": 8,\n    \"category\": \"sabah\",\n    \"title\": \"气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三\",\n    \"titleBM\": \"MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu\",\n    \"detail\": \"马来西亚气象局（MetMalaysia）已正式向沙巴多个地区发布黄色级别的持续降雨天气警报。受影响的区域主要集中在沙巴东海岸及北部地区，涵盖古达（Kudat）、山打根（Sandakan）、京那巴当岸（Kinabatangan）、比鲁兰（Beluran）以及东革（Telupid）等地。气象部门预计相关降雨天气将持续维持至本周三。当局已向相关灾害管理机构发出防范提醒，并呼吁低洼及沿海易涝地区的民众保持高度警惕，随时留意官方发布的最新天气预报。\",\n    \"detailBM\": \"Jabatan Meteorologi Malaysia (MetMalaysia) telah mengeluarkan amaran hujan berterusan tahap waspada yang melibatkan beberapa kawasan di Sabah. Antara kawasan yang terjejas termasuk Kudat, Sandakan, Kinabatangan, Beluran, dan Telupid. Amaran cuaca ini dijangka berterusan hingga hari Rabu. Penduduk di kawasan rendah dan berisiko dinasihatkan agar sentiasa peka terhadap perkembangan cuaca semasa dan mematuhi arahan pihak berkuasa tempatan.\",\n    \"publisher\": \"诗华日报沙巴版, NST Online\"\n  },\n  {\n    \"story_index\": 9,\n    \"category\": \"national\",\n    \"title\": \"亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益\",\n    \"titleBM\": \"Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan\",\n    \"detail\": \"针对亚庇国际机场（KKIA）未来发展方向的讨论近期在沙巴政商及航空业界持续白热化。关于是在现有原址进行大规模扩建以提升客货运吞吐量，还是选择将机场整体搬迁至斗亚兰（Tuaran）或金马利（Kimanis）建设全新国际机场的方案，各界专家及马来西亚特许物流与运输学会（CILTM）纷纷发表专业意见。业界强烈呼吁州政府与联邦相关部门展开全面且长远的科学评估，仔细权衡巨额资本开支（Capex）、区域交通连通性以及对周边商业房地产的深远影响，从而做出符合沙巴长远利益的最优战略决策。\",\n    \"detailBM\": \"Perbalahan mengenai masa depan Lapangan Terbang Antarabangsa Kota Kinabalu (KKIA) hangat diperkatakan berhubung cadangan sama ada menaik taraf terminal sedia ada atau membina lapangan terbang baharu di Kimanis atau Tuaran. Pakar industri dan CILTM menggesa agar satu kajian holistik dilaksanakan bagi menilai kos perbelanjaan modal, impak ekonomi, serta kemudahan kesalinghubungan. Keputusan strategik ini dianggap penting bagi memastikan pembangunan infrastruktur penerbangan Sabah selari dengan keperluan pelancongan dan perdagangan masa depan.\",\n    \"publisher\": \"Jesselton Times, 星洲日报沙巴版, Daily Express Malaysia, Bernama\"\n  },\n  {\n    \"story_index\": 10,\n    \"category\": \"national\",\n    \"title\": \"第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客\",\n    \"titleBM\": \"Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta\",\n    \"detail\": \"为期数天的第16届婆罗洲观鸟节（Borneo Bird Festival）在山打根西必洛雨林发现中心（RDC Sepilok）圆满落下帷幕。本届活动成功吸引了来自马来西亚本土、新加坡、菲律宾以及欧美等多个国家和地区的逾千名生态旅游爱好者与专业观鸟者参与。活动重头戏“观鸟竞赛”（Bird Race）吸引了多达45支专业队伍同场竞技，充分展现了沙巴丰富独特的鸟类生态多样性。这项年度盛事不仅进一步巩固了山打根作为婆罗洲顶级生态旅游目的地的崇高声誉，也为当地生态保育及旅游经济作出了积极贡献。\",\n    \"detailBM\": \"Pesta Burung Borneo ke-16 yang berlangsung di Rainforest Discovery Centre (RDC) Sepilok, Sandakan, melabuhkan tirainya dengan jayanya apabila berjaya menarik lebih 1,000 penyertaan pelancong ekologi dan pemerhati burung. Acara utama iaitu pertandingan merhati burung (Bird Race) menyaksikan penyertaan sebanyak 45 pasukan dari dalam dan luar negara seperti Singapura dan Filipina. Penganjuran ini terus memartabatkan Sandakan sebagai destinasi pelancongan ekologi unggul di Borneo serta memupuk kesedaran pemuliharaan alam sekitar.\",\n    \"publisher\": \"诗华日报\"\n  }\n]",
+                "thoughtSignature": "EmAKXgFpFH0TPoGVU2nJfPeE1VKzY28zJL1nmxHYGtDXh/U2/OKkixSrlkBm2LnXGRe8y2a5LH3/xrkPIRQ3NuTAfYI1/P5Fqqjm2MDFXEAFy/0A3RlGeiXk8X73Pa1dQ5M="
+              }
+            ],
+            "role": "model"
+          },
+          "finishReason": "STOP",
+          "index": 0
+        }
+      ],
+      "usageMetadata": {
+        "promptTokenCount": 1833,
+        "candidatesTokenCount": 3816,
+        "totalTokenCount": 5649,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 1833
+          }
+        ],
+        "serviceTier": "standard"
+      },
+      "modelVersion": "gemini-3.5-flash-lite",
+      "responseId": "SIDxap7dEJTpz7IPv7zz-Ak"
+    },
+    "token_usage": {
+      "promptTokenCount": 1833,
+      "candidatesTokenCount": 3816,
+      "totalTokenCount": 5649,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1833
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "generated_articles_count": 10,
+    "passed_validation_count": 8,
+    "rejected_articles_count": 2,
+    "rejection_details": [
+      {
+        "article": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
+        "errors": [
+          "Headline contains unanchored named person '哈芝芝' (hajiji)"
+        ]
+      },
+      {
+        "article": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
+        "errors": [
+          "Headline contains unanchored agency '气象局' (metmalaysia)"
+        ]
+      }
+    ],
+    "execution_outcome": "EXECUTION_SUCCESSFUL",
+    "generated_articles": [
+      {
+        "story_index": 1,
+        "category": "sabah",
+        "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+        "titleBM": "Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan",
+        "detail": "第14届沙巴地方政府运动会（Sukan PBT Sabah）正式在山打根盛大开幕，由科学、工艺及革新部长拿督阿里芬阿里夫主持推介礼。本届运动会旨在通过体育竞技促进各地方议会官员与员工之间的跨区域紧密合作与交流，同时积极推动市容美化工作，全力为2027马来西亚旅游年做好万全准备。主办方指出，活动不仅有助提升公务员体能与团队凝聚力，更通过大量外地代表团的涌入，直接带动山打根当地酒店、餐饮及零售等中小企业的经济活力，实现地方治理与旅游经济的双赢局面。",
+        "detailBM": "Sukan PBT Sabah kali ke-14 telah dirasmikan di Sandakan oleh Menteri Sains, Teknologi dan Inovasi, Datuk Seri Arifin Arif. Kejohanan ini bertujuan memperkukuh kerjasama merentas daerah dan semangat berpasukan dalam kalangan pegawai pihak berkuasa tempatan (PBT). Selain mempromosikan gaya hidup sihat, penganjuran ini turut memainkan peranan penting dalam usaha memperindah bandar sebagai persiapan menyambut Tahun Melawat Malaysia 2027. Kehadiran ribuan peserta dari seluruh negeri dijangka merangsang ekonomi tempatan, khususnya sektor perhotelan, peruncitan, dan industri kecil sederhana di Sandakan.",
+        "publisher": "诗华日报沙巴版, Daily Express Malaysia"
+      },
+      {
+        "story_index": 2,
+        "category": "sabah",
+        "title": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
+        "titleBM": "Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji",
+        "detail": "沙巴州首席部长拿督斯里哈芝芝诺日前发表声明，明确指出即将出台的沙巴2027年州财政预算案将把核心资源倾斜于解决长期困扰民生的基本基础设施建设。州政府承诺将大幅增加拨款，全面根治全州各县面临的干净自来水供应短缺、电力供应不稳定以及道路网连接不畅等沉疴。哈芝芝强调，基础建设是推动沙巴经济腾飞和吸引外资的基石，政府将以务实高效的态度监督各项工程落地，确保每一笔公共开支都能切实惠及基层百姓，提升全州人民的生活质量。",
+        "detailBM": "Ketua Menteri Sabah, Datuk Seri Hajiji Noor, menegaskan bahawa Belanjawan Sabah 2027 akan memberi tumpuan khusus kepada penyelesaian isu infrastruktur asas di seluruh negeri. Kerajaan negeri komited menyalurkan peruntukan besar bagi menangani masalah bekalan air bersih, kestabilan bekalan elektrik, dan rangkaian perhubungan jalan raya yang sekian lama membelenggu rakyat. Hajiji menekankan bahawa pembangunan infrastruktur yang cekap adalah kunci kepada kemajuan ekonomi dan kesejahteraan rakyat, serta memastikan setiap peruntukan memberikan impak langsung kepada penduduk setempat.",
+        "publisher": "Borneo Post, The Star"
+      },
+      {
+        "story_index": 3,
+        "category": "national",
+        "title": "沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区",
+        "titleBM": "DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong",
+        "detail": "随着第16届全国大选（PRU16）的步伐日益临近，民主行动党沙巴州委员会日前召开战略会议。沙巴行动党主席冯晋哲正式对外宣布，该党已经作好全面迎战准备，并将采取不妥协的坚定姿态，全力捍卫亚庇（Kota Kinabalu）和山打根（Sandakan）这两个传统国会议席。冯晋哲指出，面对日趋复杂的政治格局，党内正在紧锣密鼓地推进架构重组与基层动员工作，确保以最强大的凝聚力和民意基础迎接选战考验，继续为沙巴人民争取公平与发展权益。",
+        "detailBM": "Menjelang Pilihan Raya Umum ke-16 (PRU16), Pengerusi DAP Sabah, Phoong Jin Zhe, mengumumkan bahawa partinya bertekad mempertahankan dua kerusi Parlimen tradisi iaitu Kota Kinabalu dan Sandakan. Menurut beliau, DAP Sabah sedang giat melaksanakan proses penyusunan semula jentera parti di peringkat akar umbi bagi memastikan kesiapsiagaan optimum. Kepimpinan parti komited memperkukuhkan sokongan rakyat dan meneruskan agenda perjuangan demi kepentingan serta hak pembangunan masyarakat di negeri ini.",
+        "publisher": "Daily Express Malaysia, The Star"
+      },
+      {
+        "story_index": 4,
+        "category": "sabah",
+        "title": "兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命",
+        "titleBM": "Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit",
+        "detail": "沙巴兵南邦（Penampang）道路于今日凌晨发生一起严重且不幸的交通意外，导致一名41岁的本地男摩托车骑士当场魂断公路。根据警方初步调查显示，事发时该名骑士独自骑摩托车行经兵南邦路段，疑似因车速过快或未能在夜间及时反应，导致车辆突然失控，猛烈撞向路旁坚硬的混凝土排水沟屏障。由于撞击力巨大，骑士头部及身体多处受重创，救护人员赶到现场后证实其已无生命迹象。目前警方正援引相关交通法令深入调查事故的具体起因。",
+        "detailBM": "Satu kemalangan maut melibatkan sebuah motosikal berlaku di Jalan Penampang awal pagi tadi, menyebabkan seorang penunggang lelaki berusia 41 tahun disahkan meninggal dunia di tempat kejadian. Siasatan awal pihak polis mendapati mangsa hilang kawalan sebelum terbabas dan melanggar parit konkrit di bahu jalan. Akibat impak pelanggaran yang kuat, mangsa mengalami kecederaan parah pada bahagian kepala dan badan. Pihak polis sedang menjalankan siasatan lanjut di bawah akta berkaitan bagi mengenal pasti punca sebenar tragedi ini.",
+        "publisher": "TV Sabah News, 诗华日报沙巴版, Daily Express Malaysia"
+      },
+      {
+        "story_index": 5,
+        "category": "national",
+        "title": "沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案",
+        "titleBM": "Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu",
+        "detail": "为彻底舒缓亚庇都会区日益严重的交通拥堵问题，并构建现代化物流体系，沙巴州政府宣布正式全面启动《沙巴可持续交通与综合物流蓝图》（SSTMP）研究工作。该项由专业交通规划团队主导的研究，将深入探讨公共交通系统的重组、城市轻轨或快捷巴士服务的可行性，以及改善全州货物运输与港口物流的高效连通方案。州政府希望通过这份宏观长远的发展蓝图，解决因城市化进程加快带来的交通瓶颈，为沙巴的长远经济繁荣和绿色低碳出行奠定坚实基础。",
+        "detailBM": "Bagi menangani kesesakan lalu lintas yang semakin meruncing di Kota Kinabalu serta memperkukuh rantaian logistik negeri, kerajaan Sabah telah memulakan Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu (SSTMP). Kajian komprehensif ini merangkumi penambahbaikan sistem pengangkutan awam bandar, penerokaan mod pengangkutan moden, serta kecekapan rangkaian pengangkutan kargo. Kerajaan negeri optimis pelan strategik ini mampu menyelesaikan masalah mobiliti bandar dan menyokong pertumbuhan ekonomi jangka panjang Sabah.",
+        "publisher": "Borneo Post"
+      },
+      {
+        "story_index": 6,
+        "category": "national",
+        "title": "泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程",
+        "titleBM": "Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1",
+        "detail": "备受沙巴人民瞩目的泛婆大道（Pan Borneo Highway）沙巴第一阶段工程进展持续成为社会焦点。州政府与联邦工程部正密切配合，全面评估已竣工路段的运营状况并着手解决多起因工程延误而滞后的施工配套。相关部门承诺将采取更严格的承包商问责机制，积极克服公用设施迁移、土地征用及地质复杂等技术挑战。各方正全力冲刺，力争早日完成第一阶段的各个关键施工标段，从而大幅改善沙巴东西海岸的物流效率，降低运输成本。",
+        "detailBM": "Perkembangan projek Lebuhraya Pan Borneo Sabah Fasa 1 terus mendapat perhatian serius pihak berkuasa dalam usaha mengatasi pelbagai isu kelewatan. Kerajaan negeri dan Persekutuan kini mempergiat kerjasama untuk menyelesaikan pelbagai cabaran teknikal, termasuk isu utiliti dan pengambilan tanah. Langkah-langkah pemantauan ketat dikenakan terhadap kontraktor terbabit bagi memastikan pakej-pakej yang tertangguh dapat disiapkan segera, demi menjamin keselesaan pengguna jalan raya serta mempercepatkan pembangunan ekonomi wilayah ini.",
+        "publisher": "Borneo Post"
+      },
+      {
+        "story_index": 7,
+        "category": "national",
+        "title": "沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动",
+        "titleBM": "Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi",
+        "detail": "沙巴州移民局持续采取铁腕政策打击非法入境活动。根据最新统计数据表明，该局自今年初以来，已通过海陆空多维度的77次大规模取缔与遣返行动，成功将累计8,472名各类无证非法移民驱逐出境。其中包括近期通过山打根港口（Sandakan Port）安全转移并遣送回国的466名扣留中心滞留人员。沙巴移民局重申，当局将继续与各安全执法机构紧密配合，严厉打击偷渡及非法劳工现象，坚决捍卫国家主权与边境安全。",
+        "detailBM": "Jabatan Imigresen Sabah terus memperhebatkan operasi penguatkuasaan dengan merekodkan pengusiran seramai 8,472 pendatang tanpa izin (PATI) menerusi 77 siri operasi setakat ini. Operasi merangkumi penghantaran pulang melalui laluan darat, laut, dan udara, termasuk pemindahan terbaharu melibatkan 466 tahanan melalui Pelabuhan Sandakan. Pihak imigresen menegaskan bahawa operasi penguatkuasaan ini akan diteruskan secara konsisten bagi memastikan keselamatan dan ketenteraman awam di negeri Sabah sentiasa terpelihara.",
+        "publisher": "Borneo Post"
+      },
+      {
+        "story_index": 8,
+        "category": "sabah",
+        "title": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
+        "titleBM": "MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu",
+        "detail": "马来西亚气象局（MetMalaysia）已正式向沙巴多个地区发布黄色级别的持续降雨天气警报。受影响的区域主要集中在沙巴东海岸及北部地区，涵盖古达（Kudat）、山打根（Sandakan）、京那巴当岸（Kinabatangan）、比鲁兰（Beluran）以及东革（Telupid）等地。气象部门预计相关降雨天气将持续维持至本周三。当局已向相关灾害管理机构发出防范提醒，并呼吁低洼及沿海易涝地区的民众保持高度警惕，随时留意官方发布的最新天气预报。",
+        "detailBM": "Jabatan Meteorologi Malaysia (MetMalaysia) telah mengeluarkan amaran hujan berterusan tahap waspada yang melibatkan beberapa kawasan di Sabah. Antara kawasan yang terjejas termasuk Kudat, Sandakan, Kinabatangan, Beluran, dan Telupid. Amaran cuaca ini dijangka berterusan hingga hari Rabu. Penduduk di kawasan rendah dan berisiko dinasihatkan agar sentiasa peka terhadap perkembangan cuaca semasa dan mematuhi arahan pihak berkuasa tempatan.",
+        "publisher": "诗华日报沙巴版, NST Online"
+      },
+      {
+        "story_index": 9,
+        "category": "national",
+        "title": "亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益",
+        "titleBM": "Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan",
+        "detail": "针对亚庇国际机场（KKIA）未来发展方向的讨论近期在沙巴政商及航空业界持续白热化。关于是在现有原址进行大规模扩建以提升客货运吞吐量，还是选择将机场整体搬迁至斗亚兰（Tuaran）或金马利（Kimanis）建设全新国际机场的方案，各界专家及马来西亚特许物流与运输学会（CILTM）纷纷发表专业意见。业界强烈呼吁州政府与联邦相关部门展开全面且长远的科学评估，仔细权衡巨额资本开支（Capex）、区域交通连通性以及对周边商业房地产的深远影响，从而做出符合沙巴长远利益的最优战略决策。",
+        "detailBM": "Perbalahan mengenai masa depan Lapangan Terbang Antarabangsa Kota Kinabalu (KKIA) hangat diperkatakan berhubung cadangan sama ada menaik taraf terminal sedia ada atau membina lapangan terbang baharu di Kimanis atau Tuaran. Pakar industri dan CILTM menggesa agar satu kajian holistik dilaksanakan bagi menilai kos perbelanjaan modal, impak ekonomi, serta kemudahan kesalinghubungan. Keputusan strategik ini dianggap penting bagi memastikan pembangunan infrastruktur penerbangan Sabah selari dengan keperluan pelancongan dan perdagangan masa depan.",
+        "publisher": "Jesselton Times, 星洲日报沙巴版, Daily Express Malaysia, Bernama"
+      },
+      {
+        "story_index": 10,
+        "category": "national",
+        "title": "第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客",
+        "titleBM": "Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta",
+        "detail": "为期数天的第16届婆罗洲观鸟节（Borneo Bird Festival）在山打根西必洛雨林发现中心（RDC Sepilok）圆满落下帷幕。本届活动成功吸引了来自马来西亚本土、新加坡、菲律宾以及欧美等多个国家和地区的逾千名生态旅游爱好者与专业观鸟者参与。活动重头戏“观鸟竞赛”（Bird Race）吸引了多达45支专业队伍同场竞技，充分展现了沙巴丰富独特的鸟类生态多样性。这项年度盛事不仅进一步巩固了山打根作为婆罗洲顶级生态旅游目的地的崇高声誉，也为当地生态保育及旅游经济作出了积极贡献。",
+        "detailBM": "Pesta Burung Borneo ke-16 yang berlangsung di Rainforest Discovery Centre (RDC) Sepilok, Sandakan, melabuhkan tirainya dengan jayanya apabila berjaya menarik lebih 1,000 penyertaan pelancong ekologi dan pemerhati burung. Acara utama iaitu pertandingan merhati burung (Bird Race) menyaksikan penyertaan sebanyak 45 pasukan dari dalam dan luar negara seperti Singapura dan Filipina. Penganjuran ini terus memartabatkan Sandakan sebagai destinasi pelancongan ekologi unggul di Borneo serta memupuk kesedaran pemuliharaan alam sekitar.",
+        "publisher": "诗华日报"
+      }
+    ]
+  },
+  "shortlisted_stories": [
+    {
+      "rank": 1,
+      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+      "title_bm": "Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan",
+      "category": "sabah",
+      "geographic_scope": "SANDAKAN / SABAH",
+      "primary_sources": [
+        "诗华日报沙巴版",
+        "Daily Express Malaysia"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 7015,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "14th Sabah Local Government Games opened in Sandakan by Minister Arifin Arif; promotes inter-council cooperation, town beautification, and economic boost to local businesses."
+    },
+    {
+      "rank": 2,
+      "title": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
+      "title_bm": "Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji",
+      "category": "sabah",
+      "geographic_scope": "SABAH STATEWIDE",
+      "primary_sources": [
+        "Borneo Post",
+        "The Star"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 4895,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Chief Minister Hajiji Noor confirms Sabah Budget 2027 will allocate major funding to resolve persistent clean water supply, electricity, and road connectivity across all districts."
+    },
+    {
+      "rank": 3,
+      "title": "沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区",
+      "title_bm": "DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong",
+      "category": "national",
+      "geographic_scope": "KOTA KINABALU / SANDAKAN",
+      "primary_sources": [
+        "Daily Express Malaysia",
+        "The Star"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 6843,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Sabah DAP Chairman Phoong Jin Zhe affirms party resolution to defend Kota Kinabalu and Sandakan parliamentary seats while pursuing internal party restructuring."
+    },
+    {
+      "rank": 4,
+      "title": "兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命",
+      "title_bm": "Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit",
+      "category": "sabah",
+      "geographic_scope": "PENAMPANG / SABAH",
+      "primary_sources": [
+        "TV Sabah News",
+        "诗华日报沙巴版",
+        "Daily Express Malaysia"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 3,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 1380,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Fatal road accident at Jalan Penampang where a 41-year-old motorcyclist died on the spot after losing control and crashing into a roadside drainage barrier."
+    },
+    {
+      "rank": 5,
+      "title": "沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案",
+      "title_bm": "Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu",
+      "category": "national",
+      "geographic_scope": "SABAH STATEWIDE",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 2849,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "State government initiates research on Sabah Sustainable Transport Master Plan (SSTMP) to solve urban congestion in Kota Kinabalu and enhance statewide freight links."
+    },
+    {
+      "rank": 6,
+      "title": "泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程",
+      "title_bm": "Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1",
+      "category": "national",
+      "geographic_scope": "SABAH INFRASTRUCTURE",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 10780,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Comprehensive progress assessment of Phase 1 Pan Borneo Highway in Sabah, examining completed packages, ongoing delays, and federal funding commitments."
+    },
+    {
+      "rank": 7,
+      "title": "沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动",
+      "title_bm": "Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi",
+      "category": "national",
+      "geographic_scope": "SABAH / SANDAKAN PORT",
+      "primary_sources": [
+        "Borneo Post"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 1792,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "Sabah Immigration Department deports 8,472 undocumented immigrants via sea and air operations, including recent transfer of 466 detainees from Sandakan Port."
+    },
+    {
+      "rank": 8,
+      "title": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
+      "title_bm": "MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu",
+      "category": "sabah",
+      "geographic_scope": "EAST COAST SABAH / KUDAT / SANDAKAN",
+      "primary_sources": [
+        "诗华日报沙巴版",
+        "NST Online"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 2,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 365,
+      "editorial_status": "READY_WITH_LIMITED_SOURCE_MATERIAL",
+      "summary": "MetMalaysia issues yellow-level alert for persistent rainfall affecting Kudat, Sandakan, Kinabatangan, Beluran, and Telupid through Wednesday."
+    },
+    {
+      "rank": 9,
+      "title": "亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益",
+      "title_bm": "Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan",
+      "category": "national",
+      "geographic_scope": "KOTA KINABALU / TUARAN / KIMANIS",
+      "primary_sources": [
+        "Jesselton Times",
+        "星洲日报沙巴版",
+        "Daily Express Malaysia",
+        "Bernama"
+      ],
+      "corroboration_type": "INDEPENDENT_MULTI_SOURCE",
+      "independent_source_count": 4,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 10304,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "In-depth debate on upgrading existing KKIA terminal vs constructing new international airport in Kimanis/Tuaran, evaluating capex, connectivity, and commercial impact."
+    },
+    {
+      "rank": 10,
+      "title": "第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客",
+      "title_bm": "Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta",
+      "category": "national",
+      "geographic_scope": "SANDAKAN (SEPILOK RDC)",
+      "primary_sources": [
+        "诗华日报"
+      ],
+      "corroboration_type": "SINGLE_SOURCE",
+      "independent_source_count": 1,
+      "body_status": "FULL_BODY_EXTRACTED",
+      "combined_chars": 639,
+      "editorial_status": "READY_FOR_GEMINI",
+      "summary": "16th Borneo Bird Festival at Rainforest Discovery Centre in Sandakan concludes with record 45 bird race teams from Malaysia, Singapore, Philippines, and overseas."
+    }
+  ],
+  "quota_state": {
+    "date": "2026-11-09",
+    "reserved_count": 4,
+    "daily_limit": 5,
+    "status": "COMPLETED"
+  }
+}

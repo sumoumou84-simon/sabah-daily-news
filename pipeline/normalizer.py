@@ -100,6 +100,15 @@ class ArticleNormalizer:
             if any(term in lower_t for term in junk_indicators):
                 continue
 
+            # Facebook Specific Checks: Reject generic Facebook page URLs & uncorroborated rejected claims
+            if "facebook.com" in clean_url and not art.extra.get("is_discovery_lead"):
+                from pipeline.facebook_verifier import FacebookVerificationMatrix
+                if FacebookVerificationMatrix.is_generic_page_url(clean_url):
+                    continue
+
+            if art.extra.get("content_verification_status") == "rejected":
+                continue
+
             # AD CHECK: Exclude commercial advertisements from editorial news
             if self.is_advertisement(clean_t + " " + art.snippet + " " + art.body):
                 self.ad_filter_count += 1
