@@ -1,0 +1,54 @@
+name: 诊断测试：Gemini 搜索引擎实时资讯打捞实验 (非发布)
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: '授权运行说明 (例如: Phase D-2 单次联网资讯打捞验证)'
+        required: true
+        default: 'Phase D-2 Authorized Single Gemini Discovery Test'
+
+concurrency:
+  group: sabah-news-publishing-lock
+  cancel-in-progress: false
+
+jobs:
+  diagnostic_discovery:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 授权 QuotaManager 写入并推送配额预留记录至 origin/main
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 tzdata || true
+
+      - name: 配置 Git 提交身份 (供 QuotaManager 预留写入)
+        run: |
+          git config --global user.name "Simon-Daily-Bot"
+          git config --global user.email "bot@simondaily.com"
+
+      - name: 执行单次 Gemini 联网打捞诊断与跨源比对
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GITHUB_ACTIONS: "true"
+        run: |
+          python scripts/run_gemini_discovery_diagnostic.py
+
+      - name: 上传诊断报告产物 (非发布)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gemini-discovery-diagnostic-report
+          path: reports/discovery_diagnostic_*.json
+          retention-days: 7
