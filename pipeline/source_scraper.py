@@ -338,3 +338,30 @@ class SourceScraper:
     def enrich_batch_with_source_bodies(self, articles: List[RawArticle]) -> List[RawArticle]:
         """Process a list of RawArticle records sequentially."""
         return [self.retrieve_article_body(a) for a in articles]
+
+    @staticmethod
+    def load_cached_source_bodies(cache_file_path: str) -> Dict[str, Dict[str, Any]]:
+        """
+        Load persistently cached full article bodies from a validated JSON store.
+        Returns a dict mapping story keys/ranks to the cached body records.
+        Fails closed if the file does not exist or is corrupted.
+        """
+        import os
+        if not os.path.exists(cache_file_path):
+            raise FileNotFoundError(f"Source body cache file not found: {cache_file_path}")
+        with open(cache_file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, dict) or "stories" not in data:
+            raise ValueError(f"Invalid source body cache schema in {cache_file_path}")
+        return data["stories"]
+
+    @staticmethod
+    def save_cached_source_bodies(cache_file_path: str, manifest: Dict[str, Any]) -> None:
+        """
+        Save persistently cached full article bodies to a validated JSON store.
+        """
+        import os
+        os.makedirs(os.path.dirname(os.path.abspath(cache_file_path)), exist_ok=True)
+        with open(cache_file_path, "w", encoding="utf-8") as f:
+            json.dump(manifest, f, ensure_ascii=False, indent=2)
+
