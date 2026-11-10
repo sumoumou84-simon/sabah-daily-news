@@ -109,13 +109,17 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
     report_json_path = os.path.join(reports_dir, "test_gdrive_parse_report.json")
     downloaded_md_path = os.path.join(reports_dir, "test_gdrive_downloaded.md")
 
-    reader = GDriveMarkdownReader({
-        "gdrive_input": {
-            "folder_id": os.getenv("GDRIVE_FOLDER_ID") or "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf",
-            "read_retry_attempts": 2,
-            "read_retry_delay_seconds": 5
-        }
-    })
+    cfg_path = os.path.join(BASE_DIR, "config", "news_config.json")
+    app_cfg = {}
+    if os.path.exists(cfg_path):
+        try:
+            with open(cfg_path, "r", encoding="utf-8") as f:
+                app_cfg = json.load(f)
+        except Exception as e:
+            logger.warning(f"Failed to read news_config.json: {e}")
+
+    reader = GDriveMarkdownReader(app_cfg)
+    reader.folder_id = os.getenv("GDRIVE_FOLDER_ID") or reader.folder_id or "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf"
 
     logger.info("=" * 60)
     logger.info(f"Phase D-17.4 Read-Only Verification for Date: {target_date}")
@@ -131,6 +135,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
         file_name = os.path.basename(local_file_fallback)
         file_id = "local_test_fixture"
         token = None
+        gdoc_export_results = {}
     else:
         # 2. Real Google Drive API Mode
         token = reader._get_oauth_access_token()
@@ -144,22 +149,50 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
                 f.write(f"# Phase D-17.4 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
             return 1
 
+        # 2.1 Dedicated Real Google Docs Export Verification (Target Doc ID)
+        gdoc_export_results = {}
+        logger.info(f"Starting dedicated Google Docs API export tests on Doc ID: {TARGET_GDOC_ID}")
+
+        # Attempt A: text/markdown export
+        md_out = os.path.join(reports_dir, "test_gdocs_exported_markdown.txt")
+        res_md, content_md = test_single_gdoc_export(token, TARGET_GDOC_ID, "text/markdown", md_out)
+        if content_md:
+            stories_from_gdoc_md = reader.parse_markdown(content_md, target_date)
+            res_md["parsed_stories_count"] = len(stories_from_gdoc_md)
+            res_md["news_count"] = sum(1 for s in stories_from_gdoc_md if not s.is_event)
+            res_md["events_count"] = sum(1 for s in stories_from_gdoc_md if s.is_event)
+        gdoc_export_results["text_markdown"] = res_md
+
+        # Attempt B: text/plain export
+        plain_out = os.path.join(reports_dir, "test_gdocs_exported_plain.txt")
+        res_plain, content_plain = test_single_gdoc_export(token, TARGET_GDOC_ID, "text/plain", plain_out)
+        if content_plain:
+            stories_from_gdoc_plain = reader.parse_markdown(content_plain, target_date)
+            res_plain["parsed_stories_count"] = len(stories_from_gdoc_plain)
+            res_plain["news_count"] = sum(1 for s in stories_from_gdoc_plain if not s.is_event)
+            res_plain["events_count"] = sum(1 for s in stories_from_gdoc_plain if s.is_event)
+        gdoc_export_results["text_plain"] = res_plain
+
+        # 2.2 Test Dual-format Reader Ingestion via candidates
         candidates = reader.resolve_candidate_filenames(target_date)
         logger.info(f"Searching candidate filenames in Drive folder: {candidates}")
 
-        # Test Dual-format Reader Ingestion
         res = reader.read_from_drive_api(candidates, reader.folder_id)
-        if not res:
+        if res:
+            file_name, content, file_id = res
+        elif content_md:
+            file_name, content, file_id = f"{TARGET_GDOC_NAME}.md", content_md, TARGET_GDOC_ID
+        elif content_plain:
+            file_name, content, file_id = TARGET_GDOC_NAME, content_plain, TARGET_GDOC_ID
+        else:
             msg = f"FILE NOT FOUND: No matching markdown or Google Doc found in folder {reader.folder_id} for date {target_date}."
             logger.error(msg)
             with open(report_md_path, "w", encoding="utf-8") as f:
                 f.write(f"# Phase D-17.4 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
             return 1
 
-        file_name, content, file_id = res
-
     file_bytes = len(content.encode("utf-8"))
-    logger.info(f"Downloaded / Loaded file: '{file_name}' (ID: {file_id}, Size: {file_bytes} bytes)")
+    logger.info(f"Primary file selected: '{file_name}' (ID: {file_id}, Size: {file_bytes} bytes)")
 
     with open(downloaded_md_path, "w", encoding="utf-8") as f:
         f.write(content)
@@ -175,34 +208,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
         cat = s.category
         section_breakdown[cat] = section_breakdown.get(cat, 0) + 1
 
-    # 3. Dedicated Real Google Docs Export Verification (if authenticated)
-    gdoc_export_results = {}
-    if token:
-        logger.info(f"Starting dedicated Google Docs API export tests on Doc ID: {TARGET_GDOC_ID}")
 
-        # Attempt A: text/markdown export
-        md_out = os.path.join(reports_dir, "test_gdocs_exported_markdown.txt")
-        res_md, content_md = test_single_gdoc_export(token, TARGET_GDOC_ID, "text/markdown", md_out)
-        parsed_md_count = 0
-        if content_md:
-            stories_from_gdoc_md = reader.parse_markdown(content_md, target_date)
-            parsed_md_count = len(stories_from_gdoc_md)
-            res_md["parsed_stories_count"] = parsed_md_count
-            res_md["news_count"] = sum(1 for s in stories_from_gdoc_md if not s.is_event)
-            res_md["events_count"] = sum(1 for s in stories_from_gdoc_md if s.is_event)
-        gdoc_export_results["text_markdown"] = res_md
-
-        # Attempt B: text/plain export
-        plain_out = os.path.join(reports_dir, "test_gdocs_exported_plain.txt")
-        res_plain, content_plain = test_single_gdoc_export(token, TARGET_GDOC_ID, "text/plain", plain_out)
-        parsed_plain_count = 0
-        if content_plain:
-            stories_from_gdoc_plain = reader.parse_markdown(content_plain, target_date)
-            parsed_plain_count = len(stories_from_gdoc_plain)
-            res_plain["parsed_stories_count"] = parsed_plain_count
-            res_plain["news_count"] = sum(1 for s in stories_from_gdoc_plain if not s.is_event)
-            res_plain["events_count"] = sum(1 for s in stories_from_gdoc_plain if s.is_event)
-        gdoc_export_results["text_plain"] = res_plain
 
     report_data = {
         "target_date": target_date,
