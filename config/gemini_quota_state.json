@@ -1,30 +1,18 @@
 {
   "schema_version": "1.0",
   "timezone": "Asia/Kuala_Lumpur",
-  "date": "2026-11-10",
-  "reserved_count": 3,
+  "date": "2026-11-11",
+  "reserved_count": 1,
   "daily_limit": 5,
   "reservations": [
     {
-      "reservation_id": "res_2026-11-10_1_ce79a6b5",
-      "timestamp": "2026-11-10T20:00:38.696712+08:00",
+      "reservation_id": "res_2026-11-11_1_6ada86f4",
+      "timestamp": "2026-11-11T05:03:40.492075+08:00",
       "model": "gemini-3.5-flash-lite",
       "status": "RESERVED"
-    },
-    {
-      "reservation_id": "res_2026-11-10_2_29419bde",
-      "timestamp": "2026-11-10T20:05:15.727540+08:00",
-      "model": "gemini-3.5-flash-lite",
-      "status": "RESERVED"
-    },
-    {
-      "reservation_id": "res_2026-11-10_3_7440b906",
-      "timestamp": "2026-11-10T20:07:23.874312+08:00",
-      "model": "gemini-3.5-flash-lite",
-      "status": "COMPLETED"
     }
   ],
-  "last_updated": "2026-11-10T20:07:59.427988+08:00",
-  "status": "COMPLETED",
+  "last_updated": "2026-11-11T05:03:40.492075+08:00",
+  "status": "RESERVED",
   "initialization_mode": "AUTHORIZED_PHASE_N4"
 }
