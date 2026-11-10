@@ -1,0 +1,51 @@
+name: Google Drive 只读测试 (Phase D-15.2)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: '核验目标日期 (YYYY-MM-DD)'
+        required: false
+        default: '2026-11-10'
+
+jobs:
+  test_gdrive_read:
+    name: 真实 Google Drive 只读核验
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # 严格只读权限，绝不推送代码，绝不修改发布内容
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 tzdata || true
+
+      - name: 执行真实 Google Drive 只读拉取与内容解析
+        env:
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          TARGET_DATE: ${{ github.event.inputs.target_date || '2026-11-10' }}
+        run: |
+          python scripts/test_gdrive_read_only.py "${TARGET_DATE}"
+
+      - name: 上传真实下载文件与解析报告 Artifacts (私有保存，不发布网站)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdrive-read-test-report-${{ github.event.inputs.target_date || '2026-11-10' }}
+          path: |
+            reports/test_gdrive_downloaded.md
+            reports/test_gdrive_parse_report.md
+            reports/test_gdrive_parse_report.json
+          retention-days: 7
