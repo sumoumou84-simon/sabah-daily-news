@@ -1,4 +1,4 @@
-name: Google Drive 只读测试 (Phase D-15.2)
+name: Google Drive 只读测试 (Phase D-15.4)
 
 on:
   workflow_dispatch:
@@ -34,7 +34,7 @@ jobs:
           GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
           GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
           GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID || '18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf' }}
           TARGET_DATE: ${{ github.event.inputs.target_date || '2026-11-10' }}
         run: |
           python scripts/test_gdrive_read_only.py "${TARGET_DATE}"

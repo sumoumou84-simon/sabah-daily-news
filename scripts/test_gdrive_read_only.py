@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Sabah Daily News — Dedicated Read-Only Google Drive Verification Script (Phase D-15.2)
+Sabah Daily News — Dedicated Read-Only Google Drive Verification Script (Phase D-15.4)
 Author: Sabah Daily News Pipeline
 Restrictions:
 - Google Drive read-only access only.
 - 0 Gemini API requests.
 - 0 QuotaManager reservations.
-- 0 Git commits / pushes.
+- 0 Git commits / pushes during test execution.
 - 0 Website data modifications.
 - Self-contained: runs reliably on any environment with zero third-party dependencies.
 """
@@ -53,11 +53,8 @@ class SelfContainedGDriveReader:
     """Self-contained Google Drive Markdown reader and parser."""
 
     def __init__(self, folder_id: Optional[str] = None):
-        self.folder_id = (
-            os.getenv("GDRIVE_FOLDER_ID")
-            or folder_id
-            or "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf"
-        )
+        env_fid = os.getenv("GDRIVE_FOLDER_ID", "").strip()
+        self.folder_id = env_fid or folder_id or "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf"
         self.file_name_patterns = [
             "西门看看网每日新闻_{date}.md",
             "sabah_news_{date}.md",
@@ -122,6 +119,8 @@ class SelfContainedGDriveReader:
         }
 
         fid = folder_id or self.folder_id
+
+        # 1. Primary search: inside specified folder
         for fname in candidate_names:
             query_parts = [
                 f"name = '{fname}'",
@@ -147,7 +146,7 @@ class SelfContainedGDriveReader:
                             logger.info(f"[GDRIVE SKIP] Skipping non-markdown or Google Doc: {file_name} ({mime_type})")
                             continue
 
-                        logger.info(f"[GDRIVE FOUND] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive.")
+                        logger.info(f"[GDRIVE FOUND] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive folder '{fid}'.")
 
                         download_url = f"https://www.googleapis.com/drive/v3/files/{file_id}?alt=media"
                         dl_req = urllib.request.Request(download_url, headers=headers, method="GET")
@@ -155,7 +154,34 @@ class SelfContainedGDriveReader:
                             content = dl_resp.read().decode("utf-8")
                             return file_name, content, file_id
             except Exception as e:
-                logger.warning(f"[GDRIVE API SEARCH ERROR] Querying '{fname}': {e}")
+                logger.warning(f"[GDRIVE API SEARCH ERROR] Querying '{fname}' in '{fid}': {e}")
+
+        # 2. Secondary fallback search without parent constraint if direct search yielded no match
+        logger.info("[GDRIVE FALLBACK] Primary parent query returned no file; checking exact file match across account...")
+        for fname in candidate_names:
+            q_str = f"name = '{fname}' and trashed = false and mimeType != 'application/vnd.google-apps.document'"
+            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size,parents)&pageSize=5"
+            try:
+                req = urllib.request.Request(url, headers=headers, method="GET")
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    files = data.get("files", [])
+                    for f_item in files:
+                        file_id = f_item.get("id")
+                        file_name = f_item.get("name", "")
+                        mime_type = f_item.get("mimeType", "")
+
+                        if mime_type == "application/vnd.google-apps.document" or not file_name.lower().endswith(".md"):
+                            continue
+
+                        logger.info(f"[GDRIVE FOUND VIA FALLBACK] Located authentic markdown file '{file_name}' (ID: {file_id}, Parents: {f_item.get('parents')}).")
+                        download_url = f"https://www.googleapis.com/drive/v3/files/{file_id}?alt=media"
+                        dl_req = urllib.request.Request(download_url, headers=headers, method="GET")
+                        with urllib.request.urlopen(dl_req, timeout=30) as dl_resp:
+                            content = dl_resp.read().decode("utf-8")
+                            return file_name, content, file_id
+            except Exception as e:
+                logger.warning(f"[GDRIVE FALLBACK SEARCH ERROR] Querying '{fname}': {e}")
 
         return None
 
@@ -165,6 +191,8 @@ class SelfContainedGDriveReader:
             return "sabah"
         if any(k in cat_lower for k in ["全国", "国内", "中央", "national", "negara", "persekutuan", "政经", "财经", "parlimen"]):
             return "national"
+        if any(k in cat_lower for k in ["国际", "世界", "海外", "international", "world", "antarabangsa"]):
+            return "general"
         if any(k in cat_lower for k in ["体育", "运动", "sport", "sukan", "bola", "badminton", "sukma"]):
             return "sports"
         if any(k in cat_lower for k in ["活动", "预告", "日程", "event", "acara", "kalendar"]):
@@ -194,11 +222,15 @@ class SelfContainedGDriveReader:
         current_header = ""
         current_lines: List[str] = []
 
-        header_pattern = re.compile(r'^(#{1,4}\s+.*|(?:\d{1,2}\.|\b(?:STORY|NEWS|ITEM)\s*\d+[:\.]?)\s+.*)', re.IGNORECASE)
+        header_pattern = re.compile(
+            r'^(#{1,4}\s+.*|(?:\d{1,2}\.|\b(?:STORY|NEWS|ITEM)\s*\d+[:\.]?)\s+.*)',
+            re.IGNORECASE
+        )
         blocks: List[Tuple[str, List[str]]] = []
 
         for line in lines:
             line_s = line.strip()
+            # Skip top-level document title
             if re.match(r'^#\s+(?:20\d\d|沙巴|西门|每日新闻|Daily\s+News).*', line_s, re.IGNORECASE) and not blocks and not current_lines:
                 continue
 
@@ -214,6 +246,7 @@ class SelfContainedGDriveReader:
         if current_header or current_lines:
             blocks.append((current_header, current_lines))
 
+        # Handle --- delimiter fallback if few blocks
         if len(blocks) <= 1 and len(lines) > 20:
             hr_splits = re.split(r'\n\s*---\s*\n', markdown_text)
             if len(hr_splits) > 1:
@@ -225,6 +258,7 @@ class SelfContainedGDriveReader:
 
         story_idx = 1
         bullet_pat = re.compile(r'^(?:[-+•]\s*|\*\s+)')
+        current_active_section = "sabah"
 
         for header, block_lines in blocks:
             full_block_text = "\n".join(block_lines).strip()
@@ -234,6 +268,20 @@ class SelfContainedGDriveReader:
             raw_title = header.lstrip("#").strip()
             clean_title = re.sub(r'^(?:\[?\d+\]?[\.\、\:\s\-]+|第\s*\d+\s*[条篇]\s*[\:\.\s]*)', '', raw_title).strip()
 
+            # Check if this header is just a section divider (e.g. "## 一、沙巴与山打根要闻")
+            sec_match = re.search(r'(?:一|二|三|四|五|六|[1-6])[\s\、\.\:：]+(.*)', clean_title)
+            is_section_divider = False
+            if sec_match:
+                sec_name = sec_match.group(1).strip()
+                if any(k in sec_name for k in ["沙巴", "山打根", "要闻", "全国", "国际", "体育", "活动", "预告"]):
+                    # If this block has no substantive body, treat as a section header update
+                    if len(full_block_text) < 10 or not any(k in full_block_text for k in ["来源", "内容", "正文", "http"]):
+                        current_active_section = self._normalize_category(sec_name)
+                        is_section_divider = True
+
+            if is_section_divider:
+                continue
+
             title_in_body = None
             for bline in block_lines:
                 clean_bline = bullet_pat.sub('', bline.strip()).strip()
@@ -242,18 +290,18 @@ class SelfContainedGDriveReader:
                     title_in_body = m_t.group(1).strip("* ")
                     break
 
-            title = title_in_body or clean_title or f"沙巴新闻第 {story_idx} 条"
+            title = title_in_body or clean_title or f"每日新闻第 {story_idx} 条"
 
             sources = []
             source_urls = []
             extracted_date = default_date
             body_paragraphs = []
             category_candidate = None
-            is_event = False
+            is_event = (current_active_section == "event")
             event_meta = {}
 
             header_lower = (header + " " + title).lower()
-            if any(k in header_lower for k in ["活动预报", "活动日程", "未来活动", "event", "acara", "gotong-royong", "pesta", "峰会", "义诊", "即将举行"]):
+            if any(k in header_lower for k in ["活动预报", "活动预告", "活动日程", "未来活动", "event", "acara", "gotong-royong", "pesta", "峰会", "义诊", "即将举行", "开放报名"]):
                 is_event = True
 
             for bline in block_lines:
@@ -263,6 +311,7 @@ class SelfContainedGDriveReader:
 
                 clean_bline = bullet_pat.sub('', s_bline).strip()
 
+                # Sources
                 m_src = re.match(r'^\*{0,2}(?:来源|信源|Source|Sumber|Penerbit)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_src:
                     src_val = m_src.group(1).strip("* ")
@@ -272,6 +321,7 @@ class SelfContainedGDriveReader:
                             sources.append(s_clean)
                     continue
 
+                # Links
                 m_url = re.match(r'^\*{0,2}(?:链接|原[文链]|URL|Link|Pautan)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_url:
                     raw_url_val = m_url.group(1).strip("* ")
@@ -280,6 +330,7 @@ class SelfContainedGDriveReader:
                         source_urls.append(url_match.group(0))
                     continue
 
+                # Date
                 m_date = re.match(r'^\*{0,2}(?:日期|时间|Date|Tarikh)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_date:
                     date_val = m_date.group(1).strip("* ")
@@ -290,19 +341,22 @@ class SelfContainedGDriveReader:
                             is_event = True
                     continue
 
-                m_cat = re.match(r'^\*{0,2}(?:分类|类别|Category|Kategori)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
+                # Category
+                m_cat = re.match(r'^\*{0,2}(?:分类|类别|板块|Category|Kategori)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_cat:
                     category_candidate = m_cat.group(1).strip("* ").lower()
                     if any(k in category_candidate for k in ["活动", "event", "acara"]):
                         is_event = True
                     continue
 
+                # Event fields
                 m_loc = re.match(r'^\*{0,2}(?:地点|Location|Tempat)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_loc:
                     is_event = True
                     event_meta["location"] = m_loc.group(1).strip("* ")
                     continue
 
+                # Body
                 m_content = re.match(r'^\*{0,2}(?:正文|内容|Content|Kandungan|摘要|Detail|Ringkasan)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_content:
                     body_paragraphs.append(m_content.group(1).strip())
@@ -315,7 +369,7 @@ class SelfContainedGDriveReader:
             if not final_body:
                 final_body = full_block_text
 
-            category = self._normalize_category(category_candidate or "sabah")
+            category = self._normalize_category(category_candidate or current_active_section)
             geo_scope = self._determine_geo_scope(title + " " + final_body)
 
             story = ParsedMarkdownStory(
@@ -348,7 +402,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
     reader = SelfContainedGDriveReader()
 
     logger.info("=" * 60)
-    logger.info(f"Phase D-15.2 Read-Only Google Drive Verification for Date: {target_date}")
+    logger.info(f"Phase D-15.4 Read-Only Google Drive Verification for Date: {target_date}")
     logger.info(f"Target Folder ID: {reader.folder_id}")
     logger.info(f"Preferred File Pattern: {reader.file_name_patterns[0]}")
     logger.info("=" * 60)
@@ -370,7 +424,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
             )
             logger.error(msg)
             with open(report_md_path, "w", encoding="utf-8") as f:
-                f.write(f"# Phase D-15.2 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
+                f.write(f"# Phase D-15.4 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
             return 1
 
         candidates = reader.resolve_candidate_filenames(target_date)
@@ -381,7 +435,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
             msg = f"FILE NOT FOUND: No matching markdown file found in folder {reader.folder_id} for date {target_date}."
             logger.error(msg)
             with open(report_md_path, "w", encoding="utf-8") as f:
-                f.write(f"# Phase D-15.2 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
+                f.write(f"# Phase D-15.4 Google Drive Read Test Failure\n\n**Date**: {target_date}\n\n**Status**: {msg}\n")
             return 1
 
         file_name, content, file_id = res
@@ -450,7 +504,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
         json.dump(report_data, f, ensure_ascii=False, indent=2)
 
     lines = [
-        f"# Phase D-15.2 Google Drive Read Test Report",
+        f"# Phase D-15.4 Google Drive Read Test Report",
         f"",
         f"- **Target Date**: `{target_date}`",
         f"- **Verification Time**: `{report_data['verification_time_myt']}`",
@@ -507,7 +561,7 @@ def run_gdrive_read_test(target_date: str = "2026-11-10", local_file_fallback: O
         f.write("\n".join(lines))
 
     logger.info(f"Generated comprehensive markdown report at: {report_md_path}")
-    logger.info("Phase D-15.2 read-only test completed successfully with 0 Gemini calls.")
+    logger.info("Phase D-15.4 read-only test completed successfully with 0 Gemini calls.")
     return 0
 
 
