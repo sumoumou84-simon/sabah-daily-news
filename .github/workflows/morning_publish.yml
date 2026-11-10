@@ -2,7 +2,7 @@ name: 每日西门日报全自动采编推送
 
 on:
   schedule:
-    - cron: '45 19 * * *'  # 03:45 AM MYT (UTC+8)
+    - cron: '20 20 * * *'  # 04:20 AM MYT (UTC+8)
   workflow_dispatch: # 保留 GitHub 网页上一键手动立即运行按钮
 
 concurrency:
@@ -19,6 +19,11 @@ jobs:
       - name: 检出仓库代码
         uses: actions/checkout@v4
 
+      - name: 配置 Git 提交身份
+        run: |
+          git config --global user.name "Sabah Daily News Bot"
+          git config --global user.email "sumoumou84-simon@users.noreply.github.com"
+
       - name: 配置 Python 环境
         uses: actions/setup-python@v5
         with:
@@ -33,6 +38,11 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID || '18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf' }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_SERVICE_ACCOUNT_KEY: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_KEY }}
         run: |
           python agent_reach_editor.py
 
@@ -44,6 +54,6 @@ jobs:
         run: |
           git config --global user.name "Simon-Daily-Bot"
           git config --global user.email "bot@simondaily.com"
-          git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ || true
+          git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ reports/ || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
           git push

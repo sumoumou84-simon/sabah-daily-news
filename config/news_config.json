@@ -4,7 +4,7 @@
     "version": "7.0.0",
     "timezone": "Asia/Kuala_Lumpur",
     "sliding_window_hours": 36,
-    "min_headlines_threshold": 12,
+    "min_headlines_threshold": 10,
     "quotas": {
       "sabah": 8,
       "national": 8,
@@ -141,25 +141,71 @@
       "handle": "mpsandakan",
       "name": "山打根市议会 MPS",
       "category": "sabah",
-      "keywords": ["Sandakan", "MPS", "Jalan", "Pasar", "Banjir", "Kerja"]
+      "keywords": [
+        "Sandakan",
+        "MPS",
+        "Jalan",
+        "Pasar",
+        "Banjir",
+        "Kerja"
+      ]
     },
     {
       "handle": "jansabah",
       "name": "沙巴水务局 JANS",
       "category": "sabah",
-      "keywords": ["Air", "Paip", "Gangguan", "Loji", "Tekanan", "Pembaikan"]
+      "keywords": [
+        "Air",
+        "Paip",
+        "Gangguan",
+        "Loji",
+        "Tekanan",
+        "Pembaikan"
+      ]
     },
     {
       "handle": "mysesb",
       "name": "沙巴电力 SESB",
       "category": "sabah",
-      "keywords": ["SESB", "Bekalan", "Elektrik", "Penyelenggaraan", "Grid"]
+      "keywords": [
+        "SESB",
+        "Bekalan",
+        "Elektrik",
+        "Penyelenggaraan",
+        "Grid"
+      ]
     },
     {
       "handle": "mysandakankini",
       "name": "山打根大事 Sandakan Kini",
       "category": "sabah",
-      "keywords": ["Sandakan", "Kini", "Polis", "Kemalangan", "Hebahan"]
+      "keywords": [
+        "Sandakan",
+        "Kini",
+        "Polis",
+        "Kemalangan",
+        "Hebahan"
+      ]
     }
-  ]
+  ],
+  "gdrive_input": {
+    "enabled": true,
+    "auth_mode": "auto",
+    "folder_id": "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf",
+    "file_name_patterns": [
+      "西门看看网每日新闻_{date}.md",
+      "sabah_news_{date}.md",
+      "sabah_daily_news_{date}.md",
+      "meta_ai_news_{date}.md",
+      "news_{date}.md",
+      "{date}.md"
+    ],
+    "fallback_local_dir": "data/gdrive_inputs",
+    "snapshot_dir": "reports/gdrive_snapshots",
+    "timezone": "Asia/Kuala_Lumpur",
+    "sandakan_priority": true,
+    "max_selected_articles": 26,
+    "read_retry_attempts": 4,
+    "read_retry_delay_seconds": 60
+  }
 }

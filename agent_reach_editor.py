@@ -47,7 +47,8 @@ from pipeline import (
     CircuitBreaker,
     CircuitBreakerException,
     GeographicVerifier,
-    UtilityVerifier
+    UtilityVerifier,
+    GDriveMarkdownReader
 )
 
 logging.basicConfig(
@@ -208,58 +209,163 @@ def run_pipeline() -> bool:
 
     config = load_config()
 
-    # 1. 多源独立打捞
-    rss_col = RSSCollector(config)
-    portal_col = PortalCollector(config)
-    agency_col = AgencyCollector(config)
-    fb_col = FacebookCollector(config)
+    gdrive_cfg = config.get("gdrive_input", {})
+    use_gdrive = gdrive_cfg.get("enabled", True)
 
-    print("\n[+] 正在执行多源独立并发打捞...")
-    raw_articles: List[RawArticle] = []
+    events = None
+    total_collected = 0
+    sabah_count = 0
+    sandakan_count = 0
+    national_count = 0
+    sarawak_count = 0
+    missing_orig_timestamps = 0
+    duplicates_merged = 0
 
-    rss_items = rss_col.collect()
-    raw_articles.extend(rss_items)
+    if use_gdrive:
+        print("\n[+] 正在通过 Google Drive 读取 Meta AI 整理的当日 Markdown 新闻...")
+        gdrive_reader = GDriveMarkdownReader(config)
+        snapshot, raw_content = gdrive_reader.fetch_and_parse_today(today_iso)
 
-    portal_items = portal_col.collect()
-    raw_articles.extend(portal_items)
+        if not snapshot or not raw_content:
+            logger.error(
+                f"[GDRIVE FAIL-CLOSED] 今日 ({today_iso}) 未能在 Google Drive 或本地找到有效 Markdown 新闻。"
+                "严格触发 Fail-Closed，保留现有线上新闻，坚决不进行破坏性覆盖。"
+            )
+            return False
 
-    agency_items = agency_col.collect()
-    raw_articles.extend(agency_items)
+        parsed_stories = gdrive_reader.parse_markdown(raw_content, today_iso)
+        total_collected = len(parsed_stories)
 
-    fb_items = fb_col.collect()
-    raw_articles.extend(fb_items)
+        # Phase D-16: 将全部 26 条新闻（包括 5 条活动预报）打包进同一个单批次 RawArticle 列表
+        all_batch_stories = gdrive_reader.select_top_stories_for_batch(
+            parsed_stories,
+            max_count=26,
+            include_events=True
+        )
+        raw_articles = gdrive_reader.convert_to_raw_articles(all_batch_stories)
 
-    total_collected = len(raw_articles)
-    missing_orig_timestamps = sum(1 for a in raw_articles if not a.published_at)
+        sabah_count = sum(1 for s in all_batch_stories if s.category == "sabah")
+        sandakan_count = sum(1 for s in all_batch_stories if s.geo_scope == "sandakan")
+        national_count = sum(1 for s in all_batch_stories if s.category == "national")
 
-    print(f"📊 原始资讯打捞总计: {total_collected} 条 (其中未带日期条目: {missing_orig_timestamps} 条)")
+        print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
+        print(f"[+] Phase D-16 架构: 将全部 {len(raw_articles)} 条新闻与活动预报打包为单批次 Payload")
 
-    # 2. 规范化与严格广告、地理、36小时滑动窗口清洗
-    normalizer = ArticleNormalizer(sliding_window_hours=config.get("system", {}).get("sliding_window_hours", 36))
-    normalized_articles = normalizer.normalize(raw_articles)
-    print(f"[+] 经 36 小时滑动窗口、广告剔除与地理校验留存: {len(normalized_articles)} 条")
+        # 调用 Gemini Single-Batch 单批次双语生成 (固定 gemini-3.5-flash-lite)
+        synthesizer = NewsSynthesizer(config)
+        api_key = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
 
-    # 统计地理分布
-    sabah_count = sum(1 for a in normalized_articles if a.category == "sabah")
-    sandakan_count = sum(1 for a in normalized_articles if a.extra.get("geo_scope") == "sandakan")
-    sarawak_count = sum(1 for a in normalized_articles if a.extra.get("is_sarawak"))
-    national_count = sum(1 for a in normalized_articles if a.category == "national")
+        print("\n[+] 正在执行 Gemini 26条全板块单批次批量双语生成 (gemini-3.5-flash-lite)...")
+        synthesized_batch = synthesizer.synthesize_track_a_single_batch(
+            api_key=api_key,
+            today_iso=today_iso,
+            batch_stories=raw_articles
+        )
 
-    # 3. 跨语种实体聚合去重
-    deduplicator = ArticleDeduplicator(sim_threshold=0.65)
-    canonical_articles = deduplicator.cluster_and_deduplicate(normalized_articles)
-    duplicates_merged = len(normalized_articles) - len(canonical_articles)
-    print(f"[+] 经跨语种实体聚合与去重合并，生成独立事件池: {len(canonical_articles)} 个")
+        if not synthesized_batch:
+            logger.error("[FAIL-CLOSED] Gemini 单批次编译未返回有效数据或配额耗尽。触发 Fail-Closed，保留现有生产新闻。")
+            return False
 
-    # 4. 双轨生成器（保留 4 重时间戳）
-    synthesizer = NewsSynthesizer(config)
-    api_key = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
+        # Phase D-16 架构分离：将 26 条条目分离为 21 条 Headlines 与 5 条 Events
+        final_headlines = []
+        events = []
+        today_d = datetime.strptime(today_iso, "%Y-%m-%d").date()
 
-    final_headlines = synthesizer.synthesize(
-        today_iso=today_iso,
-        articles=canonical_articles,
-        api_key=api_key
-    )
+        for itm in synthesized_batch:
+            if itm.get("is_event"):
+                # 路由至未来活动板块
+                meta = itm.get("event_metadata", {})
+                orig_date_str = itm.get("original_published_at") or today_iso
+                if "T" in orig_date_str:
+                    orig_date_str = orig_date_str.split("T")[0]
+                try:
+                    ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
+                except Exception:
+                    ev_d = today_d
+                c_days = max(0, (ev_d - today_d).days)
+                tag_str = meta.get("tag", "市政公益")
+                b_color = "bg-[#14532d] text-[#86efac]"
+                if "义诊" in tag_str or "健康" in tag_str:
+                    b_color = "bg-[#713f12] text-[#fde68a]"
+                elif "峰会" in tag_str or "商贸" in tag_str:
+                    b_color = "bg-[#1e3a8a] text-[#93c5fd]"
+                elif "文化" in tag_str:
+                    b_color = "bg-[#581c87] text-[#d8b4fe]"
+
+                events.append({
+                    "id": len(events) + 1,
+                    "month": f"{ev_d.month:02d}",
+                    "day": f"{ev_d.day:02d}",
+                    "full_date": orig_date_str,
+                    "name": itm.get("title", ""),
+                    "nameBM": itm.get("titleBM", ""),
+                    "time": meta.get("time", "08:00 AM - 05:00 PM"),
+                    "timeBM": meta.get("time", "08:00 AM - 05:00 PM"),
+                    "location": meta.get("location", "Sandakan Community Centre"),
+                    "category": tag_str,
+                    "categoryBM": "Khidmat Komuniti",
+                    "badgeColor": b_color,
+                    "desc": itm.get("detail", ""),
+                    "descBM": itm.get("detailBM", ""),
+                    "tel": meta.get("tel", "089-272161"),
+                    "source": itm.get("source", "官方信源"),
+                    "sourceBM": itm.get("sourceBM", "Hebahan Rasmi"),
+                    "countdown_days": c_days
+                })
+            else:
+                final_headlines.append(itm)
+
+        print(f"✅ 成功分离双语输出: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(synthesized_batch)} 条)")
+
+    else:
+        # Legacy fallback: 原有多源独立抓取
+        rss_col = RSSCollector(config)
+        portal_col = PortalCollector(config)
+        agency_col = AgencyCollector(config)
+        fb_col = FacebookCollector(config)
+
+        print("\n[+] 正在执行多源独立并发打捞...")
+        raw_articles: List[RawArticle] = []
+
+        rss_items = rss_col.collect()
+        raw_articles.extend(rss_items)
+
+        portal_items = portal_col.collect()
+        raw_articles.extend(portal_items)
+
+        agency_items = agency_col.collect()
+        raw_articles.extend(agency_items)
+
+        fb_items = fb_col.collect()
+        raw_articles.extend(fb_items)
+
+        total_collected = len(raw_articles)
+        missing_orig_timestamps = sum(1 for a in raw_articles if not a.published_at)
+
+        print(f"📊 原始资讯打捞总计: {total_collected} 条 (其中未带日期条目: {missing_orig_timestamps} 条)")
+
+        normalizer = ArticleNormalizer(sliding_window_hours=config.get("system", {}).get("sliding_window_hours", 36))
+        normalized_articles = normalizer.normalize(raw_articles)
+        print(f"[+] 经 36 小时滑动窗口、广告剔除与地理校验留存: {len(normalized_articles)} 条")
+
+        sabah_count = sum(1 for a in normalized_articles if a.category == "sabah")
+        sandakan_count = sum(1 for a in normalized_articles if a.extra.get("geo_scope") == "sandakan")
+        sarawak_count = sum(1 for a in normalized_articles if a.extra.get("is_sarawak"))
+        national_count = sum(1 for a in normalized_articles if a.category == "national")
+
+        deduplicator = ArticleDeduplicator(sim_threshold=0.65)
+        canonical_articles = deduplicator.cluster_and_deduplicate(normalized_articles)
+        duplicates_merged = len(normalized_articles) - len(canonical_articles)
+        print(f"[+] 经跨语种实体聚合与去重合并，生成独立事件池: {len(canonical_articles)} 个")
+
+        synthesizer = NewsSynthesizer(config)
+        api_key = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
+
+        final_headlines = synthesizer.synthesize(
+            today_iso=today_iso,
+            articles=canonical_articles,
+            api_key=api_key
+        )
 
     # 5. 市政公用事业 LIVE 卡片核验与矛盾排查
     util_verifier = UtilityVerifier()
@@ -336,7 +442,7 @@ def run_pipeline() -> bool:
         verified_utilities.append(v_u)
 
     # 6. 非破坏性熔断器
-    cb = CircuitBreaker(min_threshold=config.get("system", {}).get("min_headlines_threshold", 12))
+    cb = CircuitBreaker(min_threshold=config.get("system", {}).get("min_headlines_threshold", 10))
     try:
         cb.inspect_and_guard(
             today_iso=today_iso,
@@ -351,7 +457,7 @@ def run_pipeline() -> bool:
         return False
 
     # 7. 写入并持久化
-    events = build_rich_future_events()
+    events = events or build_rich_future_events()
     archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
     news_data_payload = {
