@@ -48,4 +48,6 @@ jobs:
             reports/test_gdrive_downloaded.md
             reports/test_gdrive_parse_report.md
             reports/test_gdrive_parse_report.json
+            reports/test_gdocs_exported_markdown.txt
+            reports/test_gdocs_exported_plain.txt
           retention-days: 7

@@ -160,7 +160,14 @@ class GDriveMarkdownReader:
     ) -> Optional[Tuple[str, str, Optional[str]]]:
         """
         Search for candidate files in Google Drive using Drive API v3.
-        Returns (found_filename, file_content, file_id) or None.
+        Supports dual formats:
+        1. Authentic Markdown files (.md) via binary download (alt=media)
+        2. Google Docs files (application/vnd.google-apps.document) via official export API
+        
+        Strict Priority:
+        - Priority 1: Authentic .md files are always searched and preferred first.
+        - Priority 2: If no authentic .md is found, searches for Google Docs format for the target date.
+        
         Enforces read-only access (GET requests only).
         """
         access_token = self._get_oauth_access_token()
@@ -172,7 +179,7 @@ class GDriveMarkdownReader:
             "Accept": "application/json"
         }
 
-        # Build search query
+        # --- Priority 1: Search for Authentic Markdown (.md) Files ---
         for fname in candidate_names:
             query_parts = [
                 f"name = '{fname}'",
@@ -194,21 +201,83 @@ class GDriveMarkdownReader:
                         file_name = f_item.get("name", "")
                         mime_type = f_item.get("mimeType", "")
 
-                        # Explicit exclusion: ignore Google Docs and non-.md files
                         if mime_type == "application/vnd.google-apps.document" or not file_name.lower().endswith(".md"):
-                            logger.info(f"[GDRIVE SKIP] Skipping non-markdown or Google Doc: {file_name} ({mime_type})")
                             continue
 
-                        logger.info(f"[GDRIVE FOUND] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive.")
+                        logger.info(f"[GDRIVE FOUND (MD)] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive.")
 
                         # Download content (read-only alt=media)
                         download_url = f"https://www.googleapis.com/drive/v3/files/{file_id}?alt=media"
                         dl_req = urllib.request.Request(download_url, headers=headers, method="GET")
                         with urllib.request.urlopen(dl_req, timeout=30) as dl_resp:
-                            content = dl_resp.read().decode("utf-8")
+                            content = dl_resp.read().decode("utf-8", errors="replace")
+                            content = content.replace("\r\n", "\n").lstrip("\ufeff")
                             return file_name, content, file_id
             except Exception as e:
-                logger.warning(f"[GDRIVE API SEARCH ERROR] Querying '{fname}': {e}")
+                logger.warning(f"[GDRIVE API SEARCH ERROR] Querying markdown '{fname}': {e}")
+
+        # --- Priority 2: Search for Google Docs Native Documents ---
+        logger.info("[GDRIVE FALLBACK] No authentic .md found. Checking for Google Docs format documents...")
+        doc_candidate_names = []
+        for fname in candidate_names:
+            if fname not in doc_candidate_names:
+                doc_candidate_names.append(fname)
+            if fname.lower().endswith(".md"):
+                base_name = fname[:-3]
+                if base_name not in doc_candidate_names:
+                    doc_candidate_names.append(base_name)
+
+        for dname in doc_candidate_names:
+            query_parts = [
+                f"name = '{dname}'",
+                "trashed = false",
+                "mimeType = 'application/vnd.google-apps.document'"
+            ]
+            if folder_id:
+                query_parts.append(f"'{folder_id}' in parents")
+            q_str = " and ".join(query_parts)
+
+            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size)&pageSize=10"
+            try:
+                req = urllib.request.Request(url, headers=headers, method="GET")
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    files = data.get("files", [])
+                    for f_item in files:
+                        file_id = f_item.get("id")
+                        file_name = f_item.get("name", "")
+                        mime_type = f_item.get("mimeType", "")
+
+                        if mime_type != "application/vnd.google-apps.document":
+                            continue
+
+                        logger.info(f"[GDRIVE FOUND (GDOC)] Located Google Docs document '{file_name}' (ID: {file_id}). Attempting official export...")
+
+                        # 1. Attempt official text/markdown export (preserves full Markdown structure)
+                        try:
+                            export_url_md = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType=text/markdown"
+                            exp_req = urllib.request.Request(export_url_md, headers=headers, method="GET")
+                            with urllib.request.urlopen(exp_req, timeout=30) as exp_resp:
+                                content = exp_resp.read().decode("utf-8", errors="replace")
+                                content = content.replace("\r\n", "\n").lstrip("\ufeff")
+                                logger.info(f"[GDRIVE EXPORT SUCCESS] Exported Google Doc via text/markdown ({len(content)} chars).")
+                                return file_name, content, file_id
+                        except urllib.error.HTTPError as he:
+                            if he.code in (400, 403):
+                                logger.info(f"[GDRIVE EXPORT FALLBACK] text/markdown export returned HTTP {he.code}. Falling back to text/plain export...")
+                            else:
+                                raise
+
+                        # 2. Fallback to official text/plain export
+                        export_url_txt = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType=text/plain"
+                        exp_req = urllib.request.Request(export_url_txt, headers=headers, method="GET")
+                        with urllib.request.urlopen(exp_req, timeout=30) as exp_resp:
+                            content = exp_resp.read().decode("utf-8", errors="replace")
+                            content = content.replace("\r\n", "\n").lstrip("\ufeff")
+                            logger.info(f"[GDRIVE EXPORT SUCCESS] Exported Google Doc via text/plain ({len(content)} chars).")
+                            return file_name, content, file_id
+            except Exception as e:
+                logger.warning(f"[GDRIVE API SEARCH ERROR] Querying Google Doc '{dname}': {e}")
 
         return None
 
@@ -299,6 +368,63 @@ class GDriveMarkdownReader:
         )
         return None
 
+    def _normalize_plain_text_headings(self, text: str) -> str:
+        """
+        Structure-aware normalization for Google Docs plain text export (Phase D-17.3).
+        Safely identifies authentic top-level story headings (1..26) and prefixes them with '### '.
+        Guards against:
+        - Internal numbered sub-lists (e.g. '1. xxx\n2. yyy' inside an article body)
+        - Ordinary numbers, dates (2026-11-10, 11/09), currency amounts (5000万, RM360), and phone numbers
+        """
+        if len(re.findall(r'###\s+\d+[\.\、]', text)) >= 10:
+            return text
+
+        lines = text.splitlines()
+        norm_lines = []
+        expected_num = 1
+        in_sub_list = False
+
+        for i, line in enumerate(lines):
+            s_line = line.strip()
+            m = re.match(r'^(\d+)[\.\、]\s+([^\n]+)$', s_line)
+            if m:
+                num = int(m.group(1))
+
+                # Internal sub-list detection:
+                # If a line starts with '1.' while we are already in the middle of a story (expected_num > 1),
+                # it is an internal numbered list inside the body.
+                if num == 1 and expected_num > 1:
+                    in_sub_list = True
+                    norm_lines.append(line)
+                    continue
+
+                if in_sub_list:
+                    # Continue preserving internal sub-list items as body lines
+                    norm_lines.append(line)
+                    continue
+
+                # Top-level story verification:
+                # 1) Must strictly match the next expected sequential story number (1..26)
+                # 2) Must have metadata lookahead (来源/信源/地点/时间/标签/http) in subsequent lines
+                lookahead = '\n'.join(lines[i+1:i+10])
+                has_meta = bool(re.search(
+                    r'(?:来源|信源|Source|Sumber|地点|Location|Tempat|标签|Tag|https?://|\*{0,2}(?:来源|信源)\*{0,2}[：:])',
+                    lookahead,
+                    re.IGNORECASE
+                ))
+
+                if num == expected_num and has_meta:
+                    norm_lines.append(f"### {num}. {m.group(2).strip()}")
+                    expected_num += 1
+                else:
+                    norm_lines.append(line)
+            else:
+                if not s_line:
+                    in_sub_list = False
+                norm_lines.append(line)
+
+        return '\n'.join(norm_lines)
+
     def parse_markdown(
         self,
         markdown_text: str,
@@ -321,10 +447,13 @@ class GDriveMarkdownReader:
         default_date = target_date or self.get_today_myt_str()
         stories: List[ParsedMarkdownStory] = []
 
-        # 1. Specialized numbered parser for Meta AI 5-section format (### 1. to ### 26.)
-        pat_str = r'###\s+(\d+)[\.\、]\s+([^\n]+)(.*?)(?=(?:\n###\s+\d+[\.\、]|\n##\s+|\n\*\*今日统计|\Z))'
+        # Phase D-17.3: Structure-aware normalization for Docs plain export
+        clean_text = self._normalize_plain_text_headings(markdown_text)
+
+        # 1. Strict top-level heading parser for Meta AI 5-section format (### 1. to ### 26.)
+        pat_str = r'###\s+(\d+)[\.\、]\s+([^\n]+)(.*?)(?=(?:\n###\s+\d+[\.\、]|\n##\s+|\n\*\*今日统计|\n今日统计|\Z))'
         numbered_pattern = re.compile(pat_str, re.DOTALL)
-        numbered_matches = numbered_pattern.findall(markdown_text)
+        numbered_matches = numbered_pattern.findall(clean_text)
 
         if len(numbered_matches) >= 10:
             for num_str, raw_title, body_block in numbered_matches:
