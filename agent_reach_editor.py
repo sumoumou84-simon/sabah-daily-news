@@ -484,6 +484,9 @@ def run_pipeline() -> bool:
         return False
 
     # 9. 输出完整内容审计报告
+    geo_mismatch_cnt = normalizer.geo_mismatch_count if 'normalizer' in locals() and normalizer else 0
+    ad_filter_cnt = normalizer.ad_filter_count if 'normalizer' in locals() and normalizer else 0
+
     print("\n" + "=" * 70)
     print(f"📋 CONTENT INTEGRITY & AUDIT REPORT ({today_iso})")
     print("=" * 70)
@@ -492,8 +495,8 @@ def run_pipeline() -> bool:
     print(f"• Sandakan Articles:            {sandakan_count}")
     print(f"• National Articles:            {national_count}")
     print(f"• Sarawak / Regional Articles:  {sarawak_count}")
-    print(f"• Rejected Geographic Mismatches:{normalizer.geo_mismatch_count}")
-    print(f"• Commercial Ads Filtered:      {normalizer.ad_filter_count}")
+    print(f"• Rejected Geographic Mismatches:{geo_mismatch_cnt}")
+    print(f"• Commercial Ads Filtered:      {ad_filter_cnt}")
     print(f"• Missing Original Timestamps:  {missing_orig_timestamps}")
     print(f"• Unverified LIVE Alerts:       {unverified_alerts_count}")
     print(f"• Contradictory Claims Blocked: {contradictory_claims_count}")
