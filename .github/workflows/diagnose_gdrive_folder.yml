@@ -1,0 +1,43 @@
+name: Google Drive 目录只读诊断 (Phase D-15.3)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose_inventory:
+    name: Google Drive 目录清单诊断
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # 严格只读权限
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装基础依赖
+        run: |
+          pip install --upgrade pip
+          pip install requests urllib3 tzdata || true
+
+      - name: 执行目录清单诊断 (Strict Read-Only)
+        env:
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+        run: |
+          python scripts/diagnose_gdrive_folder.py
+
+      - name: 上传目录诊断报告 Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdrive-inventory-diagnosis-report
+          path: |
+            reports/gdrive_inventory_report.md
+            reports/gdrive_inventory_report.json
+          retention-days: 7
