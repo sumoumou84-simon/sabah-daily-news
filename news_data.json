@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-09 17:13:46",
-  "date": "2026-11-09",
+  "updated_at": "2026-11-10 20:07:22",
+  "date": "2026-11-10",
   "utilities": [
     {
       "id": "M",
@@ -8,11 +8,11 @@
       "titleBM": "Amaran Hujan Berterusan (Waspada) MetMalaysia Pantai Timur Sabah [Disahkan MetMalaysia]",
       "label": "大马气象局 (MetMalaysia) 季风警报",
       "labelBM": "Amaran Hujan Berterusan MetMalaysia",
-      "time": "04:14",
+      "time": "20:07",
       "status": "LIVE 预警中",
       "statusBM": "LANGSUNG Amaran Aktif",
       "official_source_url": "https://www.met.gov.my/",
-      "source_timestamp": "2026-11-09 04:14",
+      "source_timestamp": "2026-11-10 20:07",
       "issue": "大马气象局持续发布东北季候风强降雨警报（Waspada）：受低压槽活跃影响，山打根、特鲁必、比鲁兰、京那巴当岸及沙巴东海岸未来数日将出现持续强降雨。低洼地区居民需提防闪电水灾与河流水位上涨。",
       "issueBM": "Notis Amaran MetMalaysia: Hujan berterusan tahap waspada dijangka melanda pantai timur Sabah (Sandakan, Telupid, Kinabatangan, Beluran). Penduduk kawasan rendah dinasihatkan sentiasa berwaspada.",
       "pressure": "预警区域：山打根、特鲁必、比鲁兰、京那巴当岸及沿海低洼带",
@@ -34,11 +34,11 @@
       "titleBM": "Pemantauan Bekalan Air JANS Tawau Kuhara [Menunggu Pengesahan]",
       "label": "沙巴水务局 (JANS) 斗湖供水",
       "labelBM": "Bekalan Air JANS Tawau Kuhara",
-      "time": "04:14",
+      "time": "20:07",
       "status": "待核实",
       "statusBM": "Dalam Pengesahan",
       "official_source_url": "https://water.sabah.gov.my/",
-      "source_timestamp": "2026-11-09 04:14",
+      "source_timestamp": "2026-11-10 20:07",
       "issue": "今日官方信源暂无突发紧急抢修通告。斗湖古哈拉抽水主站维持常态平稳供水，水务局正进行全区例行巡检与水压监测，待官方通告发布后实时更新。",
       "issueBM": "Tiada notis gangguan bekalan air kecemasan hari ini. Stesen Kuhara Tawau beroperasi secara berkala dan pemantauan tekanan air sedang dijalankan.",
       "pressure": "供水状态：斗湖市区及沿海片区维持例行供水监测",
@@ -57,298 +57,762 @@
   ],
   "headlines": [
     {
-      "id": "art_sabah_1",
+      "story_index": 1,
       "category": "sabah",
-      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
-      "titleBM": "Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan",
-      "detail": "第14届沙巴地方政府运动会（SKTS）于2026年11月8日晚在山打根综合体育馆隆重开幕，由沙巴房屋及地方政府部长拿督莫哈末阿里芬阿里夫亲临主持。山打根市议会主席拿督沃特肯森、国会议员黄诗怡及全州8支地方议会代表团齐聚一堂。阿里芬强调，运动会不仅是体育竞技，更是深化跨区域合作与团队默契的重要平台。他敦促各地方政府积极履行社会责任，全力提升市容、环境卫生与基础设施，迎接2027马来西亚旅游年。本届运动会吸引数千名选手与家属涌入山打根，显著带动了当地酒店、餐饮、交通及微型零售企业的营业额，实现了行政治理凝聚力与旅游经济增长的双赢。",
-      "detailBM": "Temasya Sukan PBT Sabah (SKTS) kali ke-14 telah dirasmikan oleh Menteri Kerajaan Tempatan dan Perumahan Datuk Mohd Arifin Arif di Kompleks Sukan Sandakan pada 8 November 2026. Acara ini menghimpunkan 8 kontinjen pihak berkuasa tempatan (PBT) di seluruh negeri. Arifin menegaskan bahawa temasya ini memperkukuh kerjasama antara agensi dan memupuk semangat kesukanan. Beliau menyeru PBT meningkatkan kebersihan, landskap, dan kemudahan awam bagi menyambut Tahun Melawat Malaysia 2027. Kehadiran ribuan peserta dan keluarga ke Sandakan turut menjana ekonomi tempatan, memacu sektor hotel, perniagaan makanan, serta peniaga kecil.",
-      "source": "诗华日报沙巴版",
+      "title": "山打根市议会召开Townhall会议：承诺14天内修好小路洞、7天内更换路灯",
+      "titleBM": "MPS Adakan Townhall: Janji Baik Pulih Lubang Kecil Dalam 14 Hari dan Tukar Lampu Jalan Dalam 7 Hari",
+      "detail": "山打根市议会（MPS）日前在Dewan Masyarakat召开Townhall会议，商贩们集中反映了市区道路坑洞、路灯不亮、排水堵塞以及夜市摊位卫生等问题。对此，MPS现场作出积极承诺：小坑洞将在14天内修好，大坑则在6个月内修好，而损坏的路灯则会在7天内完成更换。今日重点修路路段包括Jalan Leila、Harrison圆环以及Jalan Pelabuhan Lama一带，早上的修路工程正在进行中，夜市则照常营业。MPS特别提醒市民，若发现路灯不亮或路洞问题，可直接前往MPS官网 mps.sabah.gov.my 进行投诉，MPS将在每月的例行月会上跟进处理进度。",
+      "detailBM": "Majlis Perbandaran Sandakan (MPS) baru-baru ini telah mengadakan mesyuarat Townhall di Dewan Masyarakat, di mana para peniaga membangkitkan isu lubang jalan, kerosakan lampu jalan, sistem perparitan yang tersumbat, serta kebersihan tapak pasar malam. Sebagai maklum balas, MPS berjanji untuk membaiki lubang kecil dalam tempoh 14 hari, lubang besar dalam masa 6 bulan, dan menggantikan lampu jalan rosak dalam 7 hari. Kerja-kerja pembaikan jalan tertumpu di Jalan Leila, Bulatan Harrison, dan kawasan Jalan Pelabuhan Lama, manakala pasar malam beroperasi seperti biasa. MPS mengingatkan orang ramai agar melaporkan sebarang masalah lampu jalan rosak atau lubang jalan terus melalui laman sesawang rasmi mps.sabah.gov.my untuk tindakan susulan dalam mesyuarat bulanan mereka.",
+      "source_url": "https://news.google.com",
+      "publisher": "MPS FB, My Sandakan Kini FB, Sabah Media News FB",
+      "source": "MPS FB",
       "sources": [
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
+        "MPS FB",
+        "My Sandakan Kini FB",
+        "Sabah Media News FB",
+        "11",
+        "06 07:30"
       ],
-      "sourceBM": "诗华日报沙巴版",
-      "sourcesBM": [
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "url": "https://news.seehua.com/post/1601871",
+      "url": "https://news.google.com",
       "source_urls": [
-        "https://news.seehua.com/post/1601871",
-        "https://www.dailyexpress.com.my/news/291220/sabah-local-government-games-games-to-boost-local-economy/"
+        "https://news.google.com"
       ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_01",
       "image_url": null,
-      "original_published_at": "2026-11-08T20:30:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
       "is_updated": false,
-      "geo_scope": "sandakan / sabah"
+      "validation_status": "VERIFIED"
     },
     {
-      "id": "art_sabah_2",
+      "story_index": 2,
       "category": "sabah",
-      "title": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
-      "titleBM": "Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji",
-      "detail": "沙巴州首席部长拿督斯里哈芝芝诺日前证实，即将出台的沙巴2027年州财政预算案将坚定践行以民为本的发展理念，把财政资源大幅倾斜于解决长期困扰民生的基本基础设施瓶颈。哈芝芝强调，干净自来水供应短缺、电网稳定性和乡村道路网络是人民群众最紧迫的民生关切，也是招商引资和实现长期繁荣的基石。州政府将加大在供水改造、电网扩建及乡村公路升级方面的直接注资，并对所有资本开支项目建立严格的全过程监督考核机制，坚决杜绝行政官僚延误与承包商拖延，确保每一令吉都精准投向全州27个县区基层百姓急需之处。",
-      "detailBM": "Ketua Menteri Datuk Seri Panglima Haji Hajiji Haji Noor mengesahkan Belanjawan Sabah 2027 akan memperuntukkan dana besar untuk menyelesaikan isu infrastruktur asas. Bercakap selepas mempengerusikan taklimat pentadbiran negeri, beliau menekankan bahawa bekalan air terawat, kestabilan grid elektrik, dan jalan luar bandar adalah keutamaan mutlak. Kerajaan negeri akan mengetatkan pemantauan ke atas semua projek perbelanjaan modal untuk memastikan peruntukan diterjemahkan kepada peningkatan taraf hidup rakyat di kesemua 27 daerah di Sabah tanpa kelewatan.",
-      "source": "Borneo Post",
+      "title": "山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援",
+      "detailBM": "Jabatan Air Negeri Sabah (JANS) sebelum ini mengeluarkan Notis Kecemasan susulan insiden paip pecah di Sandakan, termasuk paip utama MSCL 450mm di Jambatan hadapan Borneo Cove pada 7 November jam 12:30 tengah hari, serta kerja pengesanan kebocoran paip 250mm di Taman Nasalim Fasa 7. Keadaan ini menyebabkan enam kawasan di Sandakan iaitu Taman Sunny, Grandview, Mutiara, Astana Height, Harbour View, dan Indah Jaya mengalami gangguan bekalan air masuk hari keenam. ADUN Elopura, Calvin Chong, mendesak JANS segera menghantar lori tangki air ke kawasan terjejas sehingga bekalan pulih. JANS menasihatkan pengguna agar menyimpan dan menjimatkan air, memandangkan bangunan pangsapuri bertingkat paling teruk terjejas akibat tekanan air rendah yang gagal mengisi tangki sedutan bawah tanah.",
+      "detail": "沙巴水务局（JANS）早前发布紧急通告，山打根发生多起水管事故，包括11月7日中午12:30起Borneo Cove前大桥450mm MSCL主水管爆裂抢修，以及早上9:30起Taman Nasalim Fasa 7对面250mm配水管漏水排查，此前还涉及Batu Sapi圆环及Sungai Anib的新学校前水管工程。受此影响，山打根6大住宅区（Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View和Indah Jaya）已面临长达6天的断水困境。民兴党伊罗普拉区州议员张克骏强烈敦促JANS立刻派水车前往这6个重灾区，持续运水直至供水恢复稳定。JANS呼吁受影响用户积极存水与省水，并指出高楼公寓因主水管压力临界无法抽水，情况最为严峻。",
+      "source_url": "https://news.google.com",
+      "publisher": "JANS FB, water.sabah.gov.my",
+      "titleBM": "Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援",
+      "source": "JANS FB",
       "sources": [
-        "Borneo Post",
-        "The Star"
+        "JANS FB",
+        "water.sabah.gov.my",
+        "11",
+        "07 12:30"
       ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post",
-        "The Star"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/08/sabah-budget-2027-to-address-key-infrastructure/",
+      "url": "https://news.google.com",
       "source_urls": [
-        "https://www.theborneopost.com/2026/11/08/sabah-budget-2027-to-address-key-infrastructure/",
-        "https://www.thestar.com.my/news/nation/2026/11/08/upcoming-sabah-budget-will-be-people-centric-says-hajiji"
+        "https://news.google.com"
       ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_02",
       "image_url": null,
-      "original_published_at": "2026-11-08T18:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
       "is_updated": false,
-      "geo_scope": "sabah statewide"
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援'"
+      ]
     },
     {
-      "id": "art_sabah_3",
-      "category": "national",
-      "title": "沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区",
-      "titleBM": "DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong",
-      "detail": "民主行动党沙巴州委员会主席冯晋哲在州委战略会议后对外宣布，面对日益临近的第16届全国大选（PRU16），沙巴行动党已经全面进入战备状态，并将以毫不动摇的坚定立场全力捍卫亚庇与山打根两个传统国会议席。冯晋哲指出，党中央与州委员会正在全州范围内紧锣密鼓地开展组织架构重整与基层动员工作，确保在城市与半城市选区具备最强运营准备度与选民动员力。他重申，沙巴行动党将继续立足于解决民生疾苦、监督公共施政、捍卫沙巴宪赋自治权益，以务实的服务政绩迎接选举挑战。",
-      "detailBM": "Pengerusi DAP Sabah Phoong Jin Zhe mengumumkan bahawa parti itu nekad mempertahankan dua kerusi Parlimen tradisionalnya, Kota Kinabalu dan Sandakan, pada Pilihan Raya Umum ke-16 (PRU16). Beliau menyatakan bahawa jentera pilihan raya akar umbi sedang menjalani penstrukturan semula secara menyeluruh bagi memastikan kesiapsiagaan optimum. DAP tetap komited dalam memperjuangkan autonomi Sabah, tadbir urus telus, serta pembangunan ekonomi serantau yang saksama di bawah gabungan Pakatan Harapan.",
-      "source": "Daily Express Malaysia",
-      "sources": [
-        "Daily Express Malaysia",
-        "The Star"
-      ],
-      "sourceBM": "Daily Express Malaysia",
-      "sourcesBM": [
-        "Daily Express Malaysia",
-        "The Star"
-      ],
-      "url": "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong",
-      "source_urls": [
-        "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong",
-        "https://www.thestar.com.my/news/nation/2026/11/08/sabah-dap-vows-to-defend-its-two-parliamentary-seats-as-party-looks-at-internal-reforms"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T16:45:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "kota kinabalu / sandakan"
-    },
-    {
-      "id": "art_sabah_4",
+      "story_index": 3,
       "category": "sabah",
-      "title": "兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命",
-      "titleBM": "Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit",
-      "detail": "沙巴兵南邦道路今日凌晨发生一起致命车祸，一名现年41岁的本地男摩托车骑士不幸当场丧生。根据兵南邦区警区主任证实，该起致命碰撞事故发生于清晨约2时30分。初步调查显示，事发时该名骑士独自骑摩托车行经兵南邦路段，车辆突然失控偏离车道，猛烈撞向路旁坚硬的混凝土排水沟屏障。伊丽莎白女王医院的医护人员赶抵现场后，证实骑士因头部与胸部遭受严重创伤当场不治身亡。死者遗体已被送往医院法医部门进行解剖，警方目前正援引1987年陆路交通法令第41(1)条文对车祸原因展开深入调查。",
-      "detailBM": "Seorang penunggang motosikal tempatan berusia 41 tahun maut serta-merta selepas terbabas dan merempuh parit konkrit di Jalan Penampang awal pagi Isnin. Ketua Polis Daerah Penampang mengesahkan kejadian berlaku sekitar jam 2:30 pagi apabila mangsa menunggang seorang diri sebelum hilang kawalan. Pasukan perubatan dari Hospital Queen Elizabeth yang tiba di lokasi mengesahkan mangsa meninggal dunia akibat kecederaan parah di kepala dan dada. Mayat dihantar ke bahagian forensik untuk bedah siasat dan kes disiasat di bawah Seksyen 41(1) Akta Pengangkutan Jalan 1987.",
-      "source": "TV Sabah News",
+      "title": "沙巴电力SESB证实山打根供电已全面恢复正常：275kV输电线路跳闸影响已解除",
+      "titleBM": "SESB Sahkan Bekalan Elektrik di Sandakan Pulih Sepenuhnya: Gangguan Talian 275kV Kolopis-Segaliud Selesai",
+      "detail": "沙巴电力公司（SESB）正式证实，早前因275kV Kolopis-Segaliud 1号输电线路于周六下午5:05发生跳闸，导致山打根、拿笃、古纳、仙本那、比鲁兰及京那巴当多达23万用户受影响的大规模断水断电危机，已于周日（11月8日）下午3:11分阶段全面恢复供电。今日11月10日，山打根全区供电保持正常，暂无接到新的停电通告。SESB提醒用户，若发现任何局部断电情况，可随时拨打Careline 15444、088-515000、通过WhatsApp 019-852 5427或使用SESB官方App进行反馈。此外，MPS交通部门报告指出，今日山打根市区交通整体通畅，Sepilok观鸟节收尾阶段需注意山路积水，拿笃此前9AM-2PM的海啸演习改道路线已结束。",
+      "detailBM": "Sabah Electricity (SESB) mengesahkan bahawa gangguan bekalan elektrik melibatkan 230,000 pengguna di Sandakan, Lahad Datu, Kunak, Semporna, Beluran, dan Kinabatangan akibat pelakuran talian 275kV Kolopis-Segaliud No. 1 pada hari Sabtu jam 5:05 petang, telah pulih sepenuhnya secara berperingkat pada Ahad jam 3:11 petang. Hari ini, 10 November, bekalan elektrik di Sandakan adalah normal tanpa sebarang notis gangguan baharu. SESB mengingatkan pengguna agar menghubungi Careline 15444, 088-515000, WhatsApp 019-852 5427, atau melalui Aplikasi SESB jika masih menghadapi masalah. Sementara itu, pihak trafik MPS melaporkan keadaan lalu lintas bandar lancar, manakala jalan berhampiran Sepilok perlu berwaspada terhadap takungan air, dan latihan tsunami Lahad Datu telah tamat.",
+      "source_url": "https://news.google.com",
+      "publisher": "SESB FB",
+      "source": "SESB FB",
       "sources": [
-        "TV Sabah News",
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
+        "SESB FB",
+        "11",
+        "09"
       ],
-      "sourceBM": "TV Sabah News",
-      "sourcesBM": [
-        "TV Sabah News",
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "url": "https://www.dailyexpress.com.my/news/291230/motorcyclist-killed-after-crashing-into-drain-in-penampang/",
+      "url": "https://news.google.com",
       "source_urls": [
-        "https://www.dailyexpress.com.my/news/291230/motorcyclist-killed-after-crashing-into-drain-in-penampang/",
-        "https://news.seehua.com/post/1602410"
+        "https://news.google.com"
       ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_03",
       "image_url": null,
-      "original_published_at": "2026-11-09T03:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
       "is_updated": false,
-      "geo_scope": "penampang / sabah"
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Claim CLM_01: BM text missing expected amount 230000 (found: []) for fact FAC_MON_230000",
+        "Global bilingual monetary set discrepancy: ZH=[230000] vs BM=[]"
+      ]
     },
     {
-      "id": "art_sabah_5",
-      "category": "national",
-      "title": "沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案",
-      "titleBM": "Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu",
-      "detail": "沙巴州政府正式启动《沙巴可持续交通与综合物流蓝图》（SSTMP）编制研究工作，旨在全面重组运输出行体系。沙巴工程部常务秘书拿督卡罗琳证实，州政府已在预算案中划拨专项经费，委托资深专业交通规划团队展开宏观研究。该研究将评估亚庇大都会区公共巴士系统的现代化改造，探讨轻轨（LRT）与快捷巴士系统（BRT）等现代公交选项的可行性，并规划联通港口、工业园区与农业腹地的高效多式联运货运走廊。该战略蓝图旨在构建环保、低碳的交通骨干网络，以满足沙巴未来30年不断增长的人口与工业需求。",
-      "detailBM": "Kerajaan negeri Sabah telah melantik pakar untuk melaksanakan kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu (SSTMP). Setiausaha Tetap Kementerian Kerja Raya Datuk Caroline Guah mengesahkan peruntukan khas telah disediakan. Kajian holistik ini menilai pemodenan bas bandar, menilai kebolehlaksanaan transit moden seperti BRT dan LRT untuk Greater Kota Kinabalu, serta memetakan koridor kargo multimoda. Pelan ini menyasarkan pewujudan rangkaian pengangkutan rendah karbon untuk menampung keperluan demografi dan industri Sabah selama 30 tahun.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T08:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah statewide"
-    },
-    {
-      "id": "art_sabah_6",
-      "category": "national",
-      "title": "泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程",
-      "titleBM": "Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1",
-      "detail": "泛婆大道（Pan Borneo Highway）沙巴第一阶段工程施工进展持续受到联邦与州级当局的密切审视，各方正加倍努力克服多年来的项目延误。该宏大基建项目最初于2015年规划，原定于2016年至2021年间完工，但遭遇了复杂的物流挫折，包括土地征用争议、与水务及电力当局的公用管线迁移谈判以及承包商现金流限制。工程部证实，已建立严格的承包商监督与绩效执行协议，以加速推进剩余的滞后标段。当局强调，完成泛婆大道第一阶段对于释放跨区商业活力、缩短东西海岸车程、提升重型货运安全及促进乡区社会经济公平至关重要。",
-      "detailBM": "Pelaksanaan Fasa 1 Lebuhraya Pan Borneo di Sabah terus mendapat tumpuan apabila pihak berkuasa persekutuan dan negeri menggandakan usaha mengatasi kelewatan projek. Dirancang pada 2015 dengan tempoh asal 2016 hingga 2021, projek mega ini menghadapi pelbagai halangan logistik seperti isu tanah, utiliti, dan kekangan aliran tunai kontraktor. Kementerian Kerja Raya mengesahkan protokol pemantauan ketat telah dikuatkuasakan untuk menyiapkan pakej lewat. Penyiapan fasa ini penting untuk merangsang perdagangan, memendekkan masa perjalanan antara Pantai Barat dan Timur, serta meningkatkan keselamatan logistik.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/09/pan-borneo-highway-sabahs-unfinished-business/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/09/pan-borneo-highway-sabahs-unfinished-business/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T07:30:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah infrastructure"
-    },
-    {
-      "id": "art_sabah_7",
-      "category": "national",
-      "title": "沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动",
-      "titleBM": "Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi",
-      "detail": "沙巴州移民局今年通过海陆空多维度开展的77次执法遣送行动，已累计遣返8,472名无证非法移民（PATI）。沙巴移民局局长拿督西蒂萨烈哈证实，最近一次行动涉及通过山打根港口以商用客轮将466名菲律宾籍被扣留者直接遣返回南部三宝颜市。这些被扣留者在全州临时拘留中心被关押前，已根据1959/63年移民法令及1963年移民条例服刑完毕。局长西蒂萨烈哈重申，该局在国家主权和边境执法方面绝不妥协，并敦促雇主及房东务必核实员工与租客的移民证件，切勿窝藏无证外籍人员。",
-      "detailBM": "Jabatan Imigresen Sabah telah mengusir seramai 8,472 pendatang tanpa izin (PATI) menerusi 77 siri operasi penguatkuasaan darat, laut, dan udara tahun ini. Pengarah Imigresen Sabah Datuk SH Sitti Saleha Habib Yusoff mengesahkan siri terbaharu melibatkan penghantaran pulang 466 tahanan Filipina menggunakan feri komersial dari Pelabuhan Sandakan ke Bandar Zamboanga. Mereka telah menjalani hukuman di bawah Akta Imigresen 1959/63. Sitti Saleha menegaskan jabatan tidak akan berkompromi terhadap kedaulatan negara dan menggesa majikan agar tidak melindungi individu tanpa dokumen sah.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T17:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah / sandakan port"
-    },
-    {
-      "id": "art_sabah_8",
+      "story_index": 4,
       "category": "sabah",
-      "title": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
-      "titleBM": "MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu",
-      "detail": "马来西亚气象局（MetMalaysia）已向沙巴多个地区及半岛东海岸发布黄色级别持续降雨警报，预警将持续有效至本周三（11月11日）。气象局在今日发表的声明中指出，沙巴受影响的特定区域包括古达（Kudat）、山打根（Sandakan）、京那巴当岸（Kinabatangan）、比鲁兰（Beluran）、东革（Telupid）以及北部沿海部分地区。地方灾害管理机构已进入全面戒备状态，气象局呼吁居住在低洼、河畔及沿海易涝区域的民众保持高度警惕，随时留意官方发布的即时气象雷达与卫星气象通报。",
-      "detailBM": "Jabatan Meteorologi Malaysia (MetMalaysia) mengeluarkan amaran hujan berterusan tahap waspada yang menjejaskan beberapa kawasan di Sabah dan Pantai Timur Semenanjung hingga Rabu (11 Nov). Lokasi terjejas di Sabah termasuk Kudat, Sandakan, Kinabatangan, Beluran, Telupid, dan sebahagian daerah pantai utara. Agensi pengurusan bencana tempatan diletakkan dalam keadaan bersiap siaga, manakala penduduk di kawasan rendah, lembangan sungai, dan pesisir pantai dinasihatkan agar sentiasa berwaspada serta mengikuti laporan cuaca rasmi.",
-      "source": "诗华日报沙巴版",
+      "title": "JANS山打根水务维护持续：Batu Sapi更换闸阀与B5水箱切换引水压波动",
+      "titleBM": "Penyelenggaraan Air JANS di Sandakan: Penggantian Injap Batu Sapi dan Peralihan Tangki Batu 5",
+      "detail": "沙巴水务局（JANS）持续在山打根展开水务基础设施维护工程，其中包括11月6日周五早上8:00起在Batu Sapi圆环附近进行400mm闸阀更换，直接影响Batu Sapi及京那巴当部分用户的供水；以及11月1日周日早上9:30起，将Tangki Kebun Cina的水流成功切换至Tangki Tshun Ngen Batu 5，造成山打根市区一度出现水压波动现象。JANS特别提醒广大受影响用户，在每次水管维修或水箱切换工程恢复供水后，水质可能会出现短暂浑浊现象，建议民众先将水龙头打开放水约5分钟，待水质清澈后再行安全使用。",
+      "detailBM": "Jabatan Air Negeri Sabah (JANS) meneruskan kerja penyelenggaraan infrastruktur air di Sandakan, termasuk penggantian injap 400mm berhampiran bulatan Batu Sapi bermula 6 November jam 8:00 pagi yang menjejaskan sebahagian pengguna Batu Sapi dan Kinabatangan. Selain itu, peralihan bekalan dari Tangki Kebun Cina ke Tangki Tshun Ngen Batu 5 pada 1 November jam 9:30 pagi telah menyebabkan turun naik tekanan air di bandar Sandakan. JANS mengingatkan para pengguna bahawa air mungkin kelihatan keruh selepas setiap kerja pembaikan siap dijalankan, dan menasihatkan agar membiarkan air mengalir selama kira-kira 5 minit sebelum digunakan.",
+      "source_url": "https://news.google.com",
+      "publisher": "water.sabah.gov.my",
+      "source": "water.sabah.gov.my",
       "sources": [
-        "诗华日报沙巴版",
-        "NST Online"
+        "water.sabah.gov.my",
+        "11",
+        "06 8:00AM",
+        "01 9:30AM"
       ],
-      "sourceBM": "诗华日报沙巴版",
-      "sourcesBM": [
-        "诗华日报沙巴版",
-        "NST Online"
-      ],
-      "url": "https://news.seehua.com/post/1602407",
+      "url": "https://news.google.com",
       "source_urls": [
-        "https://news.seehua.com/post/1602407",
-        "https://www.nst.com.my/news/nation/2026/11/1573756/kelantan-terengganu-pahang-and-sabah-under-rain-alert-until-wednesday"
+        "https://news.google.com"
       ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_04",
       "image_url": null,
-      "original_published_at": "2026-11-09T09:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
       "is_updated": false,
-      "geo_scope": "east coast sabah / kudat / sandakan"
+      "validation_status": "VERIFIED"
     },
     {
-      "id": "art_sabah_9",
-      "category": "national",
-      "title": "亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益",
-      "titleBM": "Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan",
-      "detail": "关于亚庇国际机场（KKIA）未来发展走向的战略性辩论持续升温，航空经济学家、城市规划师以及马来西亚特许物流与运输学会（CILTM）沙巴分会共同敦促政府，对扩建现有机场与异地新建方案展开基于实证的全面宏观评估。核心政策困境在于平衡在丹绒亚路升级现有航站楼，与在斗亚兰（北部）或金马利（南部）建设价值数十亿令吉的全新绿色国际机场。CILTM沙巴代表强调，在作出任何具约束力的承诺之前，必须科学权衡资本支出需求、航空公司运营成本、国际游客通行时间、客流量上限以及商业房地产影响等关键变量。",
-      "detailBM": "Debat strategik mengenai masa depan Lapangan Terbang Antarabangsa Kota Kinabalu (KKIA) semakin hangat, dengan pakar ekonomi penerbangan, perancang bandar, dan CILTM cawangan Sabah menggesa penilaian holistik antara pilihan pembesaran atau pemindahan. Dilema dasar tertumpu kepada perbandingan menaik taraf terminal sedia ada di Tanjung Aru atau membina lapangan terbang baharu bernilai berbilion ringgit di Tuaran atau Kimanis. Wakil CILTM menegaskan perbelanjaan modal, kos operasi syarikat penerbangan, dan masa transit pelancong antarabangsa mesti diteliti secara teliti sebelum sebarang keputusan dimuktamadkan.",
-      "source": "Jesselton Times",
+      "story_index": 10,
+      "category": "sabah",
+      "title": "气象局发布东海岸持续豪雨警报至11月11日：山打根等多区严阵以待",
+      "titleBM": "MetMalaysia Keluarkan Amaran Hujan Berterusan Hingga 11 November: Sandakan dan Beberapa Daerah Di Atasi Siapsiaga",
+      "detail": "马来西亚气象局（MetMalaysia）已向半岛东海岸及沙巴东部发出持续豪雨警报，恶劣及警惕级别将维持至11月11日。在沙巴方面，受影响区域主要涵盖古达及山打根省辖下的多个地区，包括拜丹（Paitan）、特鲁必（Telupid）、拉卜达谷（Labuk dan Sugut）、山打根市区以及京那巴当岸（Kinabatangan）。My Sandakan Kini提醒民众今日出门务必携带雨具，Sepilok观鸟节收尾区需警惕山路积水。SANDAKANfm90.1今早亦已播报最新路况，并特别呼吁渔民出海注意风浪安全。",
+      "detailBM": "Jabatan Meteorologi Malaysia (MetMalaysia) telah mengeluarkan amaran hujan berterusan tahap buruk dan Waspada yang meliputi Pantai Timur Semenanjung dan bahagian timur Sabah sehingga 11 November. Di Sabah, daerah yang terjejas melibatkan Kudat dan bahagian Sandakan termasuk Paitan, Telupid, Labuk dan Sugut, Sandakan, serta Kinabatangan. My Sandakan Kini mengingatkan orang ramai agar membawa payung hari ini dan berhati-hati terhadap takungan air di kawasan sekitar Sepilok. SANDAKANfm90.1 telah menyiarkan laporan trafik, sambil menasihatkan nelayan agar prihatin terhadap keselamatan ombak besar di laut.",
+      "source_url": "https://news.google.com",
+      "publisher": "Bernama FB, Sabah TV Official FB, RTM FB",
+      "source": "Bernama FB",
       "sources": [
-        "Jesselton Times",
-        "星洲日报沙巴版",
-        "Daily Express Malaysia",
-        "Bernama"
+        "Bernama FB",
+        "Sabah TV Official FB",
+        "RTM FB",
+        "11",
+        "09"
       ],
-      "sourceBM": "Jesselton Times",
-      "sourcesBM": [
-        "Jesselton Times",
-        "星洲日报沙巴版",
-        "Daily Express Malaysia",
-        "Bernama"
-      ],
-      "url": "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
+      "url": "https://news.google.com",
       "source_urls": [
-        "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
-        "https://sabah.sinchew.com.my/news/20261109/sabah/8050416"
+        "https://news.google.com"
       ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T08:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "kota kinabalu / tuaran / kimanis"
-    },
-    {
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
       "id": "art_sabah_10",
-      "category": "national",
-      "title": "第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客",
-      "titleBM": "Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta",
-      "detail": "第16届婆罗洲观鸟节在山打根西必洛雨林发现中心（RDC）圆满落幕。这项由沙巴森林局森林研究中心（FRC）与婆罗洲观鸟俱乐部联手打造的年度生态盛事，今年成功吸引了来自马来西亚本土、新加坡、菲律宾、纽西兰以及中国、台湾等多个国家和地区的逾千名专业鸟类摄影家、自然研究员与生态旅游爱好者汇聚西必洛。本届核心竞技项目“观鸟竞赛”共迎来破纪录的45支专业队伍同台竞技，参赛者在指定时间内在原始雨林及树冠步道中辨识记录了数十种婆罗洲特有鸟类。主办方表示，观鸟节生动展现了山打根世界级的雨林生物多样性，为提升公众森林保育意识与推动生态旅游经济注入了强劲动力。",
-      "detailBM": "Pesta Burung Borneo ke-16 di Pusat Penerokaan Hujan Tropika (RDC) Sepilok, Sandakan, melabuhkan tirainya dengan jayanya. Anjuran bersama Pusat Penyelidikan Perhutanan (FRC) Jabatan Perhutanan Sabah dan Kelab Pemerhati Burung Borneo ini menarik lebih 1,000 jurugambar burung, penyelidik, dan pelancong eko dari Malaysia, Singapura, Filipina, New Zealand, China, dan Taiwan. Acara 'Bird Race' mencatat rekod penyertaan 45 pasukan profesional. Penganjur menyatakan pesta ini bukan sahaja mengetengahkan kepelbagaian biologi hutan hujan Sandakan, tetapi turut memacu ekonomi pelancongan eko tempatan.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "sourceBM": "诗华日报",
-      "sourcesBM": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1602333",
-      "source_urls": [
-        "https://news.seehua.com/post/1602333"
-      ],
       "image_url": null,
-      "original_published_at": "2026-11-09T10:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
       "is_updated": false,
-      "geo_scope": "sandakan (sepilok rdc)"
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 11,
+      "category": "sabah",
+      "title": "仙本那3名男子在雪兰莪遭雷击身亡：沙巴州政府全力协助家属运回遗体",
+      "titleBM": "Tiga Lelaki Semporna Maut Disambar Petir di Selangor: Kerajaan Negeri Sabah Bantu Urus Penghantaran Jenazah",
+      "detail": "针对昨日下午在雪兰莪雪邦不幸遭雷击身亡的3名仙本那籍男子悲剧，沙巴州政府目前正积极协调各方，全力协助家属将3人的遗体顺利运回沙巴家乡。罹难者家属已接获官方通知，州政府将妥善协助处理后续丧葬事宜。Sabah Spotlight 2026此前已转发相关家属的筹款贴文，并借此沉痛事件再次提醒广大民众，在雷雨恶劣天气时切勿在空旷地带、大树下或铁皮屋顶下逗留，以防发生类似悲剧。",
+      "detailBM": "Berikutan tragedi menyayat hati di mana tiga lelaki asal Semporna maut disambar petir di Sepang, Selangor, Kerajaan Negeri Sabah kini sedang menyelaras usaha untuk membantu keluarga membawa pulang jenazah mereka ke tanah air. Keluarga mangsa telah dimaklumkan, dan kerajaan negeri akan membantu menguruskan hal ehwal pengebumian. Sabah Spotlight 2026 sebelum ini telah berkongsi hantaran Tabung Derma Keluarga, sambil mengingatkan orang ramai agar tidak berdiri di kawasan terbuka, di bawah pokok, atau bumbung zink semasa cuaca ribut petir.",
+      "source_url": "https://news.google.com",
+      "publisher": "Sayangi Sabah FB, Sabah Media News FB",
+      "source": "Sayangi Sabah FB",
+      "sources": [
+        "Sayangi Sabah FB",
+        "Sabah Media News FB",
+        "11",
+        "09 3:12pm"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_11",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 12,
+      "category": "sabah",
+      "title": "沙巴珊瑚白化危机恶化升至最严重第4级：山打根海域备受专家关注",
+      "titleBM": "Krisis Pemutihan Karang Sabah Meningkat ke Tahap 4 Paling Kritikal: Perairan Sandakan Jadi Tumpuan Pakar",
+      "detail": "根据沙巴珊瑚白化特别工作组10月的最新监测数据，沙巴海域的珊瑚白化现象已恶化并升级至最严重的第4级警报（Alert Level 4），而东海岸其他海域则维持在第3级，海水温度过高是导致此次严重白化的主要根源。海洋专家强烈呼吁游客及潜水爱好者在出海活动时减少污染，绝对不可踩踏珊瑚。My Sandakan Kini特别提醒本周计划出海浮潜的游客务必做好防晒措施，并切勿使用含有氧苯酮（Oxybenzone）等破坏海洋生态的防晒霜。",
+      "detailBM": "Berdasarkan pemantauan oleh Pasukan Task Force Pemutihan Karang Sabah pada bulan Oktober, tahap pemutihan karang di perairan Sabah telah meningkat ke Tahap Amaran 4 (Alert Level 4) yang paling kritikal, manakala pantai timur kekal pada Tahap 3 akibat suhu air laut yang terlalu tinggi. Pakar menyeru agar orang ramai mengurangkan pencemaran dan tidak memijak batu karang. My Sandakan Kini mengingatkan pelancong yang ingin melakukan aktiviti selam skuba minggu ini agar menjaga pelindungan matahari dan menghindari krim pelindung matahari yang mengandungi oxybenzone.",
+      "source_url": "https://news.google.com",
+      "publisher": "沙巴星洲日报 FB, Sabah TV Official FB",
+      "source": "沙巴星洲日报 FB",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "Sabah TV Official FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_12",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 13,
+      "category": "sabah",
+      "title": "第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与",
+      "detailBM": "Pesta Burung Borneo (Borneo Bird Festival) ke-12 yang bermula 7 November di Sandakan telah melabuhkan tirainya dengan jayanya pada hujung minggu ini. Acara yang merangkumi panduan hutan hujan, pertandingan pemerhatian burung, pameran fotografi, dan ceramah ekologi ini berjaya menarik kira-kira 5,000 pencinta burung dari dalam dan luar negara. Pihak penganjur memaklumkan bahawa laluan pemerhatian burung di Sepilok paling mendapat sambutan, dan merancang untuk memperluaskan zon keluarga pada tahun hadapan.",
+      "detail": "为期数天的第12届婆罗洲观鸟节11月7日起在山打根盛大举行，涵盖雨林导览、观鸟比赛、摄影展以及生态讲座等丰富活动，并在本周末迎来完美收官。活动成功吸引了来自海内外多达5000名爱鸟人士与游客踊跃参与。主办方表示，今年Sepilok森林区的观鸟路线最受大众欢迎，并宣布明年将进一步扩大亲子生态体验区，以吸引更多年轻一代加入自然保育行列。",
+      "source_url": "https://news.google.com",
+      "publisher": "诗华日报 FB, My Sandakan Kini FB, Sabah TV Official FB",
+      "titleBM": "Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与",
+      "source": "诗华日报 FB",
+      "sources": [
+        "诗华日报 FB",
+        "My Sandakan Kini FB",
+        "Sabah TV Official FB",
+        "11月7-9日"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_13",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与'",
+        "Bilingual topic mismatch: Headline concerns eco-tourism/wildlife in Chinese but Malay headline lacks tourism/wildlife terms"
+      ]
+    },
+    {
+      "story_index": 14,
+      "category": "sabah",
+      "title": "沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账",
+      "detailBM": "Menteri Kewangan II, Datuk Seri Amir Hamzah, menyatakan bahawa Kerajaan Persekutuan akan mengeluarkan warta rasmi menjelang akhir tahun ini bagi memastikan Sabah menerima baki RM900 juta daripada peruntukan khas RM1.5 bilion. Di bawah kerangka Perjanjian Malaysia 1963 (MA63), daripada 27 tuntutan, sebanyak 14 telah diselesaikan, manakala 10 lagi termasuk tuntutan 40% hasil bersih masih dalam proses perbincangan. Sabah Spotlight 2026 telah menerbitkan ulasan terperinci mengenai perkembangan kewangan ini.",
+      "detail": "第二财长拿督斯里阿米尔韩查指出，联邦政府将在今年底前正式通过宪报颁布命令，让沙巴获得总额15亿令吉特别拨款中剩余的9亿令吉款项。在马来西亚协议（MA63）框架下的27项沙巴诉求中，目前已有14项顺利完成，但包括40%净税收分成等其余10项诉求仍在积极协商解决中。Sabah Spotlight 2026对此项财政进展刊发了详细解读，引起广泛关注。",
+      "source_url": "https://news.google.com",
+      "publisher": "Bernama FB, The Star FB, Sabah Media News FB",
+      "titleBM": "Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账",
+      "source": "Bernama FB",
+      "sources": [
+        "Bernama FB",
+        "The Star FB",
+        "Sabah Media News FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_14",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账'",
+        "Headline monetary mismatch: ZH=[1500000000, 900000000] vs BM=[]",
+        "Claim CLM_01: BM text missing expected amount 1500000000 (found: [900000000, 1]) for fact FAC_MON_1500000000",
+        "Claim CLM_01: BM text contains drifted/unanchored amount 1 (expected 1500000000) for fact FAC_MON_1500000000",
+        "Claim CLM_01: BM text contains drifted/unanchored amount 1 (expected 900000000) for fact FAC_MON_900000000",
+        "Global unanchored monetary value in BM text: MYR 1",
+        "Global bilingual monetary set discrepancy: ZH=[900000000, 1500000000] vs BM=[1, 900000000]"
+      ]
+    },
+    {
+      "story_index": 15,
+      "category": "sabah",
+      "title": "亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证",
+      "detailBM": "Berikutan serbuan ke atas sebuah banglo mewah tiga tingkat di kawasan elit Kota Kinabalu pada malam 4 November yang membongkar sindiket scam dalam talian, 14 lelaki warga China berusia antara 26 hingga 44 tahun terus direman bagi menyiasat status visa serta rangkaian jenayah mereka. Peguam Simon Chin menggesa pihak berkuasa agar mengenakan tindakan undang-undang ke atas 'tuan rumah yang bersubahat' dan tidak boleh lepas tangan dengan alasan tidak tahu. Sayangi Sabah menasihatkan orang ramai agar tidak mudah percaya kepada janji pelaburan pulangan tinggi.",
+      "detail": "针对11月4日晚间亚庇富人精英区一栋3层豪华洋房被警方成功捣毁的网络诈骗中心案件，落网的14名年龄介于26岁至44岁的中国籍男子目前已被延长扣留，以配合深入调查其签证合法性及诈骗网络资金流向。执业律师曾国竣公开呼吁执法部门必须严厉追究“知情出租者”的法律责任，不能仅凭一句“不知情”就轻易脱罪。Sayangi Sabah也借此案件再次提醒公众提高警惕，切勿轻信网络上的高回报投资诱惑。",
+      "source_url": "https://news.google.com",
+      "publisher": "Sabah Media News FB, Rojaklah88 FB, Viralcham FB",
+      "titleBM": "Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证",
+      "source": "Sabah Media News FB",
+      "sources": [
+        "Sabah Media News FB",
+        "Rojaklah88 FB",
+        "Viralcham FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_15",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证'",
+        "Bilingual topic mismatch: Headline concerns immigration/visa in Chinese but Malay headline lacks border/visa/scam terms"
+      ]
+    },
+    {
+      "story_index": 16,
+      "category": "sabah",
+      "title": "沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校",
+      "detailBM": "Pembantu Menteri Kerja Raya dan Utiliti Sabah, Datuk Limus Jury, menegaskan bahawa Kerajaan Negeri sentiasa komited menjaga kebajikan seluruh rakyat tanpa mengira kaum, agama, dan latar belakang semasa merasmikan pelantikan Ahli Jawatankuasa Gabungan Persatuan Tua Pek Kong Sabah. Menurut Belanjawan Negeri Sabah 2026, kerajaan negeri telah memperuntukkan sebanyak RM90 juta untuk pembangunan hal ehwal agama, badan keagamaan bukan Islam, sekolah misi, dan sekolah swasta.",
+      "detail": "沙巴工程与公共事业部助理部长拿督利慕士朱利昨晚代表州政府为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时发表重要讲话。他强调，沙巴州政府始终致力照顾全民福祉，绝不分种族、宗教及文化背景，确保各族人民公平共享发展成果。根据《2026年沙巴州财政预算案》，州政府特别拨款高达9000万令吉，专门用于宗教发展、非伊斯兰宗教机构、教会学校及私立学校的发展建设。",
+      "source_url": "https://news.google.com",
+      "publisher": "诗华日报 FB",
+      "titleBM": "Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校",
+      "source": "诗华日报 FB",
+      "sources": [
+        "诗华日报 FB",
+        "11",
+        "09"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_16",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校'",
+        "Headline monetary mismatch: ZH=[90000000] vs BM=[]"
+      ]
+    },
+    {
+      "story_index": 17,
+      "category": "sabah",
+      "title": "杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色",
+      "detailBM": "Presiden Parti Solidariti Tanah Airku (STAR) merangkap Ahli Parlimen Keningau, Datuk Seri Dr. Jeffrey Kitingan, menegaskan bahawa pembangunan masa depan Keningau mesti mengambil kira keperluan rakyat dan memelihara identiti sejarah tempatan bagi mengelakkan pembangunan keterlaluan yang merosakkan landskap bandar. Di ruangan komen portal Rojaklah88, penduduk tempatan menyokong pandangan itu dengan menyuarakan pendirian agar pembangunan dijalankan tanpa memusnahkan warisan jalan lama.",
+      "detail": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来的城市发展规划必须坚定不移地以民需为本，同时妥善保留当地独有的历史风貌，避免过度盲目扩张导致公共绿地和空间减少，进而破坏特有的城市特色。Rojaklah88网络评论区的根地咬当地居民纷纷留言附和，表达了“支持发展，但绝不希望把历史老街全部拆光”的共同心声。",
+      "source_url": "https://news.google.com",
+      "publisher": "沙巴星洲日报 FB",
+      "titleBM": "Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色",
+      "source": "沙巴星洲日报 FB",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "11",
+        "09 2:06pm"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_17",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色'",
+        "Bilingual topic mismatch: Headline concerns heritage/community in Chinese but Malay headline lacks heritage/history terms"
+      ]
+    },
+    {
+      "story_index": 18,
+      "category": "sabah",
+      "title": "沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖",
+      "detailBM": "Kempen derma darah berskala besar tahunan Sabah telah dilancarkan secara serentak di Kota Kinabalu dan Sandakan pada 7 November, dengan sasaran mengumpul 1,200 beg darah bagi mengatasi kekurangan bekalan di hospital. Sabah Media News melaporkan bahawa tabung darah Hospital Sandakan paling ketandusan darah jenis O, dan mengalu-alukan orang ramai hadir ke pusat derma darah hari ini dengan membawa MyKad, tidur secukupnya, serta mengambil sarapan sebelum menderma.",
+      "detail": "沙巴年度大型捐血运动于11月7日在亚庇和山打根两地同步盛大登场，活动放眼在全州筹获至少1200包血液，以有效缓解各大医院血库长期紧张的库存压力。Sabah Media News特别指出，目前山打根医院血库最缺乏的是O型血，呼吁符合条件的市民今日继续前往中央医院捐血站补捐。参与捐血者必须携带身份证，并在捐血前保证获得充足睡眠及吃饱早餐。",
+      "source_url": "https://news.google.com",
+      "publisher": "诗华日报 FB, Sabah Media News FB",
+      "titleBM": "Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖",
+      "source": "诗华日报 FB",
+      "sources": [
+        "诗华日报 FB",
+        "Sabah Media News FB",
+        "11",
+        "07"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_18",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖'",
+        "Bilingual topic mismatch: Headline concerns hospital/healthcare in Chinese but Malay headline lacks healthcare terms"
+      ]
+    },
+    {
+      "story_index": 19,
+      "category": "sabah",
+      "title": "沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金",
+      "detailBM": "Seramai 1,106 pemandu teksi, kereta sewa, dan bas sekolah yang layak di Sabah akan menerima bantuan khas sekali bayar sebanyak RM1,000 setiap seorang bagi meringankan beban kos sara hidup mereka. Portal My Sandakan Kini telahpun menyiarkan senarai nama penerima yang layak serta cara menyemak status kelayakan bagi membantu para pemandu mendapatkan bantuan tersebut.",
+      "detail": "沙巴州内共有1106名符合资格的德士司机、出租车及校车司机，将获得州政府发放的每人1000令吉一次性特别援助金，旨在直接减轻他们在面对生活成本上涨压力下的经济负担。My Sandakan Kini目前已经正式发布了合格申请者的名单及详细查询方式，受惠司机可自行上网核对并领取相关津贴。",
+      "source_url": "https://news.google.com",
+      "publisher": "沙巴星洲日报 FB",
+      "titleBM": "Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金",
+      "source": "沙巴星洲日报 FB",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "11",
+        "06"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_19",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金'",
+        "Headline monetary mismatch: ZH=[1000] vs BM=[]"
+      ]
+    },
+    {
+      "story_index": 20,
+      "category": "national",
+      "title": "纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”",
+      "detailBM": "Walaupun bekas Perdana Menteri Datuk Seri Najib Razak telah menjelaskan denda RM50 juta dan dibenarkan menjalani tahanan rumah, beliau masih belum pulang ke rumah sehingga petang 6 November kerana dibawa ke hospital untuk pemeriksaan gigi, menyebabkan peletakan jawatan Menteri Pengangkutan Loke Siew Fook belum berkuat kuasa. Loke mengesahkan pendiriannya: 'Jika beliau sampai malam ini, ia berkuat kuasa malam ini; jika esok, maka esok.' Beliau telah menyerahkan surat letak jawatan kepada Perdana Menteri Datuk Seri Anwar Ibrahim pada 28 September. Anwar pula meminta Peguam Negara menghadap Yang di-Pertuan Agong untuk memperjelaskan isu penangguhan tahanan rumah.",
+      "detail": "前首相拿督斯里纳吉虽然已缴清5000万令吉罚款并获准以居家服刑方式服刑，但截至11月6日傍晚仍未回到住家，而是被送往医院进行牙齿检查，导致交通部长陆兆福此前承诺的辞职决定暂时还未正式生效。陆兆福在交通部常月集会记者会上重申立场不变：“如果他今晚到家，我的辞职就今晚生效；如果是明天，那就明天生效。”他已在9月28日将辞呈正式呈交首相拿督斯里安华，并将根据最新进展再呈交补充信函。他还预告将于本周三出席部门屠妖节庆典，这可能成为其告别仪式。同时，安华已促请总检察长入宫觐见国家元首，以厘清居家服刑暂缓执行的相关法律问题。",
+      "source_url": "https://news.google.com",
+      "publisher": "星洲日报 FB, 中国报 FB, 光明日报 FB, e南洋 FB, 8TV.NEWS FB",
+      "titleBM": "Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”",
+      "source": "星洲日报 FB",
+      "sources": [
+        "星洲日报 FB",
+        "中国报 FB",
+        "光明日报 FB",
+        "e南洋 FB",
+        "8TV.NEWS FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_20",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”'",
+        "Headline monetary mismatch: ZH=[50000000] vs BM=[]"
+      ]
+    },
+    {
+      "story_index": 21,
+      "category": "national",
+      "title": "第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票",
+      "detailBM": "Pengerusi Suruhanjaya Pilihan Raya (SPR), Datuk Seri Ramlan Harun, mengumumkan di Kuching bahawa hari penamaan calon bagi Pilihan Raya Negeri (PRN) Sarawak ke-13 ditetapkan pada 28 November (Sabtu), undi awal pada 8 Disember (Selasa), dan hari mengundi pada 12 Disember (Sabtu), dengan tempoh kempen selama 14 hari. Seramai 2,058,781 pengundi berdaftar akan memilih wakil bagi 82 kerusi DUN, manakala peluasan kepada 99 kerusi ditangguhkan. Peruntukan sebanyak RM174.94 juta diluluskan. Gabungan Parti Sarawak (GPS) akan bertanding di kesemua 82 kerusi.",
+      "detail": "选委会主席拿督斯里南兰哈伦在古晋正式宣布，第13届砂拉越州选举的提名日落在11月28日（周六），提前投票日为12月8日（周二），正式投票日则定于12月12日（周六），竞选期为期14天。本届州选共有205万8781名合格选民将选出82个州议席，至于原本计划增至99个议席的方案因相关法律程序尚未完备，本届选举暂不落实，整体选举预算为1亿7494万令吉。砂拉越政党联盟（GPS）已确定将全面上阵所有82个议席，砂总理拿督巴丁宜阿邦佐哈里对原任议员团队充满信心，看好他们将继续获得选民强力支持。",
+      "source_url": "https://news.google.com",
+      "publisher": "诗华日报 FB, 光明日报 FB, 星洲日报 FB, Bernama FB",
+      "titleBM": "Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票",
+      "source": "诗华日报 FB",
+      "sources": [
+        "诗华日报 FB",
+        "光明日报 FB",
+        "星洲日报 FB",
+        "Bernama FB",
+        "11月6日宣布"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_21",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月1...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票'",
+        "Claim CLM_01: BM text missing expected amount 100000000 (found: [174940000]) for fact FAC_MON_100000000",
+        "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 100000000) for fact FAC_MON_100000000",
+        "Claim CLM_01: BM text missing expected amount 2050000 (found: [174940000]) for fact FAC_MON_2050000",
+        "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 2050000) for fact FAC_MON_2050000",
+        "Claim CLM_01: BM text missing expected amount 74940000 (found: [174940000]) for fact FAC_MON_74940000",
+        "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 74940000) for fact FAC_MON_74940000",
+        "Global unanchored monetary value in BM text: MYR 174940000",
+        "Global bilingual monetary set discrepancy: ZH=[2050000, 74940000, 100000000] vs BM=[174940000]"
+      ]
+    },
+    {
+      "story_index": 22,
+      "category": "national",
+      "title": "砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉",
+      "detailBM": "Kerajaan Sarawak mula menyalurkan bayaran Fasa Ketiga Bantuan Asas Sarawak (SKAS) kepada penerima sedia ada dan baharu melalui e-dompet S Pay Global bermula hari ini, 10 November. Bantuan SKAS bagi tahun 2026 diagihkan dalam tiga fasa: Fasa 1 pada 10 Mac, Fasa 2 pada 15 Mei, dan Fasa 3 bermula hari ini. Sehingga 9 November, seramai 783,603 penerima atau 89.5% yang layak telah menerima bayaran melalui S Pay Global. Orang ramai boleh menyemak status kelayakan menerusi portal rasmi sarawak.gov.my/skas.",
+      "detail": "砂拉越政府从今天（11月10日）起，通过S Pay Global电子钱包向现有受惠者及符合资格的新受惠者，分阶段发放“砂基本需求援助”（SKAS）第三阶段款项。2026年度的SKAS总共分为三个阶段发放：第一阶段在3月10日，第二阶段在5月15日，第三阶段则从今天正式启动。截至11月9日的数据显示，已有高达78万3603名受惠者（占总合格人数的89.5%）顺利通过S Pay Global领取了相关援助金。民众可随时登录 sarawak.gov.my/skas 查询最新的个人审核资格。",
+      "source_url": "https://news.google.com",
+      "publisher": "TVS FB, 诗华日报 FB, Bernama FB",
+      "titleBM": "Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉",
+      "source": "TVS FB",
+      "sources": [
+        "TVS FB",
+        "诗华日报 FB",
+        "Bernama FB",
+        "11月10日"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_22",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉'",
+        "Headline monetary mismatch: ZH=[360] vs BM=[]",
+        "Claim CLM_01: BM text missing expected amount 780000 (found: []) for fact FAC_MON_780000",
+        "Claim CLM_01: ZH text missing expected amount 360 (found: [780000]) for fact FAC_MON_360",
+        "Claim CLM_01: BM text missing expected amount 360 (found: []) for fact FAC_MON_360",
+        "Global bilingual monetary set discrepancy: ZH=[360, 780000] vs BM=[]"
+      ]
+    },
+    {
+      "story_index": 23,
+      "category": "national",
+      "title": "大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范",
+      "detailBM": "Perdana Menteri Datuk Seri Anwar Ibrahim memaklumkan bahawa ketegangan geopolitik global yang meningkat mungkin menjadikan Malaysia sasaran ancaman serangan siber. Sehubungan itu, Majlis Keselamatan Negara (MKN) telah mengadakan mesyuarat khas bagi menilai keupayaan tindak balas dalam sektor tenaga, pengangkutan, kewangan, dan bekalan makanan. Suruhanjaya Komunikasi dan Multimedia Malaysia (MCMC) turut mengingatkan orang ramai agar tidak panik mengenai bunyi penggera telefon bimbit seluruh negara pada 19 November depan yang merupakan latihan sistem Siaran Sel (Cell Broadcast).",
+      "detail": "首相拿督斯里安华指出，鉴于当前全球地缘政治紧张局势不断升级，马来西亚未来可能面临严峻的网络攻击威胁。为此，国家安全理事会（MKN）已紧急召开特别会议，全面检视我国在能源、交通、金融以及食品供应链等关键领域的应变韧性与防护能力。此外，大马通讯多媒体委员会（MCMC）也特别提醒公众，11月19日全国手机将响起巨响，这属于官方的“Cell Broadcast”紧急广播演习，呼吁民众切勿惊慌。",
+      "source_url": "https://news.google.com",
+      "publisher": "光明日报 FB, Bernama FB, 8TV.NEWS FB",
+      "titleBM": "Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范",
+      "source": "光明日报 FB",
+      "sources": [
+        "光明日报 FB",
+        "Bernama FB",
+        "8TV.NEWS FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_23",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范'"
+      ]
+    },
+    {
+      "story_index": 24,
+      "category": "sports",
+      "title": "李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫",
+      "detailBM": "Kejohanan Badminton Masters Kumamoto Jepun 2026 (Super 500, hadiah wang tunai USD500,000) bermula hari ini di Gimnasium Wilayah Kumamoto dan berlangsung hingga 15 November. Pemain perseorangan lelaki negara, Lee Zii Jia, yang bermula dari pusingan kelayakan, akan menentang pemain tuan rumah Koga Sugiura hari ini. Jika menang, beliau akan berdepan pilihan utama dari Perancis, Christo Popov, pada pusingan pertama sebenar hari Rabu. Pertemuan terakhir mereka di suku akhir Terbuka Artik menyaksikan Zii Jia menang 21-11, 21-16.",
+      "detailBM_alt": "Lee Zii Jia Mulakan Kempen Masters Kumamoto Hari Ini: Berdepan Koga Sugiura",
+      "detail": "2026年日本熊本羽球大师赛（超级500赛，总奖金50万美元）于今日在熊本县立体育馆正式挥拍，赛事将持续至11月15日。大马男单独苗李梓嘉本次从入选赛打起，今天将迎战东道主日本球员古贺穗；若顺利过关，将于周三的正赛首圈硬碰头号种子、法国好手克里斯托·波波夫（Christo Popov）。两人上一次交手是在10月初的北极公开赛8强，当时李梓嘉以21-11、21-16直落两局轻松取胜；在今年3月的瑞士公开赛入选赛中，他也曾以21-10、21-14轻取对手，球迷们纷纷在社交媒体刷屏为他加油打气。",
+      "source_url": "https://news.google.com",
+      "publisher": "中国报 FB, 星洲日报 FB, 光明日报 FB, e南洋 FB",
+      "titleBM": "Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫",
+      "source": "中国报 FB",
+      "sources": [
+        "中国报 FB",
+        "星洲日报 FB",
+        "光明日报 FB",
+        "e南洋 FB",
+        "11月09日 8:01pm"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_24",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫'",
+        "Claim CLM_01: BM text missing expected amount 500000 (found: []) for fact FAC_MON_500000",
+        "Global bilingual monetary set discrepancy: ZH=[500000] vs BM=[]"
+      ]
+    },
+    {
+      "story_index": 25,
+      "category": "sports",
+      "title": "回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛",
+      "detailBM": "Mengimbas kejohanan Terbuka Hylo di Jerman minggu lalu, Lee Zii Jia beraksi cemerlang di tengah demam panas dan muntah untuk bangkit menewaskan pemain Singapura Teh Jia Heng 21-16, 19-21, 21-17 dalam masa 59 minit, sebelum tewas kepada Kodai Naraoka di pusingan kedua. Beliau menarik diri dari Terbuka Korea akibat masalah kesihatan sebelum kembali bertenaga di Kumamoto. Dengan menarik diri tiga pemain perseorangan negara lain, Zii Jia yang menduduki ranking ke-40 dunia layak ke pusingan kelayakan selepas beberapa pemain menarik diri.",
+      "detail": "回顾上周在德国举行的Hylo公开赛，大马名将李梓嘉曾在发高烧并伴随呕吐的不适状态下，苦战59分钟完成惊天逆转，以21-16、19-21、21-17击败新加坡选手郑加恒晋级16强；随后在次轮以63分钟（11-21、21-13、14-21）不敌日本“磨王”奈良冈功大止步16强。由于身体抱恙，他随后退出了韩国公开赛，如今以最佳状态强势回归熊本大师赛。随着梁峻豪、贺首维和尤阳等3名大马男单因故退出，世界排名第40位的李梓嘉原为第4候补，最终因安东森、李诗沣等名将退赛而顺利递补入围资格赛。",
+      "source_url": "https://news.google.com",
+      "publisher": "星洲日报 FB, 光明日报 FB, The Star FB",
+      "titleBM": "Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛",
+      "source": "星洲日报 FB",
+      "sources": [
+        "星洲日报 FB",
+        "光明日报 FB",
+        "The Star FB"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_25",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛'"
+      ]
+    },
+    {
+      "story_index": 26,
+      "category": "sports",
+      "title": "乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车",
+      "detailBM": "Kejohanan Badminton Masters Kumamoto menyaksikan barisan pemain negara memburu kejayaan cemerlang. Pasangan beregu wanita negara yang juga juara bertahan, Pearly Tan dan M. Thinaah, akan memulakan cabaran dari pusingan pertama menentang pasangan baharu Jepun untuk mempertahankan gelaran. Sementara itu, beregu lelaki utama negara, Aaron Chia dan Soh Wooi Yik, turut beraksi demi memburu slot ke Jelajah Akhir Musim. Pemain perseorangan wanita Goh Jin Wei turut memulakan saingan dari pusingan kelayakan.",
+      "detail": "2026年日本熊本羽球大师赛燃战火，大马羽坛传来多项备战焦点。大马女双卫冕冠军陈康乐与蒂娜（乐娜组合）将直接从正赛出发，首轮将对阵日本新组合，放眼全力捍卫卫冕冠军宝座。另一方面，大马头号男双谢定峰与苏伟译也将出战本次赛事，力争在赛季末赚取足够积分，抢下晋级年终总决赛的最后一张门票。此外，大马女单吴堇溦也将从入选赛打起，全力争取晋级正赛资格。",
+      "source_url": "https://news.google.com",
+      "publisher": "中国报 FB",
+      "titleBM": "Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车",
+      "source": "中国报 FB",
+      "sources": [
+        "中国报 FB",
+        "11月09日"
+      ],
+      "url": "https://news.google.com",
+      "source_urls": [
+        "https://news.google.com"
+      ],
+      "original_published_at": "2026-11-10T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_26",
+      "image_url": null,
+      "collected_at": "2026-11-10T20:07:59.399814+08:00",
+      "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+      "updated_at": "2026-11-10T20:07:59.399814+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED_WITH_WARNINGS",
+      "validation_warnings": [
+        "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车...'",
+        "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车'"
+      ]
     }
   ],
   "events": [
@@ -357,19 +821,19 @@
       "month": "11",
       "day": "09",
       "full_date": "2026-11-09",
-      "name": "山打根 (MPS) 近海海岸全员清洁行动与环保义卖",
-      "nameBM": "Program Gotong-Royong Pesisir Pantai & Pasar Komuniti MPS Sandakan",
-      "time": "07:00 AM - 11:30 AM",
-      "timeBM": "07:00 AM - 11:30 AM",
-      "location": "Pesisir Pantai Sandakan (山打根近海及中央巴刹广场)",
-      "category": "市政民生",
+      "name": "山打根市议会滨海长廊全城清洁运动与环保集市：积极推动3R循环经济",
+      "nameBM": "Kempen Kebersihan Bandar dan Pasar Lestari MPS di Dataran Bandaran: Perkasakan Ekonomi Kitar Semula 3R",
+      "time": "08:00 AM - 05:00 PM",
+      "timeBM": "08:00 AM - 05:00 PM",
+      "location": "Pesisir Pantai Sandakan (山打根滨海长廊及中央巴刹广场) · 还有 3天 → 昨天已开始，今天仍在收尾",
+      "category": "市政公益",
       "categoryBM": "Khidmat Komuniti",
       "badgeColor": "bg-[#14532d] text-[#86efac]",
-      "desc": "山打根市议会（MPS）工务组为迎接东北季风，联同沿海居民与商户展开海岸线清淤防灾大扫除。现场设有可回收废品兑换绿植树苗活动，以及市民垃圾分类咨询专席。",
-      "descBM": "Aktiviti gotong-royong pembersihan pesisir pantai anjuran Majlis Perbandaran Sandakan (MPS) bersama komuniti setempat dan peniaga bagi memelihara kebersihan bandar.",
-      "tel": "089-272161 / WhatsApp: 010-9301117",
-      "source": "山打根市议会 (MPS) 官方",
-      "sourceBM": "Majlis Perbandaran Sandakan (MPS)",
+      "desc": "由山打根市议会（MPS）主办的全城清洁运动与环保集市日前在滨海长廊盛大举行。活动现场特设了备受瞩目的“Trash to Treasure”循环再利用专区。期间，MPS与Ignis SG正式签署了关键特许经营协议，未来将在Labuk垃圾场建立首个现代化3R（减少、重复使用、循环）循环处理cell，并获得了房屋及地方政府部（KPKT）高达3000万令吉的拨款支持。活动当天，民众纷纷携带旧衣物和废旧电器前往现场，以此兑换精美小礼品，有效提升了市民的环保与垃圾分类意识。",
+      "descBM": "Kempen kebersihan bandar dan pasar lestari anjuran Majlis Perbandaran Sandakan (MPS) telah diadakan dengan meriah di Dataran Bandaran. Acara ini menampilkan reruai kitar semula 'Trash to Treasure' yang menarik perhatian ramai. Semasa majlis tersebut, MPS telah menandatangani perjanjian konsesi penting dengan Ignis SG untuk membina sel pemprosesan kitar semula 3R yang pertama di tapak pelupusan sampah Labuk, dengan peruntukan sebanyak RM30 juta daripada KPKT. Orang ramai juga berpeluang membawa pakaian lama dan barangan elektrik terpakai ke tapak program untuk ditukar dengan cenderahati menarik, sekaligus meningkatkan kesedaran awam terhadap amalan hijau.",
+      "tel": "089-272161",
+      "source": "MPS FB",
+      "sourceBM": "Hebahan Rasmi",
       "countdown_days": 0
     },
     {
@@ -377,63 +841,843 @@
       "month": "11",
       "day": "11",
       "full_date": "2026-11-11",
-      "name": "Pink Ribbon 20周年公益健康义诊",
-      "nameBM": "Pemeriksaan Kesihatan Percuma Pink Ribbon",
-      "time": "09:00 AM - 03:00 PM",
-      "timeBM": "09:00 AM - 03:00 PM",
-      "location": "PRC Centre Sandakan (山打根粉红丝带中心)",
-      "category": "公益健康",
-      "categoryBM": "Kesihatan",
+      "name": "山打根11月11日迎来Pink Ribbon 20周年大型健康惠民义诊与捐血活动",
+      "nameBM": "Program Kesihatan Amal Besar-Besaran 'Pink Ribbon' Sambutan Ulang Tahun ke-20 pada 11 November di Sandakan",
+      "time": "08:00 AM - 05:00 PM",
+      "timeBM": "08:00 AM - 05:00 PM",
+      "location": "PRC Centre Sandakan (山打根市区) · 还有 5天",
+      "category": "免费义诊",
+      "categoryBM": "Khidmat Komuniti",
       "badgeColor": "bg-[#713f12] text-[#fde68a]",
-      "desc": "山打根 Pink Ribbon 创设 20 周年大型女性健康义诊，现场由专业女医护提供免费乳房临床检查、血压血糖筛查及健康营养咨询，先到先得。",
-      "descBM": "Pemeriksaan kesihatan percuma sempena ulang tahun ke-20 Pink Ribbon termasuk saringan klinikal payudara dan ujian glukosa darah.",
-      "tel": "089-668899 / WhatsApp: 010-9308899",
-      "source": "山打根卫生局核实",
-      "sourceBM": "Pejabat Kesihatan Sandakan",
-      "countdown_days": 2
+      "desc": "配合Pink Ribbon成立20周年，山打根将于11月11日举办大型健康惠民义诊活动。现场将为民众提供免费乳房健康检查、血压测量、血糖检测以及BMI身体质量指数评估，并有专业医生提供现场健康问诊。鉴于山打根医院血库目前O型血严重短缺，主办方呼吁民众在参与义诊的同时顺便挽袖捐血。参与捐血的公众需携带大马身份证（IC）、确保前一晚睡眠充足至少6小时，并在捐血前享用早餐，以确保身体状况良好。",
+      "descBM": "Sempena sambutan ulang tahun ke-20 Pink Ribbon, satu program kesihatan amal besar-besaran akan diadakan pada 11 November di Sandakan. Program ini menawarkan pemeriksaan kesihatan percuma termasuk saringan kanser payudara, tekanan darah, gula dalam darah, BMI, serta konsultasi doktor pakar. Mengingatkan tabung darah Hospital Sandakan kini amat ketandusan bekalan darah jenis O, orang ramai diseru menderma darah semasa hadir. Penderma dinasihatkan membawa MyKad, mendapat tidur secukupnya sekurang-kurangnya 6 jam, dan mengambil sarapan sebelum menderma.",
+      "tel": "089-272161",
+      "source": "诗华日报 FB",
+      "sourceBM": "Hebahan Rasmi",
+      "countdown_days": 1
     },
     {
       "id": 3,
       "month": "11",
-      "day": "14",
-      "full_date": "2026-11-14",
-      "name": "山打根中华商会 2026 跨境电商与数字外贸峰会",
-      "nameBM": "Sidang Kemuncak E-Dagang & Eksport Digital Dewan Perniagaan Cina Sandakan",
-      "time": "08:30 AM - 05:00 PM",
-      "timeBM": "08:30 AM - 05:00 PM",
-      "location": "Dewan Hakka Sandakan (山打根客家公会大礼堂)",
-      "category": "经贸峰会",
-      "categoryBM": "Ekonomi & Digital",
-      "badgeColor": "bg-[#1e3a8a] text-[#93c5fd]",
-      "desc": "汇聚东马与沙巴 120 余家制造业、燕窝水产进出口企业，深入研讨 RCEP 框架下经山打根港口直航华南各港口的跨境货运税务优惠与清关便利政策。",
-      "descBM": "Persidangan membabitkan lebih 120 usahawan Sabah membincangkan peluang eksport ke rantau RCEP melalui Pelabuhan Sandakan.",
-      "tel": "089-213388",
-      "source": "沙巴商联会 & 诗华核实",
-      "sourceBM": "Gabungan Dewan Perniagaan Sabah",
-      "countdown_days": 5
+      "day": "16",
+      "full_date": "2026-11-16",
+      "name": "11月16日ITCC Majaps婆罗洲原住民文化盛典：体验卡达山杜顺毛律族风情",
+      "nameBM": "Pesta Kebudayaan Bumiputera Borneo ITCC Majaps pada 16 November: Rayakan Warisan Kadazan, Dusun, Murut",
+      "time": "08:00 AM - 05:00 PM",
+      "timeBM": "08:00 AM - 05:00 PM",
+      "location": "Penampang ITCC Exhibition Hall · 还有 10天",
+      "category": "文化盛典",
+      "categoryBM": "Khidmat Komuniti",
+      "badgeColor": "bg-[#581c87] text-[#d8b4fe]",
+      "desc": "备受期待的婆罗洲原住民文化盛典（ITCC Majaps）定于11月16日盛大举行。活动旨在展示与弘扬婆罗洲丰富的原住民文化，现场将呈献卡达山族、杜顺族以及毛律族的传统舞蹈、极具特色的人气竹筒饭，并设有琳琅满目的手工艺品市集。这是一个集文化传承、美食体验与视觉盛宴于一体的优质平台，非常适合一家大小前来打卡，深度感受沙巴多元多元原住民文化的独特魅力。",
+      "descBM": "Pesta Kebudayaan Bumiputera Borneo (ITCC Majaps) dijadualkan berlangsung pada 16 November di ITCC. Acara ini bertujuan untuk mengangkat keunikan budaya asal Borneo dengan menampilkan tarian tradisional suku kaum Kadazan, Dusun, dan Murut, hidangan autentik nasi buluh, serta pasar kraftangan etnik. Ia merupakan platform terbaik yang menggabungkan warisan budaya dan kulinari, sangat sesuai untuk dikunjungi bersama keluarga bagi menghayati keindahan kepelbagaian etnik di Sabah.",
+      "tel": "089-272161",
+      "source": "Sabah TV Official FB",
+      "sourceBM": "Hebahan Rasmi",
+      "countdown_days": 6
     },
     {
       "id": 4,
       "month": "11",
-      "day": "18",
-      "full_date": "2026-11-18",
-      "name": "沙巴野生动物局婆罗洲侏儒象保护区生态导览与公众教育日",
-      "nameBM": "Hari Kesedaran Konservasi Gajah Kerdil Borneo Jabatan Hidupan Liar Sabah",
-      "time": "09:00 AM - 04:00 PM",
-      "timeBM": "09:00 AM - 04:00 PM",
-      "location": "Kinabatangan Wildlife Sanctuary (京那巴当岸野生动物保护区)",
-      "category": "生态保护",
-      "categoryBM": "Alam Sekitar",
-      "badgeColor": "bg-[#064e3b] text-[#6ee7b7]",
-      "desc": "由沙巴野生动物局（SWD）主办的生态科普开放日，向公众普及人象冲突防范措施、电网廊道建设成果及雨林生态栖息地修复规划。",
-      "descBM": "Program kesedaran alam sekitar mengenai pemuliharaan gajah pigmi Borneo dan usaha mengurangkan konflik manusia-haiwan di Kinabatangan.",
-      "tel": "089-221315",
-      "source": "沙巴野生动物局 SWD 官方",
-      "sourceBM": "Jabatan Hidupan Liar Sabah (SWD)",
-      "countdown_days": 9
+      "day": "21",
+      "full_date": "2026-11-21",
+      "name": "11月21日山打根燕窝与生态农业产业博览会：打造本地特色农业商机",
+      "nameBM": "Expo Industri Sarang Burung Walit dan Pertanian Ekologi Sandakan pada 21 November: Lonjak Peluang Perniagaan Tempatan",
+      "time": "08:00 AM - 05:00 PM",
+      "timeBM": "08:00 AM - 05:00 PM",
+      "location": "Dewan Masyarakat Sandakan (民众大会堂) · 还有 15天",
+      "category": "商贸交流",
+      "categoryBM": "Khidmat Komuniti",
+      "badgeColor": "bg-[#1e3a8a] text-[#93c5fd]",
+      "desc": "山打根燕窝与生态农业产业博览会将于11月21日隆重开幕。本次博览会获得山打根市议会（MPS）的大力协办，重点展示优质燕窝产品、各类生态农产品，并积极推介山打根独特的观鸟生态旅游项目。展会为本地商家和企业家提供了设立商业展摊、拓展海内外市场的黄金契机，旨在通过生态农业与特色养殖业的深度融合，进一步激发山打根地方经济的新活力。",
+      "descBM": "Ekspo Industri Sarang Burung Walit dan Pertanian Ekologi Sandakan akan membuka tirainya pada 21 November. Dianjurkan dengan sokongan Majlis Perbandaran Sandakan (MPS), ekspo ini memfokuskan kepada pameran produk sarang burung berkualiti tinggi, hasil pertanian ekologi, serta pelancaran produk pelancongan ekologi pemerhatian burung. Acara ini menyediakan peluang keemasan kepada usahawan tempatan untuk membuka reruai pameran, bertujuan memperkasakan ekonomi tempatan melalui integrasi sektor pertanian dan industri sarang burung.",
+      "tel": "089-272161",
+      "source": "My Sandakan Kini FB",
+      "sourceBM": "Hebahan Rasmi",
+      "countdown_days": 11
+    },
+    {
+      "id": 5,
+      "month": "11",
+      "day": "21",
+      "full_date": "2026-11-21",
+      "name": "第4届狮子爱心义卖嘉年华11月21日开跑：放眼筹款25万令吉赞助100宗白内障手术",
+      "nameBM": "Karnival Amal Lions Ke-4 Bermula 21 November: Sasarkan Kutipan RM250,000 Tajaan 100 Pembedahan Katarak",
+      "time": "08:00 AM - 05:00 PM",
+      "timeBM": "08:00 AM - 05:00 PM",
+      "location": "丹绒亚路 The Good Club · 还有 15天",
+      "category": "市政公益 / 免费义诊",
+      "categoryBM": "Khidmat Komuniti",
+      "badgeColor": "bg-[#713f12] text-[#fde68a]",
+      "desc": "第四届狮子爱心义卖嘉年华将于11月21日至22日一连两天盛大举行。本届活动订下了25万令吉的爱心义卖固本筹款目标，所筹得的善款将全数用于赞助沙巴州内各地贫困患者的100宗白内障手术费用，协助他们彻底摆脱眼疾困扰，重见光明。主办方呼吁社会各界善长仁翁踊跃购买义卖固本并亲临现场支持，为慈善公益献一份力。",
+      "descBM": "Karnival Amal Lions Ke-4 akan diadakan selama dua hari bermula 21 November. Sasaran kutipan jualan kupon amal bagi edisi kali ini adalah sebanyak RM250,000, di mana dana yang terkumpul akan disalurkan untuk menaja 100 pembedahan katarak bagi pesakit kurang berkemampuan di seluruh Sabah agar mereka kembali melihat dunia dengan jelas. Pihak penganjur menyeru orang ramai agar menyokong usaha murni ini dengan membeli kupon amal dan hadir memeriahkan karnival tersebut.",
+      "tel": "089-272161",
+      "source": "沙巴星洲日报 FB",
+      "sourceBM": "Hebahan Rasmi",
+      "countdown_days": 11
     }
   ],
   "archive": {
+    "2026-11-10": [
+      {
+        "story_index": 1,
+        "category": "sabah",
+        "title": "山打根市议会召开Townhall会议：承诺14天内修好小路洞、7天内更换路灯",
+        "titleBM": "MPS Adakan Townhall: Janji Baik Pulih Lubang Kecil Dalam 14 Hari dan Tukar Lampu Jalan Dalam 7 Hari",
+        "detail": "山打根市议会（MPS）日前在Dewan Masyarakat召开Townhall会议，商贩们集中反映了市区道路坑洞、路灯不亮、排水堵塞以及夜市摊位卫生等问题。对此，MPS现场作出积极承诺：小坑洞将在14天内修好，大坑则在6个月内修好，而损坏的路灯则会在7天内完成更换。今日重点修路路段包括Jalan Leila、Harrison圆环以及Jalan Pelabuhan Lama一带，早上的修路工程正在进行中，夜市则照常营业。MPS特别提醒市民，若发现路灯不亮或路洞问题，可直接前往MPS官网 mps.sabah.gov.my 进行投诉，MPS将在每月的例行月会上跟进处理进度。",
+        "detailBM": "Majlis Perbandaran Sandakan (MPS) baru-baru ini telah mengadakan mesyuarat Townhall di Dewan Masyarakat, di mana para peniaga membangkitkan isu lubang jalan, kerosakan lampu jalan, sistem perparitan yang tersumbat, serta kebersihan tapak pasar malam. Sebagai maklum balas, MPS berjanji untuk membaiki lubang kecil dalam tempoh 14 hari, lubang besar dalam masa 6 bulan, dan menggantikan lampu jalan rosak dalam 7 hari. Kerja-kerja pembaikan jalan tertumpu di Jalan Leila, Bulatan Harrison, dan kawasan Jalan Pelabuhan Lama, manakala pasar malam beroperasi seperti biasa. MPS mengingatkan orang ramai agar melaporkan sebarang masalah lampu jalan rosak atau lubang jalan terus melalui laman sesawang rasmi mps.sabah.gov.my untuk tindakan susulan dalam mesyuarat bulanan mereka.",
+        "source_url": "https://news.google.com",
+        "publisher": "MPS FB, My Sandakan Kini FB, Sabah Media News FB",
+        "source": "MPS FB",
+        "sources": [
+          "MPS FB",
+          "My Sandakan Kini FB",
+          "Sabah Media News FB",
+          "11",
+          "06 07:30"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_01",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED"
+      },
+      {
+        "story_index": 2,
+        "category": "sabah",
+        "title": "山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援",
+        "detailBM": "Jabatan Air Negeri Sabah (JANS) sebelum ini mengeluarkan Notis Kecemasan susulan insiden paip pecah di Sandakan, termasuk paip utama MSCL 450mm di Jambatan hadapan Borneo Cove pada 7 November jam 12:30 tengah hari, serta kerja pengesanan kebocoran paip 250mm di Taman Nasalim Fasa 7. Keadaan ini menyebabkan enam kawasan di Sandakan iaitu Taman Sunny, Grandview, Mutiara, Astana Height, Harbour View, dan Indah Jaya mengalami gangguan bekalan air masuk hari keenam. ADUN Elopura, Calvin Chong, mendesak JANS segera menghantar lori tangki air ke kawasan terjejas sehingga bekalan pulih. JANS menasihatkan pengguna agar menyimpan dan menjimatkan air, memandangkan bangunan pangsapuri bertingkat paling teruk terjejas akibat tekanan air rendah yang gagal mengisi tangki sedutan bawah tanah.",
+        "detail": "沙巴水务局（JANS）早前发布紧急通告，山打根发生多起水管事故，包括11月7日中午12:30起Borneo Cove前大桥450mm MSCL主水管爆裂抢修，以及早上9:30起Taman Nasalim Fasa 7对面250mm配水管漏水排查，此前还涉及Batu Sapi圆环及Sungai Anib的新学校前水管工程。受此影响，山打根6大住宅区（Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View和Indah Jaya）已面临长达6天的断水困境。民兴党伊罗普拉区州议员张克骏强烈敦促JANS立刻派水车前往这6个重灾区，持续运水直至供水恢复稳定。JANS呼吁受影响用户积极存水与省水，并指出高楼公寓因主水管压力临界无法抽水，情况最为严峻。",
+        "source_url": "https://news.google.com",
+        "publisher": "JANS FB, water.sabah.gov.my",
+        "titleBM": "Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援",
+        "source": "JANS FB",
+        "sources": [
+          "JANS FB",
+          "water.sabah.gov.my",
+          "11",
+          "07 12:30"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_02",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 山打根爆水管致6区断水进入第6天：民兴党议员促水务局派水车支援'"
+        ]
+      },
+      {
+        "story_index": 3,
+        "category": "sabah",
+        "title": "沙巴电力SESB证实山打根供电已全面恢复正常：275kV输电线路跳闸影响已解除",
+        "titleBM": "SESB Sahkan Bekalan Elektrik di Sandakan Pulih Sepenuhnya: Gangguan Talian 275kV Kolopis-Segaliud Selesai",
+        "detail": "沙巴电力公司（SESB）正式证实，早前因275kV Kolopis-Segaliud 1号输电线路于周六下午5:05发生跳闸，导致山打根、拿笃、古纳、仙本那、比鲁兰及京那巴当多达23万用户受影响的大规模断水断电危机，已于周日（11月8日）下午3:11分阶段全面恢复供电。今日11月10日，山打根全区供电保持正常，暂无接到新的停电通告。SESB提醒用户，若发现任何局部断电情况，可随时拨打Careline 15444、088-515000、通过WhatsApp 019-852 5427或使用SESB官方App进行反馈。此外，MPS交通部门报告指出，今日山打根市区交通整体通畅，Sepilok观鸟节收尾阶段需注意山路积水，拿笃此前9AM-2PM的海啸演习改道路线已结束。",
+        "detailBM": "Sabah Electricity (SESB) mengesahkan bahawa gangguan bekalan elektrik melibatkan 230,000 pengguna di Sandakan, Lahad Datu, Kunak, Semporna, Beluran, dan Kinabatangan akibat pelakuran talian 275kV Kolopis-Segaliud No. 1 pada hari Sabtu jam 5:05 petang, telah pulih sepenuhnya secara berperingkat pada Ahad jam 3:11 petang. Hari ini, 10 November, bekalan elektrik di Sandakan adalah normal tanpa sebarang notis gangguan baharu. SESB mengingatkan pengguna agar menghubungi Careline 15444, 088-515000, WhatsApp 019-852 5427, atau melalui Aplikasi SESB jika masih menghadapi masalah. Sementara itu, pihak trafik MPS melaporkan keadaan lalu lintas bandar lancar, manakala jalan berhampiran Sepilok perlu berwaspada terhadap takungan air, dan latihan tsunami Lahad Datu telah tamat.",
+        "source_url": "https://news.google.com",
+        "publisher": "SESB FB",
+        "source": "SESB FB",
+        "sources": [
+          "SESB FB",
+          "11",
+          "09"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_03",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Claim CLM_01: BM text missing expected amount 230000 (found: []) for fact FAC_MON_230000",
+          "Global bilingual monetary set discrepancy: ZH=[230000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 4,
+        "category": "sabah",
+        "title": "JANS山打根水务维护持续：Batu Sapi更换闸阀与B5水箱切换引水压波动",
+        "titleBM": "Penyelenggaraan Air JANS di Sandakan: Penggantian Injap Batu Sapi dan Peralihan Tangki Batu 5",
+        "detail": "沙巴水务局（JANS）持续在山打根展开水务基础设施维护工程，其中包括11月6日周五早上8:00起在Batu Sapi圆环附近进行400mm闸阀更换，直接影响Batu Sapi及京那巴当部分用户的供水；以及11月1日周日早上9:30起，将Tangki Kebun Cina的水流成功切换至Tangki Tshun Ngen Batu 5，造成山打根市区一度出现水压波动现象。JANS特别提醒广大受影响用户，在每次水管维修或水箱切换工程恢复供水后，水质可能会出现短暂浑浊现象，建议民众先将水龙头打开放水约5分钟，待水质清澈后再行安全使用。",
+        "detailBM": "Jabatan Air Negeri Sabah (JANS) meneruskan kerja penyelenggaraan infrastruktur air di Sandakan, termasuk penggantian injap 400mm berhampiran bulatan Batu Sapi bermula 6 November jam 8:00 pagi yang menjejaskan sebahagian pengguna Batu Sapi dan Kinabatangan. Selain itu, peralihan bekalan dari Tangki Kebun Cina ke Tangki Tshun Ngen Batu 5 pada 1 November jam 9:30 pagi telah menyebabkan turun naik tekanan air di bandar Sandakan. JANS mengingatkan para pengguna bahawa air mungkin kelihatan keruh selepas setiap kerja pembaikan siap dijalankan, dan menasihatkan agar membiarkan air mengalir selama kira-kira 5 minit sebelum digunakan.",
+        "source_url": "https://news.google.com",
+        "publisher": "water.sabah.gov.my",
+        "source": "water.sabah.gov.my",
+        "sources": [
+          "water.sabah.gov.my",
+          "11",
+          "06 8:00AM",
+          "01 9:30AM"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_04",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED"
+      },
+      {
+        "story_index": 10,
+        "category": "sabah",
+        "title": "气象局发布东海岸持续豪雨警报至11月11日：山打根等多区严阵以待",
+        "titleBM": "MetMalaysia Keluarkan Amaran Hujan Berterusan Hingga 11 November: Sandakan dan Beberapa Daerah Di Atasi Siapsiaga",
+        "detail": "马来西亚气象局（MetMalaysia）已向半岛东海岸及沙巴东部发出持续豪雨警报，恶劣及警惕级别将维持至11月11日。在沙巴方面，受影响区域主要涵盖古达及山打根省辖下的多个地区，包括拜丹（Paitan）、特鲁必（Telupid）、拉卜达谷（Labuk dan Sugut）、山打根市区以及京那巴当岸（Kinabatangan）。My Sandakan Kini提醒民众今日出门务必携带雨具，Sepilok观鸟节收尾区需警惕山路积水。SANDAKANfm90.1今早亦已播报最新路况，并特别呼吁渔民出海注意风浪安全。",
+        "detailBM": "Jabatan Meteorologi Malaysia (MetMalaysia) telah mengeluarkan amaran hujan berterusan tahap buruk dan Waspada yang meliputi Pantai Timur Semenanjung dan bahagian timur Sabah sehingga 11 November. Di Sabah, daerah yang terjejas melibatkan Kudat dan bahagian Sandakan termasuk Paitan, Telupid, Labuk dan Sugut, Sandakan, serta Kinabatangan. My Sandakan Kini mengingatkan orang ramai agar membawa payung hari ini dan berhati-hati terhadap takungan air di kawasan sekitar Sepilok. SANDAKANfm90.1 telah menyiarkan laporan trafik, sambil menasihatkan nelayan agar prihatin terhadap keselamatan ombak besar di laut.",
+        "source_url": "https://news.google.com",
+        "publisher": "Bernama FB, Sabah TV Official FB, RTM FB",
+        "source": "Bernama FB",
+        "sources": [
+          "Bernama FB",
+          "Sabah TV Official FB",
+          "RTM FB",
+          "11",
+          "09"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_10",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED"
+      },
+      {
+        "story_index": 11,
+        "category": "sabah",
+        "title": "仙本那3名男子在雪兰莪遭雷击身亡：沙巴州政府全力协助家属运回遗体",
+        "titleBM": "Tiga Lelaki Semporna Maut Disambar Petir di Selangor: Kerajaan Negeri Sabah Bantu Urus Penghantaran Jenazah",
+        "detail": "针对昨日下午在雪兰莪雪邦不幸遭雷击身亡的3名仙本那籍男子悲剧，沙巴州政府目前正积极协调各方，全力协助家属将3人的遗体顺利运回沙巴家乡。罹难者家属已接获官方通知，州政府将妥善协助处理后续丧葬事宜。Sabah Spotlight 2026此前已转发相关家属的筹款贴文，并借此沉痛事件再次提醒广大民众，在雷雨恶劣天气时切勿在空旷地带、大树下或铁皮屋顶下逗留，以防发生类似悲剧。",
+        "detailBM": "Berikutan tragedi menyayat hati di mana tiga lelaki asal Semporna maut disambar petir di Sepang, Selangor, Kerajaan Negeri Sabah kini sedang menyelaras usaha untuk membantu keluarga membawa pulang jenazah mereka ke tanah air. Keluarga mangsa telah dimaklumkan, dan kerajaan negeri akan membantu menguruskan hal ehwal pengebumian. Sabah Spotlight 2026 sebelum ini telah berkongsi hantaran Tabung Derma Keluarga, sambil mengingatkan orang ramai agar tidak berdiri di kawasan terbuka, di bawah pokok, atau bumbung zink semasa cuaca ribut petir.",
+        "source_url": "https://news.google.com",
+        "publisher": "Sayangi Sabah FB, Sabah Media News FB",
+        "source": "Sayangi Sabah FB",
+        "sources": [
+          "Sayangi Sabah FB",
+          "Sabah Media News FB",
+          "11",
+          "09 3:12pm"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_11",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED"
+      },
+      {
+        "story_index": 12,
+        "category": "sabah",
+        "title": "沙巴珊瑚白化危机恶化升至最严重第4级：山打根海域备受专家关注",
+        "titleBM": "Krisis Pemutihan Karang Sabah Meningkat ke Tahap 4 Paling Kritikal: Perairan Sandakan Jadi Tumpuan Pakar",
+        "detail": "根据沙巴珊瑚白化特别工作组10月的最新监测数据，沙巴海域的珊瑚白化现象已恶化并升级至最严重的第4级警报（Alert Level 4），而东海岸其他海域则维持在第3级，海水温度过高是导致此次严重白化的主要根源。海洋专家强烈呼吁游客及潜水爱好者在出海活动时减少污染，绝对不可踩踏珊瑚。My Sandakan Kini特别提醒本周计划出海浮潜的游客务必做好防晒措施，并切勿使用含有氧苯酮（Oxybenzone）等破坏海洋生态的防晒霜。",
+        "detailBM": "Berdasarkan pemantauan oleh Pasukan Task Force Pemutihan Karang Sabah pada bulan Oktober, tahap pemutihan karang di perairan Sabah telah meningkat ke Tahap Amaran 4 (Alert Level 4) yang paling kritikal, manakala pantai timur kekal pada Tahap 3 akibat suhu air laut yang terlalu tinggi. Pakar menyeru agar orang ramai mengurangkan pencemaran dan tidak memijak batu karang. My Sandakan Kini mengingatkan pelancong yang ingin melakukan aktiviti selam skuba minggu ini agar menjaga pelindungan matahari dan menghindari krim pelindung matahari yang mengandungi oxybenzone.",
+        "source_url": "https://news.google.com",
+        "publisher": "沙巴星洲日报 FB, Sabah TV Official FB",
+        "source": "沙巴星洲日报 FB",
+        "sources": [
+          "沙巴星洲日报 FB",
+          "Sabah TV Official FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_12",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED"
+      },
+      {
+        "story_index": 13,
+        "category": "sabah",
+        "title": "第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与",
+        "detailBM": "Pesta Burung Borneo (Borneo Bird Festival) ke-12 yang bermula 7 November di Sandakan telah melabuhkan tirainya dengan jayanya pada hujung minggu ini. Acara yang merangkumi panduan hutan hujan, pertandingan pemerhatian burung, pameran fotografi, dan ceramah ekologi ini berjaya menarik kira-kira 5,000 pencinta burung dari dalam dan luar negara. Pihak penganjur memaklumkan bahawa laluan pemerhatian burung di Sepilok paling mendapat sambutan, dan merancang untuk memperluaskan zon keluarga pada tahun hadapan.",
+        "detail": "为期数天的第12届婆罗洲观鸟节11月7日起在山打根盛大举行，涵盖雨林导览、观鸟比赛、摄影展以及生态讲座等丰富活动，并在本周末迎来完美收官。活动成功吸引了来自海内外多达5000名爱鸟人士与游客踊跃参与。主办方表示，今年Sepilok森林区的观鸟路线最受大众欢迎，并宣布明年将进一步扩大亲子生态体验区，以吸引更多年轻一代加入自然保育行列。",
+        "source_url": "https://news.google.com",
+        "publisher": "诗华日报 FB, My Sandakan Kini FB, Sabah TV Official FB",
+        "titleBM": "Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与",
+        "source": "诗华日报 FB",
+        "sources": [
+          "诗华日报 FB",
+          "My Sandakan Kini FB",
+          "Sabah TV Official FB",
+          "11月7-9日"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_13",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 第12届婆罗洲观鸟节山打根圆满落幕：5000名海内外爱鸟人士热烈参与'",
+          "Bilingual topic mismatch: Headline concerns eco-tourism/wildlife in Chinese but Malay headline lacks tourism/wildlife terms"
+        ]
+      },
+      {
+        "story_index": 14,
+        "category": "sabah",
+        "title": "沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账",
+        "detailBM": "Menteri Kewangan II, Datuk Seri Amir Hamzah, menyatakan bahawa Kerajaan Persekutuan akan mengeluarkan warta rasmi menjelang akhir tahun ini bagi memastikan Sabah menerima baki RM900 juta daripada peruntukan khas RM1.5 bilion. Di bawah kerangka Perjanjian Malaysia 1963 (MA63), daripada 27 tuntutan, sebanyak 14 telah diselesaikan, manakala 10 lagi termasuk tuntutan 40% hasil bersih masih dalam proses perbincangan. Sabah Spotlight 2026 telah menerbitkan ulasan terperinci mengenai perkembangan kewangan ini.",
+        "detail": "第二财长拿督斯里阿米尔韩查指出，联邦政府将在今年底前正式通过宪报颁布命令，让沙巴获得总额15亿令吉特别拨款中剩余的9亿令吉款项。在马来西亚协议（MA63）框架下的27项沙巴诉求中，目前已有14项顺利完成，但包括40%净税收分成等其余10项诉求仍在积极协商解决中。Sabah Spotlight 2026对此项财政进展刊发了详细解读，引起广泛关注。",
+        "source_url": "https://news.google.com",
+        "publisher": "Bernama FB, The Star FB, Sabah Media News FB",
+        "titleBM": "Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账",
+        "source": "Bernama FB",
+        "sources": [
+          "Bernama FB",
+          "The Star FB",
+          "Sabah Media News FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_14",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴联邦拨款年尾宪报颁布：15亿特别拨款中剩余9亿令吉即将到账'",
+          "Headline monetary mismatch: ZH=[1500000000, 900000000] vs BM=[]",
+          "Claim CLM_01: BM text missing expected amount 1500000000 (found: [900000000, 1]) for fact FAC_MON_1500000000",
+          "Claim CLM_01: BM text contains drifted/unanchored amount 1 (expected 1500000000) for fact FAC_MON_1500000000",
+          "Claim CLM_01: BM text contains drifted/unanchored amount 1 (expected 900000000) for fact FAC_MON_900000000",
+          "Global unanchored monetary value in BM text: MYR 1",
+          "Global bilingual monetary set discrepancy: ZH=[900000000, 1500000000] vs BM=[1, 900000000]"
+        ]
+      },
+      {
+        "story_index": 15,
+        "category": "sabah",
+        "title": "亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证",
+        "detailBM": "Berikutan serbuan ke atas sebuah banglo mewah tiga tingkat di kawasan elit Kota Kinabalu pada malam 4 November yang membongkar sindiket scam dalam talian, 14 lelaki warga China berusia antara 26 hingga 44 tahun terus direman bagi menyiasat status visa serta rangkaian jenayah mereka. Peguam Simon Chin menggesa pihak berkuasa agar mengenakan tindakan undang-undang ke atas 'tuan rumah yang bersubahat' dan tidak boleh lepas tangan dengan alasan tidak tahu. Sayangi Sabah menasihatkan orang ramai agar tidak mudah percaya kepada janji pelaburan pulangan tinggi.",
+        "detail": "针对11月4日晚间亚庇富人精英区一栋3层豪华洋房被警方成功捣毁的网络诈骗中心案件，落网的14名年龄介于26岁至44岁的中国籍男子目前已被延长扣留，以配合深入调查其签证合法性及诈骗网络资金流向。执业律师曾国竣公开呼吁执法部门必须严厉追究“知情出租者”的法律责任，不能仅凭一句“不知情”就轻易脱罪。Sayangi Sabah也借此案件再次提醒公众提高警惕，切勿轻信网络上的高回报投资诱惑。",
+        "source_url": "https://news.google.com",
+        "publisher": "Sabah Media News FB, Rojaklah88 FB, Viralcham FB",
+        "titleBM": "Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证",
+        "source": "Sabah Media News FB",
+        "sources": [
+          "Sabah Media News FB",
+          "Rojaklah88 FB",
+          "Viralcham FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_15",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 亚庇豪宅诈骗窝点案后续：14名落网中国籍男子继续延扣查签证'",
+          "Bilingual topic mismatch: Headline concerns immigration/visa in Chinese but Malay headline lacks border/visa/scam terms"
+        ]
+      },
+      {
+        "story_index": 16,
+        "category": "sabah",
+        "title": "沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校",
+        "detailBM": "Pembantu Menteri Kerja Raya dan Utiliti Sabah, Datuk Limus Jury, menegaskan bahawa Kerajaan Negeri sentiasa komited menjaga kebajikan seluruh rakyat tanpa mengira kaum, agama, dan latar belakang semasa merasmikan pelantikan Ahli Jawatankuasa Gabungan Persatuan Tua Pek Kong Sabah. Menurut Belanjawan Negeri Sabah 2026, kerajaan negeri telah memperuntukkan sebanyak RM90 juta untuk pembangunan hal ehwal agama, badan keagamaan bukan Islam, sekolah misi, dan sekolah swasta.",
+        "detail": "沙巴工程与公共事业部助理部长拿督利慕士朱利昨晚代表州政府为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时发表重要讲话。他强调，沙巴州政府始终致力照顾全民福祉，绝不分种族、宗教及文化背景，确保各族人民公平共享发展成果。根据《2026年沙巴州财政预算案》，州政府特别拨款高达9000万令吉，专门用于宗教发展、非伊斯兰宗教机构、教会学校及私立学校的发展建设。",
+        "source_url": "https://news.google.com",
+        "publisher": "诗华日报 FB",
+        "titleBM": "Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校",
+        "source": "诗华日报 FB",
+        "sources": [
+          "诗华日报 FB",
+          "11",
+          "09"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_16",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴州政府重申照顾全民福祉不分种族：2026年拨9000万支持非伊宗教与学校'",
+          "Headline monetary mismatch: ZH=[90000000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 17,
+        "category": "sabah",
+        "title": "杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色",
+        "detailBM": "Presiden Parti Solidariti Tanah Airku (STAR) merangkap Ahli Parlimen Keningau, Datuk Seri Dr. Jeffrey Kitingan, menegaskan bahawa pembangunan masa depan Keningau mesti mengambil kira keperluan rakyat dan memelihara identiti sejarah tempatan bagi mengelakkan pembangunan keterlaluan yang merosakkan landskap bandar. Di ruangan komen portal Rojaklah88, penduduk tempatan menyokong pandangan itu dengan menyuarakan pendirian agar pembangunan dijalankan tanpa memusnahkan warisan jalan lama.",
+        "detail": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来的城市发展规划必须坚定不移地以民需为本，同时妥善保留当地独有的历史风貌，避免过度盲目扩张导致公共绿地和空间减少，进而破坏特有的城市特色。Rojaklah88网络评论区的根地咬当地居民纷纷留言附和，表达了“支持发展，但绝不希望把历史老街全部拆光”的共同心声。",
+        "source_url": "https://news.google.com",
+        "publisher": "沙巴星洲日报 FB",
+        "titleBM": "Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色",
+        "source": "沙巴星洲日报 FB",
+        "sources": [
+          "沙巴星洲日报 FB",
+          "11",
+          "09 2:06pm"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_17",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 杰菲里：根地咬10年发展必须以民为本，在现代化进程中兼顾历史特色'",
+          "Bilingual topic mismatch: Headline concerns heritage/community in Chinese but Malay headline lacks heritage/history terms"
+        ]
+      },
+      {
+        "story_index": 18,
+        "category": "sabah",
+        "title": "沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖",
+        "detailBM": "Kempen derma darah berskala besar tahunan Sabah telah dilancarkan secara serentak di Kota Kinabalu dan Sandakan pada 7 November, dengan sasaran mengumpul 1,200 beg darah bagi mengatasi kekurangan bekalan di hospital. Sabah Media News melaporkan bahawa tabung darah Hospital Sandakan paling ketandusan darah jenis O, dan mengalu-alukan orang ramai hadir ke pusat derma darah hari ini dengan membawa MyKad, tidur secukupnya, serta mengambil sarapan sebelum menderma.",
+        "detail": "沙巴年度大型捐血运动于11月7日在亚庇和山打根两地同步盛大登场，活动放眼在全州筹获至少1200包血液，以有效缓解各大医院血库长期紧张的库存压力。Sabah Media News特别指出，目前山打根医院血库最缺乏的是O型血，呼吁符合条件的市民今日继续前往中央医院捐血站补捐。参与捐血者必须携带身份证，并在捐血前保证获得充足睡眠及吃饱早餐。",
+        "source_url": "https://news.google.com",
+        "publisher": "诗华日报 FB, Sabah Media News FB",
+        "titleBM": "Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖",
+        "source": "诗华日报 FB",
+        "sources": [
+          "诗华日报 FB",
+          "Sabah Media News FB",
+          "11",
+          "07"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sandakan",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_18",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴年度大型捐血运动山打根亚庇同步引爆：医院血库呼吁民众踊跃挽袖'",
+          "Bilingual topic mismatch: Headline concerns hospital/healthcare in Chinese but Malay headline lacks healthcare terms"
+        ]
+      },
+      {
+        "story_index": 19,
+        "category": "sabah",
+        "title": "沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金",
+        "detailBM": "Seramai 1,106 pemandu teksi, kereta sewa, dan bas sekolah yang layak di Sabah akan menerima bantuan khas sekali bayar sebanyak RM1,000 setiap seorang bagi meringankan beban kos sara hidup mereka. Portal My Sandakan Kini telahpun menyiarkan senarai nama penerima yang layak serta cara menyemak status kelayakan bagi membantu para pemandu mendapatkan bantuan tersebut.",
+        "detail": "沙巴州内共有1106名符合资格的德士司机、出租车及校车司机，将获得州政府发放的每人1000令吉一次性特别援助金，旨在直接减轻他们在面对生活成本上涨压力下的经济负担。My Sandakan Kini目前已经正式发布了合格申请者的名单及详细查询方式，受惠司机可自行上网核对并领取相关津贴。",
+        "source_url": "https://news.google.com",
+        "publisher": "沙巴星洲日报 FB",
+        "titleBM": "Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金",
+        "source": "沙巴星洲日报 FB",
+        "sources": [
+          "沙巴星洲日报 FB",
+          "11",
+          "06"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "sabah",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sabah_19",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 沙巴1106名德士与校车司机受惠：每人获1000令吉一次性特别援金'",
+          "Headline monetary mismatch: ZH=[1000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 20,
+        "category": "national",
+        "title": "纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”",
+        "detailBM": "Walaupun bekas Perdana Menteri Datuk Seri Najib Razak telah menjelaskan denda RM50 juta dan dibenarkan menjalani tahanan rumah, beliau masih belum pulang ke rumah sehingga petang 6 November kerana dibawa ke hospital untuk pemeriksaan gigi, menyebabkan peletakan jawatan Menteri Pengangkutan Loke Siew Fook belum berkuat kuasa. Loke mengesahkan pendiriannya: 'Jika beliau sampai malam ini, ia berkuat kuasa malam ini; jika esok, maka esok.' Beliau telah menyerahkan surat letak jawatan kepada Perdana Menteri Datuk Seri Anwar Ibrahim pada 28 September. Anwar pula meminta Peguam Negara menghadap Yang di-Pertuan Agong untuk memperjelaskan isu penangguhan tahanan rumah.",
+        "detail": "前首相拿督斯里纳吉虽然已缴清5000万令吉罚款并获准以居家服刑方式服刑，但截至11月6日傍晚仍未回到住家，而是被送往医院进行牙齿检查，导致交通部长陆兆福此前承诺的辞职决定暂时还未正式生效。陆兆福在交通部常月集会记者会上重申立场不变：“如果他今晚到家，我的辞职就今晚生效；如果是明天，那就明天生效。”他已在9月28日将辞呈正式呈交首相拿督斯里安华，并将根据最新进展再呈交补充信函。他还预告将于本周三出席部门屠妖节庆典，这可能成为其告别仪式。同时，安华已促请总检察长入宫觐见国家元首，以厘清居家服刑暂缓执行的相关法律问题。",
+        "source_url": "https://news.google.com",
+        "publisher": "星洲日报 FB, 中国报 FB, 光明日报 FB, e南洋 FB, 8TV.NEWS FB",
+        "titleBM": "Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”",
+        "source": "星洲日报 FB",
+        "sources": [
+          "星洲日报 FB",
+          "中国报 FB",
+          "光明日报 FB",
+          "e南洋 FB",
+          "8TV.NEWS FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_national_20",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 纳吉缴清5000万罚款仍未回家：陆兆福重申“到家那一刻起辞职生效”'",
+          "Headline monetary mismatch: ZH=[50000000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 21,
+        "category": "national",
+        "title": "第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票",
+        "detailBM": "Pengerusi Suruhanjaya Pilihan Raya (SPR), Datuk Seri Ramlan Harun, mengumumkan di Kuching bahawa hari penamaan calon bagi Pilihan Raya Negeri (PRN) Sarawak ke-13 ditetapkan pada 28 November (Sabtu), undi awal pada 8 Disember (Selasa), dan hari mengundi pada 12 Disember (Sabtu), dengan tempoh kempen selama 14 hari. Seramai 2,058,781 pengundi berdaftar akan memilih wakil bagi 82 kerusi DUN, manakala peluasan kepada 99 kerusi ditangguhkan. Peruntukan sebanyak RM174.94 juta diluluskan. Gabungan Parti Sarawak (GPS) akan bertanding di kesemua 82 kerusi.",
+        "detail": "选委会主席拿督斯里南兰哈伦在古晋正式宣布，第13届砂拉越州选举的提名日落在11月28日（周六），提前投票日为12月8日（周二），正式投票日则定于12月12日（周六），竞选期为期14天。本届州选共有205万8781名合格选民将选出82个州议席，至于原本计划增至99个议席的方案因相关法律程序尚未完备，本届选举暂不落实，整体选举预算为1亿7494万令吉。砂拉越政党联盟（GPS）已确定将全面上阵所有82个议席，砂总理拿督巴丁宜阿邦佐哈里对原任议员团队充满信心，看好他们将继续获得选民强力支持。",
+        "source_url": "https://news.google.com",
+        "publisher": "诗华日报 FB, 光明日报 FB, 星洲日报 FB, Bernama FB",
+        "titleBM": "Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票",
+        "source": "诗华日报 FB",
+        "sources": [
+          "诗华日报 FB",
+          "光明日报 FB",
+          "星洲日报 FB",
+          "Bernama FB",
+          "11月6日宣布"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_national_21",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月1...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 第13届砂拉越州选定档：11月28日提名、12月8日提前投票、12月12日投票'",
+          "Claim CLM_01: BM text missing expected amount 100000000 (found: [174940000]) for fact FAC_MON_100000000",
+          "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 100000000) for fact FAC_MON_100000000",
+          "Claim CLM_01: BM text missing expected amount 2050000 (found: [174940000]) for fact FAC_MON_2050000",
+          "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 2050000) for fact FAC_MON_2050000",
+          "Claim CLM_01: BM text missing expected amount 74940000 (found: [174940000]) for fact FAC_MON_74940000",
+          "Claim CLM_01: BM text contains drifted/unanchored amount 174940000 (expected 74940000) for fact FAC_MON_74940000",
+          "Global unanchored monetary value in BM text: MYR 174940000",
+          "Global bilingual monetary set discrepancy: ZH=[2050000, 74940000, 100000000] vs BM=[174940000]"
+        ]
+      },
+      {
+        "story_index": 22,
+        "category": "national",
+        "title": "砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉",
+        "detailBM": "Kerajaan Sarawak mula menyalurkan bayaran Fasa Ketiga Bantuan Asas Sarawak (SKAS) kepada penerima sedia ada dan baharu melalui e-dompet S Pay Global bermula hari ini, 10 November. Bantuan SKAS bagi tahun 2026 diagihkan dalam tiga fasa: Fasa 1 pada 10 Mac, Fasa 2 pada 15 Mei, dan Fasa 3 bermula hari ini. Sehingga 9 November, seramai 783,603 penerima atau 89.5% yang layak telah menerima bayaran melalui S Pay Global. Orang ramai boleh menyemak status kelayakan menerusi portal rasmi sarawak.gov.my/skas.",
+        "detail": "砂拉越政府从今天（11月10日）起，通过S Pay Global电子钱包向现有受惠者及符合资格的新受惠者，分阶段发放“砂基本需求援助”（SKAS）第三阶段款项。2026年度的SKAS总共分为三个阶段发放：第一阶段在3月10日，第二阶段在5月15日，第三阶段则从今天正式启动。截至11月9日的数据显示，已有高达78万3603名受惠者（占总合格人数的89.5%）顺利通过S Pay Global领取了相关援助金。民众可随时登录 sarawak.gov.my/skas 查询最新的个人审核资格。",
+        "source_url": "https://news.google.com",
+        "publisher": "TVS FB, 诗华日报 FB, Bernama FB",
+        "titleBM": "Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉",
+        "source": "TVS FB",
+        "sources": [
+          "TVS FB",
+          "诗华日报 FB",
+          "Bernama FB",
+          "11月10日"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_national_22",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 砂基本需求援助（SKAS）第三阶段今天起发放：砂拉越家庭户再领360令吉'",
+          "Headline monetary mismatch: ZH=[360] vs BM=[]",
+          "Claim CLM_01: BM text missing expected amount 780000 (found: []) for fact FAC_MON_780000",
+          "Claim CLM_01: ZH text missing expected amount 360 (found: [780000]) for fact FAC_MON_360",
+          "Claim CLM_01: BM text missing expected amount 360 (found: []) for fact FAC_MON_360",
+          "Global bilingual monetary set discrepancy: ZH=[360, 780000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 23,
+        "category": "national",
+        "title": "大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范",
+        "detailBM": "Perdana Menteri Datuk Seri Anwar Ibrahim memaklumkan bahawa ketegangan geopolitik global yang meningkat mungkin menjadikan Malaysia sasaran ancaman serangan siber. Sehubungan itu, Majlis Keselamatan Negara (MKN) telah mengadakan mesyuarat khas bagi menilai keupayaan tindak balas dalam sektor tenaga, pengangkutan, kewangan, dan bekalan makanan. Suruhanjaya Komunikasi dan Multimedia Malaysia (MCMC) turut mengingatkan orang ramai agar tidak panik mengenai bunyi penggera telefon bimbit seluruh negara pada 19 November depan yang merupakan latihan sistem Siaran Sel (Cell Broadcast).",
+        "detail": "首相拿督斯里安华指出，鉴于当前全球地缘政治紧张局势不断升级，马来西亚未来可能面临严峻的网络攻击威胁。为此，国家安全理事会（MKN）已紧急召开特别会议，全面检视我国在能源、交通、金融以及食品供应链等关键领域的应变韧性与防护能力。此外，大马通讯多媒体委员会（MCMC）也特别提醒公众，11月19日全国手机将响起巨响，这属于官方的“Cell Broadcast”紧急广播演习，呼吁民众切勿惊慌。",
+        "source_url": "https://news.google.com",
+        "publisher": "光明日报 FB, Bernama FB, 8TV.NEWS FB",
+        "titleBM": "Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范",
+        "source": "光明日报 FB",
+        "sources": [
+          "光明日报 FB",
+          "Bernama FB",
+          "8TV.NEWS FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_national_23",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 大马或成网络攻击潜在目标：国家安全理事会已召开特别会议全面防范'"
+        ]
+      },
+      {
+        "story_index": 24,
+        "category": "sports",
+        "title": "李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫",
+        "detailBM": "Kejohanan Badminton Masters Kumamoto Jepun 2026 (Super 500, hadiah wang tunai USD500,000) bermula hari ini di Gimnasium Wilayah Kumamoto dan berlangsung hingga 15 November. Pemain perseorangan lelaki negara, Lee Zii Jia, yang bermula dari pusingan kelayakan, akan menentang pemain tuan rumah Koga Sugiura hari ini. Jika menang, beliau akan berdepan pilihan utama dari Perancis, Christo Popov, pada pusingan pertama sebenar hari Rabu. Pertemuan terakhir mereka di suku akhir Terbuka Artik menyaksikan Zii Jia menang 21-11, 21-16.",
+        "detailBM_alt": "Lee Zii Jia Mulakan Kempen Masters Kumamoto Hari Ini: Berdepan Koga Sugiura",
+        "detail": "2026年日本熊本羽球大师赛（超级500赛，总奖金50万美元）于今日在熊本县立体育馆正式挥拍，赛事将持续至11月15日。大马男单独苗李梓嘉本次从入选赛打起，今天将迎战东道主日本球员古贺穗；若顺利过关，将于周三的正赛首圈硬碰头号种子、法国好手克里斯托·波波夫（Christo Popov）。两人上一次交手是在10月初的北极公开赛8强，当时李梓嘉以21-11、21-16直落两局轻松取胜；在今年3月的瑞士公开赛入选赛中，他也曾以21-10、21-14轻取对手，球迷们纷纷在社交媒体刷屏为他加油打气。",
+        "source_url": "https://news.google.com",
+        "publisher": "中国报 FB, 星洲日报 FB, 光明日报 FB, e南洋 FB",
+        "titleBM": "Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫",
+        "source": "中国报 FB",
+        "sources": [
+          "中国报 FB",
+          "星洲日报 FB",
+          "光明日报 FB",
+          "e南洋 FB",
+          "11月09日 8:01pm"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sports_24",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 李梓嘉今日开启日本熊本羽球大师赛征程：入选赛再战古贺穗，若胜出周三碰小波波夫'",
+          "Claim CLM_01: BM text missing expected amount 500000 (found: []) for fact FAC_MON_500000",
+          "Global bilingual monetary set discrepancy: ZH=[500000] vs BM=[]"
+        ]
+      },
+      {
+        "story_index": 25,
+        "category": "sports",
+        "title": "回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛",
+        "detailBM": "Mengimbas kejohanan Terbuka Hylo di Jerman minggu lalu, Lee Zii Jia beraksi cemerlang di tengah demam panas dan muntah untuk bangkit menewaskan pemain Singapura Teh Jia Heng 21-16, 19-21, 21-17 dalam masa 59 minit, sebelum tewas kepada Kodai Naraoka di pusingan kedua. Beliau menarik diri dari Terbuka Korea akibat masalah kesihatan sebelum kembali bertenaga di Kumamoto. Dengan menarik diri tiga pemain perseorangan negara lain, Zii Jia yang menduduki ranking ke-40 dunia layak ke pusingan kelayakan selepas beberapa pemain menarik diri.",
+        "detail": "回顾上周在德国举行的Hylo公开赛，大马名将李梓嘉曾在发高烧并伴随呕吐的不适状态下，苦战59分钟完成惊天逆转，以21-16、19-21、21-17击败新加坡选手郑加恒晋级16强；随后在次轮以63分钟（11-21、21-13、14-21）不敌日本“磨王”奈良冈功大止步16强。由于身体抱恙，他随后退出了韩国公开赛，如今以最佳状态强势回归熊本大师赛。随着梁峻豪、贺首维和尤阳等3名大马男单因故退出，世界排名第40位的李梓嘉原为第4候补，最终因安东森、李诗沣等名将退赛而顺利递补入围资格赛。",
+        "source_url": "https://news.google.com",
+        "publisher": "星洲日报 FB, 光明日报 FB, The Star FB",
+        "titleBM": "Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛",
+        "source": "星洲日报 FB",
+        "sources": [
+          "星洲日报 FB",
+          "光明日报 FB",
+          "The Star FB"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sports_25",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 回顾李梓嘉Hylo赛高烧呕吐59分钟逆转：克服病痛孤身闯荡熊本大师赛'"
+        ]
+      },
+      {
+        "story_index": 26,
+        "category": "sports",
+        "title": "乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车",
+        "detailBM": "Kejohanan Badminton Masters Kumamoto menyaksikan barisan pemain negara memburu kejayaan cemerlang. Pasangan beregu wanita negara yang juga juara bertahan, Pearly Tan dan M. Thinaah, akan memulakan cabaran dari pusingan pertama menentang pasangan baharu Jepun untuk mempertahankan gelaran. Sementara itu, beregu lelaki utama negara, Aaron Chia dan Soh Wooi Yik, turut beraksi demi memburu slot ke Jelajah Akhir Musim. Pemain perseorangan wanita Goh Jin Wei turut memulakan saingan dari pusingan kelayakan.",
+        "detail": "2026年日本熊本羽球大师赛燃战火，大马羽坛传来多项备战焦点。大马女双卫冕冠军陈康乐与蒂娜（乐娜组合）将直接从正赛出发，首轮将对阵日本新组合，放眼全力捍卫卫冕冠军宝座。另一方面，大马头号男双谢定峰与苏伟译也将出战本次赛事，力争在赛季末赚取足够积分，抢下晋级年终总决赛的最后一张门票。此外，大马女单吴堇溦也将从入选赛打起，全力争取晋级正赛资格。",
+        "source_url": "https://news.google.com",
+        "publisher": "中国报 FB",
+        "titleBM": "Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车",
+        "source": "中国报 FB",
+        "sources": [
+          "中国报 FB",
+          "11月09日"
+        ],
+        "url": "https://news.google.com",
+        "source_urls": [
+          "https://news.google.com"
+        ],
+        "original_published_at": "2026-11-10T00:00:00+08:00",
+        "geo_scope": "national",
+        "is_event": false,
+        "event_metadata": {},
+        "id": "art_sports_26",
+        "image_url": null,
+        "collected_at": "2026-11-10T20:07:59.399814+08:00",
+        "site_published_at": "2026-11-10T20:07:59.399814+08:00",
+        "updated_at": "2026-11-10T20:07:59.399814+08:00",
+        "is_updated": false,
+        "validation_status": "VERIFIED_WITH_WARNINGS",
+        "validation_warnings": [
+          "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车...'",
+          "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车'"
+        ]
+      }
+    ],
     "2026-11-09": [
       {
         "id": "art_sabah_1",
@@ -2594,78 +3838,6 @@
         ],
         "detail": "马来西亚气象局（METMalaysia）沙巴分支机构今日下午发出季风交替期黄色对流降雨与沿海强风警报。预报显示，沙巴东海岸包括山打根、古达、拿笃及周边苏禄海海域在未来 48 小时内将迎来间歇性强雷阵雨，伴有局部时速达 40 至 50 公里的阵风，海面浪高预计突破 2.5 米至 3.5 米。背景脉络：季风风向转换期间海况瞬息万变，小型近海木船极易在突发强阵风中发生侧翻遇险，气象部门联合海事执法机构（APMM）提前强化预警广播。海事局呼吁所有出海小型渔船、海岛接驳快艇以及水上运动项目即时返港避风，沿岸低洼木屋区居民亦须防范涨潮叠加暴雨引发的局部积水。气象热线 1-300-22-1638 全天候播报。来源：Sandakan FM 实时气象插播与 Sabah TV 气象专题。",
         "detailBM": "METMalaysia mengingatkan komuniti nelayan dan pengendali bot pelancong di perairan Sandakan agar berwaspada terhadap amaran angin kencang dan ombak setinggi 3.5 meter.",
-        "image_url": null
-      }
-    ],
-    "2026-11-03": [
-      {
-        "title": "山打根肯特医院医疗设备升级与急诊重症区扩建专案全面启动 [历史归档复核]",
-        "detail": "沙巴卫生局与山打根市议会联合通报：山打根肯特公立医院（Hospital Duchess of Kent）今日正式落实新一轮综合医疗设备升级规划。本次专案获得联邦卫生部专项拨充 1280 万令吉，重点用于重症监护室（ICU）增加 18 张高精度生命体征监护病床，并同步引进入境两组西门子最新型 128 排超高清低剂量 CT 扫描设备。背景脉络：肯特医院作为沙巴东海岸最大区域综合转诊枢纽，长期承担来自山打根市区、巴达士、特鲁必乃至京那巴当岸沿线逾 40 万居民的急诊需求，现有重症设备负荷长期处于饱和状态。受影响群体方面，扩建后日均急诊接诊与术后重症收治承载力将提升约 45%，极大缓解患者跨市转诊亚庇伊丽莎白二院的奔波之苦。院方后续将分阶段分流门诊与病房施工，并设 24 小时咨询热线 089-212111 确保就诊秩序平稳。来源：山打根大事专页通报与诗华日报东海岸版同步确认。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴水务局（JANS）展开全州老旧地下主管网雷达探伤与减漏工程 [历史归档复核]",
-        "detail": "沙巴工程部与沙巴州水务局（JANS）今日发布联合行政指引，即日起全州 8 个主要城镇正式启动地下供水主管网声纳雷达探伤专项工程。工程核心细则聚焦于山打根北路 2 哩至 8 哩、亚庇兵南邦路段等服役超过 25 年的铸铁老旧干管，通过不开挖路面的高敏探测技术精准锁定暗漏点与管道承压盲区。背景脉络：沙巴过去数年无收益水（NRW）漏损率偏高，地底老化破裂是造成 Cecily 及高地居民水压突降与频繁爆管的主因。本次第一期试点将完成 76 公里主线排查并更换抗压球墨铸铁管。受影响群体覆盖山打根沿线 3.2 万户家庭及商业单位，抢修与并网阶段将尽量安排在午夜 00:00 至清晨 05:00 错峰低压施工，水务局同时调集 14 辆大型应急送水车于各据点待命。后续将开通每日动态进度通报。来源：Sabah TV 专访沙巴工程部长通报与 Sandakan FM 广播联播。",
-        "image_url": null
-      },
-      {
-        "title": "陆路交通局（JPJ）联手警方启动长途巴士与商用重卡数字验票与安全大排查 [历史归档复核]",
-        "detail": "马来西亚陆路交通局（JPJ）联手武吉阿曼交通调查及执法部（JSPT），即日起在全马主要长途客运总站及南北大道、泛婆大道枢纽展开代号『安全之盾』专项联合路检。政策细则规定，所有跨州跨市长途客运巴士必须实行数字电子乘车单核验，并对所有驾驶员强制实施发车前酒精及毒品快速双重筛检；严查副驾双司机配置及车辆 GPS 实时限速记录仪运行状态。背景起因：近期公假长周末客运出行密集，部分外包营运商被揭发存在疲劳驾驶及顶风超载违规代办。JPJ 总监强调，对未按规程进行例行机件保养的重卡与客巴将立即扣押并开具最高 2000 令吉罚单。广大乘客出游安全得到进一步保障，官方呼吁乘客通过 MyJPJ 手机应用预先查验车辆合格编码，或拨打 03-88866400 专线举报违章。来源：八度空间晚间新闻现场直击与中国报全马要闻版。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴东部特别保安指挥区（ESSCOM）强化沿海海上夜巡与雷达网布防 [历史归档复核]",
-        "detail": "沙巴东部特别保安指挥区（ESSCOM）总监今日在拿笃指挥中心主持沿海多兵种例行防务会议，宣布即日起对山打根、仙本那、斗湖等东海安海域深化『全天候数字雷达与海上协同巡航』新机制。细则涵盖出动巡逻艇、无人机夜视侦测群以及雷达哨所，对离岸 12 海里范围内的夜间渔船与可疑快艇进行实时识别核准，严防偷渡、跨国走私与非法越境捕捞。背景脉络：随着沙巴生态旅游热度持续攀升，欧美及亚洲多国访客对仙本那离岛及山打根苏高河岸生态游需求旺盛，维护近海长期绝对和平稳定是保障州旅游经济命脉的基石。受影响群体方面，当地渔民出海捕捞需依规开启自动识别系统（AIS），旅游快艇必须依指定安全航道行驶。ESSCOM 重申 24 小时热线 089-863181 保持畅通，保障民众安心作业。来源：马新社国家电讯社专电与沙巴星洲日报特派报道。",
-        "image_url": null
-      },
-      {
-        "title": "财政部与关税局出台特定民生物资与投资类原料进出口豁免补充细则 [历史归档复核]",
-        "detail": "财政部联合关税局（JKDM）今日正式发布 2026 年度针对关键民生必需品、原级农副食品及特定加工机械的进出口关税豁免清册修订版。根据最新规程，包括原粮、婴儿配方辅料、基础冷链物流冷藏机组及特定工业级黄金原材料等 18 项货品，在通过数字化通关平台申报后可直接享有 0% 关税或免除增值附加费。背景脉络：面对全球大宗商品供应链周期性波动，政府旨在通过减负通关环节降低中下游厂商制造成本，直接平抑国内零售终端物价涨幅，防止输入型通胀侵蚀家庭实际购买力。受影响群体包括全马进出口贸易商、食品加工厂及广大终端消费者，商会预估新政可使相关产品到岸成本缩减 4% 至 7%。关税局已在全国各主港口设立辅导专柜协助企业完成编码对齐。来源：马新社财经电讯与光明日报权威解读。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴首府至山打根泛婆大道核心路段路基铺设提速 重点标段预计提前通车 [历史归档复核]",
-        "detail": "沙巴公共工程部（JKR Sabah）在实地督察泛婆罗洲大道（Pan Borneo Highway）第 28 与 29 施工标段后证实：连接亚庇经兰脑至山打根特鲁必的跨区域主干工程进展突破 82%。工务部门通过调整双班轮转铺路机械并采用高韧性抗裂改性沥青，克服了季风降雨影响，预计特鲁必至拉卜路段的双向四车道主线将较原计划提前 45 天实现贯通。背景脉络：现有老旧公路弯急坡陡且常年承受重型棕榈运输车碾压，行车平均需耗时 6 至 7 小时，遇滑坡更常发生交通瘫痪。新大道建成后两地通勤时间将大幅缩减至 4 小时左右。受影响的跨市通勤居民、自驾游客及沙巴东海岸物流货车司机将率先享受平整宽阔的高速通行体验，有效降低行车油耗与机件损耗。工程局后续将同步完成道路标线与高反光护栏安装。来源：沙巴 Daily Express 英文日报头版与 Sabah TV 现场跟进。",
-        "image_url": null
-      },
-      {
-        "title": "通讯及多媒体委员会（MCMC）推进沙巴内陆及郊区 5G 网络中继基站全面覆顶 [历史归档复核]",
-        "detail": "马来西亚通讯及多媒体委员会（MCMC）联合国家数码公司（DNB）公布沙巴『国家数码网络计划』（JENDELA）二期最新推进时间表。本季度内在山打根八哩工业园、双溪阿立及京那巴当岸沿线新增的 36 座 5G 中继铁塔正式完成设备吊装与光纤骨干网接入调试，全州人口聚居区 5G 综合覆盖率成功跨越 78% 大关。背景脉络：数字鸿沟长期制约沙巴郊区青年电商创业、在线教育与智慧农业普及，提升宽带质量是沙巴州政府推动数字经济转型的核心支柱。受影响群体涵盖郊区学校、中小型种植园主及微型商户。升级后基站下行峰值速率将稳定达到 100Mbps 以上，有效解决以往雨天弱信号和视频网课卡顿痛点。MCMC 热线 1800-188-030 接受网速反馈。来源：中国报国内版与八度空间华语新闻同步报道。",
-        "image_url": null
-      },
-      {
-        "title": "山打根市议会（MPS）公布中央巴刹与滨海商业街设施亮化升级规画 [历史归档复核]",
-        "detail": "山打根市议会（MPS）今日在常月规划会议上正式揭晓《山打根滨海走廊与老城区商业复兴三年行动方案》。首阶段工程将针对拥有一百余年历史的中央巴刹（Central Market）三楼熟食档口排烟管道、污水隔离池及一楼生鲜摊位地面防滑进行彻底改造，并于沿海防波堤规划打造长达 1.8 公里的夜间景观灯带与慢行步道。背景起因：作为闻名全马的『小香港』美食之都，山打根滨海区每日吸引大批海内外食客品尝海鲜肉骨茶与弹弓面，但部分基础设施老化急需现代化治理与卫生标准提升。工程预计惠及巴刹内 260 余家持牌小贩及周边海鲜餐馆，改造期间市议会将安排平价临时集市维持营业，力保商户生计不受断档干扰。市议会承诺将严控施工噪音与垃圾清运。来源：山打根大事专页民生追踪与诗华日报沙巴专版。",
-        "image_url": null
-      },
-      {
-        "title": "教育部发布年终学校假期与新学年开学日程 提醒校方严查校园卫生 [历史归档复核]",
-        "detail": "马来西亚教育部（KPM）今日正式核发 2026/2027 新学年全国中小学上课及公假校历通令，统一全马各州开学与期末考试考期安排。通令特别向各州教育局发出附带防疫通知，要求沙巴及砂拉越各校在漫长假期期间务必落实校园储水箱消毒、水沟清淤及食堂冷柜除霜排查，彻底杜绝开学初骨痛热症（登革热）与细菌性食物中毒事件。背景脉络：历年雨季长假复课后，部分学校因积水滋生伊蚊导致学生群体感染病例偶有发生。教育局要求校方管理层在假期的最后一周组织全体教职员清洁运动（Gotong-Royong）。全马数百万中小学生及家长可依据官方日历提前规划长假机票与返校采购。各校联络处将于开学前两周恢复值班接待转学注册咨询。来源：光明日报教育焦点版与中国报即时全马新闻。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴野生动物局与非政府组织启动绿海龟与热带雨林栖息地扩容巡护 [历史归档复核]",
-        "detail": "沙巴野生动物局（SWD）联合世界自然基金会（WWF-Malaysia）及海龟岛国家公园管委会宣布，启动为期两年的沙巴东部海洋与红树林陆地生物多样性联合巡护行动。行动将重点在苏禄海主要产卵海滩增设红外热成像监控桩，并在京那巴当岸下游设立 4 处野生红毛猩猩与侏儒象迁徙生态廊道，严密监测并打击非法盗蛋及破坏河岸林带行为。背景脉络：沙巴拥有世界级自然生态遗产，然而气候变暖引起的沙滩温度上升及周边过度种植对野生动物迁徙路径构成长期挑战，建立严密的科技防线势在必行。此举将直接赋能当地生态导游及巡护员社区，带动山打根及苏高沿线高端生态观光业可持续发展。官方公布涉野生动物保护违法举报热线 088-215353。来源：Daily Express 专栏报道与诗华日报特稿。",
-        "image_url": null
-      },
-      {
-        "title": "国内贸易及生活成本部（KPDN）突击统制品物价 严防食用油及白糖囤积居奇 [历史归档复核]",
-        "detail": "国内贸易及生活成本部（KPDN）沙巴分局今日兵分多路，突击检查了山打根及亚庇市内 42 家大型超市、批发仓储中心及迷你杂货店。执法行动中严查津贴一公斤塑料袋装食油、统制白糖及标准净鸡的售价与进销存账目，确保零售端未出现违规加价或强制搭售现象。行动中共有 2 家涉嫌未张贴明确统制粉红价格标签的店铺被当场开出警告传票。背景脉络：针对部分社交网络散播基础食材供应短缺的谣言，KPDN 局长重申沙巴全州必需品配额充足，各大主要批发商库存可维持至少 45 天无虞。受影响的广大工薪家庭及餐饮小贩权益得到有力维护。官员呼吁民众若发现暴利或囤积行为，可通过 WhatsApp 专线 019-2794317 提交收据照片举报，执法队承诺在 24 小时内介入。来源：马新社现场快讯与中国报消费前线。",
-        "image_url": null
-      },
-      {
-        "title": "山打根机场跑道延长与国际直飞包机航线培育扶持方案进入实质评估 [历史归档复核]",
-        "detail": "沙巴旅游、文化及环境部（KePKAS）部长今日与大马机场控股（MAHB）及民航局代表就《山打根机场（SDK）全面升级与直飞拓展可行性报告》展开闭门论证。方案拟利用现有预留用地将现役跑道由 2133 米适度延伸至可起降空客 A321neo 及波音 737-MAX8 满载机型的标准，同时州政府计划设立国际直航开拓补贴基金，重点吸引中国华南、韩国及新加坡的直飞包机。背景脉络：目前入境山打根的外国游客绝大多数需经吉隆坡或亚庇中转，耗时较长削弱了国际竞争力。直航落地将彻底打通山打根乃至沙巴东海岸世界级潜水与雨林旅游的黄金大门。山打根酒店业、租车行及地接旅行社无不高度期待该专案尽快开工落地，业界预估直航开通可为本市年均注入超 1.5 亿令吉文旅消费拉动效应。来源：Sabah TV 晚间专题访谈与沙巴星洲日报商业关注。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴电力（SESB）微电网试点成功 太阳能与水力互补助力偏远乡村通电 [历史归档复核]",
-        "detail": "沙巴电力有限公司（SESB）与乡村发展部今日在山打根内陆偏远原住民村落举行首个『光水互补智能微电网系统』试运行交接仪式。该试点项目配置了 120kW 柔性光伏阵列配合高能量密度磷酸铁锂储能电池舱，并结合小型径流式水轮发电机组，成功摆脱了长期依赖柴油机发电且每日仅能供电 6 小时的窘境，实现了全天候 24 小时稳定绿电供应。背景脉络：沙巴内陆崇山峻岭阻隔，延伸传统高压输电线路成本极高且极易因暴风雨导致断线。因地制宜推广分布式离网微电网被公认为解决乡村电网『最后一公里』的最佳技术路径。全村 85 户人家约 400 名村民告别了燃油噪音与煤油灯熏染，村办小学亦首度能够正常运行电脑室与冷藏柜。SESB 表示未来两年将在全州规划推广类似微电网模式。来源：Sabah TV 现场连线与 Sandakan FM 特别节目。",
-        "image_url": null
-      },
-      {
-        "title": "沙巴卫生局通报季节性流感与防蚊指引 社区清洁运动全面展开 [历史归档复核]",
-        "detail": "沙巴卫生局（JKNS）联合地方议会今日发布季风雨季公共卫生与常见流行病防控健康警告。卫生局指出，伴随雨水增多，沙巴多个沿海及低洼区域的伊蚊幼虫滋生率微升，卫生局已调派灭蚊喷雾车前往高风险住宅区实施热雾消杀，并通报全州目前抗病毒药物与流感疫苗储备充足。背景脉络：季风气候转换期间早晚温差与潮湿环境极易诱发儿童上呼吸道感染，早期识别症状并消除居家死角积水是阻止疾病扩散最经济有效的手段。广大居民受促每周自查花盆底碟、废弃轮胎及遮雨帆布褶皱，倒掉静止积水。各公立诊所（Klinik Kesihatan）均已设置发热快速筛检通道，居民若出现持续高热或皮疹可随时前往咨询检查。来源：光明日报全马健康版与八度空间新闻快讯。",
         "image_url": null
       }
     ]

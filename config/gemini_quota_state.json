@@ -21,10 +21,10 @@
       "reservation_id": "res_2026-11-10_3_7440b906",
       "timestamp": "2026-11-10T20:07:23.874312+08:00",
       "model": "gemini-3.5-flash-lite",
-      "status": "RESERVED"
+      "status": "COMPLETED"
     }
   ],
-  "last_updated": "2026-11-10T20:07:23.874312+08:00",
-  "status": "RESERVED",
+  "last_updated": "2026-11-10T20:07:59.427988+08:00",
+  "status": "COMPLETED",
   "initialization_mode": "AUTHORIZED_PHASE_N4"
 }
