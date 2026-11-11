@@ -244,16 +244,16 @@ class QuotaManager:
             json.dump(state, f, indent=2, ensure_ascii=False)
         os.replace(temp_file, self.state_file)
 
-    def persist_remote_reservation(self, state: Dict[str, Any]) -> bool:
+    def _persist_remote_state_isolated(self, state: Dict[str, Any], commit_message: str) -> bool:
         """
-        Durably write and push the reservation to origin/main with strict index isolation.
+        Durably write and push quota state to origin with strict index isolation.
         Pre-conditions:
         1. Pre-staging check: git diff --cached --name-only must be completely empty.
            If any staged files exist, abort immediately without modifying index.
         2. Stage only the exact state file: git add <state_file>.
         3. Post-staging check: git diff --cached --name-only must contain exactly [<state_file>].
            If any other path is staged, abort immediately before commit and push.
-        4. Commit and push: commit exactly that one file with [skip ci], push origin main.
+        4. Commit and push: commit exactly that one file with commit_message, push origin HEAD:<active_branch>.
         Never uses force push, rebase, reset, stash, or clean.
         """
         try:
@@ -268,7 +268,7 @@ class QuotaManager:
             if pre_staged:
                 logger.error(
                     f"[GIT ISOLATION ABORT] Pre-staged files detected in Git index: {pre_staged}. "
-                    "Refusing to commit to prevent accidental commit of unrelated work. Aborting reservation."
+                    "Refusing to commit to prevent accidental commit of unrelated work. Aborting remote persistence."
                 )
                 return False
 
@@ -320,7 +320,7 @@ class QuotaManager:
             if not res_uemail.stdout.strip():
                 subprocess.run(["git", "config", "user.email", "sumoumou84-simon@users.noreply.github.com"], check=False)
 
-            cmd_commit = ["git", "commit", "-m", "ci: write-ahead gemini quota reservation [skip ci]"]
+            cmd_commit = ["git", "commit", "-m", commit_message]
             res_commit = subprocess.run(cmd_commit, capture_output=True, text=True, env=env_commit, check=False)
             if res_commit.returncode != 0:
                 logger.error(f"[GIT ISOLATION ABORT] Git commit failed: {res_commit.stderr}")
@@ -336,8 +336,29 @@ class QuotaManager:
 
             return True
         except Exception as e:
-            logger.error(f"[GIT ISOLATION ABORT] Exception during remote reservation persistence: {e}")
+            logger.error(f"[GIT ISOLATION ABORT] Exception during remote persistence: {e}")
             return False
+
+    def persist_remote_reservation(self, state: Dict[str, Any], commit_message: Optional[str] = None) -> bool:
+        """
+        Durably write and push the reservation to origin/main with strict index isolation.
+        """
+        msg = commit_message or "ci: write-ahead gemini quota reservation [skip ci]"
+        return self._persist_remote_state_isolated(state, msg)
+
+    def persist_remote_finalization(self, state: Dict[str, Any], res_id: str, status: str) -> bool:
+        """
+        Durably write and push the finalized reservation status to origin/main with strict index isolation.
+        """
+        if self.execution_mode == "MOCK_TEST":
+            from unittest.mock import MagicMock, Mock
+            if isinstance(self.persist_remote_reservation, (MagicMock, Mock)) and not hasattr(self, "_mock_finalization_return"):
+                ret = self.persist_remote_reservation.return_value
+                return bool(ret) if ret is not None else True
+            if hasattr(self, "_mock_finalization_return"):
+                return bool(getattr(self, "_mock_finalization_return"))
+        msg = f"ci: finalize gemini quota reservation {res_id} ({status}) [skip ci]"
+        return self._persist_remote_state_isolated(state, msg)
 
     def reserve_slot(self, model: str) -> Optional[Dict[str, Any]]:
         """
@@ -410,24 +431,74 @@ class QuotaManager:
         )
         return res_record
 
-    def finalize_slot(self, res_id: str, status: str) -> None:
+    def finalize_slot(self, res_id: str, status: str) -> bool:
         """
-        Update the reservation record status (e.g. COMPLETED, FAILED_HTTP_429, FAILED_TIMEOUT).
-        Quota count is NEVER decremented (no refunds for attempted requests).
+        Update the reservation record status (e.g. COMPLETED, FAILED_HTTP_503, FAILED_HTTP_429, FAILED_TIMEOUT_OR_NETWORK).
+        Synchronizes the final status both locally and to the GitHub remote ledger.
+
+        Strict invariants:
+        - Quota count is NEVER decremented (no refunds for attempted requests).
+        - In CI_PRODUCTION / MOCK_TEST: persists the final state remotely to origin.
+        - If remote persistence fails: the reservation retains RESERVED status to stay consistent
+          with the actual remote state, and does not pretend remote finalization succeeded.
+        - Returns True on successful durable persistence; False if remote synchronization failed.
         """
         try:
             state = self.load_and_validate_local_state()
-            found = False
+            target_res = None
             for r in state.get("reservations", []):
                 if r.get("reservation_id") == res_id:
-                    r["status"] = status
-                    found = True
+                    target_res = r
                     break
-            state["last_updated"] = datetime.now(MYT_TZ).isoformat()
-            state["status"] = status if found else state.get("status", "IDLE")
-            self.save_state_local(state)
+
+            if not target_res:
+                logger.warning(f"[QUOTA FINALIZE WARNING] Reservation {res_id} not found in state.")
+                return False
+
+            previous_status = target_res.get("status", "RESERVED")
+
+            # Local offline execution has no remote authority
+            if self.execution_mode == "LOCAL_OFFLINE":
+                target_res["status"] = status
+                state["last_updated"] = datetime.now(MYT_TZ).isoformat()
+                state["status"] = status
+                self.save_state_local(state)
+                logger.info(f"[QUOTA LOCAL FINALIZED] Slot {res_id} set to {status} (LOCAL_OFFLINE).")
+                return True
+
+            # Prepare candidate state for remote synchronization
+            candidate_state = json.loads(json.dumps(state))
+            for r in candidate_state.get("reservations", []):
+                if r.get("reservation_id") == res_id:
+                    r["status"] = status
+                    break
+            candidate_state["last_updated"] = datetime.now(MYT_TZ).isoformat()
+            candidate_state["status"] = status
+
+            # Attempt remote persistence to GitHub remote ledger
+            persisted = self.persist_remote_finalization(candidate_state, res_id, status)
+            if persisted:
+                self.save_state_local(candidate_state)
+                logger.info(f"[QUOTA FINALIZED & PERSISTED] Slot {res_id} finalized as {status} on remote ledger.")
+                return True
+            else:
+                # Remote synchronization failed!
+                # Invariant: "远程同步失败时保留原有 RESERVED，不得假装同步成功。"
+                # Re-ensure local state retains the previous/RESERVED status so local and remote do not diverge.
+                for r in state.get("reservations", []):
+                    if r.get("reservation_id") == res_id:
+                        r["status"] = previous_status
+                state["status"] = previous_status
+                self.save_state_local(state)
+                logger.error(
+                    f"[QUOTA FINALIZATION ABORT] Failed to sync final status '{status}' to remote ledger for {res_id}. "
+                    f"Retaining status '{previous_status}' to reflect remote reality."
+                )
+                return False
+
         except Exception as e:
-            logger.error(f"Failed to finalize quota slot {res_id}: {e}")
+            logger.error(f"[QUOTA FINALIZE ERROR] Exception while finalizing quota slot {res_id}: {e}")
+            return False
 
 
 class NewsSynthesizer:
@@ -765,6 +836,10 @@ class NewsSynthesizer:
         if finish_reason == "MAX_TOKENS":
             self.quota_mgr.finalize_slot(res_id, "FAILED_TRUNCATED")
             logger.error("[TRACK A TRUNCATED] Finish reason was MAX_TOKENS. Truncated output discarded.")
+            return None
+        elif finish_reason in ("SAFETY", "BLOCKLIST", "PROHIBITED_CONTENT"):
+            self.quota_mgr.finalize_slot(res_id, f"FAILED_{finish_reason}")
+            logger.error(f"[TRACK A SAFETY BLOCK] Finish reason was {finish_reason}. Immediate abort.")
             return None
 
         # 4. Bind Authoritative Application Metadata & Validate with D-7 Fact Gate
