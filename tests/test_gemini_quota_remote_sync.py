@@ -25,12 +25,13 @@ import urllib.error
 from unittest.mock import MagicMock, patch
 import tempfile
 import shutil
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-from pipeline.synthesizer import QuotaManager, NewsSynthesizer
+from pipeline.synthesizer import QuotaManager, NewsSynthesizer, MYT_TZ
 from collectors import RawArticle
 
 
@@ -576,6 +577,16 @@ class TestGeminiQuotaRemoteSync(unittest.TestCase):
         self.assertEqual(res_map[res1_id], "COMPLETED")
         self.assertEqual(res_map[res2_id], "RESERVED", "Runner 2's reservation must remain preserved as RESERVED!")
 
+        # Problem 1 Verification: Runner 1 local JSON must also retain Runner 2's reservation and match remote
+        with open(state_file, "r", encoding="utf-8") as f:
+            final_local1 = json.load(f)
+        self.assertEqual(final_local1["reserved_count"], 2)
+        self.assertEqual(len(final_local1["reservations"]), 2)
+        local1_map = {r["reservation_id"]: r["status"] for r in final_local1["reservations"]}
+        self.assertEqual(local1_map[res1_id], "COMPLETED")
+        self.assertEqual(local1_map[res2_id], "RESERVED")
+        self.assertEqual(final_local1, final_remote, "Runner 1 local JSON must be completely identical to remote JSON")
+
     def test_14_terminal_reservation_never_regresses_to_reserved(self):
         """Requirement 8: Once a reservation reaches a terminal status, reconciliation never regresses it to RESERVED."""
         import subprocess
@@ -678,6 +689,315 @@ class TestGeminiQuotaRemoteSync(unittest.TestCase):
             synth.quota_mgr.run_requests_count = 0  # reset run counter to test entry point
             dispatch_res = synth.synthesize("2026-11-11", test_articles, api_key="test_key")
             self.assertEqual(dispatch_res, [], "synthesize() must return [] when finalization sync fails")
+
+    def test_16_test_a_and_b_concurrent_reservation_preservation_and_local_remote_consistency(self):
+        """
+        Test A & Test B:
+        - Runner 1 and Runner 2 reserve concurrently.
+        - Runner 1 finalizes with automatic conflict reconciliation.
+        - Verifies Runner 2's reservation is preserved on Remote and in Runner 1's Local JSON (Test A).
+        - Verifies complete dictionary equality between Runner 1's Local JSON and Remote JSON (Test B).
+        - Verifies Runner 2's local state after pull matches Remote JSON.
+        """
+        import subprocess
+        remote_dir, repo_dir, state_file = self._setup_real_git_repos()
+
+        repo2_dir = os.path.join(self.test_dir, f"repo2_{uuid.uuid4().hex[:6]}")
+        subprocess.run(["git", "clone", remote_dir, repo2_dir], check=True, capture_output=True)
+        subprocess.run(["git", "-C", repo2_dir, "config", "user.name", "Runner 2 Bot"], check=True)
+        subprocess.run(["git", "-C", repo2_dir, "config", "user.email", "runner2@example.com"], check=True)
+
+        # Runner 1 reserves slot 1
+        cfg1 = {
+            "gemini_quota": {
+                "daily_request_limit": 5,
+                "per_run_request_limit": 1,
+                "candidate_models": ["gemini-3.5-flash-lite"],
+                "state_file": state_file,
+                "execution_mode": "CI_PRODUCTION"
+            }
+        }
+        qm1 = QuotaManager(cfg1, state_file_override=state_file, execution_mode_override="CI_PRODUCTION", repo_dir=repo_dir)
+        res1 = qm1.reserve_slot("gemini-3.5-flash-lite")
+        self.assertIsNotNone(res1)
+        res1_id = res1["reservation_id"]
+
+        # Runner 2 pulls and reserves slot 2
+        subprocess.run(["git", "-C", repo2_dir, "pull", "origin", "main"], check=True, capture_output=True)
+        state_file2 = os.path.join(repo2_dir, "config", "gemini_quota_state.json")
+        cfg2 = {
+            "gemini_quota": {
+                "daily_request_limit": 5,
+                "per_run_request_limit": 1,
+                "candidate_models": ["gemini-3.5-flash-lite"],
+                "state_file": state_file2,
+                "execution_mode": "CI_PRODUCTION"
+            }
+        }
+        qm2 = QuotaManager(cfg2, state_file_override=state_file2, execution_mode_override="CI_PRODUCTION", repo_dir=repo2_dir)
+        res2 = qm2.reserve_slot("gemini-3.5-flash-lite")
+        self.assertIsNotNone(res2)
+        res2_id = res2["reservation_id"]
+
+        # Runner 1 finalizes slot 1 as COMPLETED (non-fast-forward push rejection reconciles automatically)
+        ok = qm1.finalize_slot(res1_id, "COMPLETED")
+        self.assertTrue(ok, "Finalize must succeed via automatic reconciliation")
+
+        # 1. Test A: Check Remote JSON
+        res_show = subprocess.run(["git", "-C", repo_dir, "show", "origin/main:config/gemini_quota_state.json"], check=True, capture_output=True, text=True)
+        remote_data = json.loads(res_show.stdout)
+        self.assertEqual(remote_data["reserved_count"], 2)
+        self.assertEqual(len(remote_data["reservations"]), 2)
+        remote_map = {r["reservation_id"]: r["status"] for r in remote_data["reservations"]}
+        self.assertEqual(remote_map[res1_id], "COMPLETED")
+        self.assertEqual(remote_map[res2_id], "RESERVED")
+
+        # 2. Test A: Check Runner 1 Local JSON
+        with open(state_file, "r", encoding="utf-8") as f:
+            local1_data = json.load(f)
+        self.assertEqual(local1_data["reserved_count"], 2)
+        self.assertEqual(len(local1_data["reservations"]), 2)
+        local1_map = {r["reservation_id"]: r["status"] for r in local1_data["reservations"]}
+        self.assertEqual(local1_map[res1_id], "COMPLETED")
+        self.assertEqual(local1_map[res2_id], "RESERVED", "Runner 2's reservation must not be lost in Runner 1's local JSON")
+
+        # 3. Test B: Complete dictionary equality between Local JSON and Remote JSON
+        self.assertEqual(local1_data, remote_data, "Local JSON and Remote JSON must have 100% full structure equality")
+
+        # 4. Test A: Runner 2 pulls and checks its local state
+        subprocess.run(["git", "-C", repo2_dir, "pull", "origin", "main"], check=True, capture_output=True)
+        with open(state_file2, "r", encoding="utf-8") as f:
+            local2_data = json.load(f)
+        self.assertEqual(local2_data, remote_data, "Runner 2 local JSON must match remote JSON after pull")
+
+    def test_17_test_c_terminal_status_protection_unified(self):
+        """
+        Test C:
+        Terminal status cannot be downgraded:
+        - COMPLETED -> RESERVED (rejected)
+        - FAILED_HTTP_503 -> RESERVED (rejected)
+        - FAILED_HTTP_401 -> RESERVED (rejected)
+        - FAILED_HTTP_403 -> RESERVED (rejected)
+        - FAILED_TIMEOUT_OR_NETWORK -> RESERVED (rejected)
+        - FAILED_TRUNCATED -> RESERVED (rejected)
+        - FAILED_UNEXPECTED -> RESERVED (rejected)
+        - FAILED_INSUFFICIENT_ITEMS -> RESERVED (rejected)
+        - COMPLETED -> IDLE (rejected)
+        - COMPLETED -> FAILED_HTTP_503 (rejected)
+        Checks both top-level ledger status and nested reservation status.
+        """
+        qm = QuotaManager(self.config, state_file_override=self.state_file, execution_mode_override="LOCAL_OFFLINE")
+
+        terminal_cases = [
+            "COMPLETED",
+            "FAILED_HTTP_503",
+            "FAILED_HTTP_401",
+            "FAILED_HTTP_403",
+            "FAILED_TIMEOUT_OR_NETWORK",
+            "FAILED_TRUNCATED",
+            "FAILED_UNEXPECTED",
+            "FAILED_INSUFFICIENT_ITEMS"
+        ]
+
+        today_str = qm.get_today_myt_str()
+        for initial_terminal in terminal_cases:
+            # Setup state with initial_terminal status
+            res_id = f"res_{today_str}_1_test_{uuid.uuid4().hex[:6]}"
+            state = {
+                "schema_version": "1.0",
+                "date": today_str,
+                "daily_limit": 5,
+                "reserved_count": 1,
+                "last_updated": datetime.now(MYT_TZ).isoformat(),
+                "status": initial_terminal,
+                "reservations": [{
+                    "reservation_id": res_id,
+                    "timestamp": datetime.now(MYT_TZ).isoformat(),
+                    "model": "gemini-3.5-flash-lite",
+                    "status": initial_terminal
+                }]
+            }
+            qm.save_state_local(state)
+
+            # Attempt forbidden downgrade to RESERVED
+            ok = qm.finalize_slot(res_id, "RESERVED")
+            self.assertFalse(ok, f"Downgrading from {initial_terminal} to RESERVED must be strictly rejected")
+
+            # Check both nested and top-level statuses remain safe
+            with open(self.state_file, "r", encoding="utf-8") as f:
+                saved = json.load(f)
+            self.assertEqual(saved["status"], initial_terminal, f"Top-level status must retain {initial_terminal}")
+            self.assertEqual(saved["reservations"][0]["status"], initial_terminal, f"Nested status must retain {initial_terminal}")
+
+        # Also verify COMPLETED cannot be changed to non-terminal IDLE or another error status
+        res_id = f"res_{today_str}_1_test_comp"
+        state = {
+            "schema_version": "1.0",
+            "date": today_str,
+            "daily_limit": 5,
+            "reserved_count": 1,
+            "last_updated": datetime.now(MYT_TZ).isoformat(),
+            "status": "COMPLETED",
+            "reservations": [{
+                "reservation_id": res_id,
+                "timestamp": datetime.now(MYT_TZ).isoformat(),
+                "model": "gemini-3.5-flash-lite",
+                "status": "COMPLETED"
+            }]
+        }
+        qm.save_state_local(state)
+
+        self.assertFalse(qm.finalize_slot(res_id, "IDLE"))
+        self.assertFalse(qm.finalize_slot(res_id, "FAILED_HTTP_503"))
+
+        with open(self.state_file, "r", encoding="utf-8") as f:
+            saved = json.load(f)
+        self.assertEqual(saved["status"], "COMPLETED")
+        self.assertEqual(saved["reservations"][0]["status"], "COMPLETED")
+
+    def test_18_test_d_git_update_ref_failure_blocks_publishing(self):
+        """
+        Test D:
+        Simulate remote push succeeding but local git update-ref failing:
+        - Must NOT report success.
+        - Must identify local sync failure.
+        - Main index must have zero staged residue.
+        - Production news publishing must be completely blocked (fail-closed).
+        """
+        import subprocess
+        remote_dir, repo_dir, state_file = self._setup_real_git_repos()
+
+        cfg = {
+            "gemini_quota": {
+                "daily_request_limit": 5,
+                "per_run_request_limit": 1,
+                "candidate_models": ["gemini-3.5-flash-lite"],
+                "state_file": state_file,
+                "execution_mode": "CI_PRODUCTION"
+            }
+        }
+        qm = QuotaManager(cfg, state_file_override=state_file, execution_mode_override="CI_PRODUCTION", repo_dir=repo_dir)
+        res = qm.reserve_slot("gemini-3.5-flash-lite")
+        self.assertIsNotNone(res)
+        res_id = res["reservation_id"]
+
+        # Intercept subprocess.run: let everything succeed EXCEPT git update-ref
+        orig_run = subprocess.run
+        def mock_sub_run(cmd, *args, **kwargs):
+            if isinstance(cmd, list) and len(cmd) >= 2 and cmd[0] == "git" and cmd[1] == "update-ref":
+                from subprocess import CompletedProcess
+                return CompletedProcess(cmd, 1, stdout="", stderr="fatal: mock update-ref lock contention")
+            return orig_run(cmd, *args, **kwargs)
+
+        with patch("subprocess.run", side_effect=mock_sub_run):
+            # Attempt finalization
+            ok = qm.finalize_slot(res_id, "COMPLETED")
+            self.assertFalse(ok, "Must return False when git update-ref fails locally, even if push succeeded")
+
+        # Verify main Git index is completely clean (no unexpected staged residue)
+        res_idx = subprocess.run(["git", "-C", repo_dir, "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
+        self.assertEqual(res_idx.stdout.strip(), "", "Main index must have 0 staged residue after local sync failure")
+
+        # Verify synthesize_track_a_single_batch fail-closed blocking
+        synth = NewsSynthesizer(cfg, quota_mgr=qm)
+        test_articles = [RawArticle(title="Valid Test Article", url="https://x.com", source="Official Src", category="sabah")]
+
+        mock_resp = MagicMock()
+        mock_resp.__enter__.return_value = mock_resp
+        mock_resp.getcode.return_value = 200
+        mock_resp.read.return_value = json.dumps({
+            "candidates": [{
+                "content": {
+                    "parts": [{
+                        "text": json.dumps([{
+                            "category": "sabah",
+                            "title": "Sabah Test Title",
+                            "titleBM": "Tajuk Ujian Sabah",
+                            "detail": "Sabah test detail substantif",
+                            "detailBM": "Butiran ujian Sabah",
+                            "source": "Official Src",
+                            "source_url": "https://x.com"
+                        }])
+                    }]
+                },
+                "finishReason": "STOP"
+            }],
+            "usageMetadata": {"promptTokenCount": 100, "candidatesTokenCount": 200, "totalTokenCount": 300}
+        }).encode("utf-8")
+
+        with patch("urllib.request.urlopen", return_value=mock_resp), \
+             patch("subprocess.run", side_effect=mock_sub_run):
+            batch_res = synth.synthesize_track_a_single_batch("test_key", "2026-11-11", test_articles)
+            self.assertIsNone(batch_res, "Production publishing must be blocked (return None) on local sync failure")
+
+    def test_19_test_e_final_state_reconciliation_terminal_consistency(self):
+        """
+        Test E:
+        Final state reconciliation with conflicting runner:
+        - Runner 1 reserves res1.
+        - Runner 2 clones and finalizes res1 to COMPLETED on remote.
+        - Runner 1 attempts to finalize res1 with RESERVED or stale status.
+        - Reconciliation discovers remote res1 is COMPLETED.
+        - Terminal status is NOT overwritten; COMPLETED does not roll back.
+        - Top-level and nested statuses are consistent.
+        - Runner 1 Local JSON and Remote JSON are 100% consistent.
+        """
+        import subprocess
+        remote_dir, repo_dir, state_file = self._setup_real_git_repos()
+
+        # Runner 1 reserves res1
+        cfg1 = {
+            "gemini_quota": {
+                "daily_request_limit": 5,
+                "per_run_request_limit": 1,
+                "candidate_models": ["gemini-3.5-flash-lite"],
+                "state_file": state_file,
+                "execution_mode": "CI_PRODUCTION"
+            }
+        }
+        qm1 = QuotaManager(cfg1, state_file_override=state_file, execution_mode_override="CI_PRODUCTION", repo_dir=repo_dir)
+        res = qm1.reserve_slot("gemini-3.5-flash-lite")
+        res_id = res["reservation_id"]
+
+        # Runner 2 clones and finalizes res_id to COMPLETED
+        repo2_dir = os.path.join(self.test_dir, f"repo2_{uuid.uuid4().hex[:6]}")
+        subprocess.run(["git", "clone", remote_dir, repo2_dir], check=True, capture_output=True)
+        subprocess.run(["git", "-C", repo2_dir, "config", "user.name", "Runner 2 Bot"], check=True)
+        subprocess.run(["git", "-C", repo2_dir, "config", "user.email", "runner2@example.com"], check=True)
+        state_file2 = os.path.join(repo2_dir, "config", "gemini_quota_state.json")
+        cfg2 = {
+            "gemini_quota": {
+                "daily_request_limit": 5,
+                "per_run_request_limit": 1,
+                "candidate_models": ["gemini-3.5-flash-lite"],
+                "state_file": state_file2,
+                "execution_mode": "CI_PRODUCTION"
+            }
+        }
+        qm2 = QuotaManager(cfg2, state_file_override=state_file2, execution_mode_override="CI_PRODUCTION", repo_dir=repo2_dir)
+        self.assertTrue(qm2.finalize_slot(res_id, "COMPLETED"))
+
+        # Runner 1 is behind origin/main with local status still RESERVED.
+        # Runner 1 attempts to finalize / sync with RESERVED.
+        # Reconciliation will catch that remote is COMPLETED and refuse downgrade.
+        qm1.finalize_slot(res_id, "RESERVED")
+
+        # Verify Remote: res1 is COMPLETED, top-level is COMPLETED
+        res_show = subprocess.run(["git", "-C", repo_dir, "show", "origin/main:config/gemini_quota_state.json"], check=True, capture_output=True, text=True)
+        remote_data = json.loads(res_show.stdout)
+        target_remote = next(r for r in remote_data["reservations"] if r["reservation_id"] == res_id)
+        self.assertEqual(target_remote["status"], "COMPLETED")
+        self.assertEqual(remote_data["status"], "COMPLETED")
+
+        # Verify Runner 1 Local: res1 is COMPLETED, top-level is COMPLETED
+        with open(state_file, "r", encoding="utf-8") as f:
+            local1_data = json.load(f)
+        target_local = next(r for r in local1_data["reservations"] if r["reservation_id"] == res_id)
+        self.assertEqual(target_local["status"], "COMPLETED")
+        self.assertEqual(local1_data["status"], "COMPLETED")
+
+        # Verify Local and Remote are 100% consistent
+        self.assertEqual(local1_data, remote_data, "Local and remote state must match 100% after reconciliation")
 
 
 if __name__ == "__main__":

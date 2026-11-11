@@ -238,6 +238,75 @@ class QuotaManager:
             logger.error(f"[QUOTA FAIL-CLOSED] Unexpected exception during remote state verification: {e}")
             return None, "UNEXPECTED_EXCEPTION"
 
+    @staticmethod
+    def is_terminal_status(status: Optional[str]) -> bool:
+        """
+        Check if a quota reservation or ledger status is terminal.
+        Terminal statuses represent final, irreversible outcomes of an attempted request:
+        - 'COMPLETED' (successful Gemini call)
+        - Any status starting with 'FAILED_' (e.g. FAILED_HTTP_503, FAILED_HTTP_429,
+          FAILED_HTTP_401, FAILED_HTTP_403, FAILED_TIMEOUT_OR_NETWORK, FAILED_TRUNCATED,
+          FAILED_UNEXPECTED, FAILED_INSUFFICIENT_ITEMS, FAILED_REMOTE_PERSISTENCE, etc.)
+        Non-terminal statuses:
+        - 'RESERVED' (pending request execution)
+        - 'IDLE' (initial clean state)
+        """
+        if not status or not isinstance(status, str):
+            return False
+        s = status.strip().upper()
+        return s == "COMPLETED" or s.startswith("FAILED_")
+
+    @staticmethod
+    def is_valid_status_transition(current_status: Optional[str], new_status: Optional[str]) -> Tuple[bool, str]:
+        """
+        Enforce strict immutable quota ledger transition rules:
+        1. If current_status is terminal (COMPLETED or FAILED_*):
+           - Transition back to non-terminal (RESERVED, IDLE, etc.) is strictly FORBIDDEN.
+           - If current_status is COMPLETED:
+             - Idempotent transition to COMPLETED is allowed.
+             - Downgrading to FAILED_* or any non-terminal state is strictly FORBIDDEN.
+           - If current_status is FAILED_*:
+             - Idempotent transition to the exact same FAILED_* status is allowed.
+             - Regressing to RESERVED/IDLE or retroactively claiming COMPLETED is strictly FORBIDDEN.
+        2. If current_status is non-terminal (RESERVED, IDLE, or None):
+           - Transition to COMPLETED, any FAILED_*, or RESERVED is allowed.
+
+        Returns:
+            (is_allowed: bool, effective_status: str)
+            If allowed: (True, new_status.upper())
+            If forbidden: (False, current_status)
+        """
+        curr = (current_status or "RESERVED").strip().upper()
+        new_s = (new_status or "").strip().upper()
+
+        curr_is_terminal = QuotaManager.is_terminal_status(curr)
+        new_is_terminal = QuotaManager.is_terminal_status(new_s)
+
+        if curr_is_terminal:
+            if not new_is_terminal:
+                logger.warning(
+                    f"[QUOTA STATUS PROTECTION] Forbidden transition: terminal '{curr}' cannot regress to non-terminal '{new_s}'."
+                )
+                return False, curr
+
+            if curr == "COMPLETED":
+                if new_s == "COMPLETED":
+                    return True, "COMPLETED"
+                logger.warning(
+                    f"[QUOTA STATUS PROTECTION] Forbidden transition: COMPLETED cannot be overwritten by '{new_s}'."
+                )
+                return False, "COMPLETED"
+
+            if curr.startswith("FAILED_"):
+                if new_s == curr:
+                    return True, curr
+                logger.warning(
+                    f"[QUOTA STATUS PROTECTION] Forbidden transition: terminal failure '{curr}' cannot be changed to '{new_s}'."
+                )
+                return False, curr
+
+        return True, new_s
+
     def save_state_local(self, state: Dict[str, Any]) -> None:
         """Write state to state_file durably with UTF-8 encoding."""
         os.makedirs(os.path.dirname(os.path.abspath(self.state_file)), exist_ok=True)
@@ -375,8 +444,17 @@ class QuotaManager:
                 return False, ("PUSH_REJECTED" if is_rejected else f"PUSH_FAILED: {err_msg}")
 
             # 11. Push succeeded! Fast-forward local branch ref and sync primary index cleanly
-            subprocess.run(["git", "update-ref", f"refs/heads/{active_branch}", commit_sha], cwd=self.repo_dir, check=False)
-            subprocess.run(["git", "add", git_path], cwd=self.repo_dir, check=False)
+            res_ref = subprocess.run(["git", "update-ref", f"refs/heads/{active_branch}", commit_sha], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+            if res_ref.returncode != 0:
+                err_ref = res_ref.stderr.strip()
+                logger.error(f"[GIT LOCAL SYNC FAILED] git update-ref failed after remote push (commit {commit_sha}): {err_ref}")
+                return False, f"LOCAL_SYNC_FAILED_UPDATE_REF: {err_ref}"
+
+            res_add_main = subprocess.run(["git", "add", git_path], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+            if res_add_main.returncode != 0:
+                err_add = res_add_main.stderr.strip()
+                logger.error(f"[GIT LOCAL SYNC FAILED] git add into main index failed after remote push: {err_add}")
+                return False, f"LOCAL_SYNC_FAILED_ADD: {err_add}"
 
             return True, commit_sha
         except Exception as e:
@@ -407,7 +485,7 @@ class QuotaManager:
         res_id: str,
         status: str,
         max_retries: int = 3
-    ) -> bool:
+    ) -> Tuple[bool, Optional[Dict[str, Any]]]:
         """
         Durably write and push the finalized reservation status to origin with strict index isolation.
         Handles non-fast-forward push rejections via safe authoritative reconciliation:
@@ -418,16 +496,24 @@ class QuotaManager:
         5. If remote reservation is already finalized, never regress to RESERVED.
         6. Retry isolated push (up to max_retries).
         7. Fail-closed if reconciliation fails or retries exhausted.
+        Returns: (success: bool, final_state: Optional[Dict[str, Any]])
         """
         if self.execution_mode == "MOCK_TEST":
             from unittest.mock import MagicMock, Mock
             if hasattr(self, "_mock_finalization_return"):
-                return bool(getattr(self, "_mock_finalization_return"))
+                val = getattr(self, "_mock_finalization_return")
+                if isinstance(val, tuple):
+                    return val
+                return (bool(val), state if val else None)
             if isinstance(getattr(self, "persist_remote_finalization", None), (MagicMock, Mock)):
-                return bool(self.persist_remote_finalization.return_value)
+                val = self.persist_remote_finalization.return_value
+                if isinstance(val, tuple):
+                    return val
+                return (bool(val), state if val else None)
             if isinstance(getattr(self, "persist_remote_reservation", None), (MagicMock, Mock)):
                 ret = self.persist_remote_reservation.return_value
-                return bool(ret) if ret is not None else True
+                is_ok = bool(ret) if ret is not None else True
+                return (is_ok, state if is_ok else None)
 
         active_branch = os.getenv("GITHUB_REF_NAME") or "main"
         res_curr = subprocess.run(["git", "branch", "--show-current"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
@@ -443,7 +529,7 @@ class QuotaManager:
             ok, reason = self._persist_remote_state_isolated(current_state, commit_msg, branch=active_branch)
             if ok:
                 logger.info(f"[QUOTA FINALIZED & PERSISTED] Slot {res_id} finalized as {status} on origin/{active_branch}.")
-                return True
+                return True, current_state
 
             if reason == "PUSH_REJECTED":
                 logger.warning(
@@ -454,25 +540,25 @@ class QuotaManager:
                 res_fetch = subprocess.run(["git", "fetch", "origin", active_branch, "--quiet"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
                 if res_fetch.returncode != 0:
                     logger.error(f"[QUOTA RECONCILE FAILED] Git fetch failed: {res_fetch.stderr.strip()}")
-                    return False
+                    return False, None
 
                 # 2. Read remote state JSON
                 res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
                 if res_show.returncode != 0:
                     logger.error(f"[QUOTA RECONCILE FAILED] Failed to read {git_path} from origin/{active_branch}: {res_show.stderr.strip()}")
-                    return False
+                    return False, None
 
                 try:
                     remote_state = json.loads(res_show.stdout)
                     self._validate_state_schema(remote_state)
                 except Exception as e:
                     logger.error(f"[QUOTA RECONCILE FAILED] Remote state invalid during reconciliation: {e}")
-                    return False
+                    return False, None
 
                 # 3. Check date consistency
                 if remote_state.get("date") != current_state.get("date"):
                     logger.error(f"[QUOTA RECONCILE FAILED] Remote date {remote_state.get('date')} != local date {current_state.get('date')}.")
-                    return False
+                    return False, None
 
                 # 4. Locate res_id in remote reservations
                 target_r = None
@@ -483,28 +569,30 @@ class QuotaManager:
 
                 if not target_r:
                     logger.error(f"[QUOTA RECONCILE FAILED] Reservation {res_id} not found in remote reservations ledger!")
-                    return False
+                    return False, None
 
-                # 5. Requirement B.6: 如果远程 reservation 已经完成最终状态更新，不得将其覆盖回 RESERVED
+                # 5. Requirement: Terminal 状态保护 (nested reservation)
                 remote_curr_status = target_r.get("status")
-                terminal_statuses = {
-                    "COMPLETED",
-                    "FAILED_HTTP_503",
-                    "FAILED_HTTP_429",
-                    "FAILED_TIMEOUT_OR_NETWORK",
-                    "FAILED_TRUNCATED",
-                    "FAILED_UNEXPECTED",
-                    "FAILED_INSUFFICIENT_ITEMS"
-                }
-                if remote_curr_status in terminal_statuses and status == "RESERVED":
+                allowed, effective_status = self.is_valid_status_transition(remote_curr_status, status)
+                if not allowed:
                     logger.warning(
-                        f"[QUOTA RECONCILE] Remote reservation {res_id} already finalized as '{remote_curr_status}'. "
-                        "Refusing to overwrite back to RESERVED."
+                        f"[QUOTA RECONCILE] Remote reservation {res_id} has status '{remote_curr_status}'. "
+                        f"Cannot transition to '{status}'. Retaining '{effective_status}'."
                     )
-                else:
-                    target_r["status"] = status
+                target_r["status"] = effective_status
 
-                # 6. Requirement B.5: 保留其他运行已经创建的 reservations 和 reserved_count
+                # 6. Requirement: 顶层 ledger status 必须与实际 reservation 状态保持一致。
+                # 冲突协调时必须同时保护 nested reservation 和顶层状态。
+                remote_top_status = remote_state.get("status", "RESERVED")
+                top_allowed, effective_top = self.is_valid_status_transition(remote_top_status, effective_status)
+                if not top_allowed:
+                    logger.warning(
+                        f"[QUOTA RECONCILE] Top-level status '{remote_top_status}' cannot transition to '{effective_status}'. "
+                        f"Retaining '{effective_top}'."
+                    )
+                remote_state["status"] = effective_top
+
+                # 7. Requirement: 保留其他运行已经创建的 reservations 和 reserved_count
                 remote_state["reserved_count"] = max(
                     remote_state.get("reserved_count", 0),
                     current_state.get("reserved_count", 0),
@@ -512,17 +600,16 @@ class QuotaManager:
                 )
                 remote_state["daily_limit"] = self.daily_request_limit
                 remote_state["last_updated"] = datetime.now(MYT_TZ).isoformat()
-                remote_state["status"] = status
 
                 current_state = remote_state
                 time.sleep(0.3)
                 continue
             else:
-                logger.error(f"[QUOTA FINALIZATION ABORT] Remote persistence failed: {reason}")
-                return False
+                logger.error(f"[QUOTA FINALIZATION ABORT] Remote persistence failed ({reason}).")
+                return False, None
 
         logger.error(f"[QUOTA FINALIZATION FAILED] Exhausted {max_retries} reconciliation attempts for {res_id}.")
-        return False
+        return False, None
 
     def reserve_slot(self, model: str) -> Optional[Dict[str, Any]]:
         """
@@ -603,9 +690,12 @@ class QuotaManager:
         Strict invariants:
         - Quota count is NEVER decremented (no refunds for attempted requests).
         - In CI_PRODUCTION / MOCK_TEST: persists the final state remotely to origin.
-        - If remote persistence fails: the reservation retains RESERVED status to stay consistent
-          with the actual remote state, and does not pretend remote finalization succeeded.
-        - Returns True on successful durable persistence; False if remote synchronization failed.
+        - Terminal statuses (COMPLETED, FAILED_*) can NEVER regress to RESERVED or non-terminal states.
+        - COMPLETED can NEVER be overwritten by FAILED_* or non-terminal states.
+        - If remote persistence fails or local sync fails: the reservation retains its previous status
+          to stay consistent with actual reality, and does not pretend finalization succeeded.
+        - When reconciliation occurs, the final merged state is saved locally (never overwritten with stale candidate).
+        - Returns True on successful durable persistence; False if remote/local synchronization failed.
         """
         try:
             state = self.load_and_validate_local_state()
@@ -621,41 +711,57 @@ class QuotaManager:
 
             previous_status = target_res.get("status", "RESERVED")
 
+            # Problem 2: 建立统一的状态转换保护
+            allowed, effective_status = self.is_valid_status_transition(previous_status, status)
+            if not allowed:
+                logger.warning(
+                    f"[QUOTA STATUS PROTECTION] Invalid transition in finalize_slot for {res_id}: "
+                    f"'{previous_status}' -> '{status}'. Refusing downgrade and retaining '{effective_status}'."
+                )
+                return False
+
             # Local offline execution has no remote authority
             if self.execution_mode == "LOCAL_OFFLINE":
-                target_res["status"] = status
+                target_res["status"] = effective_status
                 state["last_updated"] = datetime.now(MYT_TZ).isoformat()
-                state["status"] = status
+                state["status"] = effective_status
                 self.save_state_local(state)
-                logger.info(f"[QUOTA LOCAL FINALIZED] Slot {res_id} set to {status} (LOCAL_OFFLINE).")
+                logger.info(f"[QUOTA LOCAL FINALIZED] Slot {res_id} set to {effective_status} (LOCAL_OFFLINE).")
                 return True
 
             # Prepare candidate state for remote synchronization
             candidate_state = json.loads(json.dumps(state))
             for r in candidate_state.get("reservations", []):
                 if r.get("reservation_id") == res_id:
-                    r["status"] = status
+                    r["status"] = effective_status
                     break
             candidate_state["last_updated"] = datetime.now(MYT_TZ).isoformat()
-            candidate_state["status"] = status
+            candidate_state["status"] = effective_status
 
             # Attempt remote persistence to GitHub remote ledger
-            persisted = self.persist_remote_finalization(candidate_state, res_id, status)
+            res_persist = self.persist_remote_finalization(candidate_state, res_id, effective_status)
+            if isinstance(res_persist, tuple):
+                persisted, final_state = res_persist
+            else:
+                persisted = bool(res_persist)
+                final_state = candidate_state if persisted else None
+
             if persisted:
-                self.save_state_local(candidate_state)
-                logger.info(f"[QUOTA FINALIZED & PERSISTED] Slot {res_id} finalized as {status} on remote ledger.")
+                # Problem 1: 必须保存最终成功写入远端的 merged state，不能使用过期 candidate_state 覆盖！
+                state_to_save = final_state if final_state is not None else candidate_state
+                self.save_state_local(state_to_save)
+                logger.info(f"[QUOTA FINALIZED & PERSISTED] Slot {res_id} finalized as {effective_status} on remote ledger.")
                 return True
             else:
-                # Remote synchronization failed!
-                # Invariant: "远程同步失败时保留原有 RESERVED，不得假装同步成功。"
-                # Re-ensure local state retains the previous/RESERVED status so local and remote do not diverge.
+                # Remote or local synchronization failed!
+                # Invariant: 远程同步失败时保留原有状态，不得假装同步成功。
                 for r in state.get("reservations", []):
                     if r.get("reservation_id") == res_id:
                         r["status"] = previous_status
                 state["status"] = previous_status
                 self.save_state_local(state)
                 logger.error(
-                    f"[QUOTA FINALIZATION ABORT] Failed to sync final status '{status}' to remote ledger for {res_id}. "
+                    f"[QUOTA FINALIZATION ABORT] Failed to sync final status '{effective_status}' to remote ledger for {res_id}. "
                     f"Retaining status '{previous_status}' to reflect remote reality."
                 )
                 return False
