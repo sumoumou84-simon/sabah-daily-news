@@ -1,0 +1,150 @@
+{
+  "phase": "Phase 3.6.1",
+  "audit_type": "Public Repository Exposure & Containment Audit",
+  "timestamp": "2026-11-08T15:13:00+08:00",
+  "repository": {
+    "name": "sumoumou84-simon/sabah-daily-news",
+    "visibility": "PUBLIC",
+    "remote_url": "https://github.com/sumoumou84-simon/sabah-daily-news.git"
+  },
+  "overall_verdict": "PUBLIC INTERNAL SOURCE EXPOSURE",
+  "verdict_rationale": "Internal source code, scrapers, configs, raw data, and test fixtures are accessible anonymously on the public feature branch (feature/sandakan-events-engine). However, no secrets, API keys, credentials, tokens, or PII were discovered across any commits or files.",
+  "audited_targets": {
+    "events_data.json": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Internal raw event schema, unfiltered/draft event data, internal event IDs",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "MEDIUM (Operational Source/Data Exposure)"
+    },
+    "data/sandakan_events_cache.json": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Collector fallback cache, stale tracking timestamps",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "MEDIUM (Operational Cache Exposure)"
+    },
+    "config/sandakan_event_config.json": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Scraper target URLs, timeout thresholds, geo boundary coordinates",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "LOW (System Configuration Exposure)"
+    },
+    "event_engine/": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Proprietary event collection engine, STB/Ticket2U scrapers, time engines, normalizers",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "MEDIUM (Internal Architecture/Source Exposure)"
+    },
+    "scripts/sandakan_event_engine.py": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Internal CLI execution wrapper",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "LOW (Internal Script Exposure)"
+    },
+    "scripts/build_sandakan_events_site.py": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Public artifact staging builder script",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "LOW (Build Script Exposure)"
+    },
+    "events_frontend.json": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": false,
+      "operational_info_description": "Approved public JSON feed (intended for public release in Phase 3.7)",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "INFORMATIONAL (Public Content Ahead of Release)"
+    },
+    "events.html": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": false,
+      "operational_info_description": "Frontend single-page application (intended for public release in Phase 3.7)",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "INFORMATIONAL (Public UI Ahead of Release)"
+    },
+    "tests/": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": false,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Internal unit and integration test fixtures, mock HTML samples",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "LOW (Test Suite Exposure)"
+    },
+    ".github/workflows/sandakan_events_publish.yml": {
+      "exists_in_public_feature_branch": true,
+      "accessible_anonymously": true,
+      "raw_url_http_status": 200,
+      "exists_in_main_branch": true,
+      "git_history_accessible": true,
+      "introduced_commit": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "contains_operational_info": true,
+      "operational_info_description": "Workflow definition with dry_run parameter and permissions",
+      "contains_credentials_or_pii": false,
+      "exposure_severity": "INFORMATIONAL (Public Workflow Definition)"
+    }
+  },
+  "secrets_scan_summary": {
+    "total_commits_audited": 46,
+    "total_files_audited": 28,
+    "api_keys_found": 0,
+    "github_tokens_found": 0,
+    "personal_email_addresses_found": 0,
+    "phone_numbers_found": 0,
+    "credentials_requiring_revocation": 0
+  },
+  "production_branch_status": {
+    "branch": "main",
+    "commit_sha": "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2",
+    "internal_files_present": false,
+    "live_pages_deployment_clean": true,
+    "diagnostic_files_preserved": true
+  }
+}

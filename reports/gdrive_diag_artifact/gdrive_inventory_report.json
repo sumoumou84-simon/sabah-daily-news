@@ -1,0 +1,32 @@
+{
+  "diagnosis_timestamp": "2026-11-10T19:24:09.505127+08:00",
+  "target_date": "2026-11-10",
+  "folders": {
+    "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf": {
+      "folder_id": "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf",
+      "label": "候选 A（小写字母 l）",
+      "accessible": true,
+      "folder_metadata": {
+        "id": "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf",
+        "name": "西门看看网",
+        "mimeType": "application/vnd.google-apps.folder",
+        "trashed": false,
+        "parents": [
+          "0AHRoOPk8XysWUk9PVA"
+        ]
+      },
+      "error": null,
+      "files_count": 0,
+      "files": []
+    },
+    "18uRBmOQM5hTdeQv1dILnC9_n4LZIs1kf": {
+      "folder_id": "18uRBmOQM5hTdeQv1dILnC9_n4LZIs1kf",
+      "label": "候选 B（数字 1）",
+      "accessible": false,
+      "folder_metadata": null,
+      "error": "HTTP 404: Not Found",
+      "files_count": 0,
+      "files": []
+    }
+  }
+}

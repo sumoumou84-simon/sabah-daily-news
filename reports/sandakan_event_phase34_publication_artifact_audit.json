@@ -1,0 +1,75 @@
+{
+  "audit_phase": "3.4",
+  "audit_timestamp": "2026-11-08T14:52:30+08:00",
+  "staging_directory": "dist_events",
+  "staging_builder_script": "scripts/build_sandakan_events_site.py",
+  "allowlist_policy": {
+    "policy_type": "STRICT_ALLOWLIST",
+    "allowlisted_files": [
+      "events.html",
+      "events_frontend.json",
+      "manifest.json",
+      "icon-192.png",
+      "icon-512.png"
+    ]
+  },
+  "forbidden_files_audit": {
+    "forbidden_patterns": [
+      "events_data.json",
+      "news_data.json",
+      "archive_history.json",
+      "index.html",
+      "event_engine",
+      "pipeline",
+      "collectors",
+      "config",
+      "data",
+      "reports",
+      "scripts",
+      "tests",
+      ".github",
+      ".git"
+    ],
+    "forbidden_items_found_in_staging": [],
+    "audit_passed": true
+  },
+  "staged_artifact_inventory": [
+    {
+      "filename": "events.html",
+      "size_bytes": 43983,
+      "purpose": "Standalone Sandakan Events editorial web application",
+      "allowlisted": true
+    },
+    {
+      "filename": "events_frontend.json",
+      "size_bytes": 5365,
+      "purpose": "Sanitized, fail-closed published event data feed",
+      "allowlisted": true
+    },
+    {
+      "filename": "manifest.json",
+      "size_bytes": 604,
+      "purpose": "PWA web app manifest",
+      "allowlisted": true
+    },
+    {
+      "filename": "icon-192.png",
+      "size_bytes": 6268,
+      "purpose": "PWA home screen icon 192x192",
+      "allowlisted": true
+    },
+    {
+      "filename": "icon-512.png",
+      "size_bytes": 30491,
+      "purpose": "PWA splash screen icon 512x512",
+      "allowlisted": true
+    }
+  ],
+  "safety_barrier_verification": {
+    "recursive_root_copy_prevented": true,
+    "internal_engine_code_excluded": true,
+    "audit_trail_and_caches_excluded": true,
+    "abort_on_violation_verified": true
+  },
+  "verdict": "VERIFIED_ISOLATED"
+}

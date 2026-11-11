@@ -1,0 +1,535 @@
+{
+  "snapshot_id": "gdrive_snap_2026-11-11_128050ce",
+  "target_date": "2026-11-11",
+  "source_file_name": "西门看看网每日新闻_2026-11-10.md",
+  "source_file_id": "local_override",
+  "read_timestamp": "2026-11-11T22:03:57.309930+08:00",
+  "total_stories_found": 26,
+  "news_stories_count": 21,
+  "event_stories_count": 5,
+  "markdown_sha256": "128050cebd57ba8b5d40effd4155426740b30afa5e808f3480e0b1ecef4e5482",
+  "news_stories": [
+    {
+      "index": 1,
+      "title": "MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
+      "body": "MPS 在 Dewan Masyarakat 召开 Townhall，商贩集中反映市区道路坑洞、路灯不亮、排水堵塞、夜市摊位卫生。MPS 承诺小坑洞 14天内修好，大坑 6个月内修好，路灯 7天内更换。\n\n今日重点路段：Jalan Leila、Harrison 圆环、Jalan Pelabuhan Lama 一带今早有修路工程，夜市照常营业。MPS 提醒市民若发现路灯不亮、路洞，可直接去 MPS 官网 mps.sabah.gov.my 投诉，MPS 会在月会上跟进。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "MPS FB",
+        "My Sandakan Kini FB",
+        "Sabah Media News FB",
+        "11",
+        "06 07:30"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 1. MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 2,
+      "title": "JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
+      "body": "JANS 紧急通告 11月7日周六两起：中午 12:30 起，Borneo Cove 前大桥 450mm MSCL 主水管爆裂抢修；早上 9:30 起，Taman Nasalim Fasa 7 对面 250mm 配水管漏水排查。11月6日 Batu Sapi 圆环 400mm 闸阀更换。11月4日周三还有一处 250mm 主水管在 Sungai Anib 2 新学校前接驳。\n\n山打根 6区已断水第6天：Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View、Indah Jaya，民兴党伊罗普拉议员张克骏促 JANS 立刻派水车到这 6区，持续运水到恢复稳定为止。JANS 呼吁受影响用户存水、省水，高楼公寓地下吸水箱因主水管压力临界补不到水，最惨。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "JANS FB",
+        "water.sabah.gov.my",
+        "11",
+        "07 12:30"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 2. JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 3,
+      "title": "SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
+      "body": "SESB 证实：275kV Kolopis-Segaliud 1号线周六 5:05PM 跳闸，山打根、拿笃、古纳、仙本那、比鲁兰、京那巴当 23万用户受影响，周日 3:11PM 已分阶段全面恢复。\n\n今日 11月10日山打根供电正常，未有新停电通告。SESB 提醒若仍断电，打 Careline 15444、088-515000、WhatsApp 019-852 5427 或 SESB App。\n\nMPS 交通：今日山打根市区交通通畅，Sepilok 观鸟节收尾注意山路积水，拿笃海啸演习 9AM-2PM 部分路段改道已结束。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "SESB FB",
+        "11",
+        "09"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 3. SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 4,
+      "title": "JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
+      "body": "11月6日周五 8:00AM 起，Batu Sapi 圆环附近 400mm 闸阀更换，影响 Batu Sapi 及京那巴当部分用户。11月1日周日 9:30AM 起，Tangki Kebun Cina 切换到 Tangki Tshun Ngen Batu 5，山打根市区水压波动。JANS 提醒每次维修后水会浑浊，先放水 5分钟再用。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "water.sabah.gov.my",
+        "11",
+        "06 8:00AM",
+        "01 9:30AM"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 4. JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 10,
+      "title": "MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
+      "body": "气象局发布持续豪雨警报，恶劣及警惕级别覆盖半岛东海岸及沙巴东部至 11月11日。沙巴涉及古达及山打根区：Paitan、Telupid、Labuk dan Sugut、Sandakan 及 Kinabatangan。My Sandakan Kini 提醒今天出门带雨具，Sepilok、观鸟节收尾区注意山路积水。SANDAKANfm90.1 早上已播路况，渔民注意风浪。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Bernama FB",
+        "Sabah TV Official FB",
+        "RTM FB",
+        "11",
+        "09"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 10. MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 11,
+      "title": "仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
+      "body": "沙巴州政府正协调运回 3具来自仙本那男子的遗体，他们昨天下午在雪兰莪雪邦遭雷击身亡。家属已接获通知，州政府将协助处理后事。Sabah Spotlight 2026 已有家属筹款贴，提醒雷雨天勿在空旷地、树下、铁皮屋顶下逗留。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Sayangi Sabah FB",
+        "Sabah Media News FB",
+        "11",
+        "09 3:12pm"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 11. 仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 12,
+      "title": "沙巴珊瑚白化升至第4级最严重 山打根最受关注",
+      "body": "沙巴珊瑚白化特别工作组 10月监测，山打根已升至 Alert Level 4，东海岸维持 Level 3，海温过高是主因。专家呼吁减少污染、勿踩珊瑚。My Sandakan Kini 提醒本周出海浮潜的游客注意防晒，别用含氧苯酮防晒霜。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "Sabah TV Official FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 12. 沙巴珊瑚白化升至第4级最严重 山打根最受关注",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 13,
+      "title": "婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
+      "body": "第12届婆罗洲观鸟节 11月7日起在山打根举行，雨林导览、观鸟比赛、摄影展、生态讲座持续到周末，预计吸引国内外 5000名爱鸟人士。主办方称今年 Sepilok 区观鸟路线最受欢迎，明年将扩大亲子区。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "诗华日报 FB",
+        "My Sandakan Kini FB",
+        "Sabah TV Official FB",
+        "11月7-9日"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 13. 婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 14,
+      "title": "沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
+      "body": "第二财长阿米尔韩查指政府将在今年底前宪报命令，让沙巴获得 15亿特别拨款中剩余的 9亿令吉。MA63框架下 27项诉求，14项已完成，10项包括 40%净税收仍未解。Sabah Spotlight 2026 有详细解读。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Bernama FB",
+        "The Star FB",
+        "Sabah Media News FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 14. 沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 15,
+      "title": "亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
+      "body": "11月4日晚亚庇精英区 3层豪宅捣破网络诈骗中心，逮捕 14名 26-44岁中国籍男子，起获大量电脑手机。曾国竣律师呼吁追究“知情出租者”责任，不能一句不知情就脱罪。Sayangi Sabah 提醒别信高回报投资。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Sabah Media News FB",
+        "Rojaklah88 FB",
+        "Viralcham FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 15. 亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 16,
+      "title": "沙巴州政府：照顾全民福祉 不分种族宗教背景",
+      "body": "沙巴州工程与公共事业部助理部长拿督利慕士朱利昨晚为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时说，州政府始终致力照顾全民福祉，不分种族、宗教及背景，确保各族共享发展成果。据《2026年沙巴州财政预算案》，州政府拨出 9000万令吉用于宗教发展、非伊斯兰宗教机构及教会学校、私立学校发展。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "诗华日报 FB",
+        "11",
+        "09"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 16. 沙巴州政府：照顾全民福祉 不分种族宗教背景",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 17,
+      "title": "杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
+      "body": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来发展必须兼顾当地特色和民需，避免过度扩张导致公共空间减少，影响当地特有城市风貌和历史特色。Rojaklah88 评论区根地咬居民附和：要发展，但不要把老街拆光。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "11",
+        "09 2:06pm"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 17. 杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 18,
+      "title": "沙巴年度捐血活动 山打根亚庇同步登场",
+      "body": "沙巴年度大型捐血活动 11月7日在亚庇和山打根同步登场，放眼筹获 1200包血液，缓解医院血库紧张。Sabah Media News 指山打根医院血库 O型最缺，今天仍可到中央医院捐血站补捐，带 IC、睡足 6小时。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "诗华日报 FB",
+        "Sabah Media News FB",
+        "11",
+        "07"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 18. 沙巴年度捐血活动 山打根亚庇同步登场",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 19,
+      "title": "沙巴1106名司机获特别援金 每人1000令吉",
+      "body": "沙巴 1106名符合资格的德士、出租车、校车司机将获得每人 1000令吉一次性特别援金，减轻生活负担。My Sandakan Kini 已发申请名单查询方式。",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "11",
+        "06"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 19. 沙巴1106名司机获特别援金 每人1000令吉",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 20,
+      "title": "纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
+      "body": "前首相纳吉已缴清 5000万令吉罚款，获准居家服刑，但截至 11月6日傍晚仍未回到家，而是被送往医院检查牙齿，因此交通部长陆兆福的辞职暂时未生效。陆兆福在交通部记者会重申立场不变：“如果他今晚到家，就今晚生效；如果是明天，那就明天生效。”他已在 9月28日将辞呈递交首相安华，并将就最新进展另交补充信函。他还预告下周三（11月11日）出席部门屠妖节庆典，可能是告别仪式。安华已促总检察长觐见元首厘清居家服刑暂缓执行问题。MDN Feeds 有全文。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "星洲日报 FB",
+        "中国报 FB",
+        "光明日报 FB",
+        "e南洋 FB",
+        "8TV.NEWS FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 20. 纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 21,
+      "title": "砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
+      "body": "选委会主席南兰哈伦在古晋宣布，第13届砂选举提名 11月28日周六，提前投票 12月8日周二，投票 12月12日周六，竞选期 14天。205万8781选民选 82议席，增至 99席计划因程序未完，本届不落实。预算 1亿7494万令吉。砂盟 GPS 将上阵全部 82席，阿邦佐哈里看好 4名原任议员继续获支持。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "诗华日报 FB",
+        "光明日报 FB",
+        "星洲日报 FB",
+        "Bernama FB",
+        "11月6日宣布"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 21. 砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 22,
+      "title": "SKAS第三阶段今天起发放 砂家庭户再领RM360",
+      "body": "砂拉越政府将于今天（11月10日）起，向现有受惠者及符合资格的新受惠者分阶段发放“砂基本需求援助”（SKAS）第三阶段款项，直接汇入 S Pay Global 电子钱包。2026年 SKAS 分三阶段：第一阶段 3月10日，第二阶段 5月15日，第三阶段从今天起。截至 11月9日，已有 78万3603名受惠者，即 89.5%符合资格者已通过 S Pay Global 领取。民众可上 sarawak.gov.my/skas 查询资格。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "TVS FB",
+        "诗华日报 FB",
+        "Bernama FB",
+        "11月10日"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 22. SKAS第三阶段今天起发放 砂家庭户再领RM360",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 23,
+      "title": "大马或成网络攻击目标 国安会已开特别会议",
+      "body": "首相安华指全球地缘政治紧张，大马可能面对网络攻击威胁，国安会已召开特别会议，检视能源、交通、金融及食品供应应变能力。MCMC 提醒 11月19日全国手机巨响测试是 Cell Broadcast 演习，别慌。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "光明日报 FB",
+        "Bernama FB",
+        "8TV.NEWS FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 23. 大马或成网络攻击目标 国安会已开特别会议",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 24,
+      "title": "李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
+      "body": "2026日本熊本羽球大师赛（超级500赛，总奖金 50万美元）今天挥拍，11月10-15日在熊本县立体育馆举行。大马男单唯一代表李梓嘉从入选赛打起，今天对东道主球员古贺穗，若胜出，周三正赛首圈硬碰头号种子、法国克里斯托波波夫。两人上一次交手是 10月初北极公开赛 8强，李梓嘉 21-11、21-16 直落两局胜出；3月瑞士公开赛入选赛也曾 21-10、21-14 轻取古贺穗。Rojaklah88 和 viralcham 已在刷“加油”。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "中国报 FB",
+        "星洲日报 FB",
+        "光明日报 FB",
+        "e南洋 FB",
+        "11月09日 8:01pm"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 24. 李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 25,
+      "title": "李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
+      "body": "上周德国 Hylo Open，李梓嘉高烧呕吐 59分钟逆转胜新加坡郑加恒 21-16、19-21、21-17 晋级 16强，次轮 63分钟 11-21、21-13、14-21 负日本磨王奈良冈功大止步 16强。因病退出韩国公开赛，目标熊本强势回归。大马 3名男单梁峻豪、贺首维、尤阳退出熊本，大马男单仅剩李梓嘉。世界排名第 40的他原是第 4候补，因安东森、李诗沣等退赛递补进资格赛。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "星洲日报 FB",
+        "光明日报 FB",
+        "The Star FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 25. 李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 26,
+      "title": "乐娜放眼熊本卫冕 峰译力争总决赛末班车",
+      "body": "熊本大师赛女双卫冕冠军陈康乐/蒂娜将从正赛出发，首轮对日本新组合，力争卫冕。男双谢定峰/苏伟译也将出战，力争年终总决赛末班车。Sabah Spotlight 2026 有签表图。女单吴堇溦将从入选赛打起，力争晋级正赛。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "中国报 FB",
+        "11月09日"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 26. 乐娜放眼熊本卫冕 峰译力争总决赛末班车",
+      "title_bm": "",
+      "body_bm": ""
+    }
+  ],
+  "event_stories": [
+    {
+      "index": 5,
+      "title": "11/09 山打根市议会 (MPS) 滨海长廊全城清洁运动与环保集市",
+      "body": "MPS 主办，全城清洁 + 环保集市，现场有 Trash to Treasure 循环再利用摊位，MPS 与 Ignis SG 签特许协议，Labuk 垃圾场将建首个 3R 循环处理 cell，KPKT 拨 RM30mil。带旧衣、旧电器可换小礼品。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "MPS FB",
+        "My Sandakan Kini FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-09",
+      "is_event": true,
+      "event_metadata": {
+        "location": "Pesisir Pantai Sandakan (山打根滨海长廊及中央巴刹广场) · 还有 3天 → 昨天已开始，今天仍在收尾",
+        "tag": "市政公益"
+      },
+      "raw_header": "### 5. 11/09 山打根市议会 (MPS) 滨海长廊全城清洁运动与环保集市",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 6,
+      "title": "11/11 Pink Ribbon 20周年大型健康惠民义诊",
+      "body": "Pink Ribbon 20周年，免费乳房检查、血压、血糖、BMI，现场有医生问诊，山打根医院血库 O型最缺，可顺便捐血。带 IC、睡足 6小时、捐前吃早餐。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "诗华日报 FB",
+        "Sabah Media News FB",
+        "SANDAKANfm90.1 FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-11",
+      "is_event": true,
+      "event_metadata": {
+        "location": "PRC Centre Sandakan (山打根市区) · 还有 5天",
+        "tag": "免费义诊"
+      },
+      "raw_header": "### 6. 11/11 Pink Ribbon 20周年大型健康惠民义诊",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 7,
+      "title": "11/16 ITCC Majaps 婆罗洲原住民文化盛典",
+      "body": "婆罗洲原住民文化盛典，卡达山、杜顺、毛律族传统舞蹈、竹筒饭、手工艺市集，适合亲子打卡。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Sabah TV Official FB",
+        "Sabah Spotlight 2026 FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-16",
+      "is_event": true,
+      "event_metadata": {
+        "location": "Penampang ITCC Exhibition Hall · 还有 10天",
+        "tag": "文化盛典"
+      },
+      "raw_header": "### 7. 11/16 ITCC Majaps 婆罗洲原住民文化盛典",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 8,
+      "title": "11/21 山打根燕窝与生态农业产业博览会",
+      "body": "山打根燕窝与生态农业产业博览会，燕窝、生态农产品、观鸟生态旅游推介，本地商家可设摊，MPS 协办。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "My Sandakan Kini FB",
+        "Sabah Media News FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-21",
+      "is_event": true,
+      "event_metadata": {
+        "location": "Dewan Masyarakat Sandakan (民众大会堂) · 还有 15天",
+        "tag": "商贸交流"
+      },
+      "raw_header": "### 8. 11/21 山打根燕窝与生态农业产业博览会",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 9,
+      "title": "11/21 狮子爱心义卖嘉年华 目标25万 赞助100宗白内障手术",
+      "body": "第4届狮子爱心义卖嘉年华 11月21-22日举行，目标 25万令吉固本，计划赞助沙巴各地 100宗白内障手术，助患者重见光明。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "沙巴星洲日报 FB",
+        "光明日报 FB",
+        "TV Sabah Official FB"
+      ],
+      "source_urls": [],
+      "date": "2026-11-21",
+      "is_event": true,
+      "event_metadata": {
+        "location": "丹绒亚路 The Good Club · 还有 15天",
+        "tag": "市政公益 / 免费义诊"
+      },
+      "raw_header": "### 9. 11/21 狮子爱心义卖嘉年华 目标25万 赞助100宗白内障手术",
+      "title_bm": "",
+      "body_bm": ""
+    }
+  ]
+}

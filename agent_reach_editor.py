@@ -14,6 +14,7 @@ import os
 import sys
 import json
 import logging
+import subprocess
 from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any, Optional
 
@@ -207,6 +208,13 @@ def run_pipeline() -> bool:
     print(f"⏰ 基准执行时间 (MYT): {myt_now.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
 
+    # 确保 Actions Git 提交身份，彻底杜绝 [GIT ISOLATION ABORT] 或 identity unknown
+    try:
+        subprocess.run(["git", "config", "user.name", "Simon Kankan Bot"], cwd=BASE_DIR, check=False)
+        subprocess.run(["git", "config", "user.email", "sumoumou84@gmail.com"], cwd=BASE_DIR, check=False)
+    except Exception as e:
+        logger.warning(f"Failed to set git config: {e}")
+
     config = load_config()
 
     gdrive_cfg = config.get("gdrive_input", {})
@@ -236,86 +244,17 @@ def run_pipeline() -> bool:
         parsed_stories = gdrive_reader.parse_markdown(raw_content, today_iso)
         total_collected = len(parsed_stories)
 
-        # Phase D-16: 将全部 26 条新闻（包括 5 条活动预报）打包进同一个单批次 RawArticle 列表
-        all_batch_stories = gdrive_reader.select_top_stories_for_batch(
-            parsed_stories,
-            max_count=26,
-            include_events=True
-        )
-        raw_articles = gdrive_reader.convert_to_raw_articles(all_batch_stories)
-
-        sabah_count = sum(1 for s in all_batch_stories if s.category == "sabah")
-        sandakan_count = sum(1 for s in all_batch_stories if s.geo_scope == "sandakan")
-        national_count = sum(1 for s in all_batch_stories if s.category == "national")
-
-        print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
-        print(f"[+] Phase D-16 架构: 将全部 {len(raw_articles)} 条新闻与活动预报打包为单批次 Payload")
-
-        # 调用 Gemini Single-Batch 单批次双语生成 (固定 gemini-3.5-flash-lite)
-        synthesizer = NewsSynthesizer(config)
-        api_key = (os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY") or "").strip()
-
-        print("\n[+] 正在执行 Gemini 26条全板块单批次批量双语生成 (gemini-3.5-flash-lite)...")
-        synthesized_batch = synthesizer.synthesize_track_a_single_batch(
-            api_key=api_key,
-            today_iso=today_iso,
-            batch_stories=raw_articles
-        )
-
-        if not synthesized_batch:
-            logger.error("[FAIL-CLOSED] Gemini 单批次编译未返回有效数据或配额耗尽。触发 Fail-Closed，保留现有生产新闻。")
+        if total_collected >= 10:
+            print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
+            print("[⚡ 直通透传] 成功获取当日 Markdown/Drive 内容，直接解析生成 news_data.json，跳过 Gemini API 调用与配额记账流程 (0 API 调用, 0 配额消耗)")
+            final_headlines, events = gdrive_reader.convert_stories_to_direct_output(parsed_stories, today_iso)
+            print(f"✅ 直通透传完成: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(parsed_stories)} 条)")
+        else:
+            logger.warning(
+                f"[GDRIVE INSUFFICIENT] 仅解析出 {total_collected} 条，低于熔断门槛 (10条)。"
+                "触发 Fail-Closed，坚决不进行破坏性覆盖。"
+            )
             return False
-
-        # Phase D-16 架构分离：将 26 条条目分离为 21 条 Headlines 与 5 条 Events
-        final_headlines = []
-        events = []
-        today_d = datetime.strptime(today_iso, "%Y-%m-%d").date()
-
-        for itm in synthesized_batch:
-            if itm.get("is_event"):
-                # 路由至未来活动板块
-                meta = itm.get("event_metadata", {})
-                orig_date_str = itm.get("original_published_at") or today_iso
-                if "T" in orig_date_str:
-                    orig_date_str = orig_date_str.split("T")[0]
-                try:
-                    ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
-                except Exception:
-                    ev_d = today_d
-                c_days = max(0, (ev_d - today_d).days)
-                tag_str = meta.get("tag", "市政公益")
-                b_color = "bg-[#14532d] text-[#86efac]"
-                if "义诊" in tag_str or "健康" in tag_str:
-                    b_color = "bg-[#713f12] text-[#fde68a]"
-                elif "峰会" in tag_str or "商贸" in tag_str:
-                    b_color = "bg-[#1e3a8a] text-[#93c5fd]"
-                elif "文化" in tag_str:
-                    b_color = "bg-[#581c87] text-[#d8b4fe]"
-
-                events.append({
-                    "id": len(events) + 1,
-                    "month": f"{ev_d.month:02d}",
-                    "day": f"{ev_d.day:02d}",
-                    "full_date": orig_date_str,
-                    "name": itm.get("title", ""),
-                    "nameBM": itm.get("titleBM", ""),
-                    "time": meta.get("time", "08:00 AM - 05:00 PM"),
-                    "timeBM": meta.get("time", "08:00 AM - 05:00 PM"),
-                    "location": meta.get("location", "Sandakan Community Centre"),
-                    "category": tag_str,
-                    "categoryBM": "Khidmat Komuniti",
-                    "badgeColor": b_color,
-                    "desc": itm.get("detail", ""),
-                    "descBM": itm.get("detailBM", ""),
-                    "tel": meta.get("tel", "089-272161"),
-                    "source": itm.get("source", "官方信源"),
-                    "sourceBM": itm.get("sourceBM", "Hebahan Rasmi"),
-                    "countdown_days": c_days
-                })
-            else:
-                final_headlines.append(itm)
-
-        print(f"✅ 成功分离双语输出: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(synthesized_batch)} 条)")
 
     else:
         # Legacy fallback: 原有多源独立抓取

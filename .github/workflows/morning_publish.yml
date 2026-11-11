@@ -21,8 +21,8 @@ jobs:
 
       - name: 配置 Git 提交身份
         run: |
-          git config --global user.name "Sabah Daily News Bot"
-          git config --global user.email "sumoumou84-simon@users.noreply.github.com"
+          git config --global user.name "Simon Kankan Bot"
+          git config --global user.email "sumoumou84@gmail.com"
 
       - name: 配置 Python 环境
         uses: actions/setup-python@v5
@@ -52,8 +52,8 @@ jobs:
 
       - name: 自动提交更新并发布至 GitHub Pages
         run: |
-          git config --global user.name "Simon-Daily-Bot"
-          git config --global user.email "bot@simondaily.com"
+          git config --global user.name "Simon Kankan Bot"
+          git config --global user.email "sumoumou84@gmail.com"
           git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ reports/ || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
           git push

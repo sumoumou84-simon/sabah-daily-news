@@ -23,6 +23,7 @@ import tempfile
 import unittest
 import hashlib
 import subprocess
+import urllib.parse
 from datetime import datetime, timezone, timedelta
 from unittest.mock import patch, MagicMock
 
@@ -312,48 +313,42 @@ class TestGDriveMarkdownPipeline(unittest.TestCase):
         with open(os.path.join(self.base_dir, "pipeline", "synthesizer.py"), "r", encoding="utf-8") as f:
             synth_code = f.read()
 
-        self.assertIn('env_commit["GIT_AUTHOR_NAME"]', synth_code)
-        self.assertIn('env_commit["GIT_AUTHOR_EMAIL"]', synth_code)
-        self.assertIn('"user.name", "Sabah Daily News Bot"', synth_code)
+        self.assertIn('"GIT_AUTHOR_NAME"] = "Simon Kankan Bot"', synth_code)
+        self.assertIn('"GIT_AUTHOR_EMAIL"] = "sumoumou84@gmail.com"', synth_code)
+        self.assertIn('"user.name", "Simon Kankan Bot"', synth_code)
 
         # Check that workflow also has git identity setup
         with open(os.path.join(self.base_dir, ".github", "workflows", "morning_publish.yml"), "r", encoding="utf-8") as f:
             wf_code = f.read()
 
-        self.assertIn('git config --global user.name "Sabah Daily News Bot"', wf_code)
-        self.assertIn('git config --global user.email "sumoumou84-simon@users.noreply.github.com"', wf_code)
+        self.assertIn('git config --global user.name "Simon Kankan Bot"', wf_code)
+        self.assertIn('git config --global user.email "sumoumou84@gmail.com"', wf_code)
 
 
     # =========================================================================
-    # Test 12: Exact filename pattern matching & Google Doc exclusion test
+    # Test 12: Google Docs export fallback compatibility test
     # =========================================================================
-    def test_12_exact_ximen_filename_and_google_doc_exclusion(self):
-        """Test 12: Verify exact matching for 西门看看网每日新闻_{date}.md and strict exclusion of Google Doc."""
-        # 1. Local reading of exact filename
-        target_exact_path = os.path.join(self.base_dir, "data", "gdrive_inputs", "西门看看网每日新闻_2026-11-10.md")
-        self.assertTrue(os.path.exists(target_exact_path), "西门看看网每日新闻_2026-11-10.md must exist in test fixture")
-
-        # 2. Mock Drive API returning both Google Doc and authentic Markdown
+    def test_12_google_docs_export_fallback_compatibility(self):
+        """Test 12: Verify fallback to Google Docs export API when authentic .md is absent."""
         mock_drive_files = [
             {
                 "id": "gdoc_id_999",
                 "name": "西门看看网每日新闻_2026-11-10",
                 "mimeType": "application/vnd.google-apps.document"
-            },
-            {
-                "id": "md_id_111",
-                "name": "西门看看网每日新闻_2026-11-10.md",
-                "mimeType": "text/markdown"
             }
         ]
 
         def mock_urlopen(req, timeout=None):
             url = req.full_url if hasattr(req, 'full_url') else req
             mock_resp = MagicMock()
-            if "alt=media" in url:
-                mock_resp.read.return_value = b"# Test Markdown Content from Drive API"
+            if "export" in url:
+                mock_resp.read.return_value = b"# Exported Google Docs Markdown Content"
             else:
-                mock_resp.read.return_value = json.dumps({"files": mock_drive_files}).encode("utf-8")
+                # Search query response
+                if "application/vnd.google-apps.document" in url and "mimeType = 'application/vnd.google-apps.document'" in urllib.parse.unquote(url):
+                    mock_resp.read.return_value = json.dumps({"files": mock_drive_files}).encode("utf-8")
+                else:
+                    mock_resp.read.return_value = json.dumps({"files": []}).encode("utf-8")
             mock_resp.__enter__.return_value = mock_resp
             return mock_resp
 
@@ -363,8 +358,8 @@ class TestGDriveMarkdownPipeline(unittest.TestCase):
                 self.assertIsNotNone(result)
                 file_name, content, file_id = result
                 self.assertEqual(file_name, "西门看看网每日新闻_2026-11-10.md")
-                self.assertEqual(file_id, "md_id_111")
-                self.assertIn("Test Markdown Content", content)
+                self.assertEqual(file_id, "gdoc_id_999")
+                self.assertIn("Exported Google Docs Markdown Content", content)
 
     # =========================================================================
     # Test 13: Bounded retry mechanism without Gemini API calls or quota reservation
@@ -393,6 +388,47 @@ class TestGDriveMarkdownPipeline(unittest.TestCase):
                     self.assertEqual(call_count, 3)
                     # Absolute guarantee: QuotaManager was NEVER called during retries
                     mock_reserve.assert_not_called()
+
+    # =========================================================================
+    # Test 14: Direct pass-through pipeline (0 Gemini API calls, 0 quota reserved)
+    # =========================================================================
+    def test_14_direct_pass_through_no_gemini_calls(self):
+        """Test 14: Verify Markdown parses directly into headlines & events without invoking Gemini."""
+        with open(self.sample_md_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        stories = self.reader.parse_markdown(content, "2026-11-10")
+        self.assertTrue(len(stories) >= 10)
+
+        headlines, events = self.reader.convert_stories_to_direct_output(stories, "2026-11-10")
+        self.assertEqual(len(headlines), 10)
+        self.assertEqual(len(events), 2)
+
+        # Check circuit breaker threshold
+        cb = CircuitBreaker(min_threshold=10)
+        # Should not raise CircuitBreakerException
+        cb.inspect_and_guard(
+            today_iso="2026-11-10",
+            new_headlines=headlines,
+            existing_news_file=os.path.join(self.base_dir, "news_data.json"),
+            existing_archive_file=os.path.join(self.base_dir, "archive_history.json")
+        )
+
+        # Confirm all required schema keys for website
+        first_h = headlines[0]
+        self.assertIn("title", first_h)
+        self.assertIn("titleBM", first_h)
+        self.assertIn("detail", first_h)
+        self.assertIn("detailBM", first_h)
+        self.assertIn("validation_status", first_h)
+        self.assertEqual(first_h["validation_status"], "VERIFIED")
+
+        first_e = events[0]
+        self.assertIn("name", first_e)
+        self.assertIn("nameBM", first_e)
+        self.assertIn("desc", first_e)
+        self.assertIn("descBM", first_e)
+        self.assertIn("countdown_days", first_e)
 
 if __name__ == "__main__":
     unittest.main()

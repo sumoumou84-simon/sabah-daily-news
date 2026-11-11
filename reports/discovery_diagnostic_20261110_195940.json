@@ -1,0 +1,26 @@
+{
+  "timestamp_myt": "2026-11-10T19:59:40.535428+08:00",
+  "status": "SUCCESS",
+  "model_used": "gemini-3.5-flash-lite",
+  "reservation_id": "res_2026-11-09_1_test_prod",
+  "http_requests_sent": 1,
+  "http_status_code": 200,
+  "google_search_queries": [],
+  "google_search_chunks_count": 0,
+  "total_candidates_extracted": 0,
+  "classification_breakdown": {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 0
+  },
+  "already_covered_count": 0,
+  "genuinely_new_discoveries_count": 0,
+  "candidates": [],
+  "grounding_sources": [],
+  "production_integrity_check": {
+    "news_data_modified": false,
+    "index_html_modified": false,
+    "website_published": false
+  }
+}

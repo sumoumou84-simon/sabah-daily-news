@@ -1,0 +1,83 @@
+{
+  "phase": "Phase 3.6",
+  "audit_name": "Cloud Artifact and Workflow Isolation Audit",
+  "timestamp": "2026-11-08T15:07:30+08:00",
+  "workflow_file": ".github/workflows/sandakan_events_publish.yml",
+  "workflow_security_audit": {
+    "workflow_name": "山打根活动周历独立发布流程 (Sandakan Events Publish)",
+    "trigger_event": "workflow_dispatch",
+    "inputs": {
+      "dry_run": {
+        "type": "boolean",
+        "default": true,
+        "description": "仅执行测试与构建校验，不发布 (Dry Run Only)"
+      }
+    },
+    "permissions": {
+      "contents": "read",
+      "pages": "NONE (Explicitly omitted)",
+      "id_token": "NONE (Explicitly omitted)",
+      "write_permissions": "NONE (Least-Privilege strictly enforced)"
+    },
+    "jobs": [
+      {
+        "id": "build_events_artifact",
+        "name": "构建沙巴山打根活动独立公开发布工件",
+        "runs_on": "ubuntu-latest",
+        "steps": [
+          "Checkout Repository (actions/checkout@v4)",
+          "Setup Python 3.11 (actions/setup-python@v5)",
+          "Install Dependencies (requests, urllib3)",
+          "Run Event Engine Tests (python -m unittest discover -s tests -p 'test_*.py')",
+          "Build Allowlisted Public Artifact (python scripts/build_sandakan_events_site.py --source events_data.json --dest dist_events)",
+          "Verify Public Artifact Isolation (Zero raw/internal files check in dist_events/)",
+          "Upload Build Artifact for Review (actions/upload-artifact@v4)"
+        ]
+      }
+    ],
+    "deployment_actions_detected": false,
+    "gemini_api_calls_detected": false,
+    "news_pipeline_execution_detected": false
+  },
+  "allowlisted_artifact_inventory": {
+    "staging_directory": "dist_events",
+    "total_files": 5,
+    "files": {
+      "events.html": {
+        "size_bytes": 43983,
+        "sha256": "dcf77a2530d713725dfc37c7a1fc501264d62782f3cbe74f0083467552c85a26",
+        "role": "Public events UI standalone view"
+      },
+      "events_frontend.json": {
+        "size_bytes": 5365,
+        "sha256": "64f07ae46f139b2c25fe79fa2cc4ee5110447d7c65f5a221c4774fdb21821bae",
+        "role": "Sanitized public events JSON feed"
+      },
+      "icon-192.png": {
+        "size_bytes": 6268,
+        "sha256": "11eeaec8d92ce0ed722fface0a3c6b34b7cd35eefd0551851d7a698408714f7f",
+        "role": "Web application icon (192x192)"
+      },
+      "icon-512.png": {
+        "size_bytes": 30491,
+        "sha256": "30e9ae165ae20e7123f56a938840546c6feccce4e49b8ab12a5baf31aa05c6a0",
+        "role": "Web application icon (512x512)"
+      },
+      "manifest.json": {
+        "size_bytes": 604,
+        "sha256": "10fd94247f1cfe5728657db1cda871e33db3e6786264efe4dbf3e9aca7668bb1",
+        "role": "Progressive Web App manifest"
+      }
+    }
+  },
+  "forbidden_files_isolation_audit": {
+    "events_data.json": "EXCLUDED_FROM_DIST",
+    "event_engine/": "EXCLUDED_FROM_DIST",
+    "data/": "EXCLUDED_FROM_DIST",
+    "config/": "EXCLUDED_FROM_DIST",
+    "scripts/": "EXCLUDED_FROM_DIST",
+    "tests/": "EXCLUDED_FROM_DIST",
+    "internal_leakage_risk": 0.0
+  },
+  "cloud_dryrun_verdict": "CLOUD_DRYRUN_READY"
+}

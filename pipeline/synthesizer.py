@@ -375,10 +375,14 @@ class QuotaManager:
             tmp_index = os.path.join(git_dir, f"tmp_quota_{uuid.uuid4().hex[:8]}.idx")
             env_index = os.environ.copy()
             env_index["GIT_INDEX_FILE"] = tmp_index
-            env_index["GIT_AUTHOR_NAME"] = "Sabah Daily News Bot"
-            env_index["GIT_AUTHOR_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
-            env_index["GIT_COMMITTER_NAME"] = "Sabah Daily News Bot"
-            env_index["GIT_COMMITTER_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
+            env_index["GIT_AUTHOR_NAME"] = "Simon Kankan Bot"
+            env_index["GIT_AUTHOR_EMAIL"] = "sumoumou84@gmail.com"
+            env_index["GIT_COMMITTER_NAME"] = "Simon Kankan Bot"
+            env_index["GIT_COMMITTER_EMAIL"] = "sumoumou84@gmail.com"
+
+            # 确保 Git 提交身份，彻底杜绝 [GIT ISOLATION ABORT] 或 identity unknown
+            subprocess.run(["git", "config", "user.name", "Simon Kankan Bot"], cwd=self.repo_dir, check=False)
+            subprocess.run(["git", "config", "user.email", "sumoumou84@gmail.com"], cwd=self.repo_dir, check=False)
 
             # 4. Populate temporary index with tree from base_ref
             cmd_read = ["git", "read-tree", base_ref]

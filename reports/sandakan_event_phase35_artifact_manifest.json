@@ -1,0 +1,52 @@
+{
+  "manifest_phase": "3.5",
+  "generated_at": "2026-11-08T14:58:14+08:00",
+  "staging_directory": "dist_events",
+  "source_engine_feed": "events_data.json",
+  "total_allowlisted_files": 5,
+  "files": [
+    {
+      "path": "events.html",
+      "size_bytes": 43983,
+      "sha256": "dcf77a2530d713725dfc37c7a1fc501264d62782f3cbe74f0083467552c85a26",
+      "purpose": "Standalone Sandakan Events responsive webpage",
+      "allowlisted": true
+    },
+    {
+      "path": "events_frontend.json",
+      "size_bytes": 5365,
+      "sha256": "df54f884bab107c94f859c78e85d64f7c1f3f5a64664a86e970d32e0fc884c8f",
+      "purpose": "Sanitized frontend feed of approved events",
+      "allowlisted": true
+    },
+    {
+      "path": "icon-192.png",
+      "size_bytes": 6268,
+      "sha256": "11eeaec8d92ce0ed722fface0a3c6b34b7cd35eefd0551851d7a698408714f7f",
+      "purpose": "PWA icon 192x192",
+      "allowlisted": true
+    },
+    {
+      "path": "icon-512.png",
+      "size_bytes": 30491,
+      "sha256": "30e9ae165ae20e7123f56a938840546c6feccce4e49b8ab12a5baf31aa05c6a0",
+      "purpose": "PWA splash screen icon 512x512",
+      "allowlisted": true
+    },
+    {
+      "path": "manifest.json",
+      "size_bytes": 604,
+      "sha256": "10fd94247f1cfe5728657db1cda871e33db3e6786264efe4dbf3e9aca7668bb1",
+      "purpose": "Web application manifest",
+      "allowlisted": true
+    }
+  ],
+  "forbidden_files_audit": {
+    "status": "PASSED",
+    "forbidden_items_detected": []
+  },
+  "url_security_audit": {
+    "status": "PASSED",
+    "unsafe_schemes_detected": []
+  }
+}

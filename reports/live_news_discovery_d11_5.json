@@ -1,0 +1,561 @@
+{
+  "metadata": {
+    "execution_mode": "LOCAL_IMPLEMENTATION_AND_AUTHORIZED_LIVE_RETRIEVAL",
+    "target_news_date": "2026-11-09",
+    "timestamp_myt": "2026-11-09T15:37:53.396301+08:00",
+    "gemini_api_calls": 0,
+    "gemini_quota_reservations": 0,
+    "gemini_api_key_access": "PROHIBITED_ZERO_ACCESS",
+    "git_operations": "PROHIBITED_ZERO_OPERATIONS",
+    "production_publishing": "PROHIBITED_ZERO_PUBLISHING",
+    "production_hashes": {
+      "news_data_json_sha256": "ae9fc8fe5de9c0271fd51e72d5c69222af28d4816ff5399d27c2700819a6b6c2",
+      "index_html_sha256": "c578bcc1d9f1ffa7b4c3db2a7ed3877533901ae64537808cdea84dccab6c293a",
+      "unchanged_bit_for_bit": true
+    }
+  },
+  "investigation_root_causes": {
+    "scraper_failure_root_cause": "In D-11.4, SourceScraper incorrectly checked 'cloudflare in lower_html'. Legitimate news websites such as See Hua Daily and Sin Chew Daily load legitimate CDN scripts from cdnjs.cloudflare.com and cloudflare-static plugins, causing genuine HTTP 200 pages with full article text to be falsely rejected as ACCESS_BLOCKED_OR_CHALLENGE (42 out of 45). Furthermore, Google News redirect URLs were fetched directly without unwrapping the batchexecute RPC.",
+    "corroboration_failure_root_cause": "In D-11.4, ArticleDeduplicator matched generic numbers > 5 ('NUM:10', 'NUM:15') and generic words ('air' = water in Malay, which appeared in 'tanah air' for homeland). Any article with LOC:SABAH and NUM:10 or 'air' was merged. Transitive single-linkage chaining (any(is_same_event)) chained 247 articles into a single mega-cluster led by an unrelated international story ('No water to cook or bathe...'). When that cluster was penalized (-300) and discarded, all 54 corroborating sources were wiped out, leaving only isolated single-source items in the Top-10."
+  },
+  "discovery_and_deduplication_summary": {
+    "raw_candidates_collected": 435,
+    "normalized_candidates_in_window": 331,
+    "canonical_stories_after_dedup": 266,
+    "multi_source_corroborated_stories": 14,
+    "single_source_stories": 252,
+    "anti_chaining_applied": "STAR_CLUSTERING_AGAINST_PRIMARY_LEADER",
+    "entity_map_sanitized": "REMOVED_GENERIC_AIR_STOPWORD_AND_BODY_NUM_EXTRACTION"
+  },
+  "live_scraping_results": {
+    "attempted": 266,
+    "full_body_extracted": 101,
+    "partial_body_extracted": 4,
+    "access_blocked_or_challenge": 0,
+    "paywall": 0,
+    "redirect_resolution_failed": 159,
+    "no_article_body_found": 1,
+    "http_error": 1,
+    "other": 0,
+    "sample_retrievals": [
+      {
+        "title": "Continuous heavy rain expected to hit east coast, Sabah until Wednesday",
+        "source": "The Malaysian Reserve",
+        "original_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObjdHOXJsYnFLbExuSTdDRUFGYlpENjlFejk2QXNJcktvejF3UlRqdV81RncwYklEMFlSNnRydkpnblJ2R0lvODc5cnlyNjhiSDZZeFJ6Sm52T0NRU2V6MGZHbDlrQTNqUlBiR0Nnd21adkdxTjlJX19NdUVSd0FCSWRlbHZzRmFNUW9kMnctWHpjLXY4QVhoUlo3QXUyTlJxUjRUYU1yQW1BSmFNVFoxMFFHeUI?oc=5",
+        "final_url": "https://themalaysianreserve.com/2026/11/09/continuous-heavy-rain-expected-to-hit-east-coast-sabah-until-wednesday/",
+        "extraction_status": "HTTP_ERROR",
+        "body_is_snippet_fallback": true,
+        "body_char_length": 453,
+        "paragraph_count": 1,
+        "body_preview": "<a href=\"https://news.google.com/rss/articles/CBMitAFBVV95cUxObjdHOXJsYnFLbExuSTdDRUFGYlpENjlFejk2QXNJcktvejF3UlRqdV81RncwYklEMFlSNnRydkpnblJ2R0lvODc5cnlyNjhiSDZZeFJ6Sm52T0NRU2V6MGZHbDlrQTNqUlBiR0Nnd2"
+      },
+      {
+        "title": "Kelantan, Terengganu, Pahang and Sabah under rain alert until Wednesday",
+        "source": "NST Online",
+        "original_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQMmlPS09vbjBDSmhseF9aZ19BM0lxNndRWHN2VTJtZGFPS29MY2hmYkJNeGg0VWpjUUZtazAtcDdhLUpVLU9fclhTSVo1Vkw4MkczTmZpSVNVd3EyYWlEUXduVmhVVWlXNnBYdFgwTVRJRjZ1VVd1VjBtR3BiaHIwUm9HUnJFMDhYYzhmekJwWm9MV1E1QXppbFpwbGxLSWFXZEJEbkcwMlc3WU1pWjBCUGNEaGFBUmd2YmRJQdIBwgFBVV95cUxNSEZBRTN0Wm9tSUhjSzRoVGRtWnJ6NDB0RUY1SFA1NmxiZjZfRFNXRWRldFZ3NEJUMEo4TkFRaVFkeS0zNmNPdGl5YWhJQTctR2xzMjBvRXFtLUUtbHlGTFdMb3ItTndZeFpNR1lnTmNIRllnM0x4RjVaX2VnQ3FrUWJ6YXlac0Q1OUQ1M2kydUdrTVBvTWN0VVIwUVZTb0ZETXprVXBrQjdNREFWSFRBQzNCSHVmYzFscFU0dGhqWnN3QQ?oc=5",
+        "final_url": "https://www.nst.com.my/news/nation/2026/11/1573756/kelantan-terengganu-pahang-and-sabah-under-rain-alert-until-wednesday",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 212,
+        "paragraph_count": 2,
+        "body_preview": "Kelantan, Terengganu, Pahang and Sabah under rain alert until Wednesday | New Straits Times\n\n2026 © New Straits Times, New Straits Times Press (M) Bhd (Co. No. 196101000449 / 4485 H). A part of Media "
+      },
+      {
+        "title": "Sabah PH chief warns against exploiting religion in politics",
+        "source": "The Sun Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTEsxU2k5bThLNTF4ZTQ3WHVMdTdHMExvcHdDZXFCWjBNRFhyQTBETnN1dFVpMW00MDZiS3FOSldYNVRLeUl6QkZrOHEwM1dYbXlGUTNadGZYVFpkWFQ5MzA1Z3ZDOFpKYWdWZTU4ZE1fRThWeWhOMmJndGxQbTk3SHZKR0tXVUFNb0M3bA?oc=5",
+        "final_url": "https://thesun.my/news/sabah-ph-chief-warns-against-exploiting-religion-in-politics/",
+        "extraction_status": "PARTIAL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 79,
+        "paragraph_count": 1,
+        "body_preview": "Sabah PH chief warns against exploiting religion in politics | The Sun Malaysia"
+      },
+      {
+        "title": "Sabah to study sustainable, integrated transport frameworks",
+        "source": "Borneo Post",
+        "original_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWW4waXE2YTVIMHBnR1psNFBHVmc0eHhkZGtuRWlhWFNkbXZjaTk4NVp0SXNibnBMM000VFZKcndwWXUzRFlQeWs1TXJPYUhSYVUzWGRtaFpPZmpDa0xmQUdkZlRpcTJ2ekpJYVloWDVkUTRyT2V2OGd3ckVUejduSkxZcWVBdUFNdHhEc1VBQWlhazB0djdPSHoydWtQSkt4VEE?oc=5",
+        "final_url": "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 2849,
+        "paragraph_count": 16,
+        "body_preview": "Caroline receives a token of appreciation from Faizal during the event.\n\nKOTA KINABALU (Nov 9): The state government will undertake a study on the Sabah Sustainable Transport Master Plan (SSTMP) and I"
+      },
+      {
+        "title": "Beyond the Runway: Sabah's Airport Debate Exposes a Larger Question About Its Economic Future",
+        "source": "Jesselton Times",
+        "original_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPekZKOFRodjdTVndfbGlRdy1JdXJSdFY0ZC1PcmY5SV9VN190RmNGZlFaWVgxZC1OX0dfZHQ2b1hPeENkSFdLTUlUdFJ5QkI4aU1NZUpoOXIyU21fZkp2UkFLMVBtb2poY2s2SlNNdEpwcm1sYlVuMktsQ3p6dHV5SGs4ZEtDQzY2SktITzJya1JLc3pOUXI5UWJac0tvLTRLTFY1WklrWGt4SGp3eThORXUwd1I0Uk5FZ19xNmk5bUdxb3d0bEd1cGpn0gHPAUFVX3lxTFBHZ2E3Y0lMZGhPYmZTUkRwQmtwaVB6cFlDQ29aNFk0aU5Dd1dKeFJRVTIxSUVQcDA2OE14UEJoRDdSNVBTUFJsekw4RFNjQ1FnYXM1U0N0QzdFdUJFMEo1Vy0yT2t3Q1BRVUpzWXZWM0s5aDdfQUotZEc0NzA1bG1wRzJIeGtpcEdqTjlDdExxdjEtcDRleFJvQVMyVmR1OWR3VnVZWk9EdzJEM096NnlxZkFVanl0OS14NzRnYTU5SmkwcHVQT2VUZ3VLMDdyUQ?oc=5",
+        "final_url": "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 9843,
+        "paragraph_count": 71,
+        "body_preview": "During a searching panel discussion, aviation experts were pressed on the assumptions behind their competing proposals. The exchanges revealed that building a bigger airport would not necessarily deli"
+      },
+      {
+        "title": "An uneven playing field",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QeFRHTWlvRG5uZ3ZEQy03VV96OXVXQUpTdHd0SUJYT0FzeTZNNmdZcEdlZ3M4ZnN4cUpHaV84MzJlbGowLVZjYXl6X1FYeHRvcHg2ZEllMi11LThSWk1NWVBmS1l3MDNVc3o0U3FuWFdzaGE4OEJlcUhCUzZMZw?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/09/an-uneven-playing-field",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 8615,
+        "paragraph_count": 59,
+        "body_preview": "Sabah has no shortage of sporting talent or facilities, but athletes still face higher costs and fewer opportunities to compete.\n\nTHEY train for the same competitions, chase the same medals and are ju"
+      },
+      {
+        "title": "Sabah, Sarawak need special attention to achieve 80% rice SSR target by 2030",
+        "source": "The Edge Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBQWFRmMEE3UGdVNDRYZmpjSnViX1Jxc04yRVpWMnZtbUFmNUxHZDNsTThoM3ZqSEFCZWZIYWxmVFFIN1JoZW5rZ3FWMm1xU1BG?oc=5",
+        "final_url": "https://theedgemalaysia.com/node/824717",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 4251,
+        "paragraph_count": 18,
+        "body_preview": "BURSA  SGX                                                                                                                                                                       Home             Parlia"
+      },
+      {
+        "title": "Tambunan heritage documentary earns SIA team national honour",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNbHUzeVc5aVNiSHlGYTJaczNmLTFvRFBWZkZFcW5OYmNfQThzbW5aWHVsRjNnTVFCRmg4VkUwYUhYbUpTZ3BKVlB6akYyTnlVbjlMOWJrdmFoNFRNbDhZMTlKeFNJazNaZF90MU1tbWltWWlvLWlkRER5Z253QXFSWjJ1WEQ0c3AyTW9aVXUycWFPRGFXNXhqdkphUFJWOVdqVlgxVzQ4QU9IUzg?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/interest/3517/tambunan-heritage-documentary-earns-sia-team-national-honour/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 4634,
+        "paragraph_count": 40,
+        "body_preview": "Tambunan heritage documentary earns SIA team national honour | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing "
+      },
+      {
+        "title": "Sabah names new tourism board CEO",
+        "source": "TTR Weekly",
+        "original_url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1lemlaRngxNEVrMUloZElpdjA4ODhqcnBaU010OXUwR3hhNFUtTXJpb0FHb0lxTS02aDhZMlFBUHhoQjZ0ZkVTRzNud3Bod1drLWpWanF0eGFuZk1fSlBzdEJKazFJa1FuQV9TeWJ5SXR2cWRmaDRLa01TTlZqdw?oc=5",
+        "final_url": "https://www.ttrweekly.com/site/2026/11/sabah-names-new-tourism-board-ceo/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1742,
+        "paragraph_count": 9,
+        "body_preview": "KOTA KINABALU, 9 November 2026: Sabah Tourism Board has named Victoria Engku as its Chief Executive Officer effective 5 November, 2026.\n\nEngku takes the helm at a critical juncture as the state ramps "
+      },
+      {
+        "title": "GABUNGAN PARTI SABAH A NEW POLITICAL FORCE IN THE MAKING?",
+        "source": "Jesselton Times",
+        "original_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObVU3RnF6REhEMVpYMFdWN2tJSGVMMFVMTktDM20yTjgyLVJ5Q2wyaEc3TXY1WnNGdjBqU01pNmlrMUt4bUVrMGlaWGpZRTZiaEg3RzRDby1WR0xJWGtESUxTZnZMd1p3MFhKN1pONS1xcWF3TXdtdC1PUXoxbGd2dzJoZ3dxVG1pQVlYWk80Szk2UUNoRm5ibFdPTdIBoAFBVV95cUxNcmJESTM2MmN0WkVZd0NNaWR3dWk5cHE2YmVHV3BRYmdUUDR0bTNLZzF5Q2tUdGtFU2p2YzZ3XzdISUU3WXA2Zklzd1R1SUpLQ1JndkhrSEthMXVMVDg4YUdCMTUwbm9RODR5bkNobW5uQWx5OGduNHRHaXpGbHlxUmdUZFFia3lqZThTcnhwZ1NWSHJXTnFta3JnOXF5UWlW?oc=5",
+        "final_url": "https://jesseltontimes.com/2026/11/09/gabungan-parti-sabah-a-new-political-force-in-the-making/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 10122,
+        "paragraph_count": 69,
+        "body_preview": "KOTA KINABALU: There are moments in politics when a seemingly ordinary gathering of political leaders can trigger speculation about developments far beyond the event itself.\n\nSuch was the case when th"
+      },
+      {
+        "title": "Heroes in the flood",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5jZUQ4bXkyLXhvZllDdF9KNlFlMWlmVEhFQk5EOU9WbHBIU1g5Z2pTMzhpMnpycEk3NDVvYjR6UTV4OUpMamRtNFU2NW41X2JZTVdxSlZ4cFBMUTk4TlA5bC1IMGdna2FCQUQ4UlNfSl9MX2JYSzJJdw?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/09/heroes-in-the-flood",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 3029,
+        "paragraph_count": 21,
+        "body_preview": "ON Oct 1, parts of Sabah including Tuaran district were hit with floods due to continuous downpours.\n\nHowever, it was not news of the floods that went viral and caught the attention of many Malaysians"
+      },
+      {
+        "title": "Sabah’s 6,000 Hindus strengthen bonds",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNa2JuZFNFd3QzQ3hDemRjVnNOYklvV1JEb25tdW9OUks4Z1dLVkdHbXpLQkhIWndUTWJHRDNtbHRrOVNVamQwazBqNGZTZS1FbGxtZ1NZUlBOdDVoa2VQTDNKc0lRN1QwbkhHbDFKelFKdEpOWmpCYVEtMkxDenNzaU1GUF9OSFF2REE?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291217/sabah-s-6-000-hindus-strengthen-bonds/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 5553,
+        "paragraph_count": 64,
+        "body_preview": "Sabah’s 6,000 Hindus strengthen bonds | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampang"
+      },
+      {
+        "title": "Sabah Budget 2027 to address key infrastructure issues, says CM",
+        "source": "Borneo Post",
+        "original_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPdUlDOHFFczlpZFlmWTJkYzgzTmJkRjBWYjE2bndhd002bUZMVzd6czFBMC1ZS1ctZDQ4WWQyVEF2dnc2cXBWUGFRRURYT1RpSzRha0twX2t0RkJwSDBLeG1GZGlBR1dDNzFJRHZydTNOdXRmVUpHZDZ0eGJ2emZINkFyd01HUUI0NG04SkExM3otNWdyVjhDY2M4ZlItYjFFSE4taFBvOA?oc=5",
+        "final_url": "https://www.theborneopost.com/2026/11/09/sabah-budget-2027-to-address-key-infrastructure-issues-says-cm/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 3446,
+        "paragraph_count": 21,
+        "body_preview": "Hajiji and wife accompanied by V. Jothi (fourth left) and other VIPs cut the Deepavali celebration cake.\n\nKOTA KINABALU (Nov 9): The Sabah Budget 2027 is expected to focus on addressing key infrastruc"
+      },
+      {
+        "title": "Penunggang motosikal maut terbabas langgar penghadang jalan di Penampang",
+        "source": "TV Sabah News",
+        "original_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQMnJHT01GSFlaMDVXS1RySXFDZnl3aWZqYXo3U1dldzkyV2o4dWctOW5Iemd2b2VVNVlWa19OdkdzeTBrQlYyc3BhWFFZOHBQR0RrWnJlZmoxYlpFVFZBTFVTZ25jVEkzM1ZaRVVXajZvS2FkU2puSm9xbE5Xb05qbWNLTl90SERtU1l6SjRyUndHUG5MV1FUNVNyZWVmQQ?oc=5",
+        "final_url": "https://tvsabahnews.com/penunggang-motosikal-maut-terbabas-langgar-penghadang-jalan-di-penampang/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1057,
+        "paragraph_count": 8,
+        "body_preview": "Oleh: Nurul Fazliana Norman\n\nPENAMPANG: 8 November 2026 – Seorang lelaki berusia 39 tahun maut selepas motosikal ditunggangnya terbabas dan melanggar penghadang jalan di Jalan Pan Borneo berhampiran K"
+      },
+      {
+        "title": "Sabah Local Government Games: Games to boost local economy",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNWWZjYXBZY3ZDTUFvbjJieHZVMm12SmxKTzN0cEFlZW43UHN0YVVzZlJCS1RnMjFNSk5CRmZybzZLc1otVVZvV1F3Q3hjYkZxQ3JqZnhnU1JhS1lkWHctcG1WY0ZWU2ZFQzdLQmJ1ajh1N1lCUGx3V3l0ODZXYUs3TXNGa2xkbGtESjhiNHV4NHNrcndWcTdRUm9FX1dBc3ZsbWxMOA?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291220/sabah-local-government-games-games-to-boost-local-economy/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 6109,
+        "paragraph_count": 61,
+        "body_preview": "Sabah Local Government Games: Games to boost local economy | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing in"
+      },
+      {
+        "title": "Pan Borneo Highway: Sabah’s unfinished business",
+        "source": "Borneo Post",
+        "original_url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPR2d6amdpQVZ2WXRWSnhsNUswVllvS19Cd2dveFJDUi1hcWdxZ2pZc25jUE4yRHRtdmliLU8tOHdwdjV4aGFkMkxfVFEwajZnMjBvVmFjRDZNRnYxcFA4WGtUMEw4a2NJZ0JCbGRXY3lXYlVsRXYyLTM0RnpYNVBSOW9XbzZIeGdYQVpWaTZsVWc?oc=5",
+        "final_url": "https://www.theborneopost.com/2026/11/09/pan-borneo-highway-sabahs-unfinished-business/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 10780,
+        "paragraph_count": 26,
+        "body_preview": "Sabah’s first phase was planned in 2015, with construction originally scheduled from 11 April 2016 to 31 December 2021. – Bernama file photo\n\nFOR years, the Pan Borneo Highway has been presented as a "
+      },
+      {
+        "title": "Just good grades won’t do: Don",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1ObDl4LWRvUWNiMlpZeEJOSllaY3JFSEFzXzc5VUFCZzM2OFVDNzJSWHIwZjNERW9LQ3hWUTN4cVpJMFdlQTdidHRvWjB2bFJ4Y3NIVXB1Xy1vRHdWbHNxNnNDRE9KRWt0eklMekVCVF9GUFlqS295OXJFUjMxU2s?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291234/just-good-grades-won-t-do-don/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 7165,
+        "paragraph_count": 75,
+        "body_preview": "Just good grades won’t do: Don | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampang\n\nNatio"
+      },
+      {
+        "title": "Sabah DAP vows to defend its two parliamentary seats as party looks at internal reforms",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNZFZDUkZ1aTBIU2g3TDlHWE9jTnhua0tkV3lvZ3lJdFoxZF8yWWhCSGh2UE5ZbU4xUzJ1Uk9GSmFSbkZNc1pXMHJId0E2MTNseGk5dGo1eUJuSXNZMUNoM200SXpUc1VQM0M5c1NIQ21reDhCa3YwY1RuMy1Od2lOTmY2TjhhWHJRVDZxUkdHN1k3YnBOU0NrUkFnbmd0REVxeFJRdUU3V2lnZVNzMDJaUHRfRDZndkZ5LS1meVFmeUFRcTlwRldlVWhPX1JhZlp0N3lj?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/08/sabah-dap-vows-to-defend-its-two-parliamentary-seats-as-party-looks-at-internal-reforms",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1545,
+        "paragraph_count": 12,
+        "body_preview": "SANDAKAN: Sabah DAP is committed to defending the Sandakan and Kota Kinabalu seats at the next general election as the party seeks to rebuild public confidence following its defeat in the previous sta"
+      },
+      {
+        "title": "Sabah DAP to defend two parliament seats: Phoong",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPd04xd3lJc2pMUlJLMGZvVWxqSEFjdEVwZUt1UTFTbnBtUFIxYXFQVl90Zk5va2N6OHVQQXZQczJ1XzBPYnJ1bHk1SkNJVzFZZ1lGQUt1VURPTUdMMnFtM1FmdGVqdVdjaHVsc0NMaXpNMURONFdTYUljS2FDTk9NMHVvdXpYbjhvb3NpSTVJUFZJYmlOdjFGbFllbmU4Z3J4UE1BUm95UzFSZHBBR3FYcDhrUk5mSm9VdVlCMUJUdVBENE0?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong?utm_medium=App&utm_source=Newswav",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 5298,
+        "paragraph_count": 62,
+        "body_preview": "Sabah DAP to defend two parliament seats: Phoong | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain i"
+      },
+      {
+        "title": "Suspect in RM5mil meth haul was on his way to Sabah, say police",
+        "source": "Free Malaysia Today",
+        "original_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORzY0UFRZcjFEdGsxQ0lHNkMwZnFKTHNqSGNZM3UyUWx3czhMdkZuaGZjS1BRN2R5NFlTRXduaHQ1UWNmNTNGQk10NlEtdHBOeWR2WlVXdlZpa2pZa2twTG5CcldtZ1JUREozTXBta3hIMVJSOGYxdVpCUDJmZHpleFVOTExielFRbFdTbGp5bHBqUy1BaHFiZWJnbFZZajRlM0t2Z0lOSjl1Y2xQX3daV0EzWkgtSDVOaU5NOW45dUNTUQ?oc=5",
+        "final_url": "https://www.freemalaysiatoday.com/category/nation/2026/11/08/suspect-in-rm5mil-syabu-haul-was-on-his-way-to-sabah-say-police",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1076,
+        "paragraph_count": 3,
+        "body_preview": "Share     The drug was found concealed in 100 tea packets and had an estimated street value of RM5 million, making it the largest drug haul recorded at the Brunei checkpoint.           The shabu was f"
+      },
+      {
+        "title": "Keningau’s son reaches Sabah police helm, becomes pride of Apin-Apin",
+        "source": "Borneo Post",
+        "original_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNDkwbHFJUDZTV1lMSmdERDAyOTFid3BYWUI5bnJxbmFHcTgtaEN4V0tydmxYUDc0YzJ2U0stRmpRZnhseTk3MUpKVHFia1RaTUl5UGtCQ1cxaUQzZVBWb0RlMW1Rb0FyVC01RUdXTVVzeTVCWHRVM3czV1NLN3hxZ2Jrcm96VXFOZFpyMEtuTzFJM0RLSEZEQlFBcV9IaDZGTC1ocF8tVmxQNks5?oc=5",
+        "final_url": "https://www.theborneopost.com/2026/11/08/keningaus-son-reaches-sabah-police-helm-becomes-pride-of-apin-apin/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 3095,
+        "paragraph_count": 18,
+        "body_preview": "KENINGAU (Nov 8): From a small village in Apin-Apin to the highest leadership position in Sabah’s police force, Datuk Victor Sanjos’ journey has brought immense pride to his family and the wider Kenin"
+      },
+      {
+        "title": "Response to ideas 2026 better than expected",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQS2JIajNCb2VhRmFhT0pyVXpIN01ZZ0NOZ3VmSGpiNkxvbFpBTU9RY1pmbWV1RVNTbE45cjdfUXcyU2l0X3JvbGtRTTFDUHh1aFA2S2haUnhCX01aaHJlbVl4dkVCYy1zYUY2UHFxckxvMnEyb1NEZXBqQU1YVDh5WlVqX0E3eE9zZlcwR0prSmgwQ1FMQnNablhYRUhXeHN1aWtPdDk2S283ZTF5X2p4cVB5Rl95T3poUkxPenhqRkRTYU0?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291226/response-to-ideas-2026-better-than-expected?utm_source=Newswav&utm_medium=Website",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 6337,
+        "paragraph_count": 63,
+        "body_preview": "Response to ideas 2026 better than expected | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Pen"
+      },
+      {
+        "title": "Kota Marudu flooding tops issues raised",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQRTN4T0lpdmVtX0g2eDlvajh1YTNuanhpRmtpSVNzTWlzWXpPaTNMdXVETFFPeDBMMXRXWkZqYVRyRUxnNEx5VUdPc3RSTFlxOTJPaF9BSEVRLUNIMWxEUXByZ3FCN0xNejROMjZLMHE1cmQyUTVUYnpIaTdKaWE1T1l4bXFuQVUzU1ZLV1FDeHQzNEh5TFhCdGpYTTZGR1JlOWpOZThEN2stWGIxX3loZHQ5R0hWSDhuWE53Wkln?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291227/kota-marudu-flooding-tops-issues-raised?utm_source=Newswav&utm_medium=Website",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 6055,
+        "paragraph_count": 62,
+        "body_preview": "Kota Marudu flooding tops issues raised | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampa"
+      },
+      {
+        "title": "Sabah Parks explains the ‘huts’",
+        "source": "Daily Express Malaysia",
+        "original_url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPVVlPcnhhU3RvSkFzWm1BeV8tOHQ5UjVENVcxUkZDbVRHSXMwX3pMT2ZzY1JoOHpfN1BzSzBsWW1vb3NVLVljbmhMMm5pSV9pMHRvMks4X3I4Mjd2dmVEcVJHNFk0cURuQmxQaW4tQ0dsUl9hS2RockFEb0dCZ2Y1cg?oc=5",
+        "final_url": "https://www.dailyexpress.com.my/news/291215/sabah-parks-explains-the-huts-/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 3697,
+        "paragraph_count": 54,
+        "body_preview": "Sabah Parks explains the ‘huts’ | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampang\n\nNati"
+      },
+      {
+        "title": "Upcoming Sabah budget will be a 'good one' for the people, says Hajiji",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPTkI4aUgwcFpkS3M0WkR0VG1lS2sxS3hkUGQ2R2xGTDFuVklEd1RyRHdYRVVzRzNJTk1NaUpyWTBONnR1QXVmSWNtdUNkV0J2UlAtQjlvcEZPVmViU1pFX0dYc0xRREJvWTRjd1J4MWVKVGZzSWF2SFpIdVF4aWdLLXpxcFpBVW5qZGM3UTdmZV9XY0EyeEQ4OU12dW5aV3B5Z0NVYWlhUjRBRk9ENHpHNGkyOENrY2Z2MUtyZW5CQlA?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/08/upcoming-sabah-budget-will-be-a-039good-one039-for-the-people-says-hajiji",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1449,
+        "paragraph_count": 12,
+        "body_preview": "KOTA KINABALU: The Sabah Budget to be tabled on Dec 4 will be people-centric and address issues the rakyat face, says Datuk Seri Hajiji Noor.\n\nThe Chief Minister said it would be a 'good one' for the "
+      },
+      {
+        "title": "Foreign suspect held within 24 hours over fatal stabbing of elderly man in Sabah",
+        "source": "The Vibes",
+        "original_url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQMWxJcWpuRzRveDBGZUpudlRPRDZTV3V6aXRYemRiS1ZZUFVvNlFBV0xBN3dpY09kNGh0aFF4dGdBNDExSjJEN045QTRyV0ltUDlTZ1lxdkpJTVA2MUtVdEZKZ21aY0hSNVRkLWJmUnJ5djNabkR6RF8waFgxYzgtRHd1T0lBQnd5R281N1kwNTdwMnJfM3FHQXlsR3A3bXR2Q3ZKemxqRS14bmpkbGp1M2FYc2lEX1JjLXJTM184WldPOWJZ?oc=5",
+        "final_url": "https://www.thevibes.com/articles/news/129318/foreign-suspect-held-within-24-hours-over-fatal-stabbing-of-elderly-man-in-sabah",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1948,
+        "paragraph_count": 12,
+        "body_preview": "Police believe a dispute over grocery debts led to the killing of the 75-year-old victim, who was found with a slash wound to his neck at his home in Papar\n\nUpdated 7 hours ago · Published on 09 Nov 2"
+      },
+      {
+        "title": "8,472 foreigners deported from Sabah to date, says Immigration Dept",
+        "source": "Borneo Post",
+        "original_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPc2VsRUFVTkpkU1REZTB0TkhST3BxbWZvamxhZUs2TFhOcnhldmRaQjIwVk9lc0hKUlFvM2lJVXZyNEJWMF83MWNzalI4N3NGcjdCRDJkdHZJaG10RE1POTEtR3p0U2xTa0RidEJNMGhwN3NUcFFCMUt1LWd5Z3pESmhDT1lfajh4UGxOLWZ1N2pEM1I3aVFybHpNRzJlMXJTVHNfaGhDOUpGYk0?oc=5",
+        "final_url": "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1792,
+        "paragraph_count": 9,
+        "body_preview": "Handout photo shows illegal immigrants being deported back to their home country in one of the programme.\n\nKOTA KINABALU (Nov 8): A total of 8,472 illegal immigrants of various nationalities have been"
+      },
+      {
+        "title": "Malaysian suspect arrested with 102kg syabu in Brunei was en route to Sabah",
+        "source": "NST Online",
+        "original_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQQ2pUQkpjTEctV0RiS0s5NWhGTHlnOGl1UXRReHcwaEVIbmR5dEwtLWZPeEN5YVY4c2c4MlNUSjF1NDlBOE9nU1Vnel9aRVBYcEd1b2RpSlEweUdJUk8yMUZhY0JHMk8zU1ZjWm5JYlI2NXlBazRJMVB5bG5ZeW5LVDhYQUU1TVdyd1g3TDQxREFzSnRDczlNUGhhV2t6S0FPQmo0dFZTVDY1aDY5NmJGX0ZocmRjZ9IBuwFBVV95cUxNYVlvTkFMTDNHSDBMMHNJSEktRWo2V2NtaFZsQ3NySWVHS3QtWElTdUVKWEVBaWVad1paS19UZ0tUVDZZLUp2V0U3YnFHc0RhSU1fa2hyMTdSVUVobWo5enNDVUt2TjVNMWdKWVZCSi02b0FMdTJrc0cxUjY5Yi04WEZ3RFZQRG5tVk05UzBGZkpmOU13Smd2dnlIQzRyLXdSRG5zRXI1TGM5a1J4V19uQzBGN2VDN1JGNERv?oc=5",
+        "final_url": "https://www.nst.com.my/news/nation/2026/11/1573563/malaysian-suspect-arrested-102kg-syabu-brunei-was-en-route-sabah",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 216,
+        "paragraph_count": 2,
+        "body_preview": "Malaysian suspect arrested with 102kg syabu in Brunei was en route to Sabah | New Straits Times\n\n2026 © New Straits Times, New Straits Times Press (M) Bhd (Co. No. 196101000449 / 4485 H). A part of Me"
+      },
+      {
+        "title": "A degree beyond barriers",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA2blBnUkI5V2s1N1F5MU4zWTNoMUZMYUUwc0xybzV2aUNjUDNJaWtzUHdBNVd5eTI1VUs3T2V2b3VqSzg2aUd5MXVWRWlYZFV4aC1wZXRUNHo0WXJxbG15ck40US03a1pBdUNManVZaXp0T2VHTkc3T0VNZUxPaUk?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/09/a-degree-beyond-barriers",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 5519,
+        "paragraph_count": 37,
+        "body_preview": "Blind since birth, Ruth Yong overcomes challenges to earn a master’s degree and pursue her passion for teaching.\n\nFOR Ruth Yong Wang Theen, completing a master’s programme in Teaching English to Speak"
+      },
+      {
+        "title": "RM123mil Batang Kemena Bridge officially opened in Sebauh",
+        "source": "The Star",
+        "original_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQNkNYTmJFYnZPMmZ5SzdXb3QwQ0pVa0NOU2dTS0NmYl94Z0RPeThSeFNzU21kU3k5QUtwU3JRd1otWUhWWUx2U0NTNjVSNGdveFlGQU5oS1JvUGs0RDhScEVzMk8yLThOaVFDdFJHVDB0cVNyQVZ3dkJKV0lVcHJ1d1BDdVB5NkxqWmhrWWNrZzNqNWlMTWVVR1hVNG1FdWE1T2owZTRWUnlwVXc?oc=5",
+        "final_url": "https://www.thestar.com.my/news/nation/2026/11/09/rm123mil-batang-kemena-bridge-officially-opened-in-sebauh",
+        "extraction_status": "FULL_BODY_EXTRACTED",
+        "body_is_snippet_fallback": false,
+        "body_char_length": 1116,
+        "paragraph_count": 11,
+        "body_preview": "KUCHING: The new Batang Kemena Bridge in Sebauh, Bintulu, will improve road connectivity and boost economic development for the local community.\n\nSarawak Caretaker Premier Tan Sri Abang Johari Openg s"
+      }
+    ]
+  },
+  "editorial_top_10": [
+    {
+      "rank": 1,
+      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
+      "category": "sabah",
+      "score": 57,
+      "status": "QUALIFIED",
+      "corroboration_type": "single_source",
+      "cluster_size": 1,
+      "corroborating_sources": [
+        "诗华日报沙巴版"
+      ],
+      "original_url": "https://news.seehua.com/post/1601871",
+      "final_url": "https://news.seehua.com/post/1601871",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 906,
+      "paragraph_count": 4,
+      "body_excerpt": "（山打根8日讯）「第14届（2026年）沙巴州地方政府运动会（SKTS）」昨晚在山打根县级综合体育馆隆重开幕，来自州房政部和属下机构，以及全州各县市议会的8支队伍齐聚山打根，通过体育竞技促进交流和增进情谊，并加强各地方政府之间的合作关系。  开幕仪式由本州地政及房屋部长拿督莫哈末阿里芬太平局绅主持，山打根市议会主席沃特肯森陪同。出席观礼嘉宾计有：山打根区国会议员黄诗怡、京那巴鲁油棕集团主席兼双溪马尼拉区州议员拿督哈泽慕沙及国会上议员拿督安娜贝儿，以及州房政部助理部长、常务秘书等相关部门高官等。\n"
+    },
+    {
+      "rank": 2,
+      "title": "Sabah DAP to defend two parliament seats: Phoong",
+      "category": "national",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 3,
+      "corroborating_sources": [
+        "Daily Express Malaysia",
+        "Newswav"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPd04xd3lJc2pMUlJLMGZvVWxqSEFjdEVwZUt1UTFTbnBtUFIxYXFQVl90Zk5va2N6OHVQQXZQczJ1XzBPYnJ1bHk1SkNJVzFZZ1lGQUt1VURPTUdMMnFtM1FmdGVqdVdjaHVsc0NMaXpNMURONFdTYUljS2FDTk9NMHVvdXpYbjhvb3NpSTVJUFZJYmlOdjFGbFllbmU4Z3J4UE1BUm95UzFSZHBBR3FYcDhrUk5mSm9VdVlCMUJUdVBENE0?oc=5",
+      "final_url": "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong?utm_medium=App&utm_source=Newswav",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 5298,
+      "paragraph_count": 62,
+      "body_excerpt": "Sabah DAP to defend two parliament seats: Phoong | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampang\n\nNational   Bernama joins global media"
+    },
+    {
+      "rank": 3,
+      "title": "Sabah Local Government Games: Games to boost local economy",
+      "category": "national",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 3,
+      "corroborating_sources": [
+        "Daily Express Malaysia",
+        "Newswav"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNWWZjYXBZY3ZDTUFvbjJieHZVMm12SmxKTzN0cEFlZW43UHN0YVVzZlJCS1RnMjFNSk5CRmZybzZLc1otVVZvV1F3Q3hjYkZxQ3JqZnhnU1JhS1lkWHctcG1WY0ZWU2ZFQzdLQmJ1ajh1N1lCUGx3V3l0ODZXYUs3TXNGa2xkbGtESjhiNHV4NHNrcndWcTdRUm9FX1dBc3ZsbWxMOA?oc=5",
+      "final_url": "https://www.dailyexpress.com.my/news/291220/sabah-local-government-games-games-to-boost-local-economy/",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 6109,
+      "paragraph_count": 61,
+      "body_excerpt": "Sabah Local Government Games: Games to boost local economy | Daily Express Malaysia - Sabah's Leading News Portal\n\nSabah   Just good grades won’t do: Don\n\nSabah   Motorcyclist killed after crashing into drain in Penampang\n\nNational   Bernama joins gl"
+    },
+    {
+      "rank": 4,
+      "title": "Sabah to study sustainable, integrated transport frameworks",
+      "category": "national",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 2,
+      "corroborating_sources": [
+        "Borneo Post",
+        "The Borneo Post Sabah"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWW4waXE2YTVIMHBnR1psNFBHVmc0eHhkZGtuRWlhWFNkbXZjaTk4NVp0SXNibnBMM000VFZKcndwWXUzRFlQeWs1TXJPYUhSYVUzWGRtaFpPZmpDa0xmQUdkZlRpcTJ2ekpJYVloWDVkUTRyT2V2OGd3ckVUejduSkxZcWVBdUFNdHhEc1VBQWlhazB0djdPSHoydWtQSkt4VEE?oc=5",
+      "final_url": "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 2849,
+      "paragraph_count": 16,
+      "body_excerpt": "Caroline receives a token of appreciation from Faizal during the event.\n\nKOTA KINABALU (Nov 9): The state government will undertake a study on the Sabah Sustainable Transport Master Plan (SSTMP) and Integrated Transport and Logistics Master Plan in 2"
+    },
+    {
+      "rank": 5,
+      "title": "CILTM Sabah Gesa Kajian Komprehensif Mengenai Lapangan Terbang Antarabangsa Kota Kinabalu",
+      "category": "sabah",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 2,
+      "corroborating_sources": [
+        "Bernama",
+        "Daily Express Malaysia"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1IdldsZmJnMThYSndEWXh5QU1GU1AxOFFUaHc2SkgxNkZVZjM2bmtPMzFTSVdBeXIwVVEtc25VZHBtaGxad3EzaS0yZE9RZFZvRTBZTkNhQjcyQUEzS0I0ZW9BNFE?oc=5",
+      "final_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1IdldsZmJnMThYSndEWXh5QU1GU1AxOFFUaHc2SkgxNkZVZjM2bmtPMzFTSVdBeXIwVVEtc25VZHBtaGxad3EzaS0yZE9RZFZvRTBZTkNhQjcyQUEzS0I0ZW9BNFE?oc=5",
+      "retrieval_status": "REDIRECT_RESOLUTION_FAILED",
+      "body_length_chars": 349,
+      "paragraph_count": 1,
+      "body_excerpt": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE1IdldsZmJnMThYSndEWXh5QU1GU1AxOFFUaHc2SkgxNkZVZjM2bmtPMzFTSVdBeXIwVVEtc25VZHBtaGxad3EzaS0yZE9RZFZvRTBZTkNhQjcyQUEzS0I0ZW9BNFE?oc=5\" target=\"_blank\">CILTM Sabah Gesa Kajian Komprehensif Menge"
+    },
+    {
+      "rank": 6,
+      "title": "Experts weigh KKIA expansion against proposal for new airport",
+      "category": "sabah",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 3,
+      "corroborating_sources": [
+        "Borneo Post",
+        "The Borneo Post Sabah"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVGxDRXdpNGV0OEhXdjlFYlJCZW5zMU1WVXFKWFJaTTIwallTMGxXakoxem1EenVCU2RCR3ctZTV2YzJWZ1VpUmx0Zk9qbUI5clBtR2g4eS1oMWdTTmkwNXRlY3g3NlhzUkVEckRCZjFrTHJlQVB2SW8wVDlWZC1STGRMbGtyLWxyNFZjeFFwQ09uUEdpSHRDd1FHXzZmNlNRdkRxMXVn?oc=5",
+      "final_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVGxDRXdpNGV0OEhXdjlFYlJCZW5zMU1WVXFKWFJaTTIwallTMGxXakoxem1EenVCU2RCR3ctZTV2YzJWZ1VpUmx0Zk9qbUI5clBtR2g4eS1oMWdTTmkwNXRlY3g3NlhzUkVEckRCZjFrTHJlQVB2SW8wVDlWZC1STGRMbGtyLWxyNFZjeFFwQ09uUEdpSHRDd1FHXzZmNlNRdkRxMXVn?oc=5",
+      "retrieval_status": "REDIRECT_RESOLUTION_FAILED",
+      "body_length_chars": 414,
+      "paragraph_count": 1,
+      "body_excerpt": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxQVGxDRXdpNGV0OEhXdjlFYlJCZW5zMU1WVXFKWFJaTTIwallTMGxXakoxem1EenVCU2RCR3ctZTV2YzJWZ1VpUmx0Zk9qbUI5clBtR2g4eS1oMWdTTmkwNXRlY3g3NlhzUkVEckRCZjFrTHJlQVB2SW8wVDlWZC1STGRMbGtyLWxyNFZjeFFwQ09uUEdp"
+    },
+    {
+      "rank": 7,
+      "title": "8,472 foreigners deported from Sabah to date, says Immigration Dept",
+      "category": "national",
+      "score": 55,
+      "status": "QUALIFIED",
+      "corroboration_type": "multi_source",
+      "cluster_size": 2,
+      "corroborating_sources": [
+        "Borneo Post",
+        "The Borneo Post Sabah"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPc2VsRUFVTkpkU1REZTB0TkhST3BxbWZvamxhZUs2TFhOcnhldmRaQjIwVk9lc0hKUlFvM2lJVXZyNEJWMF83MWNzalI4N3NGcjdCRDJkdHZJaG10RE1POTEtR3p0U2xTa0RidEJNMGhwN3NUcFFCMUt1LWd5Z3pESmhDT1lfajh4UGxOLWZ1N2pEM1I3aVFybHpNRzJlMXJTVHNfaGhDOUpGYk0?oc=5",
+      "final_url": "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 1792,
+      "paragraph_count": 9,
+      "body_excerpt": "Handout photo shows illegal immigrants being deported back to their home country in one of the programme.\n\nKOTA KINABALU (Nov 8): A total of 8,472 illegal immigrants of various nationalities have been deported from Sabah under the state Immigration D"
+    },
+    {
+      "rank": 8,
+      "title": "沙巴多区迎连日大雨 气象局发警戒警报促民众提高警惕",
+      "category": "sabah",
+      "score": 45,
+      "status": "QUALIFIED",
+      "corroboration_type": "single_source",
+      "cluster_size": 2,
+      "corroborating_sources": [
+        "诗华日报沙巴版"
+      ],
+      "original_url": "https://news.seehua.com/post/1602407",
+      "final_url": "https://news.seehua.com/post/1602407",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 153,
+      "paragraph_count": 3,
+      "body_excerpt": "（亚庇9日讯）沙巴多个地区预计将持续降雨至本周三（11日），大马气象局已发布警戒级持续降雨警报，提醒民众提高警惕。\n\n大马气象局今日发布声明指出，受影响地区包括古达，以及山打根、京那巴当岸、拜丹、特鲁必和拉卜部分地区。\n\n气象局促请受影响地区民众保持警惕，采取必要的防范措施，以应对持续降雨可能带来的影响。"
+    },
+    {
+      "rank": 9,
+      "title": "Beyond the Runway: Sabah's Airport Debate Exposes a Larger Question About Its Economic Future",
+      "category": "national",
+      "score": 45,
+      "status": "QUALIFIED",
+      "corroboration_type": "single_source",
+      "cluster_size": 1,
+      "corroborating_sources": [
+        "Jesselton Times"
+      ],
+      "original_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPekZKOFRodjdTVndfbGlRdy1JdXJSdFY0ZC1PcmY5SV9VN190RmNGZlFaWVgxZC1OX0dfZHQ2b1hPeENkSFdLTUlUdFJ5QkI4aU1NZUpoOXIyU21fZkp2UkFLMVBtb2poY2s2SlNNdEpwcm1sYlVuMktsQ3p6dHV5SGs4ZEtDQzY2SktITzJya1JLc3pOUXI5UWJac0tvLTRLTFY1WklrWGt4SGp3eThORXUwd1I0Uk5FZ19xNmk5bUdxb3d0bEd1cGpn0gHPAUFVX3lxTFBHZ2E3Y0lMZGhPYmZTUkRwQmtwaVB6cFlDQ29aNFk0aU5Dd1dKeFJRVTIxSUVQcDA2OE14UEJoRDdSNVBTUFJsekw4RFNjQ1FnYXM1U0N0QzdFdUJFMEo1Vy0yT2t3Q1BRVUpzWXZWM0s5aDdfQUotZEc0NzA1bG1wRzJIeGtpcEdqTjlDdExxdjEtcDRleFJvQVMyVmR1OWR3VnVZWk9EdzJEM096NnlxZkFVanl0OS14NzRnYTU5SmkwcHVQT2VUZ3VLMDdyUQ?oc=5",
+      "final_url": "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 9843,
+      "paragraph_count": 71,
+      "body_excerpt": "During a searching panel discussion, aviation experts were pressed on the assumptions behind their competing proposals. The exchanges revealed that building a bigger airport would not necessarily deliver stronger connectivity, more investment or grea"
+    },
+    {
+      "rank": 10,
+      "title": "第16届婆罗洲观鸟节圆满举行 吸引逾千爱鸟人士共护森林生态...",
+      "category": "national",
+      "score": 45,
+      "status": "QUALIFIED",
+      "corroboration_type": "single_source",
+      "cluster_size": 2,
+      "corroborating_sources": [
+        "诗华日报"
+      ],
+      "original_url": "https://news.seehua.com/post/1602333",
+      "final_url": "https://news.seehua.com/post/1602333",
+      "retrieval_status": "FULL_BODY_EXTRACTED",
+      "body_length_chars": 639,
+      "paragraph_count": 7,
+      "body_excerpt": "（山打根8日讯）「第16届（2026年）婆罗洲观鸟节」经于上周六及周日（本月7日至8日）在沙巴森林局属下森林研究中心（FRC）位于沙巴山打根西必洛路14哩的森林探索中心（RDC）圆满举行，吸引来自国内外数以千计的观鸟爱好者、摄影师、学生及家庭踊跃参加。\n\n据披露，今年活动一大亮点是「观鸟竞赛」，共吸引约45支队伍参赛，创下2009年首办以来最高纪录。参赛者来自我国马来西亚、菲律宾、新加坡、越南和纽西兰，以及中国大陆和台湾，展现观鸟活动跨越国界的凝聚力。\n\n活动也安排展览、生态教育讲座、观鸟摄影活"
+    }
+  ]
+}

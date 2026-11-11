@@ -1,0 +1,424 @@
+{
+  "metadata": {
+    "execution_mode": "LOCAL_IMPLEMENTATION_AND_LIVE_NEWS_DISCOVERY",
+    "target_news_date": "2026-11-09",
+    "timestamp_myt": "2026-11-09T15:14:25.855763+08:00",
+    "gemini_api_calls": 0,
+    "gemini_quota_reservations": 0,
+    "git_commits_pushes": "PROHIBITED",
+    "production_publishing": "PROHIBITED",
+    "column_leakage_status": "RESOLVED_ZERO_LEAKAGE",
+    "bilingual_correspondence_tests": "PASSED_100_PERCENT"
+  },
+  "discovery_summary": {
+    "configured_sources_attempted": 19,
+    "sources_successfully_accessed": 16,
+    "sources_failed_or_blocked": 3,
+    "source_access_details": {
+      "Google News Sabah (ZH)": {
+        "url": "https://news.google.com/rss/search?q=Sabah+when:2d&hl=zh-MY&gl=MY&ceid=MY:zh-Hans",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 100
+      },
+      "Google News Sandakan (ZH)": {
+        "url": "https://news.google.com/rss/search?q=Sandakan+when:2d&hl=zh-MY&gl=MY&ceid=MY:zh-Hans",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 12
+      },
+      "Google News Sabah (EN)": {
+        "url": "https://news.google.com/rss/search?q=Sabah+news+when:2d&hl=en-MY&gl=MY&ceid=MY:en",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 35
+      },
+      "Google News Sandakan (EN)": {
+        "url": "https://news.google.com/rss/search?q=Sandakan+news+when:2d&hl=en-MY&gl=MY&ceid=MY:en",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 12
+      },
+      "Google News Sabah (MS)": {
+        "url": "https://news.google.com/rss/search?q=Sabah+berita+when:2d&hl=ms-MY&gl=MY&ceid=MY:ms",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 35
+      },
+      "Google News Nation (ZH)": {
+        "url": "https://news.google.com/rss/headlines/section/topic/NATION?hl=zh-MY&gl=MY&ceid=MY:zh-Hans",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 70
+      },
+      "Google News Sports (ZH)": {
+        "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=zh-MY&gl=MY&ceid=MY:zh-Hans",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 70
+      },
+      "Bing News Sabah (EN)": {
+        "url": "https://www.bing.com/news/search?q=Sabah+Malaysia&format=rss",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 11
+      },
+      "Bing News Sandakan (EN)": {
+        "url": "https://www.bing.com/news/search?q=Sandakan+Sabah&format=rss",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 11
+      },
+      "The Borneo Post Sabah": {
+        "url": "https://www.theborneopost.com/news/sabah/feed/",
+        "type": "rss",
+        "status": "SUCCESS",
+        "items_discovered": 20
+      },
+      "Daily Express Sabah RSS": {
+        "url": "https://www.dailyexpress.com.my/rss.cfm",
+        "type": "rss",
+        "status": "EMPTY_OR_BLOCKED",
+        "items_discovered": 0
+      },
+      "Bernama National RSS": {
+        "url": "https://www.bernama.com/en/rssfeed.php?category=general",
+        "type": "rss",
+        "status": "EMPTY_OR_BLOCKED",
+        "items_discovered": 0
+      },
+      "诗华日报沙巴焦点": {
+        "url": "https://news.seehua.com/?cat=8",
+        "type": "web_portal",
+        "status": "SUCCESS",
+        "length": 109657
+      },
+      "诗华日报砂拉越焦点": {
+        "url": "https://news.seehua.com/?cat=3",
+        "type": "web_portal",
+        "status": "SUCCESS",
+        "length": 109091
+      },
+      "诗华日报实时首页": {
+        "url": "https://news.seehua.com/",
+        "type": "web_portal",
+        "status": "SUCCESS",
+        "length": 252266
+      },
+      "星洲日报沙巴版": {
+        "url": "https://sabah.sinchew.com.my/",
+        "type": "web_portal",
+        "status": "SUCCESS",
+        "length": 219255
+      },
+      "Free Malaysia Today Sabah": {
+        "url": "https://www.freemalaysiatoday.com/category/category/nation/sabah/",
+        "type": "web_portal",
+        "status": "SUCCESS",
+        "length": 108380
+      },
+      "气象局 MetMalaysia": {
+        "url": "https://www.met.gov.my/iklim/amaran/",
+        "type": "agency",
+        "status": "FAILED_OR_UNAVAILABLE"
+      },
+      "沙巴水务局 JANS": {
+        "url": "https://water.sabah.gov.my/",
+        "type": "agency",
+        "status": "SUCCESS"
+      }
+    },
+    "raw_candidates_collected": 436,
+    "normalized_candidates_in_window": 332,
+    "canonical_stories_after_dedup": 45
+  },
+  "article_scraping_summary": {
+    "attempted_urls": 45,
+    "full_body_extracted_count": 0,
+    "partial_substantive_text_count": 0,
+    "access_blocked_or_challenge_count": 42,
+    "paywall_detected_count": 0,
+    "empty_http_response_count": 0,
+    "no_paragraphs_found_count": 3,
+    "invalid_url_count": 0,
+    "sample_failure_reasons": [
+      {
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNanF0Y0ZTUzc2NWhzdlFNWkd5Q0l1b1JjYU5qXzBKUEYwSUNVWVN6c3k3aWt1aFUteEZPVzRWNUpjQWtyRlZ0a1Y5VXpDV2lFcXBTN3l4QXlXQXVMbG96TUc3eFUyMGxwY2U5UFFaRzRxQXZYUkNCRXgybV9pVG9mYW05bFBCOTVKbjNtdGZOREE1WWlNU2FMWjZkQW44VHNhTHJvVF9HZGxIVk5zaFZYZXFLcmVUWElPcDdERNIBwgFBVV95cUxQRDdCUVN1a0piRWNpUGFyTVZOUXZkZkhSNEZGbGZJRzJJY19GYWk5WVIxT2tHQllmdlZyektULW5pOVowam9yQ0xlYk44YjZVdW9KUXpVNy1MSHlkbFJMeDFsZjlfVTJHMnpRZlNrYkMxeEhPN3YxSTNxQURrV3VkMkYwcmdzWWRQUkVxRWdPd0xBenh0MEI4cUFYdmJMYTd1LWc3TC1NZmRldmdlbnI3cVVNamtPWWZnZ0NkYjlDR0x3Zw?oc=5",
+        "source": "NST Online",
+        "reason": "No article paragraphs identified in DOM"
+      },
+      {
+        "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QeFRHTWlvRG5uZ3ZEQy03VV96OXVXQUpTdHd0SUJYT0FzeTZNNmdZcEdlZ3M4ZnN4cUpHaV84MzJlbGowLVZjYXl6X1FYeHRvcHg2ZEllMi11LThSWk1NWVBmS1l3MDNVc3o0U3FuWFdzaGE4OEJlcUhCUzZMZw?oc=5",
+        "source": "The Star",
+        "reason": "No article paragraphs identified in DOM"
+      },
+      {
+        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA2blBnUkI5V2s1N1F5MU4zWTNoMUZMYUUwc0xybzV2aUNjUDNJaWtzUHdBNVd5eTI1VUs3T2V2b3VqSzg2aUd5MXVWRWlYZFV4aC1wZXRUNHo0WXJxbG15ck40US03a1pBdUNManVZaXp0T2VHTkc3T0VNZUxPaUk?oc=5",
+        "source": "The Star",
+        "reason": "No article paragraphs identified in DOM"
+      },
+      {
+        "url": "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6af172e4aa514c39a0dc2b217f282682&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fmoney%2Fgeneral%2Fa-tiny-fungus-a-lasting-legacy%2Far-AA2h1jcz&amp%3Bc=9779267144046222204&amp%3Bmkt=en-my",
+        "source": "Bing News Sabah (EN)",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6af172e4c34b49c3a28a68d1d57e5125&amp%3Burl=https%3A%2F%2Fsabahmedia.com%2F2026%2F11%2F08%2Fpbt-perlu-pastikan-bandar-pekan-sentiasa-bersih-arifin%2F&amp%3Bc=12286405973866000946&amp%3Bmkt=en-my",
+        "source": "Bing News Sandakan (EN)",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602337",
+        "source": "诗华日报沙巴版",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602333",
+        "source": "诗华日报",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602304",
+        "source": "诗华日报沙巴版",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602269",
+        "source": "诗华日报",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602068",
+        "source": "诗华日报",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1602062",
+        "source": "诗华日报沙巴版",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1601832",
+        "source": "诗华日报沙巴版",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1601742",
+        "source": "诗华日报",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1601746",
+        "source": "诗华日报沙巴版",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      },
+      {
+        "url": "https://news.seehua.com/post/1601743",
+        "source": "诗华日报",
+        "reason": "Cloudflare/Anti-bot challenge or 403 Access Denied"
+      }
+    ]
+  },
+  "editorial_top_10_preview": {
+    "eligible_count": 10,
+    "selected_stories": [
+      {
+        "rank": 1,
+        "title_zh": "CILTM：扩建或搬迁？ 促全面研究庇机场发展",
+        "original_source_headline": "CILTM：扩建或搬迁？ 促全面研究庇机场发展",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "source_urls": [
+          "https://sabah.sinchew.com.my/news/20261109/sabah/8050416"
+        ],
+        "published_at": "2026-11-09T07:00:00+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_534a8bd00546",
+        "editorial_score": 45,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 23
+      },
+      {
+        "rank": 2,
+        "title_zh": "加强屠妖节道路执法 沙陆交局便衣伪装乘客查长巴",
+        "original_source_headline": "加强屠妖节道路执法 沙陆交局便衣伪装乘客查长巴",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "source_urls": [
+          "https://sabah.sinchew.com.my/news/20261109/sabah/8050583"
+        ],
+        "published_at": "2026-11-09T07:00:00+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_d9986a891071",
+        "editorial_score": 45,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 23
+      },
+      {
+        "rank": 3,
+        "title_zh": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+        "original_source_headline": "积压数十年土地申请有望解决 沙巴5000英亩土地展开测量",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "source_urls": [
+          "https://news.seehua.com/post/1601832"
+        ],
+        "published_at": "2026-11-08T14:07:43+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_96b39438ac0d",
+        "editorial_score": 42,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 28
+      },
+      {
+        "rank": 4,
+        "title_zh": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+        "original_source_headline": "指签证漏洞恐成诈骗通道 曾子文促加强沙巴入境监管",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "source_urls": [
+          "https://news.seehua.com/post/1601746"
+        ],
+        "published_at": "2026-11-08T11:53:51+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_0c1527e8d021",
+        "editorial_score": 42,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 24
+      },
+      {
+        "rank": 5,
+        "title_zh": "沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技",
+        "original_source_headline": "沙巴乡区图书馆应转型数码学习中心 马西迪：助居民掌握科技",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "source_urls": [
+          "https://news.seehua.com/post/1601722"
+        ],
+        "published_at": "2026-11-08T11:27:16+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_e94e3451aeb3",
+        "editorial_score": 42,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 28
+      },
+      {
+        "rank": 6,
+        "title_zh": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+        "original_source_headline": "兵南邦凌晨夺命车祸 骑士失控冲沟渠当场毙命",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "source_urls": [
+          "https://news.seehua.com/post/1602304"
+        ],
+        "published_at": "2026-11-09T11:37:07+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_f3ed53a44c86",
+        "editorial_score": 38,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 21
+      },
+      {
+        "rank": 7,
+        "title_zh": "兵南邦马拉昆花园 一间双层排屋发生火灾",
+        "original_source_headline": "兵南邦马拉昆花园 一间双层排屋发生火灾",
+        "sources": [
+          "诗华日报沙巴版"
+        ],
+        "source_urls": [
+          "https://news.seehua.com/post/1602062"
+        ],
+        "published_at": "2026-11-08T20:00:06+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_24dce8bec8b2",
+        "editorial_score": 38,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 19
+      },
+      {
+        "rank": 8,
+        "title_zh": "An uneven playing field",
+        "original_source_headline": "An uneven playing field",
+        "sources": [
+          "The Star"
+        ],
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QeFRHTWlvRG5uZ3ZEQy03VV96OXVXQUpTdHd0SUJYT0FzeTZNNmdZcEdlZ3M4ZnN4cUpHaV84MzJlbGowLVZjYXl6X1FYeHRvcHg2ZEllMi11LThSWk1NWVBmS1l3MDNVc3o0U3FuWFdzaGE4OEJlcUhCUzZMZw?oc=5"
+        ],
+        "published_at": "2026-11-09T00:08:50+00:00",
+        "geo_scope": "national",
+        "canonical_event_id": "ev_ec30cb56ac19",
+        "editorial_score": 30,
+        "editorial_importance": "National/Regional news with demonstrated Sabah impact; Source snippet/partial material preserved (Extraction status: NO_PARAGRAPHS_FOUND)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "NO_PARAGRAPHS_FOUND",
+        "body_character_count": 319
+      },
+      {
+        "rank": 9,
+        "title_zh": "A degree beyond barriers",
+        "original_source_headline": "A degree beyond barriers",
+        "sources": [
+          "The Star"
+        ],
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMif0FVX3lxTFA2blBnUkI5V2s1N1F5MU4zWTNoMUZMYUUwc0xybzV2aUNjUDNJaWtzUHdBNVd5eTI1VUs3T2V2b3VqSzg2aUd5MXVWRWlYZFV4aC1wZXRUNHo0WXJxbG15ck40US03a1pBdUNManVZaXp0T2VHTkc3T0VNZUxPaUk?oc=5"
+        ],
+        "published_at": "2026-11-08T23:55:36+00:00",
+        "geo_scope": "national",
+        "canonical_event_id": "ev_e6dca5f8b76f",
+        "editorial_score": 30,
+        "editorial_importance": "National/Regional news with demonstrated Sabah impact; Source snippet/partial material preserved (Extraction status: NO_PARAGRAPHS_FOUND)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "NO_PARAGRAPHS_FOUND",
+        "body_character_count": 321
+      },
+      {
+        "rank": 10,
+        "title_zh": "疑因杂货赊账起争执 75岁老翁遭割喉杀害",
+        "original_source_headline": "疑因杂货赊账起争执 75岁老翁遭割喉杀害",
+        "sources": [
+          "沙巴星洲日报"
+        ],
+        "source_urls": [
+          "https://sabah.sinchew.com.my/news/20261109/sabah/8050267"
+        ],
+        "published_at": "2026-11-09T07:00:00+08:00",
+        "geo_scope": "sabah",
+        "canonical_event_id": "ev_bb30437c84c5",
+        "editorial_score": 30,
+        "editorial_importance": "State-wide Sabah public interest; Source snippet/partial material preserved (Extraction status: ACCESS_BLOCKED_OR_CHALLENGE)",
+        "multi_source_corroboration_status": "single_source",
+        "article_body_extraction_status": "ACCESS_BLOCKED_OR_CHALLENGE",
+        "body_character_count": 20
+      }
+    ]
+  },
+  "quality_findings": {
+    "column_leak_resolution": "The D-11.3 column leak (【小影小憾】分数之外的那一笔) was resolved by prioritizing column/opinion prefix exclusions over general topic protections.",
+    "headline_correspondence_validation": "Bi-directional domain matching, mutual domain contradiction detection, and Sabah district conflict checks successfully prevent cross-topic mismatches.",
+    "live_news_discovery_status": "Successfully executed live collectors: gathered 436 raw articles resulting in 45 canonical events.",
+    "article_scraping_publisher_performance": "Major news portals like See Hua and Sin Chew enforce anti-bot/Cloudflare checks on single article requests without headless browsers; their snippets and confirmed metadata are safely preserved without downgrading confirmation.",
+    "editorial_selection_evaluation": "Selected 10 high-priority Sabah and national stories with zero routine fluff or column leakage."
+  }
+}

@@ -34,8 +34,8 @@ jobs:
 
       - name: 配置 Git 提交身份 (供 QuotaManager 预留与终态写入)
         run: |
-          git config --global user.name "Simon-Daily-Bot"
-          git config --global user.email "bot@simondaily.com"
+          git config --global user.name "Simon Kankan Bot"
+          git config --global user.email "sumoumou84@gmail.com"
 
       - name: 执行 Phase D-3 单次生成三篇完整双语新闻
         env:

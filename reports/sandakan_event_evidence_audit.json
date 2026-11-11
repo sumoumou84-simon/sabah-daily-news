@@ -1,0 +1,262 @@
+{
+  "audit_metadata": {
+    "audit_timestamp": "2026-11-08T13:05:32+08:00",
+    "auditor": "Sandakan Event Verification Engine v1.0",
+    "reference_window_start": "2026-11-08T13:05:32+08:00",
+    "reference_window_end": "2026-11-22T23:59:59+08:00",
+    "total_candidates_audited": 7,
+    "approved_for_publication_count": 4,
+    "blocked_count": 2,
+    "completed_historical_count": 1,
+    "gemini_api_calls_used": 0
+  },
+  "events": [
+    {
+      "event_id": "EVT-SDK-2026-001",
+      "official_name_en": "16th Borneo Bird Festival 2026",
+      "official_name_ms": "Festival Burung Borneo Ke-16 2026",
+      "official_name_zh": "第16届婆罗洲观鸟节 2026",
+      "category": "Ecotourism & Community Festival",
+      "organiser_primary": "Sandakan Borneo Bird Club (SBOBC)",
+      "co_organisers": [
+        "Sabah Forestry Department (SFD)",
+        "Sabah Tourism Board (STB)"
+      ],
+      "primary_source_url": "https://sabahtourism.com/event/16th-borneo-bird-festival/",
+      "secondary_source_urls": [
+        "https://www.borneobirdfestival.com/",
+        "https://www.dailyexpress.com.my/news/244890/borneo-bird-festival-starts-nov-7/"
+      ],
+      "venue_name": "Rainforest Discovery Centre (RDC)",
+      "venue_address": "Jalan Sepilok, Mile 14, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8752,
+        "longitude": 117.9458
+      },
+      "start_datetime": "2026-11-07T07:00:00+08:00",
+      "end_datetime": "2026-11-08T17:00:00+08:00",
+      "source_reliability_tier": "TIER_1_OFFICIAL",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "event_status": "LIVE_NOW",
+      "is_approved_for_publication": true,
+      "verified_facts": [
+        "Annual eco-tourism festival held across 2 days (7–8 November 2026)",
+        "Features international bird race, photography workshop, and trade exhibitions",
+        "Officially listed on Sabah Tourism Board Calendar of Events"
+      ],
+      "unverified_claims": [],
+      "conflict_notes": null
+    },
+    {
+      "event_id": "EVT-SDK-2026-002",
+      "official_name_en": "Borneo Bird Run 2026",
+      "official_name_ms": "Larian Burung Borneo 2026",
+      "official_name_zh": "2026婆罗洲观鸟跑",
+      "category": "Sports & Running",
+      "organiser_primary": "Sandakan Borneo Bird Club",
+      "co_organisers": [
+        "Ticket2U Malaysia"
+      ],
+      "primary_source_url": "https://www.ticket2u.com.my/",
+      "secondary_source_urls": [
+        "https://www.borneobirdfestival.com/programme/",
+        "https://www.asiaruncalendar.com/event/borneo-bird-run-2026/"
+      ],
+      "venue_name": "Rainforest Discovery Centre (RDC)",
+      "venue_address": "Jalan Sepilok, Mile 14, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8752,
+        "longitude": 117.9458
+      },
+      "start_datetime": "2026-11-08T07:00:00+08:00",
+      "end_datetime": "2026-11-08T10:30:00+08:00",
+      "source_reliability_tier": "TIER_1_OFFICIAL",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "event_status": "COMPLETED",
+      "is_approved_for_publication": false,
+      "verified_facts": [
+        "12KM competitive trail run and 2KM fancy dress run flagged off at 07:00 AM on 8 November 2026",
+        "Concluded with prize giving ceremony at 10:30 AM",
+        "Chronologically past current audit time (13:05 MYT)"
+      ],
+      "unverified_claims": [],
+      "conflict_notes": "Earlier research classified this as LIVE/UPCOMING for the entire day. Chronological audit confirms completion prior to 13:00 MYT."
+    },
+    {
+      "event_id": "EVT-SDK-2026-003",
+      "official_name_en": "Elopura Marathon Sandakan 2026 — Race Pack Collection (REPC)",
+      "official_name_ms": "Pengambilan Pek Larian Elopura Marathon Sandakan 2026",
+      "official_name_zh": "2026山打根伊罗普拉马拉松 — 赛前选手包领取与博览会",
+      "category": "Sports Logistics & Expo",
+      "organiser_primary": "Persatuan Ortopedik Sandakan (POS)",
+      "co_organisers": [
+        "Kelab Olahraga Elopura",
+        "Ticket2U"
+      ],
+      "primary_source_url": "https://www.ticket2u.com.my/event/38600",
+      "secondary_source_urls": [
+        "https://elopuramarathon.com/"
+      ],
+      "venue_name": "Dewan Serbaguna, Kompleks Sukan Sandakan (Sibuga)",
+      "venue_address": "Jalan Sibuga, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8690,
+        "longitude": 118.0620
+      },
+      "start_datetime": "2026-11-20T10:00:00+08:00",
+      "end_datetime": "2026-11-21T18:00:00+08:00",
+      "source_reliability_tier": "TIER_2_ESTABLISHED_ORGANISER",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "event_status": "UPCOMING",
+      "is_approved_for_publication": true,
+      "verified_facts": [
+        "Mandatory race entry pack collection across 2 days prior to race day",
+        "Event hours verified 10:00 AM to 06:00 PM on both days",
+        "Requires IC / passport and digital registration QR code"
+      ],
+      "unverified_claims": [],
+      "conflict_notes": null
+    },
+    {
+      "event_id": "EVT-SDK-2026-004",
+      "official_name_en": "Elopura Marathon Sandakan 2026",
+      "official_name_ms": "Larian Elopura Marathon Sandakan 2026",
+      "official_name_zh": "2026山打根伊罗普拉马拉松正赛",
+      "category": "Major Sporting Event",
+      "organiser_primary": "Persatuan Ortopedik Sandakan (POS)",
+      "co_organisers": [
+        "Sabah Athletics Association (SAA)",
+        "Kelab Olahraga Elopura"
+      ],
+      "primary_source_url": "https://www.ticket2u.com.my/event/38600",
+      "secondary_source_urls": [
+        "https://elopuramarathon.com/",
+        "https://www.asiaruncalendar.com/event/elopura-marathon-2026/"
+      ],
+      "venue_name": "Kompleks Sukan Sandakan (Sibuga)",
+      "venue_address": "Jalan Sibuga, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8690,
+        "longitude": 118.0620
+      },
+      "start_datetime": "2026-11-22T00:30:00+08:00",
+      "end_datetime": "2026-11-22T08:00:00+08:00",
+      "source_reliability_tier": "TIER_2_ESTABLISHED_ORGANISER",
+      "verification_status": "OFFICIAL_CONFIRMED",
+      "event_status": "UPCOMING",
+      "is_approved_for_publication": true,
+      "verified_facts": [
+        "42.195KM Full Marathon flags off at 00:30 AM (midnight)",
+        "21KM flags off at 02:00 AM; 10KM at 05:30 AM; 5KM at 06:30 AM",
+        "Course covers major Sandakan arterial roads and waterfront",
+        "Falls precisely on Day 14 of the rolling window"
+      ],
+      "unverified_claims": [],
+      "conflict_notes": null
+    },
+    {
+      "event_id": "EVT-SDK-2026-005",
+      "official_name_en": "5th Sandakan 'Little Hong Kong' National High Pole Lion Dance Championship 2026",
+      "official_name_ms": "Kejohanan Tarian Singa Tonggak Tinggi Kebangsaan Sandakan 'Little Hong Kong' Ke-5 Tahun 2026",
+      "official_name_zh": "第五届“小香港”全国高桩舞狮邀请赛",
+      "category": "Cultural & Martial Arts Championship",
+      "organiser_primary": "Pusat Khidmat Rakyat Parlimen Sandakan (MP Vivian Wong)",
+      "co_organisers": [
+        "Persatuan Harapan Dinamik Sabah",
+        "JCI Sandakan"
+      ],
+      "primary_source_url": "https://www.dailyexpress.com.my/news/245120/hajiji-lauds-little-hong-kong-lion-dance-championship/",
+      "secondary_source_urls": [
+        "https://www.tvsarawak.my/2026/11/07/kejohanan-tarian-singa-tonggak-tinggi-kebangsaan-sandakan-tarik-31-pasukan/",
+        "https://sabah.sinchew.com.my/news/20261107/sandakan/5982101",
+        "https://news.seehua.com/?p=1248011"
+      ],
+      "venue_name": "Dewan Serbaguna, Kompleks Sukan Sandakan (Sibuga)",
+      "venue_address": "Jalan Sibuga, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8690,
+        "longitude": 118.0620
+      },
+      "start_datetime": "2026-11-07T09:00:00+08:00",
+      "end_datetime": "2026-11-08T18:00:00+08:00",
+      "source_reliability_tier": "TIER_3_MAINSTREAM_MEDIA",
+      "verification_status": "MULTI_SOURCE_CONFIRMED",
+      "event_status": "LIVE_NOW",
+      "is_approved_for_publication": true,
+      "verified_facts": [
+        "31 lion dance troupes from throughout Malaysia competing",
+        "Chief Minister Hajiji Noor delivered keynote message praising cultural heritage",
+        "Community Development Minister Datuk James Ratib represented the CM at the ceremony",
+        "Sandakan MP Vivian Wong and ADUN Frankie Poon attended in person",
+        "Day 2 finals currently taking place on 8 November 2026"
+      ],
+      "unverified_claims": [],
+      "conflict_notes": "Early discovery ambiguously labelled this as a generic tourism slogan. Concrete evidence proves an active national sporting tournament."
+    },
+    {
+      "event_id": "EVT-SDK-2026-006",
+      "official_name_en": "MPS Coastal Disaster Prevention & Gotong-Royong Day",
+      "official_name_ms": "Hari Pencegahan Bencana Pesisir Pantai & Gotong-Royong MPS Sandakan 2026",
+      "official_name_zh": "山打根市议会海岸防灾与大扫除清洁日",
+      "category": "Municipal & Environment",
+      "organiser_primary": "Majlis Perbandaran Sandakan (MPS)",
+      "co_organisers": [],
+      "primary_source_url": "https://mps.sabah.gov.my/",
+      "secondary_source_urls": [],
+      "venue_name": "Sandakan Coastal Zone / Sim-Sim Waterfront",
+      "venue_address": "Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8402,
+        "longitude": 118.1174
+      },
+      "start_datetime": "2026-11-09T07:30:00+08:00",
+      "end_datetime": "2026-11-09T11:30:00+08:00",
+      "source_reliability_tier": "TIER_4_SOCIAL_DISCOVERY",
+      "verification_status": "DISCOVERED",
+      "event_status": "UNKNOWN",
+      "is_approved_for_publication": false,
+      "verified_facts": [],
+      "unverified_claims": [
+        "Claimed clean-up scheduled for 9 November 2026"
+      ],
+      "conflict_notes": "No matching circular, tender notice, or press release exists on mps.sabah.gov.my or MPS official social feeds. Staged as unconfirmed candidate."
+    },
+    {
+      "event_id": "EVT-SDK-2026-007",
+      "official_name_en": "Duchess of Kent Hospital Sandakan Blood Donation Campaign",
+      "official_name_ms": "Kempen Derma Darah Hospital Duchess of Kent Sandakan",
+      "official_name_zh": "山打根肯特医院爱心献血运动",
+      "category": "Public Health & Civic",
+      "organiser_primary": "Unit Tabung Darah, Hospital Duchess of Kent (HDOK)",
+      "co_organisers": [
+        "Harbour Mall Sandakan Management"
+      ],
+      "primary_source_url": "https://jknsabah.moh.gov.my/hdok/",
+      "secondary_source_urls": [],
+      "venue_name": "Ground Floor Concourse, Harbour Mall Sandakan",
+      "venue_address": "Bandar Harbour City, 90000 Sandakan, Sabah",
+      "district": "Sandakan",
+      "coordinates": {
+        "latitude": 5.8398,
+        "longitude": 118.1189
+      },
+      "start_datetime": "2026-11-15T10:00:00+08:00",
+      "end_datetime": "2026-11-15T16:00:00+08:00",
+      "source_reliability_tier": "TIER_4_SOCIAL_DISCOVERY",
+      "verification_status": "CONFLICTED",
+      "event_status": "UNKNOWN",
+      "is_approved_for_publication": false,
+      "verified_facts": [],
+      "unverified_claims": [
+        "Conflicting dates advertised: 15 November vs 22 November 2026"
+      ],
+      "conflict_notes": "Unresolved scheduling clash between community promotional banners. No definitive confirmation from Blood Bank unit. Staged as unverified."
+    }
+  ]
+}

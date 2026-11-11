@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .clippy/
 03+11.tar.gz
+scratch/
+dist_events/
+*.log

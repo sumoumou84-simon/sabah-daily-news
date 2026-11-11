@@ -1,0 +1,112 @@
+{
+  "phase": "Phase 3.6.2",
+  "audit_type": "Remote Branch Containment & Access Verification",
+  "timestamp": "2026-11-08T15:18:00+08:00",
+  "remote_repository": "https://github.com/sumoumou84-simon/sabah-daily-news.git",
+  "deleted_remote_branch": "feature/sandakan-events-engine",
+  "known_commit_sha": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+  "verdict": "CONTAINMENT PARTIAL — HISTORICAL REFERENCES REMAIN",
+  "verdict_explanation": "The remote branch 'feature/sandakan-events-engine' was successfully deleted from origin. All branch-based navigation URLs and branch-based raw file endpoints now return HTTP 404 (Not Found). However, GitHub's server-side object database retains unreferenced commits until garbage collection runs; direct queries using the exact 40-character commit SHA (30ee6ae...) currently still return HTTP 200.",
+  "git_references_audit": {
+    "remote_branches_before": [
+      "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2 refs/heads/main",
+      "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4 refs/heads/feature/sandakan-events-engine"
+    ],
+    "remote_branches_after": [
+      "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2 refs/heads/main"
+    ],
+    "remote_branch_deletion_status": "CONFIRMED_DELETED",
+    "local_branch_status": {
+      "branch_name": "feature/sandakan-events-engine",
+      "commit_sha": "30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "preserved": true,
+      "files_count": 28
+    }
+  },
+  "anonymous_access_matrix": {
+    "branch_ui": {
+      "url": "https://github.com/sumoumou84-simon/sabah-daily-news/tree/feature/sandakan-events-engine",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "BRANCH_REFERENCE_UNAVAILABLE"
+    },
+    "branch_raw_events_data": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/feature/sandakan-events-engine/events_data.json",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "RAW_FILE_UNAVAILABLE"
+    },
+    "branch_raw_cache": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/feature/sandakan-events-engine/data/sandakan_events_cache.json",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "RAW_FILE_UNAVAILABLE"
+    },
+    "branch_raw_config": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/feature/sandakan-events-engine/config/sandakan_event_config.json",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "RAW_FILE_UNAVAILABLE"
+    },
+    "branch_raw_engine_models": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/feature/sandakan-events-engine/event_engine/models.py",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "RAW_FILE_UNAVAILABLE"
+    },
+    "branch_raw_events_html": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/feature/sandakan-events-engine/events.html",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "RAW_FILE_UNAVAILABLE"
+    },
+    "commit_ui": {
+      "url": "https://github.com/sumoumou84-simon/sabah-daily-news/commit/30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4",
+      "http_status": 200,
+      "accessible": true,
+      "classification": "DANGLING_COMMIT_STILL_ACCESSIBLE"
+    },
+    "commit_raw_events_data": {
+      "url": "https://raw.githubusercontent.com/sumoumou84-simon/sabah-daily-news/30ee6ae2aab6d4ecb99dd7535aa74f7ca6ccd2f4/events_data.json",
+      "http_status": 200,
+      "accessible": true,
+      "classification": "DANGLING_RAW_FILE_STILL_ACCESSIBLE"
+    },
+    "pages_root": {
+      "url": "https://sumoumou84-simon.github.io/sabah-daily-news/",
+      "http_status": 200,
+      "accessible": true,
+      "classification": "PRODUCTION_WEBSITE_INTACT"
+    },
+    "pages_events_html": {
+      "url": "https://sumoumou84-simon.github.io/sabah-daily-news/events.html",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "PRODUCTION_ISOLATION_PRESERVED"
+    },
+    "pages_events_data": {
+      "url": "https://sumoumou84-simon.github.io/sabah-daily-news/events_data.json",
+      "http_status": 404,
+      "accessible": false,
+      "classification": "PRODUCTION_ISOLATION_PRESERVED"
+    }
+  },
+  "production_integrity": {
+    "main_branch_sha": "c08d2ba0581c9ce8bb5a91f722ce65608d64d4b2",
+    "news_data_json_unmodified": true,
+    "index_html_unmodified": true,
+    "morning_publish_workflow_unmodified": true,
+    "events_publish_workflow_left_on_main": true,
+    "diagnostic_files_preserved": [
+      "collectors/facebook_collector.py",
+      "config/news_config.json",
+      "pipeline/deduplicator.py",
+      "pipeline/normalizer.py"
+    ]
+  },
+  "cost_and_ai_usage": {
+    "gemini_api_calls": 0,
+    "paid_llm_calls": 0,
+    "financial_cost_usd": 0.0
+  }
+}

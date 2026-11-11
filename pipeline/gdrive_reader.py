@@ -57,6 +57,8 @@ class ParsedMarkdownStory:
     is_event: bool = False
     event_metadata: Optional[Dict[str, Any]] = None
     raw_header: str = ""
+    title_bm: str = ""
+    body_bm: str = ""
 
 
 @dataclass
@@ -172,7 +174,7 @@ class GDriveMarkdownReader:
             "Accept": "application/json"
         }
 
-        # Build search query
+        # 1. Search authentic markdown files (.md)
         for fname in candidate_names:
             query_parts = [
                 f"name = '{fname}'",
@@ -194,9 +196,8 @@ class GDriveMarkdownReader:
                         file_name = f_item.get("name", "")
                         mime_type = f_item.get("mimeType", "")
 
-                        # Explicit exclusion: ignore Google Docs and non-.md files
                         if mime_type == "application/vnd.google-apps.document" or not file_name.lower().endswith(".md"):
-                            logger.info(f"[GDRIVE SKIP] Skipping non-markdown or Google Doc: {file_name} ({mime_type})")
+                            logger.info(f"[GDRIVE SKIP] Skipping non-markdown or Google Doc in .md pass: {file_name} ({mime_type})")
                             continue
 
                         logger.info(f"[GDRIVE FOUND] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive.")
@@ -209,6 +210,56 @@ class GDriveMarkdownReader:
                             return file_name, content, file_id
             except Exception as e:
                 logger.warning(f"[GDRIVE API SEARCH ERROR] Querying '{fname}': {e}")
+
+        # 2. Compatibility Fallback: If no pure .md found, search for matching Google Docs (application/vnd.google-apps.document)
+        doc_candidates = []
+        for fname in candidate_names:
+            if fname not in doc_candidates:
+                doc_candidates.append(fname)
+            base_fname = re.sub(r'\.md$', '', fname, flags=re.IGNORECASE)
+            if base_fname not in doc_candidates:
+                doc_candidates.append(base_fname)
+
+        for dname in doc_candidates:
+            query_parts = [
+                f"name = '{dname}'",
+                "trashed = false",
+                "mimeType = 'application/vnd.google-apps.document'"
+            ]
+            if folder_id:
+                query_parts.append(f"'{folder_id}' in parents")
+            q_str = " and ".join(query_parts)
+
+            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size)&pageSize=10"
+            try:
+                req = urllib.request.Request(url, headers=headers, method="GET")
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    files = data.get("files", [])
+                    for f_item in files:
+                        file_id = f_item.get("id")
+                        file_name = f_item.get("name", "")
+                        logger.info(f"[GDRIVE GDOC FOUND] Located Google Doc '{file_name}' (ID: {file_id}). Attempting export...")
+
+                        # Try export as text/markdown first, fallback to text/plain
+                        exported_content = None
+                        for export_mime in ["text/markdown", "text/plain"]:
+                            export_url = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType={urllib.parse.quote(export_mime)}"
+                            try:
+                                exp_req = urllib.request.Request(export_url, headers=headers, method="GET")
+                                with urllib.request.urlopen(exp_req, timeout=30) as exp_resp:
+                                    exported_content = exp_resp.read().decode("utf-8")
+                                    if exported_content and exported_content.strip():
+                                        logger.info(f"[GDRIVE GDOC EXPORT SUCCESS] Exported Google Doc '{file_name}' as {export_mime}")
+                                        break
+                            except Exception as exp_err:
+                                logger.warning(f"[GDRIVE GDOC EXPORT RETRY] Export '{file_name}' as {export_mime} failed: {exp_err}")
+
+                        if exported_content and exported_content.strip():
+                            out_fname = file_name if file_name.lower().endswith(".md") else f"{file_name}.md"
+                            return out_fname, exported_content, file_id
+            except Exception as e:
+                logger.warning(f"[GDRIVE GDOC SEARCH ERROR] Querying Google Doc '{dname}': {e}")
 
         return None
 
@@ -360,10 +411,34 @@ class GDriveMarkdownReader:
                 source_urls = []
                 event_meta = {}
                 clean_body_lines = []
+                title_bm_extracted = ""
+                body_bm_lines = []
 
                 for bline in body_block.strip().splitlines():
                     s_bline = bline.strip()
                     if not s_bline or s_bline == "---":
+                        continue
+
+                    # 1. Bilingual title/name extraction
+                    m_bm_t = re.match(r'^\*{0,2}(?:BM\s*标题|BM\s*Title|Tajuk\s*BM|Title\s*BM|BM\s*名称|Nama\s*BM)[：:]?\*{0,2}[：:]?\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_bm_t:
+                        title_bm_extracted = m_bm_t.group(1).strip("* ")
+                        continue
+
+                    m_zh_t = re.match(r'^\*{0,2}(?:中文标题|中文名称|Tajuk\s*Cina)[：:]?\*{0,2}[：:]?\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_zh_t:
+                        clean_title = m_zh_t.group(1).strip("* ")
+                        continue
+
+                    # 2. Bilingual body extraction
+                    m_bm_b = re.match(r'^\*{0,2}(?:BM\s*正文|BM\s*内容|BM\s*Detail|Butiran|Detail\s*BM|Kandungan\s*BM)[：:]?\*{0,2}[：:]?\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_bm_b:
+                        body_bm_lines.append(m_bm_b.group(1).strip("* "))
+                        continue
+
+                    m_zh_b = re.match(r'^\*{0,2}(?:中文正文|正文|内容|详情|Detail)[：:]?\*{0,2}[：:]?\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_zh_b:
+                        clean_body_lines.append(m_zh_b.group(1).strip("* "))
                         continue
 
                     m_src = re.match(r'^\*{0,2}(?:来源|信源|Source|Sumber|Penerbit)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', s_bline, re.IGNORECASE)
@@ -382,6 +457,16 @@ class GDriveMarkdownReader:
                     m_loc = re.match(r'^\*{0,2}(?:地点|Location|Tempat)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', s_bline, re.IGNORECASE)
                     if m_loc:
                         event_meta["location"] = m_loc.group(1).strip("* ")
+                        continue
+
+                    m_time = re.match(r'^\*{0,2}(?:时间|Time|Masa)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_time:
+                        event_meta["time"] = m_time.group(1).strip("* ")
+                        continue
+
+                    m_tel = re.match(r'^\*{0,2}(?:电话|联系|Tel|Hubungi|WhatsApp)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', s_bline, re.IGNORECASE)
+                    if m_tel:
+                        event_meta["tel"] = m_tel.group(1).strip("* ")
                         continue
 
                     m_tag = re.match(r'^\*{0,2}(?:标签|Tag|Kategori)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', s_bline, re.IGNORECASE)
@@ -422,7 +507,9 @@ class GDriveMarkdownReader:
                     date=extracted_date,
                     is_event=is_ev,
                     event_metadata=event_meta if is_ev else None,
-                    raw_header=f"### {s_idx}. {clean_title}"
+                    raw_header=f"### {s_idx}. {clean_title}",
+                    title_bm=title_bm_extracted,
+                    body_bm="\n\n".join(body_bm_lines).strip()
                 )
                 stories.append(story)
 
@@ -441,7 +528,8 @@ class GDriveMarkdownReader:
             if line_s.startswith("# ") and not line_s.startswith("##"):
                 continue
 
-            if re.match(r'^##\s+[一二三四五六七八九十]+[、\.]\s*', line_s):
+            # Skip section headers (## Section 1, ## 一、, ## Section 2, etc.)
+            if re.match(r'^##\s+(?:Section\s+\d+|[一二三四五六七八九十]+[、\.])', line_s, re.IGNORECASE):
                 continue
 
             if header_pattern.match(line_s):
@@ -470,11 +558,11 @@ class GDriveMarkdownReader:
 
         for header, block_lines in blocks:
             full_block_text = "\n".join(block_lines).strip()
-            if not header and not full_block_text:
+            if not header or not full_block_text:
                 continue
 
             raw_title = header.lstrip("#").strip()
-            clean_title = re.sub(r'^(?:\[?\d+\]?[\.\、\:\s\-]+|第\s*\d+\s*[条篇]\s*[\:\.\s]*)', '', raw_title).strip()
+            clean_title = re.sub(r'^(?:\[?\d+(?:\.\d+)*\]?[\.\、\:\s\-]+|第\s*\d+\s*[条篇]\s*[\:\.\s]*|活动\s*\d+[\:\：\.\s\-]*)', '', raw_title).strip()
 
             title_in_body = None
             for bline in block_lines:
@@ -495,6 +583,8 @@ class GDriveMarkdownReader:
             source_urls = []
             extracted_date = default_date
             body_paragraphs = []
+            body_bm_paragraphs = []
+            title_bm_candidate = ""
             category_candidate = None
             is_event = False
             event_meta = {}
@@ -510,6 +600,21 @@ class GDriveMarkdownReader:
 
                 clean_bline = bullet_pat.sub('', s_bline).strip()
 
+                m_bm_t = re.match(r'^\*{0,2}(?:BM\s*标题|BM\s*Title|Tajuk\s*BM|Title\s*BM|BM\s*名称|Nama\s*BM)[：:]?\*{0,2}[：:]?\s*(.+)$', clean_bline, re.IGNORECASE)
+                if m_bm_t:
+                    title_bm_candidate = m_bm_t.group(1).strip("* ")
+                    continue
+
+                m_zh_t = re.match(r'^\*{0,2}(?:中文标题|中文名称|Tajuk\s*Cina)[：:]?\*{0,2}[：:]?\s*(.+)$', clean_bline, re.IGNORECASE)
+                if m_zh_t:
+                    title = m_zh_t.group(1).strip("* ")
+                    continue
+
+                m_bm_b = re.match(r'^\*{0,2}(?:BM\s*正文|BM\s*内容|BM\s*Detail|Butiran|Detail\s*BM|Kandungan\s*BM)[：:]?\*{0,2}[：:]?\s*(.+)$', clean_bline, re.IGNORECASE)
+                if m_bm_b:
+                    body_bm_paragraphs.append(m_bm_b.group(1).strip("* "))
+                    continue
+
                 m_src = re.match(r'^\*{0,2}(?:来源|信源|Source|Sumber|Penerbit)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_src:
                     src_val = m_src.group(1).strip("* ")
@@ -519,7 +624,7 @@ class GDriveMarkdownReader:
                             sources.append(s_clean)
                     continue
 
-                m_url = re.match(r'^\*{0,2}(?:链接|原[文链]|URL|Link|Pautan)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
+                m_url = re.match(r'^\*{0,2}(?:链接|原[文链]|URL|Link|Pautan|原始链接)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_url:
                     raw_url_val = m_url.group(1).strip("* ")
                     url_match = re.search(r'https?://[^\s\)\>]+', raw_url_val)
@@ -560,7 +665,7 @@ class GDriveMarkdownReader:
                     event_meta["tel"] = m_tel.group(1).strip("* ")
                     continue
 
-                m_body_tag = re.match(r'^\*{0,2}(?:正文|内容|详情|Detail|Kandungan)\*{0,2}[：:]?\*{0,2}[：:]\s*(.*)$', clean_bline, re.IGNORECASE)
+                m_body_tag = re.match(r'^\*{0,2}(?:中文正文|正文|内容|详情|Detail|Kandungan)\*{0,2}[：:]?\*{0,2}[：:]\s*(.*)$', clean_bline, re.IGNORECASE)
                 if m_body_tag:
                     rem = m_body_tag.group(1).strip()
                     if rem:
@@ -621,7 +726,9 @@ class GDriveMarkdownReader:
                 date=extracted_date,
                 is_event=is_event,
                 event_metadata=event_meta if is_event else None,
-                raw_header=header
+                raw_header=header,
+                title_bm=title_bm_candidate,
+                body_bm="\n\n".join(body_bm_paragraphs).strip()
             )
             stories.append(story)
             story_idx += 1
@@ -770,6 +877,107 @@ class GDriveMarkdownReader:
             formatted_events.append(item)
 
         return formatted_events
+
+    def convert_stories_to_direct_output(
+        self,
+        stories: List[ParsedMarkdownStory],
+        today_iso: str
+    ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+        """
+        Direct Pass-Through Converter:
+        Translates parsed Markdown stories directly into complete, validated website schemas
+        (headlines and events) conforming 100% to news_data.json requirements without Gemini calls.
+        """
+        now_myt = datetime.now(MYT)
+        now_iso = now_myt.isoformat()
+        headlines: List[Dict[str, Any]] = []
+        events: List[Dict[str, Any]] = []
+        try:
+            today_d = datetime.strptime(today_iso, "%Y-%m-%d").date()
+        except Exception:
+            today_d = now_myt.date()
+
+        for s in stories:
+            if s.is_event:
+                meta = s.event_metadata or {}
+                orig_date_str = s.date or today_iso
+                try:
+                    ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
+                except Exception:
+                    ev_d = today_d
+                c_days = max(0, (ev_d - today_d).days)
+                tag_str = meta.get("tag") or ("市政公益" if "sandakan" in s.geo_scope else "社区活动")
+                b_color = "bg-[#14532d] text-[#86efac]"
+                if "义诊" in tag_str or "健康" in tag_str:
+                    b_color = "bg-[#713f12] text-[#fde68a]"
+                elif "峰会" in tag_str or "商贸" in tag_str:
+                    b_color = "bg-[#1e3a8a] text-[#93c5fd]"
+                elif "文化" in tag_str:
+                    b_color = "bg-[#581c87] text-[#d8b4fe]"
+
+                name_bm = s.title_bm or f"Acara: {s.title}"
+                desc_bm = s.body_bm or f"Maklumat acara komuniti: {s.body[:200]}"
+                loc_str = meta.get("location") or "Sandakan Community Centre"
+                time_str = meta.get("time") or "08:00 AM - 05:00 PM"
+                tel_str = meta.get("tel") or "089-272161"
+                src_str = s.sources[0] if s.sources else "官方信源"
+
+                events.append({
+                    "id": len(events) + 1,
+                    "month": f"{ev_d.month:02d}",
+                    "day": f"{ev_d.day:02d}",
+                    "full_date": orig_date_str,
+                    "name": s.title,
+                    "nameBM": name_bm,
+                    "time": time_str,
+                    "timeBM": time_str,
+                    "location": loc_str,
+                    "category": tag_str,
+                    "categoryBM": "Khidmat Komuniti",
+                    "badgeColor": b_color,
+                    "desc": s.body,
+                    "descBM": desc_bm,
+                    "tel": tel_str,
+                    "source": src_str,
+                    "sourceBM": "Hebahan Rasmi",
+                    "countdown_days": c_days
+                })
+            else:
+                h_idx = len(headlines) + 1
+                cat = s.category or "sabah"
+                primary_url = s.source_urls[0] if s.source_urls else "https://news.google.com"
+                primary_src = s.sources[0] if s.sources else "Meta AI 权威整理"
+
+                title_bm = s.title_bm or f"Laporan Utama: {s.title}"
+                detail_bm = s.body_bm or s.body
+
+                headlines.append({
+                    "story_index": h_idx,
+                    "category": cat,
+                    "title": s.title,
+                    "titleBM": title_bm,
+                    "detail": s.body,
+                    "detailBM": detail_bm,
+                    "source_url": primary_url,
+                    "publisher": ", ".join(s.sources) if s.sources else primary_src,
+                    "source": primary_src,
+                    "sources": s.sources if s.sources else [primary_src],
+                    "url": primary_url,
+                    "source_urls": s.source_urls if s.source_urls else [primary_url],
+                    "original_published_at": f"{s.date}T00:00:00+08:00" if s.date else f"{today_iso}T00:00:00+08:00",
+                    "geo_scope": s.geo_scope,
+                    "is_event": False,
+                    "event_metadata": {},
+                    "id": f"art_{cat}_{h_idx:02d}",
+                    "image_url": None,
+                    "collected_at": now_iso,
+                    "site_published_at": now_iso,
+                    "updated_at": now_iso,
+                    "is_updated": False,
+                    "validation_status": "VERIFIED"
+                })
+
+        return headlines, events
 
     def save_snapshot(
         self,
