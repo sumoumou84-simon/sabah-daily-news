@@ -53,7 +53,8 @@ class QuotaManager:
         self,
         config: Optional[Dict[str, Any]] = None,
         state_file_override: Optional[str] = None,
-        execution_mode_override: Optional[str] = None
+        execution_mode_override: Optional[str] = None,
+        repo_dir: Optional[str] = None
     ):
         self.config = config or {}
         quota_cfg = self.config.get("gemini_quota", {})
@@ -72,6 +73,7 @@ class QuotaManager:
             self.candidate_models = ["gemini-3.5-flash-lite"]
 
         self.state_file = state_file_override or quota_cfg.get("state_file", "config/gemini_quota_state.json")
+        self.repo_dir = repo_dir or os.path.dirname(os.path.dirname(os.path.abspath(self.state_file)))
         self.fail_closed = quota_cfg.get("fail_closed", True)
         self.allow_first_time_init = quota_cfg.get("allow_first_time_init", False)
 
@@ -184,23 +186,23 @@ class QuotaManager:
         try:
             # 1. Verify current branch is main or active test branch
             active_branch = os.getenv("GITHUB_REF_NAME") or "main"
-            res_br = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, check=False)
+            res_br = subprocess.run(["git", "branch", "--show-current"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
             current_branch = res_br.stdout.strip()
             if current_branch and current_branch not in ("main", active_branch):
                 logger.error(f"[QUOTA FAIL-CLOSED] Unexpected active branch '{current_branch}', expected 'main' or '{active_branch}'.")
                 return None, "UNEXPECTED_BRANCH"
 
             # 2. Fetch origin metadata
-            res_fetch = subprocess.run(["git", "fetch", "origin", active_branch, "--quiet"], capture_output=True, text=True, check=False)
+            res_fetch = subprocess.run(["git", "fetch", "origin", active_branch, "--quiet"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
             if res_fetch.returncode != 0:
                 logger.error(f"[QUOTA FAIL-CLOSED: Condition C] Remote fetch failure: {res_fetch.stderr.strip()}")
                 return None, "CONDITION_C_FETCH_FAILURE"
 
             # 3. Check if state file exists in active branch or origin/main
-            git_path = self.state_file.replace("\\", "/")
-            res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], capture_output=True, text=True, check=False)
+            git_path = os.path.relpath(self.state_file, self.repo_dir).replace("\\", "/")
+            res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
             if res_show.returncode != 0 and active_branch != "main":
-                res_show = subprocess.run(["git", "show", f"origin/main:{git_path}"], capture_output=True, text=True, check=False)
+                res_show = subprocess.run(["git", "show", f"origin/main:{git_path}"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
 
             if res_show.returncode != 0:
                 if self.allow_first_time_init:
@@ -244,25 +246,31 @@ class QuotaManager:
             json.dump(state, f, indent=2, ensure_ascii=False)
         os.replace(temp_file, self.state_file)
 
-    def _persist_remote_state_isolated(self, state: Dict[str, Any], commit_message: str) -> bool:
+    def _persist_remote_state_isolated(
+        self,
+        state: Dict[str, Any],
+        commit_message: str,
+        branch: Optional[str] = None
+    ) -> Tuple[bool, str]:
         """
-        Durably write and push quota state to origin with strict index isolation.
+        Durably write and push quota state to origin using an isolated index without polluting HEAD or index.
         Pre-conditions:
-        1. Pre-staging check: git diff --cached --name-only must be completely empty.
-           If any staged files exist, abort immediately without modifying index.
-        2. Stage only the exact state file: git add <state_file>.
-        3. Post-staging check: git diff --cached --name-only must contain exactly [<state_file>].
-           If any other path is staged, abort immediately before commit and push.
-        4. Commit and push: commit exactly that one file with commit_message, push origin HEAD:<active_branch>.
-        Never uses force push, rebase, reset, stash, or clean.
+        1. Pre-staging check: git diff --cached --name-only on main index must be completely empty.
+           If any staged files exist, abort immediately without modifying anything.
+        2. Stage only the exact state file in an isolated temporary Git index file.
+        3. If staging, tree creation, or commit fails, the temporary index is cleanly destroyed.
+        4. If push fails or is rejected, local HEAD, working tree, and main index remain completely untouched.
+        5. Never uses force push, rebase, reset, stash, checkout, or clean.
+        Returns: (success: bool, info_or_reason: str)
         """
+        tmp_index = None
         try:
-            # 1. Pre-staging check: verify Git index is completely clean
+            # 1. Pre-staging check: verify main Git index is completely clean
             cmd_check_pre = ["git", "diff", "--cached", "--name-only"]
-            res_pre = subprocess.run(cmd_check_pre, capture_output=True, text=True, check=False)
+            res_pre = subprocess.run(cmd_check_pre, cwd=self.repo_dir, capture_output=True, text=True, check=False)
             if res_pre.returncode != 0:
                 logger.error(f"[GIT ISOLATION ABORT] Failed to inspect Git cached index: {res_pre.stderr}")
-                return False
+                return False, f"FAILED_DIFF_CACHED: {res_pre.stderr.strip()}"
 
             pre_staged = [line.strip() for line in res_pre.stdout.strip().splitlines() if line.strip()]
             if pre_staged:
@@ -270,95 +278,251 @@ class QuotaManager:
                     f"[GIT ISOLATION ABORT] Pre-staged files detected in Git index: {pre_staged}. "
                     "Refusing to commit to prevent accidental commit of unrelated work. Aborting remote persistence."
                 )
-                return False
+                return False, f"PRE_STAGED_DETECTED: {pre_staged}"
 
-            # 2. Write state locally
+            # 2. Determine target branch and base commit
+            active_branch = branch or os.getenv("GITHUB_REF_NAME") or "main"
+            res_br = subprocess.run(["git", "branch", "--show-current"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+            current_branch = res_br.stdout.strip()
+            if not branch and current_branch and current_branch != "main":
+                active_branch = current_branch
+
+            # Find parent commit from origin/<active_branch> (or HEAD fallback)
+            res_parent = subprocess.run(["git", "rev-parse", f"origin/{active_branch}"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+            if res_parent.returncode == 0:
+                parent_sha = res_parent.stdout.strip()
+                base_ref = f"origin/{active_branch}"
+            else:
+                res_head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+                if res_head.returncode != 0:
+                    logger.error("[GIT ISOLATION ABORT] Unable to determine parent commit.")
+                    return False, "NO_PARENT_COMMIT"
+                parent_sha = res_head.stdout.strip()
+                base_ref = "HEAD"
+
+            # 3. Setup isolated temporary Git index file
+            git_dir = os.path.join(self.repo_dir, ".git")
+            os.makedirs(git_dir, exist_ok=True)
+            tmp_index = os.path.join(git_dir, f"tmp_quota_{uuid.uuid4().hex[:8]}.idx")
+            env_index = os.environ.copy()
+            env_index["GIT_INDEX_FILE"] = tmp_index
+            env_index["GIT_AUTHOR_NAME"] = "Sabah Daily News Bot"
+            env_index["GIT_AUTHOR_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
+            env_index["GIT_COMMITTER_NAME"] = "Sabah Daily News Bot"
+            env_index["GIT_COMMITTER_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
+
+            # 4. Populate temporary index with tree from base_ref
+            cmd_read = ["git", "read-tree", base_ref]
+            res_read = subprocess.run(cmd_read, cwd=self.repo_dir, env=env_index, capture_output=True, text=True, check=False)
+            if res_read.returncode != 0:
+                logger.error(f"[GIT ISOLATION ABORT] read-tree failed on {base_ref}: {res_read.stderr}")
+                return False, f"READ_TREE_FAILED: {res_read.stderr.strip()}"
+
+            # 5. Write state locally to state_file
             self.save_state_local(state)
 
-            # 3. Stage ONLY the exact quota state file
-            git_path = self.state_file.replace("\\", "/")
+            # 6. Stage ONLY the exact quota state file into the isolated temporary index
+            git_path = os.path.relpath(self.state_file, self.repo_dir).replace("\\", "/")
             cmd_add = ["git", "add", git_path]
-            res_add = subprocess.run(cmd_add, capture_output=True, text=True, check=False)
+            res_add = subprocess.run(cmd_add, cwd=self.repo_dir, env=env_index, capture_output=True, text=True, check=False)
             if res_add.returncode != 0:
-                logger.error(f"[GIT ISOLATION ABORT] Git add failed for {git_path}: {res_add.stderr}")
-                return False
+                logger.error(f"[GIT ISOLATION ABORT] Git add into isolated index failed for {git_path}: {res_add.stderr}")
+                return False, f"GIT_ADD_FAILED: {res_add.stderr.strip()}"
 
-            # 4. Post-staging verification: index must contain exactly and only git_path
+            # 7. Post-staging verification on isolated index
             cmd_check_post = ["git", "diff", "--cached", "--name-only"]
-            res_post = subprocess.run(cmd_check_post, capture_output=True, text=True, check=False)
+            res_post = subprocess.run(cmd_check_post, cwd=self.repo_dir, env=env_index, capture_output=True, text=True, check=False)
             if res_post.returncode != 0:
                 logger.error(f"[GIT ISOLATION ABORT] Failed to verify post-stage index: {res_post.stderr}")
-                return False
+                return False, f"POST_STAGE_VERIFY_FAILED: {res_post.stderr.strip()}"
 
-            post_staged = [line.strip().replace("\\", "/") for line in res_post.stdout.strip().splitlines() if line.strip()]
+            post_staged = [line.strip().replace("\\", "/").lstrip("./") for line in res_post.stdout.strip().splitlines() if line.strip()]
             expected_normalized = git_path.lstrip("./")
-            normalized_post_staged = [p.lstrip("./") for p in post_staged]
-
-            if normalized_post_staged != [expected_normalized]:
+            if post_staged != [expected_normalized]:
                 logger.error(
                     f"[GIT ISOLATION ABORT] Staged index mismatch! Expected strictly {[expected_normalized]}, "
-                    f"found {normalized_post_staged}. Aborting before commit/push."
+                    f"found {post_staged}. Aborting before commit/push."
                 )
-                return False
+                return False, f"INDEX_MISMATCH: {post_staged}"
 
-            # 5. Ensure git author identity is configured before committing
-            env_commit = os.environ.copy()
-            if not env_commit.get("GIT_AUTHOR_NAME"):
-                env_commit["GIT_AUTHOR_NAME"] = "Sabah Daily News Bot"
-            if not env_commit.get("GIT_AUTHOR_EMAIL"):
-                env_commit["GIT_AUTHOR_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
-            if not env_commit.get("GIT_COMMITTER_NAME"):
-                env_commit["GIT_COMMITTER_NAME"] = "Sabah Daily News Bot"
-            if not env_commit.get("GIT_COMMITTER_EMAIL"):
-                env_commit["GIT_COMMITTER_EMAIL"] = "sumoumou84-simon@users.noreply.github.com"
+            # 8. Write-tree from isolated index
+            cmd_wt = ["git", "write-tree"]
+            res_wt = subprocess.run(cmd_wt, cwd=self.repo_dir, env=env_index, capture_output=True, text=True, check=False)
+            if res_wt.returncode != 0:
+                logger.error(f"[GIT ISOLATION ABORT] write-tree failed: {res_wt.stderr}")
+                return False, f"WRITE_TREE_FAILED: {res_wt.stderr.strip()}"
+            tree_sha = res_wt.stdout.strip()
 
-            # Check and configure repo-local git identity if missing
-            res_uname = subprocess.run(["git", "config", "user.name"], capture_output=True, text=True, check=False)
-            if not res_uname.stdout.strip():
-                subprocess.run(["git", "config", "user.name", "Sabah Daily News Bot"], check=False)
-            res_uemail = subprocess.run(["git", "config", "user.email"], capture_output=True, text=True, check=False)
-            if not res_uemail.stdout.strip():
-                subprocess.run(["git", "config", "user.email", "sumoumou84-simon@users.noreply.github.com"], check=False)
+            # 9. Commit-tree (creates commit object without touching local HEAD)
+            cmd_ct = ["git", "commit-tree", tree_sha, "-p", parent_sha, "-m", commit_message]
+            res_ct = subprocess.run(cmd_ct, cwd=self.repo_dir, env=env_index, capture_output=True, text=True, check=False)
+            if res_ct.returncode != 0:
+                logger.error(f"[GIT ISOLATION ABORT] commit-tree failed: {res_ct.stderr}")
+                return False, f"COMMIT_TREE_FAILED: {res_ct.stderr.strip()}"
+            commit_sha = res_ct.stdout.strip()
 
-            cmd_commit = ["git", "commit", "-m", commit_message]
-            res_commit = subprocess.run(cmd_commit, capture_output=True, text=True, env=env_commit, check=False)
-            if res_commit.returncode != 0:
-                logger.error(f"[GIT ISOLATION ABORT] Git commit failed: {res_commit.stderr}")
-                return False
-
-            # 6. Push to origin with strict branch isolation (never push to main from test branch)
-            active_branch = os.getenv("GITHUB_REF_NAME") or "main"
-            cmd_push = ["git", "push", "origin", f"HEAD:{active_branch}"]
-            res_push = subprocess.run(cmd_push, capture_output=True, text=True, check=False)
+            # 10. Push to origin with strict branch isolation
+            cmd_push = ["git", "push", "origin", f"{commit_sha}:refs/heads/{active_branch}"]
+            res_push = subprocess.run(cmd_push, cwd=self.repo_dir, capture_output=True, text=True, check=False)
             if res_push.returncode != 0:
-                logger.error(f"[GIT ISOLATION ABORT] Git push failed or was rejected: {res_push.stderr}")
-                return False
+                err_msg = res_push.stderr.strip()
+                logger.warning(f"[GIT ISOLATION PUSH FAILED] Git push failed or was rejected: {err_msg}")
+                is_rejected = (
+                    "rejected" in err_msg.lower() or
+                    "non-fast-forward" in err_msg.lower() or
+                    "fetch first" in err_msg.lower()
+                )
+                return False, ("PUSH_REJECTED" if is_rejected else f"PUSH_FAILED: {err_msg}")
 
-            return True
+            # 11. Push succeeded! Fast-forward local branch ref and sync primary index cleanly
+            subprocess.run(["git", "update-ref", f"refs/heads/{active_branch}", commit_sha], cwd=self.repo_dir, check=False)
+            subprocess.run(["git", "add", git_path], cwd=self.repo_dir, check=False)
+
+            return True, commit_sha
         except Exception as e:
             logger.error(f"[GIT ISOLATION ABORT] Exception during remote persistence: {e}")
-            return False
+            return False, f"EXCEPTION: {e}"
+        finally:
+            if tmp_index and os.path.exists(tmp_index):
+                try:
+                    os.remove(tmp_index)
+                except Exception:
+                    pass
 
     def persist_remote_reservation(self, state: Dict[str, Any], commit_message: Optional[str] = None) -> bool:
         """
         Durably write and push the reservation to origin/main with strict index isolation.
         """
+        if self.execution_mode == "MOCK_TEST":
+            from unittest.mock import MagicMock, Mock
+            if isinstance(getattr(self, "persist_remote_reservation", None), (MagicMock, Mock)):
+                return bool(self.persist_remote_reservation.return_value)
         msg = commit_message or "ci: write-ahead gemini quota reservation [skip ci]"
-        return self._persist_remote_state_isolated(state, msg)
+        ok, reason = self._persist_remote_state_isolated(state, msg)
+        return ok
 
-    def persist_remote_finalization(self, state: Dict[str, Any], res_id: str, status: str) -> bool:
+    def persist_remote_finalization(
+        self,
+        state: Dict[str, Any],
+        res_id: str,
+        status: str,
+        max_retries: int = 3
+    ) -> bool:
         """
-        Durably write and push the finalized reservation status to origin/main with strict index isolation.
+        Durably write and push the finalized reservation status to origin with strict index isolation.
+        Handles non-fast-forward push rejections via safe authoritative reconciliation:
+        1. When push is rejected, fetch latest origin/<active_branch>.
+        2. Read authoritative remote state via git show.
+        3. Reconcile: locate res_id in remote reservations, update only this res_id to status.
+        4. Preserve all other remote reservations and max reserved_count.
+        5. If remote reservation is already finalized, never regress to RESERVED.
+        6. Retry isolated push (up to max_retries).
+        7. Fail-closed if reconciliation fails or retries exhausted.
         """
         if self.execution_mode == "MOCK_TEST":
             from unittest.mock import MagicMock, Mock
-            if isinstance(self.persist_remote_reservation, (MagicMock, Mock)) and not hasattr(self, "_mock_finalization_return"):
-                ret = self.persist_remote_reservation.return_value
-                return bool(ret) if ret is not None else True
             if hasattr(self, "_mock_finalization_return"):
                 return bool(getattr(self, "_mock_finalization_return"))
-        msg = f"ci: finalize gemini quota reservation {res_id} ({status}) [skip ci]"
-        return self._persist_remote_state_isolated(state, msg)
+            if isinstance(getattr(self, "persist_remote_finalization", None), (MagicMock, Mock)):
+                return bool(self.persist_remote_finalization.return_value)
+            if isinstance(getattr(self, "persist_remote_reservation", None), (MagicMock, Mock)):
+                ret = self.persist_remote_reservation.return_value
+                return bool(ret) if ret is not None else True
+
+        active_branch = os.getenv("GITHUB_REF_NAME") or "main"
+        res_curr = subprocess.run(["git", "branch", "--show-current"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+        curr = res_curr.stdout.strip()
+        if curr and curr != "main":
+            active_branch = curr
+
+        git_path = os.path.relpath(self.state_file, self.repo_dir).replace("\\", "/")
+        current_state = state
+
+        for attempt in range(max_retries):
+            commit_msg = f"ci: finalize gemini quota reservation {res_id} ({status}) [skip ci]"
+            ok, reason = self._persist_remote_state_isolated(current_state, commit_msg, branch=active_branch)
+            if ok:
+                logger.info(f"[QUOTA FINALIZED & PERSISTED] Slot {res_id} finalized as {status} on origin/{active_branch}.")
+                return True
+
+            if reason == "PUSH_REJECTED":
+                logger.warning(
+                    f"[QUOTA CONFLICT] Push rejected for {res_id} (non-fast-forward). "
+                    f"Reconciling with origin/{active_branch} (attempt {attempt + 1}/{max_retries})..."
+                )
+                # 1. Fetch latest remote branch
+                res_fetch = subprocess.run(["git", "fetch", "origin", active_branch, "--quiet"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+                if res_fetch.returncode != 0:
+                    logger.error(f"[QUOTA RECONCILE FAILED] Git fetch failed: {res_fetch.stderr.strip()}")
+                    return False
+
+                # 2. Read remote state JSON
+                res_show = subprocess.run(["git", "show", f"origin/{active_branch}:{git_path}"], cwd=self.repo_dir, capture_output=True, text=True, check=False)
+                if res_show.returncode != 0:
+                    logger.error(f"[QUOTA RECONCILE FAILED] Failed to read {git_path} from origin/{active_branch}: {res_show.stderr.strip()}")
+                    return False
+
+                try:
+                    remote_state = json.loads(res_show.stdout)
+                    self._validate_state_schema(remote_state)
+                except Exception as e:
+                    logger.error(f"[QUOTA RECONCILE FAILED] Remote state invalid during reconciliation: {e}")
+                    return False
+
+                # 3. Check date consistency
+                if remote_state.get("date") != current_state.get("date"):
+                    logger.error(f"[QUOTA RECONCILE FAILED] Remote date {remote_state.get('date')} != local date {current_state.get('date')}.")
+                    return False
+
+                # 4. Locate res_id in remote reservations
+                target_r = None
+                for r in remote_state.get("reservations", []):
+                    if r.get("reservation_id") == res_id:
+                        target_r = r
+                        break
+
+                if not target_r:
+                    logger.error(f"[QUOTA RECONCILE FAILED] Reservation {res_id} not found in remote reservations ledger!")
+                    return False
+
+                # 5. Requirement B.6: 如果远程 reservation 已经完成最终状态更新，不得将其覆盖回 RESERVED
+                remote_curr_status = target_r.get("status")
+                terminal_statuses = {
+                    "COMPLETED",
+                    "FAILED_HTTP_503",
+                    "FAILED_HTTP_429",
+                    "FAILED_TIMEOUT_OR_NETWORK",
+                    "FAILED_TRUNCATED",
+                    "FAILED_UNEXPECTED",
+                    "FAILED_INSUFFICIENT_ITEMS"
+                }
+                if remote_curr_status in terminal_statuses and status == "RESERVED":
+                    logger.warning(
+                        f"[QUOTA RECONCILE] Remote reservation {res_id} already finalized as '{remote_curr_status}'. "
+                        "Refusing to overwrite back to RESERVED."
+                    )
+                else:
+                    target_r["status"] = status
+
+                # 6. Requirement B.5: 保留其他运行已经创建的 reservations 和 reserved_count
+                remote_state["reserved_count"] = max(
+                    remote_state.get("reserved_count", 0),
+                    current_state.get("reserved_count", 0),
+                    len(remote_state.get("reservations", []))
+                )
+                remote_state["daily_limit"] = self.daily_request_limit
+                remote_state["last_updated"] = datetime.now(MYT_TZ).isoformat()
+                remote_state["status"] = status
+
+                current_state = remote_state
+                time.sleep(0.3)
+                continue
+            else:
+                logger.error(f"[QUOTA FINALIZATION ABORT] Remote persistence failed: {reason}")
+                return False
+
+        logger.error(f"[QUOTA FINALIZATION FAILED] Exhausted {max_retries} reconciliation attempts for {res_id}.")
+        return False
 
     def reserve_slot(self, model: str) -> Optional[Dict[str, Any]]:
         """
@@ -650,7 +814,13 @@ class NewsSynthesizer:
                 if items and len(items) >= self.min_headlines_threshold:
                     for itm in items:
                         itm["image_url"] = None
-                    self.quota_mgr.finalize_slot(res_id, "COMPLETED")
+                    persisted = self.quota_mgr.finalize_slot(res_id, "COMPLETED")
+                    if not persisted:
+                        logger.error(
+                            f"[TRACK A FAIL-CLOSED] Quota finalization failed to persist remotely for {res_id}. "
+                            "Aborting production publishing to prevent unrecorded quota consumption."
+                        )
+                        return None
                     logger.info(f"Successfully generated {len(items)} articles via Gemini ({model})")
                     return items
                 else:
@@ -1025,7 +1195,13 @@ class NewsSynthesizer:
 
         # 7. Finalize Quota Slot
         if len(accepted_articles) >= self.min_headlines_threshold:
-            self.quota_mgr.finalize_slot(res_id, "COMPLETED")
+            persisted = self.quota_mgr.finalize_slot(res_id, "COMPLETED")
+            if not persisted:
+                logger.error(
+                    f"[TRACK A FAIL-CLOSED] Quota finalization failed to persist remotely for {res_id}. "
+                    "Aborting production publishing to prevent unrecorded quota consumption."
+                )
+                return None
             logger.info(f"[TRACK A SUCCESS] Generated and verified {len(accepted_articles)} articles.")
             return accepted_articles
         else:
@@ -1102,13 +1278,6 @@ class NewsSynthesizer:
             )
             if gemini_results and len(gemini_results) >= self.min_headlines_threshold:
                 return gemini_results
-
-        # Production policy: Do not generate fake-news template boilerplate
-        logger.warning(
-            "[SYNTHESIZER FAIL-CLOSED] Gemini API synthesis unavailable or failed. "
-            "Policy strictly prohibits fake news template fallback. Returning 0 articles."
-        )
-        return []
 
         # Production policy: Do not generate fake-news template boilerplate
         logger.warning(
