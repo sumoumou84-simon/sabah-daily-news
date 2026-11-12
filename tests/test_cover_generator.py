@@ -64,29 +64,55 @@ class TestCoverGenerator(unittest.TestCase):
         self.assertGreater(height, 10, "中文字符测量高度异常")
 
     def test_03_smart_category_matching(self):
-        """测试智能分类与关键词匹配"""
+        """测试全局高优先级语义关键词优先匹配（跨全部 4 个子文件夹检索）"""
         gen = CoverGenerator()
 
-        # 羽球关键词匹配
+        # 1. 暴雨/季候风：即便被归类为 national，仍跨文件夹精准命中 general/ 的 rainstorm 底图
+        bg_storm = gen.select_background("national", "东海岸与沙巴东部季候风潮影响减弱，气象局提醒仍需警惕暴雨")
+        self.assertTrue(
+            "rainstorm" in bg_storm.name.lower() or "rescue_boat" in bg_storm.name.lower(),
+            f"季候风/暴雨新闻未跨文件夹匹配到暴雨底图: {bg_storm.name}"
+        )
+
+        # 2. 雨林/观鸟/犀鸟：即便被归类为 general，仍跨文件夹精准命中 sabah/ 的犀鸟或雨林底图
+        bg_forest = gen.select_background("general", "热带雨林生态保育论坛闭幕，野生犀鸟与鸟类保护成热点")
+        self.assertTrue(
+            "hornbill" in bg_forest.name.lower() or "rainforest" in bg_forest.name.lower(),
+            f"雨林/观鸟新闻未跨文件夹匹配到雨林/犀鸟底图: {bg_forest.name}"
+        )
+
+        # 3. 泛婆大道/修路工程：跨文件夹匹配到 engineers_overlooking_highway
+        bg_highway = gen.select_background("national", "泛婆大道第三期修路工程如期推进，大桥建设顺利")
+        self.assertTrue(
+            "highway" in bg_highway.name.lower(),
+            f"泛婆大道修路新闻未跨文件夹匹配到公路工程底图: {bg_highway.name}"
+        )
+
+        # 4. 法庭/上诉案：即便被归类为 sabah，仍跨文件夹匹配到 national/ 的天秤/法槌底图
+        bg_court = gen.select_background("sabah", "联邦法院审理沙巴40%净税收权益上诉案定判决日")
+        self.assertTrue(
+            "scales" in bg_court.name.lower() or "gavel" in bg_court.name.lower(),
+            f"法庭新闻未跨文件夹匹配到司法天秤底图: {bg_court.name}"
+        )
+
+        # 5. 羽球运动匹配
         bg_badminton = gen.select_background("sports", "李梓嘉出战熊本羽球公开赛跳杀得分")
         self.assertTrue(
             "badminton" in bg_badminton.name.lower() or "athlete" in bg_badminton.name.lower(),
             f"羽球新闻未匹配到羽球/运动员底图: {bg_badminton.name}"
         )
 
-        # 足球关键词匹配
+        # 6. 足球运动匹配
         bg_soccer = gen.select_background("sports", "Sabah FC 备战主场赛事足球门票热销")
         self.assertTrue(
             "soccer" in bg_soccer.name.lower(),
             f"足球新闻未匹配到足球底图: {bg_soccer.name}"
         )
 
-        # 司法法庭关键词匹配
-        bg_court = gen.select_background("national", "联邦法院审理沙巴40%净税收上诉案开庭")
-        self.assertTrue(
-            "scales" in bg_court.name.lower() or "gavel" in bg_court.name.lower() or "governmental" in bg_court.name.lower(),
-            f"法庭新闻未匹配到天秤/法槌/政府大楼底图: {bg_court.name}"
-        )
+        # 7. 回退测试：未命中全局关键词时，回退至板块对应目录抽取
+        gen_fallback = CoverGenerator()
+        bg_fallback_sports = gen_fallback.select_background("sports", "某项没有任何预设关键词的普通活动通报")
+        self.assertEqual(bg_fallback_sports.parent.name, "sports", f"回退抽取板块错误: {bg_fallback_sports}")
 
     def test_04_same_day_collision_prevention(self):
         """测试同日 14 条新闻绝不重复使用相同底图（零撞图）"""

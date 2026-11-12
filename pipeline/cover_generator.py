@@ -39,35 +39,103 @@ CATEGORY_BADGE_MAP = {
     "general": "综合百态",
 }
 
-# 关键词与底图文件名的特征词映射规则（智能加权评分）
-KEYWORD_FILENAME_RULES = {
-    "sports": [
-        (["羽球", "羽毛球", "李梓嘉", "跳杀", "汤杯", "大师赛", "男单", "公开赛"], ["badminton", "jumping_smash"]),
-        (["足球", "球赛", "进球", "sabah fc", "射门", "主场", "客场", "联赛"], ["soccer_player", "volley_kick"]),
-        (["田径", "短跑", "起跑", "飞人", "金牌", "健儿", "跨栏"], ["sprinters", "starting"]),
-    ],
-    "sabah": [
-        (["水警", "海警", "海事", "巡逻", "快艇", "走私", "偷渡", "截查", "大浪"], ["maritime_patrol_boat", "patrol_boat"]),
-        (["夜市", "巴刹", "pasar", "摊贩", "市集", "关闭", "营业", "开市"], ["night_market", "lanterns_glowing_at_night_market"]),
-        (["扫荡", "突击", "扣留", "逮捕", "盘查", "调查", "反贪", "落网", "嫌犯"], ["officers_inspecting_bus", "investigators"]),
-        (["热带雨林", "雨林", "神山", "森林", "生态", "犀鸟", "保育", "观鸟"], ["rhinoceros_hornbill", "borneo_rainforest", "rainforest"]),
-        (["州政府", "行政", "首长", "哈芝芝", "税收", "权益", "判决", "大厦", "议会"], ["sabah_state_administrative_center", "administrative_center"]),
-        (["德士", "巴士", "客运", "车站", "枢纽", "司机", "客货车"], ["drivers_conversing", "taxis_lined_up"]),
-        (["公路", "工程", "大桥", "泛婆", "大道", "建设", "工程师", "路段"], ["engineers_overlooking_highway"]),
-        (["海洋", "潜水", "珊瑚", "海龟", "仙本那", "海岛", "浮潜"], ["underwater_coral_reef", "split_ocean_coral_reef"]),
-    ],
-    "national": [
-        (["法院", "审理", "法官", "司法", "律师", "提控", "上诉", "判决", "反贪会"], ["golden_scales_of_justice", "golden_scales_and_gavel"]),
-        (["国会", "首相", "安华", "政府", "解散", "大选", "补选", "竞选", "政党", "内阁", "议席", "国盟", "希盟"], ["governmental_pillars"]),
-        (["机场", "航班", "飞机", "列车", "铁道", "高铁", "民航", "航空"], ["train_and_airplane"]),
-        (["季候风", "东海岸", "风潮", "暴雨", "海浪"], ["train_and_airplane", "governmental_pillars"]),
-    ],
-    "general": [
-        (["诈骗", "黑客", "网络", "防骗", "数字", "科技", "电诈", "安全", "人工智能"], ["digital_shield", "golden_digital_shield"]),
-        (["断电", "停水", "供水", "变电站", "电网", "水务", "电缆", "维修", "电力", "sesb"], ["power_towers", "power_transmission", "utility_workers"]),
-        (["暴雨", "水灾", "大雨", "洪灾", "淹水", "救援", "冲走", "积水", "气象局"], ["rainstorm", "tropical_rainstorm", "rescue_boat"]),
-    ]
-}
+# 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
+GLOBAL_KEYWORD_RULES = [
+    # 1. 暴雨 / 季候风 / 气象 / 淹水 / 水灾 -> 优先匹配 Rainstorm、Tropical_rainstorm、洪水救援图
+    {
+        "name": "暴雨气象水灾",
+        "keywords": ["暴雨", "季候风", "风潮", "气象", "淹水", "水灾", "大雨", "洪灾", "积水", "救援艇", "救援船", "海浪"],
+        "patterns": ["tropical_rainstorm", "rainstorm", "rescue_boat"]
+    },
+    # 2. 雨林 / 观鸟 / 犀鸟 / 生态 / 保育 / 神山 / 公园 -> 优先匹配 Rhinoceros_Hornbill、Rainforest、Borneo_rainforest
+    {
+        "name": "生态雨林野生动物",
+        "keywords": ["雨林", "热带雨林", "观鸟", "犀鸟", "生态", "保育", "神山", "公园", "森林", "野生动物", "动植物"],
+        "patterns": ["rhinoceros_hornbill", "borneo_rainforest", "rainforest"]
+    },
+    # 3. 大选 / 竞选 / 政党 / 国会 / 内阁 / 部长 / 州政府 -> 优先匹配 Governmental_pillars、Administrative_center、Sabah_state_administrative
+    {
+        "name": "政经议会行政",
+        "keywords": ["大选", "竞选", "助选", "政党", "国会", "内阁", "部长", "州政府", "首相", "首长", "议会", "议席", "解散国会", "提前解散", "执政", "希盟", "国盟", "国阵", "沙盟"],
+        "patterns": ["governmental_pillars", "administrative_center", "sabah_state_administrative"]
+    },
+    # 4. 法庭 / 审讯 / 反贪 / 控状 / 司法 -> 优先匹配 Golden_scales
+    {
+        "name": "法庭司法反贪",
+        "keywords": ["法庭", "审讯", "反贪", "控状", "司法", "法院", "审理", "判决", "上诉", "律师", "提控", "官司", "法官", "合议庭", "净税收"],
+        "patterns": ["golden_scales_and_gavel", "golden_scales_of_justice", "golden_scales"]
+    },
+    # 5. 泛婆大道 / 修路 / 工程 -> 优先匹配 Engineers_overlooking_highway
+    {
+        "name": "基础设施修路工程",
+        "keywords": ["泛婆大道", "泛婆", "修路", "工程", "大桥", "公路工程", "路段维修", "施工", "建设", "公路建设", "桥梁"],
+        "patterns": ["engineers_overlooking_highway"]
+    },
+    # 6. 羽球 / 足球 / 田径 -> 保持原有精准体育匹配
+    {
+        "name": "羽球运动",
+        "keywords": ["羽球", "羽毛球", "李梓嘉", "跳杀", "汤杯", "公开赛", "大师赛", "男单", "女单", "双打"],
+        "patterns": ["badminton_athlete", "athlete_performing_jumping_smash"]
+    },
+    {
+        "name": "足球运动",
+        "keywords": ["足球", "sabah fc", "联赛", "进球", "球赛", "射门", "主场表现", "客场", "积分榜", "锦标赛", "超级联赛"],
+        "patterns": ["soccer_player_executing_volley_kick", "soccer_player"]
+    },
+    {
+        "name": "田径短跑",
+        "keywords": ["田径", "短跑", "起跑", "飞人", "金牌", "健儿", "跨栏", "百米", "接力"],
+        "patterns": ["sprinters_bursting"]
+    },
+    # 7. 水警 / 海警 / 海事 / 巡逻 / 快艇
+    {
+        "name": "水警海事巡逻",
+        "keywords": ["水警", "海警", "海事", "巡逻", "快艇", "走私", "偷渡", "截查", "扣留船", "巡逻艇", "非法入境"],
+        "patterns": ["maritime_patrol_boat", "patrol_boat"]
+    },
+    # 8. 扫荡 / 突击 / 扣留 / 逮捕 / 盘查
+    {
+        "name": "执法盘查扫荡",
+        "keywords": ["扫荡", "突击", "扣留", "逮捕", "盘查", "搜查", "抓捕", "警区", "嫌犯", "落网", "联合行动"],
+        "patterns": ["officers_inspecting_bus", "investigators"]
+    },
+    # 9. 夜市 / 巴刹 / pasar / 市集 / 摊贩
+    {
+        "name": "夜市巴刹市集",
+        "keywords": ["夜市", "巴刹", "pasar", "市集", "摊贩", "农贸市场", "小贩", "商户", "开市"],
+        "patterns": ["lanterns_glowing_at_night_market", "night_market_street"]
+    },
+    # 10. 德士 / 巴士 / 客运 / 车站 / 交通枢纽
+    {
+        "name": "公共交通枢纽",
+        "keywords": ["德士", "巴士", "客运", "车站", "交通枢纽", "司机", "公共交通", "客货车"],
+        "patterns": ["taxis_lined_up", "drivers_conversing"]
+    },
+    # 11. 机场 / 航线 / 航班 / 飞机 / 铁道 / 高铁 / 民航
+    {
+        "name": "航空铁道交通",
+        "keywords": ["机场", "航线", "航班", "飞机", "铁道", "高铁", "民航", "列车", "新机场"],
+        "patterns": ["train_and_airplane"]
+    },
+    # 12. 诈骗 / 黑客 / 网络 / 数字 / 科技 / 防骗
+    {
+        "name": "网络科技安全",
+        "keywords": ["诈骗", "黑客", "网络安全", "数字", "科技", "防骗", "电诈", "人工智能", "信息安全", "科技教育"],
+        "patterns": ["digital_shield", "golden_digital_shield"]
+    },
+    # 13. 电网 / 供电 / 断电 / 停水 / 变电站 / 维修 / 电力 / SESB
+    {
+        "name": "公用事业抢修",
+        "keywords": ["电网", "供电", "断电", "停水", "供水", "变电站", "电缆", "水务", "电力", "sesb", "抢修", "检修", "电塔"],
+        "patterns": ["power_towers", "power_transmission", "utility_workers"]
+    },
+    # 14. 海洋 / 潜水 / 珊瑚 / 海龟 / 仙本那 / 海岛
+    {
+        "name": "海洋海岛潜水",
+        "keywords": ["海洋", "潜水", "珊瑚", "海龟", "仙本那", "海岛", "浮潜", "海洋公园"],
+        "patterns": ["underwater_coral_reef", "split_ocean_coral_reef"]
+    },
+]
 
 # 备选字体查找列表
 FONT_CANDIDATES = [
@@ -168,13 +236,14 @@ class CoverGenerator:
         self._load_all_pool_images()
 
     def _load_all_pool_images(self):
-        """扫描并按板块归类所有可用底图"""
+        """扫描并按板块归类所有可用底图，同时维护全库列表"""
         self.pool_map: Dict[str, List[Path]] = {
             "sabah": [],
             "national": [],
             "sports": [],
             "general": []
         }
+        self.all_images: List[Path] = []
         if not self.bg_pool_dir.exists():
             return
 
@@ -182,66 +251,77 @@ class CoverGenerator:
             cat_dir = self.bg_pool_dir / cat
             if cat_dir.exists():
                 imgs = [p for p in cat_dir.glob("*.jpg") if p.is_file()]
-                self.pool_map[cat] = sorted(imgs, key=lambda x: x.name)
+                sorted_imgs = sorted(imgs, key=lambda x: x.name)
+                self.pool_map[cat] = sorted_imgs
+                self.all_images.extend(sorted_imgs)
 
     def select_background(self, category: str, title: str, detail: str = "") -> Path:
         """
-        智能底图匹配策略：
-        1. 优先在对应板块分类中匹配最契合标题关键词的底图；
-        2. 结合规则加权评分；
-        3. 维护已用集合，同一日内绝不重复使用相同底图；
-        4. 当前分类若耗尽，从 general 或其它板块补位；
-        5. 终极兜底确保绝不空缺报错。
+        全局标题语义关键词优先匹配（跨全部 4 个子文件夹检索）：
+        1. 优先扫描全局高优先级关键词映射规则：
+           若标题（或详情）命中特定高优先级关键词，在全库 (assets/bg_pool/**) 未使用的底图中挑选最契合的底图；
+        2. 若未命中全局高优先级关键词，才回退到当前板块子目录 (assets/bg_pool/<category>/) 中抽取未用底图；
+        3. 维护已用集合，确保同一日内 12~15 条新闻绝不重复使用同一张底图；
+        4. 终极兜底确保绝不空缺报错。
         """
+        search_title = title.lower()
+        search_detail = detail.lower()
+
+        # 获取全库中当日未使用的底图
+        all_unused = [img for img in self.all_images if img.name not in self.used_images_today]
+
+        # ------------------------------------------------------------------
+        # 步骤 1: 全局高优先级标题语义关键词匹配（跨全部 4 个子目录检索）
+        # ------------------------------------------------------------------
+        best_candidate: Optional[Path] = None
+        best_rule_score = 0
+
+        for rule in GLOBAL_KEYWORD_RULES:
+            # 计算命中数：标题命中权重为 10，详情为 1
+            title_hits = sum(1 for kw in rule["keywords"] if kw.lower() in search_title)
+            detail_hits = sum(1 for kw in rule["keywords"] if kw.lower() in search_detail)
+
+            if title_hits == 0 and detail_hits == 0:
+                continue
+
+            rule_weight = (title_hits * 10) + detail_hits
+            patterns = rule["patterns"]
+
+            for img in all_unused:
+                fname_lower = img.name.lower()
+                for pat in patterns:
+                    if pat in fname_lower:
+                        score = rule_weight * 10
+                        if fname_lower.startswith(pat):
+                            score += 5
+                        if score > best_rule_score:
+                            best_rule_score = score
+                            best_candidate = img
+
+        if best_candidate is not None:
+            self.used_images_today.add(best_candidate.name)
+            return best_candidate
+
+        # ------------------------------------------------------------------
+        # 步骤 2: 回退规则 - 未命中高优先级关键词，回退到对应板块文件夹抽取未用底图
+        # ------------------------------------------------------------------
         cat = category if category in self.pool_map else "general"
-        search_text = f"{title} {detail}".lower()
+        cat_unused = [img for img in self.pool_map.get(cat, []) if img.name not in self.used_images_today]
 
-        candidate_images = [img for img in self.pool_map.get(cat, []) if img.name not in self.used_images_today]
+        if not cat_unused:
+            # 当前板块已用尽，从全库其他板块找未用底图
+            cat_unused = all_unused
 
-        # 如果本板块全部用尽，尝试备选板块中未使用的图片
-        if not candidate_images:
-            fallback_cats = ["general", "sabah", "national", "sports"]
-            for f_cat in fallback_cats:
-                unused = [img for img in self.pool_map.get(f_cat, []) if img.name not in self.used_images_today]
-                if unused:
-                    candidate_images = unused
-                    cat = f_cat
-                    break
+        if not cat_unused:
+            # 极端兜底：全部 53 张均用尽，从板块全量中允许复用
+            cat_unused = self.pool_map.get(cat, []) or self.all_images
 
-        # 终极兜底：如果整个底图库都被用完（极端情况），放宽重用
-        if not candidate_images:
-            candidate_images = self.pool_map.get(cat, []) or self.pool_map.get("general", [])
-
-        if not candidate_images:
+        if not cat_unused:
             raise FileNotFoundError(f"底图库 assets/bg_pool/ 中没有可用图片！请先运行 scripts/import_bg_pool.py。")
 
-        # 评分机制
-        best_img = candidate_images[0]
-        best_score = -1
-
-        rules = KEYWORD_FILENAME_RULES.get(cat, [])
-        for img in candidate_images:
-            score = 0
-            fname_lower = img.name.lower()
-
-            for kw_list, pattern_list in rules:
-                for kw in kw_list:
-                    if kw.lower() in search_text:
-                        for pat in pattern_list:
-                            if pat in fname_lower:
-                                score += 10
-
-            # 标题部分直接词根命中
-            for word in re.findall(r'[\w]+', fname_lower):
-                if len(word) >= 4 and word in search_text:
-                    score += 3
-
-            if score > best_score:
-                best_score = score
-                best_img = img
-
-        self.used_images_today.add(best_img.name)
-        return best_img
+        fallback_img = cat_unused[0]
+        self.used_images_today.add(fallback_img.name)
+        return fallback_img
 
     def wrap_title(self, text: str, font: ImageFont.FreeTypeFont, max_width: int = 1080) -> List[str]:
         """自适应将标题拆分为 1~2 行"""
