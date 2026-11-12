@@ -114,13 +114,35 @@ class GDriveMarkdownReader:
         return datetime.now(MYT).strftime("%Y-%m-%d")
 
     def resolve_candidate_filenames(self, target_date: Optional[str] = None) -> List[str]:
-        """Generate ordered list of candidate filenames for the target date."""
+        """Generate ordered list of candidate filenames for the target date, including revision variants."""
         date_str = target_date or self.get_today_myt_str()
         candidates = []
-        for pat in self.file_name_patterns:
+        revision_suffixes = [
+            "_修正版", "（修正版）", "(修正版)", " 修正版", "_最新", "（最新）", "_v1.3", "_v13"
+        ]
+        base_patterns = list(self.file_name_patterns)
+
+        # 1. Base pattern filenames (standard preferred order)
+        for pat in base_patterns:
             fname = pat.replace("{date}", date_str)
             if fname not in candidates:
                 candidates.append(fname)
+
+        # 2. Add revision variants
+        for pat in base_patterns:
+            fname = pat.replace("{date}", date_str)
+            if fname.lower().endswith(".md"):
+                root = fname[:-3]
+                for suff in revision_suffixes:
+                    rev_name = f"{root}{suff}.md"
+                    if rev_name not in candidates:
+                        candidates.append(rev_name)
+            else:
+                for suff in revision_suffixes:
+                    rev_name = f"{fname}{suff}"
+                    if rev_name not in candidates:
+                        candidates.append(rev_name)
+
         return candidates
 
     def _get_oauth_access_token(self) -> Optional[str]:
@@ -162,6 +184,8 @@ class GDriveMarkdownReader:
     ) -> Optional[Tuple[str, str, Optional[str]]]:
         """
         Search for candidate files in Google Drive using Drive API v3.
+        Prioritizes the latest modified version (orderBy='modifiedTime desc') and handles
+        revised editions (_修正版 / 修正版 / v1.3).
         Returns (found_filename, file_content, file_id) or None.
         Enforces read-only access (GET requests only).
         """
@@ -174,7 +198,104 @@ class GDriveMarkdownReader:
             "Accept": "application/json"
         }
 
-        # 1. Search authentic markdown files (.md)
+        # Extract target date string (e.g., 2026-11-12) from candidates
+        target_date_match = None
+        for c in candidate_names:
+            m = re.search(r'20\d\d-\d{2}-\d{2}', c)
+            if m:
+                target_date_match = m.group(0)
+                break
+        target_date = target_date_match or self.get_today_myt_str()
+
+        # Step A: Perform broad date-based search ordered by modifiedTime descending
+        query_candidates = []
+        if folder_id:
+            query_candidates.append(f"'{folder_id}' in parents and trashed = false and name contains '{target_date}'")
+        query_candidates.append(f"trashed = false and name contains '{target_date}'")
+
+        found_drive_files = []
+        for q_str in query_candidates:
+            url = (
+                f"https://www.googleapis.com/drive/v3/files?"
+                f"q={urllib.parse.quote(q_str)}&"
+                f"fields=files(id,name,mimeType,size,modifiedTime)&"
+                f"orderBy={urllib.parse.quote('modifiedTime desc')}&"
+                f"pageSize=20"
+            )
+            try:
+                req = urllib.request.Request(url, headers=headers, method="GET")
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    f_list = data.get("files", [])
+                    if f_list:
+                        found_drive_files = f_list
+                        logger.info(f"[GDRIVE QUERY SUCCESS] Found {len(f_list)} file(s) matching '{target_date}' in Drive.")
+                        break
+            except Exception as e:
+                logger.warning(f"[GDRIVE QUERY ERROR] Query '{q_str}': {e}")
+
+        def score_file(item: Dict[str, Any]) -> Tuple[int, int, str]:
+            """
+            Scoring function:
+            - higher priority for revision keywords (_修正版, 修正版, v1.3, 最新)
+            - higher priority for authentic markdown (.md) over Google Doc
+            - sorted by modifiedTime descending
+            """
+            name = item.get("name", "")
+            mod_time = item.get("modifiedTime", "")
+            mime = item.get("mimeType", "")
+
+            # Revision score
+            rev_score = 0
+            if any(k in name for k in ["修正版", "修正", "v1.3", "v13", "最新"]):
+                rev_score = 10
+            elif "西门看看网每日新闻" in name:
+                rev_score = 5
+
+            # File type score (prefer .md or Google Doc)
+            type_score = 2 if name.lower().endswith(".md") else (1 if mime == "application/vnd.google-apps.document" else 0)
+
+            return (rev_score, type_score, mod_time)
+
+        if found_drive_files:
+            sorted_files = sorted(found_drive_files, key=score_file, reverse=True)
+            for f_item in sorted_files:
+                file_id = f_item.get("id")
+                file_name = f_item.get("name", "")
+                mime_type = f_item.get("mimeType", "")
+                mod_time = f_item.get("modifiedTime", "")
+
+                logger.info(f"[GDRIVE CANDIDATE] Inspecting: '{file_name}' (ID: {file_id}, mime: {mime_type}, mod: {mod_time})")
+
+                # If authentic markdown file
+                if mime_type != "application/vnd.google-apps.document" and file_name.lower().endswith(".md"):
+                    download_url = f"https://www.googleapis.com/drive/v3/files/{file_id}?alt=media"
+                    try:
+                        dl_req = urllib.request.Request(download_url, headers=headers, method="GET")
+                        with urllib.request.urlopen(dl_req, timeout=30) as dl_resp:
+                            content = dl_resp.read().decode("utf-8")
+                            if content and content.strip():
+                                logger.info(f"[GDRIVE SUCCESS] Successfully downloaded authentic Markdown '{file_name}' (ID: {file_id})")
+                                return file_name, content, file_id
+                    except Exception as dl_err:
+                        logger.warning(f"[GDRIVE DOWNLOAD ERROR] Failed downloading {file_name}: {dl_err}")
+
+                # If Google Doc
+                elif mime_type == "application/vnd.google-apps.document":
+                    for export_mime in ["text/markdown", "text/plain"]:
+                        export_url = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType={urllib.parse.quote(export_mime)}"
+                        try:
+                            exp_req = urllib.request.Request(export_url, headers=headers, method="GET")
+                            with urllib.request.urlopen(exp_req, timeout=30) as exp_resp:
+                                exported_content = exp_resp.read().decode("utf-8")
+                                if exported_content and exported_content.strip():
+                                    logger.info(f"[GDRIVE GDOC EXPORT SUCCESS] Exported Google Doc '{file_name}' as {export_mime}")
+                                    out_fname = file_name if file_name.lower().endswith(".md") else f"{file_name}.md"
+                                    return out_fname, exported_content, file_id
+                        except Exception as exp_err:
+                            logger.warning(f"[GDRIVE GDOC EXPORT RETRY] Export '{file_name}' as {export_mime} failed: {exp_err}")
+
+        # Step B: Fallback to exact candidate name matching if broad query returned nothing
         for fname in candidate_names:
             query_parts = [
                 f"name = '{fname}'",
@@ -185,7 +306,7 @@ class GDriveMarkdownReader:
                 query_parts.append(f"'{folder_id}' in parents")
             q_str = " and ".join(query_parts)
 
-            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size)&pageSize=10"
+            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size,modifiedTime)&orderBy=modifiedTime+desc&pageSize=10"
             try:
                 req = urllib.request.Request(url, headers=headers, method="GET")
                 with urllib.request.urlopen(req, timeout=20) as resp:
@@ -197,12 +318,9 @@ class GDriveMarkdownReader:
                         mime_type = f_item.get("mimeType", "")
 
                         if mime_type == "application/vnd.google-apps.document" or not file_name.lower().endswith(".md"):
-                            logger.info(f"[GDRIVE SKIP] Skipping non-markdown or Google Doc in .md pass: {file_name} ({mime_type})")
                             continue
 
                         logger.info(f"[GDRIVE FOUND] Located authentic markdown file '{file_name}' (ID: {file_id}) in Google Drive.")
-
-                        # Download content (read-only alt=media)
                         download_url = f"https://www.googleapis.com/drive/v3/files/{file_id}?alt=media"
                         dl_req = urllib.request.Request(download_url, headers=headers, method="GET")
                         with urllib.request.urlopen(dl_req, timeout=30) as dl_resp:
@@ -211,7 +329,7 @@ class GDriveMarkdownReader:
             except Exception as e:
                 logger.warning(f"[GDRIVE API SEARCH ERROR] Querying '{fname}': {e}")
 
-        # 2. Compatibility Fallback: If no pure .md found, search for matching Google Docs (application/vnd.google-apps.document)
+        # Step C: Fallback to Google Docs exact name matching
         doc_candidates = []
         for fname in candidate_names:
             if fname not in doc_candidates:
@@ -230,7 +348,7 @@ class GDriveMarkdownReader:
                 query_parts.append(f"'{folder_id}' in parents")
             q_str = " and ".join(query_parts)
 
-            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size)&pageSize=10"
+            url = f"https://www.googleapis.com/drive/v3/files?q={urllib.parse.quote(q_str)}&fields=files(id,name,mimeType,size,modifiedTime)&orderBy=modifiedTime+desc&pageSize=10"
             try:
                 req = urllib.request.Request(url, headers=headers, method="GET")
                 with urllib.request.urlopen(req, timeout=20) as resp:
@@ -241,7 +359,6 @@ class GDriveMarkdownReader:
                         file_name = f_item.get("name", "")
                         logger.info(f"[GDRIVE GDOC FOUND] Located Google Doc '{file_name}' (ID: {file_id}). Attempting export...")
 
-                        # Try export as text/markdown first, fallback to text/plain
                         exported_content = None
                         for export_mime in ["text/markdown", "text/plain"]:
                             export_url = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType={urllib.parse.quote(export_mime)}"
@@ -287,11 +404,20 @@ class GDriveMarkdownReader:
                 logger.warning(f"[LOCAL OVERRIDE NOT FOUND] Specified override file does not exist: {env_override}")
                 return None
 
-        # 2. Check fallback directory
-        if os.path.exists(self.fallback_local_dir):
+        # 2. Check fallback directories (fallback_local_dir, data/, reports/gdrive_snapshots/)
+        check_dirs = [
+            self.fallback_local_dir,
+            os.path.join(BASE_DIR, "data"),
+            self.snapshot_dir
+        ]
+        
+        # Priority 1: Check candidate_names in order (revision names come first)
+        for d in check_dirs:
+            if not os.path.exists(d):
+                continue
             for fname in candidate_names:
-                fpath = os.path.join(self.fallback_local_dir, fname)
-                if os.path.exists(fpath):
+                fpath = os.path.join(d, fname)
+                if os.path.isfile(fpath):
                     try:
                         with open(fpath, "r", encoding="utf-8") as f:
                             content = f.read()
@@ -299,6 +425,37 @@ class GDriveMarkdownReader:
                         return fname, content, f"local_{fname}"
                     except Exception as e:
                         logger.warning(f"[LOCAL FALLBACK ERROR] Reading {fpath}: {e}")
+
+        # Priority 2: Broad local search for any .md file containing the date string, sorted by mtime desc
+        target_date_match = None
+        for c in candidate_names:
+            m = re.search(r'20\d\d-\d{2}-\d{2}', c)
+            if m:
+                target_date_match = m.group(0)
+                break
+        t_date = target_date_match or self.get_today_myt_str()
+
+        local_files = []
+        for d in check_dirs:
+            if not os.path.exists(d):
+                continue
+            for item in os.listdir(d):
+                if item.lower().endswith(".md") and t_date in item:
+                    full_p = os.path.join(d, item)
+                    if os.path.isfile(full_p):
+                        is_rev = any(k in item for k in ["修正版", "修正", "v1.3", "v13", "最新"])
+                        local_files.append((1 if is_rev else 0, os.path.getmtime(full_p), full_p, item))
+
+        if local_files:
+            local_files.sort(key=lambda x: (x[0], x[1]), reverse=True)
+            best = local_files[0]
+            try:
+                with open(best[2], "r", encoding="utf-8") as f:
+                    content = f.read()
+                logger.info(f"[LOCAL FALLBACK BROAD] Loaded latest modified local markdown: {best[2]}")
+                return best[3], content, f"local_{best[3]}"
+            except Exception as e:
+                logger.warning(f"[LOCAL FALLBACK ERROR] Reading {best[2]}: {e}")
 
         return None
 

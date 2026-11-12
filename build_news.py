@@ -1492,8 +1492,8 @@ def generate_index_html():
                     </div>
                 </div>
                 <div class="text-[10.5px] mono sub-meta-text hidden md:block">
-                    <span class="lang-zh">全量大配额 20~24条 · 250~400字深度脉络 · 智能去重双核实</span>
-                    <span class="lang-bm hidden">20-24 Berita Penuh · Konteks Mendalam 250-400 Patah</span>
+                    <span class="lang-zh">每日 12~15 条精选要闻 · 权威多源核实</span>
+                    <span class="lang-bm hidden">12-15 Berita Pilihan Harian · Disahkan Pelbagai Sumber</span>
                 </div>
             </div>
 
@@ -1552,8 +1552,8 @@ def generate_index_html():
                                 {today_mmdd} {today_time} <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
-                                <span class="lang-zh">标题-only • 点击展开250~400字深度脉络</span>
-                                <span class="lang-bm hidden">Tajuk sahaja • Klik kembang 250-400 patah</span>
+                                <span class="lang-zh">标题-only • 点击展开详尽报道与权威信源</span>
+                                <span class="lang-bm hidden">Tajuk sahaja • Klik kembang berita terperinci</span>
                             </span>
                             <span class="mono text-[10.5px] font-bold text-[#4ade80]">
                                 <span class="lang-zh">双官方来源交叉核实</span>
