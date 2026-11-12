@@ -599,14 +599,27 @@ class GDriveMarkdownReader:
 
         def match_sec(h_line: str):
             h = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_line).strip()
-            if any(k in h for k in ["沙巴", "山打根"]):
-                return "sabah", "sandakan" if "山打根" in h else "sabah"
-            elif "全国" in h:
+            # 优先匹配开头的板块标签（杜绝全国新闻因包含“沙巴”被误判为沙巴新闻）
+            m_p = re.match(r'^(沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)', h)
+            prefix = m_p.group(1) if m_p else h
+            if "全国" in prefix:
+                return "national", "national"
+            elif "体育" in prefix:
+                return "sports", "national"
+            elif "综合" in prefix:
+                return "general", "sabah"
+            elif any(k in prefix for k in ["沙巴", "山打根"]):
+                return "sabah", "sandakan" if "山打根" in prefix else "sabah"
+
+            # 无明确前缀时的后备全局扫描
+            if "全国" in h:
                 return "national", "national"
             elif "体育" in h:
                 return "sports", "national"
             elif "综合" in h:
                 return "general", "sabah"
+            elif any(k in h for k in ["沙巴", "山打根"]):
+                return "sabah", "sandakan" if "山打根" in h else "sabah"
             return None
 
         for b in blocks:
@@ -650,7 +663,26 @@ class GDriveMarkdownReader:
                 title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
                 h_title = title_lines[-1] if title_lines else ""
                 h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+
+                # 识别当前新闻标题中的板块前缀并准确映射分类（解决点击全国/体育/综合显示0篇的问题）
+                item_cat = current_cat
+                item_geo = current_geo
                 n_title = tags.get("标题") or h_title_clean or "重要新闻"
+
+                # 检查标题中是否带有板块前缀（如"沙巴山打根 1 ...", "全国新闻 6 ...", "体育新闻 10 ...", "综合新闻 13 ..."）
+                m_prefix = re.match(r'^(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)\s*[\d\.\、\-\*]+\s*(.+)$', n_title)
+                if m_prefix:
+                    prefix_match = match_sec(n_title)
+                    if prefix_match:
+                        item_cat, item_geo = prefix_match
+                    n_title = m_prefix.group(1).strip()
+                else:
+                    # 如果标题包含板块关键词
+                    sec_match = match_sec(n_title)
+                    if sec_match:
+                        item_cat, item_geo = sec_match
+                        n_title = re.sub(r'^(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)\s*', '', n_title).strip()
+
                 raw_sources = tags.get("来源", "权威信源")
                 clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
                 if not clean_sources:
@@ -660,8 +692,8 @@ class GDriveMarkdownReader:
                     "body": tags.get("正文", ""),
                     "sources": clean_sources,
                     "status": tags.get("状态", "已核实"),
-                    "category": current_cat,
-                    "geo_scope": current_geo
+                    "category": item_cat,
+                    "geo_scope": item_geo
                 })
 
             # 3. Part 3: 活动通告
@@ -670,16 +702,45 @@ class GDriveMarkdownReader:
                 h_title = title_lines[-1] if title_lines else ""
                 h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
                 e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                # 清理活动名称前缀与末尾符号
+                e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
+
+                # 活动日期解析：支持 11月14日到11月26日、11月14日 - 11月16日、11月12日起、2026-11-14 等
                 raw_date = tags.get("活动日期", default_date)
-                m_d = re.search(r'20\d\d-\d{2}-\d{2}', raw_date)
-                clean_date = m_d.group(0) if m_d else default_date
+                m_iso = re.search(r'20\d\d-\d{2}-\d{2}', raw_date)
+                if m_iso:
+                    clean_date = m_iso.group(0)
+                else:
+                    m_zh = re.search(r'(?:(\d{4})[年\-\/\.])?\s*(\d{1,2})[月\-\/\.]\s*(\d{1,2})[日号]?', raw_date)
+                    if m_zh:
+                        y = m_zh.group(1) or default_date.split('-')[0]
+                        m = int(m_zh.group(2))
+                        d = int(m_zh.group(3))
+                        clean_date = f"{y}-{m:02d}-{d:02d}"
+                    else:
+                        clean_date = default_date
+
+                # 主办单位清理末尾短横线或符号
+                raw_organizer = tags.get("主办单位", "官方通告")
+                clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
+                if not clean_organizer:
+                    clean_organizer = "官方通告"
+
+                # 联络电话检测：只有明确带电话号码才提取，否则为空字符串
+                ev_desc = tags.get("活动内容", "")
+                full_ev_text = f"{e_name} {ev_desc} {tags.get('活动地点', '')}"
+                m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
+                ev_tel = m_tel.group(1).strip() if m_tel else ""
+
                 event_items.append({
                     "name": e_name,
                     "date": clean_date,
+                    "raw_date_str": raw_date,
                     "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
                     "location": tags.get("活动地点", "山打根社区中心"),
-                    "desc": tags.get("活动内容", ""),
-                    "organizer": tags.get("主办单位", "官方通告")
+                    "desc": ev_desc,
+                    "organizer": clean_organizer,
+                    "tel": ev_tel
                 })
 
         # 强制 news_items = news_items[:15] 截断限制
@@ -719,7 +780,8 @@ class GDriveMarkdownReader:
                 event_metadata={
                     "time": item["time"],
                     "location": item["location"],
-                    "organizer": item["organizer"]
+                    "organizer": item["organizer"],
+                    "tel": item.get("tel", "")
                 },
                 raw_header=f"### {item['name']}",
                 title_bm=item["name"],
@@ -1299,7 +1361,7 @@ class GDriveMarkdownReader:
 
             loc_str = meta.get("location") or "山打根社区中心"
             time_str = meta.get("time") or "08:00 AM - 05:00 PM"
-            tel_str = meta.get("tel") or "089-272161"
+            tel_str = meta.get("tel") or ""
             src_str = s.sources[0] if s.sources else "官方信源"
 
             events.append({

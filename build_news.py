@@ -469,6 +469,16 @@ def generate_index_html():
     for ev in events_list:
         countdown_label_zh = f"还有 {ev.get('countdown_days', 0)} 天"
         countdown_label_bm = f"{ev.get('countdown_days', 0)} hari lagi"
+
+        tel_val = (ev.get('tel') or '').strip()
+        if tel_val:
+            tel_first = tel_val.split('/')[0].strip()
+            tel_btn_html = f"""<a href="tel:{tel_first}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
+                        <span>📞</span>
+                        <span>{tel_val}</span>
+                    </a>"""
+        else:
+            tel_btn_html = ""
         
         events_cards_html += f"""
         <div class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
@@ -511,10 +521,7 @@ def generate_index_html():
                         <span class="lang-zh">{ev['time']}</span>
                         <span class="lang-bm hidden">{ev['timeBM']}</span>
                     </div>
-                    <a href="tel:{ev['tel'].split('/')[0].strip()}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
-                        <span>📞</span>
-                        <span>{ev['tel']}</span>
-                    </a>
+                    {tel_btn_html}
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
                     <span class="text-[#22c55e]">✓ <span class="lang-zh">{ev['source']}</span><span class="lang-bm hidden">{ev['sourceBM']}</span></span>
@@ -1586,8 +1593,8 @@ def generate_index_html():
                                 <span class="lang-bm hidden ml-1">Laporan Penuh</span>
                             </span>
                             <span class="hidden md:inline sub-meta-text text-[12px] mono ml-1">
-                                <span class="lang-zh">点击标题展开丰富全文 250-400字背景脉络</span>
-                                <span class="lang-bm hidden">Klik baca laporan 250-400 patah</span>
+                                <span class="lang-zh">点击标题展开详细报道</span>
+                                <span class="lang-bm hidden">Klik tajuk untuk baca berita terperinci</span>
                             </span>
                         </div>
                         <div class="text-[10px] sm:text-[11px] sub-meta-text mono flex items-center gap-1.5 shrink-0">
@@ -1645,8 +1652,8 @@ def generate_index_html():
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
                     <span>
-                        <span class="lang-zh">{today_mmdd} {today_time} MYT • 标题-only折叠 点击展开250-400字全文 • 7天归档库已挂载</span>
-                        <span class="lang-bm hidden">{today_mmdd} {today_time} MYT • Klik tajuk untuk baca laporan penuh 250-400 patah perkataan • Arkib 7 hari tersedia</span>
+                        <span class="lang-zh">{today_mmdd} {today_time} MYT • 标题-only折叠 点击标题展开详细报道 • 7天归档库已挂载</span>
+                        <span class="lang-bm hidden">{today_mmdd} {today_time} MYT • Klik tajuk untuk baca berita terperinci • Arkib 7 hari tersedia</span>
                     </span>
                     <span class="text-[#FFD60A] font-bold">
                         <span class="lang-zh">{len(headlines)} 篇深度要闻 • 双核实白名单</span>
@@ -1945,12 +1952,12 @@ def generate_index_html():
                     <img id="modal-cover-img" src="" alt="新闻配图" class="rounded-lg max-h-72 w-full object-cover" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'; this.style.display='none';">
                 </div>
 
-                <!-- 深度报道全文内容 (250~400字背景脉络与政策细则) -->
+                <!-- 深度报道全文内容 (权威详尽报道与信源细则) -->
                 <div class="modal-detail-box rounded-xl p-4 sm:p-5 space-y-3">
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-4 rounded-full bg-[#FFD60A]"></span>
                         <span class="text-[11.5px] font-black text-[#FFD60A] tracking-wider">
-                            <span class="lang-zh">深度要闻 / 250-400字背景脉络与政策细则</span>
+                            <span class="lang-zh">深度要闻 / 权威详尽报道与信源细则</span>
                             <span class="lang-bm hidden">Laporan Mendalam / Konteks Penuh & Dasar Rasmi</span>
                         </span>
                     </div>
