@@ -586,7 +586,7 @@ class GDriveMarkdownReader:
         Removes all BM bilingual splitting and URL extraction.
         """
         text = self.clean_escapes(markdown_text)
-        tag_re = re.compile(r'(?:^|\n)\s*[-*•]?\s*\*{0,2}【(通告类型|通告标题|详细内容|发布机构|正文|来源|状态|活动名称|活动日期|活动时间|活动地点|活动内容|主办单位)】\*{0,2}[：:]?\s*')
+        tag_re = re.compile(r'(?:^|\s+|[-*•]?\s*)\*{0,2}【(通告类型|通告标题|详细内容|发布机构|正文|来源|状态|活动名称|活动日期|活动时间|活动地点|活动内容|主办单位)】\*{0,2}[：:]?\s*')
 
         blocks = re.split(r'\n(?=#{1,4}\s+|[-*•]?\s*\*{0,2}【(?:通告类型|活动名称)】)', text)
 
