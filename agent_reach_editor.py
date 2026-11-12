@@ -407,6 +407,13 @@ def run_pipeline() -> bool:
     events = sync_events_archive(events, today_iso, archive_file=EVENTS_ARCHIVE_FILE)
     archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
+    # 动态为要闻生成杂志风专属封面
+    try:
+        from pipeline.cover_generator import generate_covers_for_headlines
+        final_headlines = generate_covers_for_headlines(final_headlines, date_str=today_iso)
+    except Exception as e:
+        logger.warning(f"Cover generation hook error in agent_reach_editor: {e}")
+
     news_data_payload = {
         "updated_at": myt_now.strftime("%Y-%m-%d %H:%M:%S"),
         "date": today_iso,

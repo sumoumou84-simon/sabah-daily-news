@@ -81,7 +81,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sabah_art_sabah_01_94529632.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sabah_art_sabah_01_94529632.jpg"
     },
     {
       "story_index": 2,
@@ -108,7 +110,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sabah_art_sabah_02_e19457b6.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sabah_art_sabah_02_e19457b6.jpg"
     },
     {
       "story_index": 3,
@@ -135,7 +139,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sabah_art_sabah_03_7f367eaa.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sabah_art_sabah_03_7f367eaa.jpg"
     },
     {
       "story_index": 4,
@@ -162,7 +168,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sabah_art_sabah_04_ff52777b.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sabah_art_sabah_04_ff52777b.jpg"
     },
     {
       "story_index": 5,
@@ -189,7 +197,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sabah_art_sabah_05_11f9e687.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sabah_art_sabah_05_11f9e687.jpg"
     },
     {
       "story_index": 6,
@@ -216,7 +226,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_national_art_national_06_761a7f30.jpg",
+      "cover_image": "./assets/covers/cover_20261112_national_art_national_06_761a7f30.jpg"
     },
     {
       "story_index": 7,
@@ -243,7 +255,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_national_art_national_07_a8963217.jpg",
+      "cover_image": "./assets/covers/cover_20261112_national_art_national_07_a8963217.jpg"
     },
     {
       "story_index": 8,
@@ -270,7 +284,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_national_art_national_08_db3edc85.jpg",
+      "cover_image": "./assets/covers/cover_20261112_national_art_national_08_db3edc85.jpg"
     },
     {
       "story_index": 9,
@@ -297,7 +313,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_national_art_national_09_18279cbc.jpg",
+      "cover_image": "./assets/covers/cover_20261112_national_art_national_09_18279cbc.jpg"
     },
     {
       "story_index": 10,
@@ -324,7 +342,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sports_art_sports_10_c7a2452f.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sports_art_sports_10_c7a2452f.jpg"
     },
     {
       "story_index": 11,
@@ -351,7 +371,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sports_art_sports_11_aa3e42b6.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sports_art_sports_11_aa3e42b6.jpg"
     },
     {
       "story_index": 12,
@@ -378,7 +400,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_sports_art_sports_12_e81c37f9.jpg",
+      "cover_image": "./assets/covers/cover_20261112_sports_art_sports_12_e81c37f9.jpg"
     },
     {
       "story_index": 13,
@@ -405,7 +429,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_general_art_general_13_3319479e.jpg",
+      "cover_image": "./assets/covers/cover_20261112_general_art_general_13_3319479e.jpg"
     },
     {
       "story_index": 14,
@@ -432,7 +458,9 @@
       "site_published_at": "2026-11-12T16:24:38.526999+08:00",
       "updated_at": "2026-11-12T16:24:38.526999+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED"
+      "validation_status": "VERIFIED",
+      "cover": "./assets/covers/cover_20261112_general_art_general_14_e2e6533b.jpg",
+      "cover_image": "./assets/covers/cover_20261112_general_art_general_14_e2e6533b.jpg"
     }
   ],
   "events": [

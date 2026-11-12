@@ -91,6 +91,15 @@ def generate_index_html():
     raw_events = data.get("events", [])
     archive_pool = data.get("archive", {})
 
+    # 0.9 为重点要闻生成专属杂志风封面
+    try:
+        from pipeline.cover_generator import generate_covers_for_headlines
+        if headlines:
+            headlines = generate_covers_for_headlines(headlines, date_str=myt_now.strftime("%Y.%m.%d · MYT"))
+            data["headlines"] = headlines
+    except Exception as e:
+        print(f"⚠️ 封面生成器调用提示/降级: {e}")
+
     # 1.0 持久化活动归档与智能角标置顶 (data/events_archive.json)
     events_list = sync_events_archive(raw_events, today_iso, archive_file=EVENTS_ARCHIVE_FILE)
     data["events"] = events_list
@@ -446,8 +455,18 @@ def generate_index_html():
 
         pin_badge = '<span class="shrink-0 w-2.5 h-2.5 rounded-full bg-[#EC4899] mt-2 shadow-sm animate-pulse"></span>' if idx <= 2 else ''
 
+        cover_img_url = item.get("cover") or item.get("cover_image") or ""
+        cover_html = ""
+        if cover_img_url:
+            cover_html = f"""
+                    <div class="card-cover-wrap w-full aspect-[16/9] overflow-hidden bg-[#0A1128] relative">
+                        <img src="{cover_img_url}" alt="{clean_title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+            """
+
         news_cards_html += f"""
                 <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="{category}" id="news-card-{idx}" onclick="openNewsModal({idx-1})">
+                    {cover_html}
                     <div class="card-inner-box p-2.5 sm:p-3 md:p-3.5 flex flex-col gap-2 flex-1">
                         <div class="flex items-start justify-between gap-1.5">
                             <h3 class="card-title font-bold leading-snug flex-1 text-[13px] sm:text-[14px] md:text-[15px] transition-colors line-clamp-3">
@@ -624,6 +643,9 @@ def generate_index_html():
 
     # 4. 组装整页 HTML
     archive_json_str = json.dumps(archive_pool, ensure_ascii=False)
+    og_image_url = "./icon-512.png"
+    if headlines and (headlines[0].get("cover") or headlines[0].get("cover_image")):
+        og_image_url = headlines[0].get("cover") or headlines[0].get("cover_image")
 
     html_content = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -634,6 +656,17 @@ def generate_index_html():
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎 3.0</title>
+    <!-- Open Graph & 社交分享预览 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="西门看看网 · 每日晨报 | 全自动信源采集与双核实编译引擎">
+    <meta property="og:description" content="全自动信源采集与双官方交叉核实，每日呈现沙巴与马来西亚权威精选要闻。">
+    <meta property="og:image" content="{og_image_url}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="西门看看网 · 每日晨报">
+    <meta name="twitter:description" content="全自动信源采集与双官方交叉核实，每日呈现沙巴与马来西亚权威精选要闻。">
+    <meta name="twitter:image" content="{og_image_url}">
     <!-- PWA 配置与 Service Worker 注册 -->
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#f8fafc">
@@ -1255,6 +1288,25 @@ def generate_index_html():
             box-sizing: border-box;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             margin-bottom: 0 !important;
+        }}
+
+        /* 16:9 杂志风封面容器 */
+        .card-cover-wrap {{
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            background-color: #0A1128;
+        }}
+        .card-cover-wrap img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }}
+        .news-grid-card:hover .card-cover-wrap img {{
+            transform: scale(1.04);
         }}
 
         /* 分类过滤隐藏样式（最高优先级） */
@@ -2304,8 +2356,16 @@ def generate_index_html():
                 const zhCls = isBm ? 'hidden' : '';
                 const bmCls = isBm ? '' : 'hidden';
 
+                const coverImgUrl = item.cover || item.cover_image || '';
+                const coverHtml = coverImgUrl ? `
+                    <div class="card-cover-wrap w-full aspect-[16/9] overflow-hidden relative">
+                        <img src="${{coverImgUrl}}" alt="${{cleanTitle}}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                ` : '';
+
 html += `
                 <article class="news-grid-card group relative flex flex-col rounded-[12px] border transition-all cursor-pointer overflow-hidden" data-category="${{category}}" id="news-card-${{idx}}" onclick="openNewsModal(${{index}})">
+                    ${{coverHtml}}
                     <div class="card-inner-box p-2.5 sm:p-3 md:p-3.5 flex flex-col gap-2 flex-1">
                         <div class="flex items-start justify-between gap-1.5">
                             <h3 class="card-title font-bold leading-snug flex-1 text-[13px] sm:text-[14px] md:text-[15px] transition-colors line-clamp-3">
@@ -2502,10 +2562,11 @@ html += `
                 `;
             }}
 
-            // 3. 设置封面大图 (仅真实原生 image_url 存在时渲染展示，无图彻底隐藏)
+            // 3. 设置封面大图 (优先使用 cover/cover_image 杂志风大图，或原生 image_url)
             const coverWrap = document.getElementById('modal-cover-wrap');
             const coverImg = document.getElementById('modal-cover-img');
-            const imgUrl = (item && item.image_url && typeof item.image_url === 'string') ? item.image_url.trim() : '';
+            const candidateImg = item.cover || item.cover_image || item.image_url;
+            const imgUrl = (item && candidateImg && typeof candidateImg === 'string') ? candidateImg.trim() : '';
 
             if (imgUrl && imgUrl !== 'null' && imgUrl !== 'undefined') {{
                 if (coverWrap) {{

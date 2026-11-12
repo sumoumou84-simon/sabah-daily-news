@@ -7,6 +7,7 @@ from .geo_verifier import GeographicVerifier
 from .utility_verifier import UtilityVerifier
 from .fact_verifier import BilingualFactValidator
 from .gdrive_reader import GDriveMarkdownReader, ParsedMarkdownStory, GDriveInputSnapshot, sync_events_archive, parse_date_range
+from .cover_generator import CoverGenerator, generate_covers_for_headlines
 
 __all__ = [
     "ArticleNormalizer",
@@ -21,5 +22,7 @@ __all__ = [
     "ParsedMarkdownStory",
     "GDriveInputSnapshot",
     "sync_events_archive",
-    "parse_date_range"
+    "parse_date_range",
+    "CoverGenerator",
+    "generate_covers_for_headlines"
 ]

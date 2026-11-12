@@ -29,10 +29,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 安装基础依赖
+      - name: 安装基础依赖与中文字体
         run: |
+          sudo apt-get update && sudo apt-get install -y fonts-wqy-zenhei || true
           pip install --upgrade pip
-          pip install requests urllib3 tzdata || true
+          pip install requests urllib3 tzdata pillow || true
 
       - name: 执行全自动抓取、双核实与页面编译
         env:
@@ -54,6 +55,6 @@ jobs:
         run: |
           git config --global user.name "Simon Kankan Bot"
           git config --global user.email "sumoumou84@gmail.com"
-          git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ reports/ data/ || true
+          git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ reports/ data/ assets/covers/ assets/bg_pool/ || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
           git push
