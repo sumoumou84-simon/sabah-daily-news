@@ -933,6 +933,21 @@ def generate_index_html():
             border-color: #FFD60A;
             color: #FFD60A;
         }}
+        .theme-dark .header-nav-bar {{
+            background-color: #0F172A !important;
+            border-color: #334155 !important;
+        }}
+        .theme-dark .header-nav-pill {{
+            background-color: #1E293B !important;
+            border-color: #334155 !important;
+            color: #CBD5E1 !important;
+        }}
+        .theme-dark .header-nav-pill:hover,
+        .theme-dark .header-nav-pill:active {{
+            background-color: #243247 !important;
+            border-color: #FFD60A !important;
+            color: #FFD60A !important;
+        }}
         .theme-dark .lang-switcher-box {{
             background-color: #0F172A;
             border-color: #334155;
@@ -1193,6 +1208,21 @@ def generate_index_html():
         }}
         .theme-light .theme-toggle-btn:hover {{
             background-color: #E2E8F0;
+        }}
+        .theme-light .header-nav-bar {{
+            background-color: #FFFFFF !important;
+            border-color: #E2E8F0 !important;
+        }}
+        .theme-light .header-nav-pill {{
+            background-color: #F8FAFC !important;
+            border-color: #CBD5E1 !important;
+            color: #334155 !important;
+        }}
+        .theme-light .header-nav-pill:hover,
+        .theme-light .header-nav-pill:active {{
+            background-color: #F1F5F9 !important;
+            border-color: #F59E0B !important;
+            color: #B45309 !important;
         }}
         .theme-light .lang-switcher-box {{
             background-color: #F1F5F9;
@@ -1460,6 +1490,16 @@ def generate_index_html():
             white-space: nowrap !important;
         }}
 
+        /* 顶部快捷跳转导航条 (支持手机端原生横向流畅滑动) */
+        .header-nav-bar {{
+            -webkit-overflow-scrolling: touch;
+        }}
+        .header-nav-pill {{
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+            user-select: none;
+        }}
+
         /* 活动标题完整展示 */
         .event-title {{
             white-space: normal !important;
@@ -1580,6 +1620,36 @@ def generate_index_html():
                 <div id="google_translate_element" style="display:none !important;"></div>
             </div>
         </div>
+
+        <!-- 顶部快捷跳转导航栏 (横向平滑滚动，全设备无缝适配，不被任何右侧按钮遮挡) -->
+        <nav class="header-nav-bar w-full border-t overflow-x-auto no-scrollbar scroll-smooth flex items-center px-2 sm:px-4 py-1.5 whitespace-nowrap select-none" id="header-quick-nav">
+            <div class="mx-auto max-w-[1440px] w-full flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5">
+                <button type="button" onclick="quickNavScroll('util-section')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    ⚡ <span class="lang-zh">公用民生</span><span class="lang-bm hidden">Utiliti</span>
+                </button>
+                <button type="button" onclick="quickNavCategory('all')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    📰 <span class="lang-zh">今日要闻</span><span class="lang-bm hidden">Utama</span>
+                </button>
+                <button type="button" onclick="quickNavCategory('sabah')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    📍 <span class="lang-zh">沙巴要闻</span><span class="lang-bm hidden">Sabah</span>
+                </button>
+                <button type="button" onclick="quickNavCategory('national')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    🇲🇾 <span class="lang-zh">全国政经</span><span class="lang-bm hidden">Nasional</span>
+                </button>
+                <button type="button" onclick="quickNavCategory('sports')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    🏸 <span class="lang-zh">体育焦点</span><span class="lang-bm hidden">Sukan</span>
+                </button>
+                <button type="button" onclick="quickNavCategory('general')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    🌐 <span class="lang-zh">综合百态</span><span class="lang-bm hidden">Umum</span>
+                </button>
+                <button type="button" onclick="quickNavScroll('events-section')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    📅 <span class="lang-zh">活动看板</span><span class="lang-bm hidden">Aktiviti</span>
+                </button>
+                <button type="button" onclick="quickNavScroll('date-tabs-container')" class="header-nav-pill shrink-0 px-2.5 py-[3px] rounded-full text-[11px] sm:text-[11.5px] font-bold border transition-all cursor-pointer">
+                    📦 <span class="lang-zh">往期归档</span><span class="lang-bm hidden">Arkib</span>
+                </button>
+            </div>
+        </nav>
 
         <!-- 顶部红色纯动态无缝全宽跑马灯 -->
         <div class="w-full bg-[#DC2626] h-[30px] md:h-[32px] flex items-center overflow-hidden border-y border-[#7f1d1d] relative">
@@ -1707,7 +1777,7 @@ def generate_index_html():
                     </div>
 
                     <!-- 3 列黄色公用事业卡片 (UTILITI) -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-4 items-start">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-4 items-start" id="util-section">
                         {utiliti_cards_html}
                     </div>
 
@@ -1759,7 +1829,7 @@ def generate_index_html():
                 </div>
 
                 <!-- 沙巴活动预告与倒计时看板（从 data/events_archive.json 动态渲染，智能角标置顶、倒计时与单行头部） -->
-                <div class="theme-panel border rounded-[12px] overflow-hidden mt-2">
+                <div class="theme-panel border rounded-[12px] overflow-hidden mt-2" id="events-section">
                     <div class="px-3 sm:px-4 py-2.5 sm:py-3 border-b flex items-center justify-between gap-2 overflow-hidden">
                         <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
                             <h3 class="font-black text-[14px] sm:text-[15px] whitespace-nowrap shrink-0">
@@ -2206,6 +2276,30 @@ def generate_index_html():
             if (countTag) countTag.textContent = visibleCount;
         }}
         window.filterNewsCategory = filterNewsCategory;
+
+        // 顶部快捷跳转与平滑定位
+        function quickNavScroll(targetId) {{
+            const el = document.getElementById(targetId);
+            if (el) {{
+                const header = document.querySelector('header');
+                const headerOffset = header ? header.offsetHeight + 10 : 90;
+                const elementPosition = el.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({{
+                    top: Math.max(0, offsetPosition),
+                    behavior: 'smooth'
+                }});
+            }}
+        }}
+        window.quickNavScroll = quickNavScroll;
+
+        function quickNavCategory(catKey) {{
+            if (typeof filterNewsCategory === 'function') {{
+                filterNewsCategory(catKey);
+            }}
+            quickNavScroll('headlines-section-title');
+        }}
+        window.quickNavCategory = quickNavCategory;
 
         // 一键分享功能
         function sharePage() {{
