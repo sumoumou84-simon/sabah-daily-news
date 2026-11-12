@@ -236,8 +236,28 @@ def sync_events_archive(
         except Exception as e:
             logger.warning(f"Failed to read {archive_file}: {e}")
 
-    # 合并更新
-    merged_events: List[Dict[str, Any]] = [dict(e) for e in archive_events]
+    # 归档库自身内部去重合并（按“起始日期 + 地标/核心词重叠或标题相似度 >= 0.50”合并冗余条目，保留最早的 first_seen_date）
+    deduped_archive: List[Dict[str, Any]] = []
+    for old_ev in archive_events:
+        matched_idx = -1
+        for idx, exist_ev in enumerate(deduped_archive):
+            if is_same_event_record(old_ev, exist_ev):
+                matched_idx = idx
+                break
+        if matched_idx >= 0:
+            exist_item = deduped_archive[matched_idx]
+            fs1 = exist_item.get("first_seen_date") or today_iso
+            fs2 = old_ev.get("first_seen_date") or today_iso
+            earliest_first_seen = min(fs1, fs2) if (fs1 and fs2) else (fs1 or fs2 or today_iso)
+            for k, v in old_ev.items():
+                if v and (k not in exist_item or not exist_item[k]):
+                    exist_item[k] = v
+            exist_item["first_seen_date"] = earliest_first_seen
+        else:
+            deduped_archive.append(dict(old_ev))
+
+    # 合并更新（将当天新活动合并入去重后的归档库）
+    merged_events: List[Dict[str, Any]] = [dict(e) for e in deduped_archive]
     for new_ev in incoming_events:
         matched_idx = -1
         for idx, old_ev in enumerate(merged_events):

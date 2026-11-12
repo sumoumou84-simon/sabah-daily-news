@@ -42,27 +42,5 @@
     "countdown_days": 2,
     "first_seen_date": "2026-11-12",
     "end_date": "2026-11-14"
-  },
-  {
-    "id": 3,
-    "month": "11",
-    "day": "14",
-    "full_date": "2026-11-14",
-    "name": "山打根市区周末市集",
-    "nameBM": "山打根市区周末市集",
-    "time": "全天",
-    "timeBM": "全天",
-    "location": "Harbour Mall，山打根市区",
-    "category": "市政公益",
-    "categoryBM": "市政公益",
-    "badgeColor": "bg-[#14532d] text-[#86efac]",
-    "desc": "周末市集汇集本地小吃、手工艺与文创摊位，市民可前往逛集、支持本地小商家。",
-    "descBM": "周末市集汇集本地小吃、手工艺与文创摊位，市民可前往逛集、支持本地小商家。",
-    "tel": "",
-    "source": "Harbour Mall 管理层",
-    "sourceBM": "Harbour Mall 管理层",
-    "countdown_days": 2,
-    "first_seen_date": "2026-11-12",
-    "end_date": "2026-11-14"
   }
 ]

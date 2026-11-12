@@ -154,6 +154,46 @@ class TestEventsArchiveLifecycle(unittest.TestCase):
         self.assertIn("港口文创市集", mall_ev["name"])
         self.assertIn("西必洛亲子自然雨林", rdc_ev["name"])
 
+    def test_03c_archive_self_deduplication(self):
+        """测试加载归档库时对自身历史遗留重复项的内部自我去重与合并"""
+        # 模拟归档库中已存在两条重复项（如山打根市区周末市集）
+        duplicate_archive = [
+            {
+                "id": 1,
+                "name": "南砂免费义肢最后调试活动",
+                "full_date": "2026-11-12",
+                "location": "以主办单位公布地点为准",
+                "first_seen_date": "2026-11-12"
+            },
+            {
+                "id": 2,
+                "name": "山打根市区周末市集",
+                "full_date": "2026-11-14",
+                "location": "Harbour Mall，山打根市区",
+                "desc": "周末市集汇集本地小吃",
+                "first_seen_date": "2026-11-10"
+            },
+            {
+                "id": 3,
+                "name": "山打根市区周末市集",
+                "full_date": "2026-11-14",
+                "location": "Harbour Mall，山打根市区",
+                "desc": "周末市集汇集本地小吃",
+                "first_seen_date": "2026-11-12"
+            }
+        ]
+        with open(self.archive_file, "w", encoding="utf-8") as f:
+            json.dump(duplicate_archive, f, ensure_ascii=False)
+
+        today_iso = "2026-11-12"
+        # 即使 incoming_events 为空，自我去重也能彻底合并多余重复项并保留最早的 first_seen_date
+        res = sync_events_archive([], today_iso, archive_file=self.archive_file)
+        self.assertEqual(len(res), 2)
+        names = [e["name"] for e in res]
+        self.assertEqual(names.count("山打根市区周末市集"), 1)
+        market_ev = next(e for e in res if e["name"] == "山打根市区周末市集")
+        self.assertEqual(market_ev["first_seen_date"], "2026-11-10")
+
     def test_04_cleanup_expired_events(self):
         """测试自动清理结束日期早于今日 (MYT) 的已过期活动"""
         # 先在归档库中写入一个已过期的活动 (11-10 结束) 和一个未来的活动 (11-18 结束)
@@ -258,6 +298,11 @@ class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
         self.assertIn("活动地点：", self.html)
         self.assertIn("活动时间：", self.html)
         self.assertIn("主办/信源：", self.html)
+
+    def test_04_events_grid_container_items_start(self):
+        """测试电脑端网格容器带有 items-start，杜绝卡片展开时折叠卡片被强行拉伸留白"""
+        self.assertIn('id="events-grid-container"', self.html)
+        self.assertIn('grid grid-cols-1 md:grid-cols-2 gap-2 items-start', self.html)
 
 
 if __name__ == "__main__":

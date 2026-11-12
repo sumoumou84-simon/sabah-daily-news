@@ -1724,7 +1724,7 @@ def generate_index_html():
                             <span class="lang-zh">自动隐藏过期活动 ✓</span><span class="lang-bm hidden">Auto-sembunyi aktiviti lalu ✓</span>
                         </span>
                     </div>
-                    <div class="p-2.5 grid grid-cols-1 md:grid-cols-2 gap-2" id="events-grid-container">
+                    <div class="p-2.5 grid grid-cols-1 md:grid-cols-2 gap-2 items-start" id="events-grid-container">
                         {events_cards_html}
                     </div>
                 </div>
