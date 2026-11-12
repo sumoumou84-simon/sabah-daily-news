@@ -1406,9 +1406,11 @@ def generate_index_html():
             border: none !important;
             box-shadow: none !important;
         }}
-        /* 自定义翻译下拉框微调 */
+        /* 自定义翻译下拉框微调 (强制右对齐，绝不超出屏幕右侧) */
         .translate-menu {{
-            min-width: 130px;
+            min-width: 135px;
+            right: 0 !important;
+            left: auto !important;
         }}
     </style>
 </head>
@@ -1416,20 +1418,20 @@ def generate_index_html():
 
     <!-- 顶部 Header -->
     <header class="border-b sticky top-0 z-50">
-        <div class="mx-auto max-w-[1440px] px-2.5 sm:px-4 md:px-6 h-[50px] sm:h-[52px] md:h-[56px] flex items-center justify-between gap-1.5 sm:gap-3">
-            <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
-                <div class="flex items-center gap-1 sm:gap-2">
-                    <span class="text-[15.5px] sm:text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap notranslate" translate="no">
+        <div class="mx-auto max-w-[1440px] px-2 sm:px-4 md:px-6 h-[50px] sm:h-[52px] md:h-[56px] flex items-center justify-between gap-1.5 sm:gap-3">
+            <div class="flex items-center gap-1 sm:gap-2.5 min-w-0 shrink">
+                <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+                    <span class="text-[15px] sm:text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap notranslate" translate="no">
                         <span class="lang-zh">西门看看网</span>
                         <span class="lang-bm hidden">Simon Kankan</span>
                     </span>
-                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-[5px] sm:rounded-[6px] bg-[#FFD60A] text-black text-[10px] sm:text-[11px] font-bold leading-none shrink-0 whitespace-nowrap notranslate" translate="no">
+                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-[5px] sm:rounded-[6px] bg-[#FFD60A] text-black text-[9.5px] sm:text-[11px] font-bold leading-none shrink-0 whitespace-nowrap notranslate" translate="no">
                         <span class="lang-zh">每日晨报</span>
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
 
                     <!-- 一键分享按钮 (窄屏优化：手机端精炼图标+文字自适应，绝不挤压右侧按钮) -->
-                    <button onclick="sharePage()" class="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[10.5px] sm:text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
+                    <button onclick="sharePage()" class="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[10px] sm:text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
                         <span>🔗</span>
                         <span class="lang-zh hidden sm:inline">一键分享</span>
                         <span class="lang-bm hidden">Kongsi</span>
@@ -1446,7 +1448,7 @@ def generate_index_html():
 
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <!-- ☀️ 日间浅色 / 🌙 夜间深色 模式切换高质感胶囊按钮 (固定尺寸与shrink-0防止被挤压) -->
-                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
+                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[12px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text" class="lang-zh">浅色</span>
                     <span id="theme-text-bm" class="lang-bm hidden">Cerah</span>
@@ -1462,27 +1464,30 @@ def generate_index_html():
                     </button>
                 </div>
 
-                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[12px] text-[#4ade80] hover:bg-[#166534] transition notranslate" translate="no">
-                    <span class="w-[8px] h-[8px] rounded-full bg-[#22c55e]"></span> WhatsApp
+                <!-- WhatsApp 客服按钮 (移动端窄屏精炼展示图标，中大屏展示完整文本) -->
+                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[10.5px] sm:text-[12px] text-[#4ade80] hover:bg-[#166534] transition notranslate shrink-0 whitespace-nowrap" translate="no" title="联络 WhatsApp 客服">
+                    <span class="w-[7px] h-[7px] sm:w-[8px] sm:h-[8px] rounded-full bg-[#22c55e]"></span>
+                    <span class="hidden xs:inline sm:inline">WhatsApp</span>
+                    <span class="inline xs:hidden sm:hidden">WA</span>
                 </a>
 
                 <!-- 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
                 <div class="relative inline-block text-left shrink-0 notranslate" translate="no" id="translate-dropdown-container">
-                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
+                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[12px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
                         <span>🌐</span>
                         <span id="current-lang-label">翻译</span>
-                        <span class="text-[9px] opacity-70">▼</span>
+                        <span class="text-[8px] sm:text-[9px] opacity-70">▼</span>
                     </button>
-                    <!-- 下拉语言列表 -->
-                    <div id="translate-dropdown-menu" class="hidden absolute right-0 mt-1.5 py-1 rounded-[10px] shadow-2xl border translate-menu z-50 bg-[#1c1c1c] text-white border-white/10 text-[12px] font-medium divide-y divide-white/5">
-                        <button type="button" onclick="changeLanguage('zh-CN', '中文', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                    <!-- 下拉语言列表 (右对齐，绝不裁切超出视口) -->
+                    <div id="translate-dropdown-menu" class="hidden absolute right-0 mt-1.5 py-1 rounded-[10px] shadow-2xl border translate-menu z-50 bg-[#1c1c1c] text-white border-white/10 text-[11.5px] sm:text-[12px] font-medium divide-y divide-white/5" style="right: 0 !important; left: auto !important;">
+                        <button type="button" onclick="changeLanguage('zh-CN', '中文', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition whitespace-nowrap">
                             <span>🇨🇳 简体中文</span>
-                            <span class="text-[10px] text-[#FFD60A] font-bold">默认</span>
+                            <span class="text-[10px] text-[#FFD60A] font-bold ml-2">默认</span>
                         </button>
-                        <button type="button" onclick="changeLanguage('ms', 'BM', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                        <button type="button" onclick="changeLanguage('ms', 'BM', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition whitespace-nowrap">
                             <span>🇲🇾 Bahasa Melayu</span>
                         </button>
-                        <button type="button" onclick="changeLanguage('en', 'EN', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                        <button type="button" onclick="changeLanguage('en', 'EN', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition whitespace-nowrap">
                             <span>🇬🇧 English</span>
                         </button>
                     </div>
@@ -2609,7 +2614,10 @@ html += `
         window.googleTranslateElementInit = googleTranslateElementInit;
 
         function toggleTranslateMenu(event) {{
-            if (event) event.stopPropagation();
+            if (event) {{
+                event.stopPropagation();
+                if (event.preventDefault) event.preventDefault();
+            }}
             const menu = document.getElementById('translate-dropdown-menu');
             if (menu) {{
                 menu.classList.toggle('hidden');
@@ -2617,13 +2625,16 @@ html += `
         }}
         window.toggleTranslateMenu = toggleTranslateMenu;
 
-        document.addEventListener('click', (e) => {{
+        // 统一监听 click 与 touchstart，确保手机端触摸其他区域时立即收起菜单
+        const closeTranslateMenuOutside = (e) => {{
             const container = document.getElementById('translate-dropdown-container');
             const menu = document.getElementById('translate-dropdown-menu');
             if (container && menu && !container.contains(e.target)) {{
                 menu.classList.add('hidden');
             }}
-        }});
+        }};
+        document.addEventListener('click', closeTranslateMenuOutside);
+        document.addEventListener('touchstart', closeTranslateMenuOutside, {{ passive: true }});
 
         function setGoogleTranslateCookie(lang) {{
             // 写入 googtrans cookie 触发 Google Translate 引擎
