@@ -10,8 +10,18 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
-NEWS_DATA_FILE = "news_data.json"
-OUTPUT_HTML_FILE = "index.html"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
+NEWS_DATA_FILE = os.path.join(BASE_DIR, "news_data.json")
+OUTPUT_HTML_FILE = os.path.join(BASE_DIR, "index.html")
+EVENTS_ARCHIVE_FILE = os.path.join(BASE_DIR, "data", "events_archive.json")
+
+try:
+    from pipeline.gdrive_reader import sync_events_archive, parse_date_range
+except ImportError:
+    from gdrive_reader import sync_events_archive, parse_date_range
 
 def get_myt_datetime():
     """获取马来西亚时间（UTC+8）"""
@@ -78,8 +88,17 @@ def generate_index_html():
 
     utilities = data.get("utilities", [])
     headlines = data.get("headlines", [])
-    events_list = data.get("events", [])
+    raw_events = data.get("events", [])
     archive_pool = data.get("archive", {})
+
+    # 1.0 持久化活动归档与智能角标置顶 (data/events_archive.json)
+    events_list = sync_events_archive(raw_events, today_iso, archive_file=EVENTS_ARCHIVE_FILE)
+    data["events"] = events_list
+    try:
+        with open(NEWS_DATA_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"⚠️ 同步更新 {NEWS_DATA_FILE} 失败: {e}")
 
     # 1. 动态生成 3 列黄色公用事业卡片 (UTILITI)
     default_utils = [
@@ -464,11 +483,30 @@ def generate_index_html():
                 </article>
                 """
         
-    # 3. 动态渲染未来 2 周活动预告卡片
+    # 3. 动态渲染沙巴活动预告与倒计时卡片（持久化归档 + 单板块智能角标置顶 + 倒计时）
     events_cards_html = ""
     for ev in events_list:
-        countdown_label_zh = f"还有 {ev.get('countdown_days', 0)} 天"
-        countdown_label_bm = f"{ev.get('countdown_days', 0)} hari lagi"
+        countdown_days = ev.get('countdown_days', 0)
+        if countdown_days == 0:
+            countdown_label_zh = "今天举行"
+            countdown_label_bm = "Hari Ini"
+            countdown_badge_color = "bg-[#22c55e] text-black font-black"
+        elif countdown_days == 1:
+            countdown_label_zh = "还有 1 天"
+            countdown_label_bm = "1 hari lagi"
+            countdown_badge_color = "bg-[#FFD60A] text-black font-black"
+        else:
+            countdown_label_zh = f"还有 {countdown_days} 天"
+            countdown_label_bm = f"{countdown_days} hari lagi"
+            countdown_badge_color = "bg-[#FFD60A] text-black font-black"
+
+        is_new_today = (ev.get('first_seen_date') == today_iso)
+        if is_new_today:
+            new_tag_html = """<span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>"""
+        else:
+            new_tag_html = ""
+
+        countdown_badge_html = f"""<span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black {countdown_badge_color} whitespace-nowrap shadow-sm mono"><span class="lang-zh">{countdown_label_zh}</span><span class="lang-bm hidden">{countdown_label_bm}</span></span>"""
 
         tel_val = (ev.get('tel') or '').strip()
         if tel_val:
@@ -482,31 +520,21 @@ def generate_index_html():
         
         events_cards_html += f"""
         <div class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
-            <div class="flex items-center gap-3">
-                <div class="shrink-0 w-[48px] h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none">
-                    <span class="font-black text-[13px]">{ev['month']}</span>
-                    <span class="font-bold text-[11px]">/{ev['day']}</span>
+            <div class="flex items-center gap-2.5 sm:gap-3">
+                <div class="shrink-0 w-[46px] h-[46px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none">
+                    <span class="font-black text-[13px] sm:text-[14px]">{ev['month']}</span>
+                    <span class="font-bold text-[10.5px] sm:text-[11px]">/{ev['day']}</span>
                 </div>
-                <div class="flex-1 min-w-0">
-                    <div class="text-[13px] font-bold event-title transition-colors" style="white-space: normal; line-height: 1.4;">
+                <div class="flex-1 min-w-0 pr-1">
+                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors" style="white-space: normal; line-height: 1.4; word-break: break-word;">
                         <span class="lang-zh">{ev['name']}</span>
                         <span class="lang-bm hidden">{ev['nameBM']}</span>
                     </div>
-                    <div class="text-[11px] truncate flex items-center gap-1.5 mt-0.5 event-subtitle">
-                        <span>{ev['location']}</span>
-                        <span>•</span>
-                        <span class="text-[#FFD60A] font-bold text-[10px] mono">
-                            <span class="lang-zh">{countdown_label_zh}</span>
-                            <span class="lang-bm hidden">{countdown_label_bm}</span>
-                        </span>
-                    </div>
                 </div>
-                <div class="shrink-0 flex items-center gap-2">
-                    <span class="px-2 py-[2px] rounded-full text-[10px] font-bold {ev['badgeColor']}">
-                        <span class="lang-zh">{ev['category']}</span>
-                        <span class="lang-bm hidden">{ev['categoryBM']}</span>
-                    </span>
-                    <span class="text-[11px] arrow-ev transition-transform">▼</span>
+                <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
+                    {new_tag_html}
+                    {countdown_badge_html}
+                    <span class="text-[11px] arrow-ev transition-transform text-white/50">▼</span>
                 </div>
             </div>
 
@@ -515,16 +543,33 @@ def generate_index_html():
                     <span class="lang-zh">{ev['desc']}</span>
                     <span class="lang-bm hidden">{ev['descBM']}</span>
                 </p>
-                <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] p-2 rounded-[8px] event-time-box">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[#FFD60A]">⏰</span>
-                        <span class="lang-zh">{ev['time']}</span>
-                        <span class="lang-bm hidden">{ev['timeBM']}</span>
+                <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
+                    <div class="flex items-start gap-1.5">
+                        <span class="text-[#FFD60A] shrink-0">📍</span>
+                        <span class="font-medium">
+                            <span class="lang-zh">活动地点：{ev['location']}</span>
+                            <span class="lang-bm hidden">Lokasi: {ev.get('locationBM') or ev['location']}</span>
+                        </span>
                     </div>
-                    {tel_btn_html}
+                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[#FFD60A] shrink-0">⏰</span>
+                            <span>
+                                <span class="lang-zh">活动时间：{ev['time']}</span>
+                                <span class="lang-bm hidden">Masa: {ev.get('timeBM') or ev['time']}</span>
+                            </span>
+                        </div>
+                        {tel_btn_html}
+                    </div>
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
-                    <span class="text-[#22c55e]">✓ <span class="lang-zh">{ev['source']}</span><span class="lang-bm hidden">{ev['sourceBM']}</span></span>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：{ev['source']}</span><span class="lang-bm hidden">Penganjur: {ev['sourceBM']}</span></span>
+                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold {ev.get('badgeColor', 'bg-[#14532d] text-[#86efac]')}">
+                            <span class="lang-zh">{ev.get('category', '官方活动')}</span>
+                            <span class="lang-bm hidden">{ev.get('categoryBM', 'Aktiviti Rasmi')}</span>
+                        </span>
+                    </div>
                     <span class="mono">沙巴官方核准备案活动</span>
                 </div>
             </div>
@@ -823,9 +868,6 @@ def generate_index_html():
         .theme-dark .event-card:hover .event-title {{
             color: #FFD60A !important;
         }}
-        .theme-dark .event-subtitle {{
-            color: #94A3B8 !important;
-        }}
         .theme-dark .event-desc {{
             color: #E2E8F0 !important;
         }}
@@ -1083,9 +1125,6 @@ def generate_index_html():
         }}
         .theme-light .event-card:hover .event-title {{
             color: #D97706 !important;
-        }}
-        .theme-light .event-subtitle {{
-            color: #64748B !important;
         }}
         .theme-light .event-desc {{
             color: #334155 !important;
@@ -1430,10 +1469,10 @@ def generate_index_html():
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
 
-                    <!-- 一键分享按钮 (窄屏优化：手机端精炼图标+文字自适应，绝不挤压右侧按钮) -->
-                    <button onclick="sharePage()" class="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[10px] sm:text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
+                    <!-- 一键分享按钮 (大屏展示文字，超小屏收起以确保完全不占空间) -->
+                    <button onclick="sharePage()" class="hidden sm:inline-flex items-center gap-1 px-2 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
                         <span>🔗</span>
-                        <span class="lang-zh hidden sm:inline">一键分享</span>
+                        <span class="lang-zh">一键分享</span>
                         <span class="lang-bm hidden">Kongsi</span>
                     </button>
                 </div>
@@ -1446,34 +1485,25 @@ def generate_index_html():
                 </div>
             </div>
 
+            <!-- 右侧精简三大控件：深浅模式切换 + WA 分享按钮 + 🌐 翻译下拉按钮 (移除旧黄色中文按钮，彻底杜绝手机端拥挤遮挡) -->
             <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <!-- ☀️ 日间浅色 / 🌙 夜间深色 模式切换高质感胶囊按钮 (固定尺寸与shrink-0防止被挤压) -->
-                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[12px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
+                <!-- 1. ☀️ 日间浅色 / 🌙 夜间深色 模式切换 -->
+                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 px-2 py-[3.5px] sm:px-2.5 sm:py-[4px] rounded-full text-[10.5px] sm:text-[11.5px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text" class="lang-zh">浅色</span>
                     <span id="theme-text-bm" class="lang-bm hidden">Cerah</span>
                 </button>
 
-                <!-- 中文 / BM 语系即时切换 -->
-                <div class="lang-switcher-box flex items-center rounded-full p-[2px] sm:p-[3px] border shrink-0">
-                    <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all bg-[#FFD60A] text-black shrink-0 whitespace-nowrap">
-                        中文
-                    </button>
-                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="hidden px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all text-[#888] hover:text-white shrink-0 whitespace-nowrap" style="display: none !important;">
-                        BM
-                    </button>
-                </div>
-
-                <!-- WhatsApp 客服按钮 (移动端窄屏精炼展示图标，中大屏展示完整文本) -->
-                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[10.5px] sm:text-[12px] text-[#4ade80] hover:bg-[#166534] transition notranslate shrink-0 whitespace-nowrap" translate="no" title="联络 WhatsApp 客服">
-                    <span class="w-[7px] h-[7px] sm:w-[8px] sm:h-[8px] rounded-full bg-[#22c55e]"></span>
-                    <span class="hidden xs:inline sm:inline">WhatsApp</span>
-                    <span class="inline xs:hidden sm:hidden">WA</span>
+                <!-- 2. WA 互动与分享按钮 -->
+                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full bg-[#14532d] border border-[#166534] text-[10.5px] sm:text-[11.5px] text-[#4ade80] hover:bg-[#166534] transition notranslate shrink-0 whitespace-nowrap shadow-sm" translate="no" title="联络 WhatsApp 互动分享">
+                    <span class="w-[6px] h-[6px] sm:w-[7px] sm:h-[7px] rounded-full bg-[#22c55e]"></span>
+                    <span class="hidden sm:inline">WhatsApp</span>
+                    <span class="inline sm:hidden">WA</span>
                 </a>
 
-                <!-- 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
+                <!-- 3. 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
                 <div class="relative inline-block text-left shrink-0 notranslate" translate="no" id="translate-dropdown-container">
-                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[12px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
+                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
                         <span>🌐</span>
                         <span id="current-lang-label">翻译</span>
                         <span class="text-[8px] sm:text-[9px] opacity-70">▼</span>
@@ -1492,6 +1522,7 @@ def generate_index_html():
                         </button>
                     </div>
                 </div>
+            </div>
 
                 <!-- 隐藏的 Google Translate 原生容器 -->
                 <div id="google_translate_element" style="display:none !important;"></div>
@@ -1675,21 +1706,21 @@ def generate_index_html():
                     </div>
                 </div>
 
-                <!-- 未来2周归档活动看板（从 news_data.json 动态渲染，含倒计时、开始结束时间与热线） -->
+                <!-- 沙巴活动预告与倒计时看板（从 data/events_archive.json 动态渲染，智能角标置顶、倒计时与单行头部） -->
                 <div class="theme-panel border rounded-[12px] overflow-hidden mt-2">
-                    <div class="px-4 py-3 border-b flex items-center justify-between gap-2">
-                        <h3 class="font-black text-[14px] md:text-[15px] flex items-center gap-2">
-                            <span>
-                                <span class="lang-zh">未来2周活动预告</span>
-                                <span class="lang-bm hidden">Aktiviti 2 Minggu Akan Datang</span>
-                            </span>
-                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
-                            <span class="inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text">
+                    <div class="px-3 sm:px-4 py-2.5 sm:py-3 border-b flex items-center justify-between gap-2 overflow-hidden">
+                        <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                            <h3 class="font-black text-[14px] sm:text-[15px] whitespace-nowrap shrink-0">
+                                <span class="lang-zh">沙巴活动预告与倒计时</span>
+                                <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sabah</span>
+                            </h3>
+                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
+                            <span class="hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
                             </span>
-                        </h3>
-                        <span class="text-[10px] mono sub-meta-text text-right leading-tight">
+                        </div>
+                        <span class="text-[10px] mono sub-meta-text text-right leading-tight whitespace-nowrap shrink-0">
                             <span class="lang-zh">自动隐藏过期活动 ✓</span><span class="lang-bm hidden">Auto-sembunyi aktiviti lalu ✓</span>
                         </span>
                     </div>
@@ -2168,7 +2199,8 @@ def generate_index_html():
                 toast.className = 'fixed top-14 left-1/2 -translate-x-1/2 z-50 bg-[#FFD60A] text-black font-black px-4 py-2 rounded-full shadow-2xl text-[13px] transition-opacity duration-300 pointer-events-none flex items-center gap-2 border-2 border-black';
                 document.body.appendChild(toast);
             }}
-            const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+            const btnBmElem = document.getElementById('btn-lang-bm');
+            const isBm = btnBmElem && btnBmElem.classList.contains('bg-[#FFD60A]');
             toast.textContent = isBm ? msgBm : msgZh;
             toast.style.opacity = '1';
             setTimeout(() => {{
@@ -2184,14 +2216,14 @@ def generate_index_html():
             const bmElements = document.querySelectorAll('.lang-bm');
 
             if (lang === '中文') {{
-                btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
-                btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
+                if (btnZh) btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
+                if (btnBm) btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
                 zhElements.forEach(el => el.classList.remove('hidden'));
                 bmElements.forEach(el => el.classList.add('hidden'));
                 document.documentElement.lang = "zh-CN";
             }} else {{
-                btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
-                btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
+                if (btnBm) btnBm.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all bg-[#FFD60A] text-black";
+                if (btnZh) btnZh.className = "px-2.5 md:px-3 py-[4px] rounded-full text-[12px] font-bold transition-all text-[#888] hover:text-white";
                 zhElements.forEach(el => el.classList.add('hidden'));
                 bmElements.forEach(el => el.classList.remove('hidden'));
                 document.documentElement.lang = "ms";

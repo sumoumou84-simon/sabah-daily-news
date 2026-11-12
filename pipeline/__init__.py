@@ -6,7 +6,7 @@ from .circuit_breaker import CircuitBreaker, CircuitBreakerException
 from .geo_verifier import GeographicVerifier
 from .utility_verifier import UtilityVerifier
 from .fact_verifier import BilingualFactValidator
-from .gdrive_reader import GDriveMarkdownReader, ParsedMarkdownStory, GDriveInputSnapshot
+from .gdrive_reader import GDriveMarkdownReader, ParsedMarkdownStory, GDriveInputSnapshot, sync_events_archive, parse_date_range
 
 __all__ = [
     "ArticleNormalizer",
@@ -19,5 +19,7 @@ __all__ = [
     "BilingualFactValidator",
     "GDriveMarkdownReader",
     "ParsedMarkdownStory",
-    "GDriveInputSnapshot"
+    "GDriveInputSnapshot",
+    "sync_events_archive",
+    "parse_date_range"
 ]

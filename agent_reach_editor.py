@@ -49,7 +49,8 @@ from pipeline import (
     CircuitBreakerException,
     GeographicVerifier,
     UtilityVerifier,
-    GDriveMarkdownReader
+    GDriveMarkdownReader,
+    sync_events_archive
 )
 
 logging.basicConfig(
@@ -61,6 +62,7 @@ logger = logging.getLogger("agent_reach_editor")
 CONFIG_FILE = os.path.join(BASE_DIR, "config", "news_config.json")
 NEWS_DATA_FILE = os.path.join(BASE_DIR, "news_data.json")
 ARCHIVE_POOL_FILE = os.path.join(BASE_DIR, "archive_history.json")
+EVENTS_ARCHIVE_FILE = os.path.join(BASE_DIR, "data", "events_archive.json")
 
 MYT = timezone(timedelta(hours=8))
 
@@ -400,8 +402,9 @@ def run_pipeline() -> bool:
         print("!" * 70)
         return False
 
-    # 7. 写入并持久化
+    # 7. 写入并持久化（包含活动归档库 data/events_archive.json 同步）
     events = events or build_rich_future_events()
+    events = sync_events_archive(events, today_iso, archive_file=EVENTS_ARCHIVE_FILE)
     archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
     news_data_payload = {

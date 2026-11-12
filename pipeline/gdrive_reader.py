@@ -44,6 +44,191 @@ logger = logging.getLogger("pipeline.gdrive_reader")
 MYT = timezone(timedelta(hours=8))
 
 
+def normalize_event_core_title(title: str) -> str:
+    """提取活动核心标题，去除标签、括号与标点符号用于去重相似度比对"""
+    t = re.sub(r'\[.*?\]|【.*?】|\(.*?\)|（.*?）', '', title or '')
+    t = re.sub(r'[^\w\u4e00-\u9fff]+', '', t.lower())
+    return t.strip()
+
+
+def compute_event_similarity(ev1_title: str, ev2_title: str) -> float:
+    """计算两活动标题相似度"""
+    t1 = normalize_event_core_title(ev1_title)
+    t2 = normalize_event_core_title(ev2_title)
+    if not t1 or not t2:
+        return 0.0
+    if t1 == t2 or t1 in t2 or t2 in t1:
+        return 1.0
+    import difflib
+    return difflib.SequenceMatcher(None, t1, t2).ratio()
+
+
+def parse_date_range(raw_date_str: str, default_date: str) -> Tuple[str, str]:
+    """
+    解析活动起始与结束日期（ISO 格式 YYYY-MM-DD）。
+    若为单日活动，结束日期等于起始日期。
+    """
+    if not raw_date_str:
+        return default_date, default_date
+
+    def_year = default_date.split("-")[0] if "-" in default_date else "2026"
+
+    # 1. 查找所有 ISO 格式 20XX-MM-DD
+    iso_matches = re.findall(r'20\d\d-\d{2}-\d{2}', raw_date_str)
+    if len(iso_matches) >= 2:
+        return iso_matches[0], iso_matches[1]
+
+    # 2. 匹配中文日期模式，如 11月14日到11月26日 / 11月14日 - 11月16日 / 11/14 - 11/16
+    zh_matches = re.findall(r'(?:(\d{4})[年\-\/\.])?\s*(\d{1,2})[月\-\/\.]\s*(\d{1,2})[日号]?', raw_date_str)
+    if len(zh_matches) >= 2:
+        y1 = zh_matches[0][0] or def_year
+        m1 = int(zh_matches[0][1])
+        d1 = int(zh_matches[0][2])
+        y2 = zh_matches[1][0] or y1
+        m2 = int(zh_matches[1][1])
+        d2 = int(zh_matches[1][2])
+        return f"{y1}-{m1:02d}-{d1:02d}", f"{y2}-{m2:02d}-{d2:02d}"
+    elif len(zh_matches) == 1:
+        y1 = zh_matches[0][0] or def_year
+        m1 = int(zh_matches[0][1])
+        d1 = int(zh_matches[0][2])
+        start_d = f"{y1}-{m1:02d}-{d1:02d}"
+        m_end_day = re.search(r'[到至\-\—\~]\s*(\d{1,2})[日号]?', raw_date_str)
+        if m_end_day:
+            try:
+                d2 = int(m_end_day.group(1))
+                if d2 >= d1:
+                    return start_d, f"{y1}-{m1:02d}-{d2:02d}"
+            except Exception:
+                pass
+        return start_d, start_d
+
+    if iso_matches:
+        return iso_matches[0], iso_matches[0]
+
+    return default_date, default_date
+
+
+def is_same_event_record(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
+    """按（起始日期 + 核心标题相似度/去重键）判断是否为同一活动"""
+    d1 = ev1.get("full_date") or ev1.get("date") or ""
+    d2 = ev2.get("full_date") or ev2.get("date") or ""
+    sim = compute_event_similarity(ev1.get("name", ""), ev2.get("name", ""))
+    if d1 and d2 and d1 == d2 and sim >= 0.60:
+        return True
+    if sim >= 0.85:
+        return True
+    return False
+
+
+def sync_events_archive(
+    incoming_events: List[Dict[str, Any]],
+    today_iso: str,
+    archive_file: str = "data/events_archive.json"
+) -> List[Dict[str, Any]]:
+    """
+    持久化归档引擎（data/events_archive.json）：
+    1. 每次运行脚本解析当天新活动时，按（起始日期 + 核心标题相似度/去重键）合并进归档库；
+    2. 若为首次收录的新活动，自动记录 first_seen_date 为今日日期（MYT）；若为已存在活动，保留原 first_seen_date 并刷新详情；
+    3. 自动清理结束日期早于今日（MYT）的已过期活动；
+    4. 排序规则：凡 first_seen_date == 今日 的活动，自动置顶排在最前面；次日（first_seen_date < 今日），自动褪去角标，按距离举办日期由近及远排列；
+    5. 每张卡片计算精确 countdown_days。
+    """
+    try:
+        today_date = datetime.strptime(today_iso, "%Y-%m-%d").date()
+    except Exception:
+        today_date = datetime.now(MYT).date()
+        today_iso = today_date.strftime("%Y-%m-%d")
+
+    # 读取持久化归档库
+    archive_events: List[Dict[str, Any]] = []
+    if os.path.exists(archive_file):
+        try:
+            with open(archive_file, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+                if isinstance(loaded, list):
+                    archive_events = loaded
+                elif isinstance(loaded, dict) and "events" in loaded:
+                    archive_events = loaded["events"]
+        except Exception as e:
+            logger.warning(f"Failed to read {archive_file}: {e}")
+
+    # 合并更新
+    merged_events: List[Dict[str, Any]] = [dict(e) for e in archive_events]
+    for new_ev in incoming_events:
+        matched_idx = -1
+        for idx, old_ev in enumerate(merged_events):
+            if is_same_event_record(new_ev, old_ev):
+                matched_idx = idx
+                break
+
+        if matched_idx >= 0:
+            # 已存在活动：保留原 first_seen_date 并刷新详情
+            orig_first_seen = merged_events[matched_idx].get("first_seen_date") or today_iso
+            updated = dict(merged_events[matched_idx])
+            updated.update(new_ev)
+            updated["first_seen_date"] = orig_first_seen
+            if not updated.get("end_date"):
+                updated["end_date"] = updated.get("full_date") or updated.get("date") or today_iso
+            merged_events[matched_idx] = updated
+        else:
+            # 首次收录的新活动：记录 first_seen_date 为今日日期（MYT）
+            item_copy = dict(new_ev)
+            item_copy["first_seen_date"] = today_iso
+            if not item_copy.get("end_date"):
+                item_copy["end_date"] = item_copy.get("full_date") or item_copy.get("date") or today_iso
+            merged_events.append(item_copy)
+
+    # 自动清理结束日期早于今日（MYT）的已过期活动
+    active_events: List[Dict[str, Any]] = []
+    for ev in merged_events:
+        end_d_str = ev.get("end_date") or ev.get("full_date") or ev.get("date") or today_iso
+        try:
+            ev_end_date = datetime.strptime(end_d_str, "%Y-%m-%d").date()
+        except Exception:
+            try:
+                ev_end_date = datetime.strptime(ev.get("full_date", today_iso), "%Y-%m-%d").date()
+            except Exception:
+                ev_end_date = today_date
+
+        if ev_end_date >= today_date:
+            try:
+                start_d = datetime.strptime(ev.get("full_date") or ev.get("date", today_iso), "%Y-%m-%d").date()
+            except Exception:
+                start_d = today_date
+
+            if today_date >= start_d and today_date <= ev_end_date:
+                c_days = 0
+            elif today_date < start_d:
+                c_days = (start_d - today_date).days
+            else:
+                c_days = 0
+
+            ev["countdown_days"] = max(0, c_days)
+            active_events.append(ev)
+
+    # 排序规则：凡 first_seen_date == 今日 的活动自动置顶，其余按举办倒计时由近及远排列
+    def sort_key(ev: Dict[str, Any]):
+        is_today_new = (ev.get("first_seen_date") == today_iso)
+        group = 0 if is_today_new else 1
+        return (group, ev.get("countdown_days", 999), ev.get("full_date", ""))
+
+    active_events.sort(key=sort_key)
+
+    for idx, ev in enumerate(active_events, 1):
+        ev["id"] = idx
+
+    # 持久化写回 archive_file
+    try:
+        os.makedirs(os.path.dirname(os.path.abspath(archive_file)), exist_ok=True)
+        with open(archive_file, "w", encoding="utf-8") as f:
+            json.dump(active_events, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.warning(f"Failed to persist {archive_file}: {e}")
+
+    return active_events
+
+
 @dataclass
 class ParsedMarkdownStory:
     index: int
@@ -707,18 +892,7 @@ class GDriveMarkdownReader:
 
                 # 活动日期解析：支持 11月14日到11月26日、11月14日 - 11月16日、11月12日起、2026-11-14 等
                 raw_date = tags.get("活动日期", default_date)
-                m_iso = re.search(r'20\d\d-\d{2}-\d{2}', raw_date)
-                if m_iso:
-                    clean_date = m_iso.group(0)
-                else:
-                    m_zh = re.search(r'(?:(\d{4})[年\-\/\.])?\s*(\d{1,2})[月\-\/\.]\s*(\d{1,2})[日号]?', raw_date)
-                    if m_zh:
-                        y = m_zh.group(1) or default_date.split('-')[0]
-                        m = int(m_zh.group(2))
-                        d = int(m_zh.group(3))
-                        clean_date = f"{y}-{m:02d}-{d:02d}"
-                    else:
-                        clean_date = default_date
+                clean_date, end_date = parse_date_range(raw_date, default_date)
 
                 # 主办单位清理末尾短横线或符号
                 raw_organizer = tags.get("主办单位", "官方通告")
@@ -735,6 +909,7 @@ class GDriveMarkdownReader:
                 event_items.append({
                     "name": e_name,
                     "date": clean_date,
+                    "end_date": end_date,
                     "raw_date_str": raw_date,
                     "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
                     "location": tags.get("活动地点", "山打根社区中心"),
@@ -781,7 +956,9 @@ class GDriveMarkdownReader:
                     "time": item["time"],
                     "location": item["location"],
                     "organizer": item["organizer"],
-                    "tel": item.get("tel", "")
+                    "tel": item.get("tel", ""),
+                    "end_date": item.get("end_date", item["date"]),
+                    "raw_date_str": item.get("raw_date_str", "")
                 },
                 raw_header=f"### {item['name']}",
                 title_bm=item["name"],
@@ -1076,9 +1253,11 @@ class GDriveMarkdownReader:
                 m_date = re.match(r'^\*{0,2}(?:日期|时间|Date|Tarikh)\*{0,2}[：:]?\*{0,2}[：:]\s*(.+)$', clean_bline, re.IGNORECASE)
                 if m_date:
                     date_val = m_date.group(1).strip("* ")
-                    d_m = re.search(r'20\d\d-\d{2}-\d{2}', date_val)
-                    if d_m:
-                        extracted_date = d_m.group(0)
+                    clean_d, end_d = parse_date_range(date_val, "")
+                    if clean_d:
+                        extracted_date = clean_d
+                        event_meta["end_date"] = end_d
+                        event_meta["raw_date_str"] = date_val
                         if extracted_date > default_date:
                             is_event = True
                     continue
@@ -1291,6 +1470,7 @@ class GDriveMarkdownReader:
                 day_s = "15"
 
             meta = ev.event_metadata or {}
+            end_date_str = meta.get("end_date") or ev_date_str
             time_str = meta.get("time", "09:00 AM - 04:00 PM")
             loc_str = meta.get("location", "Sandakan Community Centre")
             tel_str = meta.get("tel", "089-272161")
@@ -1300,6 +1480,7 @@ class GDriveMarkdownReader:
                 "month": month_s,
                 "day": day_s,
                 "full_date": ev_date_str,
+                "end_date": end_date_str,
                 "name": ev.title,
                 "nameBM": f"Acara: {ev.title}",
                 "time": time_str,
@@ -1313,7 +1494,8 @@ class GDriveMarkdownReader:
                 "tel": tel_str,
                 "source": ", ".join(ev.sources) if ev.sources else "官方预报",
                 "sourceBM": ", ".join(ev.sources) if ev.sources else "Hebahan Rasmi",
-                "countdown_days": max(0, c_days)
+                "countdown_days": max(0, c_days),
+                "first_seen_date": base_date_str
             }
             formatted_events.append(item)
 
@@ -1322,7 +1504,8 @@ class GDriveMarkdownReader:
     def convert_stories_to_direct_output(
         self,
         stories: List[ParsedMarkdownStory],
-        today_iso: str
+        today_iso: str,
+        archive_file: Optional[str] = None
     ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         """
         Direct Pass-Through Converter:
@@ -1345,11 +1528,23 @@ class GDriveMarkdownReader:
         for s in event_stories:
             meta = s.event_metadata or {}
             orig_date_str = s.date or today_iso
+            end_date_str = meta.get("end_date") or orig_date_str
             try:
                 ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
             except Exception:
                 ev_d = today_d
-            c_days = max(0, (ev_d - today_d).days)
+            try:
+                ev_end_d = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+            except Exception:
+                ev_end_d = ev_d
+
+            if today_d >= ev_d and today_d <= ev_end_d:
+                c_days = 0
+            elif today_d < ev_d:
+                c_days = (ev_d - today_d).days
+            else:
+                c_days = 0
+
             tag_str = meta.get("tag") or ("市政公益" if "sandakan" in s.geo_scope else "社区活动")
             b_color = "bg-[#14532d] text-[#86efac]"
             if "义诊" in tag_str or "健康" in tag_str:
@@ -1369,6 +1564,7 @@ class GDriveMarkdownReader:
                 "month": f"{ev_d.month:02d}",
                 "day": f"{ev_d.day:02d}",
                 "full_date": orig_date_str,
+                "end_date": end_date_str,
                 "name": s.title,
                 "nameBM": s.title,
                 "time": time_str,
@@ -1382,8 +1578,12 @@ class GDriveMarkdownReader:
                 "tel": tel_str,
                 "source": src_str,
                 "sourceBM": src_str,
-                "countdown_days": c_days
+                "countdown_days": max(0, c_days),
+                "first_seen_date": today_iso
             })
+
+        if archive_file:
+            events = sync_events_archive(events, today_iso, archive_file=archive_file)
 
         for s in news_stories:
             h_idx = len(headlines) + 1

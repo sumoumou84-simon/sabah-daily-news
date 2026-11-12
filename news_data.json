@@ -439,6 +439,28 @@
     {
       "id": 1,
       "month": "11",
+      "day": "12",
+      "full_date": "2026-11-12",
+      "name": "南砂免费义肢最后调试活动",
+      "nameBM": "南砂免费义肢最后调试活动",
+      "time": "全天",
+      "timeBM": "全天",
+      "location": "以主办单位公布地点为准",
+      "category": "社区活动",
+      "categoryBM": "社区活动",
+      "badgeColor": "bg-[#14532d] text-[#86efac]",
+      "desc": "免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。",
+      "descBM": "免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。",
+      "tel": "",
+      "source": "主办单位公布为准",
+      "sourceBM": "主办单位公布为准",
+      "countdown_days": 0,
+      "first_seen_date": "2026-11-12",
+      "end_date": "2026-11-12"
+    },
+    {
+      "id": 2,
+      "month": "11",
       "day": "14",
       "full_date": "2026-11-14",
       "name": "山打根热带雨林探索中心生态导览",
@@ -454,10 +476,12 @@
       "tel": "",
       "source": "热带雨林探索中心",
       "sourceBM": "热带雨林探索中心",
-      "countdown_days": 2
+      "countdown_days": 2,
+      "first_seen_date": "2026-11-12",
+      "end_date": "2026-11-14"
     },
     {
-      "id": 2,
+      "id": 3,
       "month": "11",
       "day": "14",
       "full_date": "2026-11-14",
@@ -474,27 +498,9 @@
       "tel": "",
       "source": "Harbour Mall 管理层",
       "sourceBM": "Harbour Mall 管理层",
-      "countdown_days": 2
-    },
-    {
-      "id": 3,
-      "month": "11",
-      "day": "12",
-      "full_date": "2026-11-12",
-      "name": "南砂免费义肢最后调试活动",
-      "nameBM": "南砂免费义肢最后调试活动",
-      "time": "全天",
-      "timeBM": "全天",
-      "location": "以主办单位公布地点为准",
-      "category": "社区活动",
-      "categoryBM": "社区活动",
-      "badgeColor": "bg-[#14532d] text-[#86efac]",
-      "desc": "免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。",
-      "descBM": "免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。",
-      "tel": "",
-      "source": "主办单位公布为准",
-      "sourceBM": "主办单位公布为准",
-      "countdown_days": 0
+      "countdown_days": 2,
+      "first_seen_date": "2026-11-12",
+      "end_date": "2026-11-14"
     }
   ],
   "archive": {
