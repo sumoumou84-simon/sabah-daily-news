@@ -248,6 +248,7 @@ def run_pipeline() -> bool:
             print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
             print("[⚡ 直通透传] 成功获取当日 Markdown/Drive 内容，直接解析生成 news_data.json，跳过 Gemini API 调用与配额记账流程 (0 API 调用, 0 配额消耗)")
             final_headlines, events = gdrive_reader.convert_stories_to_direct_output(parsed_stories, today_iso)
+            final_headlines = final_headlines[:15]
             print(f"✅ 直通透传完成: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(parsed_stories)} 条)")
         else:
             logger.warning(
@@ -310,7 +311,11 @@ def run_pipeline() -> bool:
     util_verifier = UtilityVerifier()
     cur_time_hm = myt_now.strftime("%H:%M")
 
-    raw_utilities = [
+    if 'gdrive_reader' in locals() and hasattr(gdrive_reader, 'parsed_utilities') and gdrive_reader.parsed_utilities:
+        raw_utilities = gdrive_reader.convert_utilities_to_website_format(gdrive_reader.parsed_utilities, today_iso)
+        print(f"📊 从 Google Drive 提取并转换 {len(raw_utilities)} 条民生公用事业通告")
+    else:
+        raw_utilities = [
         {
             "id": "M",
             "title": f"气象局持续发布沙巴东海岸季风连续降雨警报（Waspada） [气象局MetMalaysia 官方通告]",

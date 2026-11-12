@@ -478,7 +478,7 @@ def generate_index_html():
                     <span class="font-bold text-[11px]">/{ev['day']}</span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-[13px] font-bold leading-tight truncate event-title transition-colors">
+                    <div class="text-[13px] font-bold event-title transition-colors" style="white-space: normal; line-height: 1.4;">
                         <span class="lang-zh">{ev['name']}</span>
                         <span class="lang-bm hidden">{ev['nameBM']}</span>
                     </div>
@@ -764,6 +764,8 @@ def generate_index_html():
         }}
         .theme-dark .event-title {{
             color: #F8FAFC !important;
+            white-space: normal !important;
+            line-height: 1.4 !important;
         }}
         .theme-dark .event-card:hover .event-title {{
             color: #FFD60A !important;
@@ -1023,6 +1025,8 @@ def generate_index_html():
         }}
         .theme-light .event-title {{
             color: #0F172A !important;
+            white-space: normal !important;
+            line-height: 1.4 !important;
         }}
         .theme-light .event-card:hover .event-title {{
             color: #D97706 !important;
@@ -1311,6 +1315,18 @@ def generate_index_html():
             flex-shrink: 0 !important;
             white-space: nowrap !important;
         }}
+
+        /* 活动标题完整展示 */
+        .event-title {{
+            white-space: normal !important;
+            line-height: 1.4 !important;
+            word-break: break-word !important;
+        }}
+
+        /* 隐藏顶部 BM 语系切换按钮 */
+        #btn-lang-bm {{
+            display: none !important;
+        }}
     </style>
 </head>
 <body class="transition-colors duration-200">
@@ -1358,7 +1374,7 @@ def generate_index_html():
                     <button id="btn-lang-zh" onclick="setLanguage('中文')" class="px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all bg-[#FFD60A] text-black shrink-0 whitespace-nowrap">
                         中文
                     </button>
-                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all text-[#888] hover:text-white shrink-0 whitespace-nowrap">
+                    <button id="btn-lang-bm" onclick="setLanguage('BM')" class="hidden px-2 sm:px-2.5 md:px-3 py-[3px] sm:py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold transition-all text-[#888] hover:text-white shrink-0 whitespace-nowrap" style="display: none !important;">
                         BM
                     </button>
                 </div>

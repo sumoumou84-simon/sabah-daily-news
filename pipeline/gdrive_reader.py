@@ -350,26 +350,248 @@ class GDriveMarkdownReader:
         )
         return None
 
+    @staticmethod
+    def clean_escapes(text: str) -> str:
+        """Clean markdown backslash escapes (e.g. \【, \], \*, \_, \#, etc.)."""
+        if not text:
+            return ""
+        return re.sub(r'\\([\[\]\(\)\{\}\*\_\#\+\-\.\!\:\：\【\】\<\>\\\|\~`\,])', r'\1', text)
+
+    def convert_utilities_to_website_format(
+        self,
+        utilities: List[Dict[str, Any]],
+        today_iso: str
+    ) -> List[Dict[str, Any]]:
+        """
+        Convert extracted Part 1 municipal utilities to website format conforming to news_data.json.
+        """
+        cur_time_hm = datetime.now(MYT).strftime("%H:%M")
+        formatted = []
+        for idx, u in enumerate(utilities):
+            u_type = u.get("notice_type", "市政民生")
+            u_title = u.get("title", "")
+            u_detail = u.get("detail", "")
+            u_pub = u.get("publisher", "官方通告")
+            u_status = u.get("status", "LIVE 抢修中")
+
+            u_id = "M"
+            if "水" in u_type or "JANS" in u_pub or "水务" in u_title:
+                u_id = "W"
+            elif "电" in u_type or "SESB" in u_pub or "电力" in u_title:
+                u_id = "E"
+            elif idx == 1:
+                u_id = "W"
+            elif idx >= 2:
+                u_id = "E"
+
+            is_live = "LIVE" in u_status.upper() or "抢修" in u_status or "预警" in u_status
+            is_verified = not ("待核实" in u_status or "复核" in u_status)
+
+            formatted.append({
+                "id": u_id,
+                "title": u_title,
+                "titleBM": u_title,
+                "label": f"{u_pub} {u_type}" if u_pub not in u_title else u_title[:30],
+                "labelBM": f"{u_pub} {u_type}" if u_pub not in u_title else u_title[:30],
+                "time": cur_time_hm,
+                "status": u_status,
+                "statusBM": u_status,
+                "official_source_url": "https://www.sabah.gov.my/",
+                "source_timestamp": f"{today_iso} {cur_time_hm}",
+                "issue": u_detail,
+                "issueBM": u_detail,
+                "pressure": f"类型：{u_type} | 机构：{u_pub}",
+                "pressureBM": f"Jenis: {u_type} | Agensi: {u_pub}",
+                "recovery": f"通告状态：{u_status}",
+                "recoveryBM": f"Status: {u_status}",
+                "tanker": f"发布机构：{u_pub}",
+                "tankerBM": f"Sumber: {u_pub}",
+                "consult": "089-272161",
+                "consult2": "Careline",
+                "source": u_pub,
+                "sourceBM": u_pub,
+                "verified": is_verified,
+                "is_live": is_live
+            })
+        return formatted
+
+    def parse_version_1_3(
+        self,
+        markdown_text: str,
+        default_date: str
+    ) -> List[ParsedMarkdownStory]:
+        """
+        Dedicated Parser for Version 1.3 Pure Chinese News Format:
+        Part 1: 民生通告 - 【通告类型】【通告标题】【详细内容】【发布机构】【状态】
+        Part 2: 重点新闻 - (沙巴山打根, 全国新闻, 体育新闻, 综合) 标题 + 【正文】【来源】【状态】
+               (Enforces news_items = news_items[:15])
+        Part 3: 活动通告 - 【活动名称】【活动日期】【活动时间】【活动地点】【活动内容】【主办单位】
+        Removes all BM bilingual splitting and URL extraction.
+        """
+        text = self.clean_escapes(markdown_text)
+        tag_re = re.compile(r'(?:^|\n)\s*[-*•]?\s*\*{0,2}【(通告类型|通告标题|详细内容|发布机构|正文|来源|状态|活动名称|活动日期|活动时间|活动地点|活动内容|主办单位)】\*{0,2}[：:]?\s*')
+
+        blocks = re.split(r'\n(?=#{1,4}\s+|[-*•]?\s*\*{0,2}【(?:通告类型|活动名称)】)', text)
+
+        self.parsed_utilities = []
+        news_items = []
+        event_items = []
+
+        current_cat = "sabah"
+        current_geo = "sandakan"
+
+        def match_sec(h_line: str):
+            h = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_line).strip()
+            if any(k in h for k in ["沙巴", "山打根"]):
+                return "sabah", "sandakan" if "山打根" in h else "sabah"
+            elif "全国" in h:
+                return "national", "national"
+            elif "体育" in h:
+                return "sports", "national"
+            elif "综合" in h:
+                return "general", "sabah"
+            return None
+
+        for b in blocks:
+            b_clean = b.strip()
+            if not b_clean:
+                continue
+
+            header_line = b_clean.splitlines()[0]
+            matches = list(tag_re.finditer(b))
+
+            if not matches:
+                cat_match = match_sec(header_line)
+                if cat_match:
+                    current_cat, current_geo = cat_match
+                continue
+
+            tags = {}
+            pre_tag_text = b[:matches[0].start()].strip()
+            for i, m in enumerate(matches):
+                t_name = m.group(1)
+                s_pos = m.end()
+                e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
+                tags[t_name] = b[s_pos:e_pos].strip()
+
+            # 1. Part 1: 民生通告
+            if "通告类型" in tags or "详细内容" in tags:
+                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                h_title = title_lines[-1] if title_lines else ""
+                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                u_title = tags.get("通告标题") or h_title_clean or "市政公用事业通告"
+                self.parsed_utilities.append({
+                    "notice_type": tags.get("通告类型", "市政民生"),
+                    "title": u_title,
+                    "detail": tags.get("详细内容", ""),
+                    "publisher": tags.get("发布机构", "官方发布"),
+                    "status": tags.get("状态", "LIVE 抢修中")
+                })
+
+            # 2. Part 2: 重点新闻
+            elif "正文" in tags:
+                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                h_title = title_lines[-1] if title_lines else ""
+                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                n_title = tags.get("标题") or h_title_clean or "重要新闻"
+                raw_sources = tags.get("来源", "权威信源")
+                clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
+                if not clean_sources:
+                    clean_sources = ["权威信源"]
+                news_items.append({
+                    "title": n_title,
+                    "body": tags.get("正文", ""),
+                    "sources": clean_sources,
+                    "status": tags.get("状态", "已核实"),
+                    "category": current_cat,
+                    "geo_scope": current_geo
+                })
+
+            # 3. Part 3: 活动通告
+            elif "活动名称" in tags or "活动内容" in tags:
+                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                h_title = title_lines[-1] if title_lines else ""
+                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                raw_date = tags.get("活动日期", default_date)
+                m_d = re.search(r'20\d\d-\d{2}-\d{2}', raw_date)
+                clean_date = m_d.group(0) if m_d else default_date
+                event_items.append({
+                    "name": e_name,
+                    "date": clean_date,
+                    "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
+                    "location": tags.get("活动地点", "山打根社区中心"),
+                    "desc": tags.get("活动内容", ""),
+                    "organizer": tags.get("主办单位", "官方通告")
+                })
+
+        # 强制 news_items = news_items[:15] 截断限制
+        news_items = news_items[:15]
+
+        stories: List[ParsedMarkdownStory] = []
+        idx = 1
+        for item in news_items:
+            stories.append(ParsedMarkdownStory(
+                index=idx,
+                title=item["title"],
+                body=item["body"],
+                category=item["category"],
+                geo_scope=item["geo_scope"],
+                sources=item["sources"],
+                source_urls=[],
+                date=default_date,
+                is_event=False,
+                event_metadata=None,
+                raw_header=f"### {idx}. {item['title']}",
+                title_bm=item["title"],
+                body_bm=item["body"]
+            ))
+            idx += 1
+
+        for item in event_items:
+            stories.append(ParsedMarkdownStory(
+                index=idx,
+                title=item["name"],
+                body=item["desc"],
+                category="event",
+                geo_scope="sandakan" if ("山打根" in item["location"] or "山打根" in item["name"]) else "sabah",
+                sources=[item["organizer"]] if item.get("organizer") else ["官方发布"],
+                source_urls=[],
+                date=item["date"],
+                is_event=True,
+                event_metadata={
+                    "time": item["time"],
+                    "location": item["location"],
+                    "organizer": item["organizer"]
+                },
+                raw_header=f"### {item['name']}",
+                title_bm=item["name"],
+                body_bm=item["desc"]
+            ))
+            idx += 1
+
+        return stories
+
     def parse_markdown(
         self,
         markdown_text: str,
         target_date: Optional[str] = None
     ) -> List[ParsedMarkdownStory]:
         """
-        Versatile Markdown Parser for Meta AI Daily News.
-        Capabilities:
-        - Extracts variable number of stories (never assumes fixed 10, 25, 26).
-        - Handles Phase D-16 5-section numbered format (### 1. to ### 26.).
-        - Robustly avoids treating document titles (# ...) and section titles (## ...) as stories.
-        - Extracts title, body, sources, links, date, category.
-        - Identifies Future Event Forecasts (is_event=True) so they are not treated as past news.
-        - Supports multilingual text (Chinese, Malay, English).
-        - Resilient: never drops stories if in-text numbering skips or differs from count.
+        Versatile Markdown Parser for Sabah Daily News.
+        Prioritizes Version 1.3 Pure Chinese format, with resilient fallback.
         """
         if not markdown_text or not markdown_text.strip():
             return []
 
         default_date = target_date or self.get_today_myt_str()
+        cleaned_text = self.clean_escapes(markdown_text)
+
+        # Check for Version 1.3 Pure Chinese format tags
+        is_v13 = any(tag in cleaned_text for tag in ["【通告类型】", "【正文】", "【活动名称】", "【详细内容】", "【主办单位】"])
+        if is_v13:
+            return self.parse_version_1_3(cleaned_text, default_date)
+
         stories: List[ParsedMarkdownStory] = []
 
         # 1. Specialized numbered parser for Meta AI 5-section format (### 1. to ### 26.)
@@ -897,85 +1119,83 @@ class GDriveMarkdownReader:
         except Exception:
             today_d = now_myt.date()
 
-        for s in stories:
-            if s.is_event:
-                meta = s.event_metadata or {}
-                orig_date_str = s.date or today_iso
-                try:
-                    ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
-                except Exception:
-                    ev_d = today_d
-                c_days = max(0, (ev_d - today_d).days)
-                tag_str = meta.get("tag") or ("市政公益" if "sandakan" in s.geo_scope else "社区活动")
-                b_color = "bg-[#14532d] text-[#86efac]"
-                if "义诊" in tag_str or "健康" in tag_str:
-                    b_color = "bg-[#713f12] text-[#fde68a]"
-                elif "峰会" in tag_str or "商贸" in tag_str:
-                    b_color = "bg-[#1e3a8a] text-[#93c5fd]"
-                elif "文化" in tag_str:
-                    b_color = "bg-[#581c87] text-[#d8b4fe]"
+        # 强制 news_items = news_items[:15] 截断限制
+        news_stories = [s for s in stories if not s.is_event][:15]
+        event_stories = [s for s in stories if s.is_event]
 
-                name_bm = s.title_bm or f"Acara: {s.title}"
-                desc_bm = s.body_bm or f"Maklumat acara komuniti: {s.body[:200]}"
-                loc_str = meta.get("location") or "Sandakan Community Centre"
-                time_str = meta.get("time") or "08:00 AM - 05:00 PM"
-                tel_str = meta.get("tel") or "089-272161"
-                src_str = s.sources[0] if s.sources else "官方信源"
+        for s in event_stories:
+            meta = s.event_metadata or {}
+            orig_date_str = s.date or today_iso
+            try:
+                ev_d = datetime.strptime(orig_date_str, "%Y-%m-%d").date()
+            except Exception:
+                ev_d = today_d
+            c_days = max(0, (ev_d - today_d).days)
+            tag_str = meta.get("tag") or ("市政公益" if "sandakan" in s.geo_scope else "社区活动")
+            b_color = "bg-[#14532d] text-[#86efac]"
+            if "义诊" in tag_str or "健康" in tag_str:
+                b_color = "bg-[#713f12] text-[#fde68a]"
+            elif "峰会" in tag_str or "商贸" in tag_str:
+                b_color = "bg-[#1e3a8a] text-[#93c5fd]"
+            elif "文化" in tag_str:
+                b_color = "bg-[#581c87] text-[#d8b4fe]"
 
-                events.append({
-                    "id": len(events) + 1,
-                    "month": f"{ev_d.month:02d}",
-                    "day": f"{ev_d.day:02d}",
-                    "full_date": orig_date_str,
-                    "name": s.title,
-                    "nameBM": name_bm,
-                    "time": time_str,
-                    "timeBM": time_str,
-                    "location": loc_str,
-                    "category": tag_str,
-                    "categoryBM": "Khidmat Komuniti",
-                    "badgeColor": b_color,
-                    "desc": s.body,
-                    "descBM": desc_bm,
-                    "tel": tel_str,
-                    "source": src_str,
-                    "sourceBM": "Hebahan Rasmi",
-                    "countdown_days": c_days
-                })
-            else:
-                h_idx = len(headlines) + 1
-                cat = s.category or "sabah"
-                primary_url = s.source_urls[0] if s.source_urls else "https://news.google.com"
-                primary_src = s.sources[0] if s.sources else "Meta AI 权威整理"
+            loc_str = meta.get("location") or "山打根社区中心"
+            time_str = meta.get("time") or "08:00 AM - 05:00 PM"
+            tel_str = meta.get("tel") or "089-272161"
+            src_str = s.sources[0] if s.sources else "官方信源"
 
-                title_bm = s.title_bm or f"Laporan Utama: {s.title}"
-                detail_bm = s.body_bm or s.body
+            events.append({
+                "id": len(events) + 1,
+                "month": f"{ev_d.month:02d}",
+                "day": f"{ev_d.day:02d}",
+                "full_date": orig_date_str,
+                "name": s.title,
+                "nameBM": s.title,
+                "time": time_str,
+                "timeBM": time_str,
+                "location": loc_str,
+                "category": tag_str,
+                "categoryBM": tag_str,
+                "badgeColor": b_color,
+                "desc": s.body,
+                "descBM": s.body,
+                "tel": tel_str,
+                "source": src_str,
+                "sourceBM": src_str,
+                "countdown_days": c_days
+            })
 
-                headlines.append({
-                    "story_index": h_idx,
-                    "category": cat,
-                    "title": s.title,
-                    "titleBM": title_bm,
-                    "detail": s.body,
-                    "detailBM": detail_bm,
-                    "source_url": primary_url,
-                    "publisher": ", ".join(s.sources) if s.sources else primary_src,
-                    "source": primary_src,
-                    "sources": s.sources if s.sources else [primary_src],
-                    "url": primary_url,
-                    "source_urls": s.source_urls if s.source_urls else [primary_url],
-                    "original_published_at": f"{s.date}T00:00:00+08:00" if s.date else f"{today_iso}T00:00:00+08:00",
-                    "geo_scope": s.geo_scope,
-                    "is_event": False,
-                    "event_metadata": {},
-                    "id": f"art_{cat}_{h_idx:02d}",
-                    "image_url": None,
-                    "collected_at": now_iso,
-                    "site_published_at": now_iso,
-                    "updated_at": now_iso,
-                    "is_updated": False,
-                    "validation_status": "VERIFIED"
-                })
+        for s in news_stories:
+            h_idx = len(headlines) + 1
+            cat = s.category or "sabah"
+            primary_src = s.sources[0] if s.sources else "权威整理"
+
+            headlines.append({
+                "story_index": h_idx,
+                "category": cat,
+                "title": s.title,
+                "titleBM": s.title,
+                "detail": s.body,
+                "detailBM": s.body,
+                "source_url": "",
+                "publisher": ", ".join(s.sources) if s.sources else primary_src,
+                "source": primary_src,
+                "sources": s.sources if s.sources else [primary_src],
+                "url": "",
+                "source_urls": [],
+                "original_published_at": f"{s.date}T00:00:00+08:00" if s.date else f"{today_iso}T00:00:00+08:00",
+                "geo_scope": s.geo_scope,
+                "is_event": False,
+                "event_metadata": {},
+                "id": f"art_{cat}_{h_idx:02d}",
+                "image_url": None,
+                "collected_at": now_iso,
+                "site_published_at": now_iso,
+                "updated_at": now_iso,
+                "is_updated": False,
+                "validation_status": "VERIFIED"
+            })
 
         return headlines, events
 
@@ -1027,6 +1247,7 @@ class GDriveMarkdownReader:
             return None, None
 
         news_items = [s for s in stories if not s.is_event]
+        news_items = news_items[:15]
         event_items = [s for s in stories if s.is_event]
 
         content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
