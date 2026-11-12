@@ -1,525 +1,316 @@
 {
-  "snapshot_id": "gdrive_snap_2026-11-12_6e780c34",
+  "snapshot_id": "gdrive_snap_2026-11-12_e9d6fc5f",
   "target_date": "2026-11-12",
   "source_file_name": "西门看看网每日新闻_2026-11-12.md",
-  "source_file_id": "1ZrwW5RKNs8dDq83tBHXaXWs_o2rxdldpr-dyPQCcqdU",
-  "read_timestamp": "2026-11-12T05:51:35.957618+08:00",
-  "total_stories_found": 27,
-  "news_stories_count": 27,
-  "event_stories_count": 0,
-  "markdown_sha256": "6e780c34ab65719cdf7c759a1fbba528d59d6c3ab78054adf224a20e74c2bf65",
+  "source_file_id": "1-iip0-A9wY24gQOetlO5QlE-uii-17VV8kzimFM9F1g",
+  "read_timestamp": "2026-11-12T15:29:49.027197+08:00",
+  "total_stories_found": 17,
+  "news_stories_count": 14,
+  "event_stories_count": 3,
+  "markdown_sha256": "e9d6fc5f50070a91f7318f03d2da0940060cc2fa062747b95b5f1df354bc880b",
   "news_stories": [
     {
       "index": 1,
-      "title": "JANS 紧急断水通告（11月11日晚）",
-      "body": "中文：沙巴水务局（JANS）于 11月11日晚上9点发布紧急断水通告（NOTIS GANGGUAN BEKALAN AIR KECEMASAN），提醒受影响用户提前储水。具体受影响范围以 JANS 官方通告图片为准，请以官方最新更新为准。 Bahasa Malaysia: Jabatan Air Sabah (JANS) mengeluarkan Notis Gangguan Bekalan Air (Kecemasan) pada 11 November 2026, jam 9:00 malam. Pengguna di kawasan terlibat dinasihatkan menyimpan bekalan air secukupnya. Sila rujuk notis rasmi JANS untuk senarai kawasan terkini. 来源 Sumber: Jabatan Air Sabah / Facebook 转载 \\| 链接 Pautan: [https\\://www\\.facebook.com/](https://www.facebook.com/) \\| 状态 Status: 正在调查 sedang disiasat（如需确认范围请查官方通告）",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Facebook 官方渠道"
-      ],
-      "source_urls": [
-        "https://www.facebook.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.1 JANS 紧急断水通告（11月11日晚）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 2,
-      "title": "Pasar Kim Fung Batu 4 将关闭 3 天（11月16-18日）",
-      "body": "中文：山打根市议会（MPS）通知，Pasar Kim Fung Batu 4 将于 2026年11月16日至18日关闭，以安装通风风扇及进行电气工程，清洁工作改至 18日。摊贩及市民请提前安排采购。 Bahasa Malaysia: Majlis Perbandaran Sandakan (MPS) memaklumkan Pasar Kim Fung Batu 4 akan ditutup dari 16 hingga 18 November 2026 bagi pemasangan kipas pengudaraan dan kerja elektrik. Pembersihan dialihkan ke 18 November. Peniaga dan orang awam dinasihatkan merancang pembelian lebih awal. 来源 Sumber: Majlis Perbandaran Sandakan (MPS) \\| 链接 Pautan: [https\\://www\\.facebook.com/](https://www.facebook.com/) \\| 状态 Status: 已确认 disahkan",
+      "title": "沙巴山打根 1 山打根与兰瑙同步扫荡行动，71人被扣留",
+      "body": "移民局沙巴分局11月11日凌晨在山打根与兰瑙展开同步执法。山打根 Ops Sapu 约凌晨1点35分开始，15名执法人员针对5个木屋区展开检查，83人受查，其中50人被扣留，包括25名儿童。兰瑙行动另有21人被扣留，两地合计71人。案件正在调查中。 【来源】沙巴第一资讯 【状态】正在跟进",
       "category": "sabah",
       "geo_scope": "sandakan",
       "sources": [
-        "Facebook 官方渠道"
-      ],
-      "source_urls": [
-        "https://www.facebook.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.2 Pasar Kim Fung Batu 4 将关闭 3 天（11月16-18日）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 3,
-      "title": "Sandakan 供水问题受关注，部长促 JANS 立即行动",
-      "body": "中文：沙巴教育、科学、科技及创新部长拿督 James Ratib 促请沙巴水务局立即处理山打根长期供水问题，指出部分地区曾断水 3 至 5 天，已影响多所学校。事件仍在跟进中。 Bahasa Malaysia: Menteri Pendidikan, Sains, Teknologi dan Inovasi Sabah, Datuk James Ratib, menggesa Jabatan Air Sabah mengambil tindakan segera menangani masalah bekalan air berpanjangan di Sandakan. Beberapa kawasan dilaporkan mengalami gangguan selama tiga hingga lima hari dan menjejaskan beberapa sekolah. Perkara ini masih dalam tindakan susulan. 来源 Sumber: Daily Express / NewsWav 转载 \\| 链接 Pautan: [https\\://www\\.dailyexpress.com.my/](https://www.dailyexpress.com.my/) \\| 状态 Status: 正在调查 sedang disiasat",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.dailyexpress.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.3 Sandakan 供水问题受关注，部长促 JANS 立即行动",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 4,
-      "title": "SESB 东海岸供电：早前故障已修复，11月11日无新增全区停电通告",
-      "body": "中文：沙巴电力（SESB）早前因 Kolopis-Segaliud 275kV 输电线故障导致东海岸多区停电，约 23 万用户受影响，供电已分阶段恢复。截至 11月11日，未见新增全区大停电通告，市民仍应留意 SESB 官方更新。 Bahasa Malaysia: Sabah Electricity (SESB) sebelum ini melaporkan gangguan bekalan elektrik di Pantai Timur Sabah akibat kerosakan talian Kolopis-Segaliud 275kV, melibatkan kira-kira 230,000 pengguna. Bekalan telah dipulihkan secara berperingkat. Setakat 11 November, tiada notis gangguan besar baharu dikeluarkan. Orang awam dinasihatkan merujuk kemas kini rasmi SESB. 来源 Sumber: SESB / New Straits Times / The Sun \\| 链接 Pautan: [https\\://www\\.nst.com.my/](https://www.nst.com.my/) \\| 状态 Status: 已恢复 dipulihkan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.nst.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.4 SESB 东海岸供电：早前故障已修复，11月11日无新增全区停电通告",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 5,
-      "title": "Sandakan 洪水高风险区促加快防洪措施",
-      "body": "中文：沙巴 Anak Negeri 党呼吁州政府、水利灌溉局（JPS）、公共工程局（JKR）及 MPS 优先处理山打根长期水灾黑区，在季候风季节来临前加快防洪缓解措施。 Bahasa Malaysia: Parti Kerjasama Anak Negeri (ANAK NEGERI) menggesa Kerajaan Negeri Sabah, JPS, JKR dan MPS mengutamakan langkah mitigasi banjir di kawasan panas banjir kronik di Sandakan sebelum musim monsun. 来源 Sumber: Jesselton Times \\| 链接 Pautan: [https\\://jesseltontimes.com/](https://jesseltontimes.com/) \\| 状态 Status: 呼吁 rayuan",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://jesseltontimes.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.5 Sandakan 洪水高风险区促加快防洪措施",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 6,
-      "title": "Sandakan 塑料回收项目获沙巴社区影响奖",
-      "body": "中文：Future Alam Borneo（FAB）的 Sandakan Plastics Solutions Project 在沙巴景观建筑奖中获得社区影响组荣誉奖，相关倡议目标于 2027年初展开。 Bahasa Malaysia: Projek Sandakan Plastics Solutions Project oleh Future Alam Borneo (FAB) menerima Anugerah Kepujian dalam kategori Community Impact di Sabah Landscape Architecture Awards. Inisiatif berkaitan disasarkan bermula pada awal 2027\\. 来源 Sumber: NewsWav \\| 链接 Pautan: [https\\://www\\.newswav.com/](https://www.newswav.com/) \\| 状态 Status: 已确认 disahkan",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.newswav.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 1.6 Sandakan 塑料回收项目获沙巴社区影响奖",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 7,
-      "title": "Dialog D'4 Festival Gelingos 2026（11月12日 16:00，Sandakan FM）",
-      "body": "中文：Sandakan FM 与 RTM 推出 Dialog D'4 节目，讨论 Festival Gelingos 2026，11月12日下午4点播出，介绍传统舞蹈等文化内容。 Bahasa Malaysia: Sandakan FM dan RTM membawakan program Dialog D'4 yang membincangkan Festival Gelingos 2026 pada 12 November, jam 4:00 petang. Program ini memperkenalkan tarian tradisional dan kandungan budaya. 来源 Sumber: Sandakan FM / RTM \\| 链接 Pautan: [https\\://www\\.facebook.com/](https://www.facebook.com/) \\| 日期 Tarikh: 2026-11-12",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Facebook 官方渠道"
-      ],
-      "source_urls": [
-        "https://www.facebook.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.1 Dialog D'4 Festival Gelingos 2026（11月12日 16:00，Sandakan FM）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 8,
-      "title": "POPULAR Bookfair, Harbour Mall Sandakan（至 11月15日）",
-      "body": "中文：POPULAR 书展在 Harbour Mall Sandakan 举行至 11月15日，现场有优惠及促销，适合家庭前往选购书籍文具。 Bahasa Malaysia: POPULAR Bookfair berlangsung di Harbour Mall Sandakan sehingga 15 November 2026, dengan pelbagai tawaran dan promosi. Sesuai untuk keluarga membeli buku dan alat tulis. 来源 Sumber: POPULAR / Harbour Mall Sandakan \\| 链接 Pautan: [https\\://www\\.facebook.com/](https://www.facebook.com/) \\| 日期 Tarikh: Hingga 2026-11-15",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Facebook 官方渠道"
-      ],
-      "source_urls": [
-        "https://www.facebook.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.2 POPULAR Bookfair, Harbour Mall Sandakan（至 11月15日）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 9,
-      "title": "Sukan Kerajaan Tempatan Sabah ke-14（11月7-13日，Sandakan）",
-      "body": "中文：第14届沙巴地方政府运动会（SKTS）在山打根举行至 11月13日，超过 2,000 名运动员参与 19 个项目，闭幕礼于 11月13日晚7点在 Batu 5 礼堂举行。 Bahasa Malaysia: Sukan Kerajaan Tempatan Sabah ke-14 (SKTS 14\\) berlangsung di Sandakan sehingga 13 November 2026, dengan lebih 2,000 atlet menyertai 19 acara. Majlis penutup pada 13 November, jam 7:00 malam di Dewan Batu 5\\. 来源 Sumber: Majlis Perbandaran Sandakan / Daily Express \\| 链接 Pautan: [https\\://www\\.dailyexpress.com.my/](https://www.dailyexpress.com.my/) \\| 日期 Tarikh: 2026-11-07 hingga 2026-11-13",
-      "category": "sports",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.dailyexpress.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.3 Sukan Kerajaan Tempatan Sabah ke-14（11月7-13日，Sandakan）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 10,
-      "title": "Kenduri Rakyat i-Lindung u @ Batu Sapi（11月14日）",
-      "body": "中文：人力资源部 KESUMA BERSAMA RAKYAT 活动 Kenduri Rakyat i-Lindung u @ Batu Sapi 将于 11月14日在 Batu Sapi 举行，提供社区服务与资讯。 Bahasa Malaysia: Program Kenduri Rakyat i-Lindung u @ Batu Sapi di bawah inisiatif KESUMA BERSAMA RAKYAT, Kementerian Sumber Manusia, akan diadakan pada 14 November 2026 di Batu Sapi, dengan perkhidmatan dan maklumat komuniti. 来源 Sumber: PERKESO Official \\| 链接 Pautan: [https\\://www\\.facebook.com/PERKESO.Official](https://www.facebook.com/PERKESO.Official) \\| 日期 Tarikh: 2026-11-14",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Facebook 官方渠道"
-      ],
-      "source_urls": [
-        "https://www.facebook.com/PERKESO.Official"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.4 Kenduri Rakyat i-Lindung u @ Batu Sapi（11月14日）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 11,
-      "title": "Kumamoto Masters 羽毛球赛（11月10-15日，日本熊本）",
-      "body": "中文：BWF 超级500赛熊本大师赛于 11月10-15日在日本熊本举行，马来西亚多名球员参赛，赛事仍在进行中。 Bahasa Malaysia: Kejohanan BWF Super 500, Kumamoto Masters, berlangsung dari 10 hingga 15 November 2026 di Kumamoto, Jepun. Beberapa pemain Malaysia menyertai kejohanan ini dan pertandingan masih berjalan. 来源 Sumber: BWF / Badminton Planet \\| 链接 Pautan: [https\\://www\\.badmintonplanet.com/](https://www.badmintonplanet.com/) \\| 日期 Tarikh: 2026-11-10 hingga 2026-11-15",
-      "category": "sports",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.badmintonplanet.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.5 Kumamoto Masters 羽毛球赛（11月10-15日，日本熊本）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 12,
-      "title": "沙巴40%特别拨款上诉案案件管理（11月12日）",
-      "body": "中文：上诉庭定于 11月12日通过 e-Review 进行案件管理，以确定联邦政府就沙巴40%特别拨款高庭判决部分内容提出上诉的裁决日期。 Bahasa Malaysia: Mahkamah Rayuan menetapkan 12 November 2026 untuk pengurusan kes melalui e-Review bagi menetapkan tarikh keputusan rayuan Kerajaan Persekutuan berhubung sebahagian keputusan Mahkamah Tinggi mengenai geran khas 40 peratus Sabah. 来源 Sumber: NewsWav / TV Sabah \\| 链接 Pautan: [https\\://www\\.newswav.com/](https://www.newswav.com/) \\| 日期 Tarikh: 2026-11-12",
-      "category": "national",
-      "geo_scope": "national",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.newswav.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.6 沙巴40%特别拨款上诉案案件管理（11月12日）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 13,
-      "title": "Pasar Kim Fung Batu 4 关闭期（11月16-18日）",
-      "body": "中文：见 Section 1.2，摊贩及市民请提前安排。 Bahasa Malaysia: Lihat Seksyen 1.2. Peniaga dan orang awam dinasihatkan membuat perancangan awal. 来源 Sumber: MPS \\| 日期 Tarikh: 2026-11-16 hingga 2026-11-18",
-      "category": "sabah",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
+        "权威信源"
       ],
       "source_urls": [],
       "date": "2026-11-12",
       "is_event": false,
       "event_metadata": null,
-      "raw_header": "### 2.7 Pasar Kim Fung Batu 4 关闭期（11月16-18日）",
-      "title_bm": "",
-      "body_bm": ""
+      "raw_header": "### 1. 沙巴山打根 1 山打根与兰瑙同步扫荡行动，71人被扣留",
+      "title_bm": "沙巴山打根 1 山打根与兰瑙同步扫荡行动，71人被扣留",
+      "body_bm": "移民局沙巴分局11月11日凌晨在山打根与兰瑙展开同步执法。山打根 Ops Sapu 约凌晨1点35分开始，15名执法人员针对5个木屋区展开检查，83人受查，其中50人被扣留，包括25名儿童。兰瑙行动另有21人被扣留，两地合计71人。案件正在调查中。 【来源】沙巴第一资讯 【状态】正在跟进"
     },
     {
-      "index": 14,
-      "title": "南砂义肢最后调试与移交（11月12-15日，古晋/斯木）",
-      "body": "中文：南砂 58 名义肢申请者将于 11月12-15日在古晋及斯木省进行最后阶段义肢调试与移交仪式。 Bahasa Malaysia: Seramai 58 pemohon anggota palsu di selatan Sarawak akan menjalani sesi pelarasan akhir dan majlis penyerahan dari 12 hingga 15 November 2026 di Kuching dan Sri Aman. 来源 Sumber: TVS Sarawak \\| 链接 Pautan: [https\\://www\\.tvsarawak.my/](https://www.tvsarawak.my/) \\| 日期 Tarikh: 2026-11-12 hingga 2026-11-15",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.tvsarawak.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 2.8 南砂义肢最后调试与移交（11月12-15日，古晋/斯木）",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 15,
-      "title": "Ops Sapu：Sandakan 50人被扣留，含25名儿童",
-      "body": "中文：沙巴移民局于 11月11日凌晨1:35在山打根展开 Ops Sapu，检查83人，扣留50名外籍人士，包括25名儿童。行动出动15名执法人员，覆盖5个非法木屋区：Kampung Ulu Dusun Batu 30 Jalan Labuk、Kampung Bimbim Batu 16、Kampung Gum-Gum 等。同一天 Ranau 也有同步行动，两地合计扣留71人。案件正在调查中。 Bahasa Malaysia: Jabatan Imigresen Malaysia (JIM) Sabah melaksanakan Ops Sapu di Sandakan pada 11 November, bermula jam 1:35 pagi. Seramai 83 individu diperiksa dan 50 warga asing ditahan, termasuk 25 kanak-kanak. Operasi melibatkan 15 pegawai penguat kuasa dan meliputi lima kawasan setinggan, termasuk Kampung Ulu Dusun Batu 30, Jalan Labuk; Kampung Bimbim Batu 16; dan Kampung Gum-Gum. Operasi serentak turut dijalankan di Ranau, menjadikan jumlah keseluruhan 71 orang ditahan di kedua-dua daerah. Kes ini sedang disiasat. 来源 Sumber: TV Sarawak / Dakwah Rakyat / My Sandakan Kini 转载 \\| 链接 Pautan: [https\\://www\\.tvsarawak.my/](https://www.tvsarawak.my/) \\| 状态 Status: 正在调查 sedang disiasat",
+      "index": 2,
+      "title": "沙巴山打根 2 Pasar Kim Fung Batu 4 将于11月16至18日暂时关闭",
+      "body": "山打根市议会通告，Pasar Kim Fung Batu 4 将于11月16日至18日暂时关闭，以进行相关安排与清理工作。市民请提前采购，摊贩与顾客请留意市议会后续通告，关闭期间勿前往该巴刹。 【来源】山打根市议会 MPS 官方通报 【状态】官方通报",
       "category": "sabah",
       "geo_scope": "sandakan",
       "sources": [
-        "Meta AI 权威整理"
+        "权威信源"
       ],
-      "source_urls": [
-        "https://www.tvsarawak.my/"
-      ],
+      "source_urls": [],
       "date": "2026-11-12",
       "is_event": false,
       "event_metadata": null,
-      "raw_header": "### 3.1 Ops Sapu：Sandakan 50人被扣留，含25名儿童",
-      "title_bm": "",
+      "raw_header": "### 2. 沙巴山打根 2 Pasar Kim Fung Batu 4 将于11月16至18日暂时关闭",
+      "title_bm": "沙巴山打根 2 Pasar Kim Fung Batu 4 将于11月16至18日暂时关闭",
+      "body_bm": "山打根市议会通告，Pasar Kim Fung Batu 4 将于11月16日至18日暂时关闭，以进行相关安排与清理工作。市民请提前采购，摊贩与顾客请留意市议会后续通告，关闭期间勿前往该巴刹。 【来源】山打根市议会 MPS 官方通报 【状态】官方通报"
+    },
+    {
+      "index": 3,
+      "title": "沙巴山打根 3 沙巴40%净税收权益上诉案，11月12日定判决日",
+      "body": "上诉庭将于11月12日通过电子审理系统进行案件管理，以决定联邦政府就沙巴40%净税收权益案上诉的判决日期。此案涉及1974年至2021年沙巴宪法特别拨款的检讨，原判曾要求检讨相关拨款安排，联邦政府随后提出上诉。 【来源】Malay Mail 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 3. 沙巴山打根 3 沙巴40%净税收权益上诉案，11月12日定判决日",
+      "title_bm": "沙巴山打根 3 沙巴40%净税收权益上诉案，11月12日定判决日",
+      "body_bm": "上诉庭将于11月12日通过电子审理系统进行案件管理，以决定联邦政府就沙巴40%净税收权益案上诉的判决日期。此案涉及1974年至2021年沙巴宪法特别拨款的检讨，原判曾要求检讨相关拨款安排，联邦政府随后提出上诉。 【来源】Malay Mail 【状态】正在跟进"
+    },
+    {
+      "index": 4,
+      "title": "沙巴山打根 4 沙巴原住民法庭改革，律师公会促充分咨询",
+      "body": "沙巴律师公会呼吁，在落实2026年原住民法庭法令改革时，必须与原住民领袖及社区代表进行有意义的咨询。该法令已于今年7月在沙巴州议会通过，涉及原住民习俗法庭的制度调整，公会认为咨询不足可能影响原住民权益与习俗法的执行。 【来源】Daily Express 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 4. 沙巴山打根 4 沙巴原住民法庭改革，律师公会促充分咨询",
+      "title_bm": "沙巴山打根 4 沙巴原住民法庭改革，律师公会促充分咨询",
+      "body_bm": "沙巴律师公会呼吁，在落实2026年原住民法庭法令改革时，必须与原住民领袖及社区代表进行有意义的咨询。该法令已于今年7月在沙巴州议会通过，涉及原住民习俗法庭的制度调整，公会认为咨询不足可能影响原住民权益与习俗法的执行。 【来源】Daily Express 【状态】已核实"
+    },
+    {
+      "index": 5,
+      "title": "沙巴山打根 5 神山 Sayat-Sayat 发展计划，昆达山协会要求暂停核查",
+      "body": "昆达山旅游与文化协会要求暂停京那巴鲁山 Sayat-Sayat 一带正在进行的开发工程，直到当局公开并核实各部分工程的批准状态。该计划涉及高海拔训练中心，最初列入2015年京那巴鲁国家公园发展计划，因2015年兰瑙地震展延，2025年重新启动。协会强调不反对发展本身，但要求先完成技术与环境检查，并落实社区咨询。 【来源】Daily Express 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 5. 沙巴山打根 5 神山 Sayat-Sayat 发展计划，昆达山协会要求暂停核查",
+      "title_bm": "沙巴山打根 5 神山 Sayat-Sayat 发展计划，昆达山协会要求暂停核查",
+      "body_bm": "昆达山旅游与文化协会要求暂停京那巴鲁山 Sayat-Sayat 一带正在进行的开发工程，直到当局公开并核实各部分工程的批准状态。该计划涉及高海拔训练中心，最初列入2015年京那巴鲁国家公园发展计划，因2015年兰瑙地震展延，2025年重新启动。协会强调不反对发展本身，但要求先完成技术与环境检查，并落实社区咨询。 【来源】Daily Express 【状态】正在跟进"
+    },
+    {
+      "index": 6,
+      "title": "全国新闻 6 希盟沙巴反对提前解散国会",
+      "body": "希望联盟沙巴反对副首相提出提前解散国会的建议。相关讨论源于内阁改组传闻持续发酵，希盟沙巴认为当前应专注施政与民生，而非提前进入选举程序。 【来源】Daily Express 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 6. 全国新闻 6 希盟沙巴反对提前解散国会",
+      "title_bm": "全国新闻 6 希盟沙巴反对提前解散国会",
+      "body_bm": "希望联盟沙巴反对副首相提出提前解散国会的建议。相关讨论源于内阁改组传闻持续发酵，希盟沙巴认为当前应专注施政与民生，而非提前进入选举程序。 【来源】Daily Express 【状态】已核实"
+    },
+    {
+      "index": 7,
+      "title": "全国新闻 7 国盟沙巴竞选机器在马六甲助选，称支持度上升",
+      "body": "国盟沙巴助选队伍近日在马六甲 Duyong 与 Telok Mas 协助竞选，相关负责人称基层反应正面，支持度有所提升。有关说法属于竞选期间的政治表态，最终结果仍需以选票为准。 【来源】Suara TV 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 7. 全国新闻 7 国盟沙巴竞选机器在马六甲助选，称支持度上升",
+      "title_bm": "全国新闻 7 国盟沙巴竞选机器在马六甲助选，称支持度上升",
+      "body_bm": "国盟沙巴助选队伍近日在马六甲 Duyong 与 Telok Mas 协助竞选，相关负责人称基层反应正面，支持度有所提升。有关说法属于竞选期间的政治表态，最终结果仍需以选票为准。 【来源】Suara TV 【状态】正在跟进"
+    },
+    {
+      "index": 8,
+      "title": "全国新闻 8 东海岸与沙巴东部季候风潮影响减弱，仍需警惕",
+      "body": "气象局指出，季候风潮对半岛东海岸与沙巴东部的影响预计持续至11月11日。吉兰丹、登嘉楼、彭亨及沙巴部分地区曾出现持续豪雨，公众受促继续留意气象局最新警报，尤其是在河边与低洼地区活动时要提高警惕。 【来源】星洲日报 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 8. 全国新闻 8 东海岸与沙巴东部季候风潮影响减弱，仍需警惕",
+      "title_bm": "全国新闻 8 东海岸与沙巴东部季候风潮影响减弱，仍需警惕",
+      "body_bm": "气象局指出，季候风潮对半岛东海岸与沙巴东部的影响预计持续至11月11日。吉兰丹、登嘉楼、彭亨及沙巴部分地区曾出现持续豪雨，公众受促继续留意气象局最新警报，尤其是在河边与低洼地区活动时要提高警惕。 【来源】星洲日报 【状态】已核实"
+    },
+    {
+      "index": 9,
+      "title": "全国新闻 9 砂拉越丹绒恩邦新机场计划，有望带动三马拉汉经济",
+      "body": "砂拉越提出在 Asajaya 丹绒恩邦兴建新古晋国际机场的计划，预计可为三马拉汉省带来航空、物流、贸易、旅游与投资机会。计划仍处于倡议与规划阶段，细节有待联邦与州政府进一步公布。 【来源】The Borneo Post 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 9. 全国新闻 9 砂拉越丹绒恩邦新机场计划，有望带动三马拉汉经济",
+      "title_bm": "全国新闻 9 砂拉越丹绒恩邦新机场计划，有望带动三马拉汉经济",
+      "body_bm": "砂拉越提出在 Asajaya 丹绒恩邦兴建新古晋国际机场的计划，预计可为三马拉汉省带来航空、物流、贸易、旅游与投资机会。计划仍处于倡议与规划阶段，细节有待联邦与州政府进一步公布。 【来源】The Borneo Post 【状态】正在跟进"
+    },
+    {
+      "index": 10,
+      "title": "体育新闻 10 李梓嘉熊本大师赛止步入选赛",
+      "body": "大马男单自由人李梓嘉在熊本大师赛入选赛两局不敌日本选手古贺穗，止步入选赛，提前结束本站征途。此前大马三名男单梁峻豪、贺首维及尤阳退出本站，李梓嘉成为大马男单唯一代表。赛事为超级500赛，于11月10日至15日在熊本举行。 【来源】光明日报 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 10. 体育新闻 10 李梓嘉熊本大师赛止步入选赛",
+      "title_bm": "体育新闻 10 李梓嘉熊本大师赛止步入选赛",
+      "body_bm": "大马男单自由人李梓嘉在熊本大师赛入选赛两局不敌日本选手古贺穗，止步入选赛，提前结束本站征途。此前大马三名男单梁峻豪、贺首维及尤阳退出本站，李梓嘉成为大马男单唯一代表。赛事为超级500赛，于11月10日至15日在熊本举行。 【来源】光明日报 【状态】已核实"
+    },
+    {
+      "index": 11,
+      "title": "体育新闻 11 大马男单集体调整，熊本站以李梓嘉独撑",
+      "body": "大马羽总早前宣布男单球员退出熊本站，理由是另有比赛计划与备战调整。李梓嘉世界排名第40，原为候补第四顺位，因多名球员退赛而获得入选赛资格。教练组表示，接下来将根据球员身体状况重新安排赛程。 【来源】星洲日报 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 11. 体育新闻 11 大马男单集体调整，熊本站以李梓嘉独撑",
+      "title_bm": "体育新闻 11 大马男单集体调整，熊本站以李梓嘉独撑",
+      "body_bm": "大马羽总早前宣布男单球员退出熊本站，理由是另有比赛计划与备战调整。李梓嘉世界排名第40，原为候补第四顺位，因多名球员退赛而获得入选赛资格。教练组表示，接下来将根据球员身体状况重新安排赛程。 【来源】星洲日报 【状态】已核实"
+    },
+    {
+      "index": 12,
+      "title": "体育新闻 12 Sabah FC 备战重点赛事，球迷关注主场表现",
+      "body": "Sabah FC 近期备战工作持续进行，球迷关注球队在主场的表现与积分走势。球队管理层呼吁球迷理性支持，相关赛程与票务以官方公布为准。 【来源】沙巴本地体育报道 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 12. 体育新闻 12 Sabah FC 备战重点赛事，球迷关注主场表现",
+      "title_bm": "体育新闻 12 Sabah FC 备战重点赛事，球迷关注主场表现",
+      "body_bm": "Sabah FC 近期备战工作持续进行，球迷关注球队在主场的表现与积分走势。球队管理层呼吁球迷理性支持，相关赛程与票务以官方公布为准。 【来源】沙巴本地体育报道 【状态】正在跟进"
+    },
+    {
+      "index": 13,
+      "title": "综合新闻 13 热带雨林保育受关注，观鸟节余温延续",
+      "body": "第16届婆罗洲观鸟节已于11月7日至8日在山打根热带雨林探索中心举行，透过观鸟、摄影、讲座与亲子活动推广婆罗洲鸟类生态与森林保育。活动结束后，保育团体呼吁市民持续关注雨林生态，减少干扰野生动物栖息地。 【来源】诗华日报 【状态】已核实",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 13. 综合新闻 13 热带雨林保育受关注，观鸟节余温延续",
+      "title_bm": "综合新闻 13 热带雨林保育受关注，观鸟节余温延续",
+      "body_bm": "第16届婆罗洲观鸟节已于11月7日至8日在山打根热带雨林探索中心举行，透过观鸟、摄影、讲座与亲子活动推广婆罗洲鸟类生态与森林保育。活动结束后，保育团体呼吁市民持续关注雨林生态，减少干扰野生动物栖息地。 【来源】诗华日报 【状态】已核实"
+    },
+    {
+      "index": 14,
+      "title": "综合新闻 14 科技教育走进社区，学生参与热情高",
+      "body": "近期多项科技与教育推广活动在沙巴各地举行，内容涵盖科学实验、数码技能与环保教育。主办单位表示，学生参与热情高，未来会继续把活动带到更多学校与社区，让偏远地区学生也有机会接触科技学习。 【来源】沙巴本地教育报道 【状态】正在跟进",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "权威信源"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 14. 综合新闻 14 科技教育走进社区，学生参与热情高",
+      "title_bm": "综合新闻 14 科技教育走进社区，学生参与热情高",
+      "body_bm": "近期多项科技与教育推广活动在沙巴各地举行，内容涵盖科学实验、数码技能与环保教育。主办单位表示，学生参与热情高，未来会继续把活动带到更多学校与社区，让偏远地区学生也有机会接触科技学习。 【来源】沙巴本地教育报道 【状态】正在跟进"
+    }
+  ],
+  "event_stories": [
+    {
+      "index": 15,
+      "title": "山打根热带雨林探索中心生态导览 【活动日期】11月14日到11月26日 【活动时间】09:00 AM 到 04:00 PM 【活动地点】热带雨林探索中心 RDC，Sepilok，山打根 【活动内容】市民可前往参观雨林步道与生态展览，了解婆罗洲动植物保育，适合亲子参与。入场与导览安排以现场公布为准。 【主办单位】热带雨林探索中心",
+      "body": "",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "官方通告"
+      ],
+      "source_urls": [],
+      "date": "2026-11-12",
+      "is_event": true,
+      "event_metadata": {
+        "time": "09:00 AM - 04:00 PM",
+        "location": "山打根社区中心",
+        "organizer": "官方通告"
+      },
+      "raw_header": "### 山打根热带雨林探索中心生态导览 【活动日期】11月14日到11月26日 【活动时间】09:00 AM 到 04:00 PM 【活动地点】热带雨林探索中心 RDC，Sepilok，山打根 【活动内容】市民可前往参观雨林步道与生态展览，了解婆罗洲动植物保育，适合亲子参与。入场与导览安排以现场公布为准。 【主办单位】热带雨林探索中心",
+      "title_bm": "山打根热带雨林探索中心生态导览 【活动日期】11月14日到11月26日 【活动时间】09:00 AM 到 04:00 PM 【活动地点】热带雨林探索中心 RDC，Sepilok，山打根 【活动内容】市民可前往参观雨林步道与生态展览，了解婆罗洲动植物保育，适合亲子参与。入场与导览安排以现场公布为准。 【主办单位】热带雨林探索中心",
       "body_bm": ""
     },
     {
       "index": 16,
-      "title": "沙巴海上监视系统第二阶段将覆盖 Malawali 与 Sandakan",
-      "body": "中文：政府已批准沙巴海上监视系统（SWASLA）第二阶段扩展至 Malawali 岛及山打根，以加强海上监视能力。内政部副部长在国会表示，项目已在第13大马计划首个滚动计划下获批，招标程序预计年底前展开。 Bahasa Malaysia: Kerajaan meluluskan pengembangan Sistem Pengawasan Laut Sabah (SWASLA) Fasa Dua ke Pulau Malawali dan Sandakan bagi memperkukuh keupayaan pengawasan maritim. Timbalan Menteri Dalam Negeri memaklumkan di Dewan Rakyat bahawa projek ini diluluskan di bawah Rolling Plan Pertama Rancangan Malaysia Ke-13, dan proses tender dijangka bermula sebelum akhir tahun. 来源 Sumber: Daily Express / New Straits Times \\| 链接 Pautan: [https\\://www\\.dailyexpress.com.my/](https://www.dailyexpress.com.my/) \\| 状态 Status: 已批准 diluluskan",
-      "category": "national",
+      "title": "山打根市区周末市集 【活动日期】11月14日到11月15日 【活动时间】全天 【活动地点】Harbour Mall，山打根市区 【活动内容】周末市集汇集本地小吃、手工艺与文创摊位，市民可前往逛集、支持本地小商家。 【主办单位】Harbour Mall 管理层",
+      "body": "",
+      "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "Meta AI 权威整理"
+        "官方通告"
       ],
-      "source_urls": [
-        "https://www.dailyexpress.com.my/"
-      ],
+      "source_urls": [],
       "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 3.2 沙巴海上监视系统第二阶段将覆盖 Malawali 与 Sandakan",
-      "title_bm": "",
+      "is_event": true,
+      "event_metadata": {
+        "time": "09:00 AM - 04:00 PM",
+        "location": "山打根社区中心",
+        "organizer": "官方通告"
+      },
+      "raw_header": "### 山打根市区周末市集 【活动日期】11月14日到11月15日 【活动时间】全天 【活动地点】Harbour Mall，山打根市区 【活动内容】周末市集汇集本地小吃、手工艺与文创摊位，市民可前往逛集、支持本地小商家。 【主办单位】Harbour Mall 管理层",
+      "title_bm": "山打根市区周末市集 【活动日期】11月14日到11月15日 【活动时间】全天 【活动地点】Harbour Mall，山打根市区 【活动内容】周末市集汇集本地小吃、手工艺与文创摊位，市民可前往逛集、支持本地小商家。 【主办单位】Harbour Mall 管理层",
       "body_bm": ""
     },
     {
       "index": 17,
-      "title": "沙巴成立天然气管道安全监督委员会",
-      "body": "中文：沙巴陆上天然气管道走廊委员会（JKKPGDS）于 11月5日召开首次会议，由沙巴能源委员会（Ecos）及职业安全与卫生局（DOSH）联合主持，监督全州天然气管道安全。 Bahasa Malaysia: Jawatankuasa Koridor Paip Gas Darat Sabah (JKKPGDS) mengadakan mesyuarat pertama pada 5 November 2026, dipengerusikan bersama oleh Suruhanjaya Tenaga Sabah (Ecos) dan Jabatan Keselamatan dan Kesihatan Pekerjaan (DOSH), bagi memantau keselamatan paip gas di seluruh Sabah. 来源 Sumber: Daily Express \\| 链接 Pautan: [https\\://www\\.dailyexpress.com.my/](https://www.dailyexpress.com.my/) \\| 状态 Status: 已确认 disahkan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.dailyexpress.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 3.3 沙巴成立天然气管道安全监督委员会",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 18,
-      "title": "沙巴 DAP：将捍卫山打根与亚庇两个国席",
-      "body": "中文：沙巴行动党表示，将捍卫目前拥有的两个国会议席，即山打根（Vivian Wong Shir Yee）及亚庇（Datuk Chan Foong Hin），以维持该党在沙巴的政治存在。 Bahasa Malaysia: DAP Sabah menyatakan akan mempertahankan dua kerusi Parlimen yang dimenanginya, iaitu Sandakan (Vivian Wong Shir Yee) dan Kota Kinabalu (Datuk Chan Foong Hin), bagi mengekalkan kehadiran politik parti itu di Sabah. 来源 Sumber: Daily Express \\| 链接 Pautan: [https\\://www\\.dailyexpress.com.my/](https://www.dailyexpress.com.my/) \\| 状态 Status: 声明 kenyataan",
-      "category": "national",
+      "title": "南砂免费义肢最后调试活动 【活动日期】11月12日起 【活动时间】全天 【活动地点】以主办单位公布地点为准 【活动内容】免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。 【主办单位】主办单位公布为准  \n-",
+      "body": "",
+      "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "Meta AI 权威整理"
+        "官方通告"
       ],
-      "source_urls": [
-        "https://www.dailyexpress.com.my/"
-      ],
+      "source_urls": [],
       "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 3.4 沙巴 DAP：将捍卫山打根与亚庇两个国席",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 19,
-      "title": "沙巴夜空神秘光束证实为中国长征十二号火箭",
-      "body": "中文：沙巴夜空 11月9日凌晨出现神秘光束引发关注。科技创新部 11月11日发文告指出，大马航天局（MYSA）已证实有关现象是中国发射长征十二号运载火箭所致。 Bahasa Malaysia: Cahaya misteri di langit Sabah pada awal pagi 9 November 2026 menarik perhatian orang ramai. Kementerian Sains, Teknologi dan Inovasi pada 11 November memaklumkan Agensi Angkasa Malaysia (MYSA) mengesahkan fenomena itu berpunca daripada pelancaran roket Long March 12 dari China. 来源 Sumber: Sin Chew / Pocketimes 百格 \\| 链接 Pautan: [https\\://pocketimes.sinchew.com.my/](https://pocketimes.sinchew.com.my/) \\| 状态 Status: 已证实 disahkan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://pocketimes.sinchew.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 3.5 沙巴夜空神秘光束证实为中国长征十二号火箭",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 20,
-      "title": "雪州鹅唛公寓持刀袭击：警员右手腕被砍断，嫌犯被击毙",
-      "body": "中文：雪州鹅唛一间公寓发生持刀袭击事件，一名外籍男子持双刀袭击警员及执法人员，导致一名26岁警员右手腕被砍断。嫌犯逃离现场后再次持刀攻击警员，最终被警方开枪击毙。案件正在调查中。 Bahasa Malaysia: Satu kejadian serangan bersenjata berlaku di sebuah pangsapuri di Gombak, Selangor. Seorang lelaki warga asing bersenjatakan dua bilah parang menyerang anggota polis dan penguat kuasa, menyebabkan pergelangan tangan kanan seorang anggota polis berusia 26 tahun putus. Suspek melarikan diri sebelum menyerang anggota polis sekali lagi dan akhirnya ditembak mati. Kes ini sedang disiasat. 来源 Sumber: Kwong Wah 光华日报 \\| 链接 Pautan: [https\\://www\\.kwongwah.com.my/](https://www.kwongwah.com.my/) \\| 状态 Status: 正在调查 sedang disiasat",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.kwongwah.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.1 雪州鹅唛公寓持刀袭击：警员右手腕被砍断，嫌犯被击毙",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 21,
-      "title": "补贴品走私：自2023年起查获 RM82.85百万货物，5,893宗案件",
-      "body": "中文：执法单位自 2023 年以来在 5,893 宗案件中查获总值 RM82.85百万的补贴品，显示补贴品走私与滥用问题仍严重。 Bahasa Malaysia: Sejak 2023, penguat kuasa merampas barangan bersubsidi bernilai RM82.85 juta dalam 5,893 kes, menunjukkan isu penyeludupan dan penyalahgunaan barangan bersubsidi masih serius. 来源 Sumber: New Straits Times \\| 链接 Pautan: [https\\://www\\.nst.com.my/](https://www.nst.com.my/) \\| 状态 Status: 已确认 disahkan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.nst.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.2 补贴品走私：自2023年起查获 RM82.85百万货物，5,893宗案件",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 22,
-      "title": "马六甲州选前 150 名土团党成员退党",
-      "body": "中文：马六甲州选前夕，150 名土团党（Bersatu）成员宣布退党，引发政坛关注。 Bahasa Malaysia: Menjelang Pilihan Raya Negeri Melaka, seramai 150 ahli Bersatu mengumumkan keluar parti, menarik perhatian politik. 来源 Sumber: New Straits Times \\| 链接 Pautan: [https\\://www\\.nst.com.my/](https://www.nst.com.my/) \\| 状态 Status: 已确认 disahkan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.nst.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.3 马六甲州选前 150 名土团党成员退党",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 23,
-      "title": "季候风：吉兰丹、登嘉楼及沙巴持续降雨警报至明天",
-      "body": "中文：气象局发布持续降雨警报，吉兰丹、登嘉楼及沙巴将持续降雨至明天，低洼及水灾黑区居民受促提高警惕。 Bahasa Malaysia: Jabatan Meteorologi mengeluarkan amaran hujan berterusan untuk Kelantan, Terengganu dan Sabah sehingga esok. Penduduk di kawasan rendah dan kawasan panas banjir dinasihatkan meningkatkan kewaspadaan. 来源 Sumber: Malay Mail \\| 链接 Pautan: [https\\://www\\.malaymail.com/](https://www.malaymail.com/) \\| 状态 Status: 警报 amaran",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.malaymail.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.4 季候风：吉兰丹、登嘉楼及沙巴持续降雨警报至明天",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 24,
-      "title": "雪州与霹雳水灾疏散人数升至 1,435 人",
-      "body": "中文：雪兰莪与霹雳水灾疏散中心人数升至 1,435 人，救援单位持续监督水位与灾民需求。 Bahasa Malaysia: Jumlah mangsa banjir yang dipindahkan di Selangor dan Perak meningkat kepada 1,435 orang. Agensi penyelamat terus memantau paras air dan keperluan mangsa. 来源 Sumber: New Straits Times \\| 链接 Pautan: [https\\://www\\.nst.com.my/](https://www.nst.com.my/) \\| 状态 Status: 跟进中 dalam pemantauan",
-      "category": "sabah",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.nst.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.5 雪州与霹雳水灾疏散人数升至 1,435 人",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 25,
-      "title": "纳吉居家服刑：监狱供三餐，禁点外卖网购",
-      "body": "中文：前首相纳吉居家服刑安排引起关注，监狱局说明服刑期间由监狱提供三餐，禁止点外卖及网购。 Bahasa Malaysia: Pengaturan tahanan rumah bagi bekas Perdana Menteri Najib menarik perhatian. Jabatan Penjara menjelaskan tiga hidangan disediakan oleh penjara sepanjang tempoh tahanan, dan pesanan makanan luar serta pembelian dalam talian tidak dibenarkan. 来源 Sumber: Guang Ming Daily 光明日报 \\| 链接 Pautan: [https\\://www\\.guangming.com.my/](https://www.guangming.com.my/) \\| 状态 Status: 已确认 disahkan",
-      "category": "national",
-      "geo_scope": "national",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.guangming.com.my/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 4.6 纳吉居家服刑：监狱供三餐，禁点外卖网购",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 26,
-      "title": "熊本大师赛：李梓嘉资格赛出局，15-21、10-21 负古贺穗",
-      "body": "中文：2026年熊本大师赛（超级500赛）11月10日在日本熊本开打，马来西亚男单李梓嘉在资格赛以 15-21、10-21 负于日本选手古贺穗（Minoru Koga），无缘正赛。李梓嘉目前世界排名约第40，古贺穗约第48。赛后他将把重心放在年底前的 Syed Modi 国际赛争取积分。 Bahasa Malaysia: Kumamoto Masters 2026 (Super 500\\) bermula pada 10 November 2026 di Kumamoto, Jepun. Pemain perseorangan lelaki Malaysia, Lee Zii Jia, tewas 15-21, 10-21 kepada pemain Jepun, Minoru Koga, dalam pusingan kelayakan dan gagal mara ke undian utama. Lee kini berada di ranking dunia sekitar ke-40, manakala Koga sekitar ke-48. Selepas ini, beliau akan memberi tumpuan kepada Syed Modi International untuk mengumpul mata ranking. 来源 Sumber: Badminton Planet / Free Malaysia Today \\| 链接 Pautan: [https\\://www\\.badmintonplanet.com/](https://www.badmintonplanet.com/) \\| 状态 Status: 已确认 disahkan",
-      "category": "sports",
-      "geo_scope": "sabah",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.badmintonplanet.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 5.1 熊本大师赛：李梓嘉资格赛出局，15-21、10-21 负古贺穗",
-      "title_bm": "",
-      "body_bm": ""
-    },
-    {
-      "index": 27,
-      "title": "熊本大师赛首日：大马多组双打也提前出局",
-      "body": "中文：熊本大师赛首日对大马队并不顺利，除李梓嘉外，男双谢定峰/苏伟译及女双陈康乐/蒂娜等组合也在首日比赛中出局，大马队需在后续比赛中调整状态。 Bahasa Malaysia: Hari pertama Kumamoto Masters tidak memihak kepada skuad Malaysia. Selain Lee Zii Jia, beregu lelaki Aaron Chia / Soh Wooi Yik dan beregu wanita Pearly Tan / Thinaah Muralitharan turut tersingkir pada hari pembukaan. Skuad Malaysia perlu menyesuaikan prestasi dalam perlawanan seterusnya. 来源 Sumber: SNE Sports / Badminton Planet \\| 链接 Pautan: [https\\://www\\.badmintonplanet.com/](https://www.badmintonplanet.com/) \\| 状态 Status: 已确认 disahkan\n\n说明 Nota：本期内容为公开报道的 paraphrase 总结，非原文复制。如官方通告更新，请以 MPS / JANS / SESB 官方最新通告为准。",
-      "category": "sports",
-      "geo_scope": "sandakan",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "source_urls": [
-        "https://www.badmintonplanet.com/"
-      ],
-      "date": "2026-11-12",
-      "is_event": false,
-      "event_metadata": null,
-      "raw_header": "### 5.2 熊本大师赛首日：大马多组双打也提前出局",
-      "title_bm": "",
+      "is_event": true,
+      "event_metadata": {
+        "time": "09:00 AM - 04:00 PM",
+        "location": "山打根社区中心",
+        "organizer": "官方通告"
+      },
+      "raw_header": "### 南砂免费义肢最后调试活动 【活动日期】11月12日起 【活动时间】全天 【活动地点】以主办单位公布地点为准 【活动内容】免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。 【主办单位】主办单位公布为准  \n-",
+      "title_bm": "南砂免费义肢最后调试活动 【活动日期】11月12日起 【活动时间】全天 【活动地点】以主办单位公布地点为准 【活动内容】免费义肢活动进入最后调试阶段，58名残友将获得义肢，相关人士请按主办单位通知前往调试。 【主办单位】主办单位公布为准  \n-",
       "body_bm": ""
     }
-  ],
-  "event_stories": []
+  ]
 }
