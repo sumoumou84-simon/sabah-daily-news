@@ -103,6 +103,57 @@ class TestEventsArchiveLifecycle(unittest.TestCase):
         self.assertEqual(res[0]["location"], "客家公会大礼堂 A 厅")
         self.assertEqual(res[0]["countdown_days"], 3)
 
+    def test_03b_location_and_core_keywords_overlap_dedup(self):
+        """测试不同媒体改换标题报道时，起始日期相同且地点关键词（如 Harbour Mall、RDC 等）或核心词重叠即判定为同一活动"""
+        # Day 1: 11-10 首次收录 Harbour Mall 市集与 RDC 导览
+        day1 = "2026-11-10"
+        initial_events = [
+            {
+                "name": "山打根市区周末市集",
+                "full_date": "2026-11-14",
+                "desc": "本地美食文创摊位",
+                "location": "Harbour Mall，山打根市区",
+                "time": "全天"
+            },
+            {
+                "name": "山打根热带雨林探索中心生态导览",
+                "full_date": "2026-11-16",
+                "desc": "婆罗洲雨林保育讲解",
+                "location": "热带雨林探索中心 RDC，Sepilok",
+                "time": "09:00 AM"
+            }
+        ]
+        sync_events_archive(initial_events, day1, archive_file=self.archive_file)
+
+        # Day 2: 11-12 其他报社以全新标题报道相同地点与日期的活动
+        day2 = "2026-11-12"
+        rewritten_events = [
+            {
+                "name": "港口文创市集周六登场 汇集数十家摊贩",  # 标题彻底重写，但同一天且地点包含 Harbour Mall
+                "full_date": "2026-11-14",
+                "desc": "欢迎各界前来品尝道地美食",
+                "location": "Harbour Mall 广场",
+                "time": "10:00 AM - 08:00 PM"
+            },
+            {
+                "name": "西必洛亲子自然雨林探索之旅",  # 标题重写，但同一天且地点包含 RDC
+                "full_date": "2026-11-16",
+                "desc": "专业向导带队游览",
+                "location": "RDC Sepilok",
+                "time": "09:00 AM - 04:00 PM"
+            }
+        ]
+        res = sync_events_archive(rewritten_events, day2, archive_file=self.archive_file)
+        self.assertEqual(len(res), 2)
+        # 两项活动均应成功匹配，保留 Day 1 的 first_seen_date (2026-11-10)，不应被误判为今日新收 (2026-11-12)
+        mall_ev = next(e for e in res if "Harbour Mall" in e["location"])
+        rdc_ev = next(e for e in res if "RDC" in e["location"])
+        self.assertEqual(mall_ev["first_seen_date"], "2026-11-10")
+        self.assertEqual(rdc_ev["first_seen_date"], "2026-11-10")
+        # 且详情更新为最新内容
+        self.assertIn("港口文创市集", mall_ev["name"])
+        self.assertIn("西必洛亲子自然雨林", rdc_ev["name"])
+
     def test_04_cleanup_expired_events(self):
         """测试自动清理结束日期早于今日 (MYT) 的已过期活动"""
         # 先在归档库中写入一个已过期的活动 (11-10 结束) 和一个未来的活动 (11-18 结束)

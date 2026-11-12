@@ -109,15 +109,98 @@ def parse_date_range(raw_date_str: str, default_date: str) -> Tuple[str, str]:
     return default_date, default_date
 
 
+def extract_event_keywords(text: str) -> set:
+    """提取关键词集合，过滤掉无区分度的通用停用词"""
+    if not text:
+        return set()
+    stopwords = {
+        "活动", "举办", "沙巴", "山打根", "社区", "进行", "今日", "明日", "昨日",
+        "时间", "地点", "主办", "单位", "官方", "通告", "预报", "通知", "公布",
+        "市民", "参与", "出席", "现场", "2026", "2025", "acara", "program",
+        "sandakan", "sabah", "rasmi", "notis"
+    }
+    en_words = re.findall(r'[a-zA-Z]{3,}', text.lower())
+    zh_words = re.findall(r'[\u4e00-\u9fff]{2,}', text)
+    keywords = set()
+    for w in en_words:
+        if w not in stopwords:
+            keywords.add(w)
+    for w in zh_words:
+        if w not in stopwords:
+            keywords.add(w)
+            if len(w) >= 4:
+                for i in range(len(w) - 1):
+                    sub = w[i:i+2]
+                    if sub not in stopwords:
+                        keywords.add(sub)
+    return keywords
+
+
+def is_placeholder_location(loc: str) -> bool:
+    """判断是否为非具体占位地点（如'待定'、'以主办单位公布地点为准'等）"""
+    l = re.sub(r'[^\w\u4e00-\u9fff]+', '', (loc or '').lower())
+    return not l or l in ['以主办单位公布为准', '以主办单位公布地点为准', '待定', 'tba', 'tbd', '未定', '现场公布', '官方公布为准']
+
+
+def check_location_overlap(loc1: str, loc2: str) -> bool:
+    """检查两个地点是否有地标关键词重叠（如 Harbour Mall、RDC 等）"""
+    if is_placeholder_location(loc1) or is_placeholder_location(loc2):
+        return False
+    l1_clean = loc1.strip().lower()
+    l2_clean = loc2.strip().lower()
+
+    # 1. 常见重点地标直接比对
+    special_locs = [
+        'rdc', 'sepilok', '西必洛', 'harbour', 'mall', 'hakka', '客家',
+        'sejati', 'kim fung', '金凤', 'hdok', 'mps', 'pasar', '巴刹',
+        '大草场', '草场', '中华商会', '雨林探索中心'
+    ]
+    for sp in special_locs:
+        if sp in l1_clean and sp in l2_clean:
+            return True
+
+    # 2. 关键词交集
+    kw1 = extract_event_keywords(loc1)
+    kw2 = extract_event_keywords(loc2)
+    return len(kw1.intersection(kw2)) > 0
+
+
+def check_core_terms_overlap(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
+    """检查两活动的核心标题与内容关键词重叠"""
+    t1 = f"{ev1.get('name', '')} {ev1.get('desc', '')}"
+    t2 = f"{ev2.get('name', '')} {ev2.get('desc', '')}"
+    kw1 = extract_event_keywords(t1)
+    kw2 = extract_event_keywords(t2)
+    common = kw1.intersection(kw2)
+    return len(common) > 0
+
+
 def is_same_event_record(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
-    """按（起始日期 + 核心标题相似度/去重键）判断是否为同一活动"""
+    """
+    按（起始日期 + 地点关键词/核心词重叠/核心标题相似度）综合去重判定是否为同一活动：
+    1. 若起始日期（start_date）相同：
+       - 地点关键词（如 Harbour Mall、RDC、客家公会等）重叠，即判定为同一活动；
+       - 或核心词（如 义肢、市集、义诊、马拉松等）重叠，即判定为同一活动；
+       - 或核心标题相似度 >= 0.50，即判定为同一活动。
+    2. 若起始日期未严格对齐，但核心标题相似度极高 (>= 0.85)，亦视为同一活动。
+    """
     d1 = ev1.get("full_date") or ev1.get("date") or ""
     d2 = ev2.get("full_date") or ev2.get("date") or ""
     sim = compute_event_similarity(ev1.get("name", ""), ev2.get("name", ""))
-    if d1 and d2 and d1 == d2 and sim >= 0.60:
-        return True
+
+    if d1 and d2 and d1 == d2:
+        loc1 = ev1.get("location", "")
+        loc2 = ev2.get("location", "")
+        if check_location_overlap(loc1, loc2):
+            return True
+        if check_core_terms_overlap(ev1, ev2):
+            return True
+        if sim >= 0.50:
+            return True
+
     if sim >= 0.85:
         return True
+
     return False
 
 
