@@ -531,6 +531,52 @@ def generate_index_html():
         </div>
         """
 
+    # 3.5 动态构建顶部【今日重点聚焦】跑马灯条内容（纯中文，动态提取前 6 条重点或各板块头条）
+    by_cat_headlines = {}
+    for h in headlines:
+        c = h.get("category", "sabah")
+        by_cat_headlines.setdefault(c, []).append(h)
+
+    marquee_selected = []
+    # 优先提取 4 大板块头条
+    for c in ["sabah", "national", "sports", "general"]:
+        if c in by_cat_headlines and by_cat_headlines[c]:
+            marquee_selected.append(by_cat_headlines[c][0])
+
+    # 补充至 6 条
+    for h in headlines:
+        if h not in marquee_selected:
+            marquee_selected.append(h)
+        if len(marquee_selected) >= 6:
+            break
+
+    def _resolve_marquee_emoji(cat: str, title_str: str) -> str:
+        if cat == "sports" or any(k in title_str for k in ["羽", "赛", "球", "足", "Sukan", "马运会"]):
+            return "🏸"
+        elif cat == "national" or any(k in title_str for k in ["国会", "联邦", "政府", "部长", "净税收", "首相"]):
+            return "🇲🇾"
+        elif cat == "general" or any(k in title_str for k in ["雨林", "生态", "科技", "教育", "社区", "展览", "文创"]):
+            return "🌐"
+        elif any(k in title_str for k in ["水", "JANS", "电", "SESB", "抢修"]):
+            return "⚡"
+        elif any(k in title_str for k in ["医", "院", "病", "诊", "伤", "卫生"]):
+            return "🏥"
+        elif any(k in title_str for k in ["扣留", '警', "扫荡", "执法", "搜查", "防务", "ESSCOM"]):
+            return "🛡️"
+        elif "山打根" in title_str:
+            return "📍"
+        return "🔥"
+
+    marquee_spans = []
+    for h_item in marquee_selected:
+        m_cat = h_item.get("category", "sabah")
+        m_title = h_item.get("title", "").strip()
+        m_emoji = _resolve_marquee_emoji(m_cat, m_title)
+        marquee_spans.append(f"""<span><span class="lang-zh">{m_emoji} {m_title}</span></span>""")
+
+    separator_html = """\n                    <span class="text-white/40">•</span>\n                    """
+    marquee_items_html = separator_html.join(marquee_spans) if marquee_spans else """<span><span class="lang-zh">📍 今日要闻持续为您权威跟踪播报</span></span>"""
+
     # 4. 组装整页 HTML
     archive_json_str = json.dumps(archive_pool, ensure_ascii=False)
 
@@ -1399,73 +1445,15 @@ def generate_index_html():
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
                         <span class="lang-zh">【今日重点聚焦】</span>
-                        <span class="lang-bm hidden">【FOKUS UTAMA HARI INI】</span>
                     </span>
-                    <span>
-                        <span class="lang-zh">🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
-                        <span class="lang-bm hidden">🏥 Naik Taraf ICU Hospital Duchess of Kent Sandakan Terima RM12.8 Juta, Tambah 18 Katil</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
-                        <span class="lang-bm hidden">⚡ JANS Gerakkan Radar Paip Bawah Tanah & Siap Siaga 14 Lori Tangki Air Kecemasan</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
-                        <span class="lang-bm hidden">🚌 JPJ & Polis Lancar Ops Perisai Bas Ekspres, Periksa Tiket Digital & Pemandu</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
-                        <span class="lang-bm hidden">🏸 Skuad Badminton Negara Aaron Chia-Wooi Yik & Lee Zii Jia Giat Latihan Final Jelajah Dunia</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
-                        <span class="lang-bm hidden">⚽ Sabah FC Gandakan Persiapan Liga Super di Stadium Likas Menjelang Aksi Panas</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
-                        <span class="lang-bm hidden">🛡️ ESSCOM Tingkat Rondaan Keselamatan Pesisir Pantai Timur demi Sektor Pelancongan & Nelayan</span>
-                    </span>
+                    {marquee_items_html}
                 </div>
                 <div class="flex gap-8 items-center px-4" aria-hidden="true">
                     <span class="inline-flex items-center gap-1.5 text-[#FFD60A] font-black">
                         <span class="w-2 h-2 rounded-full bg-[#FFD60A] animate-pulse"></span>
                         <span class="lang-zh">【今日重点聚焦】</span>
-                        <span class="lang-bm hidden">【FOKUS UTAMA HARI INI】</span>
                     </span>
-                    <span>
-                        <span class="lang-zh">🏥 肯特医院急诊重症扩建获 1280 万拨款，增设 18 张高精度 ICU 监护床</span>
-                        <span class="lang-bm hidden">🏥 Naik Taraf ICU Hospital Duchess of Kent Sandakan Terima RM12.8 Juta, Tambah 18 Katil</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">⚡ 沙巴水务局 (JANS) 启动地下主管网雷达探伤减漏，14 辆应急水车全城待命</span>
-                        <span class="lang-bm hidden">⚡ JANS Gerakkan Radar Paip Bawah Tanah & Siap Siaga 14 Lori Tangki Air Kecemasan</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🚌 陆交局 (JPJ) 联手警方启动长巴『安全之盾』大排查，强制电子乘车单核验</span>
-                        <span class="lang-bm hidden">🚌 JPJ & Polis Lancar Ops Perisai Bas Ekspres, Periksa Tiket Digital & Pemandu</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🏸 大马国家羽球队备战年终总决赛，谢苏组合与李梓嘉展开高强度特训</span>
-                        <span class="lang-bm hidden">🏸 Skuad Badminton Negara Aaron Chia-Wooi Yik & Lee Zii Jia Giat Latihan Final Jelajah Dunia</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">⚽ 沙巴足球俱乐部（Sabah FC）超级联赛备战冲刺，主场里卡士体育场球市火爆</span>
-                        <span class="lang-bm hidden">⚽ Sabah FC Gandakan Persiapan Liga Super di Stadium Likas Menjelang Aksi Panas</span>
-                    </span>
-                    <span class="text-white/40">•</span>
-                    <span>
-                        <span class="lang-zh">🛡️ ESSCOM 强化东海岸近海夜间巡逻防务，守护海岛旅游与渔业稳定</span>
-                        <span class="lang-bm hidden">🛡️ ESSCOM Tingkat Rondaan Keselamatan Pesisir Pantai Timur demi Sektor Pelancongan & Nelayan</span>
-                    </span>
+                    {marquee_items_html}
                 </div>
             </div>
         </div>
