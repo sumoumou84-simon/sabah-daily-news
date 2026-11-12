@@ -1376,9 +1376,39 @@ def generate_index_html():
             word-break: break-word !important;
         }}
 
-        /* 隐藏顶部 BM 语系切换按钮 */
+        /* 隐藏顶部旧 BM 语系切换按钮 */
         #btn-lang-bm {{
             display: none !important;
+        }}
+
+        /* Google Website Translator 深度美化与顶部横幅彻底隐藏 */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-banner-frame,
+        iframe.goog-te-banner-frame,
+        #goog-gt-tt,
+        .goog-te-balloon-frame {{
+            display: none !important;
+            visibility: hidden !important;
+        }}
+        body {{
+            top: 0px !important;
+            position: static !important;
+        }}
+        #google_translate_element {{
+            display: none !important;
+        }}
+        .goog-tooltip,
+        .goog-tooltip:hover {{
+            display: none !important;
+        }}
+        .goog-text-highlight {{
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }}
+        /* 自定义翻译下拉框微调 */
+        .translate-menu {{
+            min-width: 130px;
         }}
     </style>
 </head>
@@ -1389,11 +1419,11 @@ def generate_index_html():
         <div class="mx-auto max-w-[1440px] px-2.5 sm:px-4 md:px-6 h-[50px] sm:h-[52px] md:h-[56px] flex items-center justify-between gap-1.5 sm:gap-3">
             <div class="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
                 <div class="flex items-center gap-1 sm:gap-2">
-                    <span class="text-[15.5px] sm:text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap">
+                    <span class="text-[15.5px] sm:text-[18px] md:text-[20px] font-black tracking-tight whitespace-nowrap notranslate" translate="no">
                         <span class="lang-zh">西门看看网</span>
                         <span class="lang-bm hidden">Simon Kankan</span>
                     </span>
-                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-[5px] sm:rounded-[6px] bg-[#FFD60A] text-black text-[10px] sm:text-[11px] font-bold leading-none shrink-0 whitespace-nowrap">
+                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-[5px] sm:rounded-[6px] bg-[#FFD60A] text-black text-[10px] sm:text-[11px] font-bold leading-none shrink-0 whitespace-nowrap notranslate" translate="no">
                         <span class="lang-zh">每日晨报</span>
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
@@ -1432,9 +1462,34 @@ def generate_index_html():
                     </button>
                 </div>
 
-                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[12px] text-[#4ade80] hover:bg-[#166534] transition">
+                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full bg-[#14532d] border border-[#166534] text-[12px] text-[#4ade80] hover:bg-[#166534] transition notranslate" translate="no">
                     <span class="w-[8px] h-[8px] rounded-full bg-[#22c55e]"></span> WhatsApp
                 </a>
+
+                <!-- 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
+                <div class="relative inline-block text-left shrink-0 notranslate" translate="no" id="translate-dropdown-container">
+                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[4px] rounded-full text-[11px] sm:text-[12px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
+                        <span>🌐</span>
+                        <span id="current-lang-label">翻译</span>
+                        <span class="text-[9px] opacity-70">▼</span>
+                    </button>
+                    <!-- 下拉语言列表 -->
+                    <div id="translate-dropdown-menu" class="hidden absolute right-0 mt-1.5 py-1 rounded-[10px] shadow-2xl border translate-menu z-50 bg-[#1c1c1c] text-white border-white/10 text-[12px] font-medium divide-y divide-white/5">
+                        <button type="button" onclick="changeLanguage('zh-CN', '中文', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                            <span>🇨🇳 简体中文</span>
+                            <span class="text-[10px] text-[#FFD60A] font-bold">默认</span>
+                        </button>
+                        <button type="button" onclick="changeLanguage('ms', 'BM', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                            <span>🇲🇾 Bahasa Melayu</span>
+                        </button>
+                        <button type="button" onclick="changeLanguage('en', 'EN', event)" class="w-full text-left px-3 py-1.5 flex items-center justify-between hover:bg-white/10 transition">
+                            <span>🇬🇧 English</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 隐藏的 Google Translate 原生容器 -->
+                <div id="google_translate_element" style="display:none !important;"></div>
             </div>
         </div>
 
@@ -2543,6 +2598,69 @@ html += `
         window.closeDisclaimerModal = closeDisclaimerModal;
         window.handleDisclaimerBackdropClick = handleDisclaimerBackdropClick;
 
+        // Google Website Translator 初始化与语言切换控制
+        function googleTranslateElementInit() {{
+            new google.translate.TranslateElement({{
+                pageLanguage: 'zh-CN',
+                includedLanguages: 'zh-CN,ms,en',
+                autoDisplay: false
+            }}, 'google_translate_element');
+        }}
+        window.googleTranslateElementInit = googleTranslateElementInit;
+
+        function toggleTranslateMenu(event) {{
+            if (event) event.stopPropagation();
+            const menu = document.getElementById('translate-dropdown-menu');
+            if (menu) {{
+                menu.classList.toggle('hidden');
+            }}
+        }}
+        window.toggleTranslateMenu = toggleTranslateMenu;
+
+        document.addEventListener('click', (e) => {{
+            const container = document.getElementById('translate-dropdown-container');
+            const menu = document.getElementById('translate-dropdown-menu');
+            if (container && menu && !container.contains(e.target)) {{
+                menu.classList.add('hidden');
+            }}
+        }});
+
+        function setGoogleTranslateCookie(lang) {{
+            // 写入 googtrans cookie 触发 Google Translate 引擎
+            const val = lang === 'zh-CN' ? '/zh-CN/zh-CN' : ('/zh-CN/' + lang);
+            const domain = window.location.hostname;
+            document.cookie = 'googtrans=' + val + '; path=/;';
+            document.cookie = 'googtrans=' + val + '; path=/; domain=' + domain + ';';
+            if (domain.indexOf('.') !== -1) {{
+                const parts = domain.split('.');
+                if (parts.length >= 2) {{
+                    const rootDomain = '.' + parts.slice(-2).join('.');
+                    document.cookie = 'googtrans=' + val + '; path=/; domain=' + rootDomain + ';';
+                }}
+            }}
+        }}
+
+        function changeLanguage(langCode, labelText, event) {{
+            if (event) event.stopPropagation();
+            const label = document.getElementById('current-lang-label');
+            if (label) label.textContent = labelText;
+            const menu = document.getElementById('translate-dropdown-menu');
+            if (menu) menu.classList.add('hidden');
+
+            setGoogleTranslateCookie(langCode);
+
+            // 优先尝试触发页面内已实例化的 Google 下拉框选择
+            const selectElem = document.querySelector('#google_translate_element select');
+            if (selectElem) {{
+                selectElem.value = langCode;
+                selectElem.dispatchEvent(new Event('change'));
+            }} else {{
+                // 若 Google Translate 未完全初始化，则重载页面由 cookie 自动生效
+                window.location.reload();
+            }}
+        }}
+        window.changeLanguage = changeLanguage;
+
         // 核心动态数据同步：确保无论浏览器是否命中缓存，均主动获取最新 news_data.json 并重新刷新卡片
         async function syncNewsDataRuntime() {{
             try {{
@@ -2573,8 +2691,21 @@ html += `
         window.addEventListener('DOMContentLoaded', () => {{
             initThemeButton();
             syncNewsDataRuntime();
+            // 读取现有语言 cookie 并同步按钮标签
+            const m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+            if (m && m[1]) {{
+                const val = decodeURIComponent(m[1]);
+                const lbl = document.getElementById('current-lang-label');
+                if (lbl) {{
+                    if (val.indexOf('/ms') !== -1) lbl.textContent = 'BM';
+                    else if (val.indexOf('/en') !== -1) lbl.textContent = 'EN';
+                    else lbl.textContent = '中文';
+                }}
+            }}
         }});
     </script>
+    <!-- 引入 Google Website Translator 脚本 -->
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
 """
