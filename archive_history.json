@@ -1,4 +1,411 @@
 {
+  "2026-11-15": [
+    {
+      "story_index": 1,
+      "category": "sabah",
+      "title": "气象通告",
+      "titleBM": "气象通告",
+      "detail": "沙巴今日午后有雷阵雨 沙巴今日清晨多云，气温约26度，白天最高约33度。上午多云，下午2时起转为零星雷阵雨，傍晚有阵雨，夜间转多云。市民外出请带雨具，午后避免在空旷地带久留。 马来西亚气象局 进行中",
+      "detailBM": "沙巴今日午后有雷阵雨 沙巴今日清晨多云，气温约26度，白天最高约33度。上午多云，下午2时起转为零星雷阵雨，傍晚有阵雨，夜间转多云。市民外出请带雨具，午后避免在空旷地带久留。 马来西亚气象局 进行中",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_01",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 2,
+      "category": "sabah",
+      "title": "供水通告",
+      "titleBM": "供水通告",
+      "detail": "亚庇部分住宅区供水中断 水务局抢修送水 亚庇路阳区部分住宅区近日因多处水管漏水及爆裂，供水中断。沙巴水务局已在多个地点展开维修，部分已修复，仍有一处大型漏水在抢修中。有关单位已安排水槽车到受影响地区送水，市民请提前储水。 沙巴水务局 进行中",
+      "detailBM": "亚庇部分住宅区供水中断 水务局抢修送水 亚庇路阳区部分住宅区近日因多处水管漏水及爆裂，供水中断。沙巴水务局已在多个地点展开维修，部分已修复，仍有一处大型漏水在抢修中。有关单位已安排水槽车到受影响地区送水，市民请提前储水。 沙巴水务局 进行中",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_02",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 3,
+      "category": "sabah",
+      "title": "\\[沙巴\\]\\[1\\]沙菲益：沙巴政党合作须以人民利益为依归",
+      "titleBM": "\\[沙巴\\]\\[1\\]沙菲益：沙巴政党合作须以人民利益为依归",
+      "detail": "沙巴前首长兼民兴党主席沙菲益表示，沙巴政党之间若要合作，必须以维护沙巴利益及解决人民实际问题为出发点，而不是单纯为了壮大政治力量。民兴党正加强备战下届大选，同时对合作持开放态度。 沙巴星洲日报 已确认",
+      "detailBM": "沙巴前首长兼民兴党主席沙菲益表示，沙巴政党之间若要合作，必须以维护沙巴利益及解决人民实际问题为出发点，而不是单纯为了壮大政治力量。民兴党正加强备战下届大选，同时对合作持开放态度。 沙巴星洲日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_03",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 4,
+      "category": "national",
+      "title": "\\[沙巴\\]\\[2\\]沙菲益拒置评陆兆福辞职 强调政治人物须坚持原则",
+      "titleBM": "\\[沙巴\\]\\[2\\]沙菲益拒置评陆兆福辞职 强调政治人物须坚持原则",
+      "detail": "针对交通部长陆兆福辞职一事，民兴党主席沙菲益不愿置评，仅强调政治人物须坚持原则。陆兆福早前因反对前首相纳吉获准居家服刑而宣布辞职。 沙巴星洲日报 已确认",
+      "detailBM": "针对交通部长陆兆福辞职一事，民兴党主席沙菲益不愿置评，仅强调政治人物须坚持原则。陆兆福早前因反对前首相纳吉获准居家服刑而宣布辞职。 沙巴星洲日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_04",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 5,
+      "category": "sabah",
+      "title": "\\[沙巴\\]\\[3\\]亚庇凌晨打斗案 男子遭刺伤身亡 警方追捕涉案者",
+      "titleBM": "\\[沙巴\\]\\[3\\]亚庇凌晨打斗案 男子遭刺伤身亡 警方追捕涉案者",
+      "detail": "亚庇孟加达镇苏拉曼中心今日凌晨发生致命打斗事件，一名30多岁男子胸部被刺伤，送院后宣告不治。警方正追捕涉案者，并呼吁知情者提供线索。 八度空间新闻 已确认",
+      "detailBM": "亚庇孟加达镇苏拉曼中心今日凌晨发生致命打斗事件，一名30多岁男子胸部被刺伤，送院后宣告不治。警方正追捕涉案者，并呼吁知情者提供线索。 八度空间新闻 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_05",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 6,
+      "category": "sabah",
+      "title": "\\[沙巴\\]\\[4\\]亚庇多路段爆水管 部分住宅区断水",
+      "titleBM": "\\[沙巴\\]\\[4\\]亚庇多路段爆水管 部分住宅区断水",
+      "detail": "亚庇路阳区多处水管近日陆续漏水及爆裂，导致部分住宅区供水中断。沙巴水务局已展开维修，部分地点已修复，仍有抢修工作在进行中，居民生活受影响。 沙巴星洲日报 已确认",
+      "detailBM": "亚庇路阳区多处水管近日陆续漏水及爆裂，导致部分住宅区供水中断。沙巴水务局已展开维修，部分地点已修复，仍有抢修工作在进行中，居民生活受影响。 沙巴星洲日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_06",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 7,
+      "category": "sabah",
+      "title": "\\[沙巴\\]\\[5\\]沙巴欢迎科技投资 须保障水电供应",
+      "titleBM": "\\[沙巴\\]\\[5\\]沙巴欢迎科技投资 须保障水电供应",
+      "detail": "沙巴首席部长哈芝芝表示，沙巴欢迎科技投资者，但大型项目必须保障水电供应，不能影响民生。州政府将继续推动经济发展，同时确保基础设施跟得上。 马来邮报 已确认",
+      "detailBM": "沙巴首席部长哈芝芝表示，沙巴欢迎科技投资者，但大型项目必须保障水电供应，不能影响民生。州政府将继续推动经济发展，同时确保基础设施跟得上。 马来邮报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_07",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 8,
+      "category": "sabah",
+      "title": "\\[全国\\]\\[1\\]马六甲州选 国阵国盟横扫24席 超三分之二执政",
+      "titleBM": "\\[全国\\]\\[1\\]马六甲州选 国阵国盟横扫24席 超三分之二执政",
+      "detail": "第16届马六甲州选举昨晚开票，国阵与国盟合共赢得28席中的24席，超过三分之二，将同组州政府。希盟行动党守住4席，公正党与诚信党全军覆没。选委会公布投票率为70.59%。 东方日报 已确认",
+      "detailBM": "第16届马六甲州选举昨晚开票，国阵与国盟合共赢得28席中的24席，超过三分之二，将同组州政府。希盟行动党守住4席，公正党与诚信党全军覆没。选委会公布投票率为70.59%。 东方日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_08",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 9,
+      "category": "national",
+      "title": "\\[全国\\]\\[2\\]安华：提呈纳吉特赦申请是保障囚犯权利 最终决定权在元首",
+      "titleBM": "\\[全国\\]\\[2\\]安华：提呈纳吉特赦申请是保障囚犯权利 最终决定权在元首",
+      "detail": "首相安华表示，他于2023年决定将前首相纳吉的特赦申请提呈特赦局，是为确保每名囚犯提出诉求的宪法权利不被剥夺，最终决定权在国家元首。他强调不能剥夺任何囚犯寻求特赦的权利。 东方日报 已确认",
+      "detailBM": "首相安华表示，他于2023年决定将前首相纳吉的特赦申请提呈特赦局，是为确保每名囚犯提出诉求的宪法权利不被剥夺，最终决定权在国家元首。他强调不能剥夺任何囚犯寻求特赦的权利。 东方日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_09",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 10,
+      "category": "national",
+      "title": "\\[全国\\]\\[3\\]专家：纳吉居家服刑条件不能挑战或修改",
+      "titleBM": "\\[全国\\]\\[3\\]专家：纳吉居家服刑条件不能挑战或修改",
+      "detail": "资深律师和法律专家认为，针对前首相纳吉居家服刑所制定的相关条件，不能受到挑战或作出进一步修改。联邦直辖区特赦局所做决定，不受司法审核。 中国报 已确认",
+      "detailBM": "资深律师和法律专家认为，针对前首相纳吉居家服刑所制定的相关条件，不能受到挑战或作出进一步修改。联邦直辖区特赦局所做决定，不受司法审核。 中国报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_10",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 11,
+      "category": "sabah",
+      "title": "\\[全国\\]\\[4\\]雪州水灾疏散人数上升 霹雳人数下降",
+      "titleBM": "\\[全国\\]\\[4\\]雪州水灾疏散人数上升 霹雳人数下降",
+      "detail": "雪州水灾疏散人数上升至1248人，安置在7个临时疏散中心；霹雳州疏散人数则有所下降。救援单位继续留意水位变化，提醒低洼地区居民提高警惕。 马来邮报 进行中",
+      "detailBM": "雪州水灾疏散人数上升至1248人，安置在7个临时疏散中心；霹雳州疏散人数则有所下降。救援单位继续留意水位变化，提醒低洼地区居民提高警惕。 马来邮报 进行中",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_11",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 12,
+      "category": "sports",
+      "title": "\\[体育\\]\\[1\\]钦庆组合闯熊本大师赛男双决赛 今日争冠",
+      "titleBM": "\\[体育\\]\\[1\\]钦庆组合闯熊本大师赛男双决赛 今日争冠",
+      "detail": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双半决赛，直落两局击败丹麦组合，闯入决赛，今日将与日本组合争冠。这是两人搭档以来第2度闯入决赛。 星洲日报 已确认",
+      "detailBM": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双半决赛，直落两局击败丹麦组合，闯入决赛，今日将与日本组合争冠。这是两人搭档以来第2度闯入决赛。 星洲日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_12",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 13,
+      "category": "sports",
+      "title": "\\[体育\\]\\[2\\]马来虎友谊赛0比2不敌中国",
+      "titleBM": "\\[体育\\]\\[2\\]马来虎友谊赛0比2不敌中国",
+      "detail": "马来西亚国家足球队昨晚在国际友谊赛中客场0比2不敌中国队。中国队在上半场第10分钟及第19分钟各入一球，马来虎下半场未能扳回比分。 东盟足球联合会 已确认",
+      "detailBM": "马来西亚国家足球队昨晚在国际友谊赛中客场0比2不敌中国队。中国队在上半场第10分钟及第19分钟各入一球，马来虎下半场未能扳回比分。 东盟足球联合会 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_13",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 14,
+      "category": "sports",
+      "title": "\\[体育\\]\\[3\\]足总杯雪古冲突风波 马足总交由纪律委员会审理",
+      "titleBM": "\\[体育\\]\\[3\\]足总杯雪古冲突风波 马足总交由纪律委员会审理",
+      "detail": "大马足总证实，已接获足总杯次回合半决赛期间，古晋市与雪兰莪两队球员及职员爆发冲突的官方报告与相关证据，并交由纪律委员会审理。 光明日报 已确认",
+      "detailBM": "大马足总证实，已接获足总杯次回合半决赛期间，古晋市与雪兰莪两队球员及职员爆发冲突的官方报告与相关证据，并交由纪律委员会审理。 光明日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_14",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 15,
+      "category": "sabah",
+      "title": "\\[综合\\]\\[1\\]大马羽军亚运仅获一铜 李宗伟促全面检讨备战奥运",
+      "titleBM": "\\[综合\\]\\[1\\]大马羽军亚运仅获一铜 李宗伟促全面检讨备战奥运",
+      "detail": "大马羽总绩效委员会主席李宗伟承认，大马羽球队在爱知名古屋亚运会未能达标，最终只带回一枚铜牌。他促请全面检讨备战工作，为奥运做好准备。 星洲日报 已确认",
+      "detailBM": "大马羽总绩效委员会主席李宗伟承认，大马羽球队在爱知名古屋亚运会未能达标，最终只带回一枚铜牌。他促请全面检讨备战工作，为奥运做好准备。 星洲日报 已确认",
+      "source_url": "",
+      "publisher": "Meta AI 权威整理",
+      "source": "Meta AI 权威整理",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-15T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_15",
+      "image_url": null,
+      "collected_at": "2026-11-15T04:56:37.355073+08:00",
+      "site_published_at": "2026-11-15T04:56:37.355073+08:00",
+      "updated_at": "2026-11-15T04:56:37.355073+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    }
+  ],
   "2026-11-14": [
     {
       "story_index": 1,
@@ -2806,633 +3213,6 @@
       "updated_at": "2026-11-09T17:13:46+08:00",
       "is_updated": false,
       "geo_scope": "sandakan (sepilok rdc)"
-    }
-  ],
-  "2026-11-08": [
-    {
-      "id": "art_sabah_1",
-      "category": "sabah",
-      "title": "亚庇亿达公路发生夺命车祸 摩多撞回转皮卡骑士毙命 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Penunggang Motosikal Maut Kemalangan dengan Pikap Buat Pusingan U di Jalan Lintas Kota Kinabalu",
-      "detail": "（亚庇7日讯）亚庇亿达公路昨晚发生一起夺命车祸。一辆直路行驶中的摩多车与一辆正在进行回转的四驱皮卡发生猛烈碰撞，导致该名男性摩多骑士当场伤重身亡。事故于昨晚10时15分左右在城中城购物中心（City Mall）附近路段发生。事发后，交警已赶抵现场封锁调查，并全面勘验肇祸原因。",
-      "detailBM": "KOTA KINABALU: Seorang penunggang motosikal lelaki disahkan maut di tempat kejadian selepas motosikal yang ditungganginya secara lurus bertembung dengan sebuah kenderaan pikap yang membuat pusingan U di Jalan Lintas, berhampiran pusat beli-belah City Mall kira-kira jam 10.15 malam tadi. Pihak polis trafik berada di lokasi bagi menjalankan siasatan lanjut mengenai punca nahas.",
-      "source": "诗华日报沙巴版",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601551",
-      "source_urls": [
-        "https://news.seehua.com/post/1601551"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T22:50:33+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_2",
-      "category": "sabah",
-      "title": "亚庇大型爱心捐血活动 905包血液冲刺1200包目标 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Kempen Derma Darah Mega Kota Kinabalu Berjaya Kumpul 905 Beg, Sasarkan 1,200 Beg",
-      "detail": "（亚庇7日讯）由沙巴太平洋商业中心与亚庇文华狮子会联合主办的“我们爱、关怀、施予”大型爱心捐血活动今日热烈展开。活动由政府医院血库主导，并获得10多个志愿团体协同参与。截至下午5时30分，现场已成功筹获905包血液，筹委会全力向1200包的总目标冲刺，呼吁公众在今晚9时活动结束前积极响应支持。",
-      "detailBM": "KOTA KINABALU: Kempen menderma darah berskala besar anjuran bersama Pusat Beli-Belah Centre Point Sabah dan Kelab Lions Kota Kinabalu Mandarin berjaya mengumpul sebanyak 905 beg darah setakat jam 5.30 petang, dengan sasaran mencecah 1,200 beg sebelum jam 9 malam. Program kebajikan ini diterajui tabung darah hospital kerajaan dengan kerjasama lebih 10 pertubuhan sukarela tempatan.",
-      "source": "诗华日报沙巴版",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1601275",
-      "source_urls": [
-        "https://news.seehua.com/post/1601275"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T18:01:44+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_3",
-      "category": "sabah",
-      "title": "维克多料接任沙巴警察总监 职务交接预计11月10日举行 [诗华日报沙巴版 实时发布]",
-      "titleBM": "Datuk Victor Sanjos Dijangka Bakal Dilantik Sebagai Pesuruhjaya Polis Sabah Baharu",
-      "detail": "（拿笃7日讯）沙巴东部特别保安指挥区（ESSCOM）指挥官拿督维克多桑乔斯，预计将受委为新任沙巴州警察总监，以接替即将荣休的拿督赵迪帝坤。原任警察总监赵迪帝坤在警队服务超过32年，定于11月11日强制退休。消息指出，拿督维克多凭借丰富履历预计接掌帅印，警队领导职务交接仪式预计将于11月10日正式举行。",
-      "detailBM": "LAHAD DATU: Komander Kawasan Keselamatan Khas Pantai Timur Sabah (ESSCOM), Datuk Victor Sanjos dilaporkan dijangka bakal dilantik sebagai Pesuruhjaya Polis Sabah yang baharu bagi menggantikan Datuk Jauteh Dikun yang bersara wajib pada 11 November ini selepas berkhidmat lebih 32 tahun. Menurut sumber, majlis serah terima tugas rasmi dijangka berlangsung pada 10 November.",
-      "source": "诗华日报沙巴版",
-      "sources": [
-        "诗华日报沙巴版"
-      ],
-      "url": "https://news.seehua.com/post/1600890",
-      "source_urls": [
-        "https://news.seehua.com/post/1600890"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T09:22:12+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_4",
-      "category": "sabah",
-      "title": "【小彻小悟】分数之外的那一笔：比赛评审的艺术与心境反思 [沙巴星洲日报 实时发布]",
-      "titleBM": "Ruangan Renungan: Keinsafan Seorang Juri Menilai Hasil Seni Melangkaui Angka Markah",
-      "detail": "（亚庇8日讯）沙巴星洲日报地方特写专栏探讨艺术与书法比赛的评审心得。作者回顾多年担任演讲、朗诵及书法比赛评审的经历，坦言坐在评审席时始终如履薄冰，因为裁判笔下的一分一毫直接影响比赛结果与学生的自信心。作者指出，艺术鉴赏本身带有主观性，评审不仅是在衡量参赛作品的高下，更是对评审自身当下心境与责任感的深刻检视。",
-      "detailBM": "KOTA KINABALU: Ruangan renungan Sabah Sin Chew Daily membicarakan pengalaman seorang juri pertandingan seni dan kaligrafi yang menekankan keinsafan ketika memberi markah. Penulis menyatakan setiap markah juri memberi kesan kepada keyakinan pelajar, sambil mengakui bahawa penilaian seni mempunyai unsur subjektif dan juri harus sentiasa berwaspada serta tidak tergesa-gesa dalam membuat keputusan.",
-      "source": "沙巴星洲日报",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8028321",
-      "source_urls": [
-        "https://sabah.sinchew.com.my/news/20261108/sabah/8028321"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T07:00:00+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Sin Chew Sabah · Kolum Khas"
-    },
-    {
-      "id": "art_sabah_5",
-      "category": "sabah",
-      "title": "陈泓缣：以名师巡讲为起点 深化山西沙巴教育人文合作 [沙巴星洲日报 实时发布]",
-      "titleBM": "Chan Foong Hin: Siri Syarahan Pendidik Pakar Perluas Kerjasama Pendidikan Shanxi-Sabah",
-      "detail": "（亚庇8日讯）种植及原产业部副部长兼亚庇国会议员拿督陈泓缣主持2026年名师巡讲开幕礼时表示，活动特邀中国山西大学3位教育专家赴马交流，并以沙巴亚庇为全国首站，随后将前往吉打与槟城。适逢马中建交52周年，陈泓缣指出两国合作已延伸至教育人文领域，希望通过亚庇窗口搭建两地师资教学经验互鉴网络，为未来深化合作奠定坚实基础。",
-      "detailBM": "KOTA KINABALU: Timbalan Menteri Perladangan dan Komoditi merangkap Ahli Parlimen Kota Kinabalu, Datuk Chan Foong Hin ketika merasmikan program Syarahan Pendidik Pakar 2026 menyatakan acara ini menjemput tiga pakar pendidikan dari Universiti Shanxi, China ke Malaysia. Beliau berharap siri syarahan yang bermula di Kota Kinabalu sebelum ke Kedah dan Pulau Pinang ini dapat memperkukuh jaringan kerjasama pendidikan antara Shanxi dan Sabah.",
-      "source": "沙巴星洲日报",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261108/sabah/8045833",
-      "source_urls": [
-        "https://sabah.sinchew.com.my/news/20261108/sabah/8045833"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T07:00:00+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Sin Chew Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_6",
-      "category": "sabah",
-      "title": "马西迪：落实培训资格认证 推动乐龄护理迈向专业化 [沙巴星洲日报 实时发布]",
-      "titleBM": "Masidi Manjun: Laksana Pensijilan Kelayakan demi Memprofesionalkan Sektor Penjagaan Warga Emas",
-      "detail": "（亚庇7日讯）沙巴副首长兼财政部长拿督斯里马西迪曼俊出席沙巴护理支援协会（PSPS）慈善晚宴时强调，乐龄护理应被视为一门具备前景的专业职业。他指出，随着社会迈向老龄化，州政府正积极制定相关政策与培训认证体系，确保护理人员具备专业技能与耐心责任感，此举不仅能提升长者生活品质，也能为沙巴年轻人尤其是乡区青年开拓宝贵就业机会。",
-      "detailBM": "KOTA KINABALU: Timbalan Ketua Menteri merangkap Menteri Kewangan Sabah, Datuk Seri Masidi Manjun menyatakan bahawa sektor penjagaan warga emas wajar diiktiraf sebagai kerjaya profesional melalui latihan bertauliah dan pensijilan rasmi. Berucap pada majlis makan malam Persatuan Sokongan Penjagaan Sabah (PSPS), beliau menegaskan inisiatif ini bukan sahaja memenuhi keperluan masyarakat menua tetapi juga membuka peluang pekerjaan bagi belia luar bandar.",
-      "source": "沙巴星洲日报",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045875",
-      "source_urls": [
-        "https://sabah.sinchew.com.my/news/20261107/sabah/8045875"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T07:00:00+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Sin Chew Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_7",
-      "category": "sabah",
-      "title": "培育篮坛新秀需长期经费 潘志勇呼吁各界商家踊跃赞助 [沙巴星洲日报 实时发布]",
-      "titleBM": "Pembangunan Bakat Muda Bola Keranjang Perlu Dana Berterusan, Phan Chee Yong Rayu Sokongan",
-      "detail": "（斗湖7日讯）沙巴篮球总会会长兼大马篮总副会长潘志勇，在斗湖主持第32届沙巴州15岁及以下男女青少年篮球锦标赛开幕仪式时，呼吁社会各界与企业商家持续慷慨赞助。他指出，从基盘选拔、集中训练到组队出征马运会及全国青少年赛，涉及庞大的交通、食宿与器材开销，仅靠总会自身资源难以支撑，需要企业界长期注资共同培养更多沙巴年轻健儿。",
-      "detailBM": "TAWAU: Presiden Persatuan Bola Keranjang Sabah merangkap Naib Presiden Persatuan Bola Keranjang Malaysia, Phan Chee Yong menyeru sokongan tajaan berterusan daripada sektor korporat dan masyarakat ketika berucap pada pembukaan Kejohanan Bola Keranjang Remaja Bawah 15 Tahun Sabah ke-32 di Tawau. Beliau menyatakan dana diperlukan bagi menampung kos logistik, penginapan dan latihan pasukan muda bertanding di peringkat kebangsaan.",
-      "source": "沙巴星洲日报",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045848",
-      "source_urls": [
-        "https://sabah.sinchew.com.my/news/20261107/sabah/8045848"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T07:00:00+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Sin Chew Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_sabah_8",
-      "category": "sabah",
-      "title": "安迪：提供优质环境改善幼教设施 确保乡区幼儿教育不掉队 [沙巴星洲日报 实时发布]",
-      "titleBM": "Andy Suryady: Komited Sedia Persekitaran Kondusif demi Naik Taraf Kemudahan Pendidikan Awal Kanak-Kanak",
-      "detail": "（亚庇7日讯）沙巴旅游、文化及环境部助理部长拿督安迪山苏里扎为亚庇华人妇女会属下慈幼综合幼儿园演艺会主持开幕时表示，州政府致力于加强学前教育投入，通过改善教学设施为幼童打造更优良的学习环境。他强调，沙巴未来发展取决于新一代人才的培育，必须从学前幼儿抓起，特别是关注乡区与内陆地区儿童的教育需求，确保没有孩子在起跑线掉队。",
-      "detailBM": "KOTA KINABALU: Pembantu Menteri Pelancongan, Kebudayaan dan Alam Sekitar Sabah, Datuk Andy Suryady Bandy menyatakan komitmen kerajaan negeri untuk meningkatkan kualiti pendidikan awal kanak-kanak melalui penaiktarafan kemudahan prasekolah. Berucap pada konsert tahunan Tadika Chi Hwa anjuran Persatuan Wanita Cina Kota Kinabalu, beliau menegaskan asas pendidikan awal penting bagi memastikan kanak-kanak di kawasan bandar dan luar bandar tidak tercicir.",
-      "source": "沙巴星洲日报",
-      "sources": [
-        "沙巴星洲日报"
-      ],
-      "url": "https://sabah.sinchew.com.my/news/20261107/sabah/8045773",
-      "source_urls": [
-        "https://sabah.sinchew.com.my/news/20261107/sabah/8045773"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T07:00:00+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Sin Chew Sabah · Laporan Sahih"
-    },
-    {
-      "id": "art_national_9",
-      "category": "national",
-      "title": "国家元首就特赦发出严正提醒 纳吉居家服刑诉求面临司法程序考验 [新加坡海峡时报 实时发布]",
-      "titleBM": "Peringatan Yang di-Pertuan Agong Berhubung Pengampunan Bersyarat Tingkatkan Tumpuan Isu Tahanan Rumah Najib",
-      "detail": "（吉隆坡8日讯）国家元首针对前首相拿督斯里纳吉的有条件特赦事宜发表严肃声明，提醒各方尊重宪政特权，切勿就特赦决定进行无理争辩。据《海峡时报》与区域权威媒体报道，纳吉入禀法庭申请执行所谓的“附加特赦令”以寻求居家服刑，目前总检察署已就相关司法复核程序展开严谨法律评估，政府领导层亦呼吁各界维护法治权威，切勿散播不实揣测。",
-      "detailBM": "KUALA LUMPUR: Peringatan tegas Yang di-Pertuan Agong mengenai pengampunan bersyarat bekas Perdana Menteri Datuk Seri Najib Razak mendapat perhatian meluas tatkala isu permohonan perintah pelaksanaan tahanan di rumah masih berdepan pertikaian prosedur undang-undang di mahkamah. Laporan The Straits Times dan agensi serantau melaporkan perkembangan prosiding semakan kehakiman serta perbahasan undang-undang berkaitan.",
-      "source": "The Straits Times",
-      "sources": [
-        "The Straits Times"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOY0R2Q3EtVW9jSUJrVmlLeEhySkttRWkycm9LVDRidFZBNlFBT3RWTGF5d0N0N3JLWnhDOGU1dkt1cWlreHV3UGxXTVlaTkVRVmRoOF9zVGdLWHZnU3FiWXpBakk4bFZxUThxanhjTmZZeUJ2M1Y0b0dOVUNCWGJlaUFlX1F5ZDU4RGN0cDIyNlh6Vy1HeUI2NVQ0SzdGdEJyOERoQlhLVkUtUUFhdXFidlRoTGdIcXpTcTRrMXVZMWVjazg?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T11:50:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "The Straits Times · Laporan Sahih"
-    },
-    {
-      "id": "art_national_10",
-      "category": "national",
-      "title": "法米：国内线上银行系统依然稳健安全 人民银行网站故障已查明 [马来邮报 实时发布]",
-      "titleBM": "Fahmi Fadzil: Sistem Perbankan Dalam Talian Kekal Selamat Meskipun Berdepan Percubaan Serangan Siber",
-      "detail": "（布城8日讯）通讯部长法米向公众保证，我国线上银行金融系统运行稳定安全。针对日前大马人民银行（Bank Rakyat）官方门户网站出现技术中断与疑似网络攻击的疑虑，法米指出国家网络安全机构（NACSA）与国家银行均保持密切监控。人民银行随后澄清，网站故障是由第三方供应商技术失误引起，已迅速抢修恢复，客户存款与账户个人数据完全未受影响。",
-      "detailBM": "PUTRAJAYA: Menteri Komunikasi Fahmi Fadzil menegaskan bahawa sistem perbankan dalam talian negara kekal selamat susulan gangguan perkhidmatan dan kebimbangan serangan siber terhadap portal Bank Rakyat. Pihak Bank Rakyat memaklumkan bahawa gangguan akses laman web berpunca daripada isu teknikal vendor pihak ketiga dan mengesahkan bahawa dana serta maklumat pelanggan tidak terjejas.",
-      "source": "Malay Mail",
-      "sources": [
-        "Malay Mail"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQbTdwUTFHeUc5d2NFZFZmSXVDaE1EVEFYanR1ZWlmemRMdGtmaTNkbGtsV3ZOZnEzWFdPSFBhajlfSk80Y3l2MEZ3RWxDRGtLWG10akI4T0tEMXcwMFc3Ymp2VFdvSElHVEJEdm9aT0ZGY2ZMaHZjOUtjaFBfQVBubktidUZHdHcxUVhHSjFrbDJvV19mU2lJM3ZycXZFOW8wb0plTWpZMzNmYkoyaUgxSE1VY0lNSFJUQnNsWnc4NmNYOTcxSy1fZHFaVTdhUHVTV3pMctIB2gFBVV95cUxOZ2xQbHNuVGl0XzVjc3JLLVZzTWl3b0ZoOHQ3THhWN3NQZFRhWkxna240WHRwYzJWcHdvWTlZR0s1RmFPZWNGSlh4OVNtUVhoLXpfempqd1Y0RTlPRUVKOUhBcnNSa2xYbnVRaEFtRE9yZV94MXg4TlZpNF9BWGVIV2N3NkdNS3dSeGFFYTdyV3ZOblNxMnN6dTlTajduRTVWTmc3emIxUjBUZGxNZllnSl93RlFNWllQeXNvX2xQUi1wUmtfZ2hYMHlBemFBQVRPaF9IZE81Z1BLQQ?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQbTdwUTFHeUc5d2NFZFZmSXVDaE1EVEFYanR1ZWlmemRMdGtmaTNkbGtsV3ZOZnEzWFdPSFBhajlfSk80Y3l2MEZ3RWxDRGtLWG10akI4T0tEMXcwMFc3Ymp2VFdvSElHVEJEdm9aT0ZGY2ZMaHZjOUtjaFBfQVBubktidUZHdHcxUVhHSjFrbDJvV19mU2lJM3ZycXZFOW8wb0plTWpZMzNmYkoyaUgxSE1VY0lNSFJUQnNsWnc4NmNYOTcxSy1fZHFaVTdhUHVTV3pMctIB2gFBVV95cUxOZ2xQbHNuVGl0XzVjc3JLLVZzTWl3b0ZoOHQ3THhWN3NQZFRhWkxna240WHRwYzJWcHdvWTlZR0s1RmFPZWNGSlh4OVNtUVhoLXpfempqd1Y0RTlPRUVKOUhBcnNSa2xYbnVRaEFtRE9yZV94MXg4TlZpNF9BWGVIV2N3NkdNS3dSeGFFYTdyV3ZOblNxMnN6dTlTajduRTVWTmc3emIxUjBUZGxNZllnSl93RlFNWllQeXNvX2xQUi1wUmtfZ2hYMHlBemFBQVRPaF9IZE81Z1BLQQ?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T10:07:43+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "Malay Mail · Laporan Sahih"
-    },
-    {
-      "id": "art_national_11",
-      "category": "national",
-      "title": "武吉阿曼：大马游客香港机场贩毒落网 疑牵涉跨国贩毒集团 [星报 实时发布]",
-      "titleBM": "Bukit Aman: Tangkapan Dadah di Lapangan Terbang Hong Kong Berkait Sindiket Rentas Sempadan",
-      "detail": "（吉隆坡8日讯）武吉阿曼全国毒品罪案调查部（JSJN）证实，日前一名大马籍旅客在香港国际机场因鞋内暗藏违禁毒品被海关截获的案件，与本地警方正在追查的跨国毒品贩运网络存在直接关联。警方指出，跨国贩毒集团常以免费旅游或金钱报酬诱骗经济拮据者充当“毒驴”，大马警方正与国际及香港执法机构深化跨国情报共享，全力追查幕后操盘核心。",
-      "detailBM": "KUALA LUMPUR: Jabatan Siasatan Jenayah Narkotik Bukit Aman mengesahkan bahawa kes penahanan seorang pengembara dari Malaysia yang membawa bahan terlarang di Lapangan Terbang Hong Kong berkait rapat dengan rangkaian sindiket pengedaran dadah rentas sempadan yang sedang dijejaki pihak polis tempatan.",
-      "source": "The Star",
-      "sources": [
-        "The Star"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUEp1TUVTUVFCa3VhSFdrSUplc3Bjb3JMSjhOUFd5c2M3WmYtM0VBR1J4bDRwM2ljd0ZIUllFYnA0eGNSRzdVaUQwUlJYOW5VX0pzSXJ3dXNzazFwcGFCVHhpdHJpQzlpUjIxQVJMLXhVVUMzcE84ZEtnQV96V3NvNU54bXVRMGVqM2RyN2hIUUhNVzJOREdISFFFX2xTOUVqOEtoNld0RVcxQlFidGd1Mjg0UDhhVUdtQ3k0QVIwRVdNRTJxZ19LYmZZTGo?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T10:01:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "The Star · Laporan Sahih"
-    },
-    {
-      "id": "art_national_12",
-      "category": "national",
-      "title": "兵南邦少妇虐待9岁亲女判监5年 丈夫同日面对4项强奸控状 [诗华日报 实时发布]",
-      "titleBM": "Ibu Dihukum Penjara 5 Tahun Dera Anak Kandung 9 Tahun, Suami Berdepan 4 Pertuduhan Rogol",
-      "detail": "（亚庇7日讯）一名29岁少妇在兵南邦某住宅区停车场虐打其9岁亲生女儿导致受伤，今日在亚庇地庭俯首认罪，被判处入狱5年。同一天在同一法庭，其34岁丈夫则因涉嫌在住所内性侵同一名女童，面对4项强奸重罪控状。法官阿米沙强调虐待儿童罪行恶劣，案件将于后续继续展开全面审讯。",
-      "detailBM": "KOTA KINABALU: Seorang ibu berusia 29 tahun dijatuhi hukuman penjara lima tahun oleh Mahkamah Sesyen selepas mengaku bersalah mendera anak perempuannya yang berusia sembilan tahun di sebuah tempat letak kereta perumahan di Penampang. Pada hari yang sama di mahkamah yang sama, suami wanita berkenaan yang berusia 34 tahun didakwa atas empat pertuduhan merogol mangsa yang sama.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1601452",
-      "source_urls": [
-        "https://news.seehua.com/post/1601452"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T21:11:49+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
-    },
-    {
-      "id": "art_national_13",
-      "category": "national",
-      "title": "泛婆大道兵南邦路段夺命车祸 39岁摩哆骑士撞护栏当场伤重不治 [诗华日报 实时发布]",
-      "titleBM": "Kemalangan Maut di Lebuhraya Pan Borneo Penampang: Penunggang Motosikal 39 Tahun Terkorban Rempuh Penghadang",
-      "detail": "（亚庇7日讯）泛婆罗洲大道兵南邦甘榜Tanaki附近路段昨晚8时34分发生严重车祸。一名现年39岁的男性摩多骑士在由必打丹驶往甘榜伊诺邦途中，疑失控猛撞路旁石墩防护栏，摩多翻覆损毁，骑士倒伏路面重伤。医护人员到场检查证实骑士已无生命体征，宣布当场毙命。兵南邦警区代主任阿丽珊蒂助理警监证实了此起事故。",
-      "detailBM": "PENAMPANG: Seorang penunggang motosikal lelaki berusia 39 tahun disahkan maut di tempat kejadian selepas motosikalnya hilang kawalan lalu merempuh benteng pembahagi jalan konkrit di jajaran Lebuhraya Pan Borneo berhampiran Kampung Tanaki, Penampang sekitar jam 8.34 malam. Pemangku Ketua Polis Daerah Penampang, ASP Alisandey Aziz mengesahkan mangsa dalam perjalanan dari Putatan menghala ke Kampung Inobong.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1601110",
-      "source_urls": [
-        "https://news.seehua.com/post/1601110"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T14:15:39+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
-    },
-    {
-      "id": "art_national_14",
-      "category": "national",
-      "title": "假冒万字票中奖支票骗财骗金饰 拿笃警方逮捕2名印尼籍男子 [诗华日报 实时发布]",
-      "titleBM": "Tipu Cek Palsu Kemenangan Nombor Ramalan: Polis Lahad Datu Tahan 2 Warga Asing, Buru Rakan Subahat",
-      "detail": "（拿笃7日讯）拿笃警方商业罪案调查组侦破一起以假万字票兑奖为诱饵的诈骗案，成功逮捕2名年龄分别为51岁及52岁的印尼籍男嫌犯。警方文告指出，嫌犯专挑年长女性下手，谎称需受害者提供现金或金饰作为领取奖金的保证金，随后趁机载受害者至投注站外弃车逃逸。警方现场查扣一辆国产轿车及伪造支票，并正全力追缉另一名在逃同伙。",
-      "detailBM": "LAHAD DATU: Bahagian Siasatan Jenayah Komersial IPD Lahad Datu berjaya menahan dua lelaki warga Indonesia berusia 51 dan 52 tahun yang disyaki memperdaya seorang wanita menyerahkan wang tunai serta barang kemas kononnya sebagai wang jaminan menuntut hadiah nombor ramalan. Ketua Polis Daerah Lahad Datu, ACP Dzulbaharin Ismail memaklumkan polis turut merampas sebuah kereta Perodua serta sekeping cek palsu dan sedang mengesan seorang lagi rakan subahat.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1600846",
-      "source_urls": [
-        "https://news.seehua.com/post/1600846"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T08:16:16+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
-    },
-    {
-      "id": "art_national_15",
-      "category": "national",
-      "title": "古晋达闽路展开酒驾大取缔 警方通宵设卡截查逮捕2名违规男子 [诗华日报 (砂拉越版) 实时发布]",
-      "titleBM": "Op Mabuk Jalan Tabuan Kuching: Polis Tahan 2 Pemandu Kereta Memandu di Bawah Pengaruh Alkohol",
-      "detail": "（古晋8日讯）古晋警区交通调查及执法组于6日深夜在达闽路展开“酒驾取缔行动（Op Mabuk）”。行动中共拦查45人及32辆各类交通工具，并就违规行为开出17张罚单。期间，两名年龄分别为20岁及30岁的本地男子，因酒测超标涉嫌在酒精影响下危险驾驶，被警方依据1987年陆路交通法令第45A(1)条文当场扣押调查。",
-      "detailBM": "KUCHING: Bahagian Siasatan dan Penguatkuasaan Trafik IPD Kuching menahan dua lelaki berusia 20 dan 30 tahun dalam Op Mabuk di Jalan Tabuan kerana memandu di bawah pengaruh alkohol di bawah Seksyen 45A(1) Akta Pengangkutan Jalan 1987. Ketua Polis Daerah Kuching, ACP Alexson Naga Chabu menyatakan sebanyak 17 saman turut dikeluarkan selepas pemeriksaan ke atas 45 individu dan 32 kenderaan.",
-      "source": "诗华日报 (砂拉越版)",
-      "sources": [
-        "诗华日报 (砂拉越版)"
-      ],
-      "url": "https://news.seehua.com/post/1601592",
-      "source_urls": [
-        "https://news.seehua.com/post/1601592"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T08:13:17+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sarawak",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Sarawak · Laporan Sahih"
-    },
-    {
-      "id": "art_national_16",
-      "category": "national",
-      "title": "张健仁率队走访古晋基层 强调反对党在州议会履行监督职能重要性 [诗华日报 (砂拉越版) 实时发布]",
-      "titleBM": "Chong Chieng Jen: Pertahan Suara Rakyat di Parlimen dan DUN, Harap Pengundi Terus Beri Mandat Sokong DAP",
-      "detail": "（古晋7日讯）砂行动党主席张健仁率领服务团队走访石角德莎威拉及古晋城市广场，展开例常基层走动并派售《火箭报》。张健仁向媒体表示，民众普遍认同议会监督的必要性。他重申反对党民意代表在州立法议会扮演关键制衡角色，必须持续替纳税人严密把关庞大基建项目的透明度与政府公款开销，确保公帑真正造福民生。",
-      "detailBM": "KUCHING: Pengerusi DAP Sarawak, Chong Chieng Jen mengadakan sesi tinjauan mesra dan edaran akhbar Roket di Desa Wira, Batu Kawah serta CityONE Kuching bagi mendengar maklum balas masyarakat. Beliau menegaskan kepentingan fungsi semak dan imbang wakil rakyat pembangkang dalam Dewan Undangan Negeri Sarawak bagi memastikan ketelusan perbelanjaan dana awam dan projek pembangunan negeri.",
-      "source": "诗华日报 (砂拉越版)",
-      "sources": [
-        "诗华日报 (砂拉越版)"
-      ],
-      "url": "https://news.seehua.com/post/1601547",
-      "source_urls": [
-        "https://news.seehua.com/post/1601547"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T22:45:53+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sarawak",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Sarawak · Laporan Sahih"
-    },
-    {
-      "id": "art_sports_17",
-      "category": "sports",
-      "title": "韩国羽球公开赛：防守失误困扰 万炜聪与郑凯文激战止步半决赛 [世界羽联 + 星报 双核实]",
-      "titleBM": "Terbuka Korea: Kerapuhan Benteng Bertahan Sekat Kemaraan Beregu Man Wei Chong-Tee Kai Wun di Separuh Akhir",
-      "detail": "（益山讯）在韩国羽球公开赛男双半决赛中，我国国家队组合万炜聪与郑凯文苦战三局，最终遗憾不敌赛会种子选手，无缘晋级决赛。据《星报》体育报道，教练组赛后分析指出，关键分上的防守漏洞与接发球失误成为落败主因，但两人在本届巡回赛杀入四强的表现，仍为接下来出征世界羽联年终总决赛积累了宝贵积分。",
-      "detailBM": "IKSAN: Beregu lelaki negara Man Wei Chong dan Tee Kai Wun terkandas di pusingan separuh akhir Terbuka Korea selepas tumpas kepada gandingan pilihan dalam aksi yang sengit. Laporan sukan The Star melaporkan kerapuhan pertahanan menjadi cabaran utama pasangan negara ketika cuba mengekalkan rentak permainan di litar Jelajah BWF.",
-      "source": "The Star",
-      "sources": [
-        "BWF World Tour",
-        "The Star"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMisgFBVV95cUxQX3RwVjRKUENvOU1CSDV4MWgzVkE0azJfWlhKYlRfbHNmd1ZoTF9zRkY2djZvczRaX2NES0hTTjRTTWwwY2NBekluejhjYjJmS0kyY0JZX3NrRTRPLXU2eG5oRUtQUUxGNEUzNzU5aV9VVFJ1NEMydnNQajdPYm5TYnVhNXVQN0ZuUkhGRGx6aUlYb1oxRHJLelJiMGpRd0RNZVNQMzV2WDJPUmJHdFFGZUJn?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T09:08:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sandakan",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "The Star & BWF · Laporan Sahih"
-    },
-    {
-      "id": "art_sports_18",
-      "category": "sports",
-      "title": "英超联赛：诺丁汉森林爆冷 3 比 1 击溃曼城 卫冕冠军遭遇三连败 [ESPN 实时发布]",
-      "titleBM": "Liga Perdana Inggeris: Nottingham Forest Cipta Kejutan Benam Manchester City 3-1",
-      "detail": "（诺丁汉讯）英格兰超级联赛爆出大冷门，诺丁汉森林坐镇城市球场以 3 比 1 力克卫冕冠军曼彻斯特城队。森林队凭借犀利高效的反击战术连入三球，前锋德拉普表现亮眼。瓜迪奥拉麾下的曼城后防线屡屡出现漏洞，此役失利后曼城在英超赛场已遭遇罕见的三连败，与联赛领头羊的积分差距进一步被拉大。",
-      "detailBM": "NOTTINGHAM: Nottingham Forest mencatat kejutan sensasi apabila menumbangkan juara bertahan Manchester City 3-1 di City Ground, sekali gus menyaksikan skuad kendalian Pep Guardiola mengalami kekalahan ketiga berturut-turut dalam saingan Liga Perdana Inggeris.",
-      "source": "ESPN",
-      "sources": [
-        "ESPN"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNN2MzVkdXN2l2Z2p5Y25pMjhGVnl6a005RVUzV3VQNGZpX0hVeWt5cG80Nlpfa1FxZGxJOHRuV01FLXY1VWQwTlAxSGRKUW1PbG9zallhTERPR1JpOXU3RkRzMTNFZmNzdDNobi1IRF9vUEtzYldYR2VEWVZadmxPN0sySXRkdXR5OXVwaS15S1Z4aWlNVXV1bG9mdHFVbWhSRWM4Zmp3WjI?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNN2MzVkdXN2l2Z2p5Y25pMjhGVnl6a005RVUzV3VQNGZpX0hVeWt5cG80Nlpfa1FxZGxJOHRuV01FLXY1VWQwTlAxSGRKUW1PbG9zallhTERPR1JpOXU3RkRzMTNFZmNzdDNobi1IRF9vUEtzYldYR2VEWVZadmxPN0sySXRkdXR5OXVwaS15S1Z4aWlNVXV1bG9mdHFVbWhSRWM4Zmp3WjI?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T19:30:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "ESPN · Laporan Sahih"
-    },
-    {
-      "id": "art_sports_19",
-      "category": "sports",
-      "title": "李宗伟羽球学院毕业生扬威国际 为阿联酋夺得青奥会首枚羽球金牌 [新海峡时报 实时发布]",
-      "titleBM": "Graduan Akademi Lee Chong Wei Hadiahkan Pingat Emas Bersejarah Badminton Sukan Olimpik Remaja Buat UAE",
-      "detail": "（达喀尔讯）曾在马来西亚李宗伟羽毛球学院长期接受专业高强度训练的17岁羽坛新星里扬·马尔汗（Riyan Malhan），在达喀尔青年奥林匹克运动会男子单打决赛中勇夺桂冠，为阿拉伯联合酋长国（UAE）斩获该国历史上首枚青奥会羽毛球金牌。该项突破获得海湾地区及大马体育界的高度赞誉。",
-      "detailBM": "DAKAR: Bekas pelatih Akademi Badminton Lee Chong Wei di Malaysia, Riyan Malhan yang berusia 17 tahun melakar sejarah dengan merangkul pingat emas pertama untuk Emiriah Arab Bersatu (UAE) dalam acara badminton perseorangan lelaki di Sukan Olimpik Remaja.",
-      "source": "NST Online",
-      "sources": [
-        "NST Online"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMivAFBVV95cUxNclpDOFZ3dkQzNUg2T2I0T2R4UTE4VjdEUGNVTzFoYUVJRFpTMTZaUThEeXdtRWtEYWdEb1R5VGdtYUk2X1YwNEhnRWtwV0NRZUY0MG1LZnpGNEc5aWpWcXpGM3g0ZmhJSTRCbjZadHAtU1hPaHY3dUNSc3FiUHRTd3p6dWRzM2hzNXphTkRXNDFaUVBYaFF3LVNINlFFMllWaENPQ3E1eHR1TmVhYjZvQXptSmxKcFdIM2NEVtIBwgFBVV95cUxQWm42cFBzcGlvS2xhMWpmbzFBSmh0OURaZnBIMHNMNEtUVTFzS3VVYWM5SlJFZ3d4SFR6dDM4dUg0V1h2cXRuUlAxa2xVU0VMQ1dxcE8tYW1RU3lZM3Fxckw0MEk2MkpnWXQwNElUNEh2OC0xemZNZi11d25rWnU2bUZVbThsSnFFUmtxeTV3dXJ0UURiTFBLUGlPTTlCdlJ2R3gxNU82NDVyV181LUMxMC1LS0NLR3BDY25kZlcxaUk1QQ?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T10:47:17+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "NST Online · Laporan Sahih"
-    },
-    {
-      "id": "art_sports_20",
-      "category": "sports",
-      "title": "葡萄牙名帅热苏斯谈 C 罗退出国家队传闻：问心无愧 球员更迭属自然规律 [ESPN 实时发布]",
-      "titleBM": "Jorge Jesus: Saya Tidak Rasa Bersalah Berhubung Keputusan Persaraan Antarabangsa Cristiano Ronaldo",
-      "detail": "（里斯本讯）葡萄牙资深主帅若热·热苏斯接受体育专访时，针对克里斯蒂亚诺·罗纳尔多（C 罗）在国家队的未来及退役话题作出坦率回应。热苏斯明确表示自己“问心无愧”，并强调无论多伟大的传奇球星，职业生涯终将迎来新老交替的必然阶段，外界无需过度解读，C 罗为葡萄牙足球建立的历史功勋早已不可磨灭。",
-      "detailBM": "LISBON: Pengendali bola sepak veteran Portugal, Jorge Jesus menyatakan bahawa beliau tidak merasa bersalah berhubung isu persaraan Cristiano Ronaldo daripada skuad antarabangsa Portugal, sambil menegaskan bahawa setiap pemain akhirnya akan melalui fasa peralihan karier.",
-      "source": "ESPN",
-      "sources": [
-        "ESPN"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeXlTdlRubGNJMngxR1VxLXBhWXJ5eTl1aWNkUTdFS0JXLTZKQTdmTzJrZlVUTUZkUjlVbHRGaVJTVTRqZm0yX1MyeW9Dd1FsS3MtVm5xeHdSUy00YWYwaGNpM2RQSEU3dnVXY0xyT1ZkNTlkZFIyZkZPYk8wYXBRekc0ZE1yU09lY0Q0Ri0zVkh1MVpKakplRUlBVDRxTWhtRG9lQ3l2U2Y?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-06T19:22:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "ESPN · Laporan Sahih"
-    },
-    {
-      "id": "art_sports_21",
-      "category": "sports",
-      "title": "中国综合格斗冠军张伟丽坦言：赛场外面临家人频繁催婚与相亲压力 [星报 实时发布]",
-      "titleBM": "Juara Dunia MMA Zhang Weili Akui Tertekan Dituntut Keluarga Segera Cari Jodoh dan Pasangan Hidup",
-      "detail": "（北京讯）世界终极格斗冠军赛（UFC）草量级世界冠军张伟丽日前在访谈中罕见分享了个人生活趣事。37岁的她坦言，尽管在八角笼擂台上叱咤风云、多次成功卫冕金腰带，但在赛场之外依然要面对长辈与家人频繁的相亲安排与催婚压力。她幽默地表示，如何在日复一日的魔鬼训练与传统家庭期望之间保持平衡是人生的一大课题。",
-      "detailBM": "BEIJING: Juara seni mempertahankan diri campuran (MMA) wanita, Zhang Weili mendedahkan bahawa beliau berdepan tekanan daripada keluarganya yang mendesak beliau menghadiri janji temu suai kenal dan mencari pasangan hidup, di samping komitmen latihannya di arena UFC.",
-      "source": "The Star",
-      "sources": [
-        "The Star"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNdkFuWm41X0xYc3VtVU1odXR0WHo4VUd4NGpxeXdXQUNkdm1STUdxVjFzVXUzOGxEQmZUd3pGeW5pbEVoUmwzbS1VdmFpNm5UdkdCS2J4TVFDd3RYOWtVdXlNZ1NzcjdPSXJvYzFjOWpUR29OVVlzMGppdzRFVExNUnhaY0ZvQ2F1ZkZJb0cyVVRqR3YxNG1MVWJnTkx3STlhRWF2bzBEdGczRF9MTTZiNl9GQmZnY3V6SFd2dWpicFZwTi1taV8xUmJHcVphT01JQlNkN2hMdWpHYkxTWmhGTVEzQzlPUQ?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T05:48:00+00:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "The Star · Laporan Sahih"
-    },
-    {
-      "id": "art_general_22",
-      "category": "general",
-      "title": "妻子家中安装监视器拍下80多次女性上门 指控丈夫出轨提告离婚败诉 [诗华日报 实时发布]",
-      "titleBM": "Pasang CCTV di Rumah Rakam Kehadiran Tetamu Wanita 80 Kali, Tuntutan Cerai Isteri Ditolak Mahkamah",
-      "detail": "（厦门8日讯）中国福建厦门一名吴姓女子为搜集丈夫出轨证据，在家中卧室电视插孔隐蔽安装摄像头，称3个月内拍下逾80次不同女性出入画面，并据此提告离婚及要求损害赔偿。一审法院审理后裁定，原告在夫妻私密卧室内以秘密窥探方式取证，严重侵犯他人隐私权且违背公序良俗，该非法视听证据不予采信，判决驳回诉请。原告已提出上诉。",
-      "detailBM": "XIAMEN: Mahkamah di Xiamen, Fujian menolak tuntutan cerai seorang wanita terhadap suaminya selepas rakaman kamera litar tertutup (CCTV) yang dipasang secara rahsia di dalam bilik tidur tidak diterima sebagai bukti kerana melanggar privasi secara tidak sah. Wanita itu mendakwa kamera merakam lebih 80 kehadiran wanita dalam tempoh tiga bulan, namun mahkamah mendapati kaedah pengumpulan bukti berkenaan tidak mematuhi prinsip undang-undang.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1601651",
-      "source_urls": [
-        "https://news.seehua.com/post/1601651"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T09:13:08+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
-    },
-    {
-      "id": "art_general_23",
-      "category": "general",
-      "title": "美国17岁少女遭绑架囚禁逾500天 巧妙利用手游《Among Us》发暗号成功获救 [诗华日报 实时发布]",
-      "titleBM": "Remaja Perempuan Hilang Lebih 500 Hari Berjaya Diselamatkan Menerusi Isyarat Mesej Permainan Video Telefon",
-      "detail": "（华盛顿8日讯）美国犹他州一名17岁少女失踪长达521天，遭一名39岁男子拐骗囚禁于俄勒冈州地下室并遭受暴力虐待。少女在被禁锢17个月后，机警地通过手机游戏《Among Us》向对战玩家发出隐蔽求救讯息。一名玩家母亲察觉异样后立即报案，联邦调查局（FBI）与当地警方根据IP地址迅速展开突袭营救，少女于11月1日平安获释，嫌犯当场被捕。",
-      "detailBM": "WASHINGTON: Seorang remaja perempuan berusia 17 tahun dari Utah yang diculik dan dikurung selama lebih 500 hari oleh seorang lelaki berusia 39 tahun di Oregon berjaya diselamatkan selepas menghantar isyarat kecemasan melalui permainan mudah alih \"Among Us\". Tindakan seorang ibu pemain lain yang membuat laporan polis membolehkan pihak FBI bertindak menyelamatkan mangsa.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1601601",
-      "source_urls": [
-        "https://news.seehua.com/post/1601601"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T07:42:49+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
-    },
-    {
-      "id": "art_general_24",
-      "category": "general",
-      "title": "砂拉越选举定于12月12日投票 全砂82个州席迎来多党激烈角逐 [诗华日报 (砂拉越版) 实时发布]",
-      "titleBM": "Rebutan 82 Kerusi DUN Sarawak: Pilihan Raya Negeri Bakal Saksikan Pertembungan Sengit Pelbagai Parti",
-      "detail": "（古晋7日讯）大马选举委员会正式宣布第13届砂拉越州选举日程：11月28日提名，12月8日提前投票，12月12日为正式投票日，竞选期共14天。全砂82个州议席将展开新一轮政治版图洗牌，执政的砂拉越政党联盟（GPS）已宣布全面出战82席，在野的砂希盟、伊党及多个砂本土政党亦陆续公布排兵布阵，预料多达数十个选区将再度出现多角混战。",
-      "detailBM": "KUCHING: Menjelang Pilihan Raya Negeri Sarawak ke-13 yang ditetapkan pada 12 Disember dengan penamaan calon pada 28 November, kesemua 82 kerusi Dewan Undangan Negeri (DUN) bakal menyaksikan persaingan sengit antara Gabungan Parti Sarawak (GPS) yang bertanding di semua kerusi menentang parti pembangkang serta calon bebas.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1601288",
-      "source_urls": [
-        "https://news.seehua.com/post/1601288"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-07T18:21:11+08:00",
-      "collected_at": "2026-11-08T09:29:29.296278+08:00",
-      "site_published_at": "2026-11-08T09:29:32.531436+08:00",
-      "updated_at": "2026-11-08T09:29:32.531436+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "richBM": null,
-      "tag": null,
-      "tagBM": "See Hua Daily · Laporan Sahih"
     }
   ]
 }
