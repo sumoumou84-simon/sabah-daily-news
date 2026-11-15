@@ -109,7 +109,28 @@ class TestCoverGenerator(unittest.TestCase):
             f"足球新闻未匹配到足球底图: {bg_soccer.name}"
         )
 
-        # 7. 回退测试：未命中全局关键词时，回退至板块对应目录抽取
+        # 7. 新增高优先级语义规则测试：治安与刑事警务
+        bg_police = gen.select_background("national", "警方跨州追捕刺伤案嫌犯，取缔非法窝点并依法扣查")
+        self.assertTrue(
+            "investigators" in bg_police.name.lower(),
+            f"治安警务新闻未匹配到刑侦调查底图: {bg_police.name}"
+        )
+
+        # 8. 新增高优先级语义规则测试：陆路交通与事故
+        bg_traffic = gen.select_background("sabah", "陆路交通局JPJ突击长巴车祸隐患与路障联合排查")
+        self.assertTrue(
+            any(pat in bg_traffic.name.lower() for pat in ["officers_inspecting_bus", "taxis", "image_20261109_205524", "image_20261109_205602", "image_20261109_205757"]),
+            f"交通事故新闻未匹配到陆路交通底图: {bg_traffic.name}"
+        )
+
+        # 9. 新增高优先级语义规则测试：水电公用设施
+        bg_utility = gen.select_background("national", "沙巴水务局JANS与SESB调度水压通报断水制水停电抢修")
+        self.assertTrue(
+            any(pat in bg_utility.name.lower() for pat in ["utility_workers", "image_20261109_210654", "image_20261109_210740"]),
+            f"水电公用设施新闻未匹配到电力水务底图: {bg_utility.name}"
+        )
+
+        # 10. 回退测试：未命中全局关键词时，回退至板块对应目录抽取
         gen_fallback = CoverGenerator()
         bg_fallback_sports = gen_fallback.select_background("sports", "某项没有任何预设关键词的普通活动通报")
         self.assertEqual(bg_fallback_sports.parent.name, "sports", f"回退抽取板块错误: {bg_fallback_sports}")
@@ -155,11 +176,15 @@ class TestCoverGenerator(unittest.TestCase):
         )
 
         cover_path = BASE_DIR / cover_rel.lstrip("./")
-        self.assertTrue(cover_path.exists(), f"生成的封面文件不存在: {cover_path}")
+        try:
+            self.assertTrue(cover_path.exists(), f"生成的封面文件不存在: {cover_path}")
 
-        with Image.open(cover_path) as img:
-            self.assertEqual(img.size, (1200, 675))
-            self.assertEqual(img.mode, "RGB")
+            with Image.open(cover_path) as img:
+                self.assertEqual(img.size, (1200, 675))
+                self.assertEqual(img.mode, "RGB")
+        finally:
+            if cover_path.exists():
+                cover_path.unlink()
 
         # 检查渐变遮罩矩阵：上半部分透明（0），下半部分渐增至 225
         gradient = create_bottom_gradient_mask(1200, 675, (10, 25, 47))

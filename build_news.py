@@ -30,9 +30,9 @@ def get_myt_datetime():
 
 def extract_tags_and_sources(title, detail):
     """提取双核实标签、信源与纯文本"""
-    verify_match = re.search(r'\[(.*?)\]', title)
+    verify_match = re.search(r'\\?\[(.*?)核实.*?\\?\]', title) or re.search(r'\\?\[(.*?)\]', title)
     verified_tag = verify_match.group(1) if verify_match else "双官方来源交叉核实"
-    clean_title = re.sub(r'\[.*?\]', '', title).strip()
+    clean_title = re.sub(r'\\?\[.*?\\?\]', '', title).replace('\\', '').strip()
 
     sources = []
     if "来源：" in detail or "来源:" in detail:
@@ -596,6 +596,33 @@ def generate_index_html():
         """
 
     # 3.5 动态构建顶部【今日重点聚焦】跑马灯条内容（纯中文，动态提取前 6 条重点或各板块头条）
+    # 公用事业触发条件：仅当水务/电力/气象卡片处于【抢修中】或【预警中】（LIVE）状态时，才推入顶部红色跑马灯；【待核实】（常态例行监测）不再触发
+    marquee_util_items = []
+    for u in default_utils:
+        u_status = str(u.get("status", "")).strip()
+        is_repairing = "抢修中" in u_status
+        is_warning = "预警中" in u_status
+        if is_repairing or is_warning:
+            u_label = u.get("label", "公用民生")
+            u_title = u.get("title") or u.get("issue", "")
+            # 正则清洗 [1] [2] 冗余编号
+            u_clean_title = re.sub(r'\[\d+\]', '', u_title).strip()
+            if len(u_clean_title) > 36:
+                u_clean_title = u_clean_title[:36] + "..."
+
+            emoji = "🚨" if is_repairing else "⚠️"
+            if "水" in u_label or "水" in u_title:
+                emoji = "💧" if is_repairing else "⚠️"
+            elif "电" in u_label or "电" in u_title or "SESB" in u_label:
+                emoji = "⚡"
+            elif "气象" in u_label or "雨" in u_title or "风" in u_title:
+                emoji = "🌀"
+
+            marquee_util_items.append({
+                "emoji": emoji,
+                "text": f"[{u_status}] {u_label}：{u_clean_title}"
+            })
+
     by_cat_headlines = {}
     for h in headlines:
         c = h.get("category", "sabah")
@@ -632,9 +659,19 @@ def generate_index_html():
         return "🔥"
 
     marquee_spans = []
+    # 先推入突发公用事业 LIVE 播报
+    for u_item in marquee_util_items:
+        marquee_spans.append(f"""<span><span class="lang-zh">{u_item['emoji']} {u_item['text']}</span></span>""")
+
     for h_item in marquee_selected:
         m_cat = h_item.get("category", "sabah")
         m_title = h_item.get("title", "").strip()
+        # 清洗 [1] [2] 及 \[1\] \[2\] 冗余编号与角标
+        m_title = re.sub(r'\\?\[\d+\\?\]', '', m_title)
+        m_title = re.sub(r'\\?\[(沙巴|全国|体育|综合|国际|民生)\\?\]', '', m_title)
+        m_title = re.sub(r'\\?\[.*?核实.*?\\?\]', '', m_title)
+        m_title = m_title.replace('\\', '').strip()
+        m_title = re.sub(r'\s+', ' ', m_title).strip()
         m_emoji = _resolve_marquee_emoji(m_cat, m_title)
         marquee_spans.append(f"""<span><span class="lang-zh">{m_emoji} {m_title}</span></span>""")
 
@@ -933,6 +970,16 @@ def generate_index_html():
             border-color: #FFD60A;
             color: #FFD60A;
         }}
+        .theme-dark .share-btn {{
+            background-color: #1E293B;
+            border-color: #334155;
+            color: #CBD5E1;
+        }}
+        .theme-dark .share-btn:hover {{
+            background-color: #243247;
+            border-color: #FFD60A;
+            color: #FFD60A;
+        }}
         .theme-dark .header-nav-bar {{
             background-color: #0F172A !important;
             border-color: #334155 !important;
@@ -1208,6 +1255,16 @@ def generate_index_html():
         }}
         .theme-light .theme-toggle-btn:hover {{
             background-color: #E2E8F0;
+        }}
+        .theme-light .share-btn {{
+            background-color: #F8FAFC;
+            border-color: #CBD5E1;
+            color: #334155;
+        }}
+        .theme-light .share-btn:hover {{
+            background-color: #F1F5F9;
+            border-color: #F59E0B;
+            color: #B45309;
         }}
         .theme-light .header-nav-bar {{
             background-color: #FFFFFF !important;
@@ -1516,13 +1573,19 @@ def generate_index_html():
         .goog-te-banner-frame.skiptranslate,
         .goog-te-banner-frame,
         iframe.goog-te-banner-frame,
+        .skiptranslate > iframe,
+        iframe.skiptranslate,
         #goog-gt-tt,
         .goog-te-balloon-frame {{
             display: none !important;
             visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            height: 0 !important;
+            width: 0 !important;
         }}
         body {{
-            top: 0px !important;
+            top: 0 !important;
             position: static !important;
         }}
         #google_translate_element {{
@@ -1560,13 +1623,6 @@ def generate_index_html():
                         <span class="lang-zh">每日晨报</span>
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
-
-                    <!-- 一键分享按钮 (大屏展示文字，超小屏收起以确保完全不占空间) -->
-                    <button onclick="sharePage()" class="hidden sm:inline-flex items-center gap-1 px-2 py-[3px] rounded-[6px] bg-[#1c1c1c] hover:bg-[#282828] text-[#FFD60A] border border-[#FFD60A]/40 text-[11px] font-black transition-all shadow-sm active:scale-95 cursor-pointer shrink-0 whitespace-nowrap" title="一键分享当前页面给好友">
-                        <span>🔗</span>
-                        <span class="lang-zh">一键分享</span>
-                        <span class="lang-bm hidden">Kongsi</span>
-                    </button>
                 </div>
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
@@ -1577,25 +1633,32 @@ def generate_index_html():
                 </div>
             </div>
 
-            <!-- 右侧精简三大控件：深浅模式切换 + WA 分享按钮 + 🌐 翻译下拉按钮 (移除旧黄色中文按钮，彻底杜绝手机端拥挤遮挡) -->
-            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <!-- 右侧精简四大操作控件：深浅模式切换 + 一键分享 + WA 互动 + 🌐 翻译下拉按钮 -->
+            <div class="flex items-center gap-1 sm:gap-1.5 md:gap-2 shrink-0">
                 <!-- 1. ☀️ 日间浅色 / 🌙 夜间深色 模式切换 -->
-                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 px-2 py-[3.5px] sm:px-2.5 sm:py-[4px] rounded-full text-[10.5px] sm:text-[11.5px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
+                <button id="btn-theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn shrink-0 inline-flex items-center justify-center gap-1 px-1.5 py-[3px] sm:px-2.5 sm:py-[4px] rounded-full text-[10px] sm:text-[11.5px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="切换浅色纸质模式 / 深色黑金模式">
                     <span id="theme-icon">☀️</span>
                     <span id="theme-text" class="lang-zh">浅色</span>
                     <span id="theme-text-bm" class="lang-bm hidden">Cerah</span>
                 </button>
 
-                <!-- 2. WA 互动与分享按钮 -->
-                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full bg-[#14532d] border border-[#166534] text-[10.5px] sm:text-[11.5px] text-[#4ade80] hover:bg-[#166534] transition notranslate shrink-0 whitespace-nowrap shadow-sm" translate="no" title="联络 WhatsApp 互动分享">
-                    <span class="w-[6px] h-[6px] sm:w-[7px] sm:h-[7px] rounded-full bg-[#22c55e]"></span>
+                <!-- 2. 一键分享按钮 (紧凑设计，全设备显示，不挤压 Logo) -->
+                <button type="button" onclick="sharePage()" class="share-btn shrink-0 inline-flex items-center justify-center gap-0.5 sm:gap-1 px-1.5 py-[3px] sm:px-2.5 sm:py-[4px] rounded-full text-[10px] sm:text-[11.5px] font-bold transition-all border cursor-pointer whitespace-nowrap shadow-sm" title="一键分享今日晨报给好友">
+                    <span>🔗</span>
+                    <span class="lang-zh">分享</span>
+                    <span class="lang-bm hidden">Kongsi</span>
+                </button>
+
+                <!-- 3. WA 互动与分享按钮 -->
+                <a href="https://wa.me/60109301117" target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-[3px] sm:py-[4px] rounded-full bg-[#14532d] border border-[#166534] text-[10px] sm:text-[11.5px] text-[#4ade80] hover:bg-[#166534] transition notranslate shrink-0 whitespace-nowrap shadow-sm" translate="no" title="联络 WhatsApp 互动分享">
+                    <span class="w-[5px] h-[5px] sm:w-[7px] sm:h-[7px] rounded-full bg-[#22c55e]"></span>
                     <span class="hidden sm:inline">WhatsApp</span>
                     <span class="inline sm:hidden">WA</span>
                 </a>
 
-                <!-- 3. 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
+                <!-- 4. 🌐 免费 Google Website 网页自动翻译控件 (中文 / BM / EN) -->
                 <div class="relative inline-block text-left shrink-0 notranslate" translate="no" id="translate-dropdown-container">
-                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-[3.5px] sm:py-[4px] rounded-full text-[10.5px] sm:text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
+                    <button type="button" onclick="toggleTranslateMenu(event)" id="btn-translate-trigger" class="inline-flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2.5 py-[3px] sm:py-[4px] rounded-full text-[10px] sm:text-[11.5px] font-bold border transition-all cursor-pointer whitespace-nowrap bg-black/40 hover:bg-black/60 text-white border-white/20 shadow-sm" title="一键网页翻译：中文 / Bahasa Melayu / English">
                         <span>🌐</span>
                         <span id="current-lang-label">翻译</span>
                         <span class="text-[8px] sm:text-[9px] opacity-70">▼</span>
@@ -2301,6 +2364,17 @@ def generate_index_html():
         }}
         window.quickNavCategory = quickNavCategory;
 
+        // 语系判断辅助函数 (彻底避免因旧元素移除导致的 TypeError)
+        function isMalayLanguage() {{
+            const btnBm = document.getElementById('btn-lang-bm');
+            if (btnBm && btnBm.classList.contains('bg-[#FFD60A]')) return true;
+            const langLabel = document.getElementById('current-lang-label');
+            if (langLabel && langLabel.textContent.trim() === 'BM') return true;
+            const m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+            if (m && m[1] && decodeURIComponent(m[1]).endsWith('/ms')) return true;
+            return false;
+        }}
+
         // 一键分享功能
         function sharePage() {{
             const shareTitle = document.title || '西门看看网 · 每日晨报';
@@ -2308,8 +2382,9 @@ def generate_index_html():
             if (navigator.share) {{
                 navigator.share({{
                     title: shareTitle,
-                    text: '西门看看网：沙巴山打根全自动双核实晨报与民生调度！',
                     url: shareUrl
+                }}).then(() => {{
+                    showToast('已复制今日晨报链接！', 'Pautan edisi pagi telah disalin!');
                 }}).catch(err => {{
                     if (err.name !== 'AbortError') {{
                         copyUrlToClipboard();
@@ -2324,7 +2399,7 @@ def generate_index_html():
             const url = window.location.href;
             if (navigator.clipboard && navigator.clipboard.writeText) {{
                 navigator.clipboard.writeText(url).then(() => {{
-                    showToast('✅ 晨报链接已复制，快去发给好友吧！', '✅ Pautan telah disalin ke papan keratan!');
+                    showToast('已复制今日晨报链接！', 'Pautan edisi pagi telah disalin!');
                 }}).catch(() => {{
                     promptFallback(url);
                 }});
@@ -2334,7 +2409,22 @@ def generate_index_html():
         }}
 
         function promptFallback(url) {{
-            prompt('请复制以下西门看看网晨报网址：', url);
+            const tempInput = document.createElement('input');
+            tempInput.value = url;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            let copied = false;
+            try {{
+                copied = document.execCommand('copy');
+            }} catch (e) {{
+                copied = false;
+            }}
+            document.body.removeChild(tempInput);
+            if (copied) {{
+                showToast('已复制今日晨报链接！', 'Pautan edisi pagi telah disalin!');
+            }} else {{
+                prompt('请长按复制以下西门看看网晨报网址：', url);
+            }}
         }}
 
         function showToast(msgZh, msgBm) {{
@@ -2345,8 +2435,7 @@ def generate_index_html():
                 toast.className = 'fixed top-14 left-1/2 -translate-x-1/2 z-50 bg-[#FFD60A] text-black font-black px-4 py-2 rounded-full shadow-2xl text-[13px] transition-opacity duration-300 pointer-events-none flex items-center gap-2 border-2 border-black';
                 document.body.appendChild(toast);
             }}
-            const btnBmElem = document.getElementById('btn-lang-bm');
-            const isBm = btnBmElem && btnBmElem.classList.contains('bg-[#FFD60A]');
+            const isBm = isMalayLanguage();
             toast.textContent = isBm ? msgBm : msgZh;
             toast.style.opacity = '1';
             setTimeout(() => {{
@@ -2400,23 +2489,24 @@ def generate_index_html():
         let currentRenderedDateLabel = '{today_mmdd} {today_time}';
 
         function renderNewsCards(headlinesList, dateLabel) {{
-            currentRenderedHeadlines = headlinesList;
+            currentRenderedHeadlines = Array.isArray(headlinesList) ? headlinesList : [];
             if (dateLabel) currentRenderedDateLabel = dateLabel;
             const cardDateTag = currentRenderedDateLabel;
             const container = document.getElementById('news-grid-container');
             if (!container) return;
-            const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+            const isBm = isMalayLanguage();
 
             let html = '';
-            headlinesList.forEach((item, index) => {{
+            currentRenderedHeadlines.forEach((item, index) => {{
+                if (!item) return;
                 const idx = index + 1;
-                const rawTitle = item.title || '';
-                const detail = item.detail || item.summary || '';
+                const rawTitle = item.title || item.titleBM || '';
+                const detail = item.detail || item.summary || item.detailBM || '';
                 const category = item.category || 'general';
 
-                const verifyMatch = rawTitle.match(/\[(.*?)\]/);
+                const verifyMatch = rawTitle.match(/\\?\[(.*?)核实.*?\\?\]/) || rawTitle.match(/\\?\[(.*?)\]/);
                 const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
-                const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
+                const cleanTitle = rawTitle.replace(/\\?\[.*?\\?\]/g, '').replace(/\\/g, '').trim() || "要闻速览";
 
                 let sources = item.sources || (item.source ? [item.source] : []);
                 let cleanDetail = detail;
@@ -2430,8 +2520,8 @@ def generate_index_html():
                 }}
                 if (!sources.length) sources = ["沙巴官方通报", "现场交叉复核"];
 
-                const titleBm = item.titleBM || "[Tajuk BM dalam proses kemas kini]";
-                const detailBm = item.detailBM || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
+                const titleBm = item.titleBM || cleanTitle || "[Tajuk BM dalam proses kemas kini]";
+                const detailBm = item.detailBM || cleanDetail || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
                 const tagBm = item.tagBM || "Disahkan Rasmi";
 
                 let catTagZh = "综合百态", catTagBm = "Umum";
@@ -2450,10 +2540,14 @@ def generate_index_html():
                 const zhCls = isBm ? 'hidden' : '';
                 const bmCls = isBm ? '' : 'hidden';
 
-                const coverImgUrl = item.cover || item.cover_image || '';
-                const coverHtml = coverImgUrl ? `
+                let rawCover = item.cover || item.cover_image || item.image_url || '';
+                if (typeof rawCover !== 'string') rawCover = '';
+                rawCover = rawCover.trim();
+                if (rawCover === 'null' || rawCover === 'undefined') rawCover = '';
+
+                const coverHtml = rawCover ? `
                     <div class="card-cover-wrap w-full aspect-[16/9] overflow-hidden relative">
-                        <img src="${{coverImgUrl}}" alt="${{cleanTitle}}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <img src="${{rawCover}}" alt="${{cleanTitle}}" loading="lazy" onerror="this.closest('.card-cover-wrap').style.display='none'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                 ` : '';
 
@@ -2517,55 +2611,78 @@ html += `
 
         // 7天历史归档按天真实数据切换
         function switchDateArchive(type, dateKey, btnElem) {{
-            document.querySelectorAll('.date-tab-btn').forEach(btn => {{
-                btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all";
-                const titleSpan = btn.querySelector('.font-black');
-                if (titleSpan) titleSpan.classList.remove('text-black');
-            }});
-
-            btnElem.className = "date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all";
-            const curTitleSpan = btnElem.querySelector('.font-black');
-            if (curTitleSpan) curTitleSpan.classList.add('text-black');
-
-            const titleElem = document.getElementById('headlines-section-title');
-            const displayDateElem = document.getElementById('active-date-display');
-            const countTag = document.getElementById('headlines-count-tag');
-            const isBm = document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
-
-            let targetHeadlines = [];
-            let cardDateLabel = '{today_mmdd} {today_time}';
-            if (type === 'today') {{
-                targetHeadlines = CURRENT_HEADLINES;
-                cardDateLabel = '{today_mmdd} {today_time}';
-                if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini {today_mmdd}</span>' : '<span>今日 {today_mmdd} 重点要闻</span>';
-                if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
-                showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
-            }} else if (type === 'yesterday') {{
-                targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
-                cardDateLabel = '{yesterday_mmdd} 历史归档';
-                if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Semalam {yesterday_mmdd}</span>' : '<span>昨日 {yesterday_mmdd} 归档要闻</span>';
-                if (displayDateElem) displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
-                showToast('已切换至昨日归档视角！', 'Beralih ke arkib semalam!');
-            }} else if (type === 'before') {{
-                targetHeadlines = ARCHIVE_POOL[dateKey] || CURRENT_HEADLINES;
-                cardDateLabel = '{day_before_mmdd} 历史精选';
-                if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Kelmarin {day_before_mmdd}</span>' : '<span>前日 {day_before_mmdd} 归档要闻</span>';
-                if (displayDateElem) displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
-                showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
-            }} else {{
-                targetHeadlines = [];
-                Object.values(ARCHIVE_POOL).forEach(list => {{
-                    if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 4));
+            try {{
+                document.querySelectorAll('.date-tab-btn').forEach(btn => {{
+                    btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all";
+                    const titleSpan = btn.querySelector('.font-black');
+                    if (titleSpan) titleSpan.classList.remove('text-black');
                 }});
-                cardDateLabel = '7天历史合辑';
-                if (titleElem) titleElem.innerHTML = isBm ? '<span>Semua Arkib 7 Hari</span>' : '<span>全部历史归档 (7天精选合辑)</span>';
-                if (displayDateElem) displayDateElem.textContent = isBm ? 'Semua Arkib 7 Hari' : '全部 · 7天历史库';
-                showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
-            }}
 
-            // 核心修复：即时重绘新闻卡片 DOM
-            renderNewsCards(targetHeadlines, cardDateLabel);
+                if (btnElem) {{
+                    btnElem.className = "date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all";
+                    const curTitleSpan = btnElem.querySelector('.font-black');
+                    if (curTitleSpan) curTitleSpan.classList.add('text-black');
+                }}
+
+                const titleElem = document.getElementById('headlines-section-title');
+                const displayDateElem = document.getElementById('active-date-display');
+                const isBm = isMalayLanguage();
+
+                const pool = (typeof ARCHIVE_POOL !== 'undefined' && ARCHIVE_POOL) ? ARCHIVE_POOL : {{}};
+                const currentList = (typeof CURRENT_HEADLINES !== 'undefined' && Array.isArray(CURRENT_HEADLINES)) ? CURRENT_HEADLINES : [];
+
+                let targetHeadlines = [];
+                let cardDateLabel = '{today_mmdd} {today_time}';
+                if (type === 'today') {{
+                    targetHeadlines = currentList;
+                    cardDateLabel = '{today_mmdd} {today_time}';
+                    if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini {today_mmdd}</span>' : '<span>今日 {today_mmdd} 重点要闻</span>';
+                    if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
+                    showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
+                }} else if (type === 'yesterday') {{
+                    targetHeadlines = pool[dateKey];
+                    if (!targetHeadlines || !targetHeadlines.length) {{
+                        const keys = Object.keys(pool).sort().reverse();
+                        if (keys.length > 1) targetHeadlines = pool[keys[1]];
+                    }}
+                    if (!targetHeadlines || !targetHeadlines.length) targetHeadlines = currentList;
+                    cardDateLabel = '{yesterday_mmdd} 历史归档';
+                    if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Semalam {yesterday_mmdd}</span>' : '<span>昨日 {yesterday_mmdd} 归档要闻</span>';
+                    if (displayDateElem) displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
+                    showToast('已切换至昨日归档视角！', 'Beralih ke arkib semalam!');
+                }} else if (type === 'before') {{
+                    targetHeadlines = pool[dateKey];
+                    if (!targetHeadlines || !targetHeadlines.length) {{
+                        const keys = Object.keys(pool).sort().reverse();
+                        if (keys.length > 2) targetHeadlines = pool[keys[2]];
+                    }}
+                    if (!targetHeadlines || !targetHeadlines.length) targetHeadlines = currentList;
+                    cardDateLabel = '{day_before_mmdd} 历史精选';
+                    if (titleElem) titleElem.innerHTML = isBm ? '<span>Arkib Berita Kelmarin {day_before_mmdd}</span>' : '<span>前日 {day_before_mmdd} 归档要闻</span>';
+                    if (displayDateElem) displayDateElem.textContent = isBm ? 'Kelmarin {day_before_mmdd} · Arkib' : '前日 {day_before_mmdd} · 归档库';
+                    showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
+                }} else {{
+                    targetHeadlines = [];
+                    Object.keys(pool).sort().reverse().forEach(k => {{
+                        const list = pool[k];
+                        if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 4));
+                    }});
+                    if (!targetHeadlines.length) targetHeadlines = currentList;
+                    cardDateLabel = '7天历史合辑';
+                    if (titleElem) titleElem.innerHTML = isBm ? '<span>Semua Arkib 7 Hari</span>' : '<span>全部历史归档 (7天精选合辑)</span>';
+                    if (displayDateElem) displayDateElem.textContent = isBm ? 'Semua Arkib 7 Hari' : '全部 · 7天历史库';
+                    showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
+                }}
+
+                // 核心修复：即时重绘新闻卡片 DOM
+                renderNewsCards(targetHeadlines, cardDateLabel);
+            }} catch (err) {{
+                console.error('切换历史归档失败:', err);
+                showToast('切换归档遇到错误，已保留当前视图', 'Ralat menukar arkib');
+            }}
         }}
+        window.switchDateArchive = switchDateArchive;
+        window.switchArchiveDate = switchDateArchive;
 
         // 未来活动卡片展开/收起抽屉
         function toggleEventCard(id) {{
@@ -2584,7 +2701,7 @@ html += `
             if (hint) {{
                 const zhText = nowOpen ? '收起 ↑' : '点击查看详情';
                 const bmText = nowOpen ? 'Tutup ↑' : 'Klik untuk butiran';
-                const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+                const isBm = isMalayLanguage();
                 hint.innerHTML = `
                     <span class="lang-zh ${{isBm ? 'hidden' : ''}}">${{zhText}}</span>
                     <span class="lang-bm ${{isBm ? '' : 'hidden'}}">${{bmText}}</span>
@@ -2597,15 +2714,15 @@ html += `
             const item = currentRenderedHeadlines[index];
             if (!item) return;
 
-            const isBm = document.getElementById('btn-lang-bm') && document.getElementById('btn-lang-bm').classList.contains('bg-[#FFD60A]');
+            const isBm = isMalayLanguage();
 
             const rawTitle = item.title || '';
             const detail = item.detail || item.summary || '';
             const category = item.category || 'general';
 
-            const verifyMatch = rawTitle.match(/\[(.*?)\]/);
+            const verifyMatch = rawTitle.match(/\\?\[(.*?)核实.*?\\?\]/) || rawTitle.match(/\\?\[(.*?)\]/);
             const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
-            const cleanTitle = rawTitle.replace(/\[.*?\]/g, '').trim();
+            const cleanTitle = rawTitle.replace(/\\?\[.*?\\?\]/g, '').replace(/\\/g, '').trim() || "要闻速览";
 
             let sources = item.sources || (item.source ? [item.source] : []);
             let cleanDetail = detail;
@@ -2889,6 +3006,20 @@ html += `
         window.addEventListener('DOMContentLoaded', () => {{
             initThemeButton();
             syncNewsDataRuntime();
+
+            // 锁定 body 顶部，防止 Google Translate 插入 40px 挤压白条
+            try {{
+                const bodyTopObserver = new MutationObserver(() => {{
+                    if (document.body.style.top && document.body.style.top !== '0px') {{
+                        document.body.style.setProperty('top', '0px', 'important');
+                    }}
+                    if (document.body.style.position && document.body.style.position !== 'static') {{
+                        document.body.style.setProperty('position', 'static', 'important');
+                    }}
+                }});
+                bodyTopObserver.observe(document.body, {{ attributes: true, attributeFilter: ['style'] }});
+            }} catch(e) {{}}
+
             // 读取现有语言 cookie 并同步按钮标签
             const m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
             if (m && m[1]) {{

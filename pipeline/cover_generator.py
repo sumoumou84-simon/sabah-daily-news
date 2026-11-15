@@ -41,6 +41,24 @@ CATEGORY_BADGE_MAP = {
 
 # 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
 GLOBAL_KEYWORD_RULES = [
+    # 0.1 治安与刑事警务 (高优先级：警方/追捕/刺伤/打斗/命案/扣查/扫荡/取缔/嫌犯 -> Investigators)
+    {
+        "name": "治安与刑事警务",
+        "keywords": ["警方", "追捕", "刺伤", "打斗", "命案", "扣查", "扫荡", "取缔", "嫌犯"],
+        "patterns": ["investigators_at_tropical_villa", "investigators_outside_tropical"]
+    },
+    # 0.2 陆路交通与事故 (高优先级：车祸/碰撞/路障/JPJ/陆路交通局/长巴/德士/交通 -> Officers_inspecting_bus / Taxis / 交通监控)
+    {
+        "name": "陆路交通与事故",
+        "keywords": ["车祸", "碰撞", "路障", "jpj", "陆路交通局", "长巴", "德士", "交通"],
+        "patterns": ["officers_inspecting_bus", "taxis_lined_up", "image_20261109_205524", "image_20261109_205602", "image_20261109_205757"]
+    },
+    # 0.3 水电公用设施 (高优先级：断水/制水/水压/停电/电供/SESB/水务局/JANS -> Utility_workers_ / image_20261109_210654 / 210740)
+    {
+        "name": "水电公用设施",
+        "keywords": ["断水", "制水", "水压", "停电", "电供", "sesb", "水务局", "jans"],
+        "patterns": ["utility_workers_", "image_20261109_210654", "image_20261109_210740"]
+    },
     # 1. 暴雨 / 季候风 / 气象 / 淹水 / 水灾 -> 优先匹配 Rainstorm、Tropical_rainstorm、洪水救援图
     {
         "name": "暴雨气象水灾",
@@ -290,9 +308,10 @@ class CoverGenerator:
             for img in all_unused:
                 fname_lower = img.name.lower()
                 for pat in patterns:
-                    if pat in fname_lower:
+                    pat_lower = pat.lower()
+                    if pat_lower in fname_lower:
                         score = rule_weight * 10
-                        if fname_lower.startswith(pat):
+                        if fname_lower.startswith(pat_lower):
                             score += 5
                         if score > best_rule_score:
                             best_rule_score = score
