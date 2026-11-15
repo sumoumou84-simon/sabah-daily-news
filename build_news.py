@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import time
 from datetime import datetime, timezone, timedelta
 import sys
 
@@ -90,6 +91,29 @@ def generate_index_html():
     headlines = data.get("headlines", [])
     raw_events = data.get("events", [])
     archive_pool = data.get("archive", {})
+
+    # 额外从 archive_history.json 补充全量 7 天历史归档，保证完整性
+    archive_history_file = os.path.join(BASE_DIR, "archive_history.json")
+    if os.path.exists(archive_history_file):
+        try:
+            with open(archive_history_file, "r", encoding="utf-8") as f:
+                hist_data = json.load(f)
+                if isinstance(hist_data, dict):
+                    for k, v in hist_data.items():
+                        if k not in archive_pool:
+                            archive_pool[k] = v
+        except Exception as e:
+            print(f"⚠️ 读取 {archive_history_file} 失败: {e}")
+
+    # 同时为 '2026-11-14' 建立 '11/14' 别名映射，保证各种日期 Key 格式点击 100% 命中
+    alias_map = {}
+    for k, v in archive_pool.items():
+        if "-" in k:
+            parts = k.split("-")
+            if len(parts) == 3:
+                short_k = f"{parts[1]}/{parts[2]}"
+                alias_map[short_k] = v
+    archive_pool.update(alias_map)
 
     # 0.9 为重点要闻生成专属杂志风封面
     try:
@@ -597,31 +621,34 @@ def generate_index_html():
 
     # 3.5 动态构建顶部【今日重点聚焦】跑马灯条内容（纯中文，动态提取前 6 条重点或各板块头条）
     # 公用事业触发条件：仅当水务/电力/气象卡片处于【抢修中】或【预警中】（LIVE）状态时，才推入顶部红色跑马灯；【待核实】（常态例行监测）不再触发
+    # 规则：仅拼接简短机构/标题，严禁拼接长正文导致末尾出现 ... 截断
     marquee_util_items = []
     for u in default_utils:
         u_status = str(u.get("status", "")).strip()
         is_repairing = "抢修中" in u_status
         is_warning = "预警中" in u_status
         if is_repairing or is_warning:
-            u_label = u.get("label", "公用民生")
-            u_title = u.get("title") or u.get("issue", "")
-            # 正则清洗 [1] [2] 冗余编号
-            u_clean_title = re.sub(r'\[\d+\]', '', u_title).strip()
-            if len(u_clean_title) > 36:
-                u_clean_title = u_clean_title[:36] + "..."
+            u_label = u.get("label", "公用民生").strip()
+            # 过滤内部方括号标签
+            u_clean_label = re.sub(r'\[\d+\]', '', u_label).replace('\\', '').strip()
 
             emoji = "🚨" if is_repairing else "⚠️"
-            if "水" in u_label or "水" in u_title:
+            if "水" in u_clean_label:
                 emoji = "💧" if is_repairing else "⚠️"
-            elif "电" in u_label or "电" in u_title or "SESB" in u_label:
+            elif "电" in u_clean_label or "SESB" in u_clean_label:
                 emoji = "⚡"
-            elif "气象" in u_label or "雨" in u_title or "风" in u_title:
-                emoji = "🌀"
+            elif "气象" in u_clean_label or "雨" in u_clean_label or "风" in u_clean_label:
+                emoji = "⚠️"
 
+            # 仅拼接简短标题，绝无 ... 截断
             marquee_util_items.append({
                 "emoji": emoji,
-                "text": f"[{u_status}] {u_label}：{u_clean_title}"
+                "text": f"[{u_status}] {u_clean_label}"
             })
+
+    def is_notice_placeholder(title_str: str) -> bool:
+        clean = re.sub(r'\\?\[.*?\\?\]', '', title_str).replace('\\', '').strip()
+        return clean in ["气象通告", "供水通告", "电力通告", "交通通告", "公用通告", "通告"] or (len(clean) <= 6 and "通告" in clean)
 
     by_cat_headlines = {}
     for h in headlines:
@@ -629,14 +656,17 @@ def generate_index_html():
         by_cat_headlines.setdefault(c, []).append(h)
 
     marquee_selected = []
-    # 优先提取 4 大板块头条
+    # 优先提取 4 大板块头条（跳过气象通告、供水通告等占位短标签）
     for c in ["sabah", "national", "sports", "general"]:
-        if c in by_cat_headlines and by_cat_headlines[c]:
-            marquee_selected.append(by_cat_headlines[c][0])
+        if c in by_cat_headlines:
+            for item in by_cat_headlines[c]:
+                if not is_notice_placeholder(item.get("title", "")) and item not in marquee_selected:
+                    marquee_selected.append(item)
+                    break
 
-    # 补充至 6 条
+    # 补充至 6 条（严格过滤占位通告）
     for h in headlines:
-        if h not in marquee_selected:
+        if h not in marquee_selected and not is_notice_placeholder(h.get("title", "")):
             marquee_selected.append(h)
         if len(marquee_selected) >= 6:
             break
@@ -672,6 +702,8 @@ def generate_index_html():
         m_title = re.sub(r'\\?\[.*?核实.*?\\?\]', '', m_title)
         m_title = m_title.replace('\\', '').strip()
         m_title = re.sub(r'\s+', ' ', m_title).strip()
+        if is_notice_placeholder(m_title):
+            continue
         m_emoji = _resolve_marquee_emoji(m_cat, m_title)
         marquee_spans.append(f"""<span><span class="lang-zh">{m_emoji} {m_title}</span></span>""")
 
@@ -714,17 +746,35 @@ def generate_index_html():
     <script>
         if ('serviceWorker' in navigator) {{
             window.addEventListener('load', function() {{
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register('./sw.js?v={int(time.time())}')
                     .then(function(reg) {{
                         reg.update();
                         if (reg.waiting) {{
                             reg.waiting.postMessage({{ type: 'SKIP_WAITING' }});
                         }}
+                        reg.addEventListener('updatefound', function() {{
+                            var newWorker = reg.installing;
+                            if (newWorker) {{
+                                newWorker.addEventListener('statechange', function() {{
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {{
+                                        newWorker.postMessage({{ type: 'SKIP_WAITING' }});
+                                    }}
+                                }});
+                            }}
+                        }});
                         console.log('[PWA] ServiceWorker registered with scope:', reg.scope);
                     }})
                     .catch(function(err) {{
                         console.error('[PWA] ServiceWorker registration failed:', err);
                     }});
+            }});
+            var swRefreshing = false;
+            navigator.serviceWorker.addEventListener('controllerchange', function() {{
+                if (!swRefreshing) {{
+                    swRefreshing = true;
+                    console.log('[PWA] New Service Worker active, reloading...');
+                    window.location.reload();
+                }}
             }});
         }}
     </script>
@@ -1008,6 +1058,15 @@ def generate_index_html():
             color: #FFFFFF !important;
             border-color: #64748B !important;
             background-color: #243247 !important;
+        }}
+        .date-tab-btn {{
+            cursor: pointer !important;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }}
+        .date-tab-btn * {{
+            pointer-events: none !important;
         }}
         .theme-dark .date-tab-btn:not(.active) {{
             background-color: #1E293B !important;
@@ -1769,42 +1828,42 @@ def generate_index_html():
             </div>
 
             <!-- 7天归档切换按键 -->
-            <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin" id="date-tabs-container">
-                <button onclick="switchDateArchive('today', '{today_iso}', this)" class="date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight text-black">
+            <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin relative z-10" id="date-tabs-container">
+                <button type="button" id="tab-date-today" data-type="today" data-date="{today_iso}" onclick="switchDateArchive('today', '{today_iso}', this, event)" class="date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all cursor-pointer select-none">
+                    <span class="text-[12px] font-black leading-none tracking-tight text-black pointer-events-none">
                         <span class="lang-zh">今天</span><span class="lang-bm hidden">Hari Ini</span>
                         <span class="font-mono font-bold text-[11px] opacity-80">{today_mmdd}</span>
                     </span>
-                    <span class="text-[10px] leading-none mono text-black/70">
+                    <span class="text-[10px] leading-none mono text-black/70 pointer-events-none">
                         <span class="lang-zh">今日晨报 • {len(headlines)} 条</span>
                         <span class="lang-bm hidden">Edisi Pagi</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('yesterday', '{yesterday_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight">
+                <button type="button" id="tab-date-yesterday" data-type="yesterday" data-date="{yesterday_iso}" onclick="switchDateArchive('yesterday', '{yesterday_iso}', this, event)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all cursor-pointer select-none">
+                    <span class="text-[12px] font-black leading-none tracking-tight pointer-events-none">
                         <span class="lang-zh">昨日归档</span><span class="lang-bm hidden">Semalam</span>
                         <span class="font-mono font-bold text-[11px] opacity-80 sub-meta-text">{yesterday_mmdd}</span>
                     </span>
-                    <span class="text-[10px] leading-none mono sub-meta-text">
+                    <span class="text-[10px] leading-none mono sub-meta-text pointer-events-none">
                         <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('before', '{day_before_iso}', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight">
+                <button type="button" id="tab-date-before" data-type="before" data-date="{day_before_iso}" onclick="switchDateArchive('before', '{day_before_iso}', this, event)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all cursor-pointer select-none">
+                    <span class="text-[12px] font-black leading-none tracking-tight pointer-events-none">
                         <span class="lang-zh">前日精选</span><span class="lang-bm hidden">Kelmarin</span>
                         <span class="font-mono font-bold text-[11px] opacity-80 sub-meta-text">{day_before_mmdd}</span>
                     </span>
-                    <span class="text-[10px] leading-none mono sub-meta-text">
+                    <span class="text-[10px] leading-none mono sub-meta-text pointer-events-none">
                         <span class="lang-zh">已存归档池</span>
                         <span class="lang-bm hidden">Tersimpan</span>
                     </span>
                 </button>
-                <button onclick="switchDateArchive('all', 'all', this)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all">
-                    <span class="text-[12px] font-black leading-none tracking-tight">
+                <button type="button" id="tab-date-all" data-type="all" data-date="all" onclick="switchDateArchive('all', 'all', this, event)" class="date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all cursor-pointer select-none">
+                    <span class="text-[12px] font-black leading-none tracking-tight pointer-events-none">
                         <span class="lang-zh">全部 • 7天归档库</span><span class="lang-bm hidden">Semua 7 Hari</span>
                     </span>
-                    <span class="text-[10px] leading-none mono sub-meta-text">
+                    <span class="text-[10px] leading-none mono sub-meta-text pointer-events-none">
                         <span class="lang-zh">滚动合辑池</span>
                         <span class="lang-bm hidden">Kompilasi</span>
                     </span>
@@ -2266,7 +2325,11 @@ def generate_index_html():
     <!-- 交互控制脚本（模式切换 + 语系切换 + 分类过滤 + 7天归档池） -->
     <script>
         const ARCHIVE_POOL = {archive_json_str};
+        const ARCHIVE_DATA = ARCHIVE_POOL;
+        window.ARCHIVE_POOL = ARCHIVE_POOL;
+        window.ARCHIVE_DATA = ARCHIVE_POOL;
         const CURRENT_HEADLINES = {json.dumps(headlines, ensure_ascii=False)};
+        window.CURRENT_HEADLINES = CURRENT_HEADLINES;
         let activeCategory = 'all';
 
         // 需求: 『☀️ 日间 / 🌙 夜间』模式秒级切换与 localStorage 记忆
@@ -2504,9 +2567,9 @@ def generate_index_html():
                 const detail = item.detail || item.summary || item.detailBM || '';
                 const category = item.category || 'general';
 
-                const verifyMatch = rawTitle.match(/\\?\[(.*?)核实.*?\\?\]/) || rawTitle.match(/\\?\[(.*?)\]/);
+                const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/) || rawTitle.match(/\\\\?\[(.*?)\]/);
                 const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
-                const cleanTitle = rawTitle.replace(/\\?\[.*?\\?\]/g, '').replace(/\\/g, '').trim() || "要闻速览";
+                const cleanTitle = rawTitle.replace(/\\\\?\[.*?\\\\?\]/g, '').replace(/\\\\/g, '').trim() || "要闻速览";
 
                 let sources = item.sources || (item.source ? [item.source] : []);
                 let cleanDetail = detail;
@@ -2610,26 +2673,70 @@ html += `
         }}
 
         // 7天历史归档按天真实数据切换
-        function switchDateArchive(type, dateKey, btnElem) {{
+        function switchDateArchive(type, dateKey, btnElem, evt) {{
             try {{
-                document.querySelectorAll('.date-tab-btn').forEach(btn => {{
-                    btn.className = "date-tab-btn shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border transition-all";
-                    const titleSpan = btn.querySelector('.font-black');
-                    if (titleSpan) titleSpan.classList.remove('text-black');
+                if (evt && evt.stopPropagation) evt.stopPropagation();
+
+                // 1. 深度标准化按钮元素（避免事件冒泡或子元素拦截导致 btnElem 丢失）
+                let btn = btnElem;
+                if (!btn && evt && evt.target) {{
+                    btn = evt.target.closest('.date-tab-btn') || evt.target.closest('[data-date]') || evt.currentTarget;
+                }}
+                if (!btn && typeof event !== 'undefined' && event && event.target) {{
+                    btn = event.target.closest('.date-tab-btn') || event.target.closest('[data-date]') || event.currentTarget;
+                }}
+                if (btn && btn.closest && !btn.classList.contains('date-tab-btn')) {{
+                    btn = btn.closest('.date-tab-btn') || btn;
+                }}
+                if (!btn && type) {{
+                    btn = document.querySelector(`.date-tab-btn[data-type="${{type}}"]`) || document.getElementById(`tab-date-${{type}}`);
+                }}
+
+                // 2. 深度标准化参数
+                if (btn) {{
+                    if (!type) type = btn.getAttribute('data-type') || btn.dataset?.type || 'today';
+                    if (!dateKey) dateKey = btn.getAttribute('data-date') || btn.dataset?.date || '';
+                }}
+
+                // 3. 更新全部 Tab 高亮状态
+                document.querySelectorAll('.date-tab-btn').forEach(b => {{
+                    b.classList.remove('active', 'border-[#FFD60A]', 'bg-[#FFD60A]', 'text-black', 'shadow-[0_2px_10px_rgba(255,214,10,0.3)]');
+                    b.classList.add('border-white/10');
+                    const span = b.querySelector('.font-black');
+                    if (span) span.classList.remove('text-black');
+                    const subSpan = b.querySelector('.mono');
+                    if (subSpan) subSpan.classList.add('sub-meta-text');
                 }});
 
-                if (btnElem) {{
-                    btnElem.className = "date-tab-btn active shrink-0 flex flex-col items-start gap-[1px] px-3.5 py-2 rounded-[10px] border border-[#FFD60A] bg-[#FFD60A] text-black shadow-[0_2px_10px_rgba(255,214,10,0.3)] transition-all";
-                    const curTitleSpan = btnElem.querySelector('.font-black');
-                    if (curTitleSpan) curTitleSpan.classList.add('text-black');
+                if (btn) {{
+                    btn.classList.add('active', 'border-[#FFD60A]', 'bg-[#FFD60A]', 'text-black', 'shadow-[0_2px_10px_rgba(255,214,10,0.3)]');
+                    btn.classList.remove('border-white/10');
+                    const curSpan = btn.querySelector('.font-black');
+                    if (curSpan) curSpan.classList.add('text-black');
+                    const curSubSpan = btn.querySelector('.mono');
+                    if (curSubSpan) curSubSpan.classList.remove('sub-meta-text');
                 }}
 
                 const titleElem = document.getElementById('headlines-section-title');
                 const displayDateElem = document.getElementById('active-date-display');
                 const isBm = isMalayLanguage();
 
-                const pool = (typeof ARCHIVE_POOL !== 'undefined' && ARCHIVE_POOL) ? ARCHIVE_POOL : {{}};
+                const pool = (typeof ARCHIVE_POOL !== 'undefined' && ARCHIVE_POOL) ? ARCHIVE_POOL : ((typeof ARCHIVE_DATA !== 'undefined' && ARCHIVE_DATA) ? ARCHIVE_DATA : {{}});
                 const currentList = (typeof CURRENT_HEADLINES !== 'undefined' && Array.isArray(CURRENT_HEADLINES)) ? CURRENT_HEADLINES : [];
+
+                // 深度模糊匹配器：匹配 '2026-11-14', '11/14', '11-14' 等任意日期格式
+                function resolveArchiveArticles(p, key) {{
+                    if (!p || typeof p !== 'object') return [];
+                    if (Array.isArray(p[key]) && p[key].length) return p[key];
+                    const cleanKey = String(key || '').trim();
+                    if (!cleanKey) return [];
+                    for (const k of Object.keys(p)) {{
+                        if (k === cleanKey && Array.isArray(p[k])) return p[k];
+                        if (cleanKey && (k.endsWith(cleanKey) || cleanKey.endsWith(k)) && Array.isArray(p[k])) return p[k];
+                        if ((k.replace(/-/g, '/') === cleanKey || cleanKey.replace(/-/g, '/') === k) && Array.isArray(p[k])) return p[k];
+                    }}
+                    return [];
+                }}
 
                 let targetHeadlines = [];
                 let cardDateLabel = '{today_mmdd} {today_time}';
@@ -2640,9 +2747,9 @@ html += `
                     if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini {today_mmdd} · Auto MYT' : '今天 {today_mmdd} · MYT自动计算';
                     showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
                 }} else if (type === 'yesterday') {{
-                    targetHeadlines = pool[dateKey];
+                    targetHeadlines = resolveArchiveArticles(pool, dateKey);
                     if (!targetHeadlines || !targetHeadlines.length) {{
-                        const keys = Object.keys(pool).sort().reverse();
+                        const keys = Object.keys(pool).filter(k => k.startsWith('2026-')).sort().reverse();
                         if (keys.length > 1) targetHeadlines = pool[keys[1]];
                     }}
                     if (!targetHeadlines || !targetHeadlines.length) targetHeadlines = currentList;
@@ -2651,9 +2758,9 @@ html += `
                     if (displayDateElem) displayDateElem.textContent = isBm ? 'Semalam {yesterday_mmdd} · Arkib' : '昨日 {yesterday_mmdd} · 归档库';
                     showToast('已切换至昨日归档视角！', 'Beralih ke arkib semalam!');
                 }} else if (type === 'before') {{
-                    targetHeadlines = pool[dateKey];
+                    targetHeadlines = resolveArchiveArticles(pool, dateKey);
                     if (!targetHeadlines || !targetHeadlines.length) {{
-                        const keys = Object.keys(pool).sort().reverse();
+                        const keys = Object.keys(pool).filter(k => k.startsWith('2026-')).sort().reverse();
                         if (keys.length > 2) targetHeadlines = pool[keys[2]];
                     }}
                     if (!targetHeadlines || !targetHeadlines.length) targetHeadlines = currentList;
@@ -2663,7 +2770,8 @@ html += `
                     showToast('已切换至前日归档视角！', 'Beralih ke arkib kelmarin!');
                 }} else {{
                     targetHeadlines = [];
-                    Object.keys(pool).sort().reverse().forEach(k => {{
+                    const keys = Object.keys(pool).filter(k => k.startsWith('2026-')).sort().reverse();
+                    keys.forEach(k => {{
                         const list = pool[k];
                         if (Array.isArray(list)) targetHeadlines.push(...list.slice(0, 4));
                     }});
@@ -2674,7 +2782,7 @@ html += `
                     showToast('已开启全量 7 天历史合辑！', 'Membuka arkib 7 hari!');
                 }}
 
-                // 核心修复：即时重绘新闻卡片 DOM
+                // 4. 核心渲染：即时重绘新闻卡片 DOM（支持无图降级，不报错）
                 renderNewsCards(targetHeadlines, cardDateLabel);
             }} catch (err) {{
                 console.error('切换历史归档失败:', err);
@@ -2720,9 +2828,9 @@ html += `
             const detail = item.detail || item.summary || '';
             const category = item.category || 'general';
 
-            const verifyMatch = rawTitle.match(/\\?\[(.*?)核实.*?\\?\]/) || rawTitle.match(/\\?\[(.*?)\]/);
+            const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/) || rawTitle.match(/\\\\?\[(.*?)\]/);
             const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
-            const cleanTitle = rawTitle.replace(/\\?\[.*?\\?\]/g, '').replace(/\\/g, '').trim() || "要闻速览";
+            const cleanTitle = rawTitle.replace(/\\\\?\[.*?\\\\?\]/g, '').replace(/\\\\/g, '').trim() || "要闻速览";
 
             let sources = item.sources || (item.source ? [item.source] : []);
             let cleanDetail = detail;
@@ -2990,6 +3098,7 @@ html += `
                     window.CURRENT_HEADLINES = data.headlines;
                     if (data.archive) {{
                         window.ARCHIVE_POOL = Object.assign({{}}, window.ARCHIVE_POOL, data.archive);
+                        window.ARCHIVE_DATA = window.ARCHIVE_POOL;
                     }}
                     const countTag = document.getElementById('headlines-count-tag');
                     if (countTag) countTag.textContent = data.headlines.length;
@@ -3006,6 +3115,18 @@ html += `
         window.addEventListener('DOMContentLoaded', () => {{
             initThemeButton();
             syncNewsDataRuntime();
+
+            // 绑定 7天归档按钮委托监听，杜绝任何子元素拦截或失效
+            const tabsContainer = document.getElementById('date-tabs-container');
+            if (tabsContainer) {{
+                tabsContainer.addEventListener('click', function(e) {{
+                    const btn = e.target.closest('.date-tab-btn') || e.target.closest('[data-date]');
+                    if (!btn) return;
+                    const type = btn.getAttribute('data-type') || btn.dataset?.type || 'today';
+                    const dateKey = btn.getAttribute('data-date') || btn.dataset?.date || '';
+                    switchDateArchive(type, dateKey, btn, e);
+                }});
+            }}
 
             // 锁定 body 顶部，防止 Google Translate 插入 40px 挤压白条
             try {{

@@ -1,9 +1,8 @@
 // Service Worker for 西门看看网 (Simon Kankan Daily News)
-const CACHE_NAME = 'simon-kankan-v3';
+const CACHE_NAME = 'simon-kankan-v4';
 
+// 仅离线缓存基础静态资源，index.html 严格实行 Network-First（网络优先）策略
 const PRECACHE_ASSETS = [
-  './',
-  './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png'
@@ -41,7 +40,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Network-first for navigation/HTML (ensures readers see fresh daily news),
+// Fetch: Strictly Network-First for navigation/HTML (ensures readers always see fresh daily news),
 // with offline cache fallback. Cache-first with network fallback for static assets.
 self.addEventListener('fetch', (event) => {
   const req = event.request;
@@ -61,10 +60,10 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // HTML / Navigation requests: Network-First with cache fallback
-  if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html')) {
+  // HTML / Navigation requests: Strictly Network-First with offline cache fallback
+  if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html') || req.url.endsWith('/') || req.url.includes('index.html')) {
     event.respondWith(
-      fetch(req, { cache: 'no-cache' })
+      fetch(req)
         .then((networkRes) => {
           if (networkRes && networkRes.status === 200) {
             const resClone = networkRes.clone();
