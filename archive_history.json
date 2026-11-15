@@ -1,4 +1,384 @@
 {
+  "2026-11-16": [
+    {
+      "story_index": 1,
+      "category": "sabah",
+      "title": "[沙巴][1]沙巴中华总商会与厦门签备忘录 开拓中国商机",
+      "titleBM": "[沙巴][1]沙巴中华总商会与厦门签备忘录 开拓中国商机",
+      "detail": "沙巴中华总商会代表团在厦门与合作方签署备忘录，为沙巴企业家开拓中国市场铺路。代表团此行三天至11月16日，计划会见约12个单位并参观工厂，探讨工业及高附加值消费品合作。",
+      "detailBM": "沙巴中华总商会代表团在厦门与合作方签署备忘录，为沙巴企业家开拓中国市场铺路。代表团此行三天至11月16日，计划会见约12个单位并参观工厂，探讨工业及高附加值消费品合作。",
+      "source_url": "",
+      "publisher": "沙巴电视台",
+      "source": "沙巴电视台",
+      "sources": [
+        "沙巴电视台"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_01",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 2,
+      "category": "sabah",
+      "title": "[沙巴][2]慕斯达法：不能以选民人数衡量 恢复沙砂三分之一国席体现MA63",
+      "titleBM": "[沙巴][2]慕斯达法：不能以选民人数衡量 恢复沙砂三分之一国席体现MA63",
+      "detail": "首相署沙砂事务部长慕斯达法表示，不能以沙巴和砂拉越仅占全国约18%人口为由，反对恢复两州国会议席至三分之一比率，恢复比率是落实马来西亚协议精神的重要一步。",
+      "detailBM": "首相署沙砂事务部长慕斯达法表示，不能以沙巴和砂拉越仅占全国约18%人口为由，反对恢复两州国会议席至三分之一比率，恢复比率是落实马来西亚协议精神的重要一步。",
+      "source_url": "",
+      "publisher": "星洲日报",
+      "source": "星洲日报",
+      "sources": [
+        "星洲日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_02",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 3,
+      "category": "sabah",
+      "title": "[沙巴][3]哈芝芝：每年拨款改善福利 没忘主妇贡献",
+      "titleBM": "[沙巴][3]哈芝芝：每年拨款改善福利 没忘主妇贡献",
+      "detail": "沙巴首席部长哈芝芝表示，他每年拨出50万令吉予苏拉曼选区妇女团体，作为推动妇女活动及提供援助的经费，其中包括厨房用具援助计划，肯定主妇对家庭与社会的贡献。",
+      "detailBM": "沙巴首席部长哈芝芝表示，他每年拨出50万令吉予苏拉曼选区妇女团体，作为推动妇女活动及提供援助的经费，其中包括厨房用具援助计划，肯定主妇对家庭与社会的贡献。",
+      "source_url": "",
+      "publisher": "星洲日报",
+      "source": "星洲日报",
+      "sources": [
+        "星洲日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_03",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 4,
+      "category": "sabah",
+      "title": "[沙巴][4]自民党力争亚庇山打根国席 加强本土代表性",
+      "titleBM": "[沙巴][4]自民党力争亚庇山打根国席 加强本土代表性",
+      "detail": "自由民主党主席陈树平表示，自民党将积极争取在来届国会大选中上阵亚庇及山打根国会议席，以加强沙巴本土政党的国会代表性，为沙巴华裔争取更大的政治发言权。",
+      "detailBM": "自由民主党主席陈树平表示，自民党将积极争取在来届国会大选中上阵亚庇及山打根国会议席，以加强沙巴本土政党的国会代表性，为沙巴华裔争取更大的政治发言权。",
+      "source_url": "",
+      "publisher": "星洲日报",
+      "source": "星洲日报",
+      "sources": [
+        "星洲日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sandakan",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_04",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 5,
+      "category": "sabah",
+      "title": "[沙巴][5]阿米占促公账会扩大调查泛婆大道终止PDP影响",
+      "titleBM": "[沙巴][5]阿米占促公账会扩大调查泛婆大道终止PDP影响",
+      "detail": "吧巴国会议员阿米占建议国会公共账目委员会扩大对沙巴泛婆罗洲大道工程的调查范围，审查2019年终止项目执行伙伴模式的依据及影响。总稽查司报告及工程部答复均指出，终止该模式是工程延误因素之一。",
+      "detailBM": "吧巴国会议员阿米占建议国会公共账目委员会扩大对沙巴泛婆罗洲大道工程的调查范围，审查2019年终止项目执行伙伴模式的依据及影响。总稽查司报告及工程部答复均指出，终止该模式是工程延误因素之一。",
+      "source_url": "",
+      "publisher": "东方日报",
+      "source": "东方日报",
+      "sources": [
+        "东方日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sabah_05",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 6,
+      "category": "national",
+      "title": "[全国][1]马六甲州选国阵国盟胜选 今日甲州特别假期",
+      "titleBM": "[全国][1]马六甲州选国阵国盟胜选 今日甲州特别假期",
+      "detail": "第16届马六甲州选举国阵与国盟合共赢得28席中的24席，超过三分之二，将同组州政府。甲州政府宣布11月16日为甲州特别假期，庆祝胜选。阿都拉勿已宣誓就任第二任首席部长。",
+      "detailBM": "第16届马六甲州选举国阵与国盟合共赢得28席中的24席，超过三分之二，将同组州政府。甲州政府宣布11月16日为甲州特别假期，庆祝胜选。阿都拉勿已宣誓就任第二任首席部长。",
+      "source_url": "",
+      "publisher": "马来西亚前锋报",
+      "source": "马来西亚前锋报",
+      "sources": [
+        "马来西亚前锋报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_06",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 7,
+      "category": "national",
+      "title": "[全国][2]森州10前行政议员挑战撤委任 今日高庭视讯聆审程序申请",
+      "titleBM": "[全国][2]森州10前行政议员挑战撤委任 今日高庭视讯聆审程序申请",
+      "detail": "森州10名前行政议员针对委任遭撤销入禀芙蓉高庭，要求宣判撤销决定无效。案件今日上午10时在芙蓉第一高庭通过视讯方式聆审，先处理答辩方初步反对及起诉人暂缓申请，并非直接裁定撤销是否合法。",
+      "detailBM": "森州10名前行政议员针对委任遭撤销入禀芙蓉高庭，要求宣判撤销决定无效。案件今日上午10时在芙蓉第一高庭通过视讯方式聆审，先处理答辩方初步反对及起诉人暂缓申请，并非直接裁定撤销是否合法。",
+      "source_url": "",
+      "publisher": "光明日报",
+      "source": "光明日报",
+      "sources": [
+        "光明日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_07",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 8,
+      "category": "national",
+      "title": "[全国][3]移民局夜袭新山5处住宅区 逮捕205名非法外劳",
+      "titleBM": "[全国][3]移民局夜袭新山5处住宅区 逮捕205名非法外劳",
+      "detail": "移民局联合边境管制与保护机构11月14日晚突击新山5处外籍人士聚集的热点住宅区，出动78名执法人员，逮捕205名非法外劳，行动持续至深夜。",
+      "detailBM": "移民局联合边境管制与保护机构11月14日晚突击新山5处外籍人士聚集的热点住宅区，出动78名执法人员，逮捕205名非法外劳，行动持续至深夜。",
+      "source_url": "",
+      "publisher": "今日东南亚",
+      "source": "今日东南亚",
+      "sources": [
+        "今日东南亚"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_08",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 9,
+      "category": "national",
+      "title": "[全国][4]大山脚运输公司枪杀案 母亲：说好回家吃饭等不到儿回来",
+      "titleBM": "[全国][4]大山脚运输公司枪杀案 母亲：说好回家吃饭等不到儿回来",
+      "detail": "大山脚运输公司枪杀案引起关注，死者母亲表示儿子说好回家吃饭给她钱，却等不到儿子回来。警方正追查案件，涉案者此前据称曾与死者发生争执。",
+      "detailBM": "大山脚运输公司枪杀案引起关注，死者母亲表示儿子说好回家吃饭给她钱，却等不到儿子回来。警方正追查案件，涉案者此前据称曾与死者发生争执。",
+      "source_url": "",
+      "publisher": "光明日报",
+      "source": "光明日报",
+      "sources": [
+        "光明日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_national_09",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 10,
+      "category": "sports",
+      "title": "[体育][1]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
+      "titleBM": "[体育][1]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
+      "detail": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双决赛，以16比21、21比13、21比15三局逆转日本组合小林优吾与保木卓朗，夺得冠军。这是两人搭档以来两个月内第二个冠军。",
+      "detailBM": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双决赛，以16比21、21比13、21比15三局逆转日本组合小林优吾与保木卓朗，夺得冠军。这是两人搭档以来两个月内第二个冠军。",
+      "source_url": "",
+      "publisher": "东方日报",
+      "source": "东方日报",
+      "sources": [
+        "东方日报"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_10",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 11,
+      "category": "sports",
+      "title": "[体育][2]马来虎友谊赛0比2不敌中国 明日再战也门前需调整",
+      "titleBM": "[体育][2]马来虎友谊赛0比2不敌中国 明日再战也门前需调整",
+      "detail": "马来西亚国家足球队在国际友谊赛客场0比2不敌中国队，对手在上半场第10分钟及第19分钟各入一球。教练指出开局失球影响球队反扑，球队需在明日对阵也门前做好调整。",
+      "detailBM": "马来西亚国家足球队在国际友谊赛客场0比2不敌中国队，对手在上半场第10分钟及第19分钟各入一球。教练指出开局失球影响球队反扑，球队需在明日对阵也门前做好调整。",
+      "source_url": "",
+      "publisher": "每日新闻",
+      "source": "每日新闻",
+      "sources": [
+        "每日新闻"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_11",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 12,
+      "category": "sports",
+      "title": "[体育][3]大马U16少年队专注对关岛 17日晚吉隆坡出战",
+      "titleBM": "[体育][3]大马U16少年队专注对关岛 17日晚吉隆坡出战",
+      "detail": "大马U16少年足球队不轻敌，专注备战17日晚9时在吉隆坡足球场对阵关岛的比赛，力争拿下好成绩。",
+      "detailBM": "大马U16少年足球队不轻敌，专注备战17日晚9时在吉隆坡足球场对阵关岛的比赛，力争拿下好成绩。",
+      "source_url": "",
+      "publisher": "马来西亚广播电视台",
+      "source": "马来西亚广播电视台",
+      "sources": [
+        "马来西亚广播电视台"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "national",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_sports_12",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 13,
+      "category": "general",
+      "title": "[综合][1]两华客沙巴失踪逾一年 家属：永不放弃寻人",
+      "titleBM": "[综合][1]两华客沙巴失踪逾一年 家属：永不放弃寻人",
+      "detail": "一对中国籍男女去年10月4日到沙巴美人鱼岛度假村办理入住后失联，至今下落不明。家属表示永不放弃寻人，呼吁知情者提供线索，警方仍在跟进案件。",
+      "detailBM": "一对中国籍男女去年10月4日到沙巴美人鱼岛度假村办理入住后失联，至今下落不明。家属表示永不放弃寻人，呼吁知情者提供线索，警方仍在跟进案件。",
+      "source_url": "",
+      "publisher": "东网",
+      "source": "东网",
+      "sources": [
+        "东网"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_general_13",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    },
+    {
+      "story_index": 14,
+      "category": "general",
+      "title": "[综合][2]国家公园关闭大汉山登山道至明年1月15日",
+      "titleBM": "[综合][2]国家公园关闭大汉山登山道至明年1月15日",
+      "detail": "国家公园宣布从11月15日起关闭大汉山登山道，至2027年1月15日，原因是天气恶劣及登山道维修与复原。瓜拉大汉仍是主要入口，游客受促留意最新通告。",
+      "detailBM": "国家公园宣布从11月15日起关闭大汉山登山道，至2027年1月15日，原因是天气恶劣及登山道维修与复原。瓜拉大汉仍是主要入口，游客受促留意最新通告。",
+      "source_url": "",
+      "publisher": "马新社",
+      "source": "马新社",
+      "sources": [
+        "马新社"
+      ],
+      "url": "",
+      "source_urls": [],
+      "original_published_at": "2026-11-16T00:00:00+08:00",
+      "geo_scope": "sabah",
+      "is_event": false,
+      "event_metadata": {},
+      "id": "art_general_14",
+      "image_url": null,
+      "collected_at": "2026-11-16T04:57:13.362317+08:00",
+      "site_published_at": "2026-11-16T04:57:13.362317+08:00",
+      "updated_at": "2026-11-16T04:57:13.362317+08:00",
+      "is_updated": false,
+      "validation_status": "VERIFIED"
+    }
+  ],
   "2026-11-15": [
     {
       "story_index": 1,
@@ -2917,302 +3297,6 @@
         "Bahasa Malaysia headline contains untranslated Chinese characters: 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车...'",
         "Bahasa Malaysia headline too short or uninformative (3 words, minimum 5 required): 'Laporan Utama: 乐娜放眼熊本大师赛卫冕：谢定峰与苏伟译全力冲刺年终总决赛末班车'"
       ]
-    }
-  ],
-  "2026-11-09": [
-    {
-      "id": "art_sabah_1",
-      "category": "sabah",
-      "title": "沙巴地政运动会山打根开幕 携手提升市容迎接2027旅游年",
-      "titleBM": "Sukan PBT Sabah Dirasmikan di Sandakan: Perkukuh Kerjasama PBT dan Lonjak Ekonomi Tempatan",
-      "detail": "第14届沙巴地方政府运动会（SKTS）于2026年11月8日晚在山打根综合体育馆隆重开幕，由沙巴房屋及地方政府部长拿督莫哈末阿里芬阿里夫亲临主持。山打根市议会主席拿督沃特肯森、国会议员黄诗怡及全州8支地方议会代表团齐聚一堂。阿里芬强调，运动会不仅是体育竞技，更是深化跨区域合作与团队默契的重要平台。他敦促各地方政府积极履行社会责任，全力提升市容、环境卫生与基础设施，迎接2027马来西亚旅游年。本届运动会吸引数千名选手与家属涌入山打根，显著带动了当地酒店、餐饮、交通及微型零售企业的营业额，实现了行政治理凝聚力与旅游经济增长的双赢。",
-      "detailBM": "Temasya Sukan PBT Sabah (SKTS) kali ke-14 telah dirasmikan oleh Menteri Kerajaan Tempatan dan Perumahan Datuk Mohd Arifin Arif di Kompleks Sukan Sandakan pada 8 November 2026. Acara ini menghimpunkan 8 kontinjen pihak berkuasa tempatan (PBT) di seluruh negeri. Arifin menegaskan bahawa temasya ini memperkukuh kerjasama antara agensi dan memupuk semangat kesukanan. Beliau menyeru PBT meningkatkan kebersihan, landskap, dan kemudahan awam bagi menyambut Tahun Melawat Malaysia 2027. Kehadiran ribuan peserta dan keluarga ke Sandakan turut menjana ekonomi tempatan, memacu sektor hotel, perniagaan makanan, serta peniaga kecil.",
-      "source": "诗华日报沙巴版",
-      "sources": [
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "sourceBM": "诗华日报沙巴版",
-      "sourcesBM": [
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "url": "https://news.seehua.com/post/1601871",
-      "source_urls": [
-        "https://news.seehua.com/post/1601871",
-        "https://www.dailyexpress.com.my/news/291220/sabah-local-government-games-games-to-boost-local-economy/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T20:30:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sandakan / sabah"
-    },
-    {
-      "id": "art_sabah_2",
-      "category": "sabah",
-      "title": "沙巴2027年预算案重点解决基本基建 哈芝芝承诺惠民发展",
-      "titleBM": "Belanjawan Sabah 2027 Tumpu Selesai Isu Infrastruktur Asas Termasuk Bekalan Air dan Jalan: Hajiji",
-      "detail": "沙巴州首席部长拿督斯里哈芝芝诺日前证实，即将出台的沙巴2027年州财政预算案将坚定践行以民为本的发展理念，把财政资源大幅倾斜于解决长期困扰民生的基本基础设施瓶颈。哈芝芝强调，干净自来水供应短缺、电网稳定性和乡村道路网络是人民群众最紧迫的民生关切，也是招商引资和实现长期繁荣的基石。州政府将加大在供水改造、电网扩建及乡村公路升级方面的直接注资，并对所有资本开支项目建立严格的全过程监督考核机制，坚决杜绝行政官僚延误与承包商拖延，确保每一令吉都精准投向全州27个县区基层百姓急需之处。",
-      "detailBM": "Ketua Menteri Datuk Seri Panglima Haji Hajiji Haji Noor mengesahkan Belanjawan Sabah 2027 akan memperuntukkan dana besar untuk menyelesaikan isu infrastruktur asas. Bercakap selepas mempengerusikan taklimat pentadbiran negeri, beliau menekankan bahawa bekalan air terawat, kestabilan grid elektrik, dan jalan luar bandar adalah keutamaan mutlak. Kerajaan negeri akan mengetatkan pemantauan ke atas semua projek perbelanjaan modal untuk memastikan peruntukan diterjemahkan kepada peningkatan taraf hidup rakyat di kesemua 27 daerah di Sabah tanpa kelewatan.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post",
-        "The Star"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post",
-        "The Star"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/08/sabah-budget-2027-to-address-key-infrastructure/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/08/sabah-budget-2027-to-address-key-infrastructure/",
-        "https://www.thestar.com.my/news/nation/2026/11/08/upcoming-sabah-budget-will-be-people-centric-says-hajiji"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T18:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah statewide"
-    },
-    {
-      "id": "art_sabah_3",
-      "category": "national",
-      "title": "沙巴行动党迎战大选 冯晋哲宣布全力捍卫亚庇与山打根两区",
-      "titleBM": "DAP Sabah Nekad Pertahan Dua Kerusi Parlimen Kota Kinabalu dan Sandakan Pada PRU16: Phoong",
-      "detail": "民主行动党沙巴州委员会主席冯晋哲在州委战略会议后对外宣布，面对日益临近的第16届全国大选（PRU16），沙巴行动党已经全面进入战备状态，并将以毫不动摇的坚定立场全力捍卫亚庇与山打根两个传统国会议席。冯晋哲指出，党中央与州委员会正在全州范围内紧锣密鼓地开展组织架构重整与基层动员工作，确保在城市与半城市选区具备最强运营准备度与选民动员力。他重申，沙巴行动党将继续立足于解决民生疾苦、监督公共施政、捍卫沙巴宪赋自治权益，以务实的服务政绩迎接选举挑战。",
-      "detailBM": "Pengerusi DAP Sabah Phoong Jin Zhe mengumumkan bahawa parti itu nekad mempertahankan dua kerusi Parlimen tradisionalnya, Kota Kinabalu dan Sandakan, pada Pilihan Raya Umum ke-16 (PRU16). Beliau menyatakan bahawa jentera pilihan raya akar umbi sedang menjalani penstrukturan semula secara menyeluruh bagi memastikan kesiapsiagaan optimum. DAP tetap komited dalam memperjuangkan autonomi Sabah, tadbir urus telus, serta pembangunan ekonomi serantau yang saksama di bawah gabungan Pakatan Harapan.",
-      "source": "Daily Express Malaysia",
-      "sources": [
-        "Daily Express Malaysia",
-        "The Star"
-      ],
-      "sourceBM": "Daily Express Malaysia",
-      "sourcesBM": [
-        "Daily Express Malaysia",
-        "The Star"
-      ],
-      "url": "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong",
-      "source_urls": [
-        "https://www.dailyexpress.com.my/news/291225/sabah-dap-to-defend-two-parliament-seats-phoong",
-        "https://www.thestar.com.my/news/nation/2026/11/08/sabah-dap-vows-to-defend-its-two-parliamentary-seats-as-party-looks-at-internal-reforms"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T16:45:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "kota kinabalu / sandakan"
-    },
-    {
-      "id": "art_sabah_4",
-      "category": "sabah",
-      "title": "兵南邦凌晨发生夺命车祸 41岁骑士失控冲石沟当场丧命",
-      "titleBM": "Nahas Motosikal Awal Pagi di Penampang: Penunggang 41 Tahun Maut Terbabas Langgar Parit Konkrit",
-      "detail": "沙巴兵南邦道路今日凌晨发生一起致命车祸，一名现年41岁的本地男摩托车骑士不幸当场丧生。根据兵南邦区警区主任证实，该起致命碰撞事故发生于清晨约2时30分。初步调查显示，事发时该名骑士独自骑摩托车行经兵南邦路段，车辆突然失控偏离车道，猛烈撞向路旁坚硬的混凝土排水沟屏障。伊丽莎白女王医院的医护人员赶抵现场后，证实骑士因头部与胸部遭受严重创伤当场不治身亡。死者遗体已被送往医院法医部门进行解剖，警方目前正援引1987年陆路交通法令第41(1)条文对车祸原因展开深入调查。",
-      "detailBM": "Seorang penunggang motosikal tempatan berusia 41 tahun maut serta-merta selepas terbabas dan merempuh parit konkrit di Jalan Penampang awal pagi Isnin. Ketua Polis Daerah Penampang mengesahkan kejadian berlaku sekitar jam 2:30 pagi apabila mangsa menunggang seorang diri sebelum hilang kawalan. Pasukan perubatan dari Hospital Queen Elizabeth yang tiba di lokasi mengesahkan mangsa meninggal dunia akibat kecederaan parah di kepala dan dada. Mayat dihantar ke bahagian forensik untuk bedah siasat dan kes disiasat di bawah Seksyen 41(1) Akta Pengangkutan Jalan 1987.",
-      "source": "TV Sabah News",
-      "sources": [
-        "TV Sabah News",
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "sourceBM": "TV Sabah News",
-      "sourcesBM": [
-        "TV Sabah News",
-        "诗华日报沙巴版",
-        "Daily Express Malaysia"
-      ],
-      "url": "https://www.dailyexpress.com.my/news/291230/motorcyclist-killed-after-crashing-into-drain-in-penampang/",
-      "source_urls": [
-        "https://www.dailyexpress.com.my/news/291230/motorcyclist-killed-after-crashing-into-drain-in-penampang/",
-        "https://news.seehua.com/post/1602410"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T03:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "penampang / sabah"
-    },
-    {
-      "id": "art_sabah_5",
-      "category": "national",
-      "title": "沙巴全面开展综合交通蓝图研究 探讨公交与物流长期方案",
-      "titleBM": "Sabah Laksana Kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu",
-      "detail": "沙巴州政府正式启动《沙巴可持续交通与综合物流蓝图》（SSTMP）编制研究工作，旨在全面重组运输出行体系。沙巴工程部常务秘书拿督卡罗琳证实，州政府已在预算案中划拨专项经费，委托资深专业交通规划团队展开宏观研究。该研究将评估亚庇大都会区公共巴士系统的现代化改造，探讨轻轨（LRT）与快捷巴士系统（BRT）等现代公交选项的可行性，并规划联通港口、工业园区与农业腹地的高效多式联运货运走廊。该战略蓝图旨在构建环保、低碳的交通骨干网络，以满足沙巴未来30年不断增长的人口与工业需求。",
-      "detailBM": "Kerajaan negeri Sabah telah melantik pakar untuk melaksanakan kajian Pelan Induk Pengangkutan Mampan dan Logistik Bersepadu (SSTMP). Setiausaha Tetap Kementerian Kerja Raya Datuk Caroline Guah mengesahkan peruntukan khas telah disediakan. Kajian holistik ini menilai pemodenan bas bandar, menilai kebolehlaksanaan transit moden seperti BRT dan LRT untuk Greater Kota Kinabalu, serta memetakan koridor kargo multimoda. Pelan ini menyasarkan pewujudan rangkaian pengangkutan rendah karbon untuk menampung keperluan demografi dan industri Sabah selama 30 tahun.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/09/sabah-to-study-sustainable-integrated-transport-frameworks/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T08:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah statewide"
-    },
-    {
-      "id": "art_sabah_6",
-      "category": "national",
-      "title": "泛婆大道沙巴路段进展受关注 州政府致力克服延误推进工程",
-      "titleBM": "Projek Lebuhraya Pan Borneo Sabah: Usaha Dipergiat Atasi Kelewatan dan Siapkan Pakej Fasa 1",
-      "detail": "泛婆大道（Pan Borneo Highway）沙巴第一阶段工程施工进展持续受到联邦与州级当局的密切审视，各方正加倍努力克服多年来的项目延误。该宏大基建项目最初于2015年规划，原定于2016年至2021年间完工，但遭遇了复杂的物流挫折，包括土地征用争议、与水务及电力当局的公用管线迁移谈判以及承包商现金流限制。工程部证实，已建立严格的承包商监督与绩效执行协议，以加速推进剩余的滞后标段。当局强调，完成泛婆大道第一阶段对于释放跨区商业活力、缩短东西海岸车程、提升重型货运安全及促进乡区社会经济公平至关重要。",
-      "detailBM": "Pelaksanaan Fasa 1 Lebuhraya Pan Borneo di Sabah terus mendapat tumpuan apabila pihak berkuasa persekutuan dan negeri menggandakan usaha mengatasi kelewatan projek. Dirancang pada 2015 dengan tempoh asal 2016 hingga 2021, projek mega ini menghadapi pelbagai halangan logistik seperti isu tanah, utiliti, dan kekangan aliran tunai kontraktor. Kementerian Kerja Raya mengesahkan protokol pemantauan ketat telah dikuatkuasakan untuk menyiapkan pakej lewat. Penyiapan fasa ini penting untuk merangsang perdagangan, memendekkan masa perjalanan antara Pantai Barat dan Timur, serta meningkatkan keselamatan logistik.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/09/pan-borneo-highway-sabahs-unfinished-business/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/09/pan-borneo-highway-sabahs-unfinished-business/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T07:30:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah infrastructure"
-    },
-    {
-      "id": "art_sabah_7",
-      "category": "national",
-      "title": "沙巴移民局今年遣返8472名非法移民 持续强化边防遣送行动",
-      "titleBM": "Jabatan Imigresen Sabah Usir 8,472 Pendatang Tanpa Izin Setakat Ini Menerusi 77 Operasi",
-      "detail": "沙巴州移民局今年通过海陆空多维度开展的77次执法遣送行动，已累计遣返8,472名无证非法移民（PATI）。沙巴移民局局长拿督西蒂萨烈哈证实，最近一次行动涉及通过山打根港口以商用客轮将466名菲律宾籍被扣留者直接遣返回南部三宝颜市。这些被扣留者在全州临时拘留中心被关押前，已根据1959/63年移民法令及1963年移民条例服刑完毕。局长西蒂萨烈哈重申，该局在国家主权和边境执法方面绝不妥协，并敦促雇主及房东务必核实员工与租客的移民证件，切勿窝藏无证外籍人员。",
-      "detailBM": "Jabatan Imigresen Sabah telah mengusir seramai 8,472 pendatang tanpa izin (PATI) menerusi 77 siri operasi penguatkuasaan darat, laut, dan udara tahun ini. Pengarah Imigresen Sabah Datuk SH Sitti Saleha Habib Yusoff mengesahkan siri terbaharu melibatkan penghantaran pulang 466 tahanan Filipina menggunakan feri komersial dari Pelabuhan Sandakan ke Bandar Zamboanga. Mereka telah menjalani hukuman di bawah Akta Imigresen 1959/63. Sitti Saleha menegaskan jabatan tidak akan berkompromi terhadap kedaulatan negara dan menggesa majikan agar tidak melindungi individu tanpa dokumen sah.",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post"
-      ],
-      "sourceBM": "Borneo Post",
-      "sourcesBM": [
-        "Borneo Post"
-      ],
-      "url": "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/",
-      "source_urls": [
-        "https://www.theborneopost.com/2026/11/08/8472-foreigners-deported-from-sabah-to-date-says-immigration-dept/"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-08T17:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah / sandakan port"
-    },
-    {
-      "id": "art_sabah_8",
-      "category": "sabah",
-      "title": "气象局发布持续降雨警报 沙巴东海岸及古达多区戒备至周三",
-      "titleBM": "MetMalaysia Keluar Amaran Hujan Berterusan Tahap Waspada di Sabah Hingga Rabu",
-      "detail": "马来西亚气象局（MetMalaysia）已向沙巴多个地区及半岛东海岸发布黄色级别持续降雨警报，预警将持续有效至本周三（11月11日）。气象局在今日发表的声明中指出，沙巴受影响的特定区域包括古达（Kudat）、山打根（Sandakan）、京那巴当岸（Kinabatangan）、比鲁兰（Beluran）、东革（Telupid）以及北部沿海部分地区。地方灾害管理机构已进入全面戒备状态，气象局呼吁居住在低洼、河畔及沿海易涝区域的民众保持高度警惕，随时留意官方发布的即时气象雷达与卫星气象通报。",
-      "detailBM": "Jabatan Meteorologi Malaysia (MetMalaysia) mengeluarkan amaran hujan berterusan tahap waspada yang menjejaskan beberapa kawasan di Sabah dan Pantai Timur Semenanjung hingga Rabu (11 Nov). Lokasi terjejas di Sabah termasuk Kudat, Sandakan, Kinabatangan, Beluran, Telupid, dan sebahagian daerah pantai utara. Agensi pengurusan bencana tempatan diletakkan dalam keadaan bersiap siaga, manakala penduduk di kawasan rendah, lembangan sungai, dan pesisir pantai dinasihatkan agar sentiasa berwaspada serta mengikuti laporan cuaca rasmi.",
-      "source": "诗华日报沙巴版",
-      "sources": [
-        "诗华日报沙巴版",
-        "NST Online"
-      ],
-      "sourceBM": "诗华日报沙巴版",
-      "sourcesBM": [
-        "诗华日报沙巴版",
-        "NST Online"
-      ],
-      "url": "https://news.seehua.com/post/1602407",
-      "source_urls": [
-        "https://news.seehua.com/post/1602407",
-        "https://www.nst.com.my/news/nation/2026/11/1573756/kelantan-terengganu-pahang-and-sabah-under-rain-alert-until-wednesday"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T09:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "east coast sabah / kudat / sandakan"
-    },
-    {
-      "id": "art_sabah_9",
-      "category": "national",
-      "title": "亚庇国际机场扩建或搬迁掀热议 业界促全面评估长远经济效益",
-      "titleBM": "Debat Pembangunan KKIA: Pakar dan CILTM Gesa Kajian Holistik Pembesaran atau Pemindahan",
-      "detail": "关于亚庇国际机场（KKIA）未来发展走向的战略性辩论持续升温，航空经济学家、城市规划师以及马来西亚特许物流与运输学会（CILTM）沙巴分会共同敦促政府，对扩建现有机场与异地新建方案展开基于实证的全面宏观评估。核心政策困境在于平衡在丹绒亚路升级现有航站楼，与在斗亚兰（北部）或金马利（南部）建设价值数十亿令吉的全新绿色国际机场。CILTM沙巴代表强调，在作出任何具约束力的承诺之前，必须科学权衡资本支出需求、航空公司运营成本、国际游客通行时间、客流量上限以及商业房地产影响等关键变量。",
-      "detailBM": "Debat strategik mengenai masa depan Lapangan Terbang Antarabangsa Kota Kinabalu (KKIA) semakin hangat, dengan pakar ekonomi penerbangan, perancang bandar, dan CILTM cawangan Sabah menggesa penilaian holistik antara pilihan pembesaran atau pemindahan. Dilema dasar tertumpu kepada perbandingan menaik taraf terminal sedia ada di Tanjung Aru atau membina lapangan terbang baharu bernilai berbilion ringgit di Tuaran atau Kimanis. Wakil CILTM menegaskan perbelanjaan modal, kos operasi syarikat penerbangan, dan masa transit pelancong antarabangsa mesti diteliti secara teliti sebelum sebarang keputusan dimuktamadkan.",
-      "source": "Jesselton Times",
-      "sources": [
-        "Jesselton Times",
-        "星洲日报沙巴版",
-        "Daily Express Malaysia",
-        "Bernama"
-      ],
-      "sourceBM": "Jesselton Times",
-      "sourcesBM": [
-        "Jesselton Times",
-        "星洲日报沙巴版",
-        "Daily Express Malaysia",
-        "Bernama"
-      ],
-      "url": "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
-      "source_urls": [
-        "https://jesseltontimes.com/2026/11/09/beyond-the-runway-sabahs-airport-debate-exposes-a-larger-question-about-its-economic-future/",
-        "https://sabah.sinchew.com.my/news/20261109/sabah/8050416"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T08:15:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "kota kinabalu / tuaran / kimanis"
-    },
-    {
-      "id": "art_sabah_10",
-      "category": "national",
-      "title": "第16届婆罗洲观鸟节圆满落幕 山打根西必洛吸引逾千生态旅客",
-      "titleBM": "Pesta Burung Borneo Ke-16 di RDC Sepilok Sandakan Berjaya Tarik Lebih 1,000 Peserta",
-      "detail": "第16届婆罗洲观鸟节在山打根西必洛雨林发现中心（RDC）圆满落幕。这项由沙巴森林局森林研究中心（FRC）与婆罗洲观鸟俱乐部联手打造的年度生态盛事，今年成功吸引了来自马来西亚本土、新加坡、菲律宾、纽西兰以及中国、台湾等多个国家和地区的逾千名专业鸟类摄影家、自然研究员与生态旅游爱好者汇聚西必洛。本届核心竞技项目“观鸟竞赛”共迎来破纪录的45支专业队伍同台竞技，参赛者在指定时间内在原始雨林及树冠步道中辨识记录了数十种婆罗洲特有鸟类。主办方表示，观鸟节生动展现了山打根世界级的雨林生物多样性，为提升公众森林保育意识与推动生态旅游经济注入了强劲动力。",
-      "detailBM": "Pesta Burung Borneo ke-16 di Pusat Penerokaan Hujan Tropika (RDC) Sepilok, Sandakan, melabuhkan tirainya dengan jayanya. Anjuran bersama Pusat Penyelidikan Perhutanan (FRC) Jabatan Perhutanan Sabah dan Kelab Pemerhati Burung Borneo ini menarik lebih 1,000 jurugambar burung, penyelidik, dan pelancong eko dari Malaysia, Singapura, Filipina, New Zealand, China, dan Taiwan. Acara 'Bird Race' mencatat rekod penyertaan 45 pasukan profesional. Penganjur menyatakan pesta ini bukan sahaja mengetengahkan kepelbagaian biologi hutan hujan Sandakan, tetapi turut memacu ekonomi pelancongan eko tempatan.",
-      "source": "诗华日报",
-      "sources": [
-        "诗华日报"
-      ],
-      "sourceBM": "诗华日报",
-      "sourcesBM": [
-        "诗华日报"
-      ],
-      "url": "https://news.seehua.com/post/1602333",
-      "source_urls": [
-        "https://news.seehua.com/post/1602333"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-09T10:00:00+08:00",
-      "collected_at": "2026-11-09T17:13:46+08:00",
-      "site_published_at": "2026-11-09T17:13:46+08:00",
-      "updated_at": "2026-11-09T17:13:46+08:00",
-      "is_updated": false,
-      "geo_scope": "sandakan (sepilok rdc)"
     }
   ]
 }

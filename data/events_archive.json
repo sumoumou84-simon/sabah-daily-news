@@ -2,28 +2,6 @@
   {
     "id": 1,
     "month": "11",
-    "day": "15",
-    "full_date": "2026-11-15",
-    "end_date": "2026-11-15",
-    "name": "第三部分 未来活动通告",
-    "nameBM": "第三部分 未来活动通告",
-    "time": "08:00 AM - 05:00 PM",
-    "timeBM": "08:00 AM - 05:00 PM",
-    "location": "山打根社区中心",
-    "category": "市政公益",
-    "categoryBM": "市政公益",
-    "badgeColor": "bg-[#14532d] text-[#86efac]",
-    "desc": "本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
-    "descBM": "本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
-    "tel": "",
-    "source": "Meta AI 权威整理",
-    "sourceBM": "Meta AI 权威整理",
-    "countdown_days": 0,
-    "first_seen_date": "2026-11-15"
-  },
-  {
-    "id": 2,
-    "month": "11",
     "day": "18",
     "full_date": "2026-11-18",
     "name": "沙巴野生动物局婆罗洲侏儒象保护区生态导览与公众教育日",
@@ -39,7 +17,7 @@
     "tel": "089-221315",
     "source": "沙巴野生动物局 SWD 官方",
     "sourceBM": "Jabatan Hidupan Liar Sabah (SWD)",
-    "countdown_days": 3,
+    "countdown_days": 2,
     "first_seen_date": "2026-11-13",
     "end_date": "2026-11-18"
   }
