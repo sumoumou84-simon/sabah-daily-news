@@ -1,0 +1,287 @@
+{
+  "snapshot_id": "gdrive_snap_2026-11-17_9a90f552",
+  "target_date": "2026-11-17",
+  "source_file_name": "西门看看网_2026-11-17.md",
+  "source_file_id": "1sFh33X9cevAf8eyrae-NLy9unElJqR_1xW09d__nmq4",
+  "read_timestamp": "2026-11-17T05:08:56.929822+08:00",
+  "total_stories_found": 16,
+  "news_stories_count": 15,
+  "event_stories_count": 1,
+  "markdown_sha256": "9a90f552982bb84fd24ec7c922d0edc23228fa7fd72f55294a506bf7774b52b2",
+  "news_stories": [
+    {
+      "index": 1,
+      "title": "气象通告",
+      "body": "气象通告 山打根今日阵雨为主 外出带雨具 山打根今日清晨晴朗，气温约26度，白天最高约31度，最低约25度。上午至中午多阵雨，下午转为多云，晚间局部仍有阵雨。马来西亚气象局此前提醒，沙巴山打根一带可能出现雷雨、豪雨及强风，市民外出请带雨具，避开低洼积水路段。 马来西亚气象局 进行中",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 气象通告",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 2,
+      "title": "\\[沙巴\\]\\[1\\]沙巴民主行动党促公账会彻查泛婆大道 免沦为互推责任闹剧",
+      "body": "沙巴民主行动党主席冯晋哲表示，该党全力支持国会公共账目委员会针对沙巴泛婆罗洲大道工程长期延误及成本超支问题，展开无条件、全面且透明的彻底调查。他指出，2026年第二系列总审计司报告揭露，原定于2021年底全面竣工的35个工程配套中，截至2026年3月仅有4个完成。 星洲日报 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[沙巴\\]\\[1\\]沙巴民主行动党促公账会彻查泛婆大道 免沦为互推责任闹剧",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 3,
+      "title": "\\[沙巴\\]\\[2\\]马西迪：沙巴须可靠价格合理电供 吸引高附加值投资",
+      "body": "沙巴副首席部长兼财政部长马西迪表示，可靠且价格合理的电力供应，是推动沙巴工业化、吸引高附加值投资及创造高薪就业机会的重要基础。 星洲日报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[沙巴\\]\\[2\\]马西迪：沙巴须可靠价格合理电供 吸引高附加值投资",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 4,
+      "title": "\\[沙巴\\]\\[3\\]慕斯达法：MA63已有16项全面解决 10项仍在协商",
+      "body": "首相署沙砂事务部长慕斯达法表示，截至今年10月，1963年马来西亚协议所讨论的29项主要事项中，已有16项全面解决，另有3项取得临时解决方案，其余10项仍在协商中。联邦政府已同意将沙巴2026年的临时特别拨款提高至15亿令吉。 星洲日报 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[沙巴\\]\\[3\\]慕斯达法：MA63已有16项全面解决 10项仍在协商",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 5,
+      "title": "\\[沙巴\\]\\[4\\]沙菲益欢迎公账会扩大调查泛婆大道工程",
+      "body": "民兴党主席沙菲益欢迎国会公共账目委员会扩大对沙巴泛婆罗洲大道工程的调查。总审计司报告指出，终止项目执行伙伴模式是工程延误因素之一，相关调查应查清决策依据及影响。 沙巴每日快报 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[沙巴\\]\\[4\\]沙菲益欢迎公账会扩大调查泛婆大道工程",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 6,
+      "title": "\\[沙巴\\]\\[5\\]伊旺：海事法律修订须先获沙巴同意",
+      "body": "兵南邦国会议员伊旺表示，交通部在把海事及航运相关新法、修订或完善法案带入国会前，须先取得沙巴州政府同意。他是在国会辩论2027年财政预算案交通部委员会阶段时提出上述立场。 纳巴卢新闻 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[沙巴\\]\\[5\\]伊旺：海事法律修订须先获沙巴同意",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 7,
+      "title": "\\[全国\\]\\[1\\]森州大臣依斯迈拉欣辞职 国阵将提呈新人选",
+      "body": "森美兰州务大臣依斯迈拉欣已辞去大臣职务，辞职信志期2026年11月16日，已呈交森州最高统治者端姑慕赫力兹。国阵总秘书赞比里证实，国阵主席将依据森州宪法相关条文，向统治者提呈新任大臣建议人选。 东方日报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[全国\\]\\[1\\]森州大臣依斯迈拉欣辞职 国阵将提呈新人选",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 8,
+      "title": "\\[全国\\]\\[2\\]印尼总统普拉博沃就跨境烟霾向马新道歉",
+      "body": "印尼总统普拉博沃在菲律宾马尼拉出席东盟峰会时，代表印尼政府和人民，就当地野火引发的跨境烟霾问题，向新加坡和马来西亚人民道歉。他表示印尼已尽最大努力控制火势，火势历时近四个月才受控。 南洋商报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[全国\\]\\[2\\]印尼总统普拉博沃就跨境烟霾向马新道歉",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 9,
+      "title": "\\[全国\\]\\[3\\]马六甲州选国阵大胜 阿都拉勿宣誓连任首长",
+      "body": "第16届马六甲州选举国阵赢得多数议席，阿都拉勿已宣誓就任第二任首席部长。甲州政府宣布11月16日为甲州特别假期。 马来西亚前锋报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[全国\\]\\[3\\]马六甲州选国阵大胜 阿都拉勿宣誓连任首长",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 10,
+      "title": "\\[全国\\]\\[4\\]泰国破获240公斤冰毒案 5名大马人被捕",
+      "body": "泰国当局破获企图走私240公斤冰毒案，毒品总值逾2890万令吉，5名马来西亚人被捕，疑涉及跨境贩毒网络。泰国与马来西亚执法单位正追查幕后主谋。 每日新闻 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[全国\\]\\[4\\]泰国破获240公斤冰毒案 5名大马人被捕",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 11,
+      "title": "\\[体育\\]\\[1\\]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
+      "body": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双决赛，以16比21、21比13、21比15三局逆转日本组合小林优吾与保木卓朗，夺得冠军。这是两人搭档以来两个月内第二个冠军，也是熊本大师赛自2023年创办以来，首支夺得冠军的大马男双。 光明日报 已确认",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[体育\\]\\[1\\]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 12,
+      "title": "\\[体育\\]\\[2\\]马来虎今晚再战也门 需调整开局慢热问题",
+      "body": "马来西亚国家足球队在国际友谊赛客场0比2不敌中国队后，今日再战也门。教练指出开局失球影响球队反扑，球队需在对阵也门前做好调整，争取拿分改善世界排名。 每日新闻 已确认",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[体育\\]\\[2\\]马来虎今晚再战也门 需调整开局慢热问题",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 13,
+      "title": "\\[体育\\]\\[3\\]大马U16今晚吉隆坡对关岛 力争亚少赛资格赛好成绩",
+      "body": "大马U16少年足球队今晚9时在吉隆坡足球场对阵关岛，力争拿下好成绩。球队此前先后对阵巴勒斯坦及新加坡，今仗不轻敌，专注备战。 马来西亚广播电视台 已确认",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[体育\\]\\[3\\]大马U16今晚吉隆坡对关岛 力争亚少赛资格赛好成绩",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 14,
+      "title": "\\[综合\\]\\[1\\]大马营养法案拟管制不健康食品营销 目标明年提呈",
+      "body": "卫生部长祖基菲里表示，卫生部计划推出营养法案，管制不健康食品营销，保护婴幼儿及儿童营养，并在机构内推行更健康的饮食环境，法案目标明年完成并提呈国会。 亚洲第一 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[综合\\]\\[1\\]大马营养法案拟管制不健康食品营销 目标明年提呈",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 15,
+      "title": "\\[综合\\]\\[2\\]国家公园关闭大汉山登山道至明年1月15日",
+      "body": "国家公园宣布从11月15日起关闭大汉山登山道，至2027年1月15日，原因是天气恶劣及登山道维修与复原。瓜拉大汉仍是主要入口，游客受促留意最新通告。 马新社 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### \\[综合\\]\\[2\\]国家公园关闭大汉山登山道至明年1月15日",
+      "title_bm": "",
+      "body_bm": ""
+    }
+  ],
+  "event_stories": [
+    {
+      "index": 16,
+      "title": "第三部分 未来活动通告",
+      "body": "本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-17",
+      "is_event": true,
+      "event_metadata": {},
+      "raw_header": "## 第三部分 未来活动通告",
+      "title_bm": "",
+      "body_bm": ""
+    }
+  ]
+}
