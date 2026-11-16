@@ -41,23 +41,82 @@ CATEGORY_BADGE_MAP = {
 
 # 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
 GLOBAL_KEYWORD_RULES = [
-    # 0.1 治安与刑事警务 (高优先级：警方/追捕/刺伤/打斗/命案/扣查/扫荡/取缔/嫌犯 -> Investigators)
+    # 0.1 经贸签约与商业合作 (高优先级：签约/备忘录/MOU/商会/商机/合作协议/投资/贸易 -> Handshake_in_corporate_boardroom)
+    {
+        "name": "经贸签约与商业合作",
+        "keywords": ["签约", "备忘录", "MOU", "mou", "商会", "商机", "合作协议", "投资", "贸易"],
+        "patterns": ["handshake_in_corporate_boardroom"],
+        "priority": 3.0,
+    },
+    # 0.2 选举投票与选情 (高优先级：州选/大选/补选/投票/选民/选委会/胜选/席位 -> Ballots_cast_in_ballot_box / Casting_ballot_in_civic_hall)
+    {
+        "name": "选举投票与选情",
+        "keywords": ["州选", "大选", "补选", "投票", "选民", "选委会", "胜选", "席位"],
+        "patterns": ["ballots_cast_in_ballot_box", "casting_ballot_in_civic_hall"],
+        "priority": 3.0,
+    },
+    # 0.3 海上搜救与海事执法 (高优先级：失踪/寻人/搜救/海警/海上/海域/渔船/溺水 -> Maritime_patrol_boat / Patrol_boat_scanning)
+    {
+        "name": "海上搜救与海事执法",
+        "keywords": ["失踪", "寻人", "搜救", "海警", "海上", "海域", "渔船", "溺水"],
+        "patterns": ["maritime_patrol_boat", "patrol_boat_scanning"],
+        "priority": 3.0,
+    },
+    # 0.4 民生福利与社区家庭 (高优先级：福利/主妇/妇女/援助金/津贴/民生/社区/家庭 -> Family_in_community_park)
+    {
+        "name": "民生福利与社区家庭",
+        "keywords": ["福利", "主妇", "妇女", "援助金", "津贴", "民生", "社区", "家庭"],
+        "patterns": ["family_in_community_park"],
+        "priority": 3.0,
+    },
+    # 0.5 医疗卫生与医院 (高优先级：医院/医疗/医生/卫生部/病患/诊所/疫苗/骨痛热症 -> Medical_staff_reviewing_digital)
+    {
+        "name": "医疗卫生与医院",
+        "keywords": ["医院", "医疗", "医生", "卫生部", "病患", "诊所", "疫苗", "骨痛热症"],
+        "patterns": ["medical_staff_reviewing_digital"],
+        "priority": 3.0,
+    },
+    # 0.6 学校教育与校园 (高优先级：学校/学生/教师/华校/独中/教育部/SPM/校舍 -> Students_raising_hands_in_classroom)
+    {
+        "name": "学校教育与校园",
+        "keywords": ["学校", "学生", "教师", "华校", "独中", "教育部", "SPM", "spm", "校舍"],
+        "patterns": ["students_raising_hands_in_classroom"],
+        "priority": 3.0,
+    },
+    # 0.7 油棕种植与农业 (高优先级：油棕/棕油/种植/农业/农民/原产品/出口/园丘 -> Oil_palm_plantation / Sabah_oil_palm_plantation)
+    {
+        "name": "油棕种植与农业",
+        "keywords": ["油棕", "棕油", "种植", "农业", "农民", "原产品", "出口", "园丘"],
+        "patterns": ["oil_palm_plantation", "sabah_oil_palm_plantation"],
+        "priority": 3.0,
+    },
+    # 0.8 机场航空与旅游 (高优先级：机场/航班/直飞/航线/航空/游客/旅游/入境 -> Airplane_taxiing)
+    {
+        "name": "机场航空与旅游",
+        "keywords": ["机场", "航班", "直飞", "航线", "航空", "游客", "旅游", "入境"],
+        "patterns": ["airplane_taxiing"],
+        "priority": 3.0,
+    },
+    # 0.9 治安与刑事警务 (高优先级：警方/追捕/刺伤/打斗/命案/扣查/扫荡/取缔/嫌犯 -> Investigators)
     {
         "name": "治安与刑事警务",
         "keywords": ["警方", "追捕", "刺伤", "打斗", "命案", "扣查", "扫荡", "取缔", "嫌犯"],
-        "patterns": ["investigators_at_tropical_villa", "investigators_outside_tropical"]
+        "patterns": ["investigators_at_tropical_villa", "investigators_outside_tropical"],
+        "priority": 3.0,
     },
-    # 0.2 陆路交通与事故 (高优先级：车祸/碰撞/路障/JPJ/陆路交通局/长巴/德士/交通 -> Officers_inspecting_bus / Taxis / 交通监控)
+    # 0.10 陆路交通与事故 (高优先级：车祸/碰撞/路障/JPJ/陆路交通局/长巴/德士/交通 -> Officers_inspecting_bus / Taxis / 交通监控)
     {
         "name": "陆路交通与事故",
         "keywords": ["车祸", "碰撞", "路障", "jpj", "陆路交通局", "长巴", "德士", "交通"],
-        "patterns": ["officers_inspecting_bus", "taxis_lined_up", "image_20261109_205524", "image_20261109_205602", "image_20261109_205757"]
+        "patterns": ["officers_inspecting_bus", "taxis_lined_up", "image_20261109_205524", "image_20261109_205602", "image_20261109_205757"],
+        "priority": 3.0,
     },
-    # 0.3 水电公用设施 (高优先级：断水/制水/水压/停电/电供/SESB/水务局/JANS -> Utility_workers_ / image_20261109_210654 / 210740)
+    # 0.11 水电公用设施 (高优先级：断水/制水/水压/停电/电供/SESB/水务局/JANS -> Utility_workers_ / image_20261109_210654 / 210740)
     {
         "name": "水电公用设施",
         "keywords": ["断水", "制水", "水压", "停电", "电供", "sesb", "水务局", "jans"],
-        "patterns": ["utility_workers_", "image_20261109_210654", "image_20261109_210740"]
+        "patterns": ["utility_workers_", "image_20261109_210654", "image_20261109_210740"],
+        "priority": 3.0,
     },
     # 1. 暴雨 / 季候风 / 气象 / 淹水 / 水灾 -> 优先匹配 Rainstorm、Tropical_rainstorm、洪水救援图
     {
@@ -71,10 +130,10 @@ GLOBAL_KEYWORD_RULES = [
         "keywords": ["雨林", "热带雨林", "观鸟", "犀鸟", "生态", "保育", "神山", "公园", "森林", "野生动物", "动植物"],
         "patterns": ["rhinoceros_hornbill", "borneo_rainforest", "rainforest"]
     },
-    # 3. 大选 / 竞选 / 政党 / 国会 / 内阁 / 部长 / 州政府 -> 优先匹配 Governmental_pillars、Administrative_center、Sabah_state_administrative
+    # 3. 竞选 / 政党 / 国会 / 内阁 / 部长 / 州政府 -> 优先匹配 Governmental_pillars、Administrative_center、Sabah_state_administrative
     {
         "name": "政经议会行政",
-        "keywords": ["大选", "竞选", "助选", "政党", "国会", "内阁", "部长", "州政府", "首相", "首长", "议会", "议席", "解散国会", "提前解散", "执政", "希盟", "国盟", "国阵", "沙盟"],
+        "keywords": ["竞选", "助选", "政党", "国会", "内阁", "部长", "州政府", "首相", "首长", "议会", "议席", "解散国会", "提前解散", "执政", "希盟", "国盟", "国阵", "沙盟"],
         "patterns": ["governmental_pillars", "administrative_center", "sabah_state_administrative"]
     },
     # 4. 法庭 / 审讯 / 反贪 / 控状 / 司法 -> 优先匹配 Golden_scales
@@ -129,10 +188,10 @@ GLOBAL_KEYWORD_RULES = [
         "keywords": ["德士", "巴士", "客运", "车站", "交通枢纽", "司机", "公共交通", "客货车"],
         "patterns": ["taxis_lined_up", "drivers_conversing"]
     },
-    # 11. 机场 / 航线 / 航班 / 飞机 / 铁道 / 高铁 / 民航
+    # 11. 铁道 / 高铁 / 列车 / 火车
     {
-        "name": "航空铁道交通",
-        "keywords": ["机场", "航线", "航班", "飞机", "铁道", "高铁", "民航", "列车", "新机场"],
+        "name": "铁道列车交通",
+        "keywords": ["铁道", "高铁", "列车", "火车", "民航"],
         "patterns": ["train_and_airplane"]
     },
     # 12. 诈骗 / 黑客 / 网络 / 数字 / 科技 / 防骗
@@ -302,7 +361,10 @@ class CoverGenerator:
             if title_hits == 0 and detail_hits == 0:
                 continue
 
-            rule_weight = (title_hits * 10) + detail_hits
+            # 只有标题实际命中高优先级关键词时，才享受高优先级权重加成；
+            # 若仅详情偶发提及而标题未命中，降为常态权重 1.0，避免正文旁支细节抢占稀缺底图
+            priority = rule.get("priority", 1.0) if title_hits > 0 else 1.0
+            rule_weight = ((title_hits * 10) + detail_hits) * priority
             patterns = rule["patterns"]
 
             for img in all_unused:

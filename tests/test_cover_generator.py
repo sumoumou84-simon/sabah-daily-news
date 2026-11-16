@@ -48,7 +48,7 @@ class TestCoverGenerator(unittest.TestCase):
                 self.assertEqual(img.size, (1200, 675), f"{sample.name} 尺寸不为 1200x675")
                 self.assertEqual(img.mode, "RGB", f"{sample.name} 色彩模式不为 RGB")
 
-        self.assertGreaterEqual(total_images, 30, f"底图库总数过少: {total_images}")
+        self.assertEqual(total_images, 70, f"底图库总数应为 70: {total_images}")
 
     def test_02_font_loading_and_chinese_support(self):
         """测试中文字体成功加载且能正确测量中文字符"""
@@ -130,7 +130,64 @@ class TestCoverGenerator(unittest.TestCase):
             f"水电公用设施新闻未匹配到电力水务底图: {bg_utility.name}"
         )
 
-        # 10. 回退测试：未命中全局关键词时，回退至板块对应目录抽取
+        # 10. 8组全新高优先级语义规则测试：
+        # 10.1 经贸签约与商业合作 -> Handshake_in_corporate_boardroom
+        bg_biz = gen.select_background("national", "马中商会举办商业合作论坛并签署投资备忘录MOU协议")
+        self.assertTrue(
+            "handshake_in_corporate_boardroom" in bg_biz.name.lower(),
+            f"经贸签约合作新闻未匹配到商业握手底图: {bg_biz.name}"
+        )
+
+        # 10.2 选举投票与选情 -> Ballots_cast_in_ballot_box / Casting_ballot_in_civic_hall
+        bg_vote = gen.select_background("sabah", "马六甲州选投票开票，选委会公布最终胜选席位")
+        self.assertTrue(
+            "ballots_cast" in bg_vote.name.lower() or "casting_ballot" in bg_vote.name.lower(),
+            f"选举投票选情新闻未匹配到投票底图: {bg_vote.name}"
+        )
+
+        # 10.3 海上搜救与海事执法 -> Maritime_patrol_boat / Patrol_boat_scanning
+        bg_sea = gen.select_background("general", "沙巴海警与海事局在有关海域展开渔船失踪搜救行动")
+        self.assertTrue(
+            "maritime_patrol_boat" in bg_sea.name.lower() or "patrol_boat_scanning" in bg_sea.name.lower(),
+            f"海上搜救执法新闻未匹配到海事巡逻艇底图: {bg_sea.name}"
+        )
+
+        # 10.4 民生福利与社区家庭 -> Family_in_community_park
+        bg_family = gen.select_background("national", "政府发放家庭主妇民生津贴与社区弱势群体援助金")
+        self.assertTrue(
+            "family_in_community_park" in bg_family.name.lower(),
+            f"民生福利社区家庭新闻未匹配到公园家庭底图: {bg_family.name}"
+        )
+
+        # 10.5 医疗卫生与医院 -> Medical_staff_reviewing_digital
+        bg_medical = gen.select_background("sabah", "卫生部调派专科医生支援公立医院，提升骨痛热症病患诊治")
+        self.assertTrue(
+            "medical_staff_reviewing_digital" in bg_medical.name.lower(),
+            f"医疗卫生医院新闻未匹配到医护数字巡诊底图: {bg_medical.name}"
+        )
+
+        # 10.6 学校教育与校园 -> Students_raising_hands_in_classroom
+        bg_edu = gen.select_background("national", "教育部拨发华校与独中校舍修缮专款，教师与学生迎来新学期")
+        self.assertTrue(
+            "students_raising_hands_in_classroom" in bg_edu.name.lower(),
+            f"学校教育校园新闻未匹配到课堂举手学生底图: {bg_edu.name}"
+        )
+
+        # 10.7 油棕种植与农业 -> Oil_palm_plantation / Sabah_oil_palm_plantation
+        bg_palm = gen.select_background("national", "原产业部拓展棕油出口市场，沙巴油棕种植农业迎来利好")
+        self.assertTrue(
+            "oil_palm_plantation" in bg_palm.name.lower(),
+            f"油棕种植农业新闻未匹配到油棕园底图: {bg_palm.name}"
+        )
+
+        # 10.8 机场航空与旅游 -> Airplane_taxiing
+        bg_air = gen.select_background("sabah", "亚庇国际机场开通全新直飞航班航线，入境游客大幅增长")
+        self.assertTrue(
+            "airplane_taxiing" in bg_air.name.lower(),
+            f"机场航空旅游新闻未匹配到机场飞机滑行底图: {bg_air.name}"
+        )
+
+        # 11. 回退测试：未命中全局关键词时，回退至板块对应目录抽取
         gen_fallback = CoverGenerator()
         bg_fallback_sports = gen_fallback.select_background("sports", "某项没有任何预设关键词的普通活动通报")
         self.assertEqual(bg_fallback_sports.parent.name, "sports", f"回退抽取板块错误: {bg_fallback_sports}")
