@@ -57,4 +57,5 @@ jobs:
           git config --global user.email "sumoumou84@gmail.com"
           git add index.html news_data.json archive_history.json config/ collectors/ pipeline/ reports/ data/ assets/covers/ assets/bg_pool/ || true
           git commit -m "chore: [Auto] 自动同步西门看看网每日晨报 [skip ci]" || echo "今日无变动"
+          git pull --rebase origin main || true
           git push

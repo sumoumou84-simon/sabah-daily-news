@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-17 05:08:55",
-  "date": "2026-11-17",
+  "updated_at": "2026-11-18 22:10:39",
+  "date": "2026-11-18",
   "utilities": [
     {
       "id": "M",
@@ -8,11 +8,11 @@
       "titleBM": "Amaran Hujan Berterusan (Waspada) MetMalaysia Pantai Timur Sabah [Disahkan MetMalaysia]",
       "label": "大马气象局 (MetMalaysia) 季风警报",
       "labelBM": "Amaran Hujan Berterusan MetMalaysia",
-      "time": "05:08",
+      "time": "22:10",
       "status": "LIVE 预警中",
       "statusBM": "LANGSUNG Amaran Aktif",
       "official_source_url": "https://www.met.gov.my/",
-      "source_timestamp": "2026-11-17 05:08",
+      "source_timestamp": "2026-11-18 22:10",
       "issue": "大马气象局持续发布东北季候风强降雨警报（Waspada）：受低压槽活跃影响，山打根、特鲁必、比鲁兰、京那巴当岸及沙巴东海岸未来数日将出现持续强降雨。低洼地区居民需提防闪电水灾与河流水位上涨。",
       "issueBM": "Notis Amaran MetMalaysia: Hujan berterusan tahap waspada dijangka melanda pantai timur Sabah (Sandakan, Telupid, Kinabatangan, Beluran). Penduduk kawasan rendah dinasihatkan sentiasa berwaspada.",
       "pressure": "预警区域：山打根、特鲁必、比鲁兰、京那巴当岸及沿海低洼带",
@@ -34,11 +34,11 @@
       "titleBM": "Pemantauan Bekalan Air JANS Tawau Kuhara [Menunggu Pengesahan]",
       "label": "沙巴水务局 (JANS) 斗湖供水",
       "labelBM": "Bekalan Air JANS Tawau Kuhara",
-      "time": "05:08",
+      "time": "22:10",
       "status": "待核实",
       "statusBM": "Dalam Pengesahan",
       "official_source_url": "https://water.sabah.gov.my/",
-      "source_timestamp": "2026-11-17 05:08",
+      "source_timestamp": "2026-11-18 22:10",
       "issue": "今日官方信源暂无突发紧急抢修通告。斗湖古哈拉抽水主站维持常态平稳供水，水务局正进行全区例行巡检与水压监测，待官方通告发布后实时更新。",
       "issueBM": "Tiada notis gangguan bekalan air kecemasan hari ini. Stesen Kuhara Tawau beroperasi secara berkala dan pemantauan tekanan air sedang dijalankan.",
       "pressure": "供水状态：斗湖市区及沿海片区维持例行供水监测",
@@ -57,466 +57,395 @@
   ],
   "headlines": [
     {
-      "story_index": 1,
-      "category": "sabah",
-      "title": "气象通告",
-      "titleBM": "气象通告",
-      "detail": "气象通告 山打根今日阵雨为主 外出带雨具 山打根今日清晨晴朗，气温约26度，白天最高约31度，最低约25度。上午至中午多阵雨，下午转为多云，晚间局部仍有阵雨。马来西亚气象局此前提醒，沙巴山打根一带可能出现雷雨、豪雨及强风，市民外出请带雨具，避开低洼积水路段。 马来西亚气象局 进行中",
-      "detailBM": "气象通告 山打根今日阵雨为主 外出带雨具 山打根今日清晨晴朗，气温约26度，白天最高约31度，最低约25度。上午至中午多阵雨，下午转为多云，晚间局部仍有阵雨。马来西亚气象局此前提醒，沙巴山打根一带可能出现雷雨、豪雨及强风，市民外出请带雨具，避开低洼积水路段。 马来西亚气象局 进行中",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
+      "id": "art_national_01",
+      "category": "national",
+      "title": "Five seriously injured after tour bus crashes in Sabah",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5\" target=\"_blank\">Five seriously injured after tour bus crashes in Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+      "detailBM": "",
+      "source": "The Star",
       "sources": [
-        "Meta AI 权威整理"
+        "Bing News Sabah (EN)",
+        "The Star"
       ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sandakan",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_01",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
+      "source_urls": [
+        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+        "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
+      ],
       "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
+      "original_published_at": "2026-11-18T10:50:00+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg"
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg"
     },
     {
-      "story_index": 2,
-      "category": "national",
-      "title": "\\[沙巴\\]\\[1\\]沙巴民主行动党促公账会彻查泛婆大道 免沦为互推责任闹剧",
-      "titleBM": "\\[沙巴\\]\\[1\\]沙巴民主行动党促公账会彻查泛婆大道 免沦为互推责任闹剧",
-      "detail": "沙巴民主行动党主席冯晋哲表示，该党全力支持国会公共账目委员会针对沙巴泛婆罗洲大道工程长期延误及成本超支问题，展开无条件、全面且透明的彻底调查。他指出，2026年第二系列总审计司报告揭露，原定于2021年底全面竣工的35个工程配套中，截至2026年3月仅有4个完成。 星洲日报 已确认",
-      "detailBM": "沙巴民主行动党主席冯晋哲表示，该党全力支持国会公共账目委员会针对沙巴泛婆罗洲大道工程长期延误及成本超支问题，展开无条件、全面且透明的彻底调查。他指出，2026年第二系列总审计司报告揭露，原定于2021年底全面竣工的35个工程配套中，截至2026年3月仅有4个完成。 星洲日报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "national",
-      "is_event": false,
-      "event_metadata": {},
       "id": "art_national_02",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg",
-      "cover_image": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg"
-    },
-    {
-      "story_index": 3,
-      "category": "sabah",
-      "title": "\\[沙巴\\]\\[2\\]马西迪：沙巴须可靠价格合理电供 吸引高附加值投资",
-      "titleBM": "\\[沙巴\\]\\[2\\]马西迪：沙巴须可靠价格合理电供 吸引高附加值投资",
-      "detail": "沙巴副首席部长兼财政部长马西迪表示，可靠且价格合理的电力供应，是推动沙巴工业化、吸引高附加值投资及创造高薪就业机会的重要基础。 星洲日报 已确认",
-      "detailBM": "沙巴副首席部长兼财政部长马西迪表示，可靠且价格合理的电力供应，是推动沙巴工业化、吸引高附加值投资及创造高薪就业机会的重要基础。 星洲日报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_03",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg"
-    },
-    {
-      "story_index": 4,
       "category": "national",
-      "title": "\\[沙巴\\]\\[3\\]慕斯达法：MA63已有16项全面解决 10项仍在协商",
-      "titleBM": "\\[沙巴\\]\\[3\\]慕斯达法：MA63已有16项全面解决 10项仍在协商",
-      "detail": "首相署沙砂事务部长慕斯达法表示，截至今年10月，1963年马来西亚协议所讨论的29项主要事项中，已有16项全面解决，另有3项取得临时解决方案，其余10项仍在协商中。联邦政府已同意将沙巴2026年的临时特别拨款提高至15亿令吉。 星洲日报 已确认",
-      "detailBM": "首相署沙砂事务部长慕斯达法表示，截至今年10月，1963年马来西亚协议所讨论的29项主要事项中，已有16项全面解决，另有3项取得临时解决方案，其余10项仍在协商中。联邦政府已同意将沙巴2026年的临时特别拨款提高至15亿令吉。 星洲日报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
+      "title": "Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5\" target=\"_blank\">Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+      "detailBM": "",
+      "source": "Borneo Post",
       "sources": [
-        "Meta AI 权威整理"
+        "Borneo Post",
+        "The Borneo Post Sabah"
       ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
+        "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T08:04:07+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
       "geo_scope": "national",
-      "is_event": false,
-      "event_metadata": {},
+      "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg"
+    },
+    {
+      "id": "art_national_03",
+      "category": "national",
+      "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5\" target=\"_blank\">Sabah MMA welcomes RM1m medical scholarship initiative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+      "detailBM": "",
+      "source": "Daily Express Malaysia",
+      "sources": [
+        "Daily Express Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T13:09:05+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
+    },
+    {
       "id": "art_national_04",
+      "category": "national",
+      "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+      "detailBM": "",
+      "source": "BusinessToday Malaysia",
+      "sources": [
+        "Bing News Sabah (EN)",
+        "BusinessToday Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
+      "source_urls": [
+        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
+        "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
+      ],
       "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
+      "original_published_at": "2026-11-18T08:47:32+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg",
-      "cover_image": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg"
+      "geo_scope": "sarawak",
+      "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
     },
     {
-      "story_index": 5,
-      "category": "national",
-      "title": "\\[沙巴\\]\\[4\\]沙菲益欢迎公账会扩大调查泛婆大道工程",
-      "titleBM": "\\[沙巴\\]\\[4\\]沙菲益欢迎公账会扩大调查泛婆大道工程",
-      "detail": "民兴党主席沙菲益欢迎国会公共账目委员会扩大对沙巴泛婆罗洲大道工程的调查。总审计司报告指出，终止项目执行伙伴模式是工程延误因素之一，相关调查应查清决策依据及影响。 沙巴每日快报 已确认",
-      "detailBM": "民兴党主席沙菲益欢迎国会公共账目委员会扩大对沙巴泛婆罗洲大道工程的调查。总审计司报告指出，终止项目执行伙伴模式是工程延误因素之一，相关调查应查清决策依据及影响。 沙巴每日快报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "national",
-      "is_event": false,
-      "event_metadata": {},
       "id": "art_national_05",
+      "category": "national",
+      "title": "Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5\" target=\"_blank\">Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Malaysian Reserve</font>",
+      "detailBM": "",
+      "source": "The Malaysian Reserve",
+      "sources": [
+        "The Malaysian Reserve"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5"
+      ],
       "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
+      "original_published_at": "2026-11-18T01:18:14+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg",
-      "cover_image": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg"
+      "geo_scope": "sarawak",
+      "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg"
     },
     {
-      "story_index": 6,
-      "category": "national",
-      "title": "\\[沙巴\\]\\[5\\]伊旺：海事法律修订须先获沙巴同意",
-      "titleBM": "\\[沙巴\\]\\[5\\]伊旺：海事法律修订须先获沙巴同意",
-      "detail": "兵南邦国会议员伊旺表示，交通部在把海事及航运相关新法、修订或完善法案带入国会前，须先取得沙巴州政府同意。他是在国会辩论2027年财政预算案交通部委员会阶段时提出上述立场。 纳巴卢新闻 已确认",
-      "detailBM": "兵南邦国会议员伊旺表示，交通部在把海事及航运相关新法、修订或完善法案带入国会前，须先取得沙巴州政府同意。他是在国会辩论2027年财政预算案交通部委员会阶段时提出上述立场。 纳巴卢新闻 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "national",
-      "is_event": false,
-      "event_metadata": {},
       "id": "art_national_06",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg",
-      "cover_image": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg"
-    },
-    {
-      "story_index": 7,
-      "category": "sabah",
-      "title": "\\[全国\\]\\[1\\]森州大臣依斯迈拉欣辞职 国阵将提呈新人选",
-      "titleBM": "\\[全国\\]\\[1\\]森州大臣依斯迈拉欣辞职 国阵将提呈新人选",
-      "detail": "森美兰州务大臣依斯迈拉欣已辞去大臣职务，辞职信志期2026年11月16日，已呈交森州最高统治者端姑慕赫力兹。国阵总秘书赞比里证实，国阵主席将依据森州宪法相关条文，向统治者提呈新任大臣建议人选。 东方日报 已确认",
-      "detailBM": "森美兰州务大臣依斯迈拉欣已辞去大臣职务，辞职信志期2026年11月16日，已呈交森州最高统治者端姑慕赫力兹。国阵总秘书赞比里证实，国阵主席将依据森州宪法相关条文，向统治者提呈新任大臣建议人选。 东方日报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_07",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg"
-    },
-    {
-      "story_index": 8,
-      "category": "sabah",
-      "title": "\\[全国\\]\\[2\\]印尼总统普拉博沃就跨境烟霾向马新道歉",
-      "titleBM": "\\[全国\\]\\[2\\]印尼总统普拉博沃就跨境烟霾向马新道歉",
-      "detail": "印尼总统普拉博沃在菲律宾马尼拉出席东盟峰会时，代表印尼政府和人民，就当地野火引发的跨境烟霾问题，向新加坡和马来西亚人民道歉。他表示印尼已尽最大努力控制火势，火势历时近四个月才受控。 南洋商报 已确认",
-      "detailBM": "印尼总统普拉博沃在菲律宾马尼拉出席东盟峰会时，代表印尼政府和人民，就当地野火引发的跨境烟霾问题，向新加坡和马来西亚人民道歉。他表示印尼已尽最大努力控制火势，火势历时近四个月才受控。 南洋商报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_08",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg"
-    },
-    {
-      "story_index": 9,
-      "category": "sabah",
-      "title": "\\[全国\\]\\[3\\]马六甲州选国阵大胜 阿都拉勿宣誓连任首长",
-      "titleBM": "\\[全国\\]\\[3\\]马六甲州选国阵大胜 阿都拉勿宣誓连任首长",
-      "detail": "第16届马六甲州选举国阵赢得多数议席，阿都拉勿已宣誓就任第二任首席部长。甲州政府宣布11月16日为甲州特别假期。 马来西亚前锋报 已确认",
-      "detailBM": "第16届马六甲州选举国阵赢得多数议席，阿都拉勿已宣誓就任第二任首席部长。甲州政府宣布11月16日为甲州特别假期。 马来西亚前锋报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_09",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg"
-    },
-    {
-      "story_index": 10,
-      "category": "sabah",
-      "title": "\\[全国\\]\\[4\\]泰国破获240公斤冰毒案 5名大马人被捕",
-      "titleBM": "\\[全国\\]\\[4\\]泰国破获240公斤冰毒案 5名大马人被捕",
-      "detail": "泰国当局破获企图走私240公斤冰毒案，毒品总值逾2890万令吉，5名马来西亚人被捕，疑涉及跨境贩毒网络。泰国与马来西亚执法单位正追查幕后主谋。 每日新闻 已确认",
-      "detailBM": "泰国当局破获企图走私240公斤冰毒案，毒品总值逾2890万令吉，5名马来西亚人被捕，疑涉及跨境贩毒网络。泰国与马来西亚执法单位正追查幕后主谋。 每日新闻 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_10",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg"
-    },
-    {
-      "story_index": 11,
-      "category": "sports",
-      "title": "\\[体育\\]\\[1\\]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
-      "titleBM": "\\[体育\\]\\[1\\]戴叶组合逆转日本组合 夺熊本大师赛男双冠军",
-      "detail": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双决赛，以16比21、21比13、21比15三局逆转日本组合小林优吾与保木卓朗，夺得冠军。这是两人搭档以来两个月内第二个冠军，也是熊本大师赛自2023年创办以来，首支夺得冠军的大马男双。 光明日报 已确认",
-      "detailBM": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛男双决赛，以16比21、21比13、21比15三局逆转日本组合小林优吾与保木卓朗，夺得冠军。这是两人搭档以来两个月内第二个冠军，也是熊本大师赛自2023年创办以来，首支夺得冠军的大马男双。 光明日报 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sports_11",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg"
-    },
-    {
-      "story_index": 12,
-      "category": "sports",
-      "title": "\\[体育\\]\\[2\\]马来虎今晚再战也门 需调整开局慢热问题",
-      "titleBM": "\\[体育\\]\\[2\\]马来虎今晚再战也门 需调整开局慢热问题",
-      "detail": "马来西亚国家足球队在国际友谊赛客场0比2不敌中国队后，今日再战也门。教练指出开局失球影响球队反扑，球队需在对阵也门前做好调整，争取拿分改善世界排名。 每日新闻 已确认",
-      "detailBM": "马来西亚国家足球队在国际友谊赛客场0比2不敌中国队后，今日再战也门。教练指出开局失球影响球队反扑，球队需在对阵也门前做好调整，争取拿分改善世界排名。 每日新闻 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sports_12",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg"
-    },
-    {
-      "story_index": 13,
-      "category": "sports",
-      "title": "\\[体育\\]\\[3\\]大马U16今晚吉隆坡对关岛 力争亚少赛资格赛好成绩",
-      "titleBM": "\\[体育\\]\\[3\\]大马U16今晚吉隆坡对关岛 力争亚少赛资格赛好成绩",
-      "detail": "大马U16少年足球队今晚9时在吉隆坡足球场对阵关岛，力争拿下好成绩。球队此前先后对阵巴勒斯坦及新加坡，今仗不轻敌，专注备战。 马来西亚广播电视台 已确认",
-      "detailBM": "大马U16少年足球队今晚9时在吉隆坡足球场对阵关岛，力争拿下好成绩。球队此前先后对阵巴勒斯坦及新加坡，今仗不轻敌，专注备战。 马来西亚广播电视台 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
-      "sources": [
-        "Meta AI 权威整理"
-      ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sports_13",
-      "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
-      "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg"
-    },
-    {
-      "story_index": 14,
       "category": "national",
-      "title": "\\[综合\\]\\[1\\]大马营养法案拟管制不健康食品营销 目标明年提呈",
-      "titleBM": "\\[综合\\]\\[1\\]大马营养法案拟管制不健康食品营销 目标明年提呈",
-      "detail": "卫生部长祖基菲里表示，卫生部计划推出营养法案，管制不健康食品营销，保护婴幼儿及儿童营养，并在机构内推行更健康的饮食环境，法案目标明年完成并提呈国会。 亚洲第一 已确认",
-      "detailBM": "卫生部长祖基菲里表示，卫生部计划推出营养法案，管制不健康食品营销，保护婴幼儿及儿童营养，并在机构内推行更健康的饮食环境，法案目标明年完成并提呈国会。 亚洲第一 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
+      "title": "More homegrown doctors needed to address Sabah shortage",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5\" target=\"_blank\">More homegrown doctors needed to address Sabah shortage – Sabah MMA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+      "detailBM": "",
+      "source": "NST Online",
       "sources": [
-        "Meta AI 权威整理"
+        "NST Online"
       ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "national",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_national_14",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5"
+      ],
       "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
+      "original_published_at": "2026-11-18T08:06:50+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg",
-      "cover_image": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg"
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
     },
     {
-      "story_index": 15,
-      "category": "sabah",
-      "title": "\\[综合\\]\\[2\\]国家公园关闭大汉山登山道至明年1月15日",
-      "titleBM": "\\[综合\\]\\[2\\]国家公园关闭大汉山登山道至明年1月15日",
-      "detail": "国家公园宣布从11月15日起关闭大汉山登山道，至2027年1月15日，原因是天气恶劣及登山道维修与复原。瓜拉大汉仍是主要入口，游客受促留意最新通告。 马新社 已确认",
-      "detailBM": "国家公园宣布从11月15日起关闭大汉山登山道，至2027年1月15日，原因是天气恶劣及登山道维修与复原。瓜拉大汉仍是主要入口，游客受促留意最新通告。 马新社 已确认",
-      "source_url": "",
-      "publisher": "Meta AI 权威整理",
-      "source": "Meta AI 权威整理",
+      "id": "art_national_07",
+      "category": "national",
+      "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5\" target=\"_blank\">Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Jesselton Times</font>",
+      "detailBM": "",
+      "source": "Jesselton Times",
       "sources": [
-        "Meta AI 权威整理"
+        "Jesselton Times"
       ],
-      "url": "",
-      "source_urls": [],
-      "original_published_at": "2026-11-17T00:00:00+08:00",
-      "geo_scope": "sabah",
-      "is_event": false,
-      "event_metadata": {},
-      "id": "art_sabah_15",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5"
+      ],
       "image_url": null,
-      "collected_at": "2026-11-17T05:08:56.931215+08:00",
-      "site_published_at": "2026-11-17T05:08:56.931215+08:00",
-      "updated_at": "2026-11-17T05:08:56.931215+08:00",
+      "original_published_at": "2026-11-18T00:04:50+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
       "is_updated": false,
-      "validation_status": "VERIFIED",
-      "cover": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg",
-      "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg"
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
+    },
+    {
+      "id": "art_sabah_08",
+      "category": "sabah",
+      "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5\" target=\"_blank\">Sabah urged to plan now for KKIA's long-term capacity needs</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+      "detailBM": "",
+      "source": "The Star",
+      "sources": [
+        "Bing News Sabah (EN)",
+        "The Star"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
+      "source_urls": [
+        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+        "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T05:43:00+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah",
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
+    },
+    {
+      "id": "art_sabah_09",
+      "category": "sabah",
+      "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+      "detailBM": "",
+      "source": "Daily Express Malaysia",
+      "sources": [
+        "Daily Express Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T07:35:56+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah",
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
+    },
+    {
+      "id": "art_national_10",
+      "category": "national",
+      "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5\" target=\"_blank\">JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+      "detailBM": "",
+      "source": "BusinessToday Malaysia",
+      "sources": [
+        "BusinessToday Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T08:30:13+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
+    },
+    {
+      "id": "art_sabah_11",
+      "category": "sabah",
+      "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5\" target=\"_blank\">Sabah needs long-term plan for KKIA beyond terminal expansion</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+      "detailBM": "",
+      "source": "NST Online",
+      "sources": [
+        "NST Online"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T05:52:21+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah",
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
+    },
+    {
+      "id": "art_national_12",
+      "category": "national",
+      "title": "Sabah Immigration nabs 12 suspected scammers from China",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5\" target=\"_blank\">Sabah Immigration nabs 12 suspected scammers from China</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+      "detailBM": "",
+      "source": "The Star",
+      "sources": [
+        "The Star"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T05:16:00+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+    },
+    {
+      "id": "art_national_13",
+      "category": "national",
+      "title": "Sabah struggles to retain skilled talent",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5\" target=\"_blank\">Sabah struggles to retain skilled talent</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+      "detailBM": "",
+      "source": "NST Online",
+      "sources": [
+        "NST Online"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T01:33:37+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
+    },
+    {
+      "id": "art_national_14",
+      "category": "national",
+      "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+      "detailBM": "",
+      "source": "Borneo Post",
+      "sources": [
+        "Borneo Post",
+        "The Borneo Post Sabah"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+        "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T00:03:37+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
+    },
+    {
+      "id": "art_national_15",
+      "category": "national",
+      "title": "Investors for Sabah energy projects sought",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+      "detailBM": "",
+      "source": "Daily Express Malaysia",
+      "sources": [
+        "Daily Express Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
+        "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T03:28:04+00:00",
+      "collected_at": "2026-11-18T22:11:18.096541+08:00",
+      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
     }
   ],
   "events": [
     {
       "id": 1,
-      "month": "11",
-      "day": "17",
-      "full_date": "2026-11-17",
-      "end_date": "2026-11-17",
-      "name": "第三部分 未来活动通告",
-      "nameBM": "第三部分 未来活动通告",
-      "time": "08:00 AM - 05:00 PM",
-      "timeBM": "08:00 AM - 05:00 PM",
-      "location": "山打根社区中心",
-      "category": "市政公益",
-      "categoryBM": "市政公益",
-      "badgeColor": "bg-[#14532d] text-[#86efac]",
-      "desc": "本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
-      "descBM": "本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
-      "tel": "",
-      "source": "Meta AI 权威整理",
-      "sourceBM": "Meta AI 权威整理",
-      "countdown_days": 0,
-      "first_seen_date": "2026-11-17"
-    },
-    {
-      "id": 2,
       "month": "11",
       "day": "18",
       "full_date": "2026-11-18",
@@ -533,12 +462,400 @@
       "tel": "089-221315",
       "source": "沙巴野生动物局 SWD 官方",
       "sourceBM": "Jabatan Hidupan Liar Sabah (SWD)",
-      "countdown_days": 1,
+      "countdown_days": 0,
       "first_seen_date": "2026-11-13",
       "end_date": "2026-11-18"
     }
   ],
   "archive": {
+    "2026-11-18": [
+      {
+        "id": "art_national_01",
+        "category": "national",
+        "title": "Five seriously injured after tour bus crashes in Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5\" target=\"_blank\">Five seriously injured after tour bus crashes in Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
+        "sources": [
+          "Bing News Sabah (EN)",
+          "The Star"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
+        "source_urls": [
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T10:50:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg"
+      },
+      {
+        "id": "art_national_02",
+        "category": "national",
+        "title": "Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5\" target=\"_blank\">Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
+        "sources": [
+          "Borneo Post",
+          "The Borneo Post Sabah"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
+          "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:04:07+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg"
+      },
+      {
+        "id": "art_national_03",
+        "category": "national",
+        "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5\" target=\"_blank\">Sabah MMA welcomes RM1m medical scholarship initiative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T13:09:05+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
+      },
+      {
+        "id": "art_national_04",
+        "category": "national",
+        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
+        "sources": [
+          "Bing News Sabah (EN)",
+          "BusinessToday Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
+        "source_urls": [
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:47:32+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
+      },
+      {
+        "id": "art_national_05",
+        "category": "national",
+        "title": "Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5\" target=\"_blank\">Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Malaysian Reserve</font>",
+        "detailBM": "",
+        "source": "The Malaysian Reserve",
+        "sources": [
+          "The Malaysian Reserve"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T01:18:14+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg"
+      },
+      {
+        "id": "art_national_06",
+        "category": "national",
+        "title": "More homegrown doctors needed to address Sabah shortage",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5\" target=\"_blank\">More homegrown doctors needed to address Sabah shortage – Sabah MMA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
+        "sources": [
+          "NST Online"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:06:50+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
+      },
+      {
+        "id": "art_national_07",
+        "category": "national",
+        "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5\" target=\"_blank\">Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Jesselton Times</font>",
+        "detailBM": "",
+        "source": "Jesselton Times",
+        "sources": [
+          "Jesselton Times"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T00:04:50+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
+      },
+      {
+        "id": "art_sabah_08",
+        "category": "sabah",
+        "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5\" target=\"_blank\">Sabah urged to plan now for KKIA's long-term capacity needs</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
+        "sources": [
+          "Bing News Sabah (EN)",
+          "The Star"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
+        "source_urls": [
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T05:43:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
+      },
+      {
+        "id": "art_sabah_09",
+        "category": "sabah",
+        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T07:35:56+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
+      },
+      {
+        "id": "art_national_10",
+        "category": "national",
+        "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5\" target=\"_blank\">JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
+        "sources": [
+          "BusinessToday Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:30:13+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
+      },
+      {
+        "id": "art_sabah_11",
+        "category": "sabah",
+        "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5\" target=\"_blank\">Sabah needs long-term plan for KKIA beyond terminal expansion</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
+        "sources": [
+          "NST Online"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T05:52:21+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
+      },
+      {
+        "id": "art_national_12",
+        "category": "national",
+        "title": "Sabah Immigration nabs 12 suspected scammers from China",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5\" target=\"_blank\">Sabah Immigration nabs 12 suspected scammers from China</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
+        "sources": [
+          "The Star"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T05:16:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+      },
+      {
+        "id": "art_national_13",
+        "category": "national",
+        "title": "Sabah struggles to retain skilled talent",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5\" target=\"_blank\">Sabah struggles to retain skilled talent</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
+        "sources": [
+          "NST Online"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T01:33:37+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
+      },
+      {
+        "id": "art_national_14",
+        "category": "national",
+        "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
+        "sources": [
+          "Borneo Post",
+          "The Borneo Post Sabah"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+          "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T00:03:37+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
+      },
+      {
+        "id": "art_national_15",
+        "category": "national",
+        "title": "Investors for Sabah energy projects sought",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
+          "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T03:28:04+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
+      }
+    ],
     "2026-11-17": [
       {
         "story_index": 1,
@@ -565,9 +882,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 2,
@@ -594,9 +909,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 3,
@@ -623,9 +936,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 4,
@@ -652,9 +963,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 5,
@@ -681,9 +990,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 6,
@@ -710,9 +1017,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 7,
@@ -739,9 +1044,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 8,
@@ -768,9 +1071,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 9,
@@ -797,9 +1098,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 10,
@@ -826,9 +1125,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 11,
@@ -855,9 +1152,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 12,
@@ -884,9 +1179,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 13,
@@ -913,9 +1206,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 14,
@@ -942,9 +1233,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 15,
@@ -971,9 +1260,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg"
+        "validation_status": "VERIFIED"
       }
     ],
     "2026-11-16": [
@@ -2849,671 +3136,392 @@
         "validation_status": "VERIFIED"
       }
     ],
-    "2026-11-11": [
+    "11/18": [
       {
-        "story_index": 1,
-        "category": "sabah",
-        "title": "MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
-        "titleBM": "Laporan Utama: MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
-        "detail": "MPS 在 Dewan Masyarakat 召开 Townhall，商贩集中反映市区道路坑洞、路灯不亮、排水堵塞、夜市摊位卫生。MPS 承诺小坑洞 14天内修好，大坑 6个月内修好，路灯 7天内更换。\n\n今日重点路段：Jalan Leila、Harrison 圆环、Jalan Pelabuhan Lama 一带今早有修路工程，夜市照常营业。MPS 提醒市民若发现路灯不亮、路洞，可直接去 MPS 官网 mps.sabah.gov.my 投诉，MPS 会在月会上跟进。",
-        "detailBM": "MPS 在 Dewan Masyarakat 召开 Townhall，商贩集中反映市区道路坑洞、路灯不亮、排水堵塞、夜市摊位卫生。MPS 承诺小坑洞 14天内修好，大坑 6个月内修好，路灯 7天内更换。\n\n今日重点路段：Jalan Leila、Harrison 圆环、Jalan Pelabuhan Lama 一带今早有修路工程，夜市照常营业。MPS 提醒市民若发现路灯不亮、路洞，可直接去 MPS 官网 mps.sabah.gov.my 投诉，MPS 会在月会上跟进。",
-        "source_url": "https://news.google.com",
-        "publisher": "MPS FB, My Sandakan Kini FB, Sabah Media News FB, 11, 06 07:30",
-        "source": "MPS FB",
+        "id": "art_national_01",
+        "category": "national",
+        "title": "Five seriously injured after tour bus crashes in Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5\" target=\"_blank\">Five seriously injured after tour bus crashes in Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
         "sources": [
-          "MPS FB",
-          "My Sandakan Kini FB",
-          "Sabah Media News FB",
-          "11",
-          "06 07:30"
+          "Bing News Sabah (EN)",
+          "The Star"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_01",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T10:50:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg"
       },
       {
-        "story_index": 2,
-        "category": "sabah",
-        "title": "JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
-        "titleBM": "Laporan Utama: JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
-        "detail": "JANS 紧急通告 11月7日周六两起：中午 12:30 起，Borneo Cove 前大桥 450mm MSCL 主水管爆裂抢修；早上 9:30 起，Taman Nasalim Fasa 7 对面 250mm 配水管漏水排查。11月6日 Batu Sapi 圆环 400mm 闸阀更换。11月4日周三还有一处 250mm 主水管在 Sungai Anib 2 新学校前接驳。\n\n山打根 6区已断水第6天：Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View、Indah Jaya，民兴党伊罗普拉议员张克骏促 JANS 立刻派水车到这 6区，持续运水到恢复稳定为止。JANS 呼吁受影响用户存水、省水，高楼公寓地下吸水箱因主水管压力临界补不到水，最惨。",
-        "detailBM": "JANS 紧急通告 11月7日周六两起：中午 12:30 起，Borneo Cove 前大桥 450mm MSCL 主水管爆裂抢修；早上 9:30 起，Taman Nasalim Fasa 7 对面 250mm 配水管漏水排查。11月6日 Batu Sapi 圆环 400mm 闸阀更换。11月4日周三还有一处 250mm 主水管在 Sungai Anib 2 新学校前接驳。\n\n山打根 6区已断水第6天：Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View、Indah Jaya，民兴党伊罗普拉议员张克骏促 JANS 立刻派水车到这 6区，持续运水到恢复稳定为止。JANS 呼吁受影响用户存水、省水，高楼公寓地下吸水箱因主水管压力临界补不到水，最惨。",
-        "source_url": "https://news.google.com",
-        "publisher": "JANS FB, water.sabah.gov.my, 11, 07 12:30",
-        "source": "JANS FB",
+        "id": "art_national_02",
+        "category": "national",
+        "title": "Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5\" target=\"_blank\">Ops Padu: Authorities seize unregistered health products worth RM500,000 across Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
         "sources": [
-          "JANS FB",
-          "water.sabah.gov.my",
-          "11",
-          "07 12:30"
+          "Borneo Post",
+          "The Borneo Post Sabah"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
+          "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_02",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T08:04:07+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg"
       },
       {
-        "story_index": 3,
-        "category": "sabah",
-        "title": "SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
-        "titleBM": "Laporan Utama: SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
-        "detail": "SESB 证实：275kV Kolopis-Segaliud 1号线周六 5:05PM 跳闸，山打根、拿笃、古纳、仙本那、比鲁兰、京那巴当 23万用户受影响，周日 3:11PM 已分阶段全面恢复。\n\n今日 11月10日山打根供电正常，未有新停电通告。SESB 提醒若仍断电，打 Careline 15444、088-515000、WhatsApp 019-852 5427 或 SESB App。\n\nMPS 交通：今日山打根市区交通通畅，Sepilok 观鸟节收尾注意山路积水，拿笃海啸演习 9AM-2PM 部分路段改道已结束。",
-        "detailBM": "SESB 证实：275kV Kolopis-Segaliud 1号线周六 5:05PM 跳闸，山打根、拿笃、古纳、仙本那、比鲁兰、京那巴当 23万用户受影响，周日 3:11PM 已分阶段全面恢复。\n\n今日 11月10日山打根供电正常，未有新停电通告。SESB 提醒若仍断电，打 Careline 15444、088-515000、WhatsApp 019-852 5427 或 SESB App。\n\nMPS 交通：今日山打根市区交通通畅，Sepilok 观鸟节收尾注意山路积水，拿笃海啸演习 9AM-2PM 部分路段改道已结束。",
-        "source_url": "https://news.google.com",
-        "publisher": "SESB FB, 11, 09",
-        "source": "SESB FB",
+        "id": "art_national_03",
+        "category": "national",
+        "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5\" target=\"_blank\">Sabah MMA welcomes RM1m medical scholarship initiative</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
         "sources": [
-          "SESB FB",
-          "11",
-          "09"
+          "Daily Express Malaysia"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcndDTEVPMGdJc0F3VWZqWHhsalU4aUNPbmFGdWMwMUkzdnhOUTIwTDk0TWNpRlY0TlN5WTlnc1V6elZldklmY3pUdTRIODY2RDl3ajZ2R3JZZmIyVkNZWUJDN3FKbUhnbEx4U2hnSDYwVGh5dDZXS3ZDWmJxdVU0MzBWbWF2ZmNSclZhREp0QXp3VUh4MmN0SnJMOHF6cmxF?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_03",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T13:09:05+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
       },
       {
-        "story_index": 4,
-        "category": "sabah",
-        "title": "JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
-        "titleBM": "Laporan Utama: JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
-        "detail": "11月6日周五 8:00AM 起，Batu Sapi 圆环附近 400mm 闸阀更换，影响 Batu Sapi 及京那巴当部分用户。11月1日周日 9:30AM 起，Tangki Kebun Cina 切换到 Tangki Tshun Ngen Batu 5，山打根市区水压波动。JANS 提醒每次维修后水会浑浊，先放水 5分钟再用。",
-        "detailBM": "11月6日周五 8:00AM 起，Batu Sapi 圆环附近 400mm 闸阀更换，影响 Batu Sapi 及京那巴当部分用户。11月1日周日 9:30AM 起，Tangki Kebun Cina 切换到 Tangki Tshun Ngen Batu 5，山打根市区水压波动。JANS 提醒每次维修后水会浑浊，先放水 5分钟再用。",
-        "source_url": "https://news.google.com",
-        "publisher": "water.sabah.gov.my, 11, 06 8:00AM, 01 9:30AM",
-        "source": "water.sabah.gov.my",
+        "id": "art_national_04",
+        "category": "national",
+        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
         "sources": [
-          "water.sabah.gov.my",
-          "11",
-          "06 8:00AM",
-          "01 9:30AM"
+          "Bing News Sabah (EN)",
+          "BusinessToday Malaysia"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_04",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T08:47:32+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
       },
       {
-        "story_index": 5,
-        "category": "sabah",
-        "title": "MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
-        "titleBM": "Laporan Utama: MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
-        "detail": "气象局发布持续豪雨警报，恶劣及警惕级别覆盖半岛东海岸及沙巴东部至 11月11日。沙巴涉及古达及山打根区：Paitan、Telupid、Labuk dan Sugut、Sandakan 及 Kinabatangan。My Sandakan Kini 提醒今天出门带雨具，Sepilok、观鸟节收尾区注意山路积水。SANDAKANfm90.1 早上已播路况，渔民注意风浪。",
-        "detailBM": "气象局发布持续豪雨警报，恶劣及警惕级别覆盖半岛东海岸及沙巴东部至 11月11日。沙巴涉及古达及山打根区：Paitan、Telupid、Labuk dan Sugut、Sandakan 及 Kinabatangan。My Sandakan Kini 提醒今天出门带雨具，Sepilok、观鸟节收尾区注意山路积水。SANDAKANfm90.1 早上已播路况，渔民注意风浪。",
-        "source_url": "https://news.google.com",
-        "publisher": "Bernama FB, Sabah TV Official FB, RTM FB, 11, 09",
-        "source": "Bernama FB",
+        "id": "art_national_05",
+        "category": "national",
+        "title": "Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5\" target=\"_blank\">Data centre economic returns, Sabah and Sarawak seat allocation in Dewan Rakyat focus</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Malaysian Reserve</font>",
+        "detailBM": "",
+        "source": "The Malaysian Reserve",
         "sources": [
-          "Bernama FB",
-          "Sabah TV Official FB",
-          "RTM FB",
-          "11",
-          "09"
+          "The Malaysian Reserve"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMixwFBVV95cUxOUk5IQTNxWUg4TzJjejJGSlRKTEpXLW1ENWdxS1pTdWlxMXQ4WEVaZkNqVEswb2phSEdTOEhpT2ZFeTNSR2NROXE3aE1kWldHOExiS2hzOUNuUFM4aFpPMlJ5UG9qMG50RzBPVWtRWERtOTVIWThOQTkzajlXTzlVeS0zOFZuUU9sZHVZN2psNDR3LS02NDFXOVoyTGJIaGpmc2lLNk42aUpINzU0S2NoaVRISEsxdGtheFFyZEduTVhSRmtIUDJB?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_05",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T01:18:14+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg"
       },
       {
-        "story_index": 6,
-        "category": "sabah",
-        "title": "仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
-        "titleBM": "Laporan Utama: 仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
-        "detail": "沙巴州政府正协调运回 3具来自仙本那男子的遗体，他们昨天下午在雪兰莪雪邦遭雷击身亡。家属已接获通知，州政府将协助处理后事。Sabah Spotlight 2026 已有家属筹款贴，提醒雷雨天勿在空旷地、树下、铁皮屋顶下逗留。",
-        "detailBM": "沙巴州政府正协调运回 3具来自仙本那男子的遗体，他们昨天下午在雪兰莪雪邦遭雷击身亡。家属已接获通知，州政府将协助处理后事。Sabah Spotlight 2026 已有家属筹款贴，提醒雷雨天勿在空旷地、树下、铁皮屋顶下逗留。",
-        "source_url": "https://news.google.com",
-        "publisher": "Sayangi Sabah FB, Sabah Media News FB, 11, 09 3:12pm",
-        "source": "Sayangi Sabah FB",
+        "id": "art_national_06",
+        "category": "national",
+        "title": "More homegrown doctors needed to address Sabah shortage",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5\" target=\"_blank\">More homegrown doctors needed to address Sabah shortage – Sabah MMA</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
         "sources": [
-          "Sayangi Sabah FB",
-          "Sabah Media News FB",
-          "11",
-          "09 3:12pm"
+          "NST Online"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPN2ZXU1RTZW1nbnNDRFp0ekI2NTNuNkZDSHcxT0tKOXltVF9COERTWmU4TVJyU3hRQWNUR2lMNlZqSlBMVmcxZFRSalNEMkQ3SUhxbHZ4NF9veGw2LTVlWmVXclgxbUhhTXpEM2ZfaXRvTWI3TGw5RExtZHU4VEZ3TWo2MFA1UHl2dFZOMjlaMHBZRWQ5RzgtRW5LUEJIQlZaM1RtNktOLVN5SzlmS2g2ZG9OTXpYZE1COThOcHM2LWVLVE9PSm9wSWN3YkZuSklra0RLdkxn0gHIAUFVX3lxTE5BUG9uQVlUTVFGTk5aUVlqcUJvLUJVZ1pkMTJaRmp4SmNZRlItdHl3U2RBcHpBWDJEVUt3ZmNzVDV4VVpzMllpN3VwRUd5YlRZSEx0dXhOalZyXzZFbXB6REtRV3FqNkxCVWU0RWtMXzV3Z3RIc1k1V1Rabndsa1VjSGVjLTZlRndYTlNNZzVpSlEySkJialh0MXVGckI0Qk9RQ2tENngtcVU2SGQ0ZkY3dVZnUGJVbHdndzVzWVExQkhBaXdXM055?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_06",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T08:06:50+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
       },
       {
-        "story_index": 7,
-        "category": "sabah",
-        "title": "沙巴珊瑚白化升至第4级最严重 山打根最受关注",
-        "titleBM": "Laporan Utama: 沙巴珊瑚白化升至第4级最严重 山打根最受关注",
-        "detail": "沙巴珊瑚白化特别工作组 10月监测，山打根已升至 Alert Level 4，东海岸维持 Level 3，海温过高是主因。专家呼吁减少污染、勿踩珊瑚。My Sandakan Kini 提醒本周出海浮潜的游客注意防晒，别用含氧苯酮防晒霜。",
-        "detailBM": "沙巴珊瑚白化特别工作组 10月监测，山打根已升至 Alert Level 4，东海岸维持 Level 3，海温过高是主因。专家呼吁减少污染、勿踩珊瑚。My Sandakan Kini 提醒本周出海浮潜的游客注意防晒，别用含氧苯酮防晒霜。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, Sabah TV Official FB",
-        "source": "沙巴星洲日报 FB",
+        "id": "art_national_07",
+        "category": "national",
+        "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5\" target=\"_blank\">Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Jesselton Times</font>",
+        "detailBM": "",
+        "source": "Jesselton Times",
         "sources": [
-          "沙巴星洲日报 FB",
-          "Sabah TV Official FB"
+          "Jesselton Times"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMisgFBVV95cUxPTjZ6Y2hHZ1NlSkt2QnJOTlNvQzdPWFFFd0V3NDBZb0VxOUlzVm5BdDB3YjJHMFpOaHBIald4RVFWT2N4ZndydjBuaDhVUG9CNHhsc2lXei1lVkRET0hQVEtlLXBqVnFHMFdKaV92QXRURXp4Z0o4UWI0OFlNVWJCN0JCTEpZN0JXektfMHhrWnpGUFZsb2QzTWdaaFpjTDIweHhPemthR2JIX1Q5endLZldB0gG3AUFVX3lxTE5mUElQdFV6QWtoSXVlODRYUGtDdGZHV3FsZVM5WGNCZThucFVDVUJVakQyUlJSazZSOXU2UzZMSXA3SWNwUmwyRGpCT0NpeVpsUVZfZ3BISE9RR3BySTE4d1J2QjFlUGZScVZrZWQwdWtsZEdlTERjaGhIOXFhQWw0Zk56c1hIbE5EYkdyQ3U3eVFWSXZqR3hhXzlpQ3NYUm9ucEJRS01uVEVpUUVWbkNLb21ybExTaw?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_07",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T00:04:50+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
       },
       {
-        "story_index": 8,
-        "category": "sabah",
-        "title": "婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
-        "titleBM": "Laporan Utama: 婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
-        "detail": "第12届婆罗洲观鸟节 11月7日起在山打根举行，雨林导览、观鸟比赛、摄影展、生态讲座持续到周末，预计吸引国内外 5000名爱鸟人士。主办方称今年 Sepilok 区观鸟路线最受欢迎，明年将扩大亲子区。",
-        "detailBM": "第12届婆罗洲观鸟节 11月7日起在山打根举行，雨林导览、观鸟比赛、摄影展、生态讲座持续到周末，预计吸引国内外 5000名爱鸟人士。主办方称今年 Sepilok 区观鸟路线最受欢迎，明年将扩大亲子区。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, My Sandakan Kini FB, Sabah TV Official FB, 11月7-9日",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "My Sandakan Kini FB",
-          "Sabah TV Official FB",
-          "11月7-9日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
         "id": "art_sabah_08",
+        "category": "sabah",
+        "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5\" target=\"_blank\">Sabah urged to plan now for KKIA's long-term capacity needs</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
+        "sources": [
+          "Bing News Sabah (EN)",
+          "The Star"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
+        "source_urls": [
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+          "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
+        ],
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T05:43:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
       },
       {
-        "story_index": 9,
-        "category": "sabah",
-        "title": "沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
-        "titleBM": "Laporan Utama: 沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
-        "detail": "第二财长阿米尔韩查指政府将在今年底前宪报命令，让沙巴获得 15亿特别拨款中剩余的 9亿令吉。MA63框架下 27项诉求，14项已完成，10项包括 40%净税收仍未解。Sabah Spotlight 2026 有详细解读。",
-        "detailBM": "第二财长阿米尔韩查指政府将在今年底前宪报命令，让沙巴获得 15亿特别拨款中剩余的 9亿令吉。MA63框架下 27项诉求，14项已完成，10项包括 40%净税收仍未解。Sabah Spotlight 2026 有详细解读。",
-        "source_url": "https://news.google.com",
-        "publisher": "Bernama FB, The Star FB, Sabah Media News FB",
-        "source": "Bernama FB",
-        "sources": [
-          "Bernama FB",
-          "The Star FB",
-          "Sabah Media News FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
         "id": "art_sabah_09",
+        "category": "sabah",
+        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+        ],
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T07:35:56+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
       },
       {
-        "story_index": 10,
-        "category": "sabah",
-        "title": "亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
-        "titleBM": "Laporan Utama: 亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
-        "detail": "11月4日晚亚庇精英区 3层豪宅捣破网络诈骗中心，逮捕 14名 26-44岁中国籍男子，起获大量电脑手机。曾国竣律师呼吁追究“知情出租者”责任，不能一句不知情就脱罪。Sayangi Sabah 提醒别信高回报投资。",
-        "detailBM": "11月4日晚亚庇精英区 3层豪宅捣破网络诈骗中心，逮捕 14名 26-44岁中国籍男子，起获大量电脑手机。曾国竣律师呼吁追究“知情出租者”责任，不能一句不知情就脱罪。Sayangi Sabah 提醒别信高回报投资。",
-        "source_url": "https://news.google.com",
-        "publisher": "Sabah Media News FB, Rojaklah88 FB, Viralcham FB",
-        "source": "Sabah Media News FB",
+        "id": "art_national_10",
+        "category": "national",
+        "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5\" target=\"_blank\">JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
         "sources": [
-          "Sabah Media News FB",
-          "Rojaklah88 FB",
-          "Viralcham FB"
+          "BusinessToday Malaysia"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMivAFBVV95cUxOTWlfcndOOWIwWFdjT1pLbU8zcjhsNWkzNmpUSDlKS0VhNmFNeEI1a2xmVUFWT0lIR0tXUHY1c2ppdE9nOVJmak5QWU9CQjN4U28xSk5sdEYxLV9tT2h1ejNGdldzSDdaYzRJMWNUbjBOeWNKV2tDYkFhcExualEzcDZocmw2QTNNeHBjVDFVQmc0WGVpSGhINm5WR1NSN1NtNzh4SmN5ZXd4dUZIZlBvMXRubWJWbU1FMVM1ag?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_10",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T08:30:13+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
       },
       {
-        "story_index": 11,
-        "category": "sabah",
-        "title": "沙巴州政府：照顾全民福祉 不分种族宗教背景",
-        "titleBM": "Laporan Utama: 沙巴州政府：照顾全民福祉 不分种族宗教背景",
-        "detail": "沙巴州工程与公共事业部助理部长拿督利慕士朱利昨晚为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时说，州政府始终致力照顾全民福祉，不分种族、宗教及背景，确保各族共享发展成果。据《2026年沙巴州财政预算案》，州政府拨出 9000万令吉用于宗教发展、非伊斯兰宗教机构及教会学校、私立学校发展。",
-        "detailBM": "沙巴州工程与公共事业部助理部长拿督利慕士朱利昨晚为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时说，州政府始终致力照顾全民福祉，不分种族、宗教及背景，确保各族共享发展成果。据《2026年沙巴州财政预算案》，州政府拨出 9000万令吉用于宗教发展、非伊斯兰宗教机构及教会学校、私立学校发展。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, 11, 09",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "11",
-          "09"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
         "id": "art_sabah_11",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 12,
         "category": "sabah",
-        "title": "杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
-        "titleBM": "Laporan Utama: 杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
-        "detail": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来发展必须兼顾当地特色和民需，避免过度扩张导致公共空间减少，影响当地特有城市风貌和历史特色。Rojaklah88 评论区根地咬居民附和：要发展，但不要把老街拆光。",
-        "detailBM": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来发展必须兼顾当地特色和民需，避免过度扩张导致公共空间减少，影响当地特有城市风貌和历史特色。Rojaklah88 评论区根地咬居民附和：要发展，但不要把老街拆光。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, 11, 09 2:06pm",
-        "source": "沙巴星洲日报 FB",
+        "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5\" target=\"_blank\">Sabah needs long-term plan for KKIA beyond terminal expansion</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
         "sources": [
-          "沙巴星洲日报 FB",
-          "11",
-          "09 2:06pm"
+          "NST Online"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZkpVVWFoeWJpOVNuaUI2al9nUHRzdWpabEZwY1UzSEdtM3V6cENuNEtkaFNDaHN6R1NGd3g4aUdjOS1TejZ4bWI5TlJvZGZuUnZCOUVTOU1DR3lTWEoydlJiZDdOS0hhbUZ2Zy1PU3N4eDd5RkxrcXV4YUJvam1kNGxNV19sblZ5dlp2TGVDNE5qRDVZaHdXTWhfZ2pDX25LYUZIV3VpMDJ5ZE9od2NZ0gG0AUFVX3lxTE5yN2VQcy1nNEVLeE9wS1RxU2ZnVV90ZTlGV1UwWHZhb2FiOF9pbGd2SE1BVXRJRzZNUnhzTGM4Z193dGJHSzVKOGRSWDM0aXpUMFBmdnBoRDQ3c1E4RnVZc3MzdkxjeGNtdVNEY1Q5TEhlR2l0eWNmYUZ2SVhTaEpfSGlkNU9La20zNU5maVdQd3otaXg2T3kyMXJNTlVMV08yOFZtcEEzZFhwOXFLWXN0M1ZXNQ?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
+        "image_url": null,
+        "original_published_at": "2026-11-18T05:52:21+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
         "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_12",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
       },
       {
-        "story_index": 13,
-        "category": "sabah",
-        "title": "沙巴年度捐血活动 山打根亚庇同步登场",
-        "titleBM": "Laporan Utama: 沙巴年度捐血活动 山打根亚庇同步登场",
-        "detail": "沙巴年度大型捐血活动 11月7日在亚庇和山打根同步登场，放眼筹获 1200包血液，缓解医院血库紧张。Sabah Media News 指山打根医院血库 O型最缺，今天仍可到中央医院捐血站补捐，带 IC、睡足 6小时。",
-        "detailBM": "沙巴年度大型捐血活动 11月7日在亚庇和山打根同步登场，放眼筹获 1200包血液，缓解医院血库紧张。Sabah Media News 指山打根医院血库 O型最缺，今天仍可到中央医院捐血站补捐，带 IC、睡足 6小时。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, Sabah Media News FB, 11, 07",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "Sabah Media News FB",
-          "11",
-          "07"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_13",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 14,
-        "category": "sabah",
-        "title": "沙巴1106名司机获特别援金 每人1000令吉",
-        "titleBM": "Laporan Utama: 沙巴1106名司机获特别援金 每人1000令吉",
-        "detail": "沙巴 1106名符合资格的德士、出租车、校车司机将获得每人 1000令吉一次性特别援金，减轻生活负担。My Sandakan Kini 已发申请名单查询方式。",
-        "detailBM": "沙巴 1106名符合资格的德士、出租车、校车司机将获得每人 1000令吉一次性特别援金，减轻生活负担。My Sandakan Kini 已发申请名单查询方式。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, 11, 06",
-        "source": "沙巴星洲日报 FB",
-        "sources": [
-          "沙巴星洲日报 FB",
-          "11",
-          "06"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_14",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 15,
+        "id": "art_national_12",
         "category": "national",
-        "title": "纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
-        "titleBM": "Laporan Utama: 纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
-        "detail": "前首相纳吉已缴清 5000万令吉罚款，获准居家服刑，但截至 11月6日傍晚仍未回到家，而是被送往医院检查牙齿，因此交通部长陆兆福的辞职暂时未生效。陆兆福在交通部记者会重申立场不变：“如果他今晚到家，就今晚生效；如果是明天，那就明天生效。”他已在 9月28日将辞呈递交首相安华，并将就最新进展另交补充信函。他还预告下周三（11月11日）出席部门屠妖节庆典，可能是告别仪式。安华已促总检察长觐见元首厘清居家服刑暂缓执行问题。MDN Feeds 有全文。",
-        "detailBM": "前首相纳吉已缴清 5000万令吉罚款，获准居家服刑，但截至 11月6日傍晚仍未回到家，而是被送往医院检查牙齿，因此交通部长陆兆福的辞职暂时未生效。陆兆福在交通部记者会重申立场不变：“如果他今晚到家，就今晚生效；如果是明天，那就明天生效。”他已在 9月28日将辞呈递交首相安华，并将就最新进展另交补充信函。他还预告下周三（11月11日）出席部门屠妖节庆典，可能是告别仪式。安华已促总检察长觐见元首厘清居家服刑暂缓执行问题。MDN Feeds 有全文。",
-        "source_url": "https://news.google.com",
-        "publisher": "星洲日报 FB, 中国报 FB, 光明日报 FB, e南洋 FB, 8TV.NEWS FB",
-        "source": "星洲日报 FB",
+        "title": "Sabah Immigration nabs 12 suspected scammers from China",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5\" target=\"_blank\">Sabah Immigration nabs 12 suspected scammers from China</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Star</font>",
+        "detailBM": "",
+        "source": "The Star",
         "sources": [
-          "星洲日报 FB",
-          "中国报 FB",
-          "光明日报 FB",
-          "e南洋 FB",
-          "8TV.NEWS FB"
+          "The Star"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQzU4M21MbTNsWWJGMTNlN0I3UnVVUzhKNHdNVk5sNTFnd1NfR3RCcXJCN0taT25wdTRFZzNXb21TcnpaRmQtTXpUQUo0Snh0UEdWOVBpZHlfVEpvMm82M2g0alhmenJxcGM5dm8welFGcTA2X2N3WWJpYzBTeEF1NVVnQXRMR2VlM1NkUlRPQnFVbXNRazdtb2xlOGVRNmRsUHVBaF9ieXU?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
+        "image_url": null,
+        "original_published_at": "2026-11-18T05:16:00+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
         "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
+        "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+      },
+      {
+        "id": "art_national_13",
+        "category": "national",
+        "title": "Sabah struggles to retain skilled talent",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5\" target=\"_blank\">Sabah struggles to retain skilled talent</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">NST Online</font>",
+        "detailBM": "",
+        "source": "NST Online",
+        "sources": [
+          "NST Online"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTElIVktvX0drZmQtUzlYVHBWU0VCZXBTS29TMUlXUm96OW5aVFRyOGRfbjJEdGhRS2Z4T0w0eTBLWTlKcUEzWVd0YzVWVi1saGx1QlVJQzRYT3VnaEplaXhvV0hBcDhwSmczWFI1T0JTZGRweklzOXVEY05vZVBvdlBJRUZ0V0tHZGZ5VVZZUDZIQXFx0gGaAUFVX3lxTFByd3FlMklKWE1tLTJlU2FBWHd2eFl6d2hTZldYMjZPb0p2U3pJQ0QtVDFfcndoUFhONDJpeXBWYnBQTUp5TmdlRFVTZjN6S0x0eGVFem1ZeXE3NE80OVg1REtnN3MzLUV1bW5kVlo4eVFqcklnUDdrdEhSLUFSYUNKOHZiOFczak5Vc1pvRG1HWERRbFMyUERqX3c?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T01:33:37+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
+      },
+      {
+        "id": "art_national_14",
+        "category": "national",
+        "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
+        "sources": [
+          "Borneo Post",
+          "The Borneo Post Sabah"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
+          "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T00:03:37+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
+      },
+      {
         "id": "art_national_15",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 16,
         "category": "national",
-        "title": "砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
-        "titleBM": "Laporan Utama: 砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
-        "detail": "选委会主席南兰哈伦在古晋宣布，第13届砂选举提名 11月28日周六，提前投票 12月8日周二，投票 12月12日周六，竞选期 14天。205万8781选民选 82议席，增至 99席计划因程序未完，本届不落实。预算 1亿7494万令吉。砂盟 GPS 将上阵全部 82席，阿邦佐哈里看好 4名原任议员继续获支持。",
-        "detailBM": "选委会主席南兰哈伦在古晋宣布，第13届砂选举提名 11月28日周六，提前投票 12月8日周二，投票 12月12日周六，竞选期 14天。205万8781选民选 82议席，增至 99席计划因程序未完，本届不落实。预算 1亿7494万令吉。砂盟 GPS 将上阵全部 82席，阿邦佐哈里看好 4名原任议员继续获支持。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, 光明日报 FB, 星洲日报 FB, Bernama FB, 11月6日宣布",
-        "source": "诗华日报 FB",
+        "title": "Investors for Sabah energy projects sought",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
         "sources": [
-          "诗华日报 FB",
-          "光明日报 FB",
-          "星洲日报 FB",
-          "Bernama FB",
-          "11月6日宣布"
+          "Daily Express Malaysia"
         ],
-        "url": "https://news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
         "source_urls": [
-          "https://news.google.com"
+          "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
+          "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
         ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_16",
         "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
+        "original_published_at": "2026-11-18T03:28:04+00:00",
+        "collected_at": "2026-11-18T22:11:18.096541+08:00",
+        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
+        "updated_at": "2026-11-18T22:11:28.353397+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 17,
-        "category": "national",
-        "title": "SKAS第三阶段今天起发放 砂家庭户再领RM360",
-        "titleBM": "Laporan Utama: SKAS第三阶段今天起发放 砂家庭户再领RM360",
-        "detail": "砂拉越政府将于今天（11月10日）起，向现有受惠者及符合资格的新受惠者分阶段发放“砂基本需求援助”（SKAS）第三阶段款项，直接汇入 S Pay Global 电子钱包。2026年 SKAS 分三阶段：第一阶段 3月10日，第二阶段 5月15日，第三阶段从今天起。截至 11月9日，已有 78万3603名受惠者，即 89.5%符合资格者已通过 S Pay Global 领取。民众可上 sarawak.gov.my/skas 查询资格。",
-        "detailBM": "砂拉越政府将于今天（11月10日）起，向现有受惠者及符合资格的新受惠者分阶段发放“砂基本需求援助”（SKAS）第三阶段款项，直接汇入 S Pay Global 电子钱包。2026年 SKAS 分三阶段：第一阶段 3月10日，第二阶段 5月15日，第三阶段从今天起。截至 11月9日，已有 78万3603名受惠者，即 89.5%符合资格者已通过 S Pay Global 领取。民众可上 sarawak.gov.my/skas 查询资格。",
-        "source_url": "https://news.google.com",
-        "publisher": "TVS FB, 诗华日报 FB, Bernama FB, 11月10日",
-        "source": "TVS FB",
-        "sources": [
-          "TVS FB",
-          "诗华日报 FB",
-          "Bernama FB",
-          "11月10日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
         "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_17",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 18,
-        "category": "national",
-        "title": "大马或成网络攻击目标 国安会已开特别会议",
-        "titleBM": "Laporan Utama: 大马或成网络攻击目标 国安会已开特别会议",
-        "detail": "首相安华指全球地缘政治紧张，大马可能面对网络攻击威胁，国安会已召开特别会议，检视能源、交通、金融及食品供应应变能力。MCMC 提醒 11月19日全国手机巨响测试是 Cell Broadcast 演习，别慌。",
-        "detailBM": "首相安华指全球地缘政治紧张，大马可能面对网络攻击威胁，国安会已召开特别会议，检视能源、交通、金融及食品供应应变能力。MCMC 提醒 11月19日全国手机巨响测试是 Cell Broadcast 演习，别慌。",
-        "source_url": "https://news.google.com",
-        "publisher": "光明日报 FB, Bernama FB, 8TV.NEWS FB",
-        "source": "光明日报 FB",
-        "sources": [
-          "光明日报 FB",
-          "Bernama FB",
-          "8TV.NEWS FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_18",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 19,
-        "category": "sports",
-        "title": "李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
-        "titleBM": "Laporan Utama: 李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
-        "detail": "2026日本熊本羽球大师赛（超级500赛，总奖金 50万美元）今天挥拍，11月10-15日在熊本县立体育馆举行。大马男单唯一代表李梓嘉从入选赛打起，今天对东道主球员古贺穗，若胜出，周三正赛首圈硬碰头号种子、法国克里斯托波波夫。两人上一次交手是 10月初北极公开赛 8强，李梓嘉 21-11、21-16 直落两局胜出；3月瑞士公开赛入选赛也曾 21-10、21-14 轻取古贺穗。Rojaklah88 和 viralcham 已在刷“加油”。",
-        "detailBM": "2026日本熊本羽球大师赛（超级500赛，总奖金 50万美元）今天挥拍，11月10-15日在熊本县立体育馆举行。大马男单唯一代表李梓嘉从入选赛打起，今天对东道主球员古贺穗，若胜出，周三正赛首圈硬碰头号种子、法国克里斯托波波夫。两人上一次交手是 10月初北极公开赛 8强，李梓嘉 21-11、21-16 直落两局胜出；3月瑞士公开赛入选赛也曾 21-10、21-14 轻取古贺穗。Rojaklah88 和 viralcham 已在刷“加油”。",
-        "source_url": "https://news.google.com",
-        "publisher": "中国报 FB, 星洲日报 FB, 光明日报 FB, e南洋 FB, 11月09日 8:01pm",
-        "source": "中国报 FB",
-        "sources": [
-          "中国报 FB",
-          "星洲日报 FB",
-          "光明日报 FB",
-          "e南洋 FB",
-          "11月09日 8:01pm"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_19",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 20,
-        "category": "sports",
-        "title": "李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
-        "titleBM": "Laporan Utama: 李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
-        "detail": "上周德国 Hylo Open，李梓嘉高烧呕吐 59分钟逆转胜新加坡郑加恒 21-16、19-21、21-17 晋级 16强，次轮 63分钟 11-21、21-13、14-21 负日本磨王奈良冈功大止步 16强。因病退出韩国公开赛，目标熊本强势回归。大马 3名男单梁峻豪、贺首维、尤阳退出熊本，大马男单仅剩李梓嘉。世界排名第 40的他原是第 4候补，因安东森、李诗沣等退赛递补进资格赛。",
-        "detailBM": "上周德国 Hylo Open，李梓嘉高烧呕吐 59分钟逆转胜新加坡郑加恒 21-16、19-21、21-17 晋级 16强，次轮 63分钟 11-21、21-13、14-21 负日本磨王奈良冈功大止步 16强。因病退出韩国公开赛，目标熊本强势回归。大马 3名男单梁峻豪、贺首维、尤阳退出熊本，大马男单仅剩李梓嘉。世界排名第 40的他原是第 4候补，因安东森、李诗沣等退赛递补进资格赛。",
-        "source_url": "https://news.google.com",
-        "publisher": "星洲日报 FB, 光明日报 FB, The Star FB",
-        "source": "星洲日报 FB",
-        "sources": [
-          "星洲日报 FB",
-          "光明日报 FB",
-          "The Star FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_20",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 21,
-        "category": "sports",
-        "title": "乐娜放眼熊本卫冕 峰译力争总决赛末班车",
-        "titleBM": "Laporan Utama: 乐娜放眼熊本卫冕 峰译力争总决赛末班车",
-        "detail": "熊本大师赛女双卫冕冠军陈康乐/蒂娜将从正赛出发，首轮对日本新组合，力争卫冕。男双谢定峰/苏伟译也将出战，力争年终总决赛末班车。Sabah Spotlight 2026 有签表图。女单吴堇溦将从入选赛打起，力争晋级正赛。",
-        "detailBM": "熊本大师赛女双卫冕冠军陈康乐/蒂娜将从正赛出发，首轮对日本新组合，力争卫冕。男双谢定峰/苏伟译也将出战，力争年终总决赛末班车。Sabah Spotlight 2026 有签表图。女单吴堇溦将从入选赛打起，力争晋级正赛。",
-        "source_url": "https://news.google.com",
-        "publisher": "中国报 FB, 11月09日",
-        "source": "中国报 FB",
-        "sources": [
-          "中国报 FB",
-          "11月09日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_21",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
+        "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
       }
     ],
     "11/17": [
@@ -3542,9 +3550,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_01_3d1a7104.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 2,
@@ -3571,9 +3577,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_02_63a415f7.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 3,
@@ -3600,9 +3604,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_03_6fd5acb8.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 4,
@@ -3629,9 +3631,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_04_592fb8c5.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 5,
@@ -3658,9 +3658,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_05_db88dc73.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 6,
@@ -3687,9 +3685,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_06_cd150b57.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 7,
@@ -3716,9 +3712,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_07_25f00485.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 8,
@@ -3745,9 +3739,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_08_60a51436.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 9,
@@ -3774,9 +3766,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_09_7572c7a4.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 10,
@@ -3803,9 +3793,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_10_320306ad.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 11,
@@ -3832,9 +3820,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_11_0849947c.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 12,
@@ -3861,9 +3847,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_12_f01f1e09.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 13,
@@ -3890,9 +3874,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sports_art_sports_13_1befef0d.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 14,
@@ -3919,9 +3901,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg",
-        "cover_image": "./assets/covers/cover_20261117_national_art_national_14_26b67357.jpg"
+        "validation_status": "VERIFIED"
       },
       {
         "story_index": 15,
@@ -3948,9 +3928,7 @@
         "site_published_at": "2026-11-17T05:08:56.931215+08:00",
         "updated_at": "2026-11-17T05:08:56.931215+08:00",
         "is_updated": false,
-        "validation_status": "VERIFIED",
-        "cover": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg",
-        "cover_image": "./assets/covers/cover_20261117_sabah_art_sabah_15_0b1e9ac7.jpg"
+        "validation_status": "VERIFIED"
       }
     ],
     "11/16": [
@@ -5822,673 +5800,6 @@
         "collected_at": "2026-11-12T16:24:38.526999+08:00",
         "site_published_at": "2026-11-12T16:24:38.526999+08:00",
         "updated_at": "2026-11-12T16:24:38.526999+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      }
-    ],
-    "11/11": [
-      {
-        "story_index": 1,
-        "category": "sabah",
-        "title": "MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
-        "titleBM": "Laporan Utama: MPS 山打根市议会 道路维修与夜市 - LIVE 抢修中",
-        "detail": "MPS 在 Dewan Masyarakat 召开 Townhall，商贩集中反映市区道路坑洞、路灯不亮、排水堵塞、夜市摊位卫生。MPS 承诺小坑洞 14天内修好，大坑 6个月内修好，路灯 7天内更换。\n\n今日重点路段：Jalan Leila、Harrison 圆环、Jalan Pelabuhan Lama 一带今早有修路工程，夜市照常营业。MPS 提醒市民若发现路灯不亮、路洞，可直接去 MPS 官网 mps.sabah.gov.my 投诉，MPS 会在月会上跟进。",
-        "detailBM": "MPS 在 Dewan Masyarakat 召开 Townhall，商贩集中反映市区道路坑洞、路灯不亮、排水堵塞、夜市摊位卫生。MPS 承诺小坑洞 14天内修好，大坑 6个月内修好，路灯 7天内更换。\n\n今日重点路段：Jalan Leila、Harrison 圆环、Jalan Pelabuhan Lama 一带今早有修路工程，夜市照常营业。MPS 提醒市民若发现路灯不亮、路洞，可直接去 MPS 官网 mps.sabah.gov.my 投诉，MPS 会在月会上跟进。",
-        "source_url": "https://news.google.com",
-        "publisher": "MPS FB, My Sandakan Kini FB, Sabah Media News FB, 11, 06 07:30",
-        "source": "MPS FB",
-        "sources": [
-          "MPS FB",
-          "My Sandakan Kini FB",
-          "Sabah Media News FB",
-          "11",
-          "06 07:30"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_01",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 2,
-        "category": "sabah",
-        "title": "JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
-        "titleBM": "Laporan Utama: JANS 沙巴水务局 山打根爆水管 + 6区断水第6天 - LIVE 维护",
-        "detail": "JANS 紧急通告 11月7日周六两起：中午 12:30 起，Borneo Cove 前大桥 450mm MSCL 主水管爆裂抢修；早上 9:30 起，Taman Nasalim Fasa 7 对面 250mm 配水管漏水排查。11月6日 Batu Sapi 圆环 400mm 闸阀更换。11月4日周三还有一处 250mm 主水管在 Sungai Anib 2 新学校前接驳。\n\n山打根 6区已断水第6天：Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View、Indah Jaya，民兴党伊罗普拉议员张克骏促 JANS 立刻派水车到这 6区，持续运水到恢复稳定为止。JANS 呼吁受影响用户存水、省水，高楼公寓地下吸水箱因主水管压力临界补不到水，最惨。",
-        "detailBM": "JANS 紧急通告 11月7日周六两起：中午 12:30 起，Borneo Cove 前大桥 450mm MSCL 主水管爆裂抢修；早上 9:30 起，Taman Nasalim Fasa 7 对面 250mm 配水管漏水排查。11月6日 Batu Sapi 圆环 400mm 闸阀更换。11月4日周三还有一处 250mm 主水管在 Sungai Anib 2 新学校前接驳。\n\n山打根 6区已断水第6天：Taman Sunny、Grandview、Mutiara、Astana Height、Harbour View、Indah Jaya，民兴党伊罗普拉议员张克骏促 JANS 立刻派水车到这 6区，持续运水到恢复稳定为止。JANS 呼吁受影响用户存水、省水，高楼公寓地下吸水箱因主水管压力临界补不到水，最惨。",
-        "source_url": "https://news.google.com",
-        "publisher": "JANS FB, water.sabah.gov.my, 11, 07 12:30",
-        "source": "JANS FB",
-        "sources": [
-          "JANS FB",
-          "water.sabah.gov.my",
-          "11",
-          "07 12:30"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_02",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 3,
-        "category": "sabah",
-        "title": "SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
-        "titleBM": "Laporan Utama: SESB 沙巴电力 山打根已恢复供电 今日通畅 - LIVE 通畅",
-        "detail": "SESB 证实：275kV Kolopis-Segaliud 1号线周六 5:05PM 跳闸，山打根、拿笃、古纳、仙本那、比鲁兰、京那巴当 23万用户受影响，周日 3:11PM 已分阶段全面恢复。\n\n今日 11月10日山打根供电正常，未有新停电通告。SESB 提醒若仍断电，打 Careline 15444、088-515000、WhatsApp 019-852 5427 或 SESB App。\n\nMPS 交通：今日山打根市区交通通畅，Sepilok 观鸟节收尾注意山路积水，拿笃海啸演习 9AM-2PM 部分路段改道已结束。",
-        "detailBM": "SESB 证实：275kV Kolopis-Segaliud 1号线周六 5:05PM 跳闸，山打根、拿笃、古纳、仙本那、比鲁兰、京那巴当 23万用户受影响，周日 3:11PM 已分阶段全面恢复。\n\n今日 11月10日山打根供电正常，未有新停电通告。SESB 提醒若仍断电，打 Careline 15444、088-515000、WhatsApp 019-852 5427 或 SESB App。\n\nMPS 交通：今日山打根市区交通通畅，Sepilok 观鸟节收尾注意山路积水，拿笃海啸演习 9AM-2PM 部分路段改道已结束。",
-        "source_url": "https://news.google.com",
-        "publisher": "SESB FB, 11, 09",
-        "source": "SESB FB",
-        "sources": [
-          "SESB FB",
-          "11",
-          "09"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_03",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 4,
-        "category": "sabah",
-        "title": "JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
-        "titleBM": "Laporan Utama: JANS 11月6日 Batu Sapi 闸阀更换 + 11月1日 Batu 5 水箱切换",
-        "detail": "11月6日周五 8:00AM 起，Batu Sapi 圆环附近 400mm 闸阀更换，影响 Batu Sapi 及京那巴当部分用户。11月1日周日 9:30AM 起，Tangki Kebun Cina 切换到 Tangki Tshun Ngen Batu 5，山打根市区水压波动。JANS 提醒每次维修后水会浑浊，先放水 5分钟再用。",
-        "detailBM": "11月6日周五 8:00AM 起，Batu Sapi 圆环附近 400mm 闸阀更换，影响 Batu Sapi 及京那巴当部分用户。11月1日周日 9:30AM 起，Tangki Kebun Cina 切换到 Tangki Tshun Ngen Batu 5，山打根市区水压波动。JANS 提醒每次维修后水会浑浊，先放水 5分钟再用。",
-        "source_url": "https://news.google.com",
-        "publisher": "water.sabah.gov.my, 11, 06 8:00AM, 01 9:30AM",
-        "source": "water.sabah.gov.my",
-        "sources": [
-          "water.sabah.gov.my",
-          "11",
-          "06 8:00AM",
-          "01 9:30AM"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_04",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 5,
-        "category": "sabah",
-        "title": "MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
-        "titleBM": "Laporan Utama: MetMalaysia：东海岸持续豪雨到11月11日 山打根在内",
-        "detail": "气象局发布持续豪雨警报，恶劣及警惕级别覆盖半岛东海岸及沙巴东部至 11月11日。沙巴涉及古达及山打根区：Paitan、Telupid、Labuk dan Sugut、Sandakan 及 Kinabatangan。My Sandakan Kini 提醒今天出门带雨具，Sepilok、观鸟节收尾区注意山路积水。SANDAKANfm90.1 早上已播路况，渔民注意风浪。",
-        "detailBM": "气象局发布持续豪雨警报，恶劣及警惕级别覆盖半岛东海岸及沙巴东部至 11月11日。沙巴涉及古达及山打根区：Paitan、Telupid、Labuk dan Sugut、Sandakan 及 Kinabatangan。My Sandakan Kini 提醒今天出门带雨具，Sepilok、观鸟节收尾区注意山路积水。SANDAKANfm90.1 早上已播路况，渔民注意风浪。",
-        "source_url": "https://news.google.com",
-        "publisher": "Bernama FB, Sabah TV Official FB, RTM FB, 11, 09",
-        "source": "Bernama FB",
-        "sources": [
-          "Bernama FB",
-          "Sabah TV Official FB",
-          "RTM FB",
-          "11",
-          "09"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_05",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 6,
-        "category": "sabah",
-        "title": "仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
-        "titleBM": "Laporan Utama: 仙本那3男在雪兰莪遭雷击身亡 沙巴政府协助运回遗体",
-        "detail": "沙巴州政府正协调运回 3具来自仙本那男子的遗体，他们昨天下午在雪兰莪雪邦遭雷击身亡。家属已接获通知，州政府将协助处理后事。Sabah Spotlight 2026 已有家属筹款贴，提醒雷雨天勿在空旷地、树下、铁皮屋顶下逗留。",
-        "detailBM": "沙巴州政府正协调运回 3具来自仙本那男子的遗体，他们昨天下午在雪兰莪雪邦遭雷击身亡。家属已接获通知，州政府将协助处理后事。Sabah Spotlight 2026 已有家属筹款贴，提醒雷雨天勿在空旷地、树下、铁皮屋顶下逗留。",
-        "source_url": "https://news.google.com",
-        "publisher": "Sayangi Sabah FB, Sabah Media News FB, 11, 09 3:12pm",
-        "source": "Sayangi Sabah FB",
-        "sources": [
-          "Sayangi Sabah FB",
-          "Sabah Media News FB",
-          "11",
-          "09 3:12pm"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_06",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 7,
-        "category": "sabah",
-        "title": "沙巴珊瑚白化升至第4级最严重 山打根最受关注",
-        "titleBM": "Laporan Utama: 沙巴珊瑚白化升至第4级最严重 山打根最受关注",
-        "detail": "沙巴珊瑚白化特别工作组 10月监测，山打根已升至 Alert Level 4，东海岸维持 Level 3，海温过高是主因。专家呼吁减少污染、勿踩珊瑚。My Sandakan Kini 提醒本周出海浮潜的游客注意防晒，别用含氧苯酮防晒霜。",
-        "detailBM": "沙巴珊瑚白化特别工作组 10月监测，山打根已升至 Alert Level 4，东海岸维持 Level 3，海温过高是主因。专家呼吁减少污染、勿踩珊瑚。My Sandakan Kini 提醒本周出海浮潜的游客注意防晒，别用含氧苯酮防晒霜。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, Sabah TV Official FB",
-        "source": "沙巴星洲日报 FB",
-        "sources": [
-          "沙巴星洲日报 FB",
-          "Sabah TV Official FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_07",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 8,
-        "category": "sabah",
-        "title": "婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
-        "titleBM": "Laporan Utama: 婆罗洲观鸟节山打根收尾 5000人参与圆满落幕",
-        "detail": "第12届婆罗洲观鸟节 11月7日起在山打根举行，雨林导览、观鸟比赛、摄影展、生态讲座持续到周末，预计吸引国内外 5000名爱鸟人士。主办方称今年 Sepilok 区观鸟路线最受欢迎，明年将扩大亲子区。",
-        "detailBM": "第12届婆罗洲观鸟节 11月7日起在山打根举行，雨林导览、观鸟比赛、摄影展、生态讲座持续到周末，预计吸引国内外 5000名爱鸟人士。主办方称今年 Sepilok 区观鸟路线最受欢迎，明年将扩大亲子区。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, My Sandakan Kini FB, Sabah TV Official FB, 11月7-9日",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "My Sandakan Kini FB",
-          "Sabah TV Official FB",
-          "11月7-9日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_08",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 9,
-        "category": "sabah",
-        "title": "沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
-        "titleBM": "Laporan Utama: 沙巴联邦拨款年尾宪报 15亿特别拨款剩9亿将到账",
-        "detail": "第二财长阿米尔韩查指政府将在今年底前宪报命令，让沙巴获得 15亿特别拨款中剩余的 9亿令吉。MA63框架下 27项诉求，14项已完成，10项包括 40%净税收仍未解。Sabah Spotlight 2026 有详细解读。",
-        "detailBM": "第二财长阿米尔韩查指政府将在今年底前宪报命令，让沙巴获得 15亿特别拨款中剩余的 9亿令吉。MA63框架下 27项诉求，14项已完成，10项包括 40%净税收仍未解。Sabah Spotlight 2026 有详细解读。",
-        "source_url": "https://news.google.com",
-        "publisher": "Bernama FB, The Star FB, Sabah Media News FB",
-        "source": "Bernama FB",
-        "sources": [
-          "Bernama FB",
-          "The Star FB",
-          "Sabah Media News FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_09",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 10,
-        "category": "sabah",
-        "title": "亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
-        "titleBM": "Laporan Utama: 亚庇豪宅诈骗窝点案后续：14中国籍男子仍延扣查签证",
-        "detail": "11月4日晚亚庇精英区 3层豪宅捣破网络诈骗中心，逮捕 14名 26-44岁中国籍男子，起获大量电脑手机。曾国竣律师呼吁追究“知情出租者”责任，不能一句不知情就脱罪。Sayangi Sabah 提醒别信高回报投资。",
-        "detailBM": "11月4日晚亚庇精英区 3层豪宅捣破网络诈骗中心，逮捕 14名 26-44岁中国籍男子，起获大量电脑手机。曾国竣律师呼吁追究“知情出租者”责任，不能一句不知情就脱罪。Sayangi Sabah 提醒别信高回报投资。",
-        "source_url": "https://news.google.com",
-        "publisher": "Sabah Media News FB, Rojaklah88 FB, Viralcham FB",
-        "source": "Sabah Media News FB",
-        "sources": [
-          "Sabah Media News FB",
-          "Rojaklah88 FB",
-          "Viralcham FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_10",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 11,
-        "category": "sabah",
-        "title": "沙巴州政府：照顾全民福祉 不分种族宗教背景",
-        "titleBM": "Laporan Utama: 沙巴州政府：照顾全民福祉 不分种族宗教背景",
-        "detail": "沙巴州工程与公共事业部助理部长拿督利慕士朱利昨晚为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时说，州政府始终致力照顾全民福祉，不分种族、宗教及背景，确保各族共享发展成果。据《2026年沙巴州财政预算案》，州政府拨出 9000万令吉用于宗教发展、非伊斯兰宗教机构及教会学校、私立学校发展。",
-        "detailBM": "沙巴州工程与公共事业部助理部长拿督利慕士朱利昨晚为《沙巴大伯公庙联合总会第六届（2026-2028年）理事会》主持宣誓就职礼时说，州政府始终致力照顾全民福祉，不分种族、宗教及背景，确保各族共享发展成果。据《2026年沙巴州财政预算案》，州政府拨出 9000万令吉用于宗教发展、非伊斯兰宗教机构及教会学校、私立学校发展。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, 11, 09",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "11",
-          "09"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_11",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 12,
-        "category": "sabah",
-        "title": "杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
-        "titleBM": "Laporan Utama: 杰菲里：根地咬10年发展以民为本 保留历史兼顾城市特色",
-        "detail": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来发展必须兼顾当地特色和民需，避免过度扩张导致公共空间减少，影响当地特有城市风貌和历史特色。Rojaklah88 评论区根地咬居民附和：要发展，但不要把老街拆光。",
-        "detailBM": "沙巴立新党主席兼根地咬区国会议员拿督斯里杰菲里吉丁岸指出，根地咬未来发展必须兼顾当地特色和民需，避免过度扩张导致公共空间减少，影响当地特有城市风貌和历史特色。Rojaklah88 评论区根地咬居民附和：要发展，但不要把老街拆光。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, 11, 09 2:06pm",
-        "source": "沙巴星洲日报 FB",
-        "sources": [
-          "沙巴星洲日报 FB",
-          "11",
-          "09 2:06pm"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_12",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 13,
-        "category": "sabah",
-        "title": "沙巴年度捐血活动 山打根亚庇同步登场",
-        "titleBM": "Laporan Utama: 沙巴年度捐血活动 山打根亚庇同步登场",
-        "detail": "沙巴年度大型捐血活动 11月7日在亚庇和山打根同步登场，放眼筹获 1200包血液，缓解医院血库紧张。Sabah Media News 指山打根医院血库 O型最缺，今天仍可到中央医院捐血站补捐，带 IC、睡足 6小时。",
-        "detailBM": "沙巴年度大型捐血活动 11月7日在亚庇和山打根同步登场，放眼筹获 1200包血液，缓解医院血库紧张。Sabah Media News 指山打根医院血库 O型最缺，今天仍可到中央医院捐血站补捐，带 IC、睡足 6小时。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, Sabah Media News FB, 11, 07",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "Sabah Media News FB",
-          "11",
-          "07"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sandakan",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_13",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 14,
-        "category": "sabah",
-        "title": "沙巴1106名司机获特别援金 每人1000令吉",
-        "titleBM": "Laporan Utama: 沙巴1106名司机获特别援金 每人1000令吉",
-        "detail": "沙巴 1106名符合资格的德士、出租车、校车司机将获得每人 1000令吉一次性特别援金，减轻生活负担。My Sandakan Kini 已发申请名单查询方式。",
-        "detailBM": "沙巴 1106名符合资格的德士、出租车、校车司机将获得每人 1000令吉一次性特别援金，减轻生活负担。My Sandakan Kini 已发申请名单查询方式。",
-        "source_url": "https://news.google.com",
-        "publisher": "沙巴星洲日报 FB, 11, 06",
-        "source": "沙巴星洲日报 FB",
-        "sources": [
-          "沙巴星洲日报 FB",
-          "11",
-          "06"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "sabah",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sabah_14",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 15,
-        "category": "national",
-        "title": "纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
-        "titleBM": "Laporan Utama: 纳吉缴清5000万仍未回家 陆兆福：纳吉到家那刻辞职即生效",
-        "detail": "前首相纳吉已缴清 5000万令吉罚款，获准居家服刑，但截至 11月6日傍晚仍未回到家，而是被送往医院检查牙齿，因此交通部长陆兆福的辞职暂时未生效。陆兆福在交通部记者会重申立场不变：“如果他今晚到家，就今晚生效；如果是明天，那就明天生效。”他已在 9月28日将辞呈递交首相安华，并将就最新进展另交补充信函。他还预告下周三（11月11日）出席部门屠妖节庆典，可能是告别仪式。安华已促总检察长觐见元首厘清居家服刑暂缓执行问题。MDN Feeds 有全文。",
-        "detailBM": "前首相纳吉已缴清 5000万令吉罚款，获准居家服刑，但截至 11月6日傍晚仍未回到家，而是被送往医院检查牙齿，因此交通部长陆兆福的辞职暂时未生效。陆兆福在交通部记者会重申立场不变：“如果他今晚到家，就今晚生效；如果是明天，那就明天生效。”他已在 9月28日将辞呈递交首相安华，并将就最新进展另交补充信函。他还预告下周三（11月11日）出席部门屠妖节庆典，可能是告别仪式。安华已促总检察长觐见元首厘清居家服刑暂缓执行问题。MDN Feeds 有全文。",
-        "source_url": "https://news.google.com",
-        "publisher": "星洲日报 FB, 中国报 FB, 光明日报 FB, e南洋 FB, 8TV.NEWS FB",
-        "source": "星洲日报 FB",
-        "sources": [
-          "星洲日报 FB",
-          "中国报 FB",
-          "光明日报 FB",
-          "e南洋 FB",
-          "8TV.NEWS FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_15",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 16,
-        "category": "national",
-        "title": "砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
-        "titleBM": "Laporan Utama: 砂州选定档：11月28日提名 12月8日提前投票 12月12日投票",
-        "detail": "选委会主席南兰哈伦在古晋宣布，第13届砂选举提名 11月28日周六，提前投票 12月8日周二，投票 12月12日周六，竞选期 14天。205万8781选民选 82议席，增至 99席计划因程序未完，本届不落实。预算 1亿7494万令吉。砂盟 GPS 将上阵全部 82席，阿邦佐哈里看好 4名原任议员继续获支持。",
-        "detailBM": "选委会主席南兰哈伦在古晋宣布，第13届砂选举提名 11月28日周六，提前投票 12月8日周二，投票 12月12日周六，竞选期 14天。205万8781选民选 82议席，增至 99席计划因程序未完，本届不落实。预算 1亿7494万令吉。砂盟 GPS 将上阵全部 82席，阿邦佐哈里看好 4名原任议员继续获支持。",
-        "source_url": "https://news.google.com",
-        "publisher": "诗华日报 FB, 光明日报 FB, 星洲日报 FB, Bernama FB, 11月6日宣布",
-        "source": "诗华日报 FB",
-        "sources": [
-          "诗华日报 FB",
-          "光明日报 FB",
-          "星洲日报 FB",
-          "Bernama FB",
-          "11月6日宣布"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_16",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 17,
-        "category": "national",
-        "title": "SKAS第三阶段今天起发放 砂家庭户再领RM360",
-        "titleBM": "Laporan Utama: SKAS第三阶段今天起发放 砂家庭户再领RM360",
-        "detail": "砂拉越政府将于今天（11月10日）起，向现有受惠者及符合资格的新受惠者分阶段发放“砂基本需求援助”（SKAS）第三阶段款项，直接汇入 S Pay Global 电子钱包。2026年 SKAS 分三阶段：第一阶段 3月10日，第二阶段 5月15日，第三阶段从今天起。截至 11月9日，已有 78万3603名受惠者，即 89.5%符合资格者已通过 S Pay Global 领取。民众可上 sarawak.gov.my/skas 查询资格。",
-        "detailBM": "砂拉越政府将于今天（11月10日）起，向现有受惠者及符合资格的新受惠者分阶段发放“砂基本需求援助”（SKAS）第三阶段款项，直接汇入 S Pay Global 电子钱包。2026年 SKAS 分三阶段：第一阶段 3月10日，第二阶段 5月15日，第三阶段从今天起。截至 11月9日，已有 78万3603名受惠者，即 89.5%符合资格者已通过 S Pay Global 领取。民众可上 sarawak.gov.my/skas 查询资格。",
-        "source_url": "https://news.google.com",
-        "publisher": "TVS FB, 诗华日报 FB, Bernama FB, 11月10日",
-        "source": "TVS FB",
-        "sources": [
-          "TVS FB",
-          "诗华日报 FB",
-          "Bernama FB",
-          "11月10日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_17",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 18,
-        "category": "national",
-        "title": "大马或成网络攻击目标 国安会已开特别会议",
-        "titleBM": "Laporan Utama: 大马或成网络攻击目标 国安会已开特别会议",
-        "detail": "首相安华指全球地缘政治紧张，大马可能面对网络攻击威胁，国安会已召开特别会议，检视能源、交通、金融及食品供应应变能力。MCMC 提醒 11月19日全国手机巨响测试是 Cell Broadcast 演习，别慌。",
-        "detailBM": "首相安华指全球地缘政治紧张，大马可能面对网络攻击威胁，国安会已召开特别会议，检视能源、交通、金融及食品供应应变能力。MCMC 提醒 11月19日全国手机巨响测试是 Cell Broadcast 演习，别慌。",
-        "source_url": "https://news.google.com",
-        "publisher": "光明日报 FB, Bernama FB, 8TV.NEWS FB",
-        "source": "光明日报 FB",
-        "sources": [
-          "光明日报 FB",
-          "Bernama FB",
-          "8TV.NEWS FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_national_18",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 19,
-        "category": "sports",
-        "title": "李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
-        "titleBM": "Laporan Utama: 李梓嘉今天熊本首战 入选赛再战古贺穗 赢了周三碰小波波夫",
-        "detail": "2026日本熊本羽球大师赛（超级500赛，总奖金 50万美元）今天挥拍，11月10-15日在熊本县立体育馆举行。大马男单唯一代表李梓嘉从入选赛打起，今天对东道主球员古贺穗，若胜出，周三正赛首圈硬碰头号种子、法国克里斯托波波夫。两人上一次交手是 10月初北极公开赛 8强，李梓嘉 21-11、21-16 直落两局胜出；3月瑞士公开赛入选赛也曾 21-10、21-14 轻取古贺穗。Rojaklah88 和 viralcham 已在刷“加油”。",
-        "detailBM": "2026日本熊本羽球大师赛（超级500赛，总奖金 50万美元）今天挥拍，11月10-15日在熊本县立体育馆举行。大马男单唯一代表李梓嘉从入选赛打起，今天对东道主球员古贺穗，若胜出，周三正赛首圈硬碰头号种子、法国克里斯托波波夫。两人上一次交手是 10月初北极公开赛 8强，李梓嘉 21-11、21-16 直落两局胜出；3月瑞士公开赛入选赛也曾 21-10、21-14 轻取古贺穗。Rojaklah88 和 viralcham 已在刷“加油”。",
-        "source_url": "https://news.google.com",
-        "publisher": "中国报 FB, 星洲日报 FB, 光明日报 FB, e南洋 FB, 11月09日 8:01pm",
-        "source": "中国报 FB",
-        "sources": [
-          "中国报 FB",
-          "星洲日报 FB",
-          "光明日报 FB",
-          "e南洋 FB",
-          "11月09日 8:01pm"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_19",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 20,
-        "category": "sports",
-        "title": "李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
-        "titleBM": "Laporan Utama: 李梓嘉Hylo带病奋战回顾：高烧呕吐59分钟逆转 + 独闯熊本",
-        "detail": "上周德国 Hylo Open，李梓嘉高烧呕吐 59分钟逆转胜新加坡郑加恒 21-16、19-21、21-17 晋级 16强，次轮 63分钟 11-21、21-13、14-21 负日本磨王奈良冈功大止步 16强。因病退出韩国公开赛，目标熊本强势回归。大马 3名男单梁峻豪、贺首维、尤阳退出熊本，大马男单仅剩李梓嘉。世界排名第 40的他原是第 4候补，因安东森、李诗沣等退赛递补进资格赛。",
-        "detailBM": "上周德国 Hylo Open，李梓嘉高烧呕吐 59分钟逆转胜新加坡郑加恒 21-16、19-21、21-17 晋级 16强，次轮 63分钟 11-21、21-13、14-21 负日本磨王奈良冈功大止步 16强。因病退出韩国公开赛，目标熊本强势回归。大马 3名男单梁峻豪、贺首维、尤阳退出熊本，大马男单仅剩李梓嘉。世界排名第 40的他原是第 4候补，因安东森、李诗沣等退赛递补进资格赛。",
-        "source_url": "https://news.google.com",
-        "publisher": "星洲日报 FB, 光明日报 FB, The Star FB",
-        "source": "星洲日报 FB",
-        "sources": [
-          "星洲日报 FB",
-          "光明日报 FB",
-          "The Star FB"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_20",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
-        "is_updated": false,
-        "validation_status": "VERIFIED"
-      },
-      {
-        "story_index": 21,
-        "category": "sports",
-        "title": "乐娜放眼熊本卫冕 峰译力争总决赛末班车",
-        "titleBM": "Laporan Utama: 乐娜放眼熊本卫冕 峰译力争总决赛末班车",
-        "detail": "熊本大师赛女双卫冕冠军陈康乐/蒂娜将从正赛出发，首轮对日本新组合，力争卫冕。男双谢定峰/苏伟译也将出战，力争年终总决赛末班车。Sabah Spotlight 2026 有签表图。女单吴堇溦将从入选赛打起，力争晋级正赛。",
-        "detailBM": "熊本大师赛女双卫冕冠军陈康乐/蒂娜将从正赛出发，首轮对日本新组合，力争卫冕。男双谢定峰/苏伟译也将出战，力争年终总决赛末班车。Sabah Spotlight 2026 有签表图。女单吴堇溦将从入选赛打起，力争晋级正赛。",
-        "source_url": "https://news.google.com",
-        "publisher": "中国报 FB, 11月09日",
-        "source": "中国报 FB",
-        "sources": [
-          "中国报 FB",
-          "11月09日"
-        ],
-        "url": "https://news.google.com",
-        "source_urls": [
-          "https://news.google.com"
-        ],
-        "original_published_at": "2026-11-11T00:00:00+08:00",
-        "geo_scope": "national",
-        "is_event": false,
-        "event_metadata": {},
-        "id": "art_sports_21",
-        "image_url": null,
-        "collected_at": "2026-11-11T22:13:12.964801+08:00",
-        "site_published_at": "2026-11-11T22:13:12.964801+08:00",
-        "updated_at": "2026-11-11T22:13:12.964801+08:00",
         "is_updated": false,
         "validation_status": "VERIFIED"
       }

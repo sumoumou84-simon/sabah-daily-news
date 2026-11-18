@@ -1336,7 +1336,7 @@ class NewsSynthesizer:
         now_iso = now_myt.isoformat()
         synthesized: List[Dict[str, Any]] = []
 
-        for idx, art in enumerate(articles[:10], 1):
+        for idx, art in enumerate(articles[:15], 1):
             c_title = art.title.strip()
             sources = art.extra.get("corroborating_sources", [art.source])
             cat = art.category or "sabah"
@@ -1389,9 +1389,22 @@ class NewsSynthesizer:
             if gemini_results and len(gemini_results) >= self.min_headlines_threshold:
                 return gemini_results
 
-        # Production policy: Do not generate fake-news template boilerplate
+        # Track A unavailable – fall back to Track B (genuine structured output)
+        logger.info(
+            "[SYNTHESIZER TRACK B FALLBACK] Gemini API unavailable or failed. "
+            "Engaging Track B: authentic headline structuring from collected articles (no AI synthesis, no fake news)."
+        )
+        track_b_results = self.synthesize_track_b_standalone(
+            today_iso=today_iso,
+            articles=articles
+        )
+        if track_b_results and len(track_b_results) >= self.min_headlines_threshold:
+            logger.info(f"[TRACK B SUCCESS] Produced {len(track_b_results)} authentic structured headlines.")
+            return track_b_results
+
+        # Both tracks exhausted – true fail-closed
         logger.warning(
-            "[SYNTHESIZER FAIL-CLOSED] Gemini API synthesis unavailable or failed. "
-            "Policy strictly prohibits fake news template fallback. Returning 0 articles."
+            "[SYNTHESIZER FAIL-CLOSED] Both Track A (Gemini) and Track B (standalone) "
+            "failed to produce sufficient articles. Returning 0 articles."
         )
         return []

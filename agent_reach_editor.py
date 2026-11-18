@@ -237,29 +237,29 @@ def run_pipeline() -> bool:
         snapshot, raw_content = gdrive_reader.fetch_and_parse_today(today_iso)
 
         if not snapshot or not raw_content:
-            logger.error(
-                f"[GDRIVE FAIL-CLOSED] 今日 ({today_iso}) 未能在 Google Drive 或本地找到有效 Markdown 新闻。"
-                "严格触发 Fail-Closed，保留现有线上新闻，坚决不进行破坏性覆盖。"
-            )
-            return False
-
-        parsed_stories = gdrive_reader.parse_markdown(raw_content, today_iso)
-        total_collected = len(parsed_stories)
-
-        if total_collected >= 10:
-            print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
-            print("[⚡ 直通透传] 成功获取当日 Markdown/Drive 内容，直接解析生成 news_data.json，跳过 Gemini API 调用与配额记账流程 (0 API 调用, 0 配额消耗)")
-            final_headlines, events = gdrive_reader.convert_stories_to_direct_output(parsed_stories, today_iso)
-            final_headlines = final_headlines[:15]
-            print(f"✅ 直通透传完成: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(parsed_stories)} 条)")
-        else:
             logger.warning(
-                f"[GDRIVE INSUFFICIENT] 仅解析出 {total_collected} 条，低于熔断门槛 (10条)。"
-                "触发 Fail-Closed，坚决不进行破坏性覆盖。"
+                f"[GDRIVE RETRY EXHAUSTED] 今日 ({today_iso}) 未能在 Google Drive 或本地找到有效 Markdown 新闻。"
+                "自动平滑降级至多源独立打捞管道 (RSS/Portal/Agencies)..."
             )
-            return False
+            use_gdrive = False
+        else:
+            parsed_stories = gdrive_reader.parse_markdown(raw_content, today_iso)
+            total_collected = len(parsed_stories)
 
-    else:
+            if total_collected >= 10:
+                print(f"📊 从 Google Drive 成功解析: {total_collected} 条 (新闻: {sum(1 for s in parsed_stories if not s.is_event)} 条, 活动预报: {sum(1 for s in parsed_stories if s.is_event)} 条)")
+                print("[⚡ 直通透传] 成功获取当日 Markdown/Drive 内容，直接解析生成 news_data.json，跳过 Gemini API 调用与配额记账流程 (0 API 调用, 0 配额消耗)")
+                final_headlines, events = gdrive_reader.convert_stories_to_direct_output(parsed_stories, today_iso)
+                final_headlines = final_headlines[:15]
+                print(f"✅ 直通透传完成: Headlines={len(final_headlines)} 条, Events={len(events)} 条 (总计 {len(parsed_stories)} 条)")
+            else:
+                logger.warning(
+                    f"[GDRIVE INSUFFICIENT] 仅解析出 {total_collected} 条，低于门槛 (10条)。"
+                    "自动平滑降级至多源独立打捞管道 (RSS/Portal/Agencies)..."
+                )
+                use_gdrive = False
+
+    if not use_gdrive:
         # Legacy fallback: 原有多源独立抓取
         rss_col = RSSCollector(config)
         portal_col = PortalCollector(config)
