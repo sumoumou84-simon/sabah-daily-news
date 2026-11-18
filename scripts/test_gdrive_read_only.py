@@ -57,6 +57,9 @@ class SelfContainedGDriveReader:
         self.folder_id = env_fid or folder_id or "18uRBmOQM5hTdeQvldILnC9_n4LZIs1kf"
         self.file_name_patterns = [
             "西门看看网每日新闻_{date}.md",
+            "西门看看网_{date}.md",
+            "西门看看网_{date}",
+            "西门看看网每日新闻_{date}",
             "sabah_news_{date}.md",
             "sabah_daily_news_{date}.md",
             "meta_ai_news_{date}.md",

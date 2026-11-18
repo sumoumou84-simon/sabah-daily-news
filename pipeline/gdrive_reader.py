@@ -1255,7 +1255,14 @@ class GDriveMarkdownReader:
         current_header = ""
         current_lines: List[str] = []
 
-        header_pattern = re.compile(r'^(#{1,4}\s+.*|(?:\d{1,2}\.|\b(?:STORY|NEWS|ITEM)\s*\d+[:\.]?)\s+.*)', re.IGNORECASE)
+        header_pattern = re.compile(
+            r'^(#{1,4}\s+.*|'
+            r'(?:\d{1,2}[\.\、]|\b(?:STORY|NEWS|ITEM)\s*\d+[:\.]?)\s+.*|'
+            r'\\?\[(?:沙巴|全国|体育|综合|民生|要闻|本地).*|'
+            r'【(?:沙巴|全国|体育|综合|民生|要闻|本地|通告).*|'
+            r'\\?\[\d+\\?\].*)',
+            re.IGNORECASE
+        )
         blocks: List[Tuple[str, List[str]]] = []
 
         for line in lines:
@@ -1777,9 +1784,11 @@ class GDriveMarkdownReader:
             logger.error(f"[GDRIVE FAIL-CLOSED] Markdown file '{fname}' is empty.")
             return None, None
 
+        logger.info(f"[GDRIVE CONTENT PREVIEW] Read '{fname}' (ID: {file_id}, {len(content)} chars). Head: {content[:300]!r}")
+
         stories = self.parse_markdown(content, date_str)
         if not stories:
-            logger.error(f"[GDRIVE FAIL-CLOSED] No valid stories extracted from '{fname}'.")
+            logger.error(f"[GDRIVE FAIL-CLOSED] No valid stories extracted from '{fname}'. Content preview:\n{content[:600]}")
             return None, None
 
         news_items = [s for s in stories if not s.is_event]
