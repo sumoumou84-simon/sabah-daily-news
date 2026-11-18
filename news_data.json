@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-18 22:10:39",
+  "updated_at": "2026-11-18 23:28:19",
   "date": "2026-11-18",
   "utilities": [
     {
@@ -8,11 +8,11 @@
       "titleBM": "Amaran Hujan Berterusan (Waspada) MetMalaysia Pantai Timur Sabah [Disahkan MetMalaysia]",
       "label": "大马气象局 (MetMalaysia) 季风警报",
       "labelBM": "Amaran Hujan Berterusan MetMalaysia",
-      "time": "22:10",
+      "time": "23:28",
       "status": "LIVE 预警中",
       "statusBM": "LANGSUNG Amaran Aktif",
       "official_source_url": "https://www.met.gov.my/",
-      "source_timestamp": "2026-11-18 22:10",
+      "source_timestamp": "2026-11-18 23:28",
       "issue": "大马气象局持续发布东北季候风强降雨警报（Waspada）：受低压槽活跃影响，山打根、特鲁必、比鲁兰、京那巴当岸及沙巴东海岸未来数日将出现持续强降雨。低洼地区居民需提防闪电水灾与河流水位上涨。",
       "issueBM": "Notis Amaran MetMalaysia: Hujan berterusan tahap waspada dijangka melanda pantai timur Sabah (Sandakan, Telupid, Kinabatangan, Beluran). Penduduk kawasan rendah dinasihatkan sentiasa berwaspada.",
       "pressure": "预警区域：山打根、特鲁必、比鲁兰、京那巴当岸及沿海低洼带",
@@ -34,11 +34,11 @@
       "titleBM": "Pemantauan Bekalan Air JANS Tawau Kuhara [Menunggu Pengesahan]",
       "label": "沙巴水务局 (JANS) 斗湖供水",
       "labelBM": "Bekalan Air JANS Tawau Kuhara",
-      "time": "22:10",
+      "time": "23:28",
       "status": "待核实",
       "statusBM": "Dalam Pengesahan",
       "official_source_url": "https://water.sabah.gov.my/",
-      "source_timestamp": "2026-11-18 22:10",
+      "source_timestamp": "2026-11-18 23:28",
       "issue": "今日官方信源暂无突发紧急抢修通告。斗湖古哈拉抽水主站维持常态平稳供水，水务局正进行全区例行巡检与水压监测，待官方通告发布后实时更新。",
       "issueBM": "Tiada notis gangguan bekalan air kecemasan hari ini. Stesen Kuhara Tawau beroperasi secara berkala dan pemantauan tekanan air sedang dijalankan.",
       "pressure": "供水状态：斗湖市区及沿海片区维持例行供水监测",
@@ -70,14 +70,14 @@
       ],
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
       "source_urls": [
-        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-us",
         "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T10:50:00+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
       "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
@@ -92,19 +92,17 @@
       "detailBM": "",
       "source": "Borneo Post",
       "sources": [
-        "Borneo Post",
-        "The Borneo Post Sabah"
+        "Borneo Post"
       ],
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
       "source_urls": [
-        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
-        "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
+        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5"
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T08:04:07+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
       "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
@@ -112,6 +110,31 @@
     },
     {
       "id": "art_national_03",
+      "category": "national",
+      "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+      "detailBM": "",
+      "source": "BusinessToday Malaysia",
+      "sources": [
+        "BusinessToday Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T08:47:32+00:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
+      "is_updated": false,
+      "geo_scope": "sarawak",
+      "cover": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg"
+    },
+    {
+      "id": "art_national_04",
       "category": "national",
       "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
       "titleBM": "",
@@ -127,40 +150,13 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T13:09:05+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
-    },
-    {
-      "id": "art_national_04",
-      "category": "national",
-      "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
-      "titleBM": "",
-      "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
-      "detailBM": "",
-      "source": "BusinessToday Malaysia",
-      "sources": [
-        "Bing News Sabah (EN)",
-        "BusinessToday Malaysia"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
-      "source_urls": [
-        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
-        "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-18T08:47:32+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
-      "is_updated": false,
-      "geo_scope": "sarawak",
-      "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg"
     },
     {
       "id": "art_national_05",
@@ -179,9 +175,9 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T01:18:14+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "sarawak",
       "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
@@ -189,6 +185,31 @@
     },
     {
       "id": "art_national_06",
+      "category": "national",
+      "title": "Putin, Trump shake hands ahead of trilateral China summit",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5\" target=\"_blank\">Putin, Trump shake hands ahead of trilateral China summit | Daily Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Sabah</font>",
+      "detailBM": "",
+      "source": "Daily Sabah",
+      "sources": [
+        "Daily Sabah"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T13:01:00+00:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
+      "is_updated": false,
+      "geo_scope": "national",
+      "cover": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg"
+    },
+    {
+      "id": "art_national_07",
       "category": "national",
       "title": "More homegrown doctors needed to address Sabah shortage",
       "titleBM": "",
@@ -204,16 +225,16 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T08:06:50+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg"
     },
     {
-      "id": "art_national_07",
+      "id": "art_national_08",
       "category": "national",
       "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
       "titleBM": "",
@@ -229,16 +250,16 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T00:04:50+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg"
     },
     {
-      "id": "art_sabah_08",
+      "id": "art_sabah_09",
       "category": "sabah",
       "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
       "titleBM": "",
@@ -251,46 +272,46 @@
       ],
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
       "source_urls": [
-        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+        "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-us",
         "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T05:43:00+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "sabah",
-      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
-      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
-    },
-    {
-      "id": "art_sabah_09",
-      "category": "sabah",
-      "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
-      "titleBM": "",
-      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-      "detailBM": "",
-      "source": "Daily Express Malaysia",
-      "sources": [
-        "Daily Express Malaysia"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-18T07:35:56+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
-      "is_updated": false,
-      "geo_scope": "sabah",
-      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
-      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg"
     },
     {
       "id": "art_national_10",
+      "category": "national",
+      "title": "One-third parliamentary representation for Sabah, Sarawak still under review",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5\" target=\"_blank\">One-third parliamentary representation for Sabah, Sarawak still under review</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+      "detailBM": "",
+      "source": "Borneo Post",
+      "sources": [
+        "Borneo Post"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T06:54:45+00:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
+      "is_updated": false,
+      "geo_scope": "sarawak",
+      "cover": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg"
+    },
+    {
+      "id": "art_national_11",
       "category": "national",
       "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
       "titleBM": "",
@@ -306,16 +327,41 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T08:30:13+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg"
     },
     {
-      "id": "art_sabah_11",
+      "id": "art_sabah_12",
+      "category": "sabah",
+      "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+      "titleBM": "",
+      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+      "detailBM": "",
+      "source": "Daily Express Malaysia",
+      "sources": [
+        "Daily Express Malaysia"
+      ],
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+      "source_urls": [
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+      ],
+      "image_url": null,
+      "original_published_at": "2026-11-18T07:35:56+00:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
+      "is_updated": false,
+      "geo_scope": "sabah",
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg"
+    },
+    {
+      "id": "art_sabah_13",
       "category": "sabah",
       "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
       "titleBM": "",
@@ -331,16 +377,16 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T05:52:21+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "sabah",
-      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
-      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
+      "cover": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg",
+      "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg"
     },
     {
-      "id": "art_national_12",
+      "id": "art_national_14",
       "category": "national",
       "title": "Sabah Immigration nabs 12 suspected scammers from China",
       "titleBM": "",
@@ -356,16 +402,16 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T05:16:00+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg"
     },
     {
-      "id": "art_national_13",
+      "id": "art_national_15",
       "category": "national",
       "title": "Sabah struggles to retain skilled talent",
       "titleBM": "",
@@ -381,66 +427,13 @@
       ],
       "image_url": null,
       "original_published_at": "2026-11-18T01:33:37+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
+      "collected_at": "2026-11-18T23:29:05.138550+08:00",
+      "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+      "updated_at": "2026-11-18T23:29:16.718533+08:00",
       "is_updated": false,
       "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
-    },
-    {
-      "id": "art_national_14",
-      "category": "national",
-      "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
-      "titleBM": "",
-      "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
-      "detailBM": "",
-      "source": "Borneo Post",
-      "sources": [
-        "Borneo Post",
-        "The Borneo Post Sabah"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-        "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-18T00:03:37+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
-    },
-    {
-      "id": "art_national_15",
-      "category": "national",
-      "title": "Investors for Sabah energy projects sought",
-      "titleBM": "",
-      "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-      "detailBM": "",
-      "source": "Daily Express Malaysia",
-      "sources": [
-        "Daily Express Malaysia"
-      ],
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-      "source_urls": [
-        "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-        "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
-      ],
-      "image_url": null,
-      "original_published_at": "2026-11-18T03:28:04+00:00",
-      "collected_at": "2026-11-18T22:11:18.096541+08:00",
-      "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-      "updated_at": "2026-11-18T22:11:28.353397+08:00",
-      "is_updated": false,
-      "geo_scope": "national",
-      "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
-      "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
+      "cover": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg",
+      "cover_image": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg"
     }
   ],
   "events": [
@@ -483,14 +476,14 @@
         ],
         "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
         "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-us",
           "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T10:50:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
         "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
@@ -505,19 +498,17 @@
         "detailBM": "",
         "source": "Borneo Post",
         "sources": [
-          "Borneo Post",
-          "The Borneo Post Sabah"
+          "Borneo Post"
         ],
         "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
         "source_urls": [
-          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
-          "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
+          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:04:07+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
         "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
@@ -525,6 +516,31 @@
       },
       {
         "id": "art_national_03",
+        "category": "national",
+        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
+        "sources": [
+          "BusinessToday Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:47:32+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg"
+      },
+      {
+        "id": "art_national_04",
         "category": "national",
         "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
         "titleBM": "",
@@ -540,40 +556,13 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T13:09:05+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
-      },
-      {
-        "id": "art_national_04",
-        "category": "national",
-        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
-        "detailBM": "",
-        "source": "BusinessToday Malaysia",
-        "sources": [
-          "Bing News Sabah (EN)",
-          "BusinessToday Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
-        "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
-          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T08:47:32+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "sarawak",
-        "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg"
       },
       {
         "id": "art_national_05",
@@ -592,9 +581,9 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T01:18:14+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sarawak",
         "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
@@ -602,6 +591,31 @@
       },
       {
         "id": "art_national_06",
+        "category": "national",
+        "title": "Putin, Trump shake hands ahead of trilateral China summit",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5\" target=\"_blank\">Putin, Trump shake hands ahead of trilateral China summit | Daily Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Sabah</font>",
+        "detailBM": "",
+        "source": "Daily Sabah",
+        "sources": [
+          "Daily Sabah"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T13:01:00+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg"
+      },
+      {
+        "id": "art_national_07",
         "category": "national",
         "title": "More homegrown doctors needed to address Sabah shortage",
         "titleBM": "",
@@ -617,16 +631,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:06:50+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg"
       },
       {
-        "id": "art_national_07",
+        "id": "art_national_08",
         "category": "national",
         "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
         "titleBM": "",
@@ -642,16 +656,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T00:04:50+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg"
       },
       {
-        "id": "art_sabah_08",
+        "id": "art_sabah_09",
         "category": "sabah",
         "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
         "titleBM": "",
@@ -664,46 +678,46 @@
         ],
         "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
         "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-us",
           "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:43:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
-      },
-      {
-        "id": "art_sabah_09",
-        "category": "sabah",
-        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-        "detailBM": "",
-        "source": "Daily Express Malaysia",
-        "sources": [
-          "Daily Express Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T07:35:56+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg"
       },
       {
         "id": "art_national_10",
+        "category": "national",
+        "title": "One-third parliamentary representation for Sabah, Sarawak still under review",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5\" target=\"_blank\">One-third parliamentary representation for Sabah, Sarawak still under review</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
+        "sources": [
+          "Borneo Post"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T06:54:45+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg"
+      },
+      {
+        "id": "art_national_11",
         "category": "national",
         "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
         "titleBM": "",
@@ -719,16 +733,41 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:30:13+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg"
       },
       {
-        "id": "art_sabah_11",
+        "id": "art_sabah_12",
+        "category": "sabah",
+        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T07:35:56+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg"
+      },
+      {
+        "id": "art_sabah_13",
         "category": "sabah",
         "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
         "titleBM": "",
@@ -744,16 +783,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:52:21+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg"
       },
       {
-        "id": "art_national_12",
+        "id": "art_national_14",
         "category": "national",
         "title": "Sabah Immigration nabs 12 suspected scammers from China",
         "titleBM": "",
@@ -769,16 +808,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:16:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg"
       },
       {
-        "id": "art_national_13",
+        "id": "art_national_15",
         "category": "national",
         "title": "Sabah struggles to retain skilled talent",
         "titleBM": "",
@@ -794,66 +833,13 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T01:33:37+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
-      },
-      {
-        "id": "art_national_14",
-        "category": "national",
-        "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
-        "detailBM": "",
-        "source": "Borneo Post",
-        "sources": [
-          "Borneo Post",
-          "The Borneo Post Sabah"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-          "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T00:03:37+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
-      },
-      {
-        "id": "art_national_15",
-        "category": "national",
-        "title": "Investors for Sabah energy projects sought",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-        "detailBM": "",
-        "source": "Daily Express Malaysia",
-        "sources": [
-          "Daily Express Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-          "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T03:28:04+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg"
       }
     ],
     "2026-11-17": [
@@ -3151,14 +3137,14 @@
         ],
         "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5",
         "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-my",
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Ffive-seriously-injured-after-tour-bus-crashes-in-sabah%2Far-AA2hH0hf&amp%3Bc=12843446155282685777&amp%3Bmkt=en-us",
           "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX3dHSTV5MTctN0dJTDBEaUxvbWxGaVVURm1Oa0xDRWhnejU1YzNqNU1oNVBIVVF4RDM1cG9xYnZvdUF5cVZOXzZMUjJyOGdJZkdqOF9zcGtIVE1yMDMyMG9FWEJvTFZNNUQxNnRaMjBPaDlKX1V6UFZ4WHFKczNGRzR5bENXd2FNN2FNWXVwdko3NHJvekxrd1VDZFp5aFZobFJfajZMcw?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T10:50:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
         "cover": "./assets/covers/cover_20261118_national_art_national_01_e02c1de8.jpg",
@@ -3173,19 +3159,17 @@
         "detailBM": "",
         "source": "Borneo Post",
         "sources": [
-          "Borneo Post",
-          "The Borneo Post Sabah"
+          "Borneo Post"
         ],
         "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
         "source_urls": [
-          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5",
-          "https://www.theborneopost.com/2026/11/18/ops-padu-authorities-seize-unregistered-health-products-worth-rm500000-across-sabah"
+          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMUNlRTRoUVBfOEd1THNPYUhOOGVwRHR6SFowSG9EZGYxazNJUWFyYXpGZy1mRHQ0NXNjVTY5bGZuVkFJazNOYU0xRGMzWlBVTjhQVy1xbVBLLWZtMUFIZWt4RTFrVXdJd2gxR3BST3VIRl81bG1tOGtMMGw4YlJzbklNM1FMekJ5N3NYd1FqZTV5bU5rMmNlR3I4T3BtNnBYd0lxRkNKY3VacGd5OVZOSUxsUGhBXzBuNkVTckJCeUZuTlE?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:04:07+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
         "cover": "./assets/covers/cover_20261118_national_art_national_02_7a02b4cf.jpg",
@@ -3193,6 +3177,31 @@
       },
       {
         "id": "art_national_03",
+        "category": "national",
+        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
+        "detailBM": "",
+        "source": "BusinessToday Malaysia",
+        "sources": [
+          "BusinessToday Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T08:47:32+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_b03108ed.jpg"
+      },
+      {
+        "id": "art_national_04",
         "category": "national",
         "title": "Sabah MMA welcomes RM1m medical scholarship initiative",
         "titleBM": "",
@@ -3208,40 +3217,13 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T13:09:05+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_03_2a5ffef7.jpg"
-      },
-      {
-        "id": "art_national_04",
-        "category": "national",
-        "title": "Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5\" target=\"_blank\">Sabah, Sarawak Parliamentary Seat Increase Still Under Review, No Timeline Set</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">BusinessToday Malaysia</font>",
-        "detailBM": "",
-        "source": "BusinessToday Malaysia",
-        "sources": [
-          "Bing News Sabah (EN)",
-          "BusinessToday Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5",
-        "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.businesstoday.com.my%2F2026%2F11%2F18%2Fsabah-sarawak-parliamentary-seat-increase-still-under-review-no-timeline-set%2F&amp%3Bc=605312944014049644&amp%3Bmkt=en-my",
-          "https://news.google.com/rss/articles/CBMivgFBVV95cUxPS3RjVENKV0pqQXBfdzVscFZ0c0tRTzVXMWFaTHRXbDBLUTlIbFpjUjhkcnNydTg1MGtxcmhXTmVHbG5vQXQxTG1UT0t1WENMcDNUVkFZM2hRLU1UeFZsQ1lNZHFaUGVJZ0NoYlY4Ry1vMXZUS3ZyMkZWd21xVVdJNks2VHg5c3UxSU1hNlBjT2VBY3BWblpXemsyR2REdTVzV0R3R0FUMjh2eXAza0kzM3E3MFQ1d2RpTEdtZ09R?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T08:47:32+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "sarawak",
-        "cover": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_b03108ed.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_04_2a5ffef7.jpg"
       },
       {
         "id": "art_national_05",
@@ -3260,9 +3242,9 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T01:18:14+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sarawak",
         "cover": "./assets/covers/cover_20261118_national_art_national_05_83f881a2.jpg",
@@ -3270,6 +3252,31 @@
       },
       {
         "id": "art_national_06",
+        "category": "national",
+        "title": "Putin, Trump shake hands ahead of trilateral China summit",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5\" target=\"_blank\">Putin, Trump shake hands ahead of trilateral China summit | Daily Sabah</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Sabah</font>",
+        "detailBM": "",
+        "source": "Daily Sabah",
+        "sources": [
+          "Daily Sabah"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMipAFBVV95cUxOSTJVZDVJSUNETWgzeUJ2S2JUd2Vub3VkYTk1eVUtQms4bWNwR2ZMc1FzcTRFOVQxaFBCSU1FTWdoakt6OUhzcHByVnlZc2prbFRMUVplUDUzQ3o0ZXl6T2VLdEtkU0xtdllXakhGRXZCQVVsN3NVdGNUSVh5dWkxTWdnYmV5eFBZUWQ3MUhiZGdITFFwcFFwTlZkOUdUS0ptYThCWNIBqgFBVV95cUxPOVR4VERER1cxNy1BMlNVN2pHRXlNc0I2QUJ0WWRxbmxWam15ZFVaVzFZbm13akhPYUtJdnhNdkdCRG1VWHlOcXQxXzNHdzVWbTdqODF6VTB0aXN0dXMtLWF3Z3J0aWUzU053Tjk3NzlWN2QtWkpGamlFVHZnMDZpZEYyWDZHM3FiQm1mS1p4djN0NFgtdFFSWGZsdkFPUk05V0tWM2ZWSVBGQQ?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T13:01:00+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "national",
+        "cover": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_fa16e95f.jpg"
+      },
+      {
+        "id": "art_national_07",
         "category": "national",
         "title": "More homegrown doctors needed to address Sabah shortage",
         "titleBM": "",
@@ -3285,16 +3292,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:06:50+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_06_e8aa2cc4.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_e8aa2cc4.jpg"
       },
       {
-        "id": "art_national_07",
+        "id": "art_national_08",
         "category": "national",
         "title": "Awarded Without the Workforce: The Question Behind Sabah's Delayed Projects",
         "titleBM": "",
@@ -3310,16 +3317,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T00:04:50+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_07_c060a52d.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_08_c060a52d.jpg"
       },
       {
-        "id": "art_sabah_08",
+        "id": "art_sabah_09",
         "category": "sabah",
         "title": "Sabah urged to plan now for KKIA's long-term capacity needs",
         "titleBM": "",
@@ -3332,46 +3339,46 @@
         ],
         "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5",
         "source_urls": [
-          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdb1dc9c39441c92b98eee324739f2&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-my",
+          "http://www.bing.com/news/apiclick.aspx?amp%3Btid=6afdc417641946babdb7468f4b8956d5&amp%3Burl=https%3A%2F%2Fwww.msn.com%2Fen-my%2Fnews%2Fnational%2Fsabah-urged-to-plan-now-for-kkias-long-term-capacity-needs%2Far-AA2hFlD2&amp%3Bc=12307230070424347501&amp%3Bmkt=en-us",
           "https://news.google.com/rss/articles/CBMisAFBVV95cUxPSFZ1andydVFtYU1sSUZnUVZXRFAtYk8xUWljZ1VEemh5d241NGhfZGoxTXhLZ1FueXZ5UFkweDlCRGtPblZmT1BUMTZmMHQ0UjdRRjVmQTZhbV94LW5xUHFTSUxtV3BtU0ZkWExrYmhnNjR6anBJZ0F2UjVZb0RVU1R0R2FOUm5hdW1vbmkzZVB0Vl9yVlkwNmg0OVdJYkI5LTR5MS1iUEV2M1RfTUZVWA?oc=5"
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:43:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_08_ebff67cd.jpg"
-      },
-      {
-        "id": "art_sabah_09",
-        "category": "sabah",
-        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-        "detailBM": "",
-        "source": "Daily Express Malaysia",
-        "sources": [
-          "Daily Express Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T07:35:56+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_031bc946.jpg"
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_09_ebff67cd.jpg"
       },
       {
         "id": "art_national_10",
+        "category": "national",
+        "title": "One-third parliamentary representation for Sabah, Sarawak still under review",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5\" target=\"_blank\">One-third parliamentary representation for Sabah, Sarawak still under review</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
+        "detailBM": "",
+        "source": "Borneo Post",
+        "sources": [
+          "Borneo Post"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNk1IZHkxZThIWjJJaURtTEIxUGREVExBamZoYmpjajR6c3hqN2JIZUd2U091Nk5PY2o3YnlIYURISnpBMzNzemNwNENUb2F4UjJvLUtoZEVhX3RLV1ZJMTBQTnlKV1BFZm56dkRzUVVkbEFWRldDd0lSeG1qV0t6TUhybmtXWjFJUDQ2UHVHSml5eThCbkJGUzVuSUEtVWdnMXNLMGlydGFUbk9oR3hEN1RBb2g4bUlI?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T06:54:45+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sarawak",
+        "cover": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_098cf619.jpg"
+      },
+      {
+        "id": "art_national_11",
         "category": "national",
         "title": "JENDELA 2 To Begin By Year-End With 145 New Tower Sites Identified In Sabah",
         "titleBM": "",
@@ -3387,16 +3394,41 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T08:30:13+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_10_1a902b12.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_11_1a902b12.jpg"
       },
       {
-        "id": "art_sabah_11",
+        "id": "art_sabah_12",
+        "category": "sabah",
+        "title": "Sabah urged to plan beyond KKIA terminal expansion to meet future demand",
+        "titleBM": "",
+        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5\" target=\"_blank\">Sabah urged to plan beyond KKIA terminal expansion to meet future demand</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
+        "detailBM": "",
+        "source": "Daily Express Malaysia",
+        "sources": [
+          "Daily Express Malaysia"
+        ],
+        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5",
+        "source_urls": [
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWEZ1b251VXVNbkZYd01heVh2NmhaWlVpM2cwOGktRThjVndpTFdTMmNIMkFpUFBOQm5mZTJmd3ZBbnF1UWYtY0R1MHE2Q3V1SFd1b29RTFgzQmVkTHprUUdrSVJJVkprSFVoN196ZFpJLVVPYTQyZzlldVFVcXdjMVBpaUI5ZWNFRW1CdlhBVzhRai1COHpiVEg3VUJ3a1duMlRPalVBaExsQ25mdHE0MnI5Z0Z5RVpD?oc=5"
+        ],
+        "image_url": null,
+        "original_published_at": "2026-11-18T07:35:56+00:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
+        "is_updated": false,
+        "geo_scope": "sabah",
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_12_031bc946.jpg"
+      },
+      {
+        "id": "art_sabah_13",
         "category": "sabah",
         "title": "Sabah needs long-term plan for KKIA beyond terminal expansion",
         "titleBM": "",
@@ -3412,16 +3444,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:52:21+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "sabah",
-        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg",
-        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_11_a069102c.jpg"
+        "cover": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg",
+        "cover_image": "./assets/covers/cover_20261118_sabah_art_sabah_13_a069102c.jpg"
       },
       {
-        "id": "art_national_12",
+        "id": "art_national_14",
         "category": "national",
         "title": "Sabah Immigration nabs 12 suspected scammers from China",
         "titleBM": "",
@@ -3437,16 +3469,16 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T05:16:00+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_12_4e098a9d.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_4e098a9d.jpg"
       },
       {
-        "id": "art_national_13",
+        "id": "art_national_15",
         "category": "national",
         "title": "Sabah struggles to retain skilled talent",
         "titleBM": "",
@@ -3462,66 +3494,13 @@
         ],
         "image_url": null,
         "original_published_at": "2026-11-18T01:33:37+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
+        "collected_at": "2026-11-18T23:29:05.138550+08:00",
+        "site_published_at": "2026-11-18T23:29:16.718533+08:00",
+        "updated_at": "2026-11-18T23:29:16.718533+08:00",
         "is_updated": false,
         "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_13_fe1ddf0e.jpg"
-      },
-      {
-        "id": "art_national_14",
-        "category": "national",
-        "title": "CM: Sabah out to reduce absolute poverty rate under SMJ 2.0",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5\" target=\"_blank\">CM: Sabah out to reduce absolute poverty rate under SMJ 2.0</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Borneo Post</font>",
-        "detailBM": "",
-        "source": "Borneo Post",
-        "sources": [
-          "Borneo Post",
-          "The Borneo Post Sabah"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMiogFBVV95cUxPWjBzZnJhLTR3emh5T2Y0VWNoQVhzaU1CRDVnc1UwX09pcHh4ZDRLY0tCRXdseF9DTy1ldnNpNGkxejQ3YzVOeHg0Zm5CdndfZmZWSFdMSm9UOF9HOWwyRkhXTGt5eWxYQVRSdW1MamNYWVFOa1I0dElhcTNpcUFLYU5xcDcwVEdjUi1va1VTYnRLM0llWDIwRVN0OWJ4YmZDRnc?oc=5",
-          "https://www.theborneopost.com/2026/11/18/cm-sabah-out-to-reduce-absolute-poverty-rate-under-smj-2-0"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T00:03:37+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_14_8325a35a.jpg"
-      },
-      {
-        "id": "art_national_15",
-        "category": "national",
-        "title": "Investors for Sabah energy projects sought",
-        "titleBM": "",
-        "detail": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5\" target=\"_blank\">Investors for Sabah energy projects sought</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Daily Express Malaysia</font>",
-        "detailBM": "",
-        "source": "Daily Express Malaysia",
-        "sources": [
-          "Daily Express Malaysia"
-        ],
-        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-        "source_urls": [
-          "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRWQ3a1NLX2NmSW1xaUVOZmFPUVcyejRKMHlvZ1lIay1ZbnA5TTlCR0lPbTRtRk5CN3BTZnFnY0dlaVRKR0dISnRNSzRyLXo5Xzk5Q2N4Yzlfb29PNk1yb3VkYk83UWJuU1Fyb2N1NjltLUhHdmJwZ3RMTW1HMF9GTmZhZUY1RDNfbUFCZmNJcmU?oc=5",
-          "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNQnpSemk2RklvYmhmRlV0R1J5dGZTZ2FuZjkzUEhPRl9ncU9sdWZPOVlULTIzbWhVZ2FWY0xKZHhHSTRuVHZWVGpWQXhOd0d0d3VnMTBuNjRQbll1SmY5TmN4NU1Pb2FrbVJLUklMb2x4MlVBN3RENWY2SExEMl9GM0VxOFByRmoySjJuMDdqOUE3bzJpZmt1cjhCa1hjWjlmWnJ6Y1pkSmw0OVFzemF4ZkNjZ0g4S20taUczOTFsa1dYdw?oc=5"
-        ],
-        "image_url": null,
-        "original_published_at": "2026-11-18T03:28:04+00:00",
-        "collected_at": "2026-11-18T22:11:18.096541+08:00",
-        "site_published_at": "2026-11-18T22:11:28.353397+08:00",
-        "updated_at": "2026-11-18T22:11:28.353397+08:00",
-        "is_updated": false,
-        "geo_scope": "national",
-        "cover": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg",
-        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_d66bcecb.jpg"
+        "cover": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg",
+        "cover_image": "./assets/covers/cover_20261118_national_art_national_15_fe1ddf0e.jpg"
       }
     ],
     "11/17": [
