@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0",
   "timezone": "Asia/Kuala_Lumpur",
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "reserved_count": 1,
   "daily_limit": 5,
   "reservations": [
     {
-      "reservation_id": "res_2026-11-18_1_f7146e75",
-      "timestamp": "2026-11-18T23:29:13.478117+08:00",
+      "reservation_id": "res_2026-11-19_1_99f78e5f",
+      "timestamp": "2026-11-19T05:13:19.702239+08:00",
       "model": "gemini-3.5-flash-lite",
-      "status": "FAILED_HTTP_503"
+      "status": "RESERVED"
     }
   ],
-  "last_updated": "2026-11-18T23:29:15.613839+08:00",
-  "status": "FAILED_HTTP_503",
+  "last_updated": "2026-11-19T05:13:19.702239+08:00",
+  "status": "RESERVED",
   "initialization_mode": "AUTHORIZED_PHASE_N4"
 }
