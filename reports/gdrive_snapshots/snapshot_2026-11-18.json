@@ -1,0 +1,252 @@
+{
+  "snapshot_id": "gdrive_snap_2026-11-18_a91bce8a",
+  "target_date": "2026-11-18",
+  "source_file_name": "西门看看网_2026-11-18.md",
+  "source_file_id": "1v83vhU3fuFdTrpHuBRPkCJgWIf4mZDk_gzThn4ZnQ0g",
+  "read_timestamp": "2026-11-18T23:33:36.793357+08:00",
+  "total_stories_found": 14,
+  "news_stories_count": 14,
+  "event_stories_count": 0,
+  "markdown_sha256": "a91bce8ae7af193ae53d62d47c4adc56cd0c8d9603eb199dcf332683771958fe",
+  "news_stories": [
+    {
+      "index": 1,
+      "title": "[沙巴][1]山打根巴刹两派人马斗殴 警方逮捕11人",
+      "body": "山打根巴刹 Bandar Ramai-Ramai 一带昨晚发生两派人马斗殴事件，警方接获紧急投报后到场，逮捕11名年龄介于15岁至46岁的男子协助调查，包括5名本地人和6名菲律宾人。警方指事件疑涉及利器，仍在调查斗殴原因。 星洲日报 已确认",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[沙巴][1]山打根巴刹两派人马斗殴 警方逮捕11人",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 2,
+      "title": "[沙巴][2]沙巴警方销毁两枚千磅未爆弹 行动顺利无伤亡",
+      "body": "沙巴警方在巴拉邦岸岛海滩成功销毁两枚各重约1000磅的未引爆空投炸弹，行动分别于11月16日及17日展开，顺利完成，没有造成人员伤亡。行动由沙巴警察后勤与科技部负责，共派出16名警务人员。 红点新闻网 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[沙巴][2]沙巴警方销毁两枚千磅未爆弹 行动顺利无伤亡",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 3,
+      "title": "[沙巴][3]政府支持扩大调查泛婆大道 公账会范围可扩大",
+      "body": "首相署沙砂事务部长慕斯达法表示，政府支持扩大国会公共账目委员会对沙巴泛婆罗洲大道工程的调查范围。有关建议由吧巴国会议员阿米占提出，要求审查2019年终止项目执行伙伴模式的依据及影响。 马新社 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[沙巴][3]政府支持扩大调查泛婆大道 公账会范围可扩大",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 4,
+      "title": "[沙巴][4]沙巴与菲律宾将铺设海底电缆 推动东盟电网互联",
+      "body": "东盟峰会宣布推动区域电网互联，其中马来西亚沙巴与菲律宾民答那峨之间将铺设首条跨海能源输送电缆，象征区域能源共享从陆地延伸至海上。东盟11个成员国已签署东盟电网强化版谅解备忘录。 中央社 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[沙巴][4]沙巴与菲律宾将铺设海底电缆 推动东盟电网互联",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 5,
+      "title": "[沙巴][5]丹南 Rundum 历史路线修复 推广历史与自然景观",
+      "body": "丹南 Rundum 是1915年姆律族英雄安达侬抗英的重要历史地点，沙巴办事处于11月14日至15日举办丹南旅游考察团，由旅游官员带队，并邀请本地媒体代表参与，希望推广当地历史与自然景观。 沙巴星洲日报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[沙巴][5]丹南 Rundum 历史路线修复 推广历史与自然景观",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 6,
+      "title": "[全国][1]安华强调政府稳固 暂无改组内阁必要",
+      "body": "首相安华强调，团结政府目前运作稳定，施政重点仍是落实各项政策及履行对人民的责任，而非回应外界有关内阁改组的猜测。他指出，尽管陆兆福辞去交通部长职务后引发讨论，但目前没有迫切需要调整内阁阵容，也尚未接纳陆兆福的辞职信。 马来西亚前锋报 已确认",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[全国][1]安华强调政府稳固 暂无改组内阁必要",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 7,
+      "title": "[全国][2]马法升级为战略伙伴 放宽稀土出口管制",
+      "body": "马来西亚与法国升级双边关系为战略伙伴，并宣布多项合作协议，包括加强国防及稀土领域合作。马来西亚同意放宽稀土出口管制，以支持两国在稀土领域的联合发展。 海峡时报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[全国][2]马法升级为战略伙伴 放宽稀土出口管制",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 8,
+      "title": "[全国][3]森州大臣辞职信真伪未确认 须获御准才生效",
+      "body": "森州王宫表示，尚未确认森州大臣依斯迈辞职信真伪，强调大臣辞职须获严端御准才生效。国阵已提呈森州新大臣人选，由严端决定是否御准。 光华日报 进行中",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[全国][3]森州大臣辞职信真伪未确认 须获御准才生效",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 9,
+      "title": "[全国][4]雪州收入突破30亿 超出原定目标",
+      "body": "雪州今年收入已达30亿令吉，超出原定28亿令吉目标。州政府表示将继续推动经济发展及改善民生，同时加强财政管理。 新海峡时报 已确认",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[全国][4]雪州收入突破30亿 超出原定目标",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 10,
+      "title": "[体育][1]马来虎2比1力挫也门 以胜利结束2026年国际赛",
+      "body": "马来西亚国家足球队在国际友谊赛中以2比1击败也门，边锋理查德陈独中两元，帮助球队走出上一仗不敌中国队的阴影。比赛在广东肇庆新区体育中心举行，马来虎以一场胜利为2026年国际赛画下句点。 中国报 已确认",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[体育][1]马来虎2比1力挫也门 以胜利结束2026年国际赛",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 11,
+      "title": "[体育][2]钦庆组合世界排名升至第38位 连夺两冠后跃升19位",
+      "body": "大马男双戴伟钦与叶睿庆在熊本羽球大师赛夺冠后，世界排名从第57位跃升至第38位，上升19位。两人在决赛逆转日本组合夺冠，是搭档以来第二座超级500赛冠军。 光华日报 已确认",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[体育][2]钦庆组合世界排名升至第38位 连夺两冠后跃升19位",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 12,
+      "title": "[体育][3]许邦荣赖沛君力拼年终总决赛资格 出战香港公开赛",
+      "body": "大马混双许邦荣与赖沛君连续第7周出战，体能面临考验，两人出战香港羽球公开赛，力拼世界巡回赛年终总决赛资格。两人近期表现大勇，年终总决赛资格近在咫尺。 光明日报 进行中",
+      "category": "sports",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[体育][3]许邦荣赖沛君力拼年终总决赛资格 出战香港公开赛",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 13,
+      "title": "[综合][1]雪州水灾灾黎减少 救援单位继续留意水位",
+      "body": "雪州水灾疏散人数有所减少，安置在临时疏散中心的人数下降。救援单位继续留意水位变化，提醒低洼地区居民提高警惕。 马来邮报 进行中",
+      "category": "sabah",
+      "geo_scope": "sabah",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[综合][1]雪州水灾灾黎减少 救援单位继续留意水位",
+      "title_bm": "",
+      "body_bm": ""
+    },
+    {
+      "index": 14,
+      "title": "[综合][2]小米18系列大马今午开卖 昨晚已正式发布",
+      "body": "小米18系列昨晚在大马正式发布，今日中午12时起正式开卖。有关系列主打影像及性能，吸引不少消费者关注。 小米马来西亚 已确认\n\n第三部分 未来活动通告\n\n本日留空。过去24小时内未核实到沙巴山打根最新公布的新活动，未用旧活动凑数。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Meta AI 权威整理"
+      ],
+      "source_urls": [],
+      "date": "2026-11-18",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "[综合][2]小米18系列大马今午开卖 昨晚已正式发布",
+      "title_bm": "",
+      "body_bm": ""
+    }
+  ],
+  "event_stories": []
+}
