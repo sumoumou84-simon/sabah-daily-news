@@ -31,8 +31,21 @@ def get_myt_datetime():
 
 def extract_tags_and_sources(title, detail):
     """提取双核实标签、信源与纯文本"""
-    verify_match = re.search(r'\\?\[(.*?)核实.*?\\?\]', title) or re.search(r'\\?\[(.*?)\]', title)
-    verified_tag = verify_match.group(1) if verify_match else "双官方来源交叉核实"
+    verify_match = re.search(r'\\?\[(.*?)核实.*?\\?\]', title)
+    if not verify_match:
+        # 匹配如 [双信源复核]、[官方通报] 等，排除分类标签如 [全国]、[综合]、[沙巴]、[体育] 以及纯数字序号
+        cands = re.findall(r'\\?\[(.*?)\]', title)
+        verified_tag = None
+        for cand in cands:
+            cand_str = cand.strip()
+            if cand_str not in ["全国", "综合", "沙巴", "体育", "大马", "科技"] and not cand_str.isdigit():
+                verified_tag = cand_str
+                break
+        if not verified_tag:
+            verified_tag = "官方权威发布"
+    else:
+        verified_tag = verify_match.group(1)
+
     clean_title = re.sub(r'\\?\[.*?\\?\]', '', title).replace('\\', '').strip()
 
     sources = []
@@ -453,6 +466,10 @@ def generate_index_html():
         raw_title = item.get("title", "")
         detail = item.get("detail", "") or item.get("summary", "")
         clean_title, tag, sources, clean_detail = extract_tags_and_sources(raw_title, detail)
+        if item.get("tag"):
+            tag = item.get("tag")
+        elif not tag or tag in ["沙巴", "全国", "综合", "体育"] or tag.isdigit():
+            tag = "官方权威发布"
         if item.get('sources'):
             sources = item.get('sources')
         elif item.get('source'):
@@ -463,16 +480,16 @@ def generate_index_html():
         source_bm = item.get("sourceBM") or (sources[0] if sources else "Hebahan Rasmi")
         sources_bm = [item.get("sourceBM")] if item.get("sourceBM") else sources
 
-        # 核心分类绑定
+        # 核心分类绑定（灰色副标签动态映射，解决写死沙巴要闻）
         category = item.get("category", "general")
         if category == "sabah":
             category_tag_zh, category_tag_bm = "沙巴要闻", "Sabah"
         elif category == "national":
-            category_tag_zh, category_tag_bm = "全国政经", "Nasional"
+            category_tag_zh, category_tag_bm = "全国焦点", "Nasional"
         elif category == "sports":
             category_tag_zh, category_tag_bm = "体育焦点", "Sukan"
         else:
-            category_tag_zh, category_tag_bm = "综合百态", "Umum"
+            category_tag_zh, category_tag_bm = "大马资讯", "Umum"
 
         sources_pills_zh = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources])
         sources_pills_bm = "".join([f'<span class="source-pill px-1.5 py-[1px] rounded-[4px] mono truncate max-w-[110px] text-[10px]">{s}</span>' for s in sources_bm])
@@ -2567,8 +2584,23 @@ def generate_index_html():
                 const detail = item.detail || item.summary || item.detailBM || '';
                 const category = item.category || 'general';
 
-                const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/) || rawTitle.match(/\\\\?\[(.*?)\]/);
-                const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
+                let tag = item.tag || '';
+                if (!tag || ['沙巴', '全国', '综合', '体育', '大马', '科技'].includes(tag)) {{
+                    const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/);
+                    if (verifyMatch) {{
+                        tag = verifyMatch[1];
+                    }} else {{
+                        const matches = [...rawTitle.matchAll(/\\\\?\[(.*?)\]/g)];
+                        tag = "官方权威发布";
+                        for (const m of matches) {{
+                            const cand = m[1].trim();
+                            if (!['沙巴', '全国', '综合', '体育', '大马', '科技'].includes(cand) && !/^\\d+$/.test(cand)) {{
+                                tag = cand;
+                                break;
+                            }}
+                        }}
+                    }}
+                }}
                 const cleanTitle = rawTitle.replace(/\\\\?\[.*?\\\\?\]/g, '').replace(/\\\\/g, '').trim() || "要闻速览";
 
                 let sources = item.sources || (item.source ? [item.source] : []);
@@ -2587,9 +2619,9 @@ def generate_index_html():
                 const detailBm = item.detailBM || cleanDetail || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
                 const tagBm = item.tagBM || "Disahkan Rasmi";
 
-                let catTagZh = "综合百态", catTagBm = "Umum";
+                let catTagZh = "大马资讯", catTagBm = "Umum";
                 if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
-                else if (category === 'national') {{ catTagZh = "全国政经"; catTagBm = "Nasional"; }}
+                else if (category === 'national') {{ catTagZh = "全国焦点"; catTagBm = "Nasional"; }}
                 else if (category === 'sports') {{ catTagZh = "体育焦点"; catTagBm = "Sukan"; }}
 
                 const sourcesZh = sources;
@@ -2828,8 +2860,23 @@ html += `
             const detail = item.detail || item.summary || '';
             const category = item.category || 'general';
 
-            const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/) || rawTitle.match(/\\\\?\[(.*?)\]/);
-            const tag = verifyMatch ? verifyMatch[1] : "双官方来源交叉核实";
+            let tag = item.tag || '';
+            if (!tag || ['沙巴', '全国', '综合', '体育', '大马', '科技'].includes(tag)) {{
+                const verifyMatch = rawTitle.match(/\\\\?\[(.*?)核实.*?\\\\?\]/);
+                if (verifyMatch) {{
+                    tag = verifyMatch[1];
+                }} else {{
+                    const matches = [...rawTitle.matchAll(/\\\\?\[(.*?)\]/g)];
+                    tag = "官方权威发布";
+                    for (const m of matches) {{
+                        const cand = m[1].trim();
+                        if (!['沙巴', '全国', '综合', '体育', '大马', '科技'].includes(cand) && !/^\\d+$/.test(cand)) {{
+                            tag = cand;
+                            break;
+                        }}
+                    }}
+                }}
+            }}
             const cleanTitle = rawTitle.replace(/\\\\?\[.*?\\\\?\]/g, '').replace(/\\\\/g, '').trim() || "要闻速览";
 
             let sources = item.sources || (item.source ? [item.source] : []);
@@ -2848,9 +2895,9 @@ html += `
             const detailBm = item.detailBM || "[Kandungan Bahasa Melayu sedang dikemas kini oleh sidang editorial]";
             const tagBm = item.tagBM || "Disahkan Rasmi";
 
-            let catTagZh = "综合百态", catTagBm = "Umum";
+            let catTagZh = "大马资讯", catTagBm = "Umum";
             if (category === 'sabah') {{ catTagZh = "沙巴要闻"; catTagBm = "Sabah"; }}
-            else if (category === 'national') {{ catTagZh = "全国政经"; catTagBm = "Nasional"; }}
+            else if (category === 'national') {{ catTagZh = "全国焦点"; catTagBm = "Nasional"; }}
             else if (category === 'sports') {{ catTagZh = "体育焦点"; catTagBm = "Sukan"; }}
 
             const zhCls = isBm ? 'hidden' : '';

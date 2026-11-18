@@ -31,22 +31,149 @@ MYT = timezone(timedelta(hours=8))
 def get_myt_now() -> datetime:
     return datetime.now(MYT)
 
-# 板块中文标签映射
+# 板块中文标签基础映射
 CATEGORY_BADGE_MAP = {
-    "sabah": "沙巴 · 山打根",
-    "national": "全国政经",
+    "sabah": "沙巴要闻",
+    "national": "全国要闻",
     "sports": "体育焦点",
-    "general": "综合百态",
+    "general": "大马综合",
 }
+
+def determine_cover_badge(category: str, title: str, detail: str = "") -> str:
+    """
+    动态读取该条新闻的实际分类或标题地名：
+    - 沙巴本地新闻：根据具体地名显示（如“沙巴 · 山打根”、“沙巴 · 亚庇”、“沙巴 · 斗湖”、“沙巴 · 丹南”等），未指定城市显示“沙巴要闻”；
+    - 全国新闻：如果是雪州显示“雪兰莪 · 全国”，森州显示“森美兰 · 全国”，其他显示“全国要闻”；
+    - 体育新闻：显示“体育焦点”；
+    - 综合新闻：手机/科技显示“科技数码”，水灾/民生显示“大马综合”，其他显示“大马综合”。
+    """
+    text = f"{title} {detail}".lower()
+
+    if category == "sports":
+        return "体育焦点"
+    elif category == "national":
+        if "雪州" in text or "雪兰莪" in text:
+            return "雪兰莪 · 全国"
+        elif "森州" in text or "森美兰" in text:
+            return "森美兰 · 全国"
+        elif "吉隆坡" in text:
+            return "吉隆坡 · 全国"
+        elif "槟城" in text:
+            return "槟城 · 全国"
+        elif "柔佛" in text:
+            return "柔佛 · 全国"
+        elif "砂拉越" in text:
+            return "砂拉越 · 全国"
+        return "全国要闻"
+    elif category == "general":
+        if any(k in text for k in ["小米", "手机", "数码", "科技", "5g", "芯片", "ai", "智能"]):
+            return "科技数码"
+        elif "雪州" in text or "雪兰莪" in text or "水灾" in text:
+            return "大马综合"
+        return "大马综合"
+    elif category == "sabah":
+        if any(k in text for k in ["山打根", "巴刹", "mps"]):
+            return "沙巴 · 山打根"
+        elif any(k in text for k in ["亚庇", "哥打京那巴鲁", "kk"]):
+            return "沙巴 · 亚庇"
+        elif "斗湖" in text:
+            return "沙巴 · 斗湖"
+        elif "丹南" in text or "rundum" in text:
+            return "沙巴 · 丹南"
+        elif "根地咬" in text:
+            return "沙巴 · 根地咬"
+        elif "仙本那" in text:
+            return "沙巴 · 仙本那"
+        elif "拿笃" in text:
+            return "沙巴 · 拿笃"
+        return "沙巴要闻"
+    return "大马综合"
 
 # 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
 GLOBAL_KEYWORD_RULES = [
-    # 0.1 经贸签约与商业合作 (高优先级：签约/备忘录/MOU/商会/商机/合作协议/投资/贸易 -> Handshake_in_corporate_boardroom)
+    # 0.0 智能手机与数码科技 (最高优先级：小米/手机/数码/智能设备/开卖/发布 -> Digital_shield / Golden_digital_shield)
     {
-        "name": "经贸签约与商业合作",
-        "keywords": ["签约", "备忘录", "MOU", "mou", "商会", "商机", "合作协议", "投资", "贸易"],
-        "patterns": ["handshake_in_corporate_boardroom"],
-        "priority": 3.0,
+        "name": "智能手机数码科技",
+        "keywords": ["小米", "手机", "数码", "开卖", "发布", "xiaomi", "apple", "5g", "芯片", "数码产品", "智能设备", "电子产品", "ai", "人工智能", "科技"],
+        "patterns": ["digital_shield_and_circuit_nodes", "golden_digital_shield"],
+        "priority": 5.0,
+    },
+    # 0.1 财政税收与政府经济预算 (最高优先级：财政/突破30亿/收入突破/税收/预算/超额/公账会/拨款/国库 -> Administrative_center_with_econo / Handshake)
+    {
+        "name": "财政税收经济预算",
+        "keywords": ["财政", "突破30亿", "收入突破", "税收", "预算", "超出原定目标", "超额", "公账会", "拨款", "州收入", "国库", "储备金", "投资额", "经贸", "经济增长"],
+        "patterns": ["administrative_center_with_econo", "governmental_pillars", "handshake_in_corporate_boardroom"],
+        "priority": 5.0,
+    },
+    # 0.2a 未爆弹与现场排爆警戒 (现场排爆/防暴警戒/空投炸弹 -> officers_inspecting_bus_at_check)
+    {
+        "name": "未爆弹与现场排爆警戒",
+        "keywords": ["未爆弹", "销毁", "千磅", "两枚", "炸弹", "排爆", "爆炸物", "警戒", "弹头", "空投炸弹"],
+        "patterns": ["officers_inspecting_bus_at_check"],
+        "priority": 5.0,
+    },
+    # 0.2b 警方斗殴缉捕治安 (斗殴/两派人马/抓捕 -> 现场刑侦调查)
+    {
+        "name": "警方斗殴缉捕治安",
+        "keywords": ["两派人马", "斗殴", "警方", "逮捕", "防暴", "伤亡", "命案", "嫌犯", "扣留", "打架", "械斗", "追捕", "落网"],
+        "patterns": ["investigators_outside_tropical", "investigators_at_tropical_villa"],
+        "priority": 5.0,
+    },
+    # 0.3 道路交通基建与泛婆大道 (最高优先级：泛婆大道/泛婆/修路/公路工程/施工 -> Engineers_overlooking_highway)
+    {
+        "name": "道路基建工程",
+        "keywords": ["泛婆大道", "泛婆", "调查泛婆", "公路", "大道", "工程", "修路", "大桥", "施工", "建设", "路线修复", "高架桥"],
+        "patterns": ["engineers_overlooking_highway"],
+        "priority": 5.0,
+    },
+    # 0.4 电缆电网与公用工程 (最高优先级：海底电缆/东盟电网/铺设/电网互联/电缆/变电站 -> Power_towers / Power_transmission / Utility_workers)
+    {
+        "name": "电缆电网公用工程",
+        "keywords": ["海底电缆", "铺设", "电缆", "东盟电网", "互联", "电网", "变电站", "电供", "供水", "水槽车", "电力", "断电", "停水"],
+        "patterns": ["power_towers_and_water_infrastru", "power_transmission_towers", "utility_workers"],
+        "priority": 5.0,
+    },
+    # 0.5 足球赛事与国际比赛 (最高优先级：足球/马来虎/也门/国际赛/力挫/球赛 -> Soccer_player)
+    {
+        "name": "足球赛事运动",
+        "keywords": ["足球", "马来虎", "也门", "国际赛", "以胜利结束", "2比1", "力挫", "进球", "球赛", "射门", "超级联赛", "联赛", "主场", "客场"],
+        "patterns": ["soccer_player_executing_volley_kick", "soccer_player"],
+        "priority": 5.0,
+    },
+    # 0.6 羽球大师赛与世界排名 (最高优先级：羽球/羽毛球/钦庆/跃升/世界排名/连夺两冠/赖沛君/许邦荣 -> Badminton_athlete / Jumping_smash)
+    {
+        "name": "羽球赛事运动",
+        "keywords": ["羽球", "羽毛球", "钦庆", "世界排名", "跃升", "连夺两冠", "大师赛", "公开赛", "总决赛", "赖沛君", "许邦荣", "男双", "混双", "女双", "男单", "李梓嘉"],
+        "patterns": ["badminton_athlete", "athlete_performing_jumping_smash"],
+        "priority": 5.0,
+    },
+    # 0.7 历史路线与自然生态景观 (最高优先级：丹南/Rundum/历史路线/自然景观/雨林 -> Borneo_rainforest / Rainforest / Rhinoceros_hornbill)
+    {
+        "name": "历史路线自然生态",
+        "keywords": ["丹南", "rundum", "历史路线", "修复", "景观", "自然景观", "历史与自然", "雨林", "热带雨林", "观鸟", "犀鸟", "生态", "神山"],
+        "patterns": ["borneo_rainforest", "rainforest_at_twilight", "rhinoceros_hornbill"],
+        "priority": 5.0,
+    },
+    # 0.8 水灾水患与灾民救援 (最高优先级：水灾/灾黎/灾民/水位/救援单位 -> Rainstorm / Rescue_boat)
+    {
+        "name": "水灾水患灾情",
+        "keywords": ["水灾", "灾黎", "灾民", "水位", "淹水", "救援单位", "避难中心", "暴雨", "洪灾", "积水"],
+        "patterns": ["tropical_rainstorm", "rainstorm", "rescue-boat", "image_20261109_210317"],
+        "priority": 5.0,
+    },
+    # 0.9 外交伙伴与战略经贸 (高优先级：马法/战略伙伴/稀土/出口管制/放宽 -> Handshake / Governmental_pillars)
+    {
+        "name": "外交经贸伙伴",
+        "keywords": ["马法", "战略伙伴", "稀土", "出口管制", "放宽", "外交", "双边", "建交", "备忘录", "mou", "签约"],
+        "patterns": ["handshake_in_corporate_boardroom", "governmental_pillars"],
+        "priority": 4.0,
+    },
+    # 0.10 内阁改组与政局首长 (高优先级：安华/政府稳固/改组内阁/大臣/辞职信/御准 -> Governmental_pillars / Administrative_center)
+    {
+        "name": "内阁政局要闻",
+        "keywords": ["安华", "政府稳固", "改组内阁", "内阁", "大臣", "辞职信", "御准", "生效", "首长", "首相", "国会", "州务大臣"],
+        "patterns": ["governmental_pillars", "golden_scales", "handshake_in_corporate_boardroom", "administrative_center"],
+        "priority": 4.0,
     },
     # 0.2 选举投票与选情 (高优先级：州选/大选/补选/投票/选民/选委会/胜选/席位 -> Ballots_cast_in_ballot_box / Casting_ballot_in_civic_hall)
     {
@@ -344,11 +471,20 @@ class CoverGenerator:
         search_title = title.lower()
         search_detail = detail.lower()
 
-        # 获取全库中当日未使用的底图
-        all_unused = [img for img in self.all_images if img.name not in self.used_images_today]
+        # 根据分类构建可用底图候选池（严禁体育与非体育混用，全国新闻禁选沙巴特有建筑/动植物）
+        if category == "sports":
+            available_pool = [img for img in self.pool_map.get("sports", []) if img.name not in self.used_images_today]
+            if not available_pool:
+                available_pool = self.pool_map.get("sports", [])
+        else:
+            # 非体育新闻：彻底排除 sports 目录
+            available_pool = [img for img in self.all_images if img.parent.name != "sports" and img.name not in self.used_images_today]
+            if category == "national":
+                # 全国新闻：排除包含 sabah_ 或 borneo_ 的沙巴本土专有底图
+                available_pool = [img for img in available_pool if not (img.name.lower().startswith("sabah_") or img.name.lower().startswith("borneo_"))]
 
         # ------------------------------------------------------------------
-        # 步骤 1: 全局高优先级标题语义关键词匹配（跨全部 4 个子目录检索）
+        # 步骤 1: 全局高优先级标题语义关键词匹配
         # ------------------------------------------------------------------
         best_candidate: Optional[Path] = None
         best_rule_score = 0
@@ -367,7 +503,7 @@ class CoverGenerator:
             rule_weight = ((title_hits * 10) + detail_hits) * priority
             patterns = rule["patterns"]
 
-            for img in all_unused:
+            for img in available_pool:
                 fname_lower = img.name.lower()
                 for pat in patterns:
                     pat_lower = pat.lower()
@@ -375,6 +511,9 @@ class CoverGenerator:
                         score = rule_weight * 10
                         if fname_lower.startswith(pat_lower):
                             score += 5
+                        # 如果底图所属目录与当前分类一致，给予加分，优先同板块底图
+                        if img.parent.name == category:
+                            score += 15
                         if score > best_rule_score:
                             best_rule_score = score
                             best_candidate = img
@@ -387,14 +526,14 @@ class CoverGenerator:
         # 步骤 2: 回退规则 - 未命中高优先级关键词，回退到对应板块文件夹抽取未用底图
         # ------------------------------------------------------------------
         cat = category if category in self.pool_map else "general"
-        cat_unused = [img for img in self.pool_map.get(cat, []) if img.name not in self.used_images_today]
+        cat_unused = [img for img in available_pool if img.parent.name == cat]
 
         if not cat_unused:
-            # 当前板块已用尽，从全库其他板块找未用底图
-            cat_unused = all_unused
+            # 当前板块已用尽，从候选池其他合规底图中找
+            cat_unused = available_pool
 
         if not cat_unused:
-            # 极端兜底：全部 53 张均用尽，从板块全量中允许复用
+            # 极端兜底：全部用尽，从板块全量中允许复用
             cat_unused = self.pool_map.get(cat, []) or self.all_images
 
         if not cat_unused:
@@ -482,8 +621,8 @@ class CoverGenerator:
         draw_layer = Image.new("RGBA", (1200, 675), (0, 0, 0, 0))
         draw = ImageDraw.Draw(draw_layer)
 
-        # 4. 左上角金黄色圆角胶囊徽章
-        badge_text = CATEGORY_BADGE_MAP.get(category, "综合百态")
+        # 4. 左上角金黄色圆角胶囊徽章（根据实际分类与地名动态计算，解决硬编码）
+        badge_text = determine_cover_badge(category, title, detail)
         badge_font = load_font(24)
         bb = badge_font.getbbox(badge_text)
         bw = bb[2] - bb[0]

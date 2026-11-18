@@ -1438,23 +1438,42 @@ class GDriveMarkdownReader:
                 cat = "event"
                 geo = "sandakan" if "sandakan" in combined_text or "山打根" in combined_text else "sabah"
             else:
-                raw_cat = (category_candidate or "").lower()
-                if any(k in raw_cat for k in ["沙巴", "sabah"]):
-                    cat = "sabah"
-                elif any(k in raw_cat for k in ["全国", "national", "国会", "联邦"]):
+                # 优先解析显式板块中括号标签（如 [全国][1], [综合][2], [沙巴][3], [体育][1]）
+                header_title = f"{header} {title}"
+                if any(k in header_title for k in ["[全国]", "【全国】", "[大马]", "【大马】"]):
                     cat = "national"
-                elif any(k in raw_cat for k in ["体育", "sports", "sukan"]):
+                elif any(k in header_title for k in ["[综合]", "【综合】", "[科技]", "【科技】", "[百态]", "【百态】"]):
+                    cat = "general"
+                elif any(k in header_title for k in ["[体育]", "【体育】"]):
                     cat = "sports"
+                elif any(k in header_title for k in ["[沙巴]", "【沙巴】"]):
+                    cat = "sabah"
+                elif category_candidate:
+                    raw_cat = category_candidate.lower()
+                    if any(k in raw_cat for k in ["沙巴", "sabah"]):
+                        cat = "sabah"
+                    elif any(k in raw_cat for k in ["全国", "national", "国会", "联邦"]):
+                        cat = "national"
+                    elif any(k in raw_cat for k in ["体育", "sports", "sukan"]):
+                        cat = "sports"
+                    elif any(k in raw_cat for k in ["综合", "general"]):
+                        cat = "general"
+                    else:
+                        cat = "general"
                 elif any(k in combined_text for k in ["sukan", "体育", "运动会", "badminton", "bola", "足球"]):
                     cat = "sports"
                 elif any(k in combined_text for k in ["parlimen", "国会", "首相", "布城", "putrajaya", "联邦"]):
                     cat = "national"
                 else:
-                    cat = "sabah"
+                    cat = "sabah" if any(k in combined_text for k in ["sandakan", "山打根", "sabah", "沙巴", "亚庇", "斗湖"]) else "general"
 
                 if "sandakan" in combined_text or "山打根" in combined_text or "mps" in combined_text:
                     geo = "sandakan"
                 elif cat == "national":
+                    geo = "national"
+                elif cat == "general":
+                    geo = "national"
+                elif cat == "sports":
                     geo = "national"
                 else:
                     geo = "sabah"
@@ -1711,14 +1730,30 @@ class GDriveMarkdownReader:
 
         for s in news_stories:
             h_idx = len(headlines) + 1
-            cat = s.category or "sabah"
+            raw_t = s.title.strip()
+            cat = s.category or "general"
+            # 严格根据标题显式标签二次校准分类
+            if any(k in raw_t for k in ["[全国]", "【全国】", "[大马]", "【大马】"]):
+                cat = "national"
+            elif any(k in raw_t for k in ["[综合]", "【综合】", "[科技]", "【科技】", "[百态]", "【百态】"]):
+                cat = "general"
+            elif any(k in raw_t for k in ["[体育]", "【体育】"]):
+                cat = "sports"
+            elif any(k in raw_t for k in ["[沙巴]", "【沙巴】"]):
+                cat = "sabah"
+
+            # 剔除标题中冗余的显式板块与序号标签，让卡片与封面标题更清爽
+            clean_t = re.sub(r'^\s*\\?\[(?:沙巴|全国|体育|综合|大马)\\?\]\s*\\?\[\d+\\?\]\s*', '', raw_t).strip()
+            if not clean_t:
+                clean_t = raw_t
+
             primary_src = s.sources[0] if s.sources else "权威整理"
 
             headlines.append({
                 "story_index": h_idx,
                 "category": cat,
-                "title": s.title,
-                "titleBM": s.title,
+                "title": clean_t,
+                "titleBM": clean_t,
                 "detail": s.body,
                 "detailBM": s.body,
                 "source_url": "",
@@ -1732,6 +1767,8 @@ class GDriveMarkdownReader:
                 "is_event": False,
                 "event_metadata": {},
                 "id": f"art_{cat}_{h_idx:02d}",
+                "tag": "官方权威发布",
+                "tagBM": "Disahkan Rasmi",
                 "image_url": None,
                 "collected_at": now_iso,
                 "site_published_at": now_iso,
