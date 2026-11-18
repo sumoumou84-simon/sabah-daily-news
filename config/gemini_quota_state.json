@@ -9,10 +9,10 @@
       "reservation_id": "res_2026-11-18_1_f7146e75",
       "timestamp": "2026-11-18T23:29:13.478117+08:00",
       "model": "gemini-3.5-flash-lite",
-      "status": "RESERVED"
+      "status": "FAILED_HTTP_503"
     }
   ],
-  "last_updated": "2026-11-18T23:29:13.478117+08:00",
-  "status": "RESERVED",
+  "last_updated": "2026-11-18T23:29:15.613839+08:00",
+  "status": "FAILED_HTTP_503",
   "initialization_mode": "AUTHORIZED_PHASE_N4"
 }
