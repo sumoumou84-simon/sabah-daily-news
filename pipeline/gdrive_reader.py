@@ -461,6 +461,20 @@ class GDriveMarkdownReader:
                 if access_token:
                     logger.info("[GDRIVE AUTH] Successfully acquired OAuth access token via refresh token.")
                     return access_token
+        except urllib.error.HTTPError as he:
+            err_body = ""
+            try:
+                err_body = he.read().decode("utf-8")
+            except Exception:
+                pass
+            if "invalid_grant" in err_body:
+                logger.error(
+                    "[GDRIVE OAUTH EXPIRED] Refresh token expired (invalid_grant)! "
+                    "Google Cloud OAuth projects in 'Testing' mode automatically expire refresh tokens after 7 days. "
+                    "To fix permanently: Go to Google Cloud Console -> APIs & Services -> OAuth consent screen -> Publish App (switch to 'In production')."
+                )
+            else:
+                logger.warning(f"[GDRIVE AUTH HTTP ERROR] Failed to exchange refresh token: HTTP {he.code} - {err_body}")
         except Exception as e:
             logger.warning(f"[GDRIVE AUTH] Failed to exchange refresh token: {e}")
         return None
@@ -537,7 +551,7 @@ class GDriveMarkdownReader:
             rev_score = 0
             if any(k in name for k in ["修正版", "修正", "v1.3", "v13", "最新"]):
                 rev_score = 10
-            elif "西门看看网每日新闻" in name:
+            elif "西门看看网" in name:
                 rev_score = 5
 
             # File type score (prefer .md or Google Doc)
@@ -570,7 +584,7 @@ class GDriveMarkdownReader:
 
                 # If Google Doc
                 elif mime_type == "application/vnd.google-apps.document":
-                    for export_mime in ["text/markdown", "text/plain"]:
+                    for export_mime in ["text/plain", "text/markdown"]:
                         export_url = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType={urllib.parse.quote(export_mime)}"
                         try:
                             exp_req = urllib.request.Request(export_url, headers=headers, method="GET")
@@ -648,7 +662,7 @@ class GDriveMarkdownReader:
                         logger.info(f"[GDRIVE GDOC FOUND] Located Google Doc '{file_name}' (ID: {file_id}). Attempting export...")
 
                         exported_content = None
-                        for export_mime in ["text/markdown", "text/plain"]:
+                        for export_mime in ["text/plain", "text/markdown"]:
                             export_url = f"https://www.googleapis.com/drive/v3/files/{file_id}/export?mimeType={urllib.parse.quote(export_mime)}"
                             try:
                                 exp_req = urllib.request.Request(export_url, headers=headers, method="GET")
