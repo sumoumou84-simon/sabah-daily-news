@@ -134,6 +134,8 @@ def generate_index_html():
         if headlines:
             headlines = generate_covers_for_headlines(headlines, date_str=myt_now.strftime("%Y.%m.%d · MYT"))
             data["headlines"] = headlines
+            archive_pool[today_iso] = headlines
+            archive_pool[today_mmdd] = headlines
     except Exception as e:
         print(f"⚠️ 封面生成器调用提示/降级: {e}")
 

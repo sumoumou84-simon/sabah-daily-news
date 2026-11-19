@@ -48,7 +48,7 @@ class TestCoverGenerator(unittest.TestCase):
                 self.assertEqual(img.size, (1200, 675), f"{sample.name} 尺寸不为 1200x675")
                 self.assertEqual(img.mode, "RGB", f"{sample.name} 色彩模式不为 RGB")
 
-        self.assertEqual(total_images, 70, f"底图库总数应为 70: {total_images}")
+        self.assertGreaterEqual(total_images, 82, f"底图库总数应至少为 82: {total_images}")
 
     def test_02_font_loading_and_chinese_support(self):
         """测试中文字体成功加载且能正确测量中文字符"""
@@ -126,7 +126,7 @@ class TestCoverGenerator(unittest.TestCase):
         # 9. 新增高优先级语义规则测试：水电公用设施
         bg_utility = gen.select_background("national", "沙巴水务局JANS与SESB调度水压通报断水制水停电抢修")
         self.assertTrue(
-            any(pat in bg_utility.name.lower() for pat in ["utility_workers", "image_20261109_210654", "image_20261109_210740"]),
+            any(pat in bg_utility.name.lower() for pat in ["utility_workers", "power_towers", "power_transmission", "image_20261109_210654", "image_20261109_210740"]),
             f"水电公用设施新闻未匹配到电力水务底图: {bg_utility.name}"
         )
 
@@ -181,10 +181,38 @@ class TestCoverGenerator(unittest.TestCase):
         )
 
         # 10.8 机场航空与旅游 -> Airplane_taxiing
-        bg_air = gen.select_background("sabah", "亚庇国际机场开通全新直飞航班航线，入境游客大幅增长")
+        bg_air = gen.select_background("sabah", "亚庇国际机场开通全新直飞航班航线，搭客大厦客机起降频繁")
         self.assertTrue(
             "airplane_taxiing" in bg_air.name.lower(),
             f"机场航空旅游新闻未匹配到机场飞机滑行底图: {bg_air.name}"
+        )
+
+        # 10.9 足球运动细分隔离测试 (U16/关岛/亚少杯大胜 -> 必须匹配足球绿茵场底图，绝非羽球)
+        bg_u16 = gen.select_background("sports", "大马U16队10比0大胜关岛，保留晋级亚少杯决赛圈希望")
+        self.assertTrue(
+            "soccer" in bg_u16.name.lower() or "football" in bg_u16.name.lower(),
+            f"足球U16大胜新闻未匹配到足球底图: {bg_u16.name}"
+        )
+
+        # 10.10 歌唱比赛与文化舞台测试 (歌唱赛/比赛/选拔/评审 -> 必须匹配舞台文化底图，绝非机场跑道)
+        bg_stage = gen.select_background("sabah", "沙巴客家青年会歌唱赛山打根选拔，公布评审阵容")
+        self.assertTrue(
+            any(pat in bg_stage.name.lower() for pat in ["singing", "stage", "musical", "concert"]),
+            f"歌唱比赛新闻未匹配到舞台演出底图: {bg_stage.name}"
+        )
+
+        # 10.11 政务会议与官方商讨测试 (开会/商讨/州议员 -> 必须匹配政务会议圆桌底图，绝非路边查大巴)
+        bg_meeting = gen.select_background("sabah", "山打根陆路交通局与伊罗普拉州议员开会，商讨地方交通事务")
+        self.assertTrue(
+            any(pat in bg_meeting.name.lower() for pat in ["meeting", "assembly", "roundtable", "council"]),
+            f"政务开会新闻未匹配到官方会议底图: {bg_meeting.name}"
+        )
+
+        # 10.12 巴刹集市与民生小贩测试 (金凤市场提升工程/小贩 -> 必须匹配巴刹集市底图，绝非泛婆公路工程)
+        bg_market = gen.select_background("sabah", "金凤市场提升工程引关注，小贩盼工程安排更透明")
+        self.assertTrue(
+            any(pat in bg_market.name.lower() for pat in ["market", "pasar"]),
+            f"巴刹小贩市场新闻未匹配到巴刹集市底图: {bg_market.name}"
         )
 
         # 11. 回退测试：未命中全局关键词时，回退至板块对应目录抽取

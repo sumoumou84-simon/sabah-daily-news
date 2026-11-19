@@ -405,14 +405,14 @@ def run_pipeline() -> bool:
     # 7. 写入并持久化（包含活动归档库 data/events_archive.json 同步）
     events = events or build_rich_future_events()
     events = sync_events_archive(events, today_iso, archive_file=EVENTS_ARCHIVE_FILE)
-    archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
-
-    # 动态为要闻生成杂志风专属封面
+    # 动态为要闻生成杂志风专属封面（优先在归档前生成，确保归档历史携带最新今日封面与今日日期）
     try:
         from pipeline.cover_generator import generate_covers_for_headlines
-        final_headlines = generate_covers_for_headlines(final_headlines, date_str=today_iso)
+        final_headlines = generate_covers_for_headlines(final_headlines, date_str=myt_now.strftime("%Y.%m.%d · MYT"))
     except Exception as e:
         logger.warning(f"Cover generation hook error in agent_reach_editor: {e}")
+
+    archive_pool = manage_7day_rolling_archive_pool(today_iso, final_headlines)
 
     news_data_payload = {
         "updated_at": myt_now.strftime("%Y-%m-%d %H:%M:%S"),

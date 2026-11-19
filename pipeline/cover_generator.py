@@ -91,253 +91,263 @@ def determine_cover_badge(category: str, title: str, detail: str = "") -> str:
 
 # 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
 GLOBAL_KEYWORD_RULES = [
-    # 0.0 智能手机与数码科技 (最高优先级：小米/手机/数码/智能设备/开卖/发布 -> Digital_shield / Golden_digital_shield)
+    # ------------------------------------------------------------------
+    # 优先级 6.0: 专项高频场景精准隔离（足球、羽球、政务会议、巴刹市集、文化舞台）
+    # ------------------------------------------------------------------
+    # 0.01 足球赛事与国家队比赛 (最高优先级：U16/关岛/亚少杯/足球/马来虎/胜关岛/进球 -> Soccer_match_stadium / Soccer_youth / Football_match)
+    {
+        "name": "足球赛事运动",
+        "keywords": [
+            "足球", "u16", "u17", "u19", "u23", "关岛", "大胜", "亚少杯", "亚青赛",
+            "亚洲杯", "世界杯", "世预赛", "超级联赛", "联赛", "进球", "球赛", "胜关岛",
+            "国足", "马来虎", "射门", "点球", "角球", "足总", "足协", "超级联赛",
+            "足球赛", "绿茵", "球星", "前锋", "后卫", "门将", "英超", "欧冠",
+            "西甲", "德甲", "意甲", "法甲", "sabah fc"
+        ],
+        "patterns": [
+            "soccer_match_stadium_green_pitch",
+            "soccer_youth_match_floodlight",
+            "football_match_players_competing",
+            "soccer_player_executing_volley_kick",
+            "soccer_player"
+        ],
+        "priority": 6.0,
+    },
+    # 0.02 羽球大师赛与世界锦标赛 (最高优先级：羽球/羽毛球/跳杀/大师赛/公开赛/男双/混双/男单/李梓嘉 -> Badminton_athlete / Jumping_smash)
+    {
+        "name": "羽球赛事运动",
+        "keywords": [
+            "羽球", "羽毛球", "钦庆", "世界排名", "跃升", "连夺两冠", "大师赛", "公开赛",
+            "总决赛", "赖沛君", "许邦荣", "男双", "混双", "女双", "男单", "女单",
+            "双打", "单打", "李梓嘉", "谢定峰", "苏伟译", "跳杀", "汤杯", "尤杯",
+            "苏迪曼杯", "全英赛", "世锦赛", "大马混双", "大马男双", "大马女双"
+        ],
+        "patterns": ["badminton_athlete", "athlete_performing_jumping_smash"],
+        "priority": 6.0,
+    },
+    # 0.03 政务会议与官方商讨 (最高优先级：开会/商讨/会晤/对话/州议员/市议会/局长 -> Government_council / Official_state_assembly / Roundtable)
+    {
+        "name": "政务会议官方商讨",
+        "keywords": [
+            "开会", "商讨", "工作会议", "协调会", "会晤", "对话", "州议员", "市议会",
+            "议员", "局长", "部门会议", "圆桌会议", "座谈会", "官访", "汇报会",
+            "政务会议", "联席会议", "闭门会议", "内阁会议", "双边会谈", "交涉",
+            "接见", "拜会", "常月会议", "例常会议", "市长"
+        ],
+        "patterns": [
+            "government_council_committee_meeting",
+            "official_state_assembly_roundtable",
+            "government_officials_roundtable_meeting",
+            "handshake_in_corporate_boardroom",
+            "administrative_center"
+        ],
+        "priority": 6.0,
+    },
+    # 0.04 巴刹集市与民生小贩 (最高优先级：市场/巴刹/pasar/小贩/金凤市场/中央巴刹 -> Sandakan_central_market / Local_pasar / Morning_market)
+    {
+        "name": "巴刹集市社区小贩",
+        "keywords": [
+            "市场", "巴刹", "pasar", "小贩", "摊贩", "金凤市场", "中央巴刹",
+            "早市", "夜市", "菜市场", "商贩", "摊位", "菜市", "街市", "街坊",
+            "民生小贩", "熟食档", "市集", "小商贩"
+        ],
+        "patterns": [
+            "sandakan_central_market_pasar",
+            "local_pasar_market_vendors",
+            "morning_market_community_bazaar",
+            "lanterns_glowing_at_night_market",
+            "night_market_street"
+        ],
+        "priority": 6.0,
+    },
+    # 0.05 歌唱比赛与舞台庆典 (最高优先级：歌唱赛/比赛/选拔/舞台/晚会/演出/庆典/文化节/评审 -> Cultural_singing_contest / Stage_vocal / Musical_stage)
+    {
+        "name": "歌唱比赛舞台庆典",
+        "keywords": [
+            "歌唱赛", "歌唱", "比赛", "选拔", "金杯赛", "舞台", "晚会", "演出",
+            "庆典", "文化节", "评审", "音乐会", "汇演", "文艺", "歌手", "才艺",
+            "舞蹈", "合唱", "朗诵", "青年会", "客家青年", "颁奖礼", "晚宴",
+            "周年庆", "联欢会", "戏剧", "文娱"
+        ],
+        "patterns": [
+            "cultural_singing_contest_stage",
+            "stage_vocal_performance_lights",
+            "musical_stage_concert_celebration"
+        ],
+        "priority": 6.0,
+    },
+
+    # ------------------------------------------------------------------
+    # 优先级 5.0: 司法反贪、治安排爆、道路基建、公用设施、水患与生态
+    # ------------------------------------------------------------------
+    # 0.1 智能手机与数码科技
     {
         "name": "智能手机数码科技",
         "keywords": ["小米", "手机", "数码", "开卖", "发布", "xiaomi", "apple", "5g", "芯片", "数码产品", "智能设备", "电子产品", "ai", "人工智能", "科技"],
         "patterns": ["digital_shield_and_circuit_nodes", "golden_digital_shield"],
         "priority": 5.0,
     },
-    # 0.1 财政税收与政府经济预算 (最高优先级：财政/突破30亿/收入突破/税收/预算/超额/公账会/拨款/国库 -> Administrative_center_with_econo / Handshake)
+    # 0.2 司法审判与法庭反贪
+    {
+        "name": "法庭司法反贪",
+        "keywords": ["法庭", "审讯", "反贪", "控状", "司法", "法院", "审理", "判决", "上诉", "律师", "提控", "官司", "法官", "合议庭", "净税收"],
+        "patterns": ["golden_scales_and_gavel", "golden_scales_of_justice", "golden_scales"],
+        "priority": 5.0,
+    },
+    # 0.3 财政税收与政府经济预算
     {
         "name": "财政税收经济预算",
         "keywords": ["财政", "突破30亿", "收入突破", "税收", "预算", "超出原定目标", "超额", "公账会", "拨款", "州收入", "国库", "储备金", "投资额", "经贸", "经济增长"],
         "patterns": ["administrative_center_with_econo", "governmental_pillars", "handshake_in_corporate_boardroom"],
         "priority": 5.0,
     },
-    # 0.2a 未爆弹与现场排爆警戒 (现场排爆/防暴警戒/空投炸弹 -> officers_inspecting_bus_at_check)
+    # 0.4 历史路线与自然生态景观
+    {
+        "name": "历史路线自然生态",
+        "keywords": ["丹南", "rundum", "历史路线", "修复", "景观", "自然景观", "历史与自然", "雨林", "热带雨林", "观鸟", "犀鸟", "生态", "神山", "森林", "野生动物", "动植物"],
+        "patterns": ["borneo_rainforest", "rainforest_at_twilight", "rhinoceros_hornbill"],
+        "priority": 5.0,
+    },
+    # 0.5 暴雨气象与水灾救援
+    {
+        "name": "暴雨气象水灾",
+        "keywords": ["水灾", "灾黎", "灾民", "水位", "淹水", "救援单位", "避难中心", "暴雨", "洪灾", "积水", "季候风", "风潮", "气象", "救援艇", "救援船", "海浪"],
+        "patterns": ["tropical_rainstorm", "rainstorm", "rescue-boat", "image_20261109_210317"],
+        "priority": 5.0,
+    },
+    # 0.6 未爆弹与现场排爆警戒
     {
         "name": "未爆弹与现场排爆警戒",
         "keywords": ["未爆弹", "销毁", "千磅", "两枚", "炸弹", "排爆", "爆炸物", "警戒", "弹头", "空投炸弹"],
         "patterns": ["officers_inspecting_bus_at_check"],
         "priority": 5.0,
     },
-    # 0.2b 警方斗殴缉捕治安 (斗殴/两派人马/抓捕 -> 现场刑侦调查)
+    # 0.7 警方斗殴缉捕治安
     {
         "name": "警方斗殴缉捕治安",
-        "keywords": ["两派人马", "斗殴", "警方", "逮捕", "防暴", "伤亡", "命案", "嫌犯", "扣留", "打架", "械斗", "追捕", "落网"],
+        "keywords": ["两派人马", "斗殴", "警方", "逮捕", "防暴", "伤亡", "命案", "嫌犯", "扣留", "打架", "械斗", "追捕", "落网", "扫荡", "突击", "盘查", "搜查", "抓捕", "警区", "联合行动"],
         "patterns": ["investigators_outside_tropical", "investigators_at_tropical_villa"],
         "priority": 5.0,
     },
-    # 0.3 道路交通基建与泛婆大道 (最高优先级：泛婆大道/泛婆/修路/公路工程/施工 -> Engineers_overlooking_highway)
+    # 0.8 道路基建工程与泛婆大道 (限定公路/桥梁/修路工程，杜绝吞并市场改造)
     {
         "name": "道路基建工程",
-        "keywords": ["泛婆大道", "泛婆", "调查泛婆", "公路", "大道", "工程", "修路", "大桥", "施工", "建设", "路线修复", "高架桥"],
+        "keywords": ["泛婆大道", "泛婆", "调查泛婆", "公路工程", "大道工程", "修路", "铺路", "大桥工程", "路段维修", "公路建设", "高架桥工程", "桥梁建设"],
         "patterns": ["engineers_overlooking_highway"],
         "priority": 5.0,
     },
-    # 0.4 电缆电网与公用工程 (最高优先级：海底电缆/东盟电网/铺设/电网互联/电缆/变电站 -> Power_towers / Power_transmission / Utility_workers)
+    # 0.9 电网电缆与水务抢修公用设施
     {
-        "name": "电缆电网公用工程",
-        "keywords": ["海底电缆", "铺设", "电缆", "东盟电网", "互联", "电网", "变电站", "电供", "供水", "水槽车", "电力", "断电", "停水"],
-        "patterns": ["power_towers_and_water_infrastru", "power_transmission_towers", "utility_workers"],
+        "name": "公用事业抢修",
+        "keywords": ["海底电缆", "铺设", "电缆", "东盟电网", "互联", "电网", "变电站", "电供", "供水", "水槽车", "电力", "断电", "停水", "sesb", "水务局", "jans", "抢修", "检修", "电塔"],
+        "patterns": ["power_towers_and_water_infrastru", "power_transmission_towers", "utility_workers", "image_20261109_210654", "image_20261109_210740"],
         "priority": 5.0,
     },
-    # 0.5 足球赛事与国际比赛 (最高优先级：足球/马来虎/也门/国际赛/力挫/球赛 -> Soccer_player)
+    # 0.10 田径短跑运动
     {
-        "name": "足球赛事运动",
-        "keywords": ["足球", "马来虎", "也门", "国际赛", "以胜利结束", "2比1", "力挫", "进球", "球赛", "射门", "超级联赛", "联赛", "主场", "客场"],
-        "patterns": ["soccer_player_executing_volley_kick", "soccer_player"],
+        "name": "田径短跑",
+        "keywords": ["田径", "短跑", "起跑", "飞人", "金牌", "健儿", "跨栏", "百米", "接力", "短跑好手"],
+        "patterns": ["sprinters_bursting"],
         "priority": 5.0,
     },
-    # 0.6 羽球大师赛与世界排名 (最高优先级：羽球/羽毛球/钦庆/跃升/世界排名/连夺两冠/赖沛君/许邦荣 -> Badminton_athlete / Jumping_smash)
-    {
-        "name": "羽球赛事运动",
-        "keywords": ["羽球", "羽毛球", "钦庆", "世界排名", "跃升", "连夺两冠", "大师赛", "公开赛", "总决赛", "赖沛君", "许邦荣", "男双", "混双", "女双", "男单", "李梓嘉"],
-        "patterns": ["badminton_athlete", "athlete_performing_jumping_smash"],
-        "priority": 5.0,
-    },
-    # 0.7 历史路线与自然生态景观 (最高优先级：丹南/Rundum/历史路线/自然景观/雨林 -> Borneo_rainforest / Rainforest / Rhinoceros_hornbill)
-    {
-        "name": "历史路线自然生态",
-        "keywords": ["丹南", "rundum", "历史路线", "修复", "景观", "自然景观", "历史与自然", "雨林", "热带雨林", "观鸟", "犀鸟", "生态", "神山"],
-        "patterns": ["borneo_rainforest", "rainforest_at_twilight", "rhinoceros_hornbill"],
-        "priority": 5.0,
-    },
-    # 0.8 水灾水患与灾民救援 (最高优先级：水灾/灾黎/灾民/水位/救援单位 -> Rainstorm / Rescue_boat)
-    {
-        "name": "水灾水患灾情",
-        "keywords": ["水灾", "灾黎", "灾民", "水位", "淹水", "救援单位", "避难中心", "暴雨", "洪灾", "积水"],
-        "patterns": ["tropical_rainstorm", "rainstorm", "rescue-boat", "image_20261109_210317"],
-        "priority": 5.0,
-    },
-    # 0.9 外交伙伴与战略经贸 (高优先级：马法/战略伙伴/稀土/出口管制/放宽 -> Handshake / Governmental_pillars)
+
+    # ------------------------------------------------------------------
+    # 优先级 4.0: 外交商贸、内阁政局要闻
+    # ------------------------------------------------------------------
+    # 1.1 外交伙伴与战略经贸
     {
         "name": "外交经贸伙伴",
         "keywords": ["马法", "战略伙伴", "稀土", "出口管制", "放宽", "外交", "双边", "建交", "备忘录", "mou", "签约"],
         "patterns": ["handshake_in_corporate_boardroom", "governmental_pillars"],
         "priority": 4.0,
     },
-    # 0.10 内阁改组与政局首长 (高优先级：安华/政府稳固/改组内阁/大臣/辞职信/御准 -> Governmental_pillars / Administrative_center)
+    # 1.2 内阁改组与政局要闻
     {
         "name": "内阁政局要闻",
-        "keywords": ["安华", "政府稳固", "改组内阁", "内阁", "大臣", "辞职信", "御准", "生效", "首长", "首相", "国会", "州务大臣"],
-        "patterns": ["governmental_pillars", "golden_scales", "handshake_in_corporate_boardroom", "administrative_center"],
+        "keywords": ["安华", "政府稳固", "改组内阁", "内阁", "大臣", "辞职信", "御准", "生效", "首长", "首相", "国会", "州务大臣", "竞选", "助选", "政党", "部长", "州政府", "议席", "解散国会", "提前解散", "执政", "希盟", "国盟", "国阵", "沙盟"],
+        "patterns": ["governmental_pillars", "golden_scales", "handshake_in_corporate_boardroom", "administrative_center", "sabah_state_administrative"],
         "priority": 4.0,
     },
-    # 0.2 选举投票与选情 (高优先级：州选/大选/补选/投票/选民/选委会/胜选/席位 -> Ballots_cast_in_ballot_box / Casting_ballot_in_civic_hall)
+
+    # ------------------------------------------------------------------
+    # 优先级 3.0: 选举、海事、民生福利、医疗、教育、农业、航空、交通事故等
+    # ------------------------------------------------------------------
+    # 2.1 选举投票与选情
     {
         "name": "选举投票与选情",
         "keywords": ["州选", "大选", "补选", "投票", "选民", "选委会", "胜选", "席位"],
         "patterns": ["ballots_cast_in_ballot_box", "casting_ballot_in_civic_hall"],
         "priority": 3.0,
     },
-    # 0.3 海上搜救与海事执法 (高优先级：失踪/寻人/搜救/海警/海上/海域/渔船/溺水 -> Maritime_patrol_boat / Patrol_boat_scanning)
+    # 2.2 海上搜救与海事执法
     {
         "name": "海上搜救与海事执法",
-        "keywords": ["失踪", "寻人", "搜救", "海警", "海上", "海域", "渔船", "溺水"],
+        "keywords": ["失踪", "寻人", "搜救", "海警", "水警", "海上", "海域", "渔船", "溺水", "巡逻艇", "截查", "走私", "偷渡"],
         "patterns": ["maritime_patrol_boat", "patrol_boat_scanning"],
         "priority": 3.0,
     },
-    # 0.4 民生福利与社区家庭 (高优先级：福利/主妇/妇女/援助金/津贴/民生/社区/家庭 -> Family_in_community_park)
+    # 2.3 民生福利与社区家庭
     {
         "name": "民生福利与社区家庭",
-        "keywords": ["福利", "主妇", "妇女", "援助金", "津贴", "民生", "社区", "家庭"],
+        "keywords": ["福利", "主妇", "妇女", "援助金", "津贴", "民生", "社区", "家庭", "亲子", "公园"],
         "patterns": ["family_in_community_park"],
         "priority": 3.0,
     },
-    # 0.5 医疗卫生与医院 (高优先级：医院/医疗/医生/卫生部/病患/诊所/疫苗/骨痛热症 -> Medical_staff_reviewing_digital)
+    # 2.4 医疗卫生与医院
     {
         "name": "医疗卫生与医院",
         "keywords": ["医院", "医疗", "医生", "卫生部", "病患", "诊所", "疫苗", "骨痛热症"],
         "patterns": ["medical_staff_reviewing_digital"],
         "priority": 3.0,
     },
-    # 0.6 学校教育与校园 (高优先级：学校/学生/教师/华校/独中/教育部/SPM/校舍 -> Students_raising_hands_in_classroom)
+    # 2.5 学校教育与校园
     {
         "name": "学校教育与校园",
         "keywords": ["学校", "学生", "教师", "华校", "独中", "教育部", "SPM", "spm", "校舍"],
         "patterns": ["students_raising_hands_in_classroom"],
         "priority": 3.0,
     },
-    # 0.7 油棕种植与农业 (高优先级：油棕/棕油/种植/农业/农民/原产品/出口/园丘 -> Oil_palm_plantation / Sabah_oil_palm_plantation)
+    # 2.6 油棕种植与农业
     {
         "name": "油棕种植与农业",
         "keywords": ["油棕", "棕油", "种植", "农业", "农民", "原产品", "出口", "园丘"],
         "patterns": ["oil_palm_plantation", "sabah_oil_palm_plantation"],
         "priority": 3.0,
     },
-    # 0.8 机场航空与旅游 (高优先级：机场/航班/直飞/航线/航空/游客/旅游/入境 -> Airplane_taxiing)
+    # 2.7 机场航空与航线
     {
         "name": "机场航空与旅游",
-        "keywords": ["机场", "航班", "直飞", "航线", "航空", "游客", "旅游", "入境"],
+        "keywords": ["机场", "航班", "直飞", "航线", "航空", "客机", "民航", "搭客大厦", "跑道", "机舱", "停机坪"],
         "patterns": ["airplane_taxiing"],
         "priority": 3.0,
     },
-    # 0.9 治安与刑事警务 (高优先级：警方/追捕/刺伤/打斗/命案/扣查/扫荡/取缔/嫌犯 -> Investigators)
-    {
-        "name": "治安与刑事警务",
-        "keywords": ["警方", "追捕", "刺伤", "打斗", "命案", "扣查", "扫荡", "取缔", "嫌犯"],
-        "patterns": ["investigators_at_tropical_villa", "investigators_outside_tropical"],
-        "priority": 3.0,
-    },
-    # 0.10 陆路交通与事故 (高优先级：车祸/碰撞/路障/JPJ/陆路交通局/长巴/德士/交通 -> Officers_inspecting_bus / Taxis / 交通监控)
+    # 2.8 陆路交通与事故 (精准限定长巴/路障/车祸事故，避免误判政务开会)
     {
         "name": "陆路交通与事故",
-        "keywords": ["车祸", "碰撞", "路障", "jpj", "陆路交通局", "长巴", "德士", "交通"],
-        "patterns": ["officers_inspecting_bus", "taxis_lined_up", "image_20261109_205524", "image_20261109_205602", "image_20261109_205757"],
+        "keywords": ["车祸", "碰撞", "路障", "查大巴", "长巴取缔", "截查长巴", "德士违规", "客货车事故", "翻车", "追尾", "交通违规", "交警执勤", "路检", "长巴", "德士"],
+        "patterns": ["officers_inspecting_bus", "taxis_lined_up", "drivers_conversing"],
         "priority": 3.0,
     },
-    # 0.11 水电公用设施 (高优先级：断水/制水/水压/停电/电供/SESB/水务局/JANS -> Utility_workers_ / image_20261109_210654 / 210740)
-    {
-        "name": "水电公用设施",
-        "keywords": ["断水", "制水", "水压", "停电", "电供", "sesb", "水务局", "jans"],
-        "patterns": ["utility_workers_", "image_20261109_210654", "image_20261109_210740"],
-        "priority": 3.0,
-    },
-    # 1. 暴雨 / 季候风 / 气象 / 淹水 / 水灾 -> 优先匹配 Rainstorm、Tropical_rainstorm、洪水救援图
-    {
-        "name": "暴雨气象水灾",
-        "keywords": ["暴雨", "季候风", "风潮", "气象", "淹水", "水灾", "大雨", "洪灾", "积水", "救援艇", "救援船", "海浪"],
-        "patterns": ["tropical_rainstorm", "rainstorm", "rescue_boat"]
-    },
-    # 2. 雨林 / 观鸟 / 犀鸟 / 生态 / 保育 / 神山 / 公园 -> 优先匹配 Rhinoceros_Hornbill、Rainforest、Borneo_rainforest
-    {
-        "name": "生态雨林野生动物",
-        "keywords": ["雨林", "热带雨林", "观鸟", "犀鸟", "生态", "保育", "神山", "公园", "森林", "野生动物", "动植物"],
-        "patterns": ["rhinoceros_hornbill", "borneo_rainforest", "rainforest"]
-    },
-    # 3. 竞选 / 政党 / 国会 / 内阁 / 部长 / 州政府 -> 优先匹配 Governmental_pillars、Administrative_center、Sabah_state_administrative
-    {
-        "name": "政经议会行政",
-        "keywords": ["竞选", "助选", "政党", "国会", "内阁", "部长", "州政府", "首相", "首长", "议会", "议席", "解散国会", "提前解散", "执政", "希盟", "国盟", "国阵", "沙盟"],
-        "patterns": ["governmental_pillars", "administrative_center", "sabah_state_administrative"]
-    },
-    # 4. 法庭 / 审讯 / 反贪 / 控状 / 司法 -> 优先匹配 Golden_scales
-    {
-        "name": "法庭司法反贪",
-        "keywords": ["法庭", "审讯", "反贪", "控状", "司法", "法院", "审理", "判决", "上诉", "律师", "提控", "官司", "法官", "合议庭", "净税收"],
-        "patterns": ["golden_scales_and_gavel", "golden_scales_of_justice", "golden_scales"]
-    },
-    # 5. 泛婆大道 / 修路 / 工程 -> 优先匹配 Engineers_overlooking_highway
-    {
-        "name": "基础设施修路工程",
-        "keywords": ["泛婆大道", "泛婆", "修路", "工程", "大桥", "公路工程", "路段维修", "施工", "建设", "公路建设", "桥梁"],
-        "patterns": ["engineers_overlooking_highway"]
-    },
-    # 6. 羽球 / 足球 / 田径 -> 保持原有精准体育匹配
-    {
-        "name": "羽球运动",
-        "keywords": ["羽球", "羽毛球", "李梓嘉", "跳杀", "汤杯", "公开赛", "大师赛", "男单", "女单", "双打"],
-        "patterns": ["badminton_athlete", "athlete_performing_jumping_smash"]
-    },
-    {
-        "name": "足球运动",
-        "keywords": ["足球", "sabah fc", "联赛", "进球", "球赛", "射门", "主场表现", "客场", "积分榜", "锦标赛", "超级联赛"],
-        "patterns": ["soccer_player_executing_volley_kick", "soccer_player"]
-    },
-    {
-        "name": "田径短跑",
-        "keywords": ["田径", "短跑", "起跑", "飞人", "金牌", "健儿", "跨栏", "百米", "接力"],
-        "patterns": ["sprinters_bursting"]
-    },
-    # 7. 水警 / 海警 / 海事 / 巡逻 / 快艇
-    {
-        "name": "水警海事巡逻",
-        "keywords": ["水警", "海警", "海事", "巡逻", "快艇", "走私", "偷渡", "截查", "扣留船", "巡逻艇", "非法入境"],
-        "patterns": ["maritime_patrol_boat", "patrol_boat"]
-    },
-    # 8. 扫荡 / 突击 / 扣留 / 逮捕 / 盘查
-    {
-        "name": "执法盘查扫荡",
-        "keywords": ["扫荡", "突击", "扣留", "逮捕", "盘查", "搜查", "抓捕", "警区", "嫌犯", "落网", "联合行动"],
-        "patterns": ["officers_inspecting_bus", "investigators"]
-    },
-    # 9. 夜市 / 巴刹 / pasar / 市集 / 摊贩
-    {
-        "name": "夜市巴刹市集",
-        "keywords": ["夜市", "巴刹", "pasar", "市集", "摊贩", "农贸市场", "小贩", "商户", "开市"],
-        "patterns": ["lanterns_glowing_at_night_market", "night_market_street"]
-    },
-    # 10. 德士 / 巴士 / 客运 / 车站 / 交通枢纽
-    {
-        "name": "公共交通枢纽",
-        "keywords": ["德士", "巴士", "客运", "车站", "交通枢纽", "司机", "公共交通", "客货车"],
-        "patterns": ["taxis_lined_up", "drivers_conversing"]
-    },
-    # 11. 铁道 / 高铁 / 列车 / 火车
+    # 2.9 铁道高铁与火车
     {
         "name": "铁道列车交通",
-        "keywords": ["铁道", "高铁", "列车", "火车", "民航"],
-        "patterns": ["train_and_airplane"]
+        "keywords": ["铁道", "高铁", "列车", "火车"],
+        "patterns": ["train_and_airplane"],
+        "priority": 3.0,
     },
-    # 12. 诈骗 / 黑客 / 网络 / 数字 / 科技 / 防骗
+    # 2.10 网络安全与数字科技
     {
         "name": "网络科技安全",
         "keywords": ["诈骗", "黑客", "网络安全", "数字", "科技", "防骗", "电诈", "人工智能", "信息安全", "科技教育"],
-        "patterns": ["digital_shield", "golden_digital_shield"]
+        "patterns": ["digital_shield", "golden_digital_shield"],
+        "priority": 3.0,
     },
-    # 13. 电网 / 供电 / 断电 / 停水 / 变电站 / 维修 / 电力 / SESB
-    {
-        "name": "公用事业抢修",
-        "keywords": ["电网", "供电", "断电", "停水", "供水", "变电站", "电缆", "水务", "电力", "sesb", "抢修", "检修", "电塔"],
-        "patterns": ["power_towers", "power_transmission", "utility_workers"]
-    },
-    # 14. 海洋 / 潜水 / 珊瑚 / 海龟 / 仙本那 / 海岛
+    # 2.11 海洋海岛与珊瑚潜水
     {
         "name": "海洋海岛潜水",
         "keywords": ["海洋", "潜水", "珊瑚", "海龟", "仙本那", "海岛", "浮潜", "海洋公园"],
-        "patterns": ["underwater_coral_reef", "split_ocean_coral_reef"]
+        "patterns": ["underwater_coral_reef", "split_ocean_coral_reef"],
+        "priority": 3.0,
     },
 ]
 
@@ -383,6 +393,25 @@ def load_font(size: int, index: int = 0) -> ImageFont.FreeTypeFont:
             except Exception:
                 pass
     return ImageFont.load_default()
+
+def normalize_cover_date(date_str: Optional[str] = None) -> Tuple[str, str]:
+    """
+    统一将日期标准化为:
+    1. display: 'YYYY.MM.DD · MYT' (印制在封面右上角邮戳)
+    2. file_prefix: 'YYYYMMDD' (文件名前缀)
+    确保每次运行都强制按当日最新日期重新渲染覆盖，绝不复用旧日期缓存
+    """
+    now = get_myt_now()
+    if not date_str:
+        return now.strftime("%Y.%m.%d · MYT"), now.strftime("%Y%m%d")
+
+    m = re.search(r'(\d{4})[-./](\d{1,2})[-./](\d{1,2})', str(date_str))
+    if m:
+        y = m.group(1)
+        m_val = int(m.group(2))
+        d_val = int(m.group(3))
+        return f"{y}.{m_val:02d}.{d_val:02d} · MYT", f"{y}{m_val:02d}{d_val:02d}"
+    return now.strftime("%Y.%m.%d · MYT"), now.strftime("%Y%m%d")
 
 def clean_old_covers(days: int = 7) -> int:
     """自动清理 covers 目录下超过指定天数的旧图片"""
@@ -505,10 +534,12 @@ class CoverGenerator:
 
             for img in available_pool:
                 fname_lower = img.name.lower()
-                for pat in patterns:
+                for pat_idx, pat in enumerate(patterns):
                     pat_lower = pat.lower()
                     if pat_lower in fname_lower:
-                        score = rule_weight * 10
+                        # 模式顺序加权：排在前面的优先底图模式获得更高分数
+                        pat_rank_bonus = (len(patterns) - pat_idx) * 5
+                        score = (rule_weight * 10) + pat_rank_bonus
                         if fname_lower.startswith(pat_lower):
                             score += 5
                         # 如果底图所属目录与当前分类一致，给予加分，优先同板块底图
@@ -597,9 +628,8 @@ class CoverGenerator:
         动态合成一张 1200x675 杂志风封面并保存为 jpg
         返回相对于仓库根目录的路径，如 './assets/covers/cover_xxx.jpg'
         """
-        now = get_myt_now()
-        date_display = date_str or now.strftime("%Y.%m.%d · MYT")
-        date_file_prefix = now.strftime("%Y%m%d")
+        # 规范化日期格式与前缀，确保封面右上角永远印制当日规范日期
+        date_display, date_file_prefix = normalize_cover_date(date_str)
 
         # 1. 挑选底图
         bg_file = self.select_background(category, title, detail)
