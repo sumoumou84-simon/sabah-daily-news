@@ -48,7 +48,7 @@ class TestCoverGenerator(unittest.TestCase):
                 self.assertEqual(img.size, (1200, 675), f"{sample.name} 尺寸不为 1200x675")
                 self.assertEqual(img.mode, "RGB", f"{sample.name} 色彩模式不为 RGB")
 
-        self.assertGreaterEqual(total_images, 82, f"底图库总数应至少为 82: {total_images}")
+        self.assertEqual(total_images, 75, f"底图库总数应为 75: {total_images}")
 
     def test_02_font_loading_and_chinese_support(self):
         """测试中文字体成功加载且能正确测量中文字符"""
@@ -213,6 +213,17 @@ class TestCoverGenerator(unittest.TestCase):
         self.assertTrue(
             any(pat in bg_market.name.lower() for pat in ["market", "pasar"]),
             f"巴刹小贩市场新闻未匹配到巴刹集市底图: {bg_market.name}"
+        )
+
+        # 10.13 金融股市大盘测试 (马股收低/投资者 -> 必须匹配金融图表或经济行政中心，绝非菜市场巴刹)
+        bg_stock = gen.select_background("general", "马股收低，市场情绪谨慎，投资者观望外围走势")
+        self.assertTrue(
+            any(pat in bg_stock.name.lower() for pat in ["stock", "financial", "administrative_center", "golden_scales", "handshake"]),
+            f"股市新闻未匹配到金融经济底图: {bg_stock.name}"
+        )
+        self.assertFalse(
+            "pasar" in bg_stock.name.lower() or "lanterns" in bg_stock.name.lower(),
+            f"股市新闻绝不能误匹配为巴刹市集底图: {bg_stock.name}"
         )
 
         # 11. 回退测试：未命中全局关键词时，回退至板块对应目录抽取

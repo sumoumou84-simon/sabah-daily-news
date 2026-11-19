@@ -92,6 +92,28 @@ def determine_cover_badge(category: str, title: str, detail: str = "") -> str:
 # 全局高优先级标题语义关键词映射规则 (命中时跨全库 assets/bg_pool/** 4 个子文件夹优先检索与抽取)
 GLOBAL_KEYWORD_RULES = [
     # ------------------------------------------------------------------
+    # 优先级 7.0: 金融股市与宏观财经（最高优先级，彻底隔离股市大盘与菜市场巴刹）
+    # ------------------------------------------------------------------
+    {
+        "name": "金融股市大盘经济",
+        "keywords": [
+            "马股", "股市", "综指", "收低", "收高", "投资者", "外围走势", "汇率",
+            "令吉", "股价", "金融", "银行", "大盘", "牛市", "熊市", "闭市",
+            "挂牌", "上市", "财报", "企业财报", "klci", "富时", "证券", "债券",
+            "隔夜政策利率", "opr", "通胀", "外资"
+        ],
+        "patterns": [
+            "stock_market_financial_chart",
+            "stock_market",
+            "financial_chart",
+            "administrative_center_with_econo",
+            "golden_scales",
+            "handshake_in_corporate_boardroom"
+        ],
+        "priority": 7.0,
+    },
+
+    # ------------------------------------------------------------------
     # 优先级 6.0: 专项高频场景精准隔离（足球、羽球、政务会议、巴刹市集、文化舞台）
     # ------------------------------------------------------------------
     # 0.01 足球赛事与国家队比赛 (最高优先级：U16/关岛/亚少杯/足球/马来虎/胜关岛/进球 -> Soccer_match_stadium / Soccer_youth / Football_match)
@@ -106,6 +128,7 @@ GLOBAL_KEYWORD_RULES = [
         ],
         "patterns": [
             "soccer_match_stadium_green_pitch",
+            "soccer_match_stadium",
             "soccer_youth_match_floodlight",
             "football_match_players_competing",
             "soccer_player_executing_volley_kick",
@@ -135,6 +158,7 @@ GLOBAL_KEYWORD_RULES = [
             "接见", "拜会", "常月会议", "例常会议", "市长"
         ],
         "patterns": [
+            "government_council_roundtable_meeting",
             "government_council_committee_meeting",
             "official_state_assembly_roundtable",
             "government_officials_roundtable_meeting",
@@ -143,15 +167,16 @@ GLOBAL_KEYWORD_RULES = [
         ],
         "priority": 6.0,
     },
-    # 0.04 巴刹集市与民生小贩 (最高优先级：市场/巴刹/pasar/小贩/金凤市场/中央巴刹 -> Sandakan_central_market / Local_pasar / Morning_market)
+    # 0.04 巴刹集市与民生小贩 (最高优先级：巴刹/pasar/小贩/金凤市场/中央巴刹/早市/菜市场/湿巴刹，严格剔除泛化词“市场”)
     {
         "name": "巴刹集市社区小贩",
         "keywords": [
-            "市场", "巴刹", "pasar", "小贩", "摊贩", "金凤市场", "中央巴刹",
-            "早市", "夜市", "菜市场", "商贩", "摊位", "菜市", "街市", "街坊",
-            "民生小贩", "熟食档", "市集", "小商贩"
+            "巴刹", "pasar", "小贩", "摊贩", "金凤市场", "中央巴刹",
+            "早市", "夜市", "菜市场", "湿巴刹", "商贩", "摊位", "菜市", "街市",
+            "街坊", "民生小贩", "熟食档", "市集", "小商贩"
         ],
         "patterns": [
+            "local_pasar_market_morning",
             "sandakan_central_market_pasar",
             "local_pasar_market_vendors",
             "morning_market_community_bazaar",
@@ -170,6 +195,7 @@ GLOBAL_KEYWORD_RULES = [
             "周年庆", "联欢会", "戏剧", "文娱"
         ],
         "patterns": [
+            "stage_singing_contest_performance",
             "cultural_singing_contest_stage",
             "stage_vocal_performance_lights",
             "musical_stage_concert_celebration"
