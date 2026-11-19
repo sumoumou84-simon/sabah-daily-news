@@ -172,5 +172,92 @@ class TestVersion13MarkdownParser(unittest.TestCase):
         self.assertEqual(headlines[0]["title"], news_stories[0].title)
         self.assertEqual(headlines[0]["titleBM"], news_stories[0].title)
 
+    def test_gdoc_plain_text_without_hash_headings_20261119(self):
+        """
+        Verify that Version 1.3 plaintext export from Google Docs without markdown '#' headings
+        (like 2026-11-19) correctly extracts utilities, separates all news items,
+        truncates dirty status tags, and filters empty event placeholder blocks.
+        """
+        raw_gdoc_text = (
+            "\ufeff西门看看网 2026-11-19\r\n"
+            "第一部分 民生通告 仅限山打根地区\r\n"
+            "1\r\n"
+            "【通告类型】气象提醒 【通告标题】山打根今日午后多雷阵雨，出门带伞注意行车安全 【详细内容】山打根今日白天最高气温约29至30度，最低约25度，上午多云间有阵雨，午后起多地有分散性雷阵雨，降雨概率较高，傍晚至夜间仍有阵雨，湿度较高，户外活动和骑行请留意天气变化，低洼路段注意积水。 【发布机构】气象预报综合整理 【状态】提醒中\r\n"
+            "2\r\n"
+            "【通告类型】市场民生 【通告标题】金凤市场通风风扇安装工程引关注，摊贩盼市议会提前沟通 【详细内容】位于山打根峇都4的金凤市场近日进行通风风扇安装等提升工程，期间市场内摊位减少、人流受影响，有摊贩反映未提前收到市议会正式通知，盼当局提前说明工程时间、临时安排和复业安排，减少对小贩生意的影响。 【发布机构】山打根市议会及当地州议员跟进整理 【状态】跟进中\r\n"
+            "第二部分 重点新闻\r\n"
+            "[沙巴][1] 沙砂增国席修宪日期未定，政府称仍需研究\r\n"
+            "【正文】首相署部长慕斯达法指出，政府同意提高沙巴和砂拉越在国会的代表比例，但目前尚未敲定提呈联邦宪法修正案的具体日期，仍需从法律、技术和选区划分等方面研究，并与相关方协商。 【来源】光明日报 【状态】已确认\r\n"
+            "[沙巴][2] 山打根陆路交通局与伊罗普拉州议员开会，商讨地方交通事务\r\n"
+            "【正文】山打根陆路交通局与伊罗普拉州议员张克骏团队在山打根陆路交通局办事处召开工作协调会，重点讨论改进山打根公共交通规划、改善热门路段巴士候车亭设施以及提升交警与陆路局联合执法频率等议题。 【来源】诗华日报 【状态】已确认\r\n"
+            "第三部分 未来活动通告\r\n"
+            "本板块留空。过去24小时内未核实到山打根最新公布、符合条件的新活动，未用旧活动凑数。\r\n"
+        )
+        stories = self.reader.parse_markdown(raw_gdoc_text, "2026-11-19")
+        self.assertEqual(len(stories), 2)
+        self.assertEqual(stories[0].title, "沙砂增国席修宪日期未定，政府称仍需研究")
+        self.assertEqual(stories[0].category, "sabah")
+        self.assertEqual(stories[1].title, "山打根陆路交通局与伊罗普拉州议员开会，商讨地方交通事务")
+
+        # Verify utilities
+        self.assertEqual(len(self.reader.parsed_utilities), 2)
+        u1 = self.reader.parsed_utilities[0]
+        u2 = self.reader.parsed_utilities[1]
+        self.assertEqual(u1["status"], "提醒中")
+        self.assertEqual(u2["status"], "跟进中")
+
+        web_utils = self.reader.convert_utilities_to_website_format(self.reader.parsed_utilities, "2026-11-19")
+        self.assertEqual(web_utils[0]["status"], "提醒中")
+        self.assertEqual(web_utils[0]["recovery"], "通告状态：提醒中")
+        self.assertEqual(web_utils[1]["status"], "跟进中")
+        self.assertEqual(web_utils[1]["recovery"], "通告状态：跟进中")
+        # Ensure no placeholder or subsequent part leak
+        self.assertNotIn("第三部分", web_utils[1]["status"])
+        self.assertNotIn("本板块留空", web_utils[1]["status"])
+
+    def test_clean_status_tag_robustness(self):
+        """Test status tag cleaning against multiline leaks, numbers, and section headers."""
+        from pipeline.gdrive_reader import clean_status_tag
+        self.assertEqual(clean_status_tag("提醒中\r\n2"), "提醒中")
+        self.assertEqual(clean_status_tag("已确认\r\n第三部分 未来活动通告\r\n本板块留空。过去24小时内未核实到山打根最新公布、符合条件的新活动，未用旧活动凑数。"), "已确认")
+        self.assertEqual(clean_status_tag("进行中\n2."), "进行中")
+        self.assertEqual(clean_status_tag("LIVE 抢修中\n3"), "LIVE 抢修中")
+        self.assertEqual(clean_status_tag("本板块留空"), "已确认")
+        self.assertEqual(clean_status_tag("通告状态：跟进中"), "跟进中")
+
+    def test_track_b_language_handling(self):
+        """Verify Track B prioritizes Chinese articles and translates English/Malay fallbacks."""
+        from collectors.base import RawArticle
+        from pipeline.synthesizer import NewsSynthesizer
+        synth = NewsSynthesizer()
+
+        art_en = RawArticle(
+            title="Five seriously injured after tour bus crashes in Sabah",
+            snippet="A tour bus crashed in Sabah injuring five passengers.",
+            body="A tour bus crashed in Sabah injuring five passengers.",
+            url="https://example.com/en1",
+            source="The Borneo Post",
+            category="sabah",
+            extra={"corroborating_sources": ["The Borneo Post"]}
+        )
+        art_zh = RawArticle(
+            title="沙巴州议会召开特别会议讨论财政预算",
+            snippet="沙巴州议会今日召开特别会议。",
+            body="沙巴州议会今日召开特别会议。",
+            url="https://example.com/zh1",
+            source="星洲日报",
+            category="sabah",
+            extra={"corroborating_sources": ["星洲日报"]}
+        )
+
+        out = synth.synthesize_track_b_standalone("2026-11-19", [art_en, art_zh])
+        self.assertEqual(len(out), 2)
+        # Chinese article must come first
+        self.assertEqual(out[0]["title"], "沙巴州议会召开特别会议讨论财政预算")
+        # English article must have been translated to Chinese title or have Chinese tag
+        self.assertTrue(synth._is_chinese_text(out[1]["title"]))
+        # BM title should preserve original
+        self.assertEqual(out[1]["titleBM"], "Five seriously injured after tour bus crashes in Sabah")
+
 if __name__ == "__main__":
     unittest.main()

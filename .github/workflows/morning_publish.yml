@@ -2,7 +2,7 @@ name: 每日西门日报全自动采编推送
 
 on:
   schedule:
-    - cron: '20 20 * * *'  # 04:20 AM MYT (UTC+8)
+    - cron: '30 21 * * *'  # 05:30 AM MYT (UTC+8) - 顺延执行避开凌晨排队并预留充裕生成时间
   workflow_dispatch: # 保留 GitHub 网页上一键手动立即运行按钮
 
 concurrency:

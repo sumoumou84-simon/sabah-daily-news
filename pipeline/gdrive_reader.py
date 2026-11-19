@@ -364,6 +364,42 @@ class GDriveInputSnapshot:
     event_stories: List[Dict[str, Any]] = field(default_factory=list)
 
 
+def clean_status_tag(raw_status: str, default: str = "已确认") -> str:
+    """
+    提取【通告状态】单行关键词（如“提醒中”、“已确认”、“进行中”、“跟进中”），
+    遇到换行、数字序号（如 2.）或下一章节标题立即截断，并过滤占位语。
+    """
+    if not raw_status:
+        return default
+    lines = [l.strip() for l in raw_status.splitlines() if l.strip()]
+    if not lines:
+        return default
+    first_line = lines[0]
+    first_line = re.sub(r'^(?:通告状态|状态)[：:]\s*', '', first_line).strip()
+
+    # 截断下一章节标记、数字或占位提示
+    for sep in [
+        "第二部分", "第三部分", "第一部分", "未来活动", "重点新闻",
+        "民生通告", "活动通告", "本板块留空", "本日留空", "本板块", "本日", "留空", "未核实到"
+    ]:
+        if sep in first_line:
+            first_line = first_line.split(sep)[0].strip()
+
+    # 正则优先提取常见规范状态词
+    m = re.match(r'^((?:LIVE\s*)?[\u4e00-\u9fff]{2,8})', first_line, re.IGNORECASE)
+    if m:
+        cand = m.group(1).strip()
+        if not any(k in cand for k in ["留空", "无通告", "暂无", "部分", "通告", "新闻"]):
+            return cand
+
+    # 截断数字序号、标点等
+    clean_str = re.split(r'[\d\.\、\#\[\]\(\)\:\：\-\—\s]', first_line)[0].strip()
+    if clean_str and not any(k in clean_str for k in ["留空", "无通告", "暂无", "部分", "通告", "新闻"]):
+        return clean_str
+
+    return default
+
+
 class GDriveMarkdownReader:
     """
     Dedicated Google Drive Markdown ingestion engine for Sabah Daily News.
@@ -831,7 +867,7 @@ class GDriveMarkdownReader:
             u_title = u.get("title", "")
             u_detail = u.get("detail", "")
             u_pub = u.get("publisher", "官方通告")
-            u_status = u.get("status", "LIVE 抢修中")
+            u_status = clean_status_tag(u.get("status", "LIVE 抢修中"), "已确认")
 
             u_id = "M"
             if "水" in u_type or "JANS" in u_pub or "水务" in u_title:
@@ -854,7 +890,7 @@ class GDriveMarkdownReader:
                 "labelBM": f"{u_pub} {u_type}" if u_pub not in u_title else u_title[:30],
                 "time": cur_time_hm,
                 "status": u_status,
-                "statusBM": u_status,
+                "statusBM": clean_status_tag(u.get("statusBM") or u_status, u_status),
                 "official_source_url": "https://www.sabah.gov.my/",
                 "source_timestamp": f"{today_iso} {cur_time_hm}",
                 "issue": u_detail,
@@ -888,9 +924,7 @@ class GDriveMarkdownReader:
         Removes all BM bilingual splitting and URL extraction.
         """
         text = self.clean_escapes(markdown_text)
-        tag_re = re.compile(r'(?:^|\s+|[-*•]?\s*)\*{0,2}【(通告类型|通告标题|详细内容|发布机构|正文|来源|状态|活动名称|活动日期|活动时间|活动地点|活动内容|主办单位)】\*{0,2}[：:]?\s*')
-
-        blocks = re.split(r'\n(?=#{1,4}\s+|[-*•]?\s*\*{0,2}【(?:通告类型|活动名称)】)', text)
+        tag_re = re.compile(r'(?:^|\s+|[-*•]?\s*)\*{0,2}【(通告类型|通告标题|详细内容|发布机构|正文|来源|状态|活动名称|活动日期|活动时间|活动地点|活动内容|主办单位|标题|新闻标题)】\*{0,2}[：:]?\s*')
 
         self.parsed_utilities = []
         news_items = []
@@ -902,7 +936,7 @@ class GDriveMarkdownReader:
         def match_sec(h_line: str):
             h = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_line).strip()
             # 优先匹配开头的板块标签（杜绝全国新闻因包含“沙巴”被误判为沙巴新闻）
-            m_p = re.match(r'^(沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)', h)
+            m_p = re.match(r'^(?:\[|【)?(沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?', h)
             prefix = m_p.group(1) if m_p else h
             if "全国" in prefix:
                 return "national", "national"
@@ -924,116 +958,341 @@ class GDriveMarkdownReader:
                 return "sabah", "sandakan" if "山打根" in h else "sabah"
             return None
 
-        for b in blocks:
-            b_clean = b.strip()
-            if not b_clean:
-                continue
+        # 1. 尝试以大章节（第一部分、第二部分、第三部分）对整篇文档做物理硬切分，彻底杜绝活动通告或尾部占位串入通告状态
+        sec_re = re.compile(r'(?:^|\n)(?:#{1,3}\s*)?(第[一二三123]部分[^\n]*)', re.IGNORECASE)
+        sec_matches = list(sec_re.finditer(text))
 
-            header_line = b_clean.splitlines()[0]
-            matches = list(tag_re.finditer(b))
+        sections = {}
+        if len(sec_matches) >= 2:
+            for i, sm in enumerate(sec_matches):
+                stitle = sm.group(1).strip()
+                s_start = sm.end()
+                s_end = sec_matches[i+1].start() if i + 1 < len(sec_matches) else len(text)
+                s_body = text[s_start:s_end].strip()
+                if any(k in stitle for k in ["一", "1", "民生"]):
+                    sections["part1"] = s_body
+                elif any(k in stitle for k in ["二", "2", "新闻", "重点"]):
+                    sections["part2"] = s_body
+                elif any(k in stitle for k in ["三", "3", "活动"]):
+                    sections["part3"] = s_body
 
-            if not matches:
-                cat_match = match_sec(header_line)
-                if cat_match:
-                    current_cat, current_geo = cat_match
-                continue
+        part1_text = sections.get("part1")
+        part2_text = sections.get("part2")
+        part3_text = sections.get("part3")
 
-            tags = {}
-            pre_tag_text = b[:matches[0].start()].strip()
-            for i, m in enumerate(matches):
-                t_name = m.group(1)
-                s_pos = m.end()
-                e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
-                tags[t_name] = b[s_pos:e_pos].strip()
+        # ----------------- Part 1: 民生通告解析 -----------------
+        if part1_text:
+            if re.search(r'(?:^|\n)#{1,4}\s+', part1_text):
+                u_starts = list(re.finditer(r'(?:^|\n)#{1,4}\s+', part1_text))
+            else:
+                u_starts = list(re.finditer(r'(?:^|\n)(?:[-•*]?\s*\*{0,2}【通告类型】|\d{1,2}[\.、]?\s*(?:\n|(?=【)))', part1_text))
+            u_blocks = []
+            if u_starts:
+                for i, m in enumerate(u_starts):
+                    s_idx = m.start()
+                    e_idx = u_starts[i+1].start() if i + 1 < len(u_starts) else len(part1_text)
+                    b = part1_text[s_idx:e_idx].strip()
+                    if b:
+                        u_blocks.append(b)
+            else:
+                u_blocks = [b.strip() for b in part1_text.split("\n\n") if b.strip()]
 
-            # 1. Part 1: 民生通告
-            if "通告类型" in tags or "详细内容" in tags:
-                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
-                h_title = title_lines[-1] if title_lines else ""
-                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
-                u_title = tags.get("通告标题") or h_title_clean or "市政公用事业通告"
-                self.parsed_utilities.append({
-                    "notice_type": tags.get("通告类型", "市政民生"),
-                    "title": u_title,
-                    "detail": tags.get("详细内容", ""),
-                    "publisher": tags.get("发布机构", "官方发布"),
-                    "status": tags.get("状态", "LIVE 抢修中")
-                })
+            for b in u_blocks:
+                matches = list(tag_re.finditer(b))
+                if not matches:
+                    continue
+                tags = {}
+                pre_tag_text = b[:matches[0].start()].strip()
+                for i, m in enumerate(matches):
+                    t_name = m.group(1)
+                    s_pos = m.end()
+                    e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
+                    tags[t_name] = b[s_pos:e_pos].strip()
 
-            # 2. Part 2: 重点新闻
-            elif "正文" in tags:
-                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
-                h_title = title_lines[-1] if title_lines else ""
-                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                if "通告类型" in tags or "详细内容" in tags:
+                    title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                    h_title = title_lines[-1] if title_lines else ""
+                    h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                    u_title = tags.get("通告标题") or h_title_clean or "市政公用事业通告"
+                    raw_st = tags.get("状态", "LIVE 抢修中")
+                    u_status = clean_status_tag(raw_st, "已确认")
+                    self.parsed_utilities.append({
+                        "notice_type": tags.get("通告类型", "市政民生"),
+                        "title": u_title,
+                        "detail": tags.get("详细内容", ""),
+                        "publisher": tags.get("发布机构", "官方发布"),
+                        "status": u_status
+                    })
 
-                # 识别当前新闻标题中的板块前缀并准确映射分类（解决点击全国/体育/综合显示0篇的问题）
-                item_cat = current_cat
-                item_geo = current_geo
-                n_title = tags.get("标题") or h_title_clean or "重要新闻"
+        # ----------------- Part 2: 重点新闻解析 -----------------
+        if part2_text:
+            if re.search(r'(?:^|\n)#{1,4}\s+', part2_text):
+                n_starts = list(re.finditer(r'(?:^|\n)#{1,4}\s+', part2_text))
+            else:
+                n_starts = list(re.finditer(
+                    r'(?:^|\n)(?:'
+                    r'\[?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合|民生|要闻|国际)\]?\s*\[?\d+\]?[\.\、\:\s\-]*.*|'
+                    r'(?:\d{1,2}[\.\、]\s+.*)|'
+                    r'[-*•]?\s*\*{0,2}【(?:新闻标题|标题)】.*'
+                    r')',
+                    part2_text
+                ))
+            n_blocks = []
+            if n_starts:
+                for i, m in enumerate(n_starts):
+                    s_idx = m.start()
+                    e_idx = n_starts[i+1].start() if i + 1 < len(n_starts) else len(part2_text)
+                    b = part2_text[s_idx:e_idx].strip()
+                    if b:
+                        n_blocks.append(b)
+            else:
+                n_blocks = [b.strip() for b in part2_text.split("\n\n") if b.strip()]
 
-                # 检查标题中是否带有板块前缀（如"沙巴山打根 1 ...", "全国新闻 6 ...", "体育新闻 10 ...", "综合新闻 13 ..."）
-                m_prefix = re.match(r'^(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)\s*[\d\.\、\-\*]+\s*(.+)$', n_title)
-                if m_prefix:
-                    prefix_match = match_sec(n_title)
-                    if prefix_match:
-                        item_cat, item_geo = prefix_match
-                    n_title = m_prefix.group(1).strip()
+            for b in n_blocks:
+                header_line = b.splitlines()[0].strip()
+                matches = list(tag_re.finditer(b))
+
+                if not matches:
+                    cat_match = match_sec(header_line)
+                    if cat_match:
+                        current_cat, current_geo = cat_match
+                    continue
+
+                tags = {}
+                pre_tag_text = b[:matches[0].start()].strip()
+                for i, m in enumerate(matches):
+                    t_name = m.group(1)
+                    s_pos = m.end()
+                    e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
+                    tags[t_name] = b[s_pos:e_pos].strip()
+
+                if "正文" in tags:
+                    title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                    h_title = title_lines[-1] if title_lines else ""
+                    h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+
+                    item_cat = current_cat
+                    item_geo = current_geo
+                    n_title = tags.get("标题") or tags.get("新闻标题") or h_title_clean or "重要新闻"
+
+                    # 识别板块前缀并剥离
+                    m_prefix = re.match(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*(.+)$', n_title)
+                    if m_prefix:
+                        prefix_match = match_sec(n_title)
+                        if prefix_match:
+                            item_cat, item_geo = prefix_match
+                        n_title = m_prefix.group(1).strip()
+                    else:
+                        sec_match = match_sec(n_title)
+                        if sec_match:
+                            item_cat, item_geo = sec_match
+                            n_title = re.sub(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*', '', n_title).strip()
+
+                    # 清除可能残留的序号前缀
+                    n_title = re.sub(r'^[#\s\d\.\、\-\*]+', '', n_title).strip()
+
+                    raw_sources = tags.get("来源", "权威信源")
+                    clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
+                    if not clean_sources:
+                        clean_sources = ["权威信源"]
+
+                    raw_st = tags.get("状态", "已核实")
+                    n_status = clean_status_tag(raw_st, "已核实")
+
+                    news_items.append({
+                        "title": n_title,
+                        "body": tags.get("正文", ""),
+                        "sources": clean_sources,
+                        "status": n_status,
+                        "category": item_cat,
+                        "geo_scope": item_geo
+                    })
+
+        # ----------------- Part 3: 活动通告解析 -----------------
+        if part3_text:
+            is_empty_placeholder = any(k in part3_text for k in ["留空", "未核实到", "未用旧活动凑数", "暂无活动", "本板块留空", "本日留空"])
+            if not is_empty_placeholder:
+                if re.search(r'(?:^|\n)#{1,4}\s+', part3_text):
+                    e_starts = list(re.finditer(r'(?:^|\n)#{1,4}\s+', part3_text))
                 else:
-                    # 如果标题包含板块关键词
-                    sec_match = match_sec(n_title)
-                    if sec_match:
-                        item_cat, item_geo = sec_match
-                        n_title = re.sub(r'^(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)\s*', '', n_title).strip()
+                    e_starts = list(re.finditer(r'(?:^|\n)(?:[-•*]?\s*\*{0,2}【活动名称】|\d{1,2}[\.、]\s+)', part3_text))
+                e_blocks = []
+                if e_starts:
+                    for i, m in enumerate(e_starts):
+                        s_idx = m.start()
+                        e_idx = e_starts[i+1].start() if i + 1 < len(e_starts) else len(part3_text)
+                        b = part3_text[s_idx:e_idx].strip()
+                        if b:
+                            e_blocks.append(b)
+                else:
+                    e_blocks = [b.strip() for b in part3_text.split("\n\n") if b.strip()]
 
-                raw_sources = tags.get("来源", "权威信源")
-                clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
-                if not clean_sources:
-                    clean_sources = ["权威信源"]
-                news_items.append({
-                    "title": n_title,
-                    "body": tags.get("正文", ""),
-                    "sources": clean_sources,
-                    "status": tags.get("状态", "已核实"),
-                    "category": item_cat,
-                    "geo_scope": item_geo
-                })
+                for b in e_blocks:
+                    matches = list(tag_re.finditer(b))
+                    if not matches:
+                        continue
+                    tags = {}
+                    pre_tag_text = b[:matches[0].start()].strip()
+                    for i, m in enumerate(matches):
+                        t_name = m.group(1)
+                        s_pos = m.end()
+                        e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
+                        tags[t_name] = b[s_pos:e_pos].strip()
 
-            # 3. Part 3: 活动通告
-            elif "活动名称" in tags or "活动内容" in tags:
-                title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
-                h_title = title_lines[-1] if title_lines else ""
-                h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
-                e_name = tags.get("活动名称") or h_title_clean or "社区活动"
-                # 清理活动名称前缀与末尾符号
-                e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
+                    if "活动名称" in tags or "活动内容" in tags:
+                        title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                        h_title = title_lines[-1] if title_lines else ""
+                        h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                        e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                        e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
 
-                # 活动日期解析：支持 11月14日到11月26日、11月14日 - 11月16日、11月12日起、2026-11-14 等
-                raw_date = tags.get("活动日期", default_date)
-                clean_date, end_date = parse_date_range(raw_date, default_date)
+                        raw_date = tags.get("活动日期", default_date)
+                        clean_date, end_date = parse_date_range(raw_date, default_date)
 
-                # 主办单位清理末尾短横线或符号
-                raw_organizer = tags.get("主办单位", "官方通告")
-                clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
-                if not clean_organizer:
-                    clean_organizer = "官方通告"
+                        raw_organizer = tags.get("主办单位", "官方通告")
+                        clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
+                        if not clean_organizer:
+                            clean_organizer = "官方通告"
 
-                # 联络电话检测：只有明确带电话号码才提取，否则为空字符串
-                ev_desc = tags.get("活动内容", "")
-                full_ev_text = f"{e_name} {ev_desc} {tags.get('活动地点', '')}"
-                m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
-                ev_tel = m_tel.group(1).strip() if m_tel else ""
+                        ev_desc = tags.get("活动内容", "")
+                        full_ev_text = f"{e_name} {ev_desc} {tags.get('活动地点', '')}"
+                        m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
+                        ev_tel = m_tel.group(1).strip() if m_tel else ""
 
-                event_items.append({
-                    "name": e_name,
-                    "date": clean_date,
-                    "end_date": end_date,
-                    "raw_date_str": raw_date,
-                    "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
-                    "location": tags.get("活动地点", "山打根社区中心"),
-                    "desc": ev_desc,
-                    "organizer": clean_organizer,
-                    "tel": ev_tel
-                })
+                        event_items.append({
+                            "name": e_name,
+                            "date": clean_date,
+                            "end_date": end_date,
+                            "raw_date_str": raw_date,
+                            "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
+                            "location": tags.get("活动地点", "山打根社区中心"),
+                            "desc": ev_desc,
+                            "organizer": clean_organizer,
+                            "tel": ev_tel
+                        })
+
+        # ----------------- 降级分支：如果未检测到第一/第二部分大章节标识 -----------------
+        if not part1_text and not part2_text:
+            blocks = re.split(
+                r'\n(?='
+                r'#{1,4}\s+|'
+                r'\[?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合|民生|要闻|国际)\]?\s*\[?\d+\]?|'
+                r'(?:\d{1,2}[\.\、]\s+)|'
+                r'[-*•]?\s*\*{0,2}【(?:通告类型|活动名称|新闻标题|标题)】'
+                r')',
+                text
+            )
+            for b in blocks:
+                b_clean = b.strip()
+                if not b_clean:
+                    continue
+
+                header_line = b_clean.splitlines()[0]
+                matches = list(tag_re.finditer(b))
+
+                if not matches:
+                    cat_match = match_sec(header_line)
+                    if cat_match:
+                        current_cat, current_geo = cat_match
+                    continue
+
+                tags = {}
+                pre_tag_text = b[:matches[0].start()].strip()
+                for i, m in enumerate(matches):
+                    t_name = m.group(1)
+                    s_pos = m.end()
+                    e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
+                    tags[t_name] = b[s_pos:e_pos].strip()
+
+                # 1. Part 1: 民生通告
+                if "通告类型" in tags or "详细内容" in tags:
+                    title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                    h_title = title_lines[-1] if title_lines else ""
+                    h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                    u_title = tags.get("通告标题") or h_title_clean or "市政公用事业通告"
+                    raw_st = tags.get("状态", "LIVE 抢修中")
+                    u_status = clean_status_tag(raw_st, "已确认")
+                    self.parsed_utilities.append({
+                        "notice_type": tags.get("通告类型", "市政民生"),
+                        "title": u_title,
+                        "detail": tags.get("详细内容", ""),
+                        "publisher": tags.get("发布机构", "官方发布"),
+                        "status": u_status
+                    })
+
+                # 2. Part 2: 重点新闻
+                elif "正文" in tags:
+                    title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                    h_title = title_lines[-1] if title_lines else ""
+                    h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+
+                    item_cat = current_cat
+                    item_geo = current_geo
+                    n_title = tags.get("标题") or tags.get("新闻标题") or h_title_clean or "重要新闻"
+
+                    m_prefix = re.match(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*(.+)$', n_title)
+                    if m_prefix:
+                        prefix_match = match_sec(n_title)
+                        if prefix_match:
+                            item_cat, item_geo = prefix_match
+                        n_title = m_prefix.group(1).strip()
+                    else:
+                        sec_match = match_sec(n_title)
+                        if sec_match:
+                            item_cat, item_geo = sec_match
+                            n_title = re.sub(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*', '', n_title).strip()
+
+                    n_title = re.sub(r'^[#\s\d\.\、\-\*]+', '', n_title).strip()
+
+                    raw_sources = tags.get("来源", "权威信源")
+                    clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
+                    if not clean_sources:
+                        clean_sources = ["权威信源"]
+
+                    raw_st = tags.get("状态", "已核实")
+                    n_status = clean_status_tag(raw_st, "已核实")
+
+                    news_items.append({
+                        "title": n_title,
+                        "body": tags.get("正文", ""),
+                        "sources": clean_sources,
+                        "status": n_status,
+                        "category": item_cat,
+                        "geo_scope": item_geo
+                    })
+
+                # 3. Part 3: 活动通告
+                elif "活动名称" in tags or "活动内容" in tags:
+                    title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
+                    h_title = title_lines[-1] if title_lines else ""
+                    h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
+                    e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                    e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
+
+                    raw_date = tags.get("活动日期", default_date)
+                    clean_date, end_date = parse_date_range(raw_date, default_date)
+
+                    raw_organizer = tags.get("主办单位", "官方通告")
+                    clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
+                    if not clean_organizer:
+                        clean_organizer = "官方通告"
+
+                    ev_desc = tags.get("活动内容", "")
+                    full_ev_text = f"{e_name} {ev_desc} {tags.get('活动地点', '')}"
+                    m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
+                    ev_tel = m_tel.group(1).strip() if m_tel else ""
+
+                    event_items.append({
+                        "name": e_name,
+                        "date": clean_date,
+                        "end_date": end_date,
+                        "raw_date_str": raw_date,
+                        "time": tags.get("活动时间", "09:00 AM - 04:00 PM"),
+                        "location": tags.get("活动地点", "山打根社区中心"),
+                        "desc": ev_desc,
+                        "organizer": clean_organizer,
+                        "tel": ev_tel
+                    })
 
         # 强制 news_items = news_items[:15] 截断限制
         news_items = news_items[:15]

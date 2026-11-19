@@ -5,6 +5,7 @@ import time
 import uuid
 import urllib.request
 import urllib.error
+import urllib.parse
 import subprocess
 import logging
 from typing import List, Dict, Any, Optional, Tuple
@@ -1322,6 +1323,34 @@ class NewsSynthesizer:
             )
             return None
 
+    @staticmethod
+    def _is_chinese_text(text: str) -> bool:
+        return bool(re.search(r'[\u4e00-\u9fff]', text or ''))
+
+    @classmethod
+    def _quick_translate_to_zh(cls, text: str, timeout: int = 4) -> str:
+        """轻量级免 API 密钥翻译，用于 Track B 英文/马文兜底时平滑生成中文版面内容。"""
+        if not text or not text.strip():
+            return ""
+        if cls._is_chinese_text(text):
+            return text.strip()
+        try:
+            q = urllib.parse.quote(text[:600].strip())
+            url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=zh-CN&dt=t&q={q}"
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+            )
+            with urllib.request.urlopen(req, timeout=timeout) as res:
+                data = json.loads(res.read().decode("utf-8"))
+                if data and data[0]:
+                    translated = "".join(part[0] for part in data[0] if part and part[0])
+                    if translated.strip():
+                        return translated.strip()
+        except Exception as e:
+            logger.debug(f"[TRACK B TRANSLATE] Quick translate skipped: {e}")
+        return text.strip()
+
     def synthesize_track_b_standalone(
         self,
         today_iso: str,
@@ -1331,12 +1360,18 @@ class NewsSynthesizer:
         Track B (Preserved Data Structuring):
         Exposes clean, authentic confirmed headlines and existing snippets/bodies.
         DOES NOT SYNTHESIZE FAKE NEWS BOILERPLATE.
+        Prioritizes Chinese articles, and applies seamless translation for English/Malay fallbacks.
         """
         now_myt = datetime.now(MYT_TZ)
         now_iso = now_myt.isoformat()
         synthesized: List[Dict[str, Any]] = []
 
-        for idx, art in enumerate(articles[:15], 1):
+        # 优先将已包含中文的资讯排在前列
+        chinese_articles = [a for a in articles if self._is_chinese_text(a.title) or self._is_chinese_text(a.body)]
+        non_chinese_articles = [a for a in articles if not (self._is_chinese_text(a.title) or self._is_chinese_text(a.body))]
+        prioritized_articles = chinese_articles + non_chinese_articles
+
+        for idx, art in enumerate(prioritized_articles[:15], 1):
             c_title = art.title.strip()
             sources = art.extra.get("corroborating_sources", [art.source])
             cat = art.category or "sabah"
@@ -1344,13 +1379,30 @@ class NewsSynthesizer:
             # Clean substantive body or lead paragraph
             clean_body = (art.body or art.snippet or c_title).strip()
 
+            # 语言处理：如果为外文，平滑转换为中文，并将原文保存在 BM 双语槽位中
+            if self._is_chinese_text(c_title):
+                zh_title = c_title
+                zh_body = clean_body
+                bm_title = art.extra.get("titleBM", "")
+                bm_body = art.extra.get("detailBM", "")
+            else:
+                zh_title = self._quick_translate_to_zh(c_title)
+                zh_body = self._quick_translate_to_zh(clean_body[:400])
+                bm_title = art.extra.get("titleBM") or c_title
+                bm_body = art.extra.get("detailBM") or clean_body
+
+                # 若翻译接口不可用且仍未含中文，添加前置中文板块分类前缀，避免生硬外文突兀展现
+                if not self._is_chinese_text(zh_title):
+                    prefix = "【沙巴要闻】" if cat == "sabah" else ("【全国要闻】" if cat == "national" else "【焦点快讯】")
+                    zh_title = f"{prefix} {c_title}"
+
             synthesized.append({
                 "id": f"art_{cat}_{idx:02d}",
                 "category": cat,
-                "title": c_title,
-                "titleBM": art.extra.get("titleBM", ""),
-                "detail": clean_body,
-                "detailBM": art.extra.get("detailBM", ""),
+                "title": zh_title,
+                "titleBM": bm_title,
+                "detail": zh_body,
+                "detailBM": bm_body,
                 "source": art.source,
                 "sources": sources,
                 "url": art.url,

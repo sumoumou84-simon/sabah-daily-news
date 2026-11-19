@@ -262,11 +262,12 @@ def generate_index_html():
             else:
                 default_utils[i]["time"] = cur_time_hm
 
-            # 状态文案
+            # 状态文案与防御性清洗（截断换行、序号及后续章节提示）
+            from pipeline.gdrive_reader import clean_status_tag
             if u_raw.get("status"):
-                default_utils[i]["status"] = u_raw["status"]
+                default_utils[i]["status"] = clean_status_tag(u_raw["status"], "已确认")
             if u_raw.get("statusBM"):
-                default_utils[i]["statusBM"] = u_raw["statusBM"]
+                default_utils[i]["statusBM"] = clean_status_tag(u_raw["statusBM"], "Disahkan")
 
             # 正文内容与状态子项
             if u_raw.get("issue"):
@@ -282,6 +283,16 @@ def generate_index_html():
             for key in ["pressure", "pressureBM", "recovery", "recoveryBM", "tanker", "tankerBM", "consult", "consult2", "official_source_url", "source_timestamp"]:
                 if u_raw.get(key):
                     default_utils[i][key] = u_raw[key]
+
+            # 防御性清洗 recovery 指标中的通告状态描述
+            if default_utils[i].get("recovery"):
+                raw_rec = re.sub(r'^通告状态[：:]\s*', '', str(default_utils[i]["recovery"]))
+                c_st = clean_status_tag(raw_rec, default_utils[i].get("status", "已确认"))
+                default_utils[i]["recovery"] = f"通告状态：{c_st}"
+                default_utils[i]["status"] = c_st
+            if default_utils[i].get("recoveryBM"):
+                c_st_bm = clean_status_tag(default_utils[i].get("statusBM", "Disahkan"), "Disahkan")
+                default_utils[i]["recoveryBM"] = f"Status: {c_st_bm}"
 
             # 核验信源
             if u_raw.get("source"):
