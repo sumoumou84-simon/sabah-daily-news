@@ -304,5 +304,13 @@ class TestCoverGenerator(unittest.TestCase):
         self.assertGreaterEqual(cleaned, 1)
         self.assertFalse(dummy_old.exists(), "超过 7 天的旧封面未被清理")
 
+    def test_07_elephant_wildlife_matching(self):
+        """测试野象新闻正确匹配婆罗洲雨林/生态底图且徽章正确"""
+        from pipeline.cover_generator import determine_cover_badge
+        bg = self.generator.select_background("sabah", "大象的存在引发沙巴特鲁皮德区的安全担忧")
+        self.assertTrue(any(k in bg.name.lower() for k in ["rainforest", "hornbill", "borneo"]), f"野象新闻未匹配生态底图: {bg.name}")
+        badge = determine_cover_badge("sabah", "大象的存在引发沙巴特鲁皮德区的安全担忧")
+        self.assertEqual(badge, "沙巴 · 特鲁必")
+
 if __name__ == "__main__":
     unittest.main()

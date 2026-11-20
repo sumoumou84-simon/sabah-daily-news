@@ -214,6 +214,17 @@ class GeographicVerifier:
                 # No Sabah anchors at all
                 verified_category = "national"
                 rejection_reason = "GEOGRAPHIC_MISMATCH: No Sabah entities or locations found. Reclassified to national."
+        elif proposed_category == "national":
+            # If proposed category is national, but title explicitly focuses on Sabah and has no Peninsular anchors:
+            title_lower = title.lower()
+            sabah_title_keywords = [
+                "沙巴", "山打根", "亚庇", "斗湖", "拿笃", "根地咬", "仙本那", "特鲁必", "特鲁皮德", "兵南邦", "保佛", "古达",
+                "sabah", "sandakan", "kota kinabalu", "tawau", "lahad datu", "keningau", "semporna", "telupid"
+            ]
+            if any(k in title_lower for k in sabah_title_keywords) and not has_peninsular:
+                verified_category = "sabah"
+                geo_scope = "sandakan" if any(sk in title_lower for sk in ["山打根", "sandakan"]) else "sabah"
+
 
         return {
             "verified_category": verified_category,

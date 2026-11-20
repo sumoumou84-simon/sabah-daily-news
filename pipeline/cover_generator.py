@@ -49,7 +49,10 @@ def determine_cover_badge(category: str, title: str, detail: str = "") -> str:
     """
     text = f"{title} {detail}".lower()
 
-    if category == "sports":
+    if category == "sports" or any(k in text for k in [
+        "足球", "u16", "u17", "u18", "u19", "u20", "u23", "青年队", "迎战",
+        "羽球", "羽毛球", "大师赛", "公开赛", "男双", "女双", "混双", "男单", "女单"
+    ]):
         return "体育焦点"
     elif category == "national":
         if "雪州" in text or "雪兰莪" in text:
@@ -86,6 +89,8 @@ def determine_cover_badge(category: str, title: str, detail: str = "") -> str:
             return "沙巴 · 仙本那"
         elif "拿笃" in text:
             return "沙巴 · 拿笃"
+        elif any(k in text for k in ["特鲁必", "特鲁皮德", "telupid"]):
+            return "沙巴 · 特鲁必"
         return "沙巴要闻"
     return "大马综合"
 
@@ -120,7 +125,7 @@ GLOBAL_KEYWORD_RULES = [
     {
         "name": "足球赛事运动",
         "keywords": [
-            "足球", "u16", "u17", "u19", "u23", "关岛", "大胜", "亚少杯", "亚青赛",
+            "足球", "u16", "u17", "u18", "u19", "u20", "u23", "青年队", "迎战", "关岛", "大胜", "亚少杯", "亚青赛",
             "亚洲杯", "世界杯", "世预赛", "超级联赛", "联赛", "进球", "球赛", "胜关岛",
             "国足", "马来虎", "射门", "点球", "角球", "足总", "足协", "超级联赛",
             "足球赛", "绿茵", "球星", "前锋", "后卫", "门将", "英超", "欧冠",
@@ -216,7 +221,10 @@ GLOBAL_KEYWORD_RULES = [
     # 0.2 司法审判与法庭反贪
     {
         "name": "法庭司法反贪",
-        "keywords": ["法庭", "审讯", "反贪", "控状", "司法", "法院", "审理", "判决", "上诉", "律师", "提控", "官司", "法官", "合议庭", "净税收"],
+        "keywords": [
+            "法庭", "审讯", "反贪", "控状", "司法", "法院", "审理", "判决", "上诉", "律师",
+            "提控", "官司", "法官", "合议庭", "净税收", "判刑", "入狱", "坐牢", "判监", "煽动", "控告", "起诉", "罪名", "定罪"
+        ],
         "patterns": ["golden_scales_and_gavel", "golden_scales_of_justice", "golden_scales"],
         "priority": 5.0,
     },
@@ -230,15 +238,23 @@ GLOBAL_KEYWORD_RULES = [
     # 0.4 历史路线与自然生态景观
     {
         "name": "历史路线自然生态",
-        "keywords": ["丹南", "rundum", "历史路线", "修复", "景观", "自然景观", "历史与自然", "雨林", "热带雨林", "观鸟", "犀鸟", "生态", "神山", "森林", "野生动物", "动植物"],
+        "keywords": [
+            "丹南", "rundum", "历史路线", "修复", "景观", "自然景观", "历史与自然",
+            "雨林", "热带雨林", "观鸟", "犀鸟", "生态", "神山", "森林", "野生动物", "动植物",
+            "大象", "象群", "野象", "特鲁必", "特鲁皮德"
+        ],
         "patterns": ["borneo_rainforest", "rainforest_at_twilight", "rhinoceros_hornbill"],
         "priority": 5.0,
     },
     # 0.5 暴雨气象与水灾救援
     {
         "name": "暴雨气象水灾",
-        "keywords": ["水灾", "灾黎", "灾民", "水位", "淹水", "救援单位", "避难中心", "暴雨", "洪灾", "积水", "季候风", "风潮", "气象", "救援艇", "救援船", "海浪"],
-        "patterns": ["tropical_rainstorm", "rainstorm", "rescue-boat", "image_20261109_210317"],
+        "keywords": [
+            "水灾", "灾黎", "灾民", "水位", "淹水", "救援单位", "避难中心", "暴雨", "洪灾", "积水",
+            "季候风", "风潮", "气象", "救援艇", "救援船", "海浪", "雷暴", "豪雨", "强风", "狂风",
+            "恶劣天气", "降雨", "气象局", "警报"
+        ],
+        "patterns": ["tropical_rainstorm", "rainstorm", "rescue-boat", "image_20261109_210317", "image_20261109_210433", "image_20261109_210247"],
         "priority": 5.0,
     },
     # 0.6 未爆弹与现场排爆警戒
@@ -259,7 +275,7 @@ GLOBAL_KEYWORD_RULES = [
     {
         "name": "道路基建工程",
         "keywords": ["泛婆大道", "泛婆", "调查泛婆", "公路工程", "大道工程", "修路", "铺路", "大桥工程", "路段维修", "公路建设", "高架桥工程", "桥梁建设"],
-        "patterns": ["engineers_overlooking_highway"],
+        "patterns": ["engineers_overlooking_highway", "drivers_conversing_at_transport_hub"],
         "priority": 5.0,
     },
     # 0.9 电网电缆与水务抢修公用设施
@@ -526,6 +542,14 @@ class CoverGenerator:
         search_title = title.lower()
         search_detail = detail.lower()
 
+        # 体育类关键词自动将归类修正为 sports
+        is_sports_topic = any(kw in search_title for kw in [
+            "足球", "u16", "u17", "u18", "u19", "u20", "u23", "青年队", "迎战", "球赛",
+            "进球", "羽球", "羽毛球", "大师赛", "公开赛", "男双", "女双", "混双", "男单", "女单", "友谊赛"
+        ])
+        if is_sports_topic:
+            category = "sports"
+
         # 根据分类构建可用底图候选池（严禁体育与非体育混用，全国新闻禁选沙巴特有建筑/动植物）
         if category == "sports":
             available_pool = [img for img in self.pool_map.get("sports", []) if img.name not in self.used_images_today]
@@ -584,6 +608,12 @@ class CoverGenerator:
         # ------------------------------------------------------------------
         cat = category if category in self.pool_map else "general"
         cat_unused = [img for img in available_pool if img.parent.name == cat]
+
+        # 过滤高度专用的具象底图（客机、海警巡逻艇、海洋珊瑚等），确保兜底使用稳健中性的政务/交通/社区插画
+        specific_prefixes = ("airplane_", "maritime_patrol_boat", "patrol_boat", "split_ocean", "underwater_coral")
+        generic_cat_unused = [img for img in cat_unused if not img.name.lower().startswith(specific_prefixes)]
+        if generic_cat_unused:
+            cat_unused = generic_cat_unused
 
         if not cat_unused:
             # 当前板块已用尽，从候选池其他合规底图中找
@@ -659,6 +689,7 @@ class CoverGenerator:
 
         # 1. 挑选底图
         bg_file = self.select_background(category, title, detail)
+        self.last_selected_bg = bg_file
 
         # 2. 载入并缩放底图至 1200x675
         with Image.open(bg_file) as raw_img:
@@ -796,7 +827,8 @@ def generate_covers_for_headlines(headlines: List[Dict[str, Any]], date_str: Opt
         )
         item["cover"] = cover_path
         item["cover_image"] = cover_path
-        print(f"    ✓ [{idx}/{len(headlines)}] [{cat}] {title[:20]}... -> {cover_path}")
+        bg_name = generator.last_selected_bg.name if hasattr(generator, "last_selected_bg") else ""
+        print(f"    ✓ [{idx}/{len(headlines)}] [{cat}] {title[:20]}... -> {cover_path} (底图: {bg_name})")
 
     print(f"🎉 封面合成全部完成！当日已用不同底图: {len(generator.used_images_today)} 张（同日防撞图保证）\n")
     return headlines

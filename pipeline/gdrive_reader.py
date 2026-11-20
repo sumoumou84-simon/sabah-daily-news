@@ -44,6 +44,36 @@ logger = logging.getLogger("pipeline.gdrive_reader")
 MYT = timezone(timedelta(hours=8))
 
 
+SPORTS_CATEGORY_KEYWORDS = [
+    "足球", "u16", "u17", "u18", "u19", "u20", "u23", "青年队", "迎战", "关岛", "大胜",
+    "亚少杯", "亚青赛", "亚洲杯", "世界杯", "世预赛", "超级联赛", "进球", "球赛", "胜关岛",
+    "国足", "马来虎", "射门", "点球", "角球", "足总", "足协", "足球赛", "绿茵", "球星",
+    "前锋", "后卫", "门将", "英超", "欧冠", "西甲", "德甲", "意甲", "法甲", "羽球",
+    "羽毛球", "钦庆", "世界排名", "跃升", "连夺两冠", "大师赛", "公开赛", "总决赛",
+    "赖沛君", "许邦荣", "男双", "混双", "女双", "男单", "女单", "双打", "单打",
+    "李梓嘉", "谢定峰", "苏伟译", "跳杀", "汤杯", "尤杯", "苏迪曼杯", "全英赛",
+    "世锦赛", "大马混双", "大马男双", "大马女双", "友谊赛", "田径", "跳水", "游泳",
+    "乒乓", "篮球", "网球", "排球", "藤球", "奥运"
+]
+
+
+def strip_title_brackets(title: str) -> str:
+    """剥离新闻标题首尾的方括号、中文括号、书名号及多余序号前缀"""
+    t = (title or "").strip()
+    for _ in range(5):
+        t = re.sub(r'^(?:\[\d+\]|【\d+】|\(\d+\)|（\d+）|\d+[\.\、\:\s\-])\s*', '', t).strip()
+        t = re.sub(r'^[#\s\d\.\、\-\*]+', '', t).strip()
+        if (t.startswith("[") and t.endswith("]")) or \
+           (t.startswith("【") and t.endswith("】")) or \
+           (t.startswith("(") and t.endswith(")")) or \
+           (t.startswith("（") and t.endswith("）")) or \
+           (t.startswith("《") and t.endswith("》")):
+            t = t[1:-1].strip()
+        t = re.sub(r'^[\[【\(（《\s]+', '', t)
+        t = re.sub(r'[\]】\)）》\s]+$', '', t)
+    return t.strip()
+
+
 def normalize_event_core_title(title: str) -> str:
     """提取活动核心标题，去除标签、括号与标点符号用于去重相似度比对"""
     t = re.sub(r'\[.*?\]|【.*?】|\(.*?\)|（.*?）', '', title or '')
@@ -1088,8 +1118,12 @@ class GDriveMarkdownReader:
                             item_cat, item_geo = sec_match
                             n_title = re.sub(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*', '', n_title).strip()
 
-                    # 清除可能残留的序号前缀
-                    n_title = re.sub(r'^[#\s\d\.\、\-\*]+', '', n_title).strip()
+                    # 清除可能残留的序号前缀与首尾方括号
+                    n_title = strip_title_brackets(n_title)
+
+                    # 体育类关键词自动将归类修正为 sports (体育快讯)
+                    if any(k in n_title.lower() for k in SPORTS_CATEGORY_KEYWORDS):
+                        item_cat = "sports"
 
                     raw_sources = tags.get("来源", "权威信源")
                     clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
@@ -1242,7 +1276,12 @@ class GDriveMarkdownReader:
                             item_cat, item_geo = sec_match
                             n_title = re.sub(r'^(?:\[|【)?(?:沙巴山打根|沙巴|全国新闻|全国|体育新闻|体育|综合新闻|综合)(?:\]|】)?\s*\[?\d+\]?[\.\、\:\s\-]*', '', n_title).strip()
 
-                    n_title = re.sub(r'^[#\s\d\.\、\-\*]+', '', n_title).strip()
+                    # 清除可能残留的序号前缀与首尾方括号
+                    n_title = strip_title_brackets(n_title)
+
+                    # 体育类关键词自动将归类修正为 sports (体育快讯)
+                    if any(k in n_title.lower() for k in SPORTS_CATEGORY_KEYWORDS):
+                        item_cat = "sports"
 
                     raw_sources = tags.get("来源", "权威信源")
                     clean_sources = [s.strip() for s in re.split(r'[,，/、+及与|]', raw_sources) if s.strip() and not s.strip().startswith("http")]
@@ -2001,10 +2040,15 @@ class GDriveMarkdownReader:
             elif any(k in raw_t for k in ["[沙巴]", "【沙巴】"]):
                 cat = "sabah"
 
-            # 剔除标题中冗余的显式板块与序号标签，让卡片与封面标题更清爽
-            clean_t = re.sub(r'^\s*\\?\[(?:沙巴|全国|体育|综合|大马)\\?\]\s*\\?\[\d+\\?\]\s*', '', raw_t).strip()
+            # 剔除标题中冗余的显式板块与序号标签，并剥离首尾方括号、书名号等
+            clean_t = re.sub(r'^\s*\\?\[(?:沙巴山打根|沙巴|全国|体育|综合|大马)\\?\]\s*\\?\[\d+\\?\]\s*', '', raw_t).strip()
             if not clean_t:
                 clean_t = raw_t
+            clean_t = strip_title_brackets(clean_t)
+
+            # 体育类关键词自动将归类修正为 sports (体育快讯)
+            if any(k in clean_t.lower() for k in SPORTS_CATEGORY_KEYWORDS):
+                cat = "sports"
 
             primary_src = s.sources[0] if s.sources else "权威整理"
 

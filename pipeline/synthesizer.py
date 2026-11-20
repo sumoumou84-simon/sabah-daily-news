@@ -1371,6 +1371,11 @@ class NewsSynthesizer:
         non_chinese_articles = [a for a in articles if not (self._is_chinese_text(a.title) or self._is_chinese_text(a.body))]
         prioritized_articles = chinese_articles + non_chinese_articles
 
+        sabah_geo_keywords = [
+            "沙巴", "山打根", "亚庇", "斗湖", "拿笃", "根地咬", "仙本那", "特鲁必", "特鲁皮德", "兵南邦", "保佛", "古达",
+            "sabah", "sandakan", "kota kinabalu", "tawau", "lahad datu", "keningau", "semporna", "telupid", "penampang", "beaufort", "kudat"
+        ]
+
         for idx, art in enumerate(prioritized_articles[:15], 1):
             c_title = art.title.strip()
             sources = art.extra.get("corroborating_sources", [art.source])
@@ -1391,10 +1396,22 @@ class NewsSynthesizer:
                 bm_title = art.extra.get("titleBM") or c_title
                 bm_body = art.extra.get("detailBM") or clean_body
 
-                # 若翻译接口不可用且仍未含中文，添加前置中文板块分类前缀，避免生硬外文突兀展现
-                if not self._is_chinese_text(zh_title):
-                    prefix = "【沙巴要闻】" if cat == "sabah" else ("【全国要闻】" if cat == "national" else "【焦点快讯】")
-                    zh_title = f"{prefix} {c_title}"
+            # 自动归类：根据标题（原文与中文译文）中的地名关键词（沙巴/山打根/亚庇/斗湖等），非体育新闻自动归类至 sabah 板块
+            title_check_str = f"{c_title} {zh_title}".lower()
+            if cat != "sports" and any(k in title_check_str for k in sabah_geo_keywords):
+                cat = "sabah"
+
+            # 若翻译接口不可用且仍未含中文，添加前置中文板块分类前缀，避免生硬外文突兀展现
+            if not self._is_chinese_text(zh_title):
+                prefix = "【沙巴要闻】" if cat == "sabah" else ("【全国要闻】" if cat == "national" else "【焦点快讯】")
+                zh_title = f"{prefix} {c_title}"
+
+            geo_scope = art.extra.get("geo_scope", "sabah")
+            if cat == "sabah":
+                if any(sk in title_check_str for sk in ["山打根", "sandakan"]):
+                    geo_scope = "sandakan"
+                elif geo_scope not in ["sabah", "sandakan"]:
+                    geo_scope = "sabah"
 
             synthesized.append({
                 "id": f"art_{cat}_{idx:02d}",
@@ -1413,7 +1430,7 @@ class NewsSynthesizer:
                 "site_published_at": now_iso,
                 "updated_at": now_iso,
                 "is_updated": False,
-                "geo_scope": art.extra.get("geo_scope", "sabah")
+                "geo_scope": geo_scope
             })
 
         return synthesized

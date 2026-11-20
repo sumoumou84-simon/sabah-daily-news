@@ -227,5 +227,62 @@ class TestContentIntegrity(unittest.TestCase):
         self.assertEqual(len(filtered), 1, "Only genuine news article should pass")
         self.assertEqual(self.normalizer.ad_filter_count, 2, "Ad counter must reflect 2 filtered commercial items")
 
+    def test_09_track_b_sabah_categorization(self):
+        """Track B fallback should classify articles with Sabah locations in titles to 'sabah'."""
+        art1 = RawArticle(
+            title="Sabah sets up advisory panel to address hawkers' concerns",
+            url="https://example.com/art1",
+            source="Bernama",
+            category="national",
+            snippet="The Sabah government has established an advisory panel..."
+        )
+        art2 = RawArticle(
+            title="沙巴加大太阳能力度以加强电力供应",
+            url="https://example.com/art2",
+            source="Bernama",
+            category="national",
+            snippet="沙巴政府宣布在内陆地区增建太阳能电网..."
+        )
+        art3 = RawArticle(
+            title="大型爱心药房首次公开募股筹集80亿令吉",
+            url="https://example.com/art3",
+            source="东方日报",
+            category="national",
+            snippet="大型爱心药房今日在大马交易所主板上市..."
+        )
+        results = self.synthesizer.synthesize_track_b_standalone(
+            today_iso="2026-11-20",
+            articles=[art1, art2, art3]
+        )
+        cat_map = {r["title"]: r["category"] for r in results}
+        self.assertTrue(any("沙巴" in t and cat_map[t] == "sabah" for t in cat_map))
+        self.assertEqual(cat_map["大型爱心药房首次公开募股筹集80亿令吉"], "national")
+
+    def test_10_gdrive_bracket_stripping_and_sports_reclassification(self):
+        """Test stripping enclosing brackets and auto-reclassifying sports headlines."""
+        from pipeline.gdrive_reader import strip_title_brackets, GDriveMarkdownReader
+        t1 = strip_title_brackets("[公账会25日查沙巴泛婆大道第一阶段工程]")
+        self.assertEqual(t1, "公账会25日查沙巴泛婆大道第一阶段工程")
+        t2 = strip_title_brackets("【大马青年队今晚迎战印度U17】")
+        self.assertEqual(t2, "大马青年队今晚迎战印度U17")
+        t3 = strip_title_brackets("[1][沙巴水灾逐步好转 多区灾民陆续返家]")
+        self.assertEqual(t3, "沙巴水灾逐步好转 多区灾民陆续返家")
+
+        reader = GDriveMarkdownReader()
+        sample_md = """西门看看网 2026年11月20日 每日新闻
+第二部分 重点新闻
+[综合][2][大马青年队今晚迎战印度U17]
+【正文】大马青年队将在亚洲U17杯入选赛中迎战印度队。 【来源】体育新闻 【状态】待进行
+"""
+        stories = reader.parse_markdown(sample_md, "2026-11-20")
+        self.assertEqual(len(stories), 1)
+        self.assertEqual(stories[0].title, "大马青年队今晚迎战印度U17")
+        self.assertEqual(stories[0].category, "sports")
+
+        headlines, _ = reader.convert_stories_to_direct_output(stories, "2026-11-20")
+        self.assertEqual(len(headlines), 1)
+        self.assertEqual(headlines[0]["title"], "大马青年队今晚迎战印度U17")
+        self.assertEqual(headlines[0]["category"], "sports")
+
 if __name__ == "__main__":
     unittest.main()
