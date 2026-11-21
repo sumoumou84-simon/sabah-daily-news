@@ -1,13 +1,13 @@
 {
-  "snapshot_id": "gdrive_snap_2026-11-21_85d5bc78",
+  "snapshot_id": "gdrive_snap_2026-11-21_4b32ac51",
   "target_date": "2026-11-21",
   "source_file_name": "西门看看网 2026年11月21日 每日新闻.md",
   "source_file_id": "1TdszisjmUVdHc7woKdVCq8To4VLrRMqbke5XWRLSFQA",
-  "read_timestamp": "2026-11-21T12:51:17.705461+08:00",
+  "read_timestamp": "2026-11-21T13:55:08.487517+08:00",
   "total_stories_found": 17,
   "news_stories_count": 13,
   "event_stories_count": 4,
-  "markdown_sha256": "85d5bc78325cf294415c3a8a9510986d09b1cab0b1b10ab0fb62867221ea53fe",
+  "markdown_sha256": "4b32ac516c9997d578a30a1b23e82165862086b9d556b1679dcb690ee3c0e28d",
   "news_stories": [
     {
       "index": 1,
@@ -235,98 +235,98 @@
     {
       "index": 14,
       "title": "菲律宾驻沙巴领事外展服务",
-      "body": "为在沙巴的菲律宾公民提供领事服务，包括证件相关咨询与办理，请携带相关证件前往。",
+      "body": "为在沙巴的菲律宾公民提供领事服务，包括新办与更新护照、民事登记、菲律宾统计局文件、国民身份证登记、NBI 指纹采集、公证服务及旅行证件。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "菲律宾驻沙巴领事馆\r\n[2] 伊罗普拉半程马拉松 山打根站"
+        "菲律宾驻吉隆坡大使馆 【活动目的与亮点】把大使馆的证件服务带到沙巴，让在沙巴工作生活的菲律宾公民不用特地跑去吉隆坡，在本地就能办护照、登记等手续，省时省路费。 【参与与咨询方式】预约免费，需提前通过大使馆公布的预约链接或二维码预约；乐龄人士、残障人士、孕妇及7岁以下儿童可免预约直接 walk-in。咨询请留意菲律宾驻吉隆坡大使馆官方通告。"
       ],
       "source_urls": [],
       "date": "2026-11-20",
       "is_event": true,
       "event_metadata": {
-        "time": "以主办单位现场公布为准",
+        "time": "暂未公布，请以主办方公布为准",
         "location": "山打根 Livingston Hotel",
-        "organizer": "菲律宾驻沙巴领事馆\r\n[2] 伊罗普拉半程马拉松 山打根站",
+        "organizer": "菲律宾驻吉隆坡大使馆 【活动目的与亮点】把大使馆的证件服务带到沙巴，让在沙巴工作生活的菲律宾公民不用特地跑去吉隆坡，在本地就能办护照、登记等手续，省时省路费。 【参与与咨询方式】预约免费，需提前通过大使馆公布的预约链接或二维码预约；乐龄人士、残障人士、孕妇及7岁以下儿童可免预约直接 walk-in。咨询请留意菲律宾驻吉隆坡大使馆官方通告。",
         "tel": "",
         "end_date": "2026-11-22",
-        "raw_date_str": "2026年11月20日至22日"
+        "raw_date_str": "2026年11月20日 至 2026年11月22日"
       },
       "raw_header": "### 菲律宾驻沙巴领事外展服务",
       "title_bm": "菲律宾驻沙巴领事外展服务",
-      "body_bm": "为在沙巴的菲律宾公民提供领事服务，包括证件相关咨询与办理，请携带相关证件前往。"
+      "body_bm": "为在沙巴的菲律宾公民提供领事服务，包括新办与更新护照、民事登记、菲律宾统计局文件、国民身份证登记、NBI 指纹采集、公证服务及旅行证件。"
     },
     {
       "index": 15,
-      "title": "伊罗普拉半程马拉松",
-      "body": "半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。",
+      "title": "伊罗普拉马拉松",
+      "body": "山打根本土路跑赛事，设全程马拉松 42公里、半程马拉松 21公里及 10公里组，路线跑经山打根市区及周边道路；半程组限时 4 小时，须在 6:00 AM 前完赛。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "伊罗普拉半程马拉松主办单位\r\n[3] Rasa Sandakan 美食足迹 2.0"
+        "Persatuan Ortopedik Sandakan（山打根骨科协会）与 Kinabalu Running Club 【活动目的与亮点】以山打根旧名 Elopura 命名，是沙巴马拉松系列赛之一，今年为第四届，凌晨开跑可避开白天高温，跑者可体验山打根市区夜跑与清晨路跑氛围。 【参与与咨询方式】需提前报名，报名平台为 Ticket2U；本届报名已截止，现场观赛请留意当日部分路段交通管制。咨询请留意 Elopura Marathon Sandakan 官方专页。"
       ],
       "source_urls": [],
       "date": "2026-11-22",
       "is_event": true,
       "event_metadata": {
-        "time": "清晨开跑，具体时间以主办单位公布为准",
-        "location": "山打根",
-        "organizer": "伊罗普拉半程马拉松主办单位\r\n[3] Rasa Sandakan 美食足迹 2.0",
+        "time": "全程马拉松 12:30 AM 开跑，半程马拉松 2:00 AM 开跑，10公里组 5:30 AM 开跑",
+        "location": "山打根 Sandakan Sports Complex，10 Jalan Sibuga",
+        "organizer": "Persatuan Ortopedik Sandakan（山打根骨科协会）与 Kinabalu Running Club 【活动目的与亮点】以山打根旧名 Elopura 命名，是沙巴马拉松系列赛之一，今年为第四届，凌晨开跑可避开白天高温，跑者可体验山打根市区夜跑与清晨路跑氛围。 【参与与咨询方式】需提前报名，报名平台为 Ticket2U；本届报名已截止，现场观赛请留意当日部分路段交通管制。咨询请留意 Elopura Marathon Sandakan 官方专页。",
         "tel": "",
         "end_date": "2026-11-22",
         "raw_date_str": "2026年11月22日"
       },
-      "raw_header": "### 伊罗普拉半程马拉松",
-      "title_bm": "伊罗普拉半程马拉松",
-      "body_bm": "半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。"
+      "raw_header": "### 伊罗普拉马拉松",
+      "title_bm": "伊罗普拉马拉松",
+      "body_bm": "山打根本土路跑赛事，设全程马拉松 42公里、半程马拉松 21公里及 10公里组，路线跑经山打根市区及周边道路；半程组限时 4 小时，须在 6:00 AM 前完赛。"
     },
     {
       "index": 16,
       "title": "Rasa Sandakan Food Trail 2.0",
-      "body": "美食足迹挑战活动，推广山打根作为沙巴美食之都，鼓励民众打卡品尝本地美食。",
+      "body": "美食足迹挑战活动，参考首届模式，鼓励民众到各参与食肆打卡品尝本地美食，推广山打根作为沙巴美食之都。首届共有约 60 间本地餐饮店参与，参与者需完成至少 12 站打卡挑战。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "山打根美食推广主办单位\r\n[4] 山打根喵跑 2026"
+        "Sandakan Tourism Association（STAN，山打根旅游协会），会长 Teo Chee Kim；获沙巴旅游、文化及环境部支持 【活动目的与亮点】延续首届热烈反应，把山打根美食推向更多游客与本地食客，带动本地餐饮与旅游；首届官方社交平台总观看量超过 55 万次，超过 60 名参与者完成 12 站挑战。 【参与与咨询方式】"
       ],
       "source_urls": [],
       "date": "2026-11-22",
       "is_event": true,
       "event_metadata": {
         "time": "各参与食肆营业时间",
-        "location": "山打根各参与食肆",
-        "organizer": "山打根美食推广主办单位\r\n[4] 山打根喵跑 2026",
+        "location": "山打根各参与食肆，具体名单暂未公布",
+        "organizer": "Sandakan Tourism Association（STAN，山打根旅游协会），会长 Teo Chee Kim；获沙巴旅游、文化及环境部支持 【活动目的与亮点】延续首届热烈反应，把山打根美食推向更多游客与本地食客，带动本地餐饮与旅游；首届官方社交平台总观看量超过 55 万次，超过 60 名参与者完成 12 站挑战。 【参与与咨询方式】",
         "tel": "",
-        "end_date": "2026-11-22",
-        "raw_date_str": "2026年11月22日起，为期约一个月"
+        "end_date": "2026-02-00",
+        "raw_date_str": "2026年11月22日起，为期约一个月（2.0 具体起止日期与参与店家名单暂未公布）"
       },
       "raw_header": "### Rasa Sandakan Food Trail 2.0",
       "title_bm": "Rasa Sandakan Food Trail 2.0",
-      "body_bm": "美食足迹挑战活动，推广山打根作为沙巴美食之都，鼓励民众打卡品尝本地美食。"
+      "body_bm": "美食足迹挑战活动，参考首届模式，鼓励民众到各参与食肆打卡品尝本地美食，推广山打根作为沙巴美食之都。首届共有约 60 间本地餐饮店参与，参与者需完成至少 12 站打卡挑战。"
     },
     {
       "index": 17,
       "title": "Sandakan Meow Run 2026",
-      "body": "以猫咪为主题的路跑活动，适合一家大小参与。",
+      "body": "以猫咪为主题的 5 公里趣味路跑，适合一家大小与猫咪爱好者参与，现场氛围轻松欢乐。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "山打根喵跑主办单位"
+        "暂未公布，主办方信息以报名页面为准 【活动目的与亮点】以“小跑一大堆喵”为主题，把爱猫人士聚在一起，用轻松趣味路跑代替严肃竞赛，适合亲子与新手跑者体验路跑乐趣。 【参与与咨询方式】需提前报名，报名平台为 PUS Event。收费套餐：Premium RM49（含高级赛事 T 恤、完赛奖牌、钥匙扣、电子证书）、Standard RM39（含轻量赛事 T 恤、完赛奖牌、钥匙扣、电子证书）、Lite RM29（含完赛奖牌、钥匙扣、电子证书，不含 T 恤）；Free Run 免费（含钥匙扣与电子证书，不含 T 恤、奖牌），Free Run 名额已满。咨询请留意 Meow Run Sandakan 报名页面。"
       ],
       "source_urls": [],
       "date": "2026-12-06",
       "is_event": true,
       "event_metadata": {
-        "time": "以主办单位公布为准",
-        "location": "山打根 Kompleks Sukan Bola Sepak Sandakan",
-        "organizer": "山打根喵跑主办单位",
+        "time": "6:15 AM 开跑",
+        "location": "山打根 Kompleks Sukan Sandakan（Kompleks Sukan Bola Sepak Sandakan）",
+        "organizer": "暂未公布，主办方信息以报名页面为准 【活动目的与亮点】以“小跑一大堆喵”为主题，把爱猫人士聚在一起，用轻松趣味路跑代替严肃竞赛，适合亲子与新手跑者体验路跑乐趣。 【参与与咨询方式】需提前报名，报名平台为 PUS Event。收费套餐：Premium RM49（含高级赛事 T 恤、完赛奖牌、钥匙扣、电子证书）、Standard RM39（含轻量赛事 T 恤、完赛奖牌、钥匙扣、电子证书）、Lite RM29（含完赛奖牌、钥匙扣、电子证书，不含 T 恤）；Free Run 免费（含钥匙扣与电子证书，不含 T 恤、奖牌），Free Run 名额已满。咨询请留意 Meow Run Sandakan 报名页面。",
         "tel": "",
         "end_date": "2026-12-06",
         "raw_date_str": "2026年12月6日"
       },
       "raw_header": "### Sandakan Meow Run 2026",
       "title_bm": "Sandakan Meow Run 2026",
-      "body_bm": "以猫咪为主题的路跑活动，适合一家大小参与。"
+      "body_bm": "以猫咪为主题的 5 公里趣味路跑，适合一家大小与猫咪爱好者参与，现场氛围轻松欢乐。"
     }
   ]
 }
