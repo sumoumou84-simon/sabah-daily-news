@@ -28,7 +28,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('./sw.js?v=1795236678')
+                navigator.serviceWorker.register('./sw.js?v=1795238720')
                     .then(function(reg) {
                         reg.update();
                         if (reg.waiting) {
@@ -988,7 +988,7 @@
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>每日 05:00 AM 准时晨报 • 11/21 12:51PM LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • 11/21 01:25PM LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -1127,7 +1127,7 @@
                         <span class="text-[12px] font-black tracking-tight" id="active-date-display">
                             今天 11/21 · MYT自动计算
                         </span>
-                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">12:51PM MYT</span>
+                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">01:25PM MYT</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
@@ -1201,7 +1201,7 @@
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
-                                11/21 12:51PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
+                                11/21 01:25PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开详尽报道与权威信源</span>
@@ -2070,7 +2070,7 @@
                                 <span class="lang-zh">山打根活动预告与倒计时</span>
                                 <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sandakan</span>
                             </h3>
-                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">6 <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
+                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">4 <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
                             <span class="hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
@@ -2085,9 +2085,12 @@
         <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-1" ontoggle="updateEventCardHint(this)">
             <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
                 <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">11</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/20</span>
+                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                    <span class="font-black text-[11px] sm:text-[12px] tracking-tight leading-none">
+                        <span class="lang-zh">进行中</span>
+                        <span class="lang-bm hidden">LIVE</span>
+                    </span>
+                    <span class="font-black text-[9.5px] sm:text-[10.5px] mt-1 mono leading-none">20-22</span>
                 </div>
 
                 <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
@@ -2103,14 +2106,14 @@
                             <span class="lang-bm hidden">山打根 Livingston Hotel</span>
                         </span>
                         <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-11-20</span>
+                        <span class="mono shrink-0 text-[10.5px]">11/20 - 11/22</span>
                     </div>
                 </div>
 
                 <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
                 <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
                     <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>
-                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#22c55e] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">今天举行</span><span class="lang-bm hidden">Hari Ini</span></span>
+                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#22c55e] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">进行中</span><span class="lang-bm hidden">Sedang Berlangsung</span></span>
                     <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
                         <span class="detail-btn-zh lang-zh">详情</span>
                         <span class="detail-btn-bm lang-bm hidden">Butiran</span>
@@ -2146,9 +2149,7 @@
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
                     <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：菲律宾驻沙巴领事馆
-[2] 伊罗普拉半程马拉松 山打根站</span><span class="lang-bm hidden">Penganjur: 菲律宾驻沙巴领事馆
-[2] 伊罗普拉半程马拉松 山打根站</span></span>
+                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：菲律宾驻沙巴领事馆</span><span class="lang-bm hidden">Penganjur: 菲律宾驻沙巴领事馆</span></span>
                         <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
                             <span class="lang-zh">市政公益</span>
                             <span class="lang-bm hidden">市政公益</span>
@@ -2162,87 +2163,10 @@
         <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-2" ontoggle="updateEventCardHint(this)">
             <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
                 <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">11</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/20</span>
-                </div>
-
-                <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
-                <div class="flex-1 min-w-0 pr-1">
-                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors leading-snug truncate sm:whitespace-normal">
-                        <span class="lang-zh">第八届沙巴社区旅游展</span>
-                        <span class="lang-bm hidden">第八届沙巴社区旅游展</span>
+                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                        <span class="font-black text-[11px] sm:text-[12px] leading-none">11月</span>
+                        <span class="font-extrabold text-[9px] sm:text-[9.5px] mt-0.5 mono leading-none">22日起</span>
                     </div>
-                    <div class="flex items-center gap-1.5 text-[11px] sub-meta-text mt-0.5 truncate">
-                        <span class="text-[#FFD60A] shrink-0 text-[10.5px]">📍</span>
-                        <span class="truncate font-medium">
-                            <span class="lang-zh">亚庇 Suria Sabah Shopping Mall</span>
-                            <span class="lang-bm hidden">亚庇 Suria Sabah Shopping Mall</span>
-                        </span>
-                        <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-11-20</span>
-                    </div>
-                </div>
-
-                <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
-                <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
-                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>
-                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#22c55e] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">今天举行</span><span class="lang-bm hidden">Hari Ini</span></span>
-                    <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
-                        <span class="detail-btn-zh lang-zh">详情</span>
-                        <span class="detail-btn-bm lang-bm hidden">Butiran</span>
-                        <span class="arrow-ev text-[9px] transition-transform text-[#FFD60A]">▾</span>
-                    </span>
-                </div>
-            </summary>
-
-            <!-- 展开详情抽屉 (点击后平滑显示正文介绍、具体时间、参与/联络方式) -->
-            <div class="event-drawer mt-3 pt-3 border-t">
-                <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
-                    <span class="lang-zh">以传统巴刹为主题，展示沙巴各地乡村社区旅游产品与体验，推广社区旅游与地方手工艺。</span>
-                    <span class="lang-bm hidden">以传统巴刹为主题，展示沙巴各地乡村社区旅游产品与体验，推广社区旅游与地方手工艺。</span>
-                </p>
-                <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
-                    <div class="flex items-start gap-1.5">
-                        <span class="text-[#FFD60A] shrink-0">📍</span>
-                        <span class="font-medium">
-                            <span class="lang-zh">活动地点：亚庇 Suria Sabah Shopping Mall</span>
-                            <span class="lang-bm hidden">Lokasi: 亚庇 Suria Sabah Shopping Mall</span>
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[#FFD60A] shrink-0">⏰</span>
-                            <span>
-                                <span class="lang-zh">活动时间：商场营业时间</span>
-                                <span class="lang-bm hidden">Masa: 商场营业时间</span>
-                            </span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：沙巴旅游局
-[3] 伊罗普拉半程马拉松 山打根站</span><span class="lang-bm hidden">Penganjur: 沙巴旅游局
-[3] 伊罗普拉半程马拉松 山打根站</span></span>
-                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
-                            <span class="lang-zh">社区活动</span>
-                            <span class="lang-bm hidden">社区活动</span>
-                        </span>
-                    </div>
-                    <span class="mono">沙巴官方核准备案活动</span>
-                </div>
-            </div>
-        </details>
-        
-        <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-3" ontoggle="updateEventCardHint(this)">
-            <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
-                <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">11</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/22</span>
-                </div>
 
                 <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
                 <div class="flex-1 min-w-0 pr-1">
@@ -2257,7 +2181,7 @@
                             <span class="lang-bm hidden">山打根各参与食肆</span>
                         </span>
                         <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-11-22</span>
+                        <span class="mono shrink-0 text-[10.5px]">11/22 - 12/22</span>
                     </div>
                 </div>
 
@@ -2300,9 +2224,82 @@
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
                     <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：山打根美食推广主办单位
-[4] 山打根喵跑 2026</span><span class="lang-bm hidden">Penganjur: 山打根美食推广主办单位
-[4] 山打根喵跑 2026</span></span>
+                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：山打根美食推广主办单位</span><span class="lang-bm hidden">Penganjur: 山打根美食推广主办单位</span></span>
+                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
+                            <span class="lang-zh">市政公益</span>
+                            <span class="lang-bm hidden">市政公益</span>
+                        </span>
+                    </div>
+                    <span class="mono">沙巴官方核准备案活动</span>
+                </div>
+            </div>
+        </details>
+        
+        <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-3" ontoggle="updateEventCardHint(this)">
+            <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
+                <!-- 1. 左侧日期方块 -->
+                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                    <span class="font-black text-[12.5px] sm:text-[14px] leading-none">11</span>
+                    <span class="font-bold text-[10px] sm:text-[11px] leading-none">/22</span>
+                </div>
+
+                <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
+                <div class="flex-1 min-w-0 pr-1">
+                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors leading-snug truncate sm:whitespace-normal">
+                        <span class="lang-zh">伊罗普拉半程马拉松</span>
+                        <span class="lang-bm hidden">伊罗普拉半程马拉松</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-[11px] sub-meta-text mt-0.5 truncate">
+                        <span class="text-[#FFD60A] shrink-0 text-[10.5px]">📍</span>
+                        <span class="truncate font-medium">
+                            <span class="lang-zh">山打根</span>
+                            <span class="lang-bm hidden">山打根</span>
+                        </span>
+                        <span class="opacity-40">•</span>
+                        <span class="mono shrink-0 text-[10.5px]">11/22</span>
+                    </div>
+                </div>
+
+                <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
+                <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
+                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>
+                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#FFD60A] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">还有 1 天</span><span class="lang-bm hidden">1 hari lagi</span></span>
+                    <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
+                        <span class="detail-btn-zh lang-zh">详情</span>
+                        <span class="detail-btn-bm lang-bm hidden">Butiran</span>
+                        <span class="arrow-ev text-[9px] transition-transform text-[#FFD60A]">▾</span>
+                    </span>
+                </div>
+            </summary>
+
+            <!-- 展开详情抽屉 (点击后平滑显示正文介绍、具体时间、参与/联络方式) -->
+            <div class="event-drawer mt-3 pt-3 border-t">
+                <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
+                    <span class="lang-zh">半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。</span>
+                    <span class="lang-bm hidden">半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。</span>
+                </p>
+                <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
+                    <div class="flex items-start gap-1.5">
+                        <span class="text-[#FFD60A] shrink-0">📍</span>
+                        <span class="font-medium">
+                            <span class="lang-zh">活动地点：山打根</span>
+                            <span class="lang-bm hidden">Lokasi: 山打根</span>
+                        </span>
+                    </div>
+                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[#FFD60A] shrink-0">⏰</span>
+                            <span>
+                                <span class="lang-zh">活动时间：清晨开跑，具体时间以主办单位公布为准</span>
+                                <span class="lang-bm hidden">Masa: 清晨开跑，具体时间以主办单位公布为准</span>
+                            </span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：伊罗普拉半程马拉松主办单位</span><span class="lang-bm hidden">Penganjur: 伊罗普拉半程马拉松主办单位</span></span>
                         <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
                             <span class="lang-zh">市政公益</span>
                             <span class="lang-bm hidden">市政公益</span>
@@ -2316,86 +2313,9 @@
         <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-4" ontoggle="updateEventCardHint(this)">
             <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
                 <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">11</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/26</span>
-                </div>
-
-                <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
-                <div class="flex-1 min-w-0 pr-1">
-                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors leading-snug truncate sm:whitespace-normal">
-                        <span class="lang-zh">Adau Janang Gayuh</span>
-                        <span class="lang-bm hidden">Adau Janang Gayuh</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-[11px] sub-meta-text mt-0.5 truncate">
-                        <span class="text-[#FFD60A] shrink-0 text-[10.5px]">📍</span>
-                        <span class="truncate font-medium">
-                            <span class="lang-zh">保佛 Beaufort</span>
-                            <span class="lang-bm hidden">保佛 Beaufort</span>
-                        </span>
-                        <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-11-26</span>
-                    </div>
-                </div>
-
-                <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
-                <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
-                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>
-                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#FFD60A] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">还有 5 天</span><span class="lang-bm hidden">5 hari lagi</span></span>
-                    <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
-                        <span class="detail-btn-zh lang-zh">详情</span>
-                        <span class="detail-btn-bm lang-bm hidden">Butiran</span>
-                        <span class="arrow-ev text-[9px] transition-transform text-[#FFD60A]">▾</span>
-                    </span>
-                </div>
-            </summary>
-
-            <!-- 展开详情抽屉 (点击后平滑显示正文介绍、具体时间、参与/联络方式) -->
-            <div class="event-drawer mt-3 pt-3 border-t">
-                <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
-                    <span class="lang-zh">比萨亚族群文化庆典，时隔7年再度举办，包含族群文化表演与社区活动。</span>
-                    <span class="lang-bm hidden">比萨亚族群文化庆典，时隔7年再度举办，包含族群文化表演与社区活动。</span>
-                </p>
-                <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
-                    <div class="flex items-start gap-1.5">
-                        <span class="text-[#FFD60A] shrink-0">📍</span>
-                        <span class="font-medium">
-                            <span class="lang-zh">活动地点：保佛 Beaufort</span>
-                            <span class="lang-bm hidden">Lokasi: 保佛 Beaufort</span>
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[#FFD60A] shrink-0">⏰</span>
-                            <span>
-                                <span class="lang-zh">活动时间：以主办单位公布为准</span>
-                                <span class="lang-bm hidden">Masa: 以主办单位公布为准</span>
-                            </span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：比萨亚保佛联合会
-[6] 山打根喵跑 2026</span><span class="lang-bm hidden">Penganjur: 比萨亚保佛联合会
-[6] 山打根喵跑 2026</span></span>
-                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
-                            <span class="lang-zh">社区活动</span>
-                            <span class="lang-bm hidden">社区活动</span>
-                        </span>
-                    </div>
-                    <span class="mono">沙巴官方核准备案活动</span>
-                </div>
-            </div>
-        </details>
-        
-        <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-5" ontoggle="updateEventCardHint(this)">
-            <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
-                <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">12</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/06</span>
+                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                    <span class="font-black text-[12.5px] sm:text-[14px] leading-none">12</span>
+                    <span class="font-bold text-[10px] sm:text-[11px] leading-none">/06</span>
                 </div>
 
                 <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
@@ -2411,7 +2331,7 @@
                             <span class="lang-bm hidden">山打根 Kompleks Sukan Bola Sepak Sandakan</span>
                         </span>
                         <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-12-06</span>
+                        <span class="mono shrink-0 text-[10.5px]">12/06</span>
                     </div>
                 </div>
 
@@ -2465,88 +2385,13 @@
             </div>
         </details>
         
-        <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-6" ontoggle="updateEventCardHint(this)">
-            <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
-                <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">12</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/13</span>
-                </div>
-
-                <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
-                <div class="flex-1 min-w-0 pr-1">
-                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors leading-snug truncate sm:whitespace-normal">
-                        <span class="lang-zh">Sabah Half Marathon Powered by JomRun</span>
-                        <span class="lang-bm hidden">Sabah Half Marathon Powered by JomRun</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 text-[11px] sub-meta-text mt-0.5 truncate">
-                        <span class="text-[#FFD60A] shrink-0 text-[10.5px]">📍</span>
-                        <span class="truncate font-medium">
-                            <span class="lang-zh">亚庇 Likas Stadium</span>
-                            <span class="lang-bm hidden">亚庇 Likas Stadium</span>
-                        </span>
-                        <span class="opacity-40">•</span>
-                        <span class="mono shrink-0 text-[10.5px]">2026-12-13</span>
-                    </div>
-                </div>
-
-                <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
-                <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
-                    <span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>
-                    <span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black bg-[#FFD60A] text-black font-black whitespace-nowrap shadow-sm mono"><span class="lang-zh">还有 22 天</span><span class="lang-bm hidden">22 hari lagi</span></span>
-                    <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
-                        <span class="detail-btn-zh lang-zh">详情</span>
-                        <span class="detail-btn-bm lang-bm hidden">Butiran</span>
-                        <span class="arrow-ev text-[9px] transition-transform text-[#FFD60A]">▾</span>
-                    </span>
-                </div>
-            </summary>
-
-            <!-- 展开详情抽屉 (点击后平滑显示正文介绍、具体时间、参与/联络方式) -->
-            <div class="event-drawer mt-3 pt-3 border-t">
-                <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
-                    <span class="lang-zh">半程马拉松路跑赛事，包含半马与短距离组别，适合不同程度跑者。</span>
-                    <span class="lang-bm hidden">半程马拉松路跑赛事，包含半马与短距离组别，适合不同程度跑者。</span>
-                </p>
-                <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
-                    <div class="flex items-start gap-1.5">
-                        <span class="text-[#FFD60A] shrink-0">📍</span>
-                        <span class="font-medium">
-                            <span class="lang-zh">活动地点：亚庇 Likas Stadium</span>
-                            <span class="lang-bm hidden">Lokasi: 亚庇 Likas Stadium</span>
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-[#FFD60A] shrink-0">⏰</span>
-                            <span>
-                                <span class="lang-zh">活动时间：以主办单位公布为准</span>
-                                <span class="lang-bm hidden">Masa: 以主办单位公布为准</span>
-                            </span>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
-                    <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：JomRun</span><span class="lang-bm hidden">Penganjur: JomRun</span></span>
-                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold bg-[#14532d] text-[#86efac]">
-                            <span class="lang-zh">社区活动</span>
-                            <span class="lang-bm hidden">社区活动</span>
-                        </span>
-                    </div>
-                    <span class="mono">沙巴官方核准备案活动</span>
-                </div>
-            </div>
-        </details>
-        
                     </div>
                 </div>
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
                     <span>
-                        <span class="lang-zh">11/21 12:51PM MYT • 标题-only折叠 点击标题展开详细报道 • 7天归档库已挂载</span>
-                        <span class="lang-bm hidden">11/21 12:51PM MYT • Klik tajuk untuk baca berita terperinci • Arkib 7 hari tersedia</span>
+                        <span class="lang-zh">11/21 01:25PM MYT • 标题-only折叠 点击标题展开详细报道 • 7天归档库已挂载</span>
+                        <span class="lang-bm hidden">11/21 01:25PM MYT • Klik tajuk untuk baca berita terperinci • Arkib 7 hari tersedia</span>
                     </span>
                     <span class="text-[#FFD60A] font-bold">
                         <span class="lang-zh">13 篇深度要闻 • 双核实白名单</span>
@@ -3119,7 +2964,7 @@
         }
 
         let currentRenderedHeadlines = CURRENT_HEADLINES;
-        let currentRenderedDateLabel = '11/21 12:51PM';
+        let currentRenderedDateLabel = '11/21 01:25PM';
 
         function renderNewsCards(headlinesList, dateLabel) {
             currentRenderedHeadlines = Array.isArray(headlinesList) ? headlinesList : [];
@@ -3324,10 +3169,10 @@ html += `
                 }
 
                 let targetHeadlines = [];
-                let cardDateLabel = '11/21 12:51PM';
+                let cardDateLabel = '11/21 01:25PM';
                 if (type === 'today') {
                     targetHeadlines = currentList;
-                    cardDateLabel = '11/21 12:51PM';
+                    cardDateLabel = '11/21 01:25PM';
                     if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini 11/21</span>' : '<span>今日 11/21 重点要闻</span>';
                     if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini 11/21 · Auto MYT' : '今天 11/21 · MYT自动计算';
                     showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');

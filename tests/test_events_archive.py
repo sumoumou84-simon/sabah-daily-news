@@ -14,7 +14,8 @@ from pipeline.gdrive_reader import (
     parse_date_range,
     normalize_event_core_title,
     compute_event_similarity,
-    is_same_event_record
+    is_same_event_record,
+    is_sandakan_event
 )
 import build_news
 
@@ -266,6 +267,47 @@ class TestEventsArchiveLifecycle(unittest.TestCase):
         self.assertEqual(res[2]["name"], "昨日旧活动 1")
         self.assertEqual(res[2]["countdown_days"], 2)
 
+    def test_06_region_filter_only_sandakan(self):
+        """测试地区过滤：严格仅保留山打根活动，自动剔除亚庇、保佛、兵南邦等外地记录"""
+        mixed_events = [
+            {
+                "name": "菲律宾驻沙巴领事外展服务",
+                "full_date": "2026-11-20",
+                "end_date": "2026-11-22",
+                "location": "山打根 Livingston Hotel",
+                "desc": "领事服务"
+            },
+            {
+                "name": "第八届沙巴社区旅游展",
+                "full_date": "2026-11-20",
+                "end_date": "2026-11-22",
+                "location": "亚庇 Suria Sabah Shopping Mall",
+                "desc": "旅游展"
+            },
+            {
+                "name": "Adau Janang Gayuh",
+                "full_date": "2026-11-26",
+                "end_date": "2026-11-29",
+                "location": "保佛 Beaufort",
+                "desc": "文化节"
+            },
+            {
+                "name": "Sandakan Meow Run 2026",
+                "full_date": "2026-12-06",
+                "end_date": "2026-12-06",
+                "location": "山打根 Kompleks Sukan Bola Sepak Sandakan",
+                "desc": "猫咪路跑"
+            }
+        ]
+        res = sync_events_archive(mixed_events, "2026-11-21", archive_file=self.archive_file)
+        self.assertEqual(len(res), 2)
+        names = [e["name"] for e in res]
+        self.assertIn("菲律宾驻沙巴领事外展服务", names)
+        self.assertIn("Sandakan Meow Run 2026", names)
+        self.assertNotIn("第八届沙巴社区旅游展", names)
+        self.assertNotIn("Adau Janang Gayuh", names)
+
+
 
 class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
     @classmethod
@@ -358,6 +400,42 @@ class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
             empty_html = f.read()
         self.assertIn("近期暂无新增活动通告", empty_html)
         self.assertIn("常态监测中", empty_html)
+
+    def test_07_cross_day_ongoing_event_date_box_display(self):
+        """测试跨天进行中活动（如 11/20-11/22 在 11/21）：黄色日期方块改为显示『进行中』与日期范围，不只显示已过去的 11/20"""
+        today_iso = build_news.get_myt_datetime().strftime("%Y-%m-%d")
+        cross_day_ev = [{
+            "id": 1,
+            "name": "菲律宾驻沙巴领事外展服务",
+            "nameBM": "Perkhidmatan Outreach Konsular Filipina",
+            "full_date": "2026-11-20",
+            "end_date": "2026-11-22",
+            "location": "山打根 Livingston Hotel",
+            "time": "以主办单位公布为准",
+            "desc": "为在沙巴的菲律宾公民提供领事服务。",
+            "source": "菲律宾领事馆",
+            "first_seen_date": today_iso,
+            "countdown_days": 0
+        }]
+        with open("data/events_archive.json", "w", encoding="utf-8") as f:
+            json.dump(cross_day_ev, f, ensure_ascii=False)
+        if os.path.exists("news_data.json"):
+            with open("news_data.json", "r", encoding="utf-8") as f:
+                nd = json.load(f)
+            nd["events"] = cross_day_ev
+            with open("news_data.json", "w", encoding="utf-8") as f:
+                json.dump(nd, f, ensure_ascii=False)
+        build_news.generate_index_html()
+        with open("index.html", "r", encoding="utf-8") as f:
+            html = f.read()
+
+        # 1. 验证左侧日期方块包含「进行中」与「20-22」
+        self.assertIn('<span class="lang-zh">进行中</span>', html)
+        self.assertIn('20-22', html)
+        # 2. 验证右侧倒计时胶囊也是「进行中」
+        self.assertIn('<span class="lang-zh">进行中</span><span class="lang-bm hidden">Sedang Berlangsung</span>', html)
+        # 3. 验证日期摘要为范围
+        self.assertIn('11/20 - 11/22', html)
 
 
 if __name__ == "__main__":

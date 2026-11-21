@@ -131,6 +131,22 @@ def parse_date_range(raw_date_str: str, default_date: str) -> Tuple[str, str]:
                     return start_d, f"{y1}-{m1:02d}-{d2:02d}"
             except Exception:
                 pass
+        if "为期" in raw_date_str:
+            try:
+                st_dt = datetime.strptime(start_d, "%Y-%m-%d").date()
+                if re.search(r'为期(?:约)?(?:一|1)\s*个?月', raw_date_str):
+                    return start_d, (st_dt + timedelta(days=30)).strftime("%Y-%m-%d")
+                m_months = re.search(r'为期(?:约)?(\d+)\s*个?月', raw_date_str)
+                if m_months:
+                    return start_d, (st_dt + timedelta(days=int(m_months.group(1)) * 30)).strftime("%Y-%m-%d")
+                m_days = re.search(r'为期(?:约)?(\d+)\s*(?:天|日)', raw_date_str)
+                if m_days:
+                    return start_d, (st_dt + timedelta(days=int(m_days.group(1)))).strftime("%Y-%m-%d")
+                m_weeks = re.search(r'为期(?:约)?(\d+)\s*周', raw_date_str)
+                if m_weeks:
+                    return start_d, (st_dt + timedelta(weeks=int(m_weeks.group(1)))).strftime("%Y-%m-%d")
+            except Exception:
+                pass
         return start_d, start_d
 
     if iso_matches:
@@ -144,10 +160,11 @@ def extract_event_keywords(text: str) -> set:
     if not text:
         return set()
     stopwords = {
-        "活动", "举办", "沙巴", "山打根", "社区", "进行", "今日", "明日", "昨日",
+        "活动", "举办", "沙巴", "山打根", "山打", "打根", "社区", "进行", "今日", "明日", "昨日",
         "时间", "地点", "主办", "单位", "官方", "通告", "预报", "通知", "公布",
         "市民", "参与", "出席", "现场", "2026", "2025", "acara", "program",
-        "sandakan", "sabah", "rasmi", "notis"
+        "sandakan", "sabah", "rasmi", "notis", "大马", "市区", "提供", "包括",
+        "相关", "前往", "欢迎", "人士", "民众", "大家", "各界", "详情", "联络"
     }
     en_words = re.findall(r'[a-zA-Z]{3,}', text.lower())
     zh_words = re.findall(r'[\u4e00-\u9fff]{2,}', text)
@@ -161,7 +178,7 @@ def extract_event_keywords(text: str) -> set:
             if len(w) >= 4:
                 for i in range(len(w) - 1):
                     sub = w[i:i+2]
-                    if sub not in stopwords:
+                    if sub not in stopwords and len(sub) >= 2:
                         keywords.add(sub)
     return keywords
 
@@ -234,6 +251,37 @@ def is_same_event_record(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     return False
 
 
+def is_sandakan_event(item: Dict[str, Any]) -> bool:
+    """
+    地区过滤：严格仅保留山打根地区活动，剔除亚庇、保佛、兵南邦、斗湖等非山打根记录。
+    判断规则：
+    1. 若地点明确包含非山打根城市（如 亚庇、保佛、兵南邦 等）且未在山打根举行，则坚决剔除；
+    2. 若全文包含外地城市标签且地点未明确指明山打根，坚决剔除；
+    3. 保留明确山打根地标或通用合法活动。
+    """
+    name = (item.get("name") or "").lower()
+    location = (item.get("location") or "").lower()
+    desc = (item.get("desc") or "").lower()
+    source = (item.get("source") or item.get("organizer") or "").lower()
+    full_text = f"{name} {location} {desc} {source}"
+
+    non_sandakan_cities = [
+        "亚庇", "kota kinabalu", "suria sabah", "likas", "imago",
+        "保佛", "beaufort", "兵南邦", "penampang", "itcc",
+        "斗湖", "tawau", "根地咬", "keningau",
+        "纳闽", "labuan", "古达", "kudat", "仙本那", "semporna",
+        "拿笃", "lahad datu", "必打丹", "putatan", "斗亚兰", "tuaran", "担波罗利", "tamparuli"
+    ]
+
+    has_sandakan_loc = any(k in location for k in ["山打根", "sandakan"])
+    has_non_sandakan = any(city in full_text for city in non_sandakan_cities)
+
+    if has_non_sandakan and not has_sandakan_loc:
+        return False
+
+    return True
+
+
 def sync_events_archive(
     incoming_events: List[Dict[str, Any]],
     today_iso: str,
@@ -265,6 +313,10 @@ def sync_events_archive(
                     archive_events = loaded["events"]
         except Exception as e:
             logger.warning(f"Failed to read {archive_file}: {e}")
+
+    # 严格地区过滤：只保留山打根活动，彻底剔除亚庇、保佛、兵南邦等外地记录
+    archive_events = [e for e in archive_events if is_sandakan_event(e)]
+    incoming_events = [e for e in incoming_events if is_sandakan_event(e)]
 
     # 归档库自身内部去重合并（按“起始日期 + 地标/核心词重叠或标题相似度 >= 0.50”合并冗余条目，保留最早的 first_seen_date）
     deduped_archive: List[Dict[str, Any]] = []
@@ -1148,8 +1200,10 @@ class GDriveMarkdownReader:
             if not is_empty_placeholder:
                 if re.search(r'(?:^|\n)#{1,4}\s+', part3_text):
                     e_starts = list(re.finditer(r'(?:^|\n)#{1,4}\s+', part3_text))
+                elif re.search(r'(?:^|\n)\s*(?:\[\d{1,2}\]|\d{1,2}[\.、])', part3_text):
+                    e_starts = list(re.finditer(r'(?:^|\n)\s*(?=\[\d{1,2}\]|\d{1,2}[\.、])', part3_text))
                 else:
-                    e_starts = list(re.finditer(r'(?:^|\n|(?<=\n)|(?=[-*•]?\s*\*{0,2}【(?:活动名称|活动标题)】))(?=[-•*]?\s*\*{0,2}【(?:活动名称|活动标题)】|\d{1,2}[\.、]\s+)', part3_text))
+                    e_starts = list(re.finditer(r'(?:^|\n|(?<=\n))(?=[-•*]?\s*\*{0,2}【(?:活动名称|活动标题)】)', part3_text))
                 e_blocks = []
                 if e_starts:
                     for i, m in enumerate(e_starts):
@@ -1185,7 +1239,9 @@ class GDriveMarkdownReader:
                         clean_date, end_date = parse_date_range(raw_date, default_date)
 
                         raw_organizer = tags.get("主办单位", "官方通告")
-                        clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
+                        clean_organizer = re.split(r'[\r\n]+', raw_organizer)[0].strip()
+                        clean_organizer = re.split(r'(?:\[\d+\]|\d+[\.、])', clean_organizer)[0].strip()
+                        clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', clean_organizer).strip()
                         if not clean_organizer:
                             clean_organizer = "官方通告"
 
@@ -1194,7 +1250,7 @@ class GDriveMarkdownReader:
                         m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
                         ev_tel = m_tel.group(1).strip() if m_tel else ""
 
-                        event_items.append({
+                        ev_item = {
                             "name": e_name,
                             "date": clean_date,
                             "end_date": end_date,
@@ -1204,7 +1260,9 @@ class GDriveMarkdownReader:
                             "desc": ev_desc,
                             "organizer": clean_organizer,
                             "tel": ev_tel
-                        })
+                        }
+                        if is_sandakan_event(ev_item):
+                            event_items.append(ev_item)
 
         # ----------------- 降级分支：如果未检测到第一/第二部分大章节标识 -----------------
         if not part1_text and not part2_text:
@@ -1314,7 +1372,9 @@ class GDriveMarkdownReader:
                     clean_date, end_date = parse_date_range(raw_date, default_date)
 
                     raw_organizer = tags.get("主办单位", "官方通告")
-                    clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', raw_organizer.strip())
+                    clean_organizer = re.split(r'[\r\n]+', raw_organizer)[0].strip()
+                    clean_organizer = re.split(r'(?:\[\d+\]|\d+[\.、])', clean_organizer)[0].strip()
+                    clean_organizer = re.sub(r'[\s\-\—\–\|]+$', '', clean_organizer).strip()
                     if not clean_organizer:
                         clean_organizer = "官方通告"
 
@@ -1323,7 +1383,7 @@ class GDriveMarkdownReader:
                     m_tel = re.search(r'(?:电话|热线|联络|咨询|Tel|WhatsApp|Hubungi)?\s*[:：]?\s*(\+?60[\s\-]?\d{1,2}[\s\-]?\d{6,8}|0\d{1,2}[\s\-]?\d{6,8})', full_ev_text, re.IGNORECASE)
                     ev_tel = m_tel.group(1).strip() if m_tel else ""
 
-                    event_items.append({
+                    ev_item = {
                         "name": e_name,
                         "date": clean_date,
                         "end_date": end_date,
@@ -1333,7 +1393,9 @@ class GDriveMarkdownReader:
                         "desc": ev_desc,
                         "organizer": clean_organizer,
                         "tel": ev_tel
-                    })
+                    }
+                    if is_sandakan_event(ev_item):
+                        event_items.append(ev_item)
 
         # 强制 news_items = news_items[:15] 截断限制
         news_items = news_items[:15]
@@ -2001,6 +2063,9 @@ class GDriveMarkdownReader:
             time_str = meta.get("time") or "08:00 AM - 05:00 PM"
             tel_str = meta.get("tel") or ""
             src_str = s.sources[0] if s.sources else "官方信源"
+
+            if not is_sandakan_event({"name": s.title, "location": loc_str, "desc": s.body, "source": src_str}):
+                continue
 
             events.append({
                 "id": len(events) + 1,

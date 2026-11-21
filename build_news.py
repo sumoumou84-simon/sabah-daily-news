@@ -20,9 +20,9 @@ OUTPUT_HTML_FILE = os.path.join(BASE_DIR, "index.html")
 EVENTS_ARCHIVE_FILE = os.path.join(BASE_DIR, "data", "events_archive.json")
 
 try:
-    from pipeline.gdrive_reader import sync_events_archive, parse_date_range
+    from pipeline.gdrive_reader import sync_events_archive, parse_date_range, is_sandakan_event
 except ImportError:
-    from gdrive_reader import sync_events_archive, parse_date_range
+    from gdrive_reader import sync_events_archive, parse_date_range, is_sandakan_event
 
 def get_myt_datetime():
     """获取马来西亚时间（UTC+8）"""
@@ -577,9 +577,32 @@ def generate_index_html():
         events_count_badge = f'<span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>'
         for ev in events_list:
             countdown_days = ev.get('countdown_days', 0)
+
+            raw_d = ev.get('full_date') or ev.get('date') or today_iso
+            end_d = ev.get('end_date') or raw_d
+            try:
+                start_dt = datetime.strptime(raw_d[:10], "%Y-%m-%d").date()
+            except Exception:
+                start_dt = datetime.strptime(today_iso, "%Y-%m-%d").date()
+            try:
+                end_dt = datetime.strptime(end_d[:10], "%Y-%m-%d").date()
+            except Exception:
+                end_dt = start_dt
+            try:
+                today_dt = datetime.strptime(today_iso, "%Y-%m-%d").date()
+            except Exception:
+                today_dt = datetime.now().date()
+
+            is_cross_day = (end_dt > start_dt)
+            is_ongoing = (start_dt <= today_dt <= end_dt)
+
             if countdown_days == 0:
-                countdown_label_zh = "今天举行"
-                countdown_label_bm = "Hari Ini"
+                if is_cross_day and is_ongoing:
+                    countdown_label_zh = "进行中"
+                    countdown_label_bm = "Sedang Berlangsung"
+                else:
+                    countdown_label_zh = "今天举行"
+                    countdown_label_bm = "Hari Ini"
                 countdown_badge_color = "bg-[#22c55e] text-black font-black"
             elif countdown_days == 1:
                 countdown_label_zh = "还有 1 天"
@@ -611,19 +634,44 @@ def generate_index_html():
             location_zh = ev.get('location') or '山打根社区中心'
             location_bm = ev.get('locationBM') or location_zh
 
-            ev_month = ev.get('month')
-            ev_day = ev.get('day')
-            if not ev_month or not ev_day:
-                raw_d = ev.get('full_date') or ev.get('date') or today_iso
-                try:
-                    dt = datetime.strptime(raw_d[:10], "%Y-%m-%d")
-                    ev_month = f"{dt.month:02d}"
-                    ev_day = f"{dt.day:02d}"
-                except Exception:
-                    ev_month = "11"
-                    ev_day = "21"
+            ev_month = f"{start_dt.month:02d}"
+            ev_day = f"{start_dt.day:02d}"
 
-            ev_date_display = ev.get('raw_date_str') or ev.get('date') or ev.get('full_date') or f"{ev_month}/{ev_day}"
+            if is_cross_day and is_ongoing:
+                if start_dt.month == end_dt.month:
+                    range_label = f"{start_dt.day:02d}-{end_dt.day:02d}"
+                else:
+                    range_label = f"{start_dt.month}/{start_dt.day}-{end_dt.month}/{end_dt.day}"
+                date_box_html = f"""<div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                    <span class="font-black text-[11px] sm:text-[12px] tracking-tight leading-none">
+                        <span class="lang-zh">进行中</span>
+                        <span class="lang-bm hidden">LIVE</span>
+                    </span>
+                    <span class="font-black text-[9.5px] sm:text-[10.5px] mt-1 mono leading-none">{range_label}</span>
+                </div>"""
+            elif is_cross_day:
+                if start_dt.month == end_dt.month:
+                    range_label = f"{start_dt.day:02d}-{end_dt.day:02d}"
+                    date_box_html = f"""<div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                        <span class="font-black text-[12px] sm:text-[13px] leading-none">{ev_month}月</span>
+                        <span class="font-extrabold text-[9.5px] sm:text-[10.5px] mt-0.5 mono leading-none">{range_label}</span>
+                    </div>"""
+                else:
+                    range_label = f"{start_dt.day:02d}日起"
+                    date_box_html = f"""<div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                        <span class="font-black text-[11px] sm:text-[12px] leading-none">{ev_month}月</span>
+                        <span class="font-extrabold text-[9px] sm:text-[9.5px] mt-0.5 mono leading-none">{range_label}</span>
+                    </div>"""
+            else:
+                date_box_html = f"""<div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm text-center">
+                    <span class="font-black text-[12.5px] sm:text-[14px] leading-none">{ev_month}</span>
+                    <span class="font-bold text-[10px] sm:text-[11px] leading-none">/{ev_day}</span>
+                </div>"""
+
+            if is_cross_day:
+                ev_date_display = ev.get('raw_date_str') or f"{start_dt.strftime('%m/%d')} - {end_dt.strftime('%m/%d')}"
+            else:
+                ev_date_display = ev.get('raw_date_str') or f"{ev_month}/{ev_day}"
 
             ev_id = ev.get('id', 1)
             ev_name_zh = ev.get('name', '社区活动')
@@ -642,10 +690,7 @@ def generate_index_html():
         <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev_id}" ontoggle="updateEventCardHint(this)">
             <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
                 <!-- 1. 左侧日期方块 -->
-                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
-                    <span class="font-black text-[12.5px] sm:text-[14px]">{ev_month}</span>
-                    <span class="font-bold text-[10px] sm:text-[11px]">/{ev_day}</span>
-                </div>
+                {date_box_html}
 
                 <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
                 <div class="flex-1 min-w-0 pr-1">
