@@ -148,7 +148,7 @@ def generate_index_html():
     except Exception as e:
         print(f"⚠️ 同步更新 {NEWS_DATA_FILE} 失败: {e}")
 
-    # 1. 动态生成 3 列黄色公用事业卡片 (UTILITI)
+    # 1. 动态生成黄色公用事业/民生通告卡片 (UTILITI) - 弹性自适应网格，最高支持 6 条自动换行排版
     default_utils = [
         {
             "id": "M",
@@ -159,6 +159,8 @@ def generate_index_html():
             "statusBM": "Dalam Pengesahan",
             "verified": False,
             "is_live": False,
+            "official_source_url": "https://www.sabah.gov.my/",
+            "source_timestamp": f"{today_iso} {cur_time_hm}",
             "issue": "拉卜路 4 哩至 8 哩路段例行巡查维护。官方信源今日暂无突发紧急抢修通告，市议会正进行例行巡检与排水清淤。",
             "issueBM": "Penyelenggaraan rutin di Batu 4 - Batu 8 Jalan Labuk. Tiada notis kecemasan baharu hari ini, pemantauan berkala sedang dijalankan.",
             "pressure": "影响路段：拉卜路4哩至8哩、市区夜市周边例行巡检",
@@ -174,24 +176,25 @@ def generate_index_html():
         },
         {
             "id": "W",
-            "label": "沙巴水务局 (JANS) 斗湖古哈拉供水",
-            "labelBM": "Operasi Pemulihan Bekalan Air JANS Tawau Kuhara",
+            "label": "沙巴水务局 (JANS) 供水调度",
+            "labelBM": "Operasi Agihan Bekalan Air JANS Sandakan",
             "time": cur_time_hm,
             "status": "待核实",
             "statusBM": "Dalam Pengesahan",
             "verified": False,
             "is_live": False,
             "official_source_url": "https://water.sabah.gov.my/",
-            "issue": "今日官方信源暂无突发紧急抢修通告。斗湖古哈拉抽水主站维持常态平稳供水，水务局正进行全区例行巡检与水压监测。",
-            "issueBM": "Tiada notis kecemasan baharu hari ini. Stesen Kuhara Tawau beroperasi secara berkala dan pemantauan tekanan air dijalankan.",
-            "pressure": "水压状态：斗湖市区及沿海片区维持例行常压监测",
-            "pressureBM": "Kawasan bekalan: Tekanan air di bandar Tawau dan persisiran dipantau",
+            "source_timestamp": f"{today_iso} {cur_time_hm}",
+            "issue": "今日官方信源暂无突发紧急抢修通告。水务局正进行全区例行巡检与水压监测。",
+            "issueBM": "Tiada notis kecemasan baharu hari ini. Pemantauan tekanan air dijalankan secara berkala.",
+            "pressure": "水压状态：山打根市区及沿海片区维持例行常压监测",
+            "pressureBM": "Kawasan bekalan: Tekanan air di bandar Sandakan dan persisiran dipantau",
             "recovery": "工程验收：主站设备运行平稳，维持全天候常态供水",
             "recoveryBM": "Kemajuan: Operasi stesen pam beroperasi secara berkala",
             "tanker": "应急保障：管网运行正常，应急送水车解除一级待命",
             "tankerBM": "Lori tangki: Operasi penghantaran kecemasan tidak aktif",
-            "consult": "089-761057",
-            "consult2": "JANS 24J",
+            "consult": "089-272161",
+            "consult2": "JANS Careline",
             "source": "沙巴水务局通报复核中",
             "sourceBM": "Menunggu Pengesahan JANS"
         },
@@ -204,6 +207,8 @@ def generate_index_html():
             "statusBM": "Dalam Pengesahan",
             "verified": False,
             "is_live": False,
+            "official_source_url": "https://www.sabah.gov.my/",
+            "source_timestamp": f"{today_iso} {cur_time_hm}",
             "issue": "今日官方信源暂无突发大面积断电通告。全州电网维持稳定性例行调度维护与常态巡检。",
             "issueBM": "Tiada notis kecemasan blackout hari ini. Penyelenggaraan grid berkala sedang dijalankan.",
             "pressure": "监测范围：山打根工业区及沿海变电枢纽例行监测",
@@ -219,110 +224,146 @@ def generate_index_html():
         }
     ]
 
-    for i, u_raw in enumerate(utilities):
-        if i < len(default_utils):
-            c_title, v_tag, s_list, c_detail = extract_tags_and_sources(u_raw.get("title", ""), u_raw.get("detail", ""))
-            
-            # 中文标题
-            if u_raw.get("label"):
-                default_utils[i]["label"] = u_raw["label"]
-            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
-                default_utils[i]["label"] = "山打根市议会 (MPS) 道路维修与夜市"
-            elif "水务局" in c_title or "JANS" in c_title or "古哈拉" in c_title:
-                default_utils[i]["label"] = "沙巴水务局 (JANS) 斗湖古哈拉抽水"
-            else:
-                default_utils[i]["label"] = c_title[:24]
+    from pipeline.gdrive_reader import clean_status_tag
 
-            # 马来文 BM 标题：全面本地化映射，杜绝中马文混杂
-            if u_raw.get("labelBM"):
-                default_utils[i]["labelBM"] = u_raw["labelBM"]
-            elif u_raw.get("titleBM"):
-                bm_title, _, _, _ = extract_tags_and_sources(u_raw["titleBM"], "")
-                default_utils[i]["labelBM"] = bm_title
-            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
-                default_utils[i]["labelBM"] = "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan"
-            elif "水务局" in c_title or "JANS" in c_title or "古哈拉" in c_title:
-                default_utils[i]["labelBM"] = "Operasi Pengepaman Air JANS Tawau Kuhara"
-            elif "电力" in c_title or "SESB" in c_title:
-                default_utils[i]["labelBM"] = "Sabah Electricity (SESB) Grid"
-            else:
-                default_utils[i]["labelBM"] = default_utils[i].get("labelBM", "Notis Rasmi Utiliti Awam")
+    rendered_utils = []
+    if utilities and len(utilities) > 0:
+        for idx, u_raw in enumerate(utilities[:6]):
+            c_title, v_tag, s_list, c_detail = extract_tags_and_sources(u_raw.get("title", ""), u_raw.get("detail", ""))
+            comb_text = f"{u_raw.get('notice_type', '')} {c_title} {u_raw.get('label', '')} {u_raw.get('publisher', '')}"
 
             # 徽章 ID
-            if u_raw.get("id"):
-                default_utils[i]["id"] = u_raw["id"]
-            elif "市议会" in c_title or "MPS" in c_title:
-                default_utils[i]["id"] = "M"
-            elif "水务局" in c_title or "JANS" in c_title:
-                default_utils[i]["id"] = "W"
-            elif "电力" in c_title or "SESB" in c_title:
-                default_utils[i]["id"] = "E"
-
-            # 动态时间戳（消除假未来时间）
-            if u_raw.get("time"):
-                default_utils[i]["time"] = u_raw["time"]
+            raw_id = u_raw.get("id")
+            if any(k in comb_text for k in ["气象", "天气", "降雨", "暴雨", "雷雨", "Cuaca", "MetMalaysia"]):
+                u_id = "C"
+            elif any(k in comb_text for k in ["水灾", "防汛", "洪涝", "洪水", "Banjir", "JPS", "水利"]):
+                u_id = "F"
+            elif any(k in comb_text for k in ["水务", "供水", "断水", "JANS", "水管", "水压"]):
+                u_id = "W"
+            elif any(k in comb_text for k in ["电力", "供电", "断电", "停电", "SESB", "电网"]):
+                u_id = "E"
+            elif any(k in comb_text for k in ["交通", "道路", "路况", "修路", "JPJ", "Trafik"]):
+                u_id = "T"
+            elif any(k in comb_text for k in ["医疗", "卫生", "医院", "Kesihatan", "Hospital"]):
+                u_id = "H"
+            elif any(k in comb_text for k in ["市政", "市议会", "MPS", "Pasar"]):
+                u_id = "M"
+            elif raw_id:
+                u_id = raw_id
             else:
-                default_utils[i]["time"] = cur_time_hm
+                fallback_ids = ["M", "W", "E", "C", "F", "T"]
+                u_id = fallback_ids[idx % len(fallback_ids)]
 
-            # 状态文案与防御性清洗（截断换行、序号及后续章节提示）
-            from pipeline.gdrive_reader import clean_status_tag
-            if u_raw.get("status"):
-                default_utils[i]["status"] = clean_status_tag(u_raw["status"], "已确认")
-            if u_raw.get("statusBM"):
-                default_utils[i]["statusBM"] = clean_status_tag(u_raw["statusBM"], "Disahkan")
+            # 中文标签
+            if u_raw.get("label"):
+                u_label = u_raw["label"]
+            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
+                u_label = "山打根市议会 (MPS) 道路维修与夜市"
+            elif "水务局" in c_title or "JANS" in c_title or "古哈拉" in c_title:
+                u_label = "沙巴水务局 (JANS) 供水调度"
+            elif c_title:
+                u_label = c_title[:24]
+            else:
+                u_label = "市政民生通告"
 
-            # 正文内容与状态子项
-            if u_raw.get("issue"):
-                default_utils[i]["issue"] = u_raw["issue"]
-            elif c_detail:
-                default_utils[i]["issue"] = c_detail
-            if u_raw.get("detailBM"):
-                default_utils[i]["issueBM"] = u_raw["detailBM"]
-            elif u_raw.get("issueBM"):
-                default_utils[i]["issueBM"] = u_raw["issueBM"]
+            # 马来文 BM 标签
+            if u_raw.get("labelBM"):
+                u_label_bm = u_raw["labelBM"]
+            elif u_raw.get("titleBM"):
+                bm_title, _, _, _ = extract_tags_and_sources(u_raw["titleBM"], "")
+                u_label_bm = bm_title[:30]
+            elif "市议会" in c_title or "MPS" in c_title or "夜市" in c_title or "道路" in c_title:
+                u_label_bm = "Penyelenggaraan Jalan & Pasar Malam MPS Sandakan"
+            elif "水务局" in c_title or "JANS" in c_title:
+                u_label_bm = "Operasi Agihan Bekalan Air JANS Sandakan"
+            elif "电力" in c_title or "SESB" in c_title:
+                u_label_bm = "Sabah Electricity (SESB) Grid"
+            elif "气象" in comb_text:
+                u_label_bm = "Notis Cuaca & Hujan MetMalaysia"
+            elif "水灾" in comb_text:
+                u_label_bm = "Notis Amaran Banjir & Paras Air JPS"
+            else:
+                u_label_bm = "Notis Rasmi Utiliti Awam"
 
-            # 子项指标：气压/范围、恢复/进展、保障/交通、咨询电话、官方信源链接等
-            for key in ["pressure", "pressureBM", "recovery", "recoveryBM", "tanker", "tankerBM", "consult", "consult2", "official_source_url", "source_timestamp"]:
-                if u_raw.get(key):
-                    default_utils[i][key] = u_raw[key]
+            u_time = u_raw.get("time") or cur_time_hm
+            u_status = clean_status_tag(u_raw.get("status", "已确认"), "已确认")
+            u_status_bm = clean_status_tag(u_raw.get("statusBM", "Disahkan"), "Disahkan")
 
-            # 防御性清洗 recovery 指标中的通告状态描述
-            if default_utils[i].get("recovery"):
-                raw_rec = re.sub(r'^通告状态[：:]\s*', '', str(default_utils[i]["recovery"]))
-                c_st = clean_status_tag(raw_rec, default_utils[i].get("status", "已确认"))
-                default_utils[i]["recovery"] = f"通告状态：{c_st}"
-                default_utils[i]["status"] = c_st
-            if default_utils[i].get("recoveryBM"):
-                c_st_bm = clean_status_tag(default_utils[i].get("statusBM", "Disahkan"), "Disahkan")
-                default_utils[i]["recoveryBM"] = f"Status: {c_st_bm}"
+            u_issue = u_raw.get("issue") or c_detail or u_raw.get("detail", "官方信源维持例行巡查与监测。")
+            u_issue_bm = u_raw.get("issueBM") or u_raw.get("detailBM") or u_issue
 
-            # 核验信源
-            if u_raw.get("source"):
-                default_utils[i]["source"] = u_raw["source"]
-            elif v_tag:
-                default_utils[i]["source"] = v_tag
+            u_pressure = u_raw.get("pressure") or "影响范围：山打根市区及周边片区例行巡检"
+            u_pressure_bm = u_raw.get("pressureBM") or "Kawasan terlibat: Sandakan dan sekitar"
+
+            u_recovery = u_raw.get("recovery") or f"通告状态：{u_status}"
+            raw_rec = re.sub(r'^通告状态[：:]\s*', '', str(u_recovery))
+            c_st = clean_status_tag(raw_rec, u_status)
+            u_recovery = f"通告状态：{c_st}"
+            u_status = c_st
+
+            u_recovery_bm = u_raw.get("recoveryBM") or f"Status: {u_status_bm}"
+            c_st_bm = clean_status_tag(str(u_recovery_bm).replace("Status:", "").strip(), u_status_bm)
+            u_recovery_bm = f"Status: {c_st_bm}"
+
+            u_tanker = u_raw.get("tanker") or "交通指引：现场设有警示标牌，维持常态通行"
+            u_tanker_bm = u_raw.get("tankerBM") or "Kawalan lalu lintas: Papan tanda amaran di lokasi"
+
+            u_consult = u_raw.get("consult") or "089-272161"
+            u_consult2 = u_raw.get("consult2") or "Careline"
+
+            u_source = u_raw.get("source") or v_tag or "官方通告核验中"
             if u_raw.get("sourceBM"):
-                default_utils[i]["sourceBM"] = u_raw["sourceBM"]
-            elif "MPS" in v_tag:
-                default_utils[i]["sourceBM"] = "Disahkan MPS & Hebahan Rasmi"
-            elif "JANS" in v_tag:
-                default_utils[i]["sourceBM"] = "Disahkan JANS & Sabah TV"
+                u_source_bm = u_raw["sourceBM"]
+            elif "MPS" in u_source:
+                u_source_bm = "Disahkan MPS & Hebahan Rasmi"
+            elif "JANS" in u_source:
+                u_source_bm = "Disahkan JANS & Hebahan Rasmi"
+            elif "气象" in u_source or "MetMalaysia" in u_source:
+                u_source_bm = "Disahkan MetMalaysia"
+            elif "水利" in u_source or "JPS" in u_source:
+                u_source_bm = "Disahkan JPS Sabah"
+            else:
+                u_source_bm = u_source
 
-            # 保持严格真实核验状态 (严禁未核验卡片虚标 LIVE)
-            if "verified" in u_raw:
-                default_utils[i]["verified"] = u_raw["verified"]
-            if "is_live" in u_raw:
-                default_utils[i]["is_live"] = u_raw["is_live"]
-            if not default_utils[i].get("verified"):
-                default_utils[i]["status"] = u_raw.get("status", "待核实")
-                if "LIVE" in default_utils[i]["status"]:
-                    default_utils[i]["status"] = "待核实"
-                default_utils[i]["statusBM"] = u_raw.get("statusBM", "Dalam Pengesahan")
-                if "LANGSUNG" in default_utils[i]["statusBM"]:
-                    default_utils[i]["statusBM"] = "Dalam Pengesahan"
+            is_verified = u_raw.get("verified", True)
+            is_live = u_raw.get("is_live", False)
+            if not is_verified:
+                u_status = u_raw.get("status", "待核实")
+                if "LIVE" in u_status:
+                    u_status = "待核实"
+                u_status_bm = u_raw.get("statusBM", "Dalam Pengesahan")
+                if "LANGSUNG" in u_status_bm:
+                    u_status_bm = "Dalam Pengesahan"
+
+            rendered_utils.append({
+                "id": u_id,
+                "label": u_label,
+                "labelBM": u_label_bm,
+                "time": u_time,
+                "status": u_status,
+                "statusBM": u_status_bm,
+                "verified": is_verified,
+                "is_live": is_live,
+                "official_source_url": u_raw.get("official_source_url", "https://www.sabah.gov.my/"),
+                "source_timestamp": u_raw.get("source_timestamp", f"{today_iso} {cur_time_hm}"),
+                "issue": u_issue,
+                "issueBM": u_issue_bm,
+                "pressure": u_pressure,
+                "pressureBM": u_pressure_bm,
+                "recovery": u_recovery,
+                "recoveryBM": u_recovery_bm,
+                "tanker": u_tanker,
+                "tankerBM": u_tanker_bm,
+                "consult": u_consult,
+                "consult2": u_consult2,
+                "source": u_source,
+                "sourceBM": u_source_bm
+            })
+    else:
+        rendered_utils = default_utils
 
     utiliti_cards_html = ""
-    for idx, u in enumerate(default_utils):
+    for idx, u in enumerate(rendered_utils):
         is_verified = u.get("verified", False)
         is_live = u.get("is_live", False)
         if is_live:
@@ -2059,7 +2100,7 @@ def generate_index_html():
                         </div>
                     </div>
 
-                    <!-- 3 列黄色公用事业卡片 (UTILITI) -->
+                    <!-- 黄色民生通告卡片 (UTILITI) - 自适应弹性网格（最多支持 6 条，超过 3 条自动换行成第二排） -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 mb-4 items-start" id="util-section">
                         {utiliti_cards_html}
                     </div>

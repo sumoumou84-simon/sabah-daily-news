@@ -944,7 +944,7 @@ class GDriveMarkdownReader:
         """
         cur_time_hm = datetime.now(MYT).strftime("%H:%M")
         formatted = []
-        for idx, u in enumerate(utilities):
+        for idx, u in enumerate(utilities[:6]):
             u_type = u.get("notice_type", "市政民生")
             u_title = u.get("title", "")
             u_detail = u.get("detail", "")
@@ -952,14 +952,28 @@ class GDriveMarkdownReader:
             u_status = clean_status_tag(u.get("status", "LIVE 抢修中"), "已确认")
 
             u_id = "M"
-            if "水" in u_type or "JANS" in u_pub or "水务" in u_title:
+            comb_text = f"{u_type} {u_title} {u_pub}"
+            if any(k in comb_text for k in ["气象", "天气", "暴雨", "雷雨", "降雨", "Cuaca", "MetMalaysia"]):
+                u_id = "C"
+            elif any(k in comb_text for k in ["水灾", "防汛", "洪涝", "洪水", "Banjir", "JPS", "水利"]):
+                u_id = "F"
+            elif any(k in comb_text for k in ["水务", "供水", "断水", "JANS", "水管", "水压"]):
                 u_id = "W"
-            elif "电" in u_type or "SESB" in u_pub or "电力" in u_title:
+            elif any(k in comb_text for k in ["电力", "供电", "断电", "停电", "SESB", "电网"]):
                 u_id = "E"
-            elif idx == 1:
-                u_id = "W"
-            elif idx >= 2:
-                u_id = "E"
+            elif any(k in comb_text for k in ["交通", "道路", "路况", "修路", "JPJ", "Trafik"]):
+                u_id = "T"
+            elif any(k in comb_text for k in ["医疗", "卫生", "医院", "Kesihatan", "Hospital"]):
+                u_id = "H"
+            elif any(k in comb_text for k in ["消拯", "消防", "Bomba"]):
+                u_id = "B"
+            elif any(k in comb_text for k in ["警", "治安", "PDRM", "ESSCOM"]):
+                u_id = "P"
+            elif any(k in comb_text for k in ["市政", "市议会", "MPS", "Pasar"]):
+                u_id = "M"
+            else:
+                icons = ["M", "W", "E", "C", "F", "T"]
+                u_id = icons[idx % len(icons)]
 
             is_live = "LIVE" in u_status.upper() or "抢修" in u_status or "预警" in u_status
             is_verified = not ("待核实" in u_status or "复核" in u_status)

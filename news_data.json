@@ -3,7 +3,7 @@
   "date": "2026-11-21",
   "utilities": [
     {
-      "id": "M",
+      "id": "C",
       "title": "山打根持续降雨警报 21日多阵雨",
       "titleBM": "山打根持续降雨警报 21日多阵雨",
       "label": "马来西亚气象局 气象通告",
@@ -55,7 +55,7 @@
       "is_live": true
     },
     {
-      "id": "W",
+      "id": "F",
       "title": "沙巴河流水位回落至正常水平 仍需留意降雨",
       "titleBM": "沙巴河流水位回落至正常水平 仍需留意降雨",
       "label": "水利灌溉局 水灾通告",
@@ -494,17 +494,17 @@
       "full_date": "2026-11-20",
       "end_date": "2026-11-22",
       "name": "菲律宾驻沙巴领事外展服务",
-      "nameBM": "菲律宾驻沙巴领事外展服务",
-      "time": "以主办单位现场公布为准",
+      "nameBM": "Perkhidmatan Outreach Konsular Filipina",
+      "time": "以主办单位公布为准",
       "timeBM": "以主办单位现场公布为准",
       "location": "山打根 Livingston Hotel",
       "category": "市政公益",
       "categoryBM": "市政公益",
       "badgeColor": "bg-[#14532d] text-[#86efac]",
-      "desc": "为在沙巴的菲律宾公民提供领事服务，包括证件相关咨询与办理，请携带相关证件前往。",
+      "desc": "为在沙巴的菲律宾公民提供领事服务。",
       "descBM": "为在沙巴的菲律宾公民提供领事服务，包括证件相关咨询与办理，请携带相关证件前往。",
       "tel": "",
-      "source": "菲律宾驻沙巴领事馆",
+      "source": "菲律宾领事馆",
       "sourceBM": "菲律宾驻沙巴领事馆",
       "countdown_days": 0,
       "first_seen_date": "2026-11-21"
