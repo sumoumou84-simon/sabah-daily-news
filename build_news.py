@@ -556,7 +556,7 @@ def generate_index_html():
                 </article>
                 """
         
-    # 3. 动态渲染沙巴活动预告与倒计时卡片（持久化归档 + 默认折叠、点击展开详情 + 智能角标 + 倒计时）
+    # 3. 动态渲染山打根活动预告与倒计时卡片（持久化归档 + 默认折叠、点击展开详情 + 智能角标 + 倒计时）
     events_cards_html = ""
     if not events_list:
         events_cards_html = """
@@ -2066,13 +2066,13 @@ def generate_index_html():
                     </div>
                 </div>
 
-                <!-- 沙巴活动预告与倒计时看板（从 data/events_archive.json 动态渲染，智能角标置顶、倒计时与单行头部） -->
+                <!-- 山打根活动预告与倒计时看板（从 data/events_archive.json 动态渲染，智能角标置顶、倒计时与单行头部） -->
                 <div class="theme-panel border rounded-[12px] overflow-hidden mt-2" id="events-section">
                     <div class="px-3 sm:px-4 py-2.5 sm:py-3 border-b flex items-center justify-between gap-2 overflow-hidden">
                         <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
                             <h3 class="font-black text-[14px] sm:text-[15px] whitespace-nowrap shrink-0">
-                                <span class="lang-zh">沙巴活动预告与倒计时</span>
-                                <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sabah</span>
+                                <span class="lang-zh">山打根活动预告与倒计时</span>
+                                <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sandakan</span>
                             </h3>
                             {events_count_badge}
                             <span class="hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0">

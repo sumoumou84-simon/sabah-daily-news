@@ -312,9 +312,9 @@ class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
 
     def test_02_section_header_single_line_and_compact(self):
         """测试活动板块标题单行不折行，移动端隐藏冗余说明胶囊"""
-        self.assertIn("沙巴活动预告与倒计时", self.html)
+        self.assertIn("山打根活动预告与倒计时", self.html)
         # 强制 whitespace-nowrap
-        self.assertIn('whitespace-nowrap shrink-0">\n                                <span class="lang-zh">沙巴活动预告与倒计时</span>', self.html)
+        self.assertIn('whitespace-nowrap shrink-0">\n                                <span class="lang-zh">山打根活动预告与倒计时</span>', self.html)
         # 始终可见说明胶囊在移动端隐藏 (hidden md:inline-flex)
         self.assertIn('hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0', self.html)
 
