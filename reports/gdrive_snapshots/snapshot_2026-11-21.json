@@ -1,13 +1,13 @@
 {
-  "snapshot_id": "gdrive_snap_2026-11-21_d07c06f6",
+  "snapshot_id": "gdrive_snap_2026-11-21_85d5bc78",
   "target_date": "2026-11-21",
   "source_file_name": "西门看看网 2026年11月21日 每日新闻.md",
   "source_file_id": "1TdszisjmUVdHc7woKdVCq8To4VLrRMqbke5XWRLSFQA",
-  "read_timestamp": "2026-11-21T12:36:33.641615+08:00",
-  "total_stories_found": 21,
+  "read_timestamp": "2026-11-21T12:47:41.124420+08:00",
+  "total_stories_found": 17,
   "news_stories_count": 13,
-  "event_stories_count": 8,
-  "markdown_sha256": "d07c06f6f4eb3e45d399451c34083b5ddcee31464f2ec5144ea6edb7e956ae83",
+  "event_stories_count": 4,
+  "markdown_sha256": "85d5bc78325cf294415c3a8a9510986d09b1cab0b1b10ab0fb62867221ea53fe",
   "news_stories": [
     {
       "index": 1,
@@ -239,7 +239,7 @@
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "菲律宾驻沙巴领事馆\r\n[2] 第八届沙巴社区旅游展"
+        "菲律宾驻沙巴领事馆\r\n[2] 伊罗普拉半程马拉松 山打根站"
       ],
       "source_urls": [],
       "date": "2026-11-20",
@@ -247,7 +247,7 @@
       "event_metadata": {
         "time": "以主办单位现场公布为准",
         "location": "山打根 Livingston Hotel",
-        "organizer": "菲律宾驻沙巴领事馆\r\n[2] 第八届沙巴社区旅游展",
+        "organizer": "菲律宾驻沙巴领事馆\r\n[2] 伊罗普拉半程马拉松 山打根站",
         "tel": "",
         "end_date": "2026-11-22",
         "raw_date_str": "2026年11月20日至22日"
@@ -258,36 +258,12 @@
     },
     {
       "index": 15,
-      "title": "第八届沙巴社区旅游展",
-      "body": "以传统巴刹为主题，展示沙巴各地乡村社区旅游产品与体验，推广社区旅游与地方手工艺。",
-      "category": "event",
-      "geo_scope": "sabah",
-      "sources": [
-        "沙巴旅游局\r\n[3] 伊罗普拉半程马拉松 山打根站"
-      ],
-      "source_urls": [],
-      "date": "2026-11-20",
-      "is_event": true,
-      "event_metadata": {
-        "time": "商场营业时间",
-        "location": "亚庇 Suria Sabah Shopping Mall",
-        "organizer": "沙巴旅游局\r\n[3] 伊罗普拉半程马拉松 山打根站",
-        "tel": "",
-        "end_date": "2026-11-22",
-        "raw_date_str": "2026年11月20日至22日"
-      },
-      "raw_header": "### 第八届沙巴社区旅游展",
-      "title_bm": "第八届沙巴社区旅游展",
-      "body_bm": "以传统巴刹为主题，展示沙巴各地乡村社区旅游产品与体验，推广社区旅游与地方手工艺。"
-    },
-    {
-      "index": 16,
       "title": "伊罗普拉半程马拉松",
       "body": "半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "伊罗普拉半程马拉松主办单位\r\n[4] Rasa Sandakan 美食足迹 2.0"
+        "伊罗普拉半程马拉松主办单位\r\n[3] Rasa Sandakan 美食足迹 2.0"
       ],
       "source_urls": [],
       "date": "2026-11-22",
@@ -295,7 +271,7 @@
       "event_metadata": {
         "time": "清晨开跑，具体时间以主办单位公布为准",
         "location": "山打根",
-        "organizer": "伊罗普拉半程马拉松主办单位\r\n[4] Rasa Sandakan 美食足迹 2.0",
+        "organizer": "伊罗普拉半程马拉松主办单位\r\n[3] Rasa Sandakan 美食足迹 2.0",
         "tel": "",
         "end_date": "2026-11-22",
         "raw_date_str": "2026年11月22日"
@@ -305,13 +281,13 @@
       "body_bm": "半程马拉松路跑赛事，跑者沿山打根市区路线参赛，请留意当日部分路段交通管制。"
     },
     {
-      "index": 17,
+      "index": 16,
       "title": "Rasa Sandakan Food Trail 2.0",
       "body": "美食足迹挑战活动，推广山打根作为沙巴美食之都，鼓励民众打卡品尝本地美食。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "山打根美食推广主办单位\r\n[5] Adau Janang Gayuh 比萨亚族群庆典"
+        "山打根美食推广主办单位\r\n[4] 山打根喵跑 2026"
       ],
       "source_urls": [],
       "date": "2026-11-22",
@@ -319,7 +295,7 @@
       "event_metadata": {
         "time": "各参与食肆营业时间",
         "location": "山打根各参与食肆",
-        "organizer": "山打根美食推广主办单位\r\n[5] Adau Janang Gayuh 比萨亚族群庆典",
+        "organizer": "山打根美食推广主办单位\r\n[4] 山打根喵跑 2026",
         "tel": "",
         "end_date": "2026-11-22",
         "raw_date_str": "2026年11月22日起，为期约一个月"
@@ -329,37 +305,13 @@
       "body_bm": "美食足迹挑战活动，推广山打根作为沙巴美食之都，鼓励民众打卡品尝本地美食。"
     },
     {
-      "index": 18,
-      "title": "Adau Janang Gayuh",
-      "body": "比萨亚族群文化庆典，时隔7年再度举办，包含族群文化表演与社区活动。",
-      "category": "event",
-      "geo_scope": "sabah",
-      "sources": [
-        "比萨亚保佛联合会\r\n[6] 山打根喵跑 2026"
-      ],
-      "source_urls": [],
-      "date": "2026-11-26",
-      "is_event": true,
-      "event_metadata": {
-        "time": "以主办单位公布为准",
-        "location": "保佛 Beaufort",
-        "organizer": "比萨亚保佛联合会\r\n[6] 山打根喵跑 2026",
-        "tel": "",
-        "end_date": "2026-11-29",
-        "raw_date_str": "2026年11月26日至29日"
-      },
-      "raw_header": "### Adau Janang Gayuh",
-      "title_bm": "Adau Janang Gayuh",
-      "body_bm": "比萨亚族群文化庆典，时隔7年再度举办，包含族群文化表演与社区活动。"
-    },
-    {
-      "index": 19,
+      "index": 17,
       "title": "Sandakan Meow Run 2026",
       "body": "以猫咪为主题的路跑活动，适合一家大小参与。",
       "category": "event",
       "geo_scope": "sandakan",
       "sources": [
-        "山打根喵跑主办单位\r\n[7] Majaps 慈善跑 2026"
+        "山打根喵跑主办单位"
       ],
       "source_urls": [],
       "date": "2026-12-06",
@@ -367,7 +319,7 @@
       "event_metadata": {
         "time": "以主办单位公布为准",
         "location": "山打根 Kompleks Sukan Bola Sepak Sandakan",
-        "organizer": "山打根喵跑主办单位\r\n[7] Majaps 慈善跑 2026",
+        "organizer": "山打根喵跑主办单位",
         "tel": "",
         "end_date": "2026-12-06",
         "raw_date_str": "2026年12月6日"
@@ -375,54 +327,6 @@
       "raw_header": "### Sandakan Meow Run 2026",
       "title_bm": "Sandakan Meow Run 2026",
       "body_bm": "以猫咪为主题的路跑活动，适合一家大小参与。"
-    },
-    {
-      "index": 20,
-      "title": "Majaps Charity Run 2026",
-      "body": "7公里傍晚慈善跑，预计约2000名跑者与支持者参与，附设幸运抽奖。",
-      "category": "event",
-      "geo_scope": "sabah",
-      "sources": [
-        "沙巴太平局绅理事会\r\n[8] 沙巴半程马拉松"
-      ],
-      "source_urls": [],
-      "date": "2026-12-06",
-      "is_event": true,
-      "event_metadata": {
-        "time": "下午5时开跑",
-        "location": "兵南邦 ITCC Shopping Complex",
-        "organizer": "沙巴太平局绅理事会\r\n[8] 沙巴半程马拉松",
-        "tel": "",
-        "end_date": "2026-12-06",
-        "raw_date_str": "2026年12月6日"
-      },
-      "raw_header": "### Majaps Charity Run 2026",
-      "title_bm": "Majaps Charity Run 2026",
-      "body_bm": "7公里傍晚慈善跑，预计约2000名跑者与支持者参与，附设幸运抽奖。"
-    },
-    {
-      "index": 21,
-      "title": "Sabah Half Marathon Powered by JomRun",
-      "body": "半程马拉松路跑赛事，包含半马与短距离组别，适合不同程度跑者。",
-      "category": "event",
-      "geo_scope": "sabah",
-      "sources": [
-        "JomRun"
-      ],
-      "source_urls": [],
-      "date": "2026-12-13",
-      "is_event": true,
-      "event_metadata": {
-        "time": "以主办单位公布为准",
-        "location": "亚庇 Likas Stadium",
-        "organizer": "JomRun",
-        "tel": "",
-        "end_date": "2026-12-13",
-        "raw_date_str": "2026年12月13日"
-      },
-      "raw_header": "### Sabah Half Marathon Powered by JomRun",
-      "title_bm": "Sabah Half Marathon Powered by JomRun",
-      "body_bm": "半程马拉松路跑赛事，包含半马与短距离组别，适合不同程度跑者。"
     }
   ]
 }
