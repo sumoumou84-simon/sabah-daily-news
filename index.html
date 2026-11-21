@@ -28,7 +28,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('./sw.js?v=1795228549')
+                navigator.serviceWorker.register('./sw.js?v=1795235043')
                     .then(function(reg) {
                         reg.update();
                         if (reg.waiting) {
@@ -258,9 +258,13 @@
         .theme-dark .event-card:hover {
             background-color: var(--bg-card-hover) !important;
         }
-        .theme-dark .event-card.open {
+        .theme-dark .event-card.open,
+        .theme-dark details.event-card[open] {
             background-color: #243247 !important;
             border-color: #FFD60A !important;
+        }
+        .theme-dark .event-empty-title {
+            color: #F8FAFC !important;
         }
         .theme-dark .event-title {
             color: #F8FAFC !important;
@@ -549,10 +553,14 @@
         .theme-light .event-card:hover {
             background-color: var(--bg-card-hover) !important;
         }
-        .theme-light .event-card.open {
+        .theme-light .event-card.open,
+        .theme-light details.event-card[open] {
             background-color: #FFFFFF !important;
             border-color: #F59E0B !important;
             box-shadow: 0 0 0 1px #F59E0B;
+        }
+        .theme-light .event-empty-title {
+            color: #0F172A !important;
         }
         .theme-light .event-title {
             color: #0F172A !important;
@@ -821,11 +829,23 @@
             margin: 0 auto;
         }
 
-        /* 活动卡片展开样式 */
+        /* 移除原生 details summary 的默认三角形与边距 */
+        details.event-card summary::-webkit-details-marker,
+        details.event-card summary::marker {
+            display: none !important;
+        }
+        details.event-card summary {
+            list-style: none !important;
+            outline: none !important;
+        }
+
+        /* 活动卡片展开样式 (同时兼容原生 details[open] 与 .event-card.open) */
+        details.event-card[open] .event-drawer,
         .event-card.open .event-drawer {
             display: block !important;
             animation: fadeIn 0.25s ease;
         }
+        details.event-card[open] .arrow-ev,
         .event-card.open .arrow-ev {
             transform: rotate(180deg);
         }
@@ -968,7 +988,7 @@
 
                 <div class="hidden lg:flex items-center gap-2 text-[12px] mono ml-2 truncate sub-meta-text">
                     <span class="w-[6px] h-[6px] rounded-full bg-[#22c55e] inline-block animate-pulse"></span>
-                    <span>每日 05:00 AM 准时晨报 • 11/21 10:35AM LIVE • MYT Asia/Kuala_Lumpur • </span>
+                    <span>每日 05:00 AM 准时晨报 • 11/21 12:24PM LIVE • MYT Asia/Kuala_Lumpur • </span>
                     <span class="lang-zh">点击标题展开全文</span>
                     <span class="lang-bm hidden">Klik tajuk kembang berita</span>
                 </div>
@@ -1107,7 +1127,7 @@
                         <span class="text-[12px] font-black tracking-tight" id="active-date-display">
                             今天 11/21 · MYT自动计算
                         </span>
-                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">10:35AM MYT</span>
+                        <span class="text-[11px] mono font-bold bg-black text-[#FFD60A] px-1.5 py-[1px] rounded-[5px]">12:24PM MYT</span>
                     </div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-full border text-[11px] mono sub-meta-text">
                         <span class="w-1.5 h-1.5 bg-[#22c55e] rounded-full"></span>
@@ -1181,7 +1201,7 @@
                     <div class="flex flex-wrap items-center gap-2 mb-3">
                         <div class="inline-flex items-center gap-2 px-3 py-[5px] rounded-full border text-[11px] md:text-[12px] sub-meta-text">
                             <span class="px-2 py-[1px] rounded-full bg-[#FFD60A] text-black font-bold text-[11px]">
-                                11/21 10:35AM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
+                                11/21 12:24PM <span class="lang-zh">发布</span><span class="lang-bm hidden">Disiarkan</span>
                             </span>
                             <span class="hidden md:inline font-medium">
                                 <span class="lang-zh">标题-only • 点击展开详尽报道与权威信源</span>
@@ -1306,7 +1326,7 @@
                             <span class="lang-bm hidden break-words">Operasi Pemulihan Bekalan Air JANS Tawau Kuhara</span>
                             <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono mt-0.5">11/21 10:35 • 待核实</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/21 12:24 • 待核实</div>
                     </div>
                 </div>
 
@@ -1332,7 +1352,7 @@
                             <span class="lang-zh">监测详情 STATUS DETAIL</span>
                             <span class="lang-bm hidden">STATUS PEMANTAUAN</span>
                         </span>
-                        <span class="text-[10px] mono text-[#94A3B8]">• 11/21 10:35 • 待核实</span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• 11/21 12:24 • 待核实</span>
                     </div>
 
                     <div class="space-y-2">
@@ -1396,7 +1416,7 @@
                             <span class="lang-bm hidden break-words">Sabah Electricity (SESB) Grid</span>
                             <span class="w-4 h-4 rounded-full bg-black text-[#FFD60A] inline-flex items-center justify-center text-[10px] arrow-util shrink-0 ml-0.5 mt-0.5">▼</span>
                         </div>
-                        <div class="text-black/70 text-[11px] mono mt-0.5">11/21 10:35 • 待核实</div>
+                        <div class="text-black/70 text-[11px] mono mt-0.5">11/21 12:24 • 待核实</div>
                     </div>
                 </div>
 
@@ -1422,7 +1442,7 @@
                             <span class="lang-zh">监测详情 STATUS DETAIL</span>
                             <span class="lang-bm hidden">STATUS PEMANTAUAN</span>
                         </span>
-                        <span class="text-[10px] mono text-[#94A3B8]">• 11/21 10:35 • 待核实</span>
+                        <span class="text-[10px] mono text-[#94A3B8]">• 11/21 12:24 • 待核实</span>
                     </div>
 
                     <div class="space-y-2">
@@ -2050,7 +2070,7 @@
                                 <span class="lang-zh">沙巴活动预告与倒计时</span>
                                 <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sabah</span>
                             </h3>
-                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">0 <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
+                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-white/10 text-white/70 text-[10px] font-bold shrink-0 mono"><span class="lang-zh">常态监测中</span><span class="lang-bm hidden">Pemantauan</span></span>
                             <span class="hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
@@ -2062,13 +2082,25 @@
                     </div>
                     <div class="p-2.5 grid grid-cols-1 md:grid-cols-2 gap-2 items-start" id="events-grid-container">
                         
+        <div class="col-span-full py-6 px-4 text-center rounded-[10px] border border-dashed border-white/10 my-1">
+            <div class="text-2xl mb-1.5 opacity-80">📅</div>
+            <div class="text-[13px] font-bold event-empty-title">
+                <span class="lang-zh">近期暂无新增活动通告</span>
+                <span class="lang-bm hidden">Tiada pengumuman aktiviti baharu buat masa ini</span>
+            </div>
+            <div class="text-[11px] sub-meta-text mt-1 mono">
+                <span class="lang-zh">官方有最新文娱/社区活动公布时将第一时间在此更新并开启倒计时</span>
+                <span class="lang-bm hidden">Aktiviti rasmi akan dikemas kini di sini sebaik sahaja diumumkan</span>
+            </div>
+        </div>
+        
                     </div>
                 </div>
 
                 <div class="p-3 rounded-[10px] border flex items-center justify-between text-[11px] mono footer-note-box">
                     <span>
-                        <span class="lang-zh">11/21 10:35AM MYT • 标题-only折叠 点击标题展开详细报道 • 7天归档库已挂载</span>
-                        <span class="lang-bm hidden">11/21 10:35AM MYT • Klik tajuk untuk baca berita terperinci • Arkib 7 hari tersedia</span>
+                        <span class="lang-zh">11/21 12:24PM MYT • 标题-only折叠 点击标题展开详细报道 • 7天归档库已挂载</span>
+                        <span class="lang-bm hidden">11/21 12:24PM MYT • Klik tajuk untuk baca berita terperinci • Arkib 7 hari tersedia</span>
                     </span>
                     <span class="text-[#FFD60A] font-bold">
                         <span class="lang-zh">13 篇深度要闻 • 双核实白名单</span>
@@ -2641,7 +2673,7 @@
         }
 
         let currentRenderedHeadlines = CURRENT_HEADLINES;
-        let currentRenderedDateLabel = '11/21 10:35AM';
+        let currentRenderedDateLabel = '11/21 12:24PM';
 
         function renderNewsCards(headlinesList, dateLabel) {
             currentRenderedHeadlines = Array.isArray(headlinesList) ? headlinesList : [];
@@ -2846,10 +2878,10 @@ html += `
                 }
 
                 let targetHeadlines = [];
-                let cardDateLabel = '11/21 10:35AM';
+                let cardDateLabel = '11/21 12:24PM';
                 if (type === 'today') {
                     targetHeadlines = currentList;
-                    cardDateLabel = '11/21 10:35AM';
+                    cardDateLabel = '11/21 12:24PM';
                     if (titleElem) titleElem.innerHTML = isBm ? '<span>Berita Utama Hari Ini 11/21</span>' : '<span>今日 11/21 重点要闻</span>';
                     if (displayDateElem) displayDateElem.textContent = isBm ? 'Hari Ini 11/21 · Auto MYT' : '今天 11/21 · MYT自动计算';
                     showToast('已载入今日最新核实晨报！', 'Memuatkan berita terkini hari ini!');
@@ -2899,12 +2931,28 @@ html += `
         window.switchDateArchive = switchDateArchive;
         window.switchArchiveDate = switchDateArchive;
 
-        // 未来活动卡片展开/收起抽屉
+        // 未来活动卡片展开/收起抽屉 (兼容原生 details 与 JS toggle)
         function toggleEventCard(id) {
             const card = document.getElementById('event-card-' + id);
             if (!card) return;
-            card.classList.toggle('open');
+            if (card.tagName.toLowerCase() === 'details') {
+                card.open = !card.open;
+                updateEventCardHint(card);
+            } else {
+                card.classList.toggle('open');
+            }
         }
+
+        function updateEventCardHint(el) {
+            if (!el) return;
+            const isOpen = el.open || el.classList.contains('open');
+            const zhText = el.querySelector('.detail-btn-zh');
+            const bmText = el.querySelector('.detail-btn-bm');
+            if (zhText) zhText.textContent = isOpen ? '收起' : '详情';
+            if (bmText) bmText.textContent = isOpen ? 'Tutup' : 'Butiran';
+        }
+        window.toggleEventCard = toggleEventCard;
+        window.updateEventCardHint = updateEventCardHint;
 
         // 展开/收起 3列黄色公用事业卡片
         function toggleUtilCard(id) {

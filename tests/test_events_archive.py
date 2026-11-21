@@ -270,9 +270,37 @@ class TestEventsArchiveLifecycle(unittest.TestCase):
 class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        cls.archive_file = "data/events_archive.json"
+        cls.orig_archive = []
+        if os.path.exists(cls.archive_file):
+            try:
+                with open(cls.archive_file, "r", encoding="utf-8") as f:
+                    cls.orig_archive = json.load(f)
+            except Exception:
+                pass
+        sample_ev = [{
+            "id": 1,
+            "name": "沙巴生态旅游展",
+            "nameBM": "Pameran Eko-Pelancongan Sabah",
+            "full_date": "2026-11-28",
+            "location": "山打根海港城",
+            "time": "10:00 AM - 05:00 PM",
+            "desc": "汇聚沙巴生态与文化展位。",
+            "source": "沙巴旅游局",
+            "sourceBM": "Lembaga Pelancongan Sabah",
+            "first_seen_date": "2026-11-21"
+        }]
+        with open(cls.archive_file, "w", encoding="utf-8") as f:
+            json.dump(sample_ev, f, ensure_ascii=False)
         build_news.generate_index_html()
         with open("index.html", "r", encoding="utf-8") as f:
             cls.html = f.read()
+
+    @classmethod
+    def tearDownClass(cls):
+        with open(cls.archive_file, "w", encoding="utf-8") as f:
+            json.dump(cls.orig_archive, f, ensure_ascii=False)
+        build_news.generate_index_html()
 
     def test_01_top_navbar_cleaned(self):
         """测试顶部导航栏旧黄色中文按钮已彻底清除，保留精简3大控件"""
@@ -303,6 +331,33 @@ class TestFrontendHeaderAndCardSeparation(unittest.TestCase):
         """测试电脑端网格容器带有 items-start，杜绝卡片展开时折叠卡片被强行拉伸留白"""
         self.assertIn('id="events-grid-container"', self.html)
         self.assertIn('grid grid-cols-1 md:grid-cols-2 gap-2 items-start', self.html)
+
+    def test_05_event_card_collapsible_details_summary(self):
+        """测试活动卡片采用 details/summary 默认折叠，摘要行包含标题+日期+地点与详情指示器"""
+        self.assertIn("<details class=\"event-card", self.html)
+        self.assertIn("<summary", self.html)
+        self.assertIn("detail-btn-zh", self.html)
+        self.assertIn("arrow-ev", self.html)
+        # 摘要行必须包含地点图标与名称
+        self.assertIn("📍", self.html)
+        self.assertIn("山打根海港城", self.html)
+
+    def test_06_event_card_empty_state_fallback(self):
+        """测试活动库为空时的优雅兜底提示卡片"""
+        # 重新生成一份空归档的 HTML
+        with open("data/events_archive.json", "w", encoding="utf-8") as f:
+            json.dump([], f)
+        if os.path.exists("news_data.json"):
+            with open("news_data.json", "r", encoding="utf-8") as f:
+                nd = json.load(f)
+            nd["events"] = []
+            with open("news_data.json", "w", encoding="utf-8") as f:
+                json.dump(nd, f, ensure_ascii=False)
+        build_news.generate_index_html()
+        with open("index.html", "r", encoding="utf-8") as f:
+            empty_html = f.read()
+        self.assertIn("近期暂无新增活动通告", empty_html)
+        self.assertIn("常态监测中", empty_html)
 
 
 if __name__ == "__main__":

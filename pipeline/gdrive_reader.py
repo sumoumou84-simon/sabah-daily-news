@@ -1144,12 +1144,12 @@ class GDriveMarkdownReader:
 
         # ----------------- Part 3: 活动通告解析 -----------------
         if part3_text:
-            is_empty_placeholder = any(k in part3_text for k in ["留空", "未核实到", "未用旧活动凑数", "暂无活动", "本板块留空", "本日留空"])
+            is_empty_placeholder = any(k in part3_text for k in ["留空", "未核实到", "未用旧活动凑数", "暂无活动", "本板块留空", "本日留空", "近期暂无", "暂无新增"])
             if not is_empty_placeholder:
                 if re.search(r'(?:^|\n)#{1,4}\s+', part3_text):
                     e_starts = list(re.finditer(r'(?:^|\n)#{1,4}\s+', part3_text))
                 else:
-                    e_starts = list(re.finditer(r'(?:^|\n)(?:[-•*]?\s*\*{0,2}【活动名称】|\d{1,2}[\.、]\s+)', part3_text))
+                    e_starts = list(re.finditer(r'(?:^|\n|(?<=\n)|(?=[-*•]?\s*\*{0,2}【(?:活动名称|活动标题)】))(?=[-•*]?\s*\*{0,2}【(?:活动名称|活动标题)】|\d{1,2}[\.、]\s+)', part3_text))
                 e_blocks = []
                 if e_starts:
                     for i, m in enumerate(e_starts):
@@ -1173,12 +1173,13 @@ class GDriveMarkdownReader:
                         e_pos = matches[i+1].start() if i + 1 < len(matches) else len(b)
                         tags[t_name] = b[s_pos:e_pos].strip()
 
-                    if "活动名称" in tags or "活动内容" in tags:
+                    if "活动名称" in tags or "活动标题" in tags or "活动内容" in tags:
                         title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
                         h_title = title_lines[-1] if title_lines else ""
                         h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
-                        e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                        e_name = tags.get("活动名称") or tags.get("活动标题") or h_title_clean or "社区活动"
                         e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
+                        e_name = strip_title_brackets(e_name)
 
                         raw_date = tags.get("活动日期", default_date)
                         clean_date, end_date = parse_date_range(raw_date, default_date)
@@ -1301,12 +1302,13 @@ class GDriveMarkdownReader:
                     })
 
                 # 3. Part 3: 活动通告
-                elif "活动名称" in tags or "活动内容" in tags:
+                elif "活动名称" in tags or "活动标题" in tags or "活动内容" in tags:
                     title_lines = [l.strip() for l in pre_tag_text.splitlines() if l.strip() and not re.match(r'^#{1,2}\s+', l.strip())]
                     h_title = title_lines[-1] if title_lines else ""
                     h_title_clean = re.sub(r'^[#\s\d\.\、\-\*]+', '', h_title).strip()
-                    e_name = tags.get("活动名称") or h_title_clean or "社区活动"
+                    e_name = tags.get("活动名称") or tags.get("活动标题") or h_title_clean or "社区活动"
                     e_name = re.sub(r'^[#\s\d\.\、\-\*]+', '', e_name).strip()
+                    e_name = strip_title_brackets(e_name)
 
                     raw_date = tags.get("活动日期", default_date)
                     clean_date, end_date = parse_date_range(raw_date, default_date)

@@ -556,80 +556,146 @@ def generate_index_html():
                 </article>
                 """
         
-    # 3. 动态渲染沙巴活动预告与倒计时卡片（持久化归档 + 单板块智能角标置顶 + 倒计时）
+    # 3. 动态渲染沙巴活动预告与倒计时卡片（持久化归档 + 默认折叠、点击展开详情 + 智能角标 + 倒计时）
     events_cards_html = ""
-    for ev in events_list:
-        countdown_days = ev.get('countdown_days', 0)
-        if countdown_days == 0:
-            countdown_label_zh = "今天举行"
-            countdown_label_bm = "Hari Ini"
-            countdown_badge_color = "bg-[#22c55e] text-black font-black"
-        elif countdown_days == 1:
-            countdown_label_zh = "还有 1 天"
-            countdown_label_bm = "1 hari lagi"
-            countdown_badge_color = "bg-[#FFD60A] text-black font-black"
-        else:
-            countdown_label_zh = f"还有 {countdown_days} 天"
-            countdown_label_bm = f"{countdown_days} hari lagi"
-            countdown_badge_color = "bg-[#FFD60A] text-black font-black"
+    if not events_list:
+        events_cards_html = """
+        <div class="col-span-full py-6 px-4 text-center rounded-[10px] border border-dashed border-white/10 my-1">
+            <div class="text-2xl mb-1.5 opacity-80">📅</div>
+            <div class="text-[13px] font-bold event-empty-title">
+                <span class="lang-zh">近期暂无新增活动通告</span>
+                <span class="lang-bm hidden">Tiada pengumuman aktiviti baharu buat masa ini</span>
+            </div>
+            <div class="text-[11px] sub-meta-text mt-1 mono">
+                <span class="lang-zh">官方有最新文娱/社区活动公布时将第一时间在此更新并开启倒计时</span>
+                <span class="lang-bm hidden">Aktiviti rasmi akan dikemas kini di sini sebaik sahaja diumumkan</span>
+            </div>
+        </div>
+        """
+        events_count_badge = '<span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-white/10 text-white/70 text-[10px] font-bold shrink-0 mono"><span class="lang-zh">常态监测中</span><span class="lang-bm hidden">Pemantauan</span></span>'
+    else:
+        events_count_badge = f'<span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>'
+        for ev in events_list:
+            countdown_days = ev.get('countdown_days', 0)
+            if countdown_days == 0:
+                countdown_label_zh = "今天举行"
+                countdown_label_bm = "Hari Ini"
+                countdown_badge_color = "bg-[#22c55e] text-black font-black"
+            elif countdown_days == 1:
+                countdown_label_zh = "还有 1 天"
+                countdown_label_bm = "1 hari lagi"
+                countdown_badge_color = "bg-[#FFD60A] text-black font-black"
+            else:
+                countdown_label_zh = f"还有 {countdown_days} 天"
+                countdown_label_bm = f"{countdown_days} hari lagi"
+                countdown_badge_color = "bg-[#FFD60A] text-black font-black"
 
-        is_new_today = (ev.get('first_seen_date') == today_iso)
-        if is_new_today:
-            new_tag_html = """<span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>"""
-        else:
-            new_tag_html = ""
+            is_new_today = (ev.get('first_seen_date') == today_iso)
+            if is_new_today:
+                new_tag_html = """<span class="inline-flex items-center px-1.5 sm:px-2 py-[2px] rounded-full text-[9.5px] sm:text-[10px] font-bold bg-[#14532d] border border-[#22c55e]/40 text-[#4ade80] whitespace-nowrap shadow-sm"><span class="lang-zh">🆕 今日新收</span><span class="lang-bm hidden">🆕 Baru</span></span>"""
+            else:
+                new_tag_html = ""
 
-        countdown_badge_html = f"""<span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black {countdown_badge_color} whitespace-nowrap shadow-sm mono"><span class="lang-zh">{countdown_label_zh}</span><span class="lang-bm hidden">{countdown_label_bm}</span></span>"""
+            countdown_badge_html = f"""<span class="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] sm:text-[10.5px] font-black {countdown_badge_color} whitespace-nowrap shadow-sm mono"><span class="lang-zh">{countdown_label_zh}</span><span class="lang-bm hidden">{countdown_label_bm}</span></span>"""
 
-        tel_val = (ev.get('tel') or '').strip()
-        if tel_val:
-            tel_first = tel_val.split('/')[0].strip()
-            tel_btn_html = f"""<a href="tel:{tel_first}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
-                        <span>📞</span>
-                        <span>{tel_val}</span>
-                    </a>"""
-        else:
-            tel_btn_html = ""
-        
-        events_cards_html += f"""
-        <div class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev['id']}" onclick="toggleEventCard({ev['id']})">
-            <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="shrink-0 w-[46px] h-[46px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none">
-                    <span class="font-black text-[13px] sm:text-[14px]">{ev['month']}</span>
-                    <span class="font-bold text-[10.5px] sm:text-[11px]">/{ev['day']}</span>
+            tel_val = (ev.get('tel') or '').strip()
+            if tel_val:
+                tel_first = tel_val.split('/')[0].strip()
+                tel_btn_html = f"""<a href="tel:{tel_first}" onclick="event.stopPropagation();" class="inline-flex items-center gap-1 px-2.5 py-[3px] rounded-full bg-[#FFD60A] text-black font-black text-[10px] hover:bg-[#ffde33] transition">
+                            <span>📞</span>
+                            <span>{tel_val}</span>
+                        </a>"""
+            else:
+                tel_btn_html = ""
+
+            location_zh = ev.get('location') or '山打根社区中心'
+            location_bm = ev.get('locationBM') or location_zh
+
+            ev_month = ev.get('month')
+            ev_day = ev.get('day')
+            if not ev_month or not ev_day:
+                raw_d = ev.get('full_date') or ev.get('date') or today_iso
+                try:
+                    dt = datetime.strptime(raw_d[:10], "%Y-%m-%d")
+                    ev_month = f"{dt.month:02d}"
+                    ev_day = f"{dt.day:02d}"
+                except Exception:
+                    ev_month = "11"
+                    ev_day = "21"
+
+            ev_date_display = ev.get('raw_date_str') or ev.get('date') or ev.get('full_date') or f"{ev_month}/{ev_day}"
+
+            ev_id = ev.get('id', 1)
+            ev_name_zh = ev.get('name', '社区活动')
+            ev_name_bm = ev.get('nameBM') or ev_name_zh
+            ev_desc_zh = ev.get('desc', '')
+            ev_desc_bm = ev.get('descBM') or ev_desc_zh
+            ev_source_zh = ev.get('source', '官方发布')
+            ev_source_bm = ev.get('sourceBM') or ev_source_zh
+            ev_time_zh = ev.get('time', '全天')
+            ev_time_bm = ev.get('timeBM') or ev_time_zh
+            ev_cat_zh = ev.get('category', '官方活动')
+            ev_cat_bm = ev.get('categoryBM', 'Aktiviti Rasmi')
+            ev_badge_color = ev.get('badgeColor', 'bg-[#14532d] text-[#86efac]')
+
+            events_cards_html += f"""
+        <details class="event-card group cursor-pointer rounded-[10px] border transition-all p-3" id="event-card-{ev_id}" ontoggle="updateEventCardHint(this)">
+            <summary class="flex items-center gap-2 sm:gap-3 list-none cursor-pointer select-none w-full">
+                <!-- 1. 左侧日期方块 -->
+                <div class="shrink-0 w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] rounded-[8px] bg-[#FFD60A] text-black flex flex-col items-center justify-center leading-none shadow-sm">
+                    <span class="font-black text-[12.5px] sm:text-[14px]">{ev_month}</span>
+                    <span class="font-bold text-[10px] sm:text-[11px]">/{ev_day}</span>
                 </div>
+
+                <!-- 2. 中间信息区：活动标题 + 日期 + 地点 (精简摘要行，手机电脑不折行错位) -->
                 <div class="flex-1 min-w-0 pr-1">
-                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors" style="white-space: normal; line-height: 1.4; word-break: break-word;">
-                        <span class="lang-zh">{ev['name']}</span>
-                        <span class="lang-bm hidden">{ev['nameBM']}</span>
+                    <div class="text-[13px] sm:text-[13.5px] font-bold event-title transition-colors leading-snug truncate sm:whitespace-normal">
+                        <span class="lang-zh">{ev_name_zh}</span>
+                        <span class="lang-bm hidden">{ev_name_bm}</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 text-[11px] sub-meta-text mt-0.5 truncate">
+                        <span class="text-[#FFD60A] shrink-0 text-[10.5px]">📍</span>
+                        <span class="truncate font-medium">
+                            <span class="lang-zh">{location_zh}</span>
+                            <span class="lang-bm hidden">{location_bm}</span>
+                        </span>
+                        <span class="opacity-40">•</span>
+                        <span class="mono shrink-0 text-[10.5px]">{ev_date_display}</span>
                     </div>
                 </div>
+
+                <!-- 3. 右侧状态区：倒计时/新收胶囊 + 明显的展开/收起详情指示图标 -->
                 <div class="shrink-0 flex items-center gap-1.5 sm:gap-2">
                     {new_tag_html}
                     {countdown_badge_html}
-                    <span class="text-[11px] arrow-ev transition-transform text-white/50">▼</span>
+                    <span class="inline-flex items-center gap-1 px-2 py-[2.5px] rounded-full bg-black/40 border border-white/10 group-hover:border-[#FFD60A]/40 text-[10.5px] font-bold transition-all text-white/90 group-hover:text-[#FFD60A] shrink-0">
+                        <span class="detail-btn-zh lang-zh">详情</span>
+                        <span class="detail-btn-bm lang-bm hidden">Butiran</span>
+                        <span class="arrow-ev text-[9px] transition-transform text-[#FFD60A]">▾</span>
+                    </span>
                 </div>
-            </div>
+            </summary>
 
-            <div class="event-drawer hidden mt-3 pt-3 border-t">
+            <!-- 展开详情抽屉 (点击后平滑显示正文介绍、具体时间、参与/联络方式) -->
+            <div class="event-drawer mt-3 pt-3 border-t">
                 <p class="text-[12.5px] leading-[1.65] mb-2.5 event-desc">
-                    <span class="lang-zh">{ev['desc']}</span>
-                    <span class="lang-bm hidden">{ev['descBM']}</span>
+                    <span class="lang-zh">{ev_desc_zh}</span>
+                    <span class="lang-bm hidden">{ev_desc_bm}</span>
                 </p>
                 <div class="flex flex-col gap-1.5 text-[11px] p-2.5 rounded-[8px] event-time-box mb-2">
                     <div class="flex items-start gap-1.5">
                         <span class="text-[#FFD60A] shrink-0">📍</span>
                         <span class="font-medium">
-                            <span class="lang-zh">活动地点：{ev['location']}</span>
-                            <span class="lang-bm hidden">Lokasi: {ev.get('locationBM') or ev['location']}</span>
+                            <span class="lang-zh">活动地点：{location_zh}</span>
+                            <span class="lang-bm hidden">Lokasi: {location_bm}</span>
                         </span>
                     </div>
                     <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-white/5">
                         <div class="flex items-center gap-1.5">
                             <span class="text-[#FFD60A] shrink-0">⏰</span>
                             <span>
-                                <span class="lang-zh">活动时间：{ev['time']}</span>
-                                <span class="lang-bm hidden">Masa: {ev.get('timeBM') or ev['time']}</span>
+                                <span class="lang-zh">活动时间：{ev_time_zh}</span>
+                                <span class="lang-bm hidden">Masa: {ev_time_bm}</span>
                             </span>
                         </div>
                         {tel_btn_html}
@@ -637,16 +703,16 @@ def generate_index_html():
                 </div>
                 <div class="mt-2 flex items-center justify-between text-[10px] event-meta">
                     <div class="flex items-center gap-2">
-                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：{ev['source']}</span><span class="lang-bm hidden">Penganjur: {ev['sourceBM']}</span></span>
-                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold {ev.get('badgeColor', 'bg-[#14532d] text-[#86efac]')}">
-                            <span class="lang-zh">{ev.get('category', '官方活动')}</span>
-                            <span class="lang-bm hidden">{ev.get('categoryBM', 'Aktiviti Rasmi')}</span>
+                        <span class="text-[#22c55e]">✓ <span class="lang-zh">主办/信源：{ev_source_zh}</span><span class="lang-bm hidden">Penganjur: {ev_source_bm}</span></span>
+                        <span class="px-2 py-[1px] rounded-full text-[9px] font-bold {ev_badge_color}">
+                            <span class="lang-zh">{ev_cat_zh}</span>
+                            <span class="lang-bm hidden">{ev_cat_bm}</span>
                         </span>
                     </div>
                     <span class="mono">沙巴官方核准备案活动</span>
                 </div>
             </div>
-        </div>
+        </details>
         """
 
     # 3.5 动态构建顶部【今日重点聚焦】跑马灯条内容（纯中文，动态提取前 6 条重点或各板块头条）
@@ -1006,9 +1072,13 @@ def generate_index_html():
         .theme-dark .event-card:hover {{
             background-color: var(--bg-card-hover) !important;
         }}
-        .theme-dark .event-card.open {{
+        .theme-dark .event-card.open,
+        .theme-dark details.event-card[open] {{
             background-color: #243247 !important;
             border-color: #FFD60A !important;
+        }}
+        .theme-dark .event-empty-title {{
+            color: #F8FAFC !important;
         }}
         .theme-dark .event-title {{
             color: #F8FAFC !important;
@@ -1297,10 +1367,14 @@ def generate_index_html():
         .theme-light .event-card:hover {{
             background-color: var(--bg-card-hover) !important;
         }}
-        .theme-light .event-card.open {{
+        .theme-light .event-card.open,
+        .theme-light details.event-card[open] {{
             background-color: #FFFFFF !important;
             border-color: #F59E0B !important;
             box-shadow: 0 0 0 1px #F59E0B;
+        }}
+        .theme-light .event-empty-title {{
+            color: #0F172A !important;
         }}
         .theme-light .event-title {{
             color: #0F172A !important;
@@ -1569,11 +1643,23 @@ def generate_index_html():
             margin: 0 auto;
         }}
 
-        /* 活动卡片展开样式 */
+        /* 移除原生 details summary 的默认三角形与边距 */
+        details.event-card summary::-webkit-details-marker,
+        details.event-card summary::marker {{
+            display: none !important;
+        }}
+        details.event-card summary {{
+            list-style: none !important;
+            outline: none !important;
+        }}
+
+        /* 活动卡片展开样式 (同时兼容原生 details[open] 与 .event-card.open) */
+        details.event-card[open] .event-drawer,
         .event-card.open .event-drawer {{
             display: block !important;
             animation: fadeIn 0.25s ease;
         }}
+        details.event-card[open] .arrow-ev,
         .event-card.open .arrow-ev {{
             transform: rotate(180deg);
         }}
@@ -1988,7 +2074,7 @@ def generate_index_html():
                                 <span class="lang-zh">沙巴活动预告与倒计时</span>
                                 <span class="lang-bm hidden">Ramalan & Kira Detik Aktiviti Sabah</span>
                             </h3>
-                            <span class="hidden sm:inline-flex items-center px-2 py-[1px] rounded-full bg-[#FFD60A] text-black text-[10px] font-black shrink-0">{len(events_list)} <span class="lang-zh">项官方活动</span><span class="lang-bm hidden">aktiviti</span></span>
+                            {events_count_badge}
                             <span class="hidden md:inline-flex items-center gap-1 px-2 py-[1px] rounded-full border text-[10px] mono sub-meta-text shrink-0">
                                 <span class="lang-zh">始终可见 不受日期筛选影响</span>
                                 <span class="lang-bm hidden">Sentiasa Dipaparkan</span>
@@ -2837,12 +2923,28 @@ html += `
         window.switchDateArchive = switchDateArchive;
         window.switchArchiveDate = switchDateArchive;
 
-        // 未来活动卡片展开/收起抽屉
+        // 未来活动卡片展开/收起抽屉 (兼容原生 details 与 JS toggle)
         function toggleEventCard(id) {{
             const card = document.getElementById('event-card-' + id);
             if (!card) return;
-            card.classList.toggle('open');
+            if (card.tagName.toLowerCase() === 'details') {{
+                card.open = !card.open;
+                updateEventCardHint(card);
+            }} else {{
+                card.classList.toggle('open');
+            }}
         }}
+
+        function updateEventCardHint(el) {{
+            if (!el) return;
+            const isOpen = el.open || el.classList.contains('open');
+            const zhText = el.querySelector('.detail-btn-zh');
+            const bmText = el.querySelector('.detail-btn-bm');
+            if (zhText) zhText.textContent = isOpen ? '收起' : '详情';
+            if (bmText) bmText.textContent = isOpen ? 'Tutup' : 'Butiran';
+        }}
+        window.toggleEventCard = toggleEventCard;
+        window.updateEventCardHint = updateEventCardHint;
 
         // 展开/收起 3列黄色公用事业卡片
         function toggleUtilCard(id) {{
