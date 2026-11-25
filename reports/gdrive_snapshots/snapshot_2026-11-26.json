@@ -1,0 +1,56 @@
+{
+  "snapshot_id": "gdrive_snap_2026-11-26_963753b9",
+  "target_date": "2026-11-26",
+  "source_file_name": "西门看看网每日新闻_2026-11-26.md",
+  "source_file_id": "1Eb_3amx47pnUwrH74TCrhhECCxHM270AyShCtYaegQU",
+  "read_timestamp": "2026-11-26T05:50:04.891034+08:00",
+  "total_stories_found": 2,
+  "news_stories_count": 1,
+  "event_stories_count": 1,
+  "markdown_sha256": "963753b90fddcdf69e2e0534e06a0feb0fbdfebb6ba9f24e67c0a1e7b99c7c5c",
+  "news_stories": [
+    {
+      "index": 1,
+      "title": "沙巴山打根】【1】伊罗普拉马拉松吸引逾3200人参赛创纪录",
+      "body": "沙巴首长哈芝芝在2026年沙巴数码峰会开幕礼演讲词中指出，沙巴数码化不应与整体发展脱节，应配合发展蓝图强化经济、发展人力资本、改善基建与公共福祉，最终让效益更广泛惠及大众。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "星洲日报沙巴版"
+      ],
+      "source_urls": [],
+      "date": "2026-11-26",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 1. 沙巴山打根】【1】伊罗普拉马拉松吸引逾3200人参赛创纪录",
+      "title_bm": "沙巴山打根】【1】伊罗普拉马拉松吸引逾3200人参赛创纪录",
+      "body_bm": "沙巴首长哈芝芝在2026年沙巴数码峰会开幕礼演讲词中指出，沙巴数码化不应与整体发展脱节，应配合发展蓝图强化经济、发展人力资本、改善基建与公共福祉，最终让效益更广泛惠及大众。"
+    }
+  ],
+  "event_stories": [
+    {
+      "index": 2,
+      "title": "山打根喵跑 2026",
+      "body": "猫咪主题5公里趣味路跑，适合亲子与新手，不拼成绩，主打好玩。",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "暂未公布"
+      ],
+      "source_urls": [],
+      "date": "2026-12-06",
+      "is_event": true,
+      "event_metadata": {
+        "time": "6:15 AM 开跑",
+        "location": "Kompleks Sukan Sandakan",
+        "organizer": "暂未公布",
+        "tel": "",
+        "end_date": "2026-12-12",
+        "raw_date_str": "2026-12-06"
+      },
+      "raw_header": "### 山打根喵跑 2026",
+      "title_bm": "山打根喵跑 2026",
+      "body_bm": "猫咪主题5公里趣味路跑，适合亲子与新手，不拼成绩，主打好玩。"
+    }
+  ]
+}
