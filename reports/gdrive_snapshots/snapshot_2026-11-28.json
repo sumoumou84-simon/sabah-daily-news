@@ -1,0 +1,305 @@
+{
+  "snapshot_id": "gdrive_snap_2026-11-28_73079476",
+  "target_date": "2026-11-28",
+  "source_file_name": "西门看看网每日新闻_2026-11-28.md",
+  "source_file_id": "17sPBWiWJSnBTxy-YkA5TEUSIp5J7jRu6",
+  "read_timestamp": "2026-11-28T05:50:06.451576+08:00",
+  "total_stories_found": 16,
+  "news_stories_count": 14,
+  "event_stories_count": 2,
+  "markdown_sha256": "730794763de72213b4a139eb8b27940e22f23fd0a03550c1510dacb2a2e0a031",
+  "news_stories": [
+    {
+      "index": 1,
+      "title": "山打根面临数日配水，四座滤水站受停电影响",
+      "body": "山打根区灾难管理委员会主席 Walter Kenson 表示，供电中断与电压不稳已影响 Segaliud、Kinabatangan、Sibuga 与 Hilltop 四座滤水站运作，因产量与储水量有限，多区须实行配水，预计持续数日。Sabah Electricity 正抢修倒塌电塔，并以轮流供电方式维持系统稳定。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Malay Mail"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 1. 山打根面临数日配水，四座滤水站受停电影响",
+      "title_bm": "山打根面临数日配水，四座滤水站受停电影响",
+      "body_bm": "山打根区灾难管理委员会主席 Walter Kenson 表示，供电中断与电压不稳已影响 Segaliud、Kinabatangan、Sibuga 与 Hilltop 四座滤水站运作，因产量与储水量有限，多区须实行配水，预计持续数日。Sabah Electricity 正抢修倒塌电塔，并以轮流供电方式维持系统稳定。"
+    },
+    {
+      "index": 2,
+      "title": "东海岸轮流供电，山打根、斗湖、仙本那与拿笃受影响",
+      "body": "Sabah Electricity 在沙巴东海岸实行轮流供电，以协调馈线轮换方式分时段供电，维持电网稳定。受影响地区包括山打根、斗湖、仙本那与拿笃等地，轮换时间表从 11 月 27 日起至 11 月 30 日，分四个组别进行。山打根受影响地点包括 Batu 10 诊所、Sekolah Kebangsaan Berhala、Masjid Besar Sandakan、山打根中央巴刹等。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Free Malaysia Today",
+        "Sinar Daily"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 2. 东海岸轮流供电，山打根、斗湖、仙本那与拿笃受影响",
+      "title_bm": "东海岸轮流供电，山打根、斗湖、仙本那与拿笃受影响",
+      "body_bm": "Sabah Electricity 在沙巴东海岸实行轮流供电，以协调馈线轮换方式分时段供电，维持电网稳定。受影响地区包括山打根、斗湖、仙本那与拿笃等地，轮换时间表从 11 月 27 日起至 11 月 30 日，分四个组别进行。山打根受影响地点包括 Batu 10 诊所、Sekolah Kebangsaan Berhala、Masjid Besar Sandakan、山打根中央巴刹等。"
+    },
+    {
+      "index": 3,
+      "title": "山打根逾 237 人参与三天海啸演习，27 机构强化协调",
+      "body": "由山打根区灾难管理委员会主办的三天海啸灾难演习已于 11 月 16 日至 18 日举行，27 个政府机构逾 237 名人员参与，演习顺利完成，旨在强化跨部门协调与灾害应对能力。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Daily Express"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 3. 山打根逾 237 人参与三天海啸演习，27 机构强化协调",
+      "title_bm": "山打根逾 237 人参与三天海啸演习，27 机构强化协调",
+      "body_bm": "由山打根区灾难管理委员会主办的三天海啸灾难演习已于 11 月 16 日至 18 日举行，27 个政府机构逾 237 名人员参与，演习顺利完成，旨在强化跨部门协调与灾害应对能力。"
+    },
+    {
+      "index": 4,
+      "title": "沙巴 SPM 考生不受停电水灾影响，42808 人如期应考",
+      "body": "尽管沙巴东海岸出现停电与部分地区水灾，沙巴州灾难管理委员会证实，全州 42808 名 SPM 考生如期应考。Sook 地区仍有 153 人共 42 户家庭暂住在 Kampung Dalit Gana 的 SLDB 多用途礼堂临时疏散中心，当局持续跟进考生与灾民需要。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Malay Mail"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 4. 沙巴 SPM 考生不受停电水灾影响，42808 人如期应考",
+      "title_bm": "沙巴 SPM 考生不受停电水灾影响，42808 人如期应考",
+      "body_bm": "尽管沙巴东海岸出现停电与部分地区水灾，沙巴州灾难管理委员会证实，全州 42808 名 SPM 考生如期应考。Sook 地区仍有 153 人共 42 户家庭暂住在 Kampung Dalit Gana 的 SLDB 多用途礼堂临时疏散中心，当局持续跟进考生与灾民需要。"
+    },
+    {
+      "index": 5,
+      "title": "沙巴水灾逐步好转，四间临时疏散中心关闭",
+      "body": "沙巴 Penampang、Putatan、Tuaran 与 Tamparuli 的水灾情况逐步好转，自星期日以来运作的四间临时疏散中心已于 11 月 27 日下午关闭，包括 Penampang 文化礼堂与 Sri Putatan 礼堂等，灾民已陆续返家。当局提醒民众仍须留意余下水灾与道路安全通告。",
+      "category": "sabah",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Bernama"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 5. 沙巴水灾逐步好转，四间临时疏散中心关闭",
+      "title_bm": "沙巴水灾逐步好转，四间临时疏散中心关闭",
+      "body_bm": "沙巴 Penampang、Putatan、Tuaran 与 Tamparuli 的水灾情况逐步好转，自星期日以来运作的四间临时疏散中心已于 11 月 27 日下午关闭，包括 Penampang 文化礼堂与 Sri Putatan 礼堂等，灾民已陆续返家。当局提醒民众仍须留意余下水灾与道路安全通告。"
+    },
+    {
+      "index": 6,
+      "title": "国会通过 2027 年财政预算案，安华称聚焦改善民生",
+      "body": "国会下议院于 11 月 26 日以声浪表决三读通过 2027 年供应法案，即 2027 年财政预算案。首相兼财政部长 Anwar Ibrahim 表示，预算案通过是昌明政府改善人民生活、强化国家韧性与保障未来的重要一步。预算案于 10 月 9 日提呈，总联邦开支为 4598 亿令吉。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Malay Mail",
+        "New Straits Times"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 6. 国会通过 2027 年财政预算案，安华称聚焦改善民生",
+      "title_bm": "国会通过 2027 年财政预算案，安华称聚焦改善民生",
+      "body_bm": "国会下议院于 11 月 26 日以声浪表决三读通过 2027 年供应法案，即 2027 年财政预算案。首相兼财政部长 Anwar Ibrahim 表示，预算案通过是昌明政府改善人民生活、强化国家韧性与保障未来的重要一步。预算案于 10 月 9 日提呈，总联邦开支为 4598 亿令吉。"
+    },
+    {
+      "index": 7,
+      "title": "空军基地贩毒案再有 5 人被捕，累计逮捕增至 18 人",
+      "body": "警方调查利用空军设施走私毒品案再有进展，再逮捕一名空军军官与四名平民，累计逮捕人数增至 18 人。警方早前揭露，集团涉嫌自 2024 年 8 月起利用沙巴与纳闽两座空军基地走私约 3 公吨冰毒，总值 1 亿 5600 万令吉，案件已引起国会关注。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Malay Mail",
+        "Utusan Borneo"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 7. 空军基地贩毒案再有 5 人被捕，累计逮捕增至 18 人",
+      "title_bm": "空军基地贩毒案再有 5 人被捕，累计逮捕增至 18 人",
+      "body_bm": "警方调查利用空军设施走私毒品案再有进展，再逮捕一名空军军官与四名平民，累计逮捕人数增至 18 人。警方早前揭露，集团涉嫌自 2024 年 8 月起利用沙巴与纳闽两座空军基地走私约 3 公吨冰毒，总值 1 亿 5600 万令吉，案件已引起国会关注。"
+    },
+    {
+      "index": 8,
+      "title": "美国 301 调查提议对马征税，马来西亚争取总税率不逾 19%",
+      "body": "美国公布结构性产能过剩 301 条款调查结果，提议对马来西亚输美产品征收最高 18% 关税。首相 Anwar Ibrahim 证实，内阁将讨论此事。投资、贸易及工业部表示，将继续与美方磋商，争取 301 条款下的总税率不超过 19%。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "中央社"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 8. 美国 301 调查提议对马征税，马来西亚争取总税率不逾 19%",
+      "title_bm": "美国 301 调查提议对马征税，马来西亚争取总税率不逾 19%",
+      "body_bm": "美国公布结构性产能过剩 301 条款调查结果，提议对马来西亚输美产品征收最高 18% 关税。首相 Anwar Ibrahim 证实，内阁将讨论此事。投资、贸易及工业部表示，将继续与美方磋商，争取 301 条款下的总税率不超过 19%。"
+    },
+    {
+      "index": 9,
+      "title": "著名政治学者 Chandra Muzaffar 逝世，享年 79 岁",
+      "body": "马来西亚著名政治学者 Chandra Muzaffar 于 11 月 27 日逝世，享年 79 岁。他长期关注社会公义、和平与马来西亚政治发展，其逝世引起学界与社会人士悼念。",
+      "category": "national",
+      "geo_scope": "national",
+      "sources": [
+        "Sinar Daily"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 9. 著名政治学者 Chandra Muzaffar 逝世，享年 79 岁",
+      "title_bm": "著名政治学者 Chandra Muzaffar 逝世，享年 79 岁",
+      "body_bm": "马来西亚著名政治学者 Chandra Muzaffar 于 11 月 27 日逝世，享年 79 岁。他长期关注社会公义、和平与马来西亚政治发展，其逝世引起学界与社会人士悼念。"
+    },
+    {
+      "index": 10,
+      "title": "大马羽球混双闯 Syed Modi 国际赛四强",
+      "body": "国家羽球混双组合 Wee Yee Hern 与 Vannee Gobi 在印度 Lucknow 举行的 Syed Modi 国际赛直落两局击败印尼组合，首次闯入超级 300 赛四强，为大马保留争冠希望。李梓嘉、Wong Ling Ching 与女双组合 Low Zi Yu 与 Noraqilah Maisarah 则止步。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "Bernama"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 10. 大马羽球混双闯 Syed Modi 国际赛四强",
+      "title_bm": "大马羽球混双闯 Syed Modi 国际赛四强",
+      "body_bm": "国家羽球混双组合 Wee Yee Hern 与 Vannee Gobi 在印度 Lucknow 举行的 Syed Modi 国际赛直落两局击败印尼组合，首次闯入超级 300 赛四强，为大马保留争冠希望。李梓嘉、Wong Ling Ching 与女双组合 Low Zi Yu 与 Noraqilah Maisarah 则止步。"
+    },
+    {
+      "index": 11,
+      "title": "大马曲棍球 5 比 5 逼和巴基斯坦，闯苏丹阿兹兰沙杯决赛",
+      "body": "大马男子曲棍球队 Speedy Tigers 在 Ipoh 举行的苏丹阿兹兰沙杯最后一场循环赛中，在 2 比 4 落后下追平巴基斯坦，最终 5 比 5 逼和对手，成功闯入决赛，将与澳洲争冠。这是大马时隔四年再度闯入该项赛事决赛。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "Malay Mail"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 11. 大马曲棍球 5 比 5 逼和巴基斯坦，闯苏丹阿兹兰沙杯决赛",
+      "title_bm": "大马曲棍球 5 比 5 逼和巴基斯坦，闯苏丹阿兹兰沙杯决赛",
+      "body_bm": "大马男子曲棍球队 Speedy Tigers 在 Ipoh 举行的苏丹阿兹兰沙杯最后一场循环赛中，在 2 比 4 落后下追平巴基斯坦，最终 5 比 5 逼和对手，成功闯入决赛，将与澳洲争冠。这是大马时隔四年再度闯入该项赛事决赛。"
+    },
+    {
+      "index": 12,
+      "title": "大马女足曲棍球 2 比 6 不敌印度，无缘亚洲冠军杯决赛",
+      "body": "大马女子曲棍球队 Speedy Tigresses 在女子亚洲冠军杯半决赛中以 2 比 6 不敌印度，无缘决赛。球队接下来将争取季军，大马空手道总会则表示将聘请外籍教练，延续亚运会的成功势头。",
+      "category": "sports",
+      "geo_scope": "national",
+      "sources": [
+        "New Straits Times"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 12. 大马女足曲棍球 2 比 6 不敌印度，无缘亚洲冠军杯决赛",
+      "title_bm": "大马女足曲棍球 2 比 6 不敌印度，无缘亚洲冠军杯决赛",
+      "body_bm": "大马女子曲棍球队 Speedy Tigresses 在女子亚洲冠军杯半决赛中以 2 比 6 不敌印度，无缘决赛。球队接下来将争取季军，大马空手道总会则表示将聘请外籍教练，延续亚运会的成功势头。"
+    },
+    {
+      "index": 13,
+      "title": "沙巴东海岸停电波及八区，山打根居民受促耐心等候",
+      "body": "自 11 月 26 日早上 6 时 04 分起，沙巴东海岸八个县区受停电影响，包括山打根、斗湖、拿笃、仙本那、古纳、比鲁兰、特鲁必与京那巴登岸。山打根市议会主席兼区灾难管理委员会主席 Walter Kenson 表示，电塔因地面移动与持续豪雨倒塌，当局正全力抢修，呼吁居民耐心等候并节约用电。",
+      "category": "general",
+      "geo_scope": "sabah",
+      "sources": [
+        "Daily Express",
+        "The Straits Times"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 13. 沙巴东海岸停电波及八区，山打根居民受促耐心等候",
+      "title_bm": "沙巴东海岸停电波及八区，山打根居民受促耐心等候",
+      "body_bm": "自 11 月 26 日早上 6 时 04 分起，沙巴东海岸八个县区受停电影响，包括山打根、斗湖、拿笃、仙本那、古纳、比鲁兰、特鲁必与京那巴登岸。山打根市议会主席兼区灾难管理委员会主席 Walter Kenson 表示，电塔因地面移动与持续豪雨倒塌，当局正全力抢修，呼吁居民耐心等候并节约用电。"
+    },
+    {
+      "index": 14,
+      "title": "沙巴消拯局接获 242 通水灾求助电话，多条道路一度中断",
+      "body": "沙巴水灾期间，消拯局接获 242 通水灾求助电话。Penampang 多条道路一度因积水无法通行，包括 Jalan Inobong Putatan Bandsadon、Jalan Datuk Peter Mojuntin 与 Jalan Nambazan 等。当局呼吁民众规划行程，避免受困水灾，并采取安全措施。",
+      "category": "general",
+      "geo_scope": "sabah",
+      "sources": [
+        "Bernama"
+      ],
+      "source_urls": [],
+      "date": "2026-11-28",
+      "is_event": false,
+      "event_metadata": null,
+      "raw_header": "### 14. 沙巴消拯局接获 242 通水灾求助电话，多条道路一度中断",
+      "title_bm": "沙巴消拯局接获 242 通水灾求助电话，多条道路一度中断",
+      "body_bm": "沙巴水灾期间，消拯局接获 242 通水灾求助电话。Penampang 多条道路一度因积水无法通行，包括 Jalan Inobong Putatan Bandsadon、Jalan Datuk Peter Mojuntin 与 Jalan Nambazan 等。当局呼吁民众规划行程，避免受困水灾，并采取安全措施。"
+    }
+  ],
+  "event_stories": [
+    {
+      "index": 15,
+      "title": "Karnival CIMIC 2026",
+      "body": "军事资产演示、Kawad Senyap 无声操表演、军乐队表演、Boat Ride 乘船体验、展览、演唱会、售卖摊位、幸运抽奖及 Sandakan Navy Fleet Run 2026",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "Markas Wilayah Laut 2"
+      ],
+      "source_urls": [],
+      "date": "2026-12-05",
+      "is_event": true,
+      "event_metadata": {
+        "time": "8:00 AM 至 10:00 PM",
+        "location": "山打根 Pangkalan TLDM Sandakan",
+        "organizer": "Markas Wilayah Laut 2",
+        "tel": "",
+        "end_date": "2026-12-06",
+        "raw_date_str": "2026-12-05 至 2026-12-06"
+      },
+      "raw_header": "### Karnival CIMIC 2026",
+      "title_bm": "Karnival CIMIC 2026",
+      "body_bm": "军事资产演示、Kawad Senyap 无声操表演、军乐队表演、Boat Ride 乘船体验、展览、演唱会、售卖摊位、幸运抽奖及 Sandakan Navy Fleet Run 2026"
+    },
+    {
+      "index": 16,
+      "title": "Sandakan Meow Run 2026",
+      "body": "以猫咪为主题的休闲跑活动，详情以主办方公布为准",
+      "category": "event",
+      "geo_scope": "sandakan",
+      "sources": [
+        "暂未公布"
+      ],
+      "source_urls": [],
+      "date": "2026-12-06",
+      "is_event": true,
+      "event_metadata": {
+        "time": "暂未公布",
+        "location": "山打根，集合地点暂未公布",
+        "organizer": "暂未公布",
+        "tel": "",
+        "end_date": "2026-12-12",
+        "raw_date_str": "2026-12-06"
+      },
+      "raw_header": "### Sandakan Meow Run 2026",
+      "title_bm": "Sandakan Meow Run 2026",
+      "body_bm": "以猫咪为主题的休闲跑活动，详情以主办方公布为准"
+    }
+  ]
+}
